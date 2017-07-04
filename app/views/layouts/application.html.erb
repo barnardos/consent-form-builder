@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Consent Form Builder</title>
-    <%= csrf_meta_tags %>
-  </head>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body>
+  <title>Consent Form Builder</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+
+<body>
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+<div id="skiplink-container">
+  <div>
+    <a href="#content" class="skiplink">Skip to main content</a>
+  </div>
+</div>
+
+<header role="banner" id="global-header">
+  <div id="global-header__logo">
+    <img src="/assets/barnardos-logo.svg" alt="Barnardos logo" />
+  </div>
+  <div id="global-header__menu"></div>
+</header>
+
+<div id="global-header-bar">
+  &nbsp;
+</div>
+
+<main id="content" role="main">
+  <div>
     <%= yield %>
-  </body>
+  </div>
+</main>
+
+</body>
 </html>
+
+

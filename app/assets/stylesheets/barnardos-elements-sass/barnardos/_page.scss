@@ -1,0 +1,33 @@
+@import 'barnardos-elements-sass/neat/neat-helpers';
+
+#global-header {
+  @include outer-container;
+  margin: 1em auto;
+
+  > div {
+    @include media($tablet) {
+      @include span-columns(6);
+    }
+  }
+}
+
+#global-header__logo {
+  padding-left: 1em;
+}
+
+#global-header__menu {
+  padding-right: 1em;
+}
+
+#global-header-bar {
+  background: $black;
+}
+
+#content {
+  @include outer-container;
+
+  > div {
+    margin: 1em;
+  }
+}
+

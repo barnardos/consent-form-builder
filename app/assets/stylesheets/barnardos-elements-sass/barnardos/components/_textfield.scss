@@ -1,0 +1,58 @@
+.textfield {
+  margin-bottom: 2em;
+  font-size: 1em;
+}
+
+.textfield--has-error {
+  border-left: 4px solid $error-colour;
+  padding-left: 1em;
+}
+
+.textfield__label {
+  display: block;
+  line-height: 1.5;
+  margin-bottom: .25em;
+}
+
+.textfield__label--bold {
+  @extend %text-bold;
+  display: block;
+  padding-bottom: .25em;
+}
+
+.textfield__hint {
+  display: block;
+  color: $secondary-text-colour;
+  font-weight: normal;
+  margin-top: 0;
+  padding-bottom: .25em;
+}
+
+.textfield__error-message {
+  @extend %text-bold;
+  color: $error-colour;
+  display: block;
+  clear: both;
+  margin: 0;
+  padding: 0 0 .25em 0;
+}
+
+.textfield__input {
+  @include box-sizing(border-box);
+  font-size: 1em;
+  width: 100%;
+
+  padding: 5px 4px 4px;
+  background-color: transparent;
+  border: 2px solid $black;
+
+  .textfield__has-error & {
+    border: 2px solid $error-colour;
+  }
+
+  &:focus {
+    border: 2px solid $highlight-colour;
+  }
+
+}
+

@@ -1,0 +1,18 @@
+.left-contents-navigation {
+  border-top: .25em solid $green;
+}
+
+.left-contents-navigation__title {
+  font-weight: normal;
+  font-size: 1.5em;
+  margin: .5em 0;
+
+}
+
+.left-contents-navigation__item {
+  display: block;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: .5em;
+  line-height: 1.25;
+}

@@ -1,0 +1,49 @@
+.vertical-radio-list {
+  @extend %contain-floats;
+  margin: .5em 0 2em 0;
+  padding: 0;
+  width: 100%;
+  border: 0;
+
+  [type=radio] + label {
+    cursor: pointer;
+    font-weight: 400;
+    margin-left: 1.5em;
+    padding: .5em 0;
+    display: block;
+  }
+
+  [type=radio] + label::before {
+    margin-left: -29px;
+  }
+}
+
+.vertical-radio-list__legend {
+  color: $black;
+  font-weight: 700;
+  display: block;
+  line-height: 1.5;
+  margin-bottom: .25em;
+}
+
+.vertical-radio-list__hint {
+  display: block;
+  color: $secondary-text-colour;
+  font-weight: normal;
+  margin-top: 0;
+  padding-bottom: .25em;
+}
+
+.vertical-radio-list--has-error {
+  border-left: 4px solid $error-colour;
+  padding-left: 1em;
+}
+
+.vertical-radio-list__error-message {
+  @extend %text-bold;
+  color: $error-colour;
+  display: block;
+  clear: both;
+  margin: 0;
+  padding: 0 0 .25em 0;
+}

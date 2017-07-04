@@ -1,0 +1,46 @@
+@import "barnardos-elements-sass/barnardos-elements";
+
+.main-content {
+  max-width: 550px
+}
+
+.hint {
+  font-size: .75em;
+  display: block;
+  color: $secondary-text-colour;
+  font-weight: normal;
+  margin-top: 0;
+  padding-bottom: .25em;
+}
+
+.bullet-point-list {
+  list-style-type: disc;
+  margin: 2em 5em 2em 2em;
+
+  > * {
+    padding: .5em 0 .5em;
+    line-height: 1.25em;
+  }
+}
+
+.panel {
+  background: $panel-colour;
+  max-width: 790px;
+  margin: 2em 2em 2em 0;
+  padding: 1.5em;
+}
+
+.checkbox-right {
+  @extend %contain-floats;
+
+  input {
+    float: right;
+  }
+  label {
+    margin-right: 50px;
+  }
+}
+
+.button-bar {
+  margin: 3em 0;
+}

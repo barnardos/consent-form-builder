@@ -1,0 +1,61 @@
+[type=radio] {
+  opacity: 0;
+  position: absolute;
+
+  .lt-ie9 & {
+    border: 0;
+    float: left;
+    margin: 0.4em 0.4em 0 0;
+    position: static;
+    width: auto;
+  }
+}
+
+[type=radio] + label {
+  cursor: pointer;
+  font-weight: 400;
+  margin-left: 1.5em;
+}
+
+[type=radio] + label::before {
+  background: $white;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px $grey-2;
+  content: '\a0';
+  display: inline-block;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  margin-right: 0.6em;
+  text-indent: 0.15em;
+  vertical-align: middle\0; // Target IE 11 and below to vertically center inputs
+  width: 1.8rem;
+}
+
+[type=radio] + label::before {
+  box-shadow: 0 0 0 2px $white, 0 0 0 3px $grey-2;
+  height: 1em;
+  line-height: 1em;
+  width: 1em;
+  border-radius: 100%;
+  margin-left: -29px;
+}
+
+[type=radio]:checked + label::before {
+  background-color: $green;
+  box-shadow: 0 0 0 1px $green;
+}
+
+[type=radio]:checked + label::before {
+  box-shadow: 0 0 0 2px $white, 0 0 0 4px $green;
+}
+
+[type=radio]:focus + label::before,
+[type=radio]:hover + label::before {
+  box-shadow: 0 0 0 2px $white, 0 0 0 4px $green, 0 0 3px 4px $focus-colour, 0 0 7px 4px $focus-colour;
+}
+
+[type=radio]:disabled + label::before {
+  background: $grey-3;
+  box-shadow: 0 0 0 1px $grey-3;
+  cursor: not-allowed;
+}

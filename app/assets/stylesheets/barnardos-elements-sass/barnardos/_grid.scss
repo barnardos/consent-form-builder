@@ -1,0 +1,19 @@
+@import 'barnardos-elements-sass/neat/neat-helpers';
+
+$column: 90px;
+$gutter: 20px;
+$grid-columns: 12;
+$max-width: 1200px;
+
+//extracting burbon-neat grid classes for non-silent implimentation (adding classes to markup)
+.grid-row {
+  @include outer-container;
+}
+
+@for $i from 1 through $grid-columns {
+  .grid-col-#{$i} {
+    @include media($tablet) {
+      @include span-columns($i);
+    }
+  }
+}
