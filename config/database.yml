@@ -2,15 +2,15 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  username: postgres
-  password:
+  username: consent
+  password: password
   pool: 5
 
 development:
   <<: *default
-  database: myapp_development
+  database: consent
 
 
 test:
   <<: *default
-  database: myapp_test
+  database: consent_test
