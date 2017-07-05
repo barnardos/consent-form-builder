@@ -66,3 +66,7 @@ ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 ADD . /myapp
 
+EXPOSE 3000
+
+# Start the web app
+CMD bundle exec puma -t 5:5 -p 3000 -e development
