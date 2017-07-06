@@ -18,3 +18,5 @@
 
 .byebug_history
 public/assets
+/public/packs
+/node_modules
