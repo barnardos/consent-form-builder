@@ -1,0 +1,38 @@
+<a class="back-link" href="/">Back</a>
+
+<h1 class="heading-medium">What is the age of the research participant?</h1>
+<div class="main-content">
+  <%= form_tag do %>
+    <%#
+      <fieldset> produced by
+      {{ barnardos.verticalradiolist("age", options=options.ages, value=age) }}
+
+          I'd expect we'd make something like
+          Barnardos::Helpers.radio_buttons(:age, options: Options::AGES)
+    %>
+    <fieldset class="vertical-radio-list">
+      <legend class="vertical-radio-list__legend"></legend>
+
+      <div class="vertical-radio-list__choice">
+        <input class="vertical-radio-list__checkbox" id="age-under12" type="radio" name="age" value="under12">
+        <label class="vertical-radio-list__label" for="age-under12">Under 12 years old</label>
+      </div>
+
+      <div class="vertical-radio-list__choice">
+        <input class="vertical-radio-list__checkbox" id="age-12to18" type="radio" name="age" value="12to18">
+        <label class="vertical-radio-list__label" for="age-12to18">12-18 years old</label>
+      </div>
+
+      <div class="vertical-radio-list__choice">
+        <input class="vertical-radio-list__checkbox" id="age-over18dr" type="radio" name="age" value="over18dr">
+        <label class="vertical-radio-list__label" for="age-over18dr">Over 18 years old but unable to sufficiently undertand the consent process</label>
+      </div>
+
+      <div class="vertical-radio-list__choice">
+        <input class="vertical-radio-list__checkbox" id="age-over18" type="radio" name="age" value="over18">
+        <label class="vertical-radio-list__label" for="age-over18">Over 18 years old</label>
+      </div>
+    </fieldset>
+    <p><button class="button">Continue</button></p>
+  <% end %>
+</div>

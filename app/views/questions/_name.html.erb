@@ -1,0 +1,40 @@
+<a class="back-link" href="{{previous}}">Back</a>
+
+<h1 class="heading-medium">Participant name</h1>
+<div class="main-content">
+  <%= form_tag do %>
+    <%#
+      {{ barnardos.textfield("participantname", label="What is the name of the research participant?", value=data.participantname, hint="Full name", error=errors.participantname) }}
+
+          I expect we'd make something like
+          Barnardos::Helpers.text_field :participant_name, label: "What is the name of the research participant?",
+                                        hint: "Full name"
+
+          (but with parameter/option names closer to idiomatic Rails helper names)
+    %>
+    <%#
+      {% if data.age != "over18" %}
+      {{ barnardos.textfield("guardianname", label="What is the name of the parent/guardian consenting to the research?", value=data.guardianname, hint="Full name", error=errors.guardianname) }}
+      {% endif %}
+    %>
+
+    <div class="textfield " id="participant_name-wrapper">
+      <label class="textfield__label textfield__label--bold" for="participant_name">
+        What is the name of the research participant?
+        <span class="textfield__hint">Full name</span>
+      </label>
+      <input id="participant_name" class="textfield__input" name="participant_name" type="text">
+    </div>
+
+    <div class="textfield " id="guardian_name-wrapper">
+      <label class="textfield__label textfield__label--bold" for="guardian_name">
+        What is the name of the parent/guardian consenting to the research?
+        <span class="textfield__hint">Full name</span>
+
+      </label>
+      <input id="guardian_name" class="textfield__input" name="guardian_name" type="text">
+    </div>
+
+    <p><button class="button">Continue</button></p>
+  <% end %>
+</div>
