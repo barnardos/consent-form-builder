@@ -39,8 +39,7 @@ module Barnardos
       # </fieldset>
       def vertical_radio_list(name, selection_list, options = {})
         content_tag :fieldset, class: 'vertical-radio-list' do
-          selection_list.each do |selection_pair|
-            value, text = *selection_pair
+          selection_list.each do |value, text|
             id = "#{name}-#{value}"
             concat(
               content_tag(:div, class: 'vertical-radio-list__choice') do
