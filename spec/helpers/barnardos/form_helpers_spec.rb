@@ -56,4 +56,75 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
     end
   end
+
+  describe '#vertical_radio_list' do
+    # <!-- Example HTML output -->
+    # <fieldset class="vertical-radio-list">
+    # <legend class="vertical-radio-list__legend"></legend>
+    #
+    # <div class="vertical-radio-list__choice">
+    #     <input class="vertical-radio-list__checkbox" id="age-under12" type="radio" name="age" value="under12">
+    #     <label class="vertical-radio-list__label" for="age-under12">Under 12 years old</label>
+    # </div>
+    #
+    # ...
+    #
+    # <div class="vertical-radio-list__choice">
+    #     <input class="vertical-radio-list__checkbox" id="age-over18" type="radio" name="age" value="over18">
+    #     <label class="vertical-radio-list__label" for="age-over18">Over 18 years old</label>
+    # </div>
+    # </fieldset>
+    let(:name) { :age }
+
+    subject(:rendered) { helper.vertical_radio_list(name, selection_options) }
+
+    context 'an empty enumerable is given' do
+      let(:selection_options) { [] }
+
+      it 'generates an empty fieldset' do
+        expect(rendered).to have_empty_tag('fieldset.vertical-radio-list')
+      end
+    end
+
+    shared_examples 'it has correctly classed and labelled input' do
+      it 'renders a div with an input and label for each value' do
+        expect(rendered).to have_tag('div.vertical-radio-list__choice', count: selection_options.length)
+      end
+
+      it 'renders an radio input with the name and value and a constructed id' do
+        expect(rendered).to have_tag(
+                              'input.vertical-radio-list__checkbox',
+                              with: {
+                                type: 'radio', name: 'age', value: 'under12', id: 'age-under12'
+                              }
+                            )
+      end
+
+      it 'labels the input' do
+        expect(rendered).to have_tag('label.vertical-radio-list__label', with: {for: 'age-under12'})
+      end
+    end
+
+    context 'an enumerable of value/text array pairs is given' do
+      let(:selection_options) do
+        [
+          [:under12, 'Under 12 years old'],
+          ['12to18', '12 to 18 years old']
+        ]
+      end
+
+      it_behaves_like 'it has correctly classed and labelled input'
+    end
+
+    context 'a hash of value/text pairs is given' do
+      let(:selection_options) do
+        {
+          :under12 => 'Under 12 years old',
+          '12to18' => '12 to 18 years old'
+        }
+      end
+
+      it_behaves_like 'it has correctly classed and labelled input'
+    end
+  end
 end
