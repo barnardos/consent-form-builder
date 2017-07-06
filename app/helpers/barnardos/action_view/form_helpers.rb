@@ -22,6 +22,36 @@ module Barnardos
           concat(text_field_tag(name, value, text_options.reverse_merge(class: 'textfield__input')))
         end
       end
+
+      ##
+      # <!-- Example HTML output for:
+      #    vertical_radio_list :age, [['under12', 'Under 12 years old']]
+      #    or
+      #    vertical_radio_list :age, {'under12' => 'Under 12 years old'} -->
+      #
+      # <fieldset class="vertical-radio-list">
+      # <legend class="vertical-radio-list__legend"></legend>
+      #
+      # <div class="vertical-radio-list__choice">
+      #     <input class="vertical-radio-list__checkbox" id="age-under12" type="radio" name="age" value="under12">
+      #     <label class="vertical-radio-list__label" for="age-under12">Under 12 years old</label>
+      # </div>
+      # </fieldset>
+      def vertical_radio_list(name, selection_list, options = {})
+        content_tag :fieldset, class: 'vertical-radio-list' do
+          selection_list.each do |selection_pair|
+            value, text = *selection_pair
+            id = "#{name}-#{value}"
+            concat(
+              content_tag(:div, class: 'vertical-radio-list__choice') do
+                concat(radio_button_tag(name, value, false, class: 'vertical-radio-list__checkbox', id: id))
+                concat(label_tag(name, text, class: 'vertical-radio-list__label', for: id))
+              end
+            )
+          end
+        end
+      end
+
     end
   end
 end
