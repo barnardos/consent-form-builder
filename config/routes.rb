@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   get '/questions/:id', to: 'questions#show', as: 'question'
   post '/questions/:id', to: 'questions#create'
+
+  get '/gallery/', to: 'gallery#index'
+
 end
