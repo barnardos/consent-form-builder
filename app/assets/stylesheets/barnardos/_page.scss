@@ -1,0 +1,38 @@
+@import "vars";
+
+#global-header {
+
+  margin: $gutter auto;
+  max-width: $max-width;
+  width: 100%;
+
+  > * {
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+
+}
+
+#global-header__logo {
+  margin-left: $gutter;
+}
+
+#global-header__menu {
+  margin-right: $gutter;
+}
+
+#global-header-bar {
+  background: $primary-colour;
+  height: $gutter/2;
+}
+
+#content {
+  margin: $gutter auto;
+  max-width: $max-width;
+  padding: 0 $gutter;
+  width: 100%;
+}
