@@ -1,0 +1,21 @@
+@import "colours";
+@import "vars";
+
+html {
+  font-family: $fontFamily;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+body {
+  background: $white;
+  color: $black;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
