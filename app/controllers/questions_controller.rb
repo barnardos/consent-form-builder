@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  helper Barnardos::ActionView::FormHelpers
+
   rescue_from ActionView::MissingTemplate do
     render status: 404,
            plain: %(Question "#{params[:id]}" not found)

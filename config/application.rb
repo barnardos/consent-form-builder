@@ -27,5 +27,8 @@ module Myapp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Don't spray all helper modules across all views
+    config.action_controller.include_all_helpers = false
   end
 end
