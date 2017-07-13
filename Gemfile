@@ -22,6 +22,8 @@ end
 group :test do
   gem 'rspec-html-matchers'
   gem 'rails-controller-testing'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
 
 group :development do
