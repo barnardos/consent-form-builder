@@ -55,6 +55,21 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
         end
       end
     end
+
+    context 'with a name, label and error' do
+      let(:name) { :participant_name }
+      let(:label) { 'What is the name of the research participant?' }
+
+      subject(:rendered) { helper.labelled_text_field_tag(name, label, error: 'Error message') }
+
+      it 'adds a class to the wrapper to indicate error' do
+        expect(rendered).to have_tag('div.textfield.has-error')
+      end
+
+      it 'adds an element to display the error' do
+        expect(rendered).to have_tag('div.textfield.has-error > div.textfield__error', text: 'Error message' )
+      end
+    end
   end
 
   describe '#vertical_radio_list' do

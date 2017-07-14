@@ -10,9 +10,9 @@ module Barnardos
       #   </label>
       #   <input id="participant_name" class="textfield__input" name="participant_name" type="text">
       # </div>
-      def labelled_text_field_tag(name, label, value: nil ,
+      def labelled_text_field_tag(name, label, value: nil , error: nil,
                                   text_options: {}, label_options: {})
-        content_tag :div, class: 'textfield js-textfield', id: "#{name}-wrapper" do
+        content_tag :div, class: "textfield js-textfield #{' has-error' if error}", id: "#{name}-wrapper" do
           concat(
             label_tag(name, class: 'textfield__label') do
               concat(label)
@@ -20,6 +20,7 @@ module Barnardos
             end
           )
           concat(text_field_tag(name, value, text_options.reverse_merge(class: 'textfield__input')))
+          concat(content_tag(:div, error, class: 'textfield__error')) if error
         end
       end
 
