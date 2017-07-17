@@ -6,8 +6,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
   describe '#labelled_text_field_tag' do
     ##
     # <!-- Example HTML output -->
-    # <div class="textfield " id="participant_name-wrapper">
-    #   <label class="textfield__label textfield__label--bold" for="participant_name">
+    # <div class="textfield js-textfield" id="participant_name-wrapper">
+    #   <label class="textfield__label" for="participant_name">
     #     What is the name of the research participant?
     #     <span class="textfield__hint">Full name</span>
     #   </label>
@@ -20,11 +20,11 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       subject(:rendered) { helper.labelled_text_field_tag(name, label) }
 
       it 'outputs an wrapper div with the class and id' do
-        expect(rendered).to have_tag('div', with: { class: 'textfield', id: 'participant_name-wrapper' })
+        expect(rendered).to have_tag('div', with: { class: 'textfield js-textfield', id: 'participant_name-wrapper' })
       end
 
-      it 'renders a classed bold label and input as sibling children of the div' do
-        expect(rendered).to have_tag('div.textfield > label.textfield__label.textfield__label--bold', text: label)
+      it 'renders a classed label and input as sibling children of the div' do
+        expect(rendered).to have_tag('div.textfield > label.textfield__label', text: label)
         expect(rendered).to have_tag('div.textfield > input.textfield__input')
         expect(rendered).to have_tag('label[for=participant_name]')
       end
@@ -53,6 +53,21 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
         it 'renders a hint span in the label' do
           expect(rendered).to have_tag('label > span.textfield__hint', text: 'Full name')
         end
+      end
+    end
+
+    context 'with a name, label and error' do
+      let(:name) { :participant_name }
+      let(:label) { 'What is the name of the research participant?' }
+
+      subject(:rendered) { helper.labelled_text_field_tag(name, label, error: 'Error message') }
+
+      it 'adds a class to the wrapper to indicate error' do
+        expect(rendered).to have_tag('div.textfield.has-error')
+      end
+
+      it 'adds an element to display the error' do
+        expect(rendered).to have_tag('div.textfield.has-error > div.textfield__error', text: 'Error message' )
       end
     end
   end

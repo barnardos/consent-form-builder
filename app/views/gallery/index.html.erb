@@ -18,3 +18,16 @@
   should always be a multiple of 4, this will ensure the copy aligns to the 8px baseline
   grid while allowing more flexibility in setting type than multiples of 8.
 </p>
+
+<%= form_tag do %>
+
+  <%= labelled_text_field_tag :participant_name,
+                              'What is the name of the research participant?',
+                              label_options: { hint: 'Full name' } %>
+
+  <%= labelled_text_field_tag :participant_login,
+                              'What is the login of the research participant?',
+                              label_options: { hint: 'Full name' },
+                              error: 'Test error message' %>
+
+<% end %>
