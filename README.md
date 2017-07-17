@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# Development
+
+Start rails server (serve code and build sass)
+rails server
+
+Start webpack build process to watch and build js
+./bin/webpack --watch --progress --colors
