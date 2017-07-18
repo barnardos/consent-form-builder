@@ -2,7 +2,7 @@
 @import "vars";
 
 html {
-  font-family: $fontFamily;
+  font-family: $font-family;
   font-size: 18px;
   box-sizing: border-box;
 }
@@ -16,6 +16,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-*, *:before, *:after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }

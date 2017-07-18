@@ -1,3 +1,4 @@
+// sass-lint:disable no-ids
 @import "vars";
 
 #global-header {
@@ -27,7 +28,7 @@
 
 #global-header-bar {
   background: $primary-colour;
-  height: $gutter/2;
+  height: $gutter / 2;
 }
 
 #content {

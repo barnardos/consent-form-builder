@@ -1,5 +1,5 @@
-@import 'barnardos/colours';
-@import 'barnardos/vars';
+@import "barnardos/colours";
+@import "barnardos/vars";
 
 .button {
   -webkit-appearance: none;
@@ -8,7 +8,7 @@
   border-radius: 4px;
   color: $white;
   display: block;
-  font-family: $fontFamily;
+  font-family: $font-family;
   font-size: 16px;
   margin: 0 0 8px;
   outline: 1px solid transparent;
