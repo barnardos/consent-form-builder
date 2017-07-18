@@ -2,8 +2,8 @@
 @import "vars";
 
 .textfield {
-  margin: $gutter 0 0 (-$gutter/2);
-  padding: $gutter/2;
+  margin: $gutter 0 0 (-$gutter / 2);
+  padding: $gutter / 2;
 }
 
 .textfield.has-focus {
@@ -12,8 +12,7 @@
 }
 
 .textfield.has-error,
-.textfield.has-focus.textfield.has-error
-{
+.textfield.has-focus.textfield.has-error {
   background: $error-background;
 }
 
@@ -21,7 +20,7 @@
   display: block;
   font-weight: normal;
   color: $black;
-  margin-top: $gutter/2;
+  margin-top: $gutter / 2;
 }
 
 .textfield.has-error .textfield__label {
@@ -30,11 +29,11 @@
 
 .textfield__input {
   display: block;
-  padding: $gutter/2;
+  padding: $gutter / 2;
   font-size: $base-font-size;
   width: 100%;
   box-sizing: border-box;
-  margin-top: $gutter/2;
+  margin-top: $gutter / 2;
   color: $black;
   border: solid 1px $border;
   border-radius: $border-radius;
@@ -48,10 +47,10 @@
 .textfield__hint {
   color: $secondary-text;
   display: block;
-  margin-top: $gutter/2;
+  margin-top: $gutter / 2;
 }
 
 .textfield__error {
   color: $error-colour;
-  margin-top: $gutter/2;
+  margin-top: $gutter / 2;
 }
