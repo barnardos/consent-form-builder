@@ -1,0 +1,26 @@
+@import "barnardos/colours";
+
+.skip-links {
+  background-color: $focus-background;
+}
+
+.skip-links__inner {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.skip-links__link {
+  color: $white;
+  display: inline-block;
+  left: -999em;
+  padding: 8px;
+  position: absolute;
+
+  &:focus {
+    background-color: $focus-background;
+    border: 3px solid $primary-colour;
+    color: $black;
+    outline: 0;
+    position: static;
+  }
+}
