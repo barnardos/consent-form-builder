@@ -5,5 +5,5 @@
   with research participants.
 </p>
 <p class="button-bar">
-  <a class="button" href="/start">Create new form</a>
+  <%= link_to 'Create new form', {:controller => :questions, :action => :start}, class: 'button'  %>
 </p>

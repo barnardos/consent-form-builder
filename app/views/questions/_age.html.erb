@@ -14,8 +14,8 @@
     %>
 
     <p class="button-bar">
-      <button class="button">Continue</button>
-      <a class="button button--secondary" href="/">Cancel</a>
+      <%= button_tag('Continue', type: :submit, class: 'button') %>
+      <%= link_to 'Cancel', root_path, class: 'button button--secondary' %>
     </p>
   <% end %>
 </div>
