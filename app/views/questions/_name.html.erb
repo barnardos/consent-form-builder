@@ -13,6 +13,9 @@
                                   label_options: { hint: 'Full name' } %>
     <% end %>
 
-    <p><button class="button">Continue</button></p>
+    <p class="button-bar">
+      <%= button_tag('Continue', type: :submit, class: 'button') %>
+      <%= link_to 'Cancel', root_path, class: 'button button--secondary' %>
+    </p>
   <% end %>
 </div>

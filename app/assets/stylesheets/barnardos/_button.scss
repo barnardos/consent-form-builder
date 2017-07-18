@@ -1,0 +1,71 @@
+@import 'barnardos/colours';
+@import 'barnardos/vars';
+
+.button {
+  -webkit-appearance: none;
+  background: $primary;
+  border: 2px solid $primary;
+  border-radius: 4px;
+  color: $white;
+  display: block;
+  font-family: $fontFamily;
+  font-size: 16px;
+  margin: 0 0 8px;
+  outline: 1px solid transparent;
+  padding: 17px 40px;
+  text-align: center;
+  width: 100%;
+
+  &:visited,
+  &:link {
+    color: $white;
+    text-decoration: none;
+  }
+
+  @media (min-width: $tablet) {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0 1em 0 0;
+    padding: 17px 40px;
+    width: auto;
+
+    &:hover,
+    &:focus {
+      background: $primary-select;
+      border-color: $primary-select;
+    }
+
+  }
+}
+
+.button--secondary {
+  background: $white;
+  border: 2px solid $grey-dark;
+  color: $grey-dark;
+
+  &:visited,
+  &:link {
+    color: $grey-dark;
+    text-decoration: none;
+  }
+
+  &:active {
+    background: $grey-dark;
+    border-color: $grey-dark;
+    color: $white;
+  }
+
+  @media (min-width: $tablet) {
+    &:hover,
+    &:focus {
+      background: $grey-medium;
+      border-color: $grey-dark;
+      color: $grey-dark;
+    }
+  }
+}
+
+.button-bar {
+  display: block;
+  margin: 18px 0;
+}
