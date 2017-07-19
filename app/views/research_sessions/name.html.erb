@@ -2,7 +2,7 @@
 
 <h1 class="heading-medium">Participant name</h1>
 <div class="main-content">
-  <%= form_tag do %>
+  <%= form_tag nil, method: :put do %>
     <%= labelled_text_field_tag :participant_name,
                                 'What is the name of the research participant?',
                                 label_options: { hint: 'Full name' } %>

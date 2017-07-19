@@ -10,9 +10,7 @@ Rails.application.routes.draw do
   # +resources+ semantics.
   get '/start', to: 'research_sessions#start'
 
-  get '/research_sessions/:id', to: 'research_sessions#show', as: 'question'
-  post '/research_sessions/:id', to: 'research_sessions#create'
+  resources :questions, only: [:show, :update], controller: 'research_sessions'
 
   get '/gallery/', to: 'gallery#index'
-
 end

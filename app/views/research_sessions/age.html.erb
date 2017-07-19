@@ -3,7 +3,7 @@
 <h1 class="heading-medium">What is the age of the research participant?</h1>
 
 <div class="main-content">
-  <%= form_tag do %>
+  <%= form_tag nil, method: :put do %>
     <%=
         radio_group_vertical :age, 'What is the age of the research participant?',
           {

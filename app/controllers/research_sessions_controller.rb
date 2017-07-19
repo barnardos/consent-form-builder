@@ -1,12 +1,13 @@
 class ResearchSessionsController < ApplicationController
   helper Barnardos::ActionView::FormHelpers
+
   include Wicked::Wizard
 
   steps :age, :name, :methods, :recording, :focus, :researcher, :incentive
 
   rescue_from Wicked::Wizard::InvalidStepError do
     render status: 404,
-           plain: %(ResearchSession "#{params[:id]}" not found)
+           plain: %(Step "#{params[:id]}" not found)
   end
 
   def index
@@ -21,7 +22,7 @@ class ResearchSessionsController < ApplicationController
     render_wizard
   end
 
-  def create
+  def update
     session_data.reverse_merge!(question_params)
     redirect_to(question_path(id: next_step))
   end

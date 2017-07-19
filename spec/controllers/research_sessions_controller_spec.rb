@@ -6,7 +6,7 @@ describe ResearchSessionsController, type: :controller do
   describe '#start' do
     it 'redirects to the first question' do
       get :start
-      expect(response).to redirect_to('/research_sessions/age')
+      expect(response).to redirect_to('/questions/age')
     end
   end
 
@@ -46,7 +46,7 @@ describe ResearchSessionsController, type: :controller do
         expect(response.code).to eql('404')
       end
       it 'says what is missing' do
-        expect(response.body).to include('ResearchSession "i_dont_exist" not found')
+        expect(response.body).to include('Step "i_dont_exist" not found')
       end
     end
   end
@@ -55,7 +55,7 @@ describe ResearchSessionsController, type: :controller do
     subject(:session_data) { session[:data] }
 
     before do
-      post :create, params: params
+      post :update, params: params
     end
 
     context 'there is something useful in the session' do
@@ -68,7 +68,7 @@ describe ResearchSessionsController, type: :controller do
         expect(session_data['bobbins']).to be_nil
       end
       it 'redirects to the next question in sequence, which is name' do
-        expect(response).to redirect_to('/research_sessions/name')
+        expect(response).to redirect_to('/questions/name')
       end
     end
   end
