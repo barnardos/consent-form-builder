@@ -1,21 +1,23 @@
 require 'rails_helper'
 
-describe QuestionsController, type: :controller do
+describe ResearchSessionsController, type: :controller do
   render_views
 
   describe '#start' do
     it 'redirects to the first question' do
       get :start
-      expect(response).to redirect_to('/questions/age')
+      expect(response).to redirect_to('/research_sessions/age')
     end
   end
 
   describe '#show' do
-    before { get :show, params: { id: template_id } }
+    before do
+      get :show, params: { id: template_id }
+    end
 
     context 'when the template exists' do
       context 'age' do
-        let(:template_id) { 'age' }
+        let(:template_id) { :age }
 
         it 'is ok' do
           expect(response).to be_ok
@@ -44,7 +46,7 @@ describe QuestionsController, type: :controller do
         expect(response.code).to eql('404')
       end
       it 'says what is missing' do
-        expect(response.body).to include('Question "i_dont_exist" not found')
+        expect(response.body).to include('ResearchSession "i_dont_exist" not found')
       end
     end
   end
@@ -66,7 +68,7 @@ describe QuestionsController, type: :controller do
         expect(session_data['bobbins']).to be_nil
       end
       it 'redirects to the next question in sequence, which is name' do
-        expect(response).to redirect_to('/questions/name')
+        expect(response).to redirect_to('/research_sessions/name')
       end
     end
   end
