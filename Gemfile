@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'webpacker', '~> 2.0'
+gem 'wicked', '~> 1.3.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.0'
