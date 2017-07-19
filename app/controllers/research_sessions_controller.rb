@@ -23,7 +23,7 @@ class ResearchSessionsController < ApplicationController
   end
 
   def update
-    session_data.reverse_merge!(question_params)
+    session_data.merge!(question_params)
     redirect_to(question_path(id: next_step))
   end
 
