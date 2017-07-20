@@ -55,21 +55,18 @@ describe ResearchSessionsController, type: :controller do
     subject(:session_data) { session[:data] }
 
     before do
-      session[:data] = { 'participant_name' => 'Jack'}
+      session[:data] = { 'age' => 'under12'}
       post :update, params: params
     end
 
     context 'there is something useful in the session' do
-      let(:params) { { id: 'age', age: 'over18', participant_name: 'Lily', bobbins: 'wont-show-up' } }
+      let(:params) { { id: 'age', age: 'over18', bobbins: 'wont-show-up' } }
 
-      it 'merges the useful stuff' do
+      it 'merges the useful stuff, overwriting' do
         expect(session_data['age']).to eql('over18')
       end
       it 'does not merge stuff we are not interested in' do
         expect(session_data['bobbins']).to be_nil
-      end
-      it 'overwrites values we might have collected previously' do
-        expect(session_data['participant_name']).to eql('Lily')
       end
       it 'redirects to the next question in sequence, which is name' do
         expect(response).to redirect_to('/questions/name')
