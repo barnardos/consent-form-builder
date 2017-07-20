@@ -21,6 +21,7 @@ end
 
 group :test do
   gem 'rspec-html-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do
