@@ -16,7 +16,7 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'when the template exists' do
-      context 'age' do
+      context 'the first step, age' do
         let(:template_id) { :age }
 
         it 'is ok' do
@@ -24,6 +24,9 @@ describe ResearchSessionsController, type: :controller do
         end
         it 'renders a template for the id given' do
           expect(response.body).to include('What is the age of the research participant?')
+        end
+        it 'holds the id of a fresh research session' do
+          expect(session[:current_research_session_id]).to be_an(Integer)
         end
       end
 
@@ -52,24 +55,34 @@ describe ResearchSessionsController, type: :controller do
   end
 
   describe '#update' do
-    subject(:session_data) { session[:data] }
+    subject(:research_session) do
+      ResearchSession.find(session[:current_research_session_id])
+    end
 
     before do
-      session[:data] = { 'age' => 'under12'}
-      post :update, params: params
+      ResearchSession.create.tap do |new_session|
+        session[:current_research_session_id] = new_session.id
+      end
+      put :update, params: params
     end
 
     context 'there is something useful in the session' do
-      let(:params) { { id: 'age', age: 'over18', bobbins: 'wont-show-up' } }
+      let(:params) { { id: 'age', age: 'over18' } }
 
-      it 'merges the useful stuff, overwriting' do
-        expect(session_data['age']).to eql('over18')
-      end
-      it 'does not merge stuff we are not interested in' do
-        expect(session_data['bobbins']).to be_nil
+      it 'updates the current session' do
+        expect(research_session.age).to eql('over18')
       end
       it 'redirects to the next question in sequence, which is name' do
         expect(response).to redirect_to('/questions/name')
+      end
+    end
+
+    context 'the age param is invalid, because it is blank' do
+      let(:params) { { id: 'age', age: nil } }
+
+      it 'does not progress to the next step, it asks for age again' do
+        expect(response).to be_ok
+        expect(response).to render_template(:age)
       end
     end
   end

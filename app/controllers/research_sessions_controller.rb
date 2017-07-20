@@ -13,22 +13,29 @@ class ResearchSessionsController < ApplicationController
   end
 
   def start
+    session[:current_research_session_id] = nil
     redirect_to(first_question_path)
   end
 
   def show
-    @session_data = session_data
+    @research_session = current_research_session
     render_wizard
   end
 
   def update
-    session_data.merge!(question_params)
-    redirect_to(question_path(id: next_step))
+    @research_session = current_research_session
+    @research_session.status = step
+    @research_session.assign_attributes(question_params)
+    render_wizard @research_session
   end
 
 private
-  def session_data
-    session[:data] ||= {}
+  def current_research_session
+    id = session[:current_research_session_id]
+    research_session = ResearchSession.find(id) if id.present?
+    research_session ||= ResearchSession.create
+    session[:current_research_session_id] = research_session.id
+    research_session
   end
 
   def first_question_path

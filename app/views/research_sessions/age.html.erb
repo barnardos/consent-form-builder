@@ -3,11 +3,13 @@
 <h1 class="heading-medium">What is the age of the research participant?</h1>
 
 <div class="main-content">
-  <%= form_tag nil, method: :put do %>
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
     <%=
         radio_group_vertical :age,
                              'What is the age of the research participant?',
-                             Age.allowed_values,
+                             Age::NAME_VALUES,
                              legend_options: { class: 'visually-hidden' }
     %>
 

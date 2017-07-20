@@ -4,8 +4,14 @@ RSpec.describe ResearchSession, type: :model do
   describe 'partial validation on status' do
     subject(:session) { ResearchSession.new }
 
-    it 'creates a brand new ResearchSession with a status of new' do
+    it 'instantiates new ResearchSessions with a status of new' do
       expect(session.status).to eql('new')
+    end
+
+    it 'allows us to create a session with no details' do
+      new_session = ResearchSession.create
+      expect(new_session).to be_valid
+      expect(new_session).to be_persisted
     end
 
     describe '#has_reached_step?' do

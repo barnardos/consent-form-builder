@@ -1,0 +1,13 @@
+<% if @research_session.errors.any? %>
+    <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+      <h1 class="heading-medium" id="error-summary-heading">
+        Incomplete Information
+      </h1>
+
+      <ul class="error-summary__list">
+        <% @research_session.errors.full_messages.each do |msg| %>
+            <li class="error-summary__item"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

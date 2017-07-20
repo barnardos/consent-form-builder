@@ -2,12 +2,14 @@
 
 <h1 class="heading-medium">Participant name</h1>
 <div class="main-content">
-  <%= form_tag nil, method: :put do %>
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
     <%= labelled_text_field_tag :participant_name,
                                 'What is the name of the research participant?',
                                 label_options: { hint: 'Full name' } %>
 
-    <% if @session_data['age'] != 'over18' %>
+    <% if @research_session.age != 'over18' %>
       <%= labelled_text_field_tag :guardian_name,
                                   'What is the name of the parent/guardian consenting to the research?',
                                   label_options: { hint: 'Full name' } %>

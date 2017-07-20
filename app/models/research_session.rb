@@ -9,7 +9,8 @@ class ResearchSession < ApplicationRecord
     incentive:     [:incentive, :payment_type, :incentive_value]
   }]
 
-  validates :age, inclusion: { in: Age.allowed_values }
+  validates :age, inclusion: { in: Age.allowed_values },
+            if: -> (session) { session.has_reached_step?(:age) }
   validates :methodologies,
             has_at_least_one: { of: Methodologies.allowed_values },
             if: -> (session) { session.has_reached_step?(:methodologies) }
