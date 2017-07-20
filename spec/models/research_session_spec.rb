@@ -128,6 +128,28 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
+      describe 'validating the focus step' do
+        let(:step) { 'focus' }
+
+        before do
+          session.age = Age.allowed_values.first
+          session.methodologies = [Methodologies.allowed_values.first]
+          session.recording_methods = [RecordingMethods.allowed_values.first]
+        end
+
+        context 'no focus is given' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'research focus is given' do
+          before do
+            session.focus = 'A nice long focus description'
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+      end
+
 
 
     end

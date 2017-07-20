@@ -16,6 +16,8 @@ class ResearchSession < ApplicationRecord
   validates :recording_methods,
             has_at_least_one: { of: RecordingMethods.allowed_values },
             if: -> (session) { session.has_reached_step?(:recording) }
+  validates :focus, presence: true,
+            if: -> (session) { session.has_reached_step?(:focus) }
 
   def has_reached_step?(step)
     step = step.to_sym
