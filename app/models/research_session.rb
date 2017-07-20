@@ -26,6 +26,10 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.has_reached_step?(:researcher) }
   validates :researcher_email, format: /@/,
     if: -> (session) { session.researcher_email.present? && session.has_reached_step?(:researcher) }
+  validates :payment_type, inclusion: { in: PaymentType.allowed_values },
+    if: -> (session) { session.incentive && session.has_reached_step?(:incentive) }
+  validates :incentive_value, presence: true,
+    if: -> (session) { session.incentive && session.has_reached_step?(:incentive) }
 
   def has_reached_step?(step)
     step = step.to_sym

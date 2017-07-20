@@ -201,6 +201,62 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
+      describe 'validating the incentive step' do
+        let(:step) { 'incentive' }
+
+        before do
+          session.age = Age.allowed_values.first
+          session.methodologies = [Methodologies.allowed_values.first]
+          session.recording_methods = [RecordingMethods.allowed_values.first]
+          session.focus = 'A nice long focus'
+          session.researcher_name  = 'Miss Havisham'
+          session.researcher_phone = '12345678'
+          session.researcher_email = 'a@b.com'
+          session.save
+        end
+
+        context 'no incentives are given, and no-one cares' do
+          it 'sets an appropriate default anyway' do
+            expect(session.incentive).to be false
+          end
+          it { is_expected.to be_valid }
+        end
+
+        context 'incentives are on' do
+          before do
+            session.incentive = true
+            session.save
+          end
+
+          context 'but no option has been set' do
+            it { is_expected.not_to be_valid }
+            it 'has an error on payment_type' do
+              expect(session.errors[:payment_type].length).to eql(1)
+              expect(session.errors[:payment_type].first).to match(/is not included in the list/)
+            end
+          end
+
+          context 'an option has been set' do
+            before do
+              session.payment_type = :cash
+              session.save
+            end
+            context 'but no incentive_value has been provided' do
+              it { is_expected.not_to be_valid }
+              it 'has an error on incentive_value' do
+                expect(session.errors[:incentive_value].length).to eql(1)
+                expect(session.errors[:incentive_value].first).to match(/can't be blank/)
+              end
+            end
+            context 'and an incentive_value has been provided' do
+              before { session.incentive_value = 10.00 }
+              it do
+                is_expected.to be_valid
+              end
+            end
+          end
+        end
+      end
     end
   end
 end
