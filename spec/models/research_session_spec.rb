@@ -104,9 +104,32 @@ RSpec.describe ResearchSession, type: :model do
             session.save
           end
           it { is_expected.to be_valid }
-
         end
       end
+
+      describe 'validating the recording step' do
+        let(:step) { 'recording' }
+
+        before do
+          session.age = Age.allowed_values.first
+          session.methodologies = [Methodologies.allowed_values.first]
+        end
+
+        context 'no recording methods are selected' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'at least one valid method is selected' do
+          before do
+            session.recording_methods = [:audio]
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+      end
+
+
+
     end
 
   end

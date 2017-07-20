@@ -13,6 +13,9 @@ class ResearchSession < ApplicationRecord
   validates :methodologies,
             has_at_least_one: { of: Methodologies.allowed_values },
             if: -> (session) { session.has_reached_step?(:methodologies) }
+  validates :recording_methods,
+            has_at_least_one: { of: RecordingMethods.allowed_values },
+            if: -> (session) { session.has_reached_step?(:recording) }
 
   def has_reached_step?(step)
     step = step.to_sym
