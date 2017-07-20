@@ -63,7 +63,11 @@ RUN mkdir /myapp
 WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
+ADD package.json /myapp/package.json
+ADD yarn.lock /myapp/yarn.lock
 RUN bundle install
+RUN yarn install
+
 ADD . /myapp
 
 EXPOSE 3000

@@ -6,12 +6,15 @@ services:
       POSTGRES_USER: consent
       POSTGRES_PASSWORD: password
       POSTGRES_DB: consent
-  web:
+  rails:
     build: .
     environment:
       - DATABASE_URL=postgres://consent:password@db:5432/consent
     volumes:
-      - .:/myapp
+      - ./app:/myapp/app
+      - ./config:/myapp/config
+      - ./db:/myapp/db
+      - ./spec:/myapp/spec
     ports:
       - "3000:3000"
       - "1234:1234"
