@@ -5,14 +5,10 @@
 <div class="main-content">
   <%= form_tag nil, method: :put do %>
     <%=
-        radio_group_vertical :age, 'What is the age of the research participant?',
-          {
-            under12: 'Under 12 years old',
-            '12to18' => '12 to 18 years old',
-            over18dr: 'Over 18 years old but unable to sufficiently understand the consent process',
-            over18: 'Over 18 years old',
-          },
-          legend_options: { class: 'visually-hidden' }
+        radio_group_vertical :age,
+                             'What is the age of the research participant?',
+                             Age.allowed_values,
+                             legend_options: { class: 'visually-hidden' }
     %>
 
     <%= render 'ok_cancel' %>
