@@ -18,6 +18,14 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.has_reached_step?(:recording) }
   validates :focus, presence: true,
             if: -> (session) { session.has_reached_step?(:focus) }
+  validates :researcher_name, presence: true,
+            if: -> (session) { session.has_reached_step?(:researcher) }
+  validates :researcher_phone, presence: true,
+            if: -> (session) { session.has_reached_step?(:researcher) }
+  validates :researcher_email, presence: true,
+            if: -> (session) { session.has_reached_step?(:researcher) }
+  validates :researcher_email, format: /@/,
+    if: -> (session) { session.researcher_email.present? && session.has_reached_step?(:researcher) }
 
   def has_reached_step?(step)
     step = step.to_sym

@@ -150,9 +150,57 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
+      describe 'validating the researcher step' do
+        let(:step) { 'researcher' }
 
+        before do
+          session.age = Age.allowed_values.first
+          session.methodologies = [Methodologies.allowed_values.first]
+          session.recording_methods = [RecordingMethods.allowed_values.first]
+          session.focus = 'A nice long focus'
+          session.save
+        end
+
+        context 'no details are given' do
+          it { is_expected.not_to be_valid }
+          it 'has an error for researcher name' do
+            expect(session.errors[:researcher_name].length).to eql(1)
+          end
+          it 'has an error for researcher telephone number' do
+            expect(session.errors[:researcher_phone].length).to eql(1)
+          end
+          it 'has an error for researcher email' do
+            expect(session.errors[:researcher_email].length).to eql(1)
+          end
+        end
+
+        context "all the details are given but the email isn't one" do
+          before do
+            session.researcher_name  = 'Miss Havisham'
+            session.researcher_phone = '12345678'
+            session.researcher_email = 'xxxxxxxxx'
+            session.save
+          end
+
+          it { is_expected.not_to be_valid }
+          it 'has an error for email' do
+            expect(session.errors[:researcher_email].length).to eql(1)
+            expect(session.errors[:researcher_email].first).to match(/is invalid/)
+          end
+        end
+
+        context 'all the details are given' do
+          before do
+            session.researcher_name  = 'Miss Havisham'
+            session.researcher_phone = '12345678'
+            session.researcher_email = 'a@b.com'
+            session.save
+          end
+
+          it { is_expected.to be_valid }
+        end
+      end
 
     end
-
   end
 end
