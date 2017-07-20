@@ -39,6 +39,17 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     end
   end
 
+  context 'Our ingredients are not an array' do
+    let(:ingredients) { :'A single hash brown' }
+
+    it { is_expected.to be_invalid }
+    it 'has an error' do
+      expect(ingredient_errors.length).to eql(1)
+      expect(ingredient_errors.first).to \
+        eql('ingredients should be an enumerable')
+    end
+  end
+
   context 'Our breakfast has valid ingredients' do
     let(:ingredients) { [:bacon, :eggs] }
 

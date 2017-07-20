@@ -12,6 +12,11 @@ class HasAtLeastOneValidator < ActiveModel::EachValidator
       return
     end
 
+    unless values.respond_to?(:each)
+      record.errors[attribute] << "#{attribute} should be an enumerable"
+      return
+    end
+
     invalid_values_found = values.inject([]) do |found, value|
       current_value = value.to_sym
       found << current_value unless valid_values.include?(current_value)
