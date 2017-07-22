@@ -12,7 +12,7 @@ module Barnardos
       # </div>
       def labelled_text_field_tag(name, label, value: nil , error: nil,
                                   text_options: {}, label_options: {})
-        content_tag :div, class: "textfield js-textfield #{' has-error' if error}", id: "#{name}-wrapper" do
+        content_tag :div, class: "textfield js-textfield #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
             label_tag(name, class: 'textfield__label') do
               concat(label)
@@ -26,28 +26,47 @@ module Barnardos
 
       ##
       # <!-- Example HTML output for:
-      #    vertical_radio_list :age, [['under12', 'Under 12 years old']]
+      #    radio_group_vertical :age, 'This is a cool legend', [['under12', 'Under 12 years old']]
       #    or
-      #    vertical_radio_list :age, {'under12' => 'Under 12 years old'} -->
+      #    radio_group_vertical :age, 'No one will see this', {'under12' => 'Under 12 years old'}, legend_options: { class: 'visually-hidden' } -->
       #
-      # <fieldset class="vertical-radio-list">
-      # <legend class="vertical-radio-list__legend"></legend>
+      # Legend options include class and hint
       #
-      # <div class="vertical-radio-list__choice">
-      #     <input class="vertical-radio-list__checkbox" id="age-under12" type="radio" name="age" value="under12">
-      #     <label class="vertical-radio-list__label" for="age-under12">Under 12 years old</label>
-      # </div>
+      # <fieldset class="radio-group radio-group__vertical">
+      #   <legend class="radio-group__legend">
+      #     Some big legend
+      #     <span class="radio-group__hint">Some more help for the label</span>
+      #   </legend>
+      #
+      #   <div class="radio-group__choice">
+      #     <input class="radio-group__input" id="age-under12" type="radio" name="age" value="under12">
+      #     <label class="radio-group__label" for="age-under12">Under 12 years old</label>
+      #   </div>
       # </fieldset>
-      def vertical_radio_list(name, selection_list, options = {})
-        content_tag :fieldset, class: 'vertical-radio-list' do
-          selection_list.each do |value, text|
-            id = "#{name}-#{value}"
+      def radio_group_vertical(name, legend, selection_list, value: nil, error: nil, label_options: {}, legend_options: {})
+        content_tag :fieldset, class: "radio-group radio-group__vertical #{'has-error' if error}" do
+          # Only render markup if there are options to show
+          if selection_list.present?
+
+            # Render a legend for the fieldset, with an optional hint and optional class
             concat(
-              content_tag(:div, class: 'vertical-radio-list__choice') do
-                concat(radio_button_tag(name, value, false, class: 'vertical-radio-list__checkbox', id: id))
-                concat(label_tag(name, text, class: 'vertical-radio-list__label', for: id))
+              content_tag(:legend, class: "radio-group__legend #{legend_options[:class] if legend_options[:class]}") do
+                concat(legend)
+                concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint')) if legend_options[:hint]
               end
             )
+
+            # Render radio options
+            selection_list.each do |selection_item_value, selection_item_text|
+              id = "#{name}-#{selection_item_value}"
+              checked = value.eql?(selection_item_value)
+              concat(
+                content_tag(:div, class: 'radio-group__choice') do
+                  concat(radio_button_tag(name, selection_item_value, checked, class: 'radio-group__input', id: id))
+                  concat(label_tag(name, selection_item_text, class: 'radio-group__label', for: id))
+                end
+              )
+            end
           end
         end
       end
