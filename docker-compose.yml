@@ -16,9 +16,8 @@ services:
       - ./db:/myapp/db
       - ./spec:/myapp/spec
     ports:
-      - "3000:3000"
-      - "1234:1234"
-      - "26162:26126"
+      - "${EXTERNAL_PORT:-3000}:3000"
+      - "${DEBUG_PORT:-26162}:26126"
     command: dockerize -wait tcp://db:5432 ./bin/dockerstart.sh
     depends_on:
       - db
