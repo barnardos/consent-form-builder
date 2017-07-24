@@ -1,14 +1,15 @@
 <%= render 'back_link' %>
 
+<h2 class="heading-medium">Recording Methods</h2>
 <div class="main-content">
   <%= render 'error_summary' %>
 
   <%= form_for @research_session, url: wizard_path do %>
       <%= checkbox_group_vertical(
-              'recording_methods[]',
-              'What recording methods do you plan to use?',
-              RecordingMethods::NAME_VALUES,
-              @research_session.recording_methods
+            'recording_methods[]',
+            'What recording methods do you plan to use?',
+            RecordingMethods::NAME_VALUES,
+            @research_session.recording_methods
           )
       %>
 
