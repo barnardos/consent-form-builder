@@ -71,6 +71,34 @@ module Barnardos
         end
       end
 
+      def checkbox_group_vertical(name, legend, selection_list, values: [], error: nil, label_options: {}, legend_options: {})
+        content_tag :fieldset, class: "checkbox-group checkbox-group__vertical #{'has-error' if error}" do
+          # Only render markup if there are options to show
+          if selection_list.present?
+
+            # Render a legend for the fieldset, with an optional hint and optional class
+            concat(
+              content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class] if legend_options[:class]}") do
+                concat(legend)
+                concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint')) if legend_options[:hint]
+              end
+            )
+
+            # Render checkbox options
+            selection_list.each do |selection_item_value, selection_item_text|
+              id = "#{name}-#{selection_item_value}"
+              checked = values.include? selection_item_value
+              concat(
+                content_tag(:div, class: 'checkbox-group__choice') do
+                  concat(check_box_tag(name, selection_item_value, checked, class: 'checkbox-group__input', id: id))
+                  concat(label_tag(name, selection_item_text, class: 'checkbox-group__label', for: id))
+                end
+              )
+            end
+          end
+        end
+      end
+
     end
   end
 end

@@ -1,7 +1,20 @@
-<p>Normally we'd have methods here but I'm stopping with the example.</p>
+<h1 class="visually-hidden">Research methods</h1>
 
-<h2>Session data collected so far:</h2>
+<div class="main-content">
+  <%= form_tag do %>
+    <%=
+      checkbox_group_vertical :methods,
+        'Research session recording methods',
+        {
+          video: 'Video recording',
+          audio: 'Audio recording',
+          written: 'Written',
+        }
+    %>
 
-<code>
-  <pre><%= @session_data %></pre>
-</code>
+    <p class="button-bar">
+      <%= button_tag('Continue', type: :submit, class: 'button') %>
+      <%= link_to 'Cancel', root_path, class: 'button button--secondary' %>
+    </p>
+  <% end %>
+</div>
