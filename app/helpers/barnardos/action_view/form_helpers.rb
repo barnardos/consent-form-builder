@@ -10,7 +10,7 @@ module Barnardos
       #   </label>
       #   <input id="participant_name" class="textfield__input" name="participant_name" type="text">
       # </div>
-      def labelled_text_field_tag(name, label, value: nil , error: nil,
+      def labelled_text_field_tag(name, label, value = nil , error: nil,
                                   text_options: {}, label_options: {})
         content_tag :div, class: "textfield js-textfield #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
