@@ -14,6 +14,7 @@ services:
       - ./app:/myapp/app
       - ./config:/myapp/config
       - ./db:/myapp/db
+      - ./public:/myapp/public
       - ./spec:/myapp/spec
     ports:
       - "${EXTERNAL_PORT:-3000}:3000"
@@ -21,3 +22,10 @@ services:
     command: dockerize -wait tcp://db:5432 ./bin/dockerstart.sh
     depends_on:
       - db
+  webpack:
+    build:
+      context: .
+    volumes:
+      - ./app:/myapp/app
+      - ./public:/myapp/public
+    command: ./bin/webpack --watch --watch-poll --progress --colors
