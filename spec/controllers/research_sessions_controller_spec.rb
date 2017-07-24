@@ -30,14 +30,14 @@ describe ResearchSessionsController, type: :controller do
         end
       end
 
-      context 'name' do
-        let(:template_id) { 'name' }
+      context 'methodologies' do
+        let(:template_id) { 'methodologies' }
 
         it 'is ok' do
           expect(response).to be_ok
         end
         it 'renders a template for the id given' do
-          expect(response.body).to include('What is the name of the research participant?')
+          expect(response.body).to include('What research methodologies will you be using?')
         end
       end
 
@@ -83,8 +83,8 @@ describe ResearchSessionsController, type: :controller do
       it 'updates the current session' do
         expect(research_session.age).to eql('over18')
       end
-      it 'redirects to the next question in sequence, which is name' do
-        expect(response).to redirect_to('/questions/name')
+      it 'redirects to the next question in sequence, which is methodologies' do
+        expect(response).to redirect_to('/questions/methodologies')
       end
     end
 

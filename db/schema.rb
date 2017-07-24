@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 20170720083727) do
   create_table "research_sessions", force: :cascade do |t|
     t.string "status", default: "new"
     t.string "age"
-    t.string "participant_name"
-    t.string "guardian_name"
     t.string "methodologies", array: true
     t.string "recording_methods", array: true
     t.text "focus"

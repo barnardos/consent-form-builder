@@ -4,8 +4,6 @@ class CreateResearchSessions < ActiveRecord::Migration[5.1]
       t.string :status, default: 'new'
 
       t.string :age
-      t.string :participant_name
-      t.string :guardian_name
       t.string :methodologies, array: true
       t.string :recording_methods, array: true
       t.text :focus

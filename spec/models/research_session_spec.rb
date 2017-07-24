@@ -81,18 +81,6 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
-      describe 'validating the name step' do
-        let(:step) { 'name' }
-
-        before do
-          session.age = Age.allowed_values.first
-        end
-
-        it 'is not validated' do
-          expect(session).to be_valid
-        end
-      end
-
       describe 'validating the methodologies step' do
         let(:step) { 'methodologies' }
 

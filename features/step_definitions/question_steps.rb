@@ -4,10 +4,6 @@ When(/^I provide session details – a single age cohort, recording method and i
   choose 'Under 12 years old'
   click_button 'Continue'
 
-  fill_in 'What is the name of the research participant?',
-          with: 'Namey McNamerson'
-  click_button 'Continue'
-
   check 'methodologies[]-interview'
   click_button 'Continue'
 
