@@ -87,7 +87,7 @@ module Barnardos
             # Render checkbox options
             selection_list.each do |selection_item_value, selection_item_text|
               id = "#{name}-#{selection_item_value}"
-              checked = values.include? selection_item_value
+              checked = values&.include? selection_item_value
               concat(
                 content_tag(:div, class: 'checkbox-group__choice') do
                   concat(check_box_tag(name, selection_item_value, checked, class: 'checkbox-group__input', id: id))
