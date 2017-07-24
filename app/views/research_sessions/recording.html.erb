@@ -1,0 +1,17 @@
+<%= render 'back_link' %>
+
+<div class="main-content">
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
+      <%= checkbox_group_vertical(
+              'recording_methods[]',
+              'What recording methods do you plan to use?',
+              RecordingMethods::NAME_VALUES,
+              @research_session.recording_methods
+          )
+      %>
+
+      <%= render 'ok_cancel' %>
+  <% end %>
+</div>

@@ -43,7 +43,7 @@ module Barnardos
       #     <label class="radio-group__label" for="age-under12">Under 12 years old</label>
       #   </div>
       # </fieldset>
-      def radio_group_vertical(name, legend, selection_list, value: nil, error: nil, label_options: {}, legend_options: {})
+      def radio_group_vertical(name, legend, selection_list, value = nil, error: nil, label_options: {}, legend_options: {})
         content_tag :fieldset, class: "radio-group radio-group__vertical #{'has-error' if error}" do
           # Only render markup if there are options to show
           if selection_list.present?
@@ -71,7 +71,7 @@ module Barnardos
         end
       end
 
-      def checkbox_group_vertical(name, legend, selection_list, values: [], error: nil, label_options: {}, legend_options: {})
+      def checkbox_group_vertical(name, legend, selection_list, values = [], error: nil, legend_options: {})
         content_tag :fieldset, class: "checkbox-group checkbox-group__vertical #{'has-error' if error}" do
           # Only render markup if there are options to show
           if selection_list.present?

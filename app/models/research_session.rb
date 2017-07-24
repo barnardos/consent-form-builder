@@ -2,8 +2,8 @@ class ResearchSession < ApplicationRecord
   STEP_PARAMS = ActiveSupport::OrderedHash[{
     age:           [:age],
     name:          [:participant_name, :guardian_name],
-    methodologies: [:methodologies],
-    recording:     [:recording_methods],
+    methodologies: [:methodologies => []],
+    recording:     [:recording_methods => []],
     focus:         [:focus],
     researcher:    [:researcher_name, :researcher_phone, :researcher_email, :researcher_other_name],
     incentive:     [:incentive, :payment_type, :incentive_value]

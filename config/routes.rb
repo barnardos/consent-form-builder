@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:show, :update], controller: 'research_sessions'
 
+  get 'research_session/preview', to: 'research_sessions#preview'
+
   get '/gallery/', to: 'gallery#index'
 end

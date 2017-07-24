@@ -22,11 +22,18 @@ class ResearchSessionsController < ApplicationController
     render_wizard
   end
 
+  def preview
+  end
+
   def update
     @research_session = current_research_session
     @research_session.status = step
     @research_session.assign_attributes(question_params)
     render_wizard @research_session
+  end
+
+  def finish_wizard_path
+    research_session_preview_path
   end
 
 private

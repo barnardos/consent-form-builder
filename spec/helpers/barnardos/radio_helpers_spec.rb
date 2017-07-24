@@ -32,7 +32,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       helper.radio_group_vertical(name,
                                   legend,
                                   selection_options,
-                                  value: value,
+                                  value,
                                   legend_options: legend_options)
     end
 

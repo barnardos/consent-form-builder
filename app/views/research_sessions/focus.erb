@@ -1,0 +1,21 @@
+<%= render 'back_link' %>
+
+<h1 class="heading-medium">Research focus</h1>
+<div class="main-content">
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
+      <%= labelled_text_field_tag(
+            :focus,
+            'What is the focus of your research project?',
+            @research_session.focus,
+            label_options: {
+                hint: 'What you are researching and why - e.g. Barnardoʼs ' \
+                      'is currently doing some research about.' }
+          )
+      %>
+
+
+      <%= render 'ok_cancel' %>
+  <% end %>
+</div>
