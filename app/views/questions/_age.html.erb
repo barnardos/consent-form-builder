@@ -1,16 +1,15 @@
 <a class="back-link" href="/">Back</a>
-
-<h1 class="heading-medium">What is the age of the research participant?</h1>
 <div class="main-content">
   <%= form_tag do %>
     <%=
-        vertical_radio_list :age,
+        radio_group_vertical :age, 'What is the age of the research participant?',
           {
             under12: 'Under 12 years old',
             '12to18' => '12 to 18 years old',
             over18dr: 'Over 18 years old but unable to sufficiently understand the consent process',
             over18: 'Over 18 years old',
-          }
+          },
+          legend_options: { class: 'visually-hidden' }
     %>
 
     <p class="button-bar">

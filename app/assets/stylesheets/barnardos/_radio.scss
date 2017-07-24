@@ -1,0 +1,61 @@
+$ring-size: 2px;
+$inner-ring: 6px;
+$border-ring: $inner-ring + $ring-size;
+$outer-ring: $inner-ring + ($ring-size * 3);
+
+.radio-group__legend {
+  font-size: 23px;
+  font-weight: normal;
+  line-height: 24px;
+  margin: ($gutter / 2) 0;
+  color: $black;
+}
+
+.radio-group__choice {
+  position: relative;
+  margin: 8px 0;
+}
+
+.radio-group__input {
+  display: none;
+}
+
+.radio-group__input + .radio-group__label {
+  cursor: pointer;
+  font-weight: normal;
+  padding: 12px 0 12px 50px;
+  display: block;
+}
+
+.radio-group__input + .radio-group__label::before {
+  position: absolute;
+  left: $outer-ring;
+  background: $white;
+  border-radius: 100%;
+  box-shadow: 0 0 0 $inner-ring $white, 0 0 0 $border-ring $black;
+  content: "\a0";
+  font-size: $base-font-size - $inner-ring;
+  height: $base-font-size;
+  width: $base-font-size;
+}
+
+.radio-group__input:hover + .radio-group__label::before {
+  background: $grey-medium;
+  box-shadow: 0 0 0 $inner-ring $grey-medium, 0 0 0 $border-ring $black, 0 0 0 $outer-ring $grey-medium;
+}
+
+.radio-group__input:checked:hover + .radio-group__label::before {
+  background: $primary;
+  box-shadow: 0 0 0 $inner-ring $grey-medium, 0 0 0 $border-ring $black, 0 0 0 $outer-ring $grey-medium;
+}
+
+.radio-group__input:checked + .radio-group__label::before {
+  background-color: $primary;
+  box-shadow: 0 0 0 $inner-ring $white, 0 0 0 $border-ring $black;
+}
+
+.radio-group__input:disabled + .radio-group__label::before {
+  background: $grey-medium;
+  box-shadow: 0 0 0 1px $grey-medium;
+  cursor: not-allowed;
+}
