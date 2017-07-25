@@ -1,0 +1,5 @@
+<% if current_step?(@previous_step) %>
+    <a class="back-link" href="<%= root_path %>">Back</a>
+<% else %>
+    <a class="back-link" href="<%= @previous_step %>">Back</a>
+<% end %>

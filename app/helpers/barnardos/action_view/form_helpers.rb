@@ -10,7 +10,7 @@ module Barnardos
       #   </label>
       #   <input id="participant_name" class="textfield__input" name="participant_name" type="text">
       # </div>
-      def labelled_text_field_tag(name, label, value: nil , error: nil,
+      def labelled_text_field_tag(name, label, value = nil , error: nil,
                                   text_options: {}, label_options: {})
         content_tag :div, class: "textfield js-textfield #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
@@ -43,7 +43,7 @@ module Barnardos
       #     <label class="radio-group__label" for="age-under12">Under 12 years old</label>
       #   </div>
       # </fieldset>
-      def radio_group_vertical(name, legend, selection_list, value: nil, error: nil, label_options: {}, legend_options: {})
+      def radio_group_vertical(name, legend, selection_list, value = nil, error: nil, label_options: {}, legend_options: {})
         content_tag :fieldset, class: "radio-group radio-group__vertical #{'has-error' if error}" do
           # Only render markup if there are options to show
           if selection_list.present?
@@ -71,7 +71,7 @@ module Barnardos
         end
       end
 
-      def checkbox_group_vertical(name, legend, selection_list, values: [], error: nil, label_options: {}, legend_options: {})
+      def checkbox_group_vertical(name, legend, selection_list, values = [], error: nil, legend_options: {})
         content_tag :fieldset, class: "checkbox-group checkbox-group__vertical #{'has-error' if error}" do
           # Only render markup if there are options to show
           if selection_list.present?
@@ -87,7 +87,7 @@ module Barnardos
             # Render checkbox options
             selection_list.each do |selection_item_value, selection_item_text|
               id = "#{name}-#{selection_item_value}"
-              checked = values.include? selection_item_value
+              checked = values&.include? selection_item_value
               concat(
                 content_tag(:div, class: 'checkbox-group__choice') do
                   concat(check_box_tag(name, selection_item_value, checked, class: 'checkbox-group__input', id: id))

@@ -1,0 +1,18 @@
+<%= render 'back_link' %>
+
+<h2 class="heading-medium">Age</h2>
+<div class="main-content">
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
+    <%=
+        radio_group_vertical :age,
+                             'What is the age of the research participant?',
+                             Age::NAME_VALUES,
+                             @research_session.age,
+                             legend_options: { class: 'visually-hidden' }
+    %>
+
+    <%= render 'ok_cancel' %>
+  <% end %>
+</div>

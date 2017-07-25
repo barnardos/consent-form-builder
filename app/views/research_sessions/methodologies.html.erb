@@ -1,0 +1,18 @@
+<%= render 'back_link' %>
+
+<h2 class="heading-medium">Methodologies</h2>
+<div class="main-content">
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
+      <%= checkbox_group_vertical(
+            'methodologies[]',
+            'What research methodologies will you be using?',
+            Methodologies::NAME_VALUES,
+            @research_session.methodologies
+          )
+      %>
+
+      <%= render 'ok_cancel' %>
+  <% end %>
+</div>

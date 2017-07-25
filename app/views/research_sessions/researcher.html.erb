@@ -1,0 +1,23 @@
+<%= render 'back_link' %>
+
+<h2 class="heading-medium">What is the name of the lead researcher with the participant?</h2>
+<div class="main-content">
+  <%= render 'error_summary' %>
+
+  <%= form_for @research_session, url: wizard_path do %>
+      <div class="first-researcher">
+        <%= labelled_text_field_tag :researcher_name, 'Full name', @research_session.researcher_name %>
+        <%= labelled_text_field_tag :researcher_phone, 'Telephone number', @research_session.researcher_phone %>
+        <%= labelled_text_field_tag :researcher_email, 'Email', @research_session.researcher_email %>
+      </div>
+
+      <h2 class="heading-medium">What is the name of the second researcher?</h2>
+      <span class="hint">We recommend design research always be conducted in pairs.</span>
+
+      <div class="second-researcher">
+        <%= labelled_text_field_tag :researcher_other_name, 'Full name', @research_session.researcher_other_name %>
+      </div>
+
+      <%= render 'ok_cancel' %>
+  <% end %>
+</div>

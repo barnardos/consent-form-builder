@@ -11,6 +11,9 @@ development:
   database: consent
 
 
-test:
+test: &test
   <<: *default
   database: consent_test
+
+cucumber:
+  <<: *test

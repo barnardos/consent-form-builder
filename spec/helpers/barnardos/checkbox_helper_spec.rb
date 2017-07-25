@@ -33,7 +33,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       helper.checkbox_group_vertical(name,
                                      legend,
                                      selection_options,
-                                     values: values,
+                                     values,
                                      legend_options: legend_options)
     end
 
