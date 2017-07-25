@@ -4,7 +4,10 @@ When(/^I provide session details – a single age cohort, recording method and i
   choose 'Under 12 years old'
   click_button 'Continue'
 
-  check 'methodologies[]-interview'
+  @methodologies = [:interview, :usability]
+  @methodologies.each do |methodology|
+    check "methodologies[]-#{methodology}"
+  end
   click_button 'Continue'
 
   check 'recording_methods[]-audio'
@@ -34,5 +37,5 @@ When(/^I provide session details – a single age cohort, recording method and i
 end
 
 Then(/^I should see the session review page$/) do
-  expect(page).to have_content('Congraturation! You Sucsess!')
+  step 'I should see confirmation that this is a preview'
 end
