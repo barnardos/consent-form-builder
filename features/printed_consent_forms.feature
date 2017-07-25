@@ -10,6 +10,7 @@ Feature:
     And I should see the focus of the research along with why
     And I should see an age-specific text block for each research methodology selected
     And I should see a humanised indication of recording methods used
+    And I should see which areas have been affected by what I chose
 
 
 

@@ -7,7 +7,7 @@ research so that you can decide whether or not you would like to take part.</p>
 <div class="grid-col-9">
   <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
-  <p><%= @research_session.focus %></p>
+  <p class="session-preview-element__highlighted"><%= @research_session.focus %></p>
 
   <p>
     It is important that we test the current and future tools and services that
@@ -17,20 +17,20 @@ research so that you can decide whether or not you would like to take part.</p>
 
   <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
   <p>
-    <%= @research_session.researcher_name %> is the researcher who will be leading the session.
-    <% if @research_session.researcher_other_name%>
-      <%= @research_session.researcher_name %>ʼs colleague, <%= @research_session.researcher_other_name %>,
-        may join <%= @research_session.researcher_name %> sometimes to help.
+    <%= dynamic(@research_session.researcher_name) %> is the researcher who will be leading the session.
+    <% if dynamic(@research_session.researcher_other_name) %>
+      <%= dynamic(@research_session.researcher_name) %>ʼs colleague, <%= dynamic(@research_session.researcher_other_name) %>,
+        may join <%= dynamic(@research_session.researcher_name) %> sometimes to help.
     <% end %>
   </p>
 
   <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
-  <%= @research_session.methodology_list %>
+  <%= dynamic(@research_session.methodology_list) %>
 
   <p>
     With your permission we will record the session using
-    <%= @research_session.recording_methods_list %>. Recording the session helps the
+    <%= dynamic(@research_session.recording_methods_list) %>. Recording the session helps the
     researcher and other research team members trying to improve the service, as
     it allows them to review the most useful parts of the session after it has
     finished.
@@ -49,9 +49,9 @@ research so that you can decide whether or not you would like to take part.</p>
   </p>
 
   <h3 class="subtitle-small" id="more">Where can I find out more?</h3>
-  <p><%= @research_session.researcher_name %> will be able to answer further questions about the
-    research. <%= @research_session.researcher_name %> can be contacted by email at
-    <%= @research_session.researcher_email %> or by telephone on <%= @research_session.researcher_phone %>.</p>
+  <p><%= dynamic(@research_session.researcher_name) %> will be able to answer further questions about the
+    research. <%= dynamic(@research_session.researcher_name) %> can be contacted by email at
+    <%= dynamic(@research_session.researcher_email) %> or by telephone on <%= dynamic(@research_session.researcher_phone) %>.</p>
   <p>If you have any questions or concerns about the way in which this research has ben conducted then please contact
     Joelle Bradly at <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
 

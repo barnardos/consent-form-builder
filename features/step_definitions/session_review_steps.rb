@@ -16,3 +16,8 @@ end
 And(/^I should see a humanised indication of recording methods used$/) do
   expect(page).to have_content('audio, video, and written notes')
 end
+
+And(/^I should see which areas have been affected by what I chose$/) do
+  some = 5..50
+  expect(page).to have_tag('.session-preview-element__highlighted', count: some)
+end
