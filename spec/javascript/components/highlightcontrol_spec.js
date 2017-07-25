@@ -1,19 +1,17 @@
-const Textfield = require('../../../app/javascript/components/textfield')
+/* eslint no-new: 0 */
+const HighlightControl = require('../../../app/javascript/components/highlightcontrol')
 const { hasClass } = require('../../../app/javascript/lib/element_helpers')
 
 const focusClass = 'has-focus'
-const wrapperClass = 'js-textfield'
-const inputClass = 'textfield__input'
-
 const markup = `
   <html>
     <body>
-      <div class="textfield js-textfield" id="1">
+      <div class="textfield js-highlight-control" id="1">
         <label class='textfield__label' for="name">Name</label>
         <div id="name-hint" class='textfield__help'>Enter a full name here</div>
         <input
           type='text'
-          class='textfield__input'
+          class='textfield__input js-highlight-control__input'
           id="name"
           name="name"
           value="Fred smith"
@@ -25,12 +23,12 @@ const markup = `
   </html>
 `
 
-describe('Textfield', () => {
+describe('Highlight control', () => {
   beforeEach(() => {
     const document = render(markup)
-    this.inputWrapper = document.querySelector(`.${wrapperClass}`)
-    this.textField = new Textfield(this.inputWrapper)
-    this.inputControl = document.querySelector(`.${inputClass}`)
+    this.inputWrapper = document.querySelector('.js-highlight-control')
+    this.inputControl = document.querySelector('.js-highlight-control__input')
+    new HighlightControl(this.inputWrapper)
   })
 
   it('should initially show a field as not focused', () => {

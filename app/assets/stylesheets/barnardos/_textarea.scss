@@ -1,0 +1,68 @@
+@import "colours";
+@import "vars";
+
+.textarea {
+  margin: $gutter 0 0 (-$gutter / 2);
+  padding: $gutter / 2;
+  position: relative;
+}
+
+.textarea.has-focus {
+  background: $focus-background;
+  border-radius: $corner-radius;
+}
+
+.textarea.has-error,
+.textarea.has-focus.textarea.has-error {
+  background: $error-background;
+}
+
+.textarea__label {
+  display: block;
+  font-weight: normal;
+  color: $black;
+  margin-top: $gutter / 2;
+
+  &::after {
+    content: "!";
+    box-sizing: border-box;
+    position: absolute;
+    top: $gutter;
+    right: $gutter;
+    color: $error-colour;
+    padding: 5px;
+    border-radius: 100%;
+    border: 2px solid $error-colour;
+    text-align: center;
+    line-height: .75;
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
+
+.textarea__input {
+  display: block;
+  padding: $gutter / 2;
+  font-size: $base-font-size;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: $gutter / 2;
+  color: $black;
+  border: solid 1px $border;
+  border-radius: $border-radius;
+  outline: none;
+}
+
+.textarea.has-error .textarea__input {
+  border: 1px solid $error-colour;
+}
+
+.textarea__hint {
+  color: $secondary-text;
+  display: block;
+  margin-top: $gutter / 2;
+}
+
+.textarea__error {
+  margin-top: $gutter / 2;
+}

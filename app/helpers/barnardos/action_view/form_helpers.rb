@@ -12,15 +12,38 @@ module Barnardos
       # </div>
       def labelled_text_field_tag(name, label, value = nil , error: nil,
                                   text_options: {}, label_options: {})
-        content_tag :div, class: "textfield js-textfield #{'has-error' if error}", id: "#{name}-wrapper" do
+        content_tag :div, class: "textfield js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
             label_tag(name, class: 'textfield__label') do
               concat(label)
               concat(content_tag(:span, label_options[:hint], class: 'textfield__hint')) if label_options[:hint]
             end
           )
-          concat(text_field_tag(name, value, text_options.reverse_merge(class: 'textfield__input')))
+          concat(text_field_tag(name, value, text_options.reverse_merge(class: 'textfield__input js-highlight-control__input')))
           concat(content_tag(:div, error, class: 'textfield__error')) if error
+        end
+      end
+
+      ##
+      # <!-- Example HTML output for labelled_textarea_field_tag :participant_description -->
+      # <div class="textarea js-textarea" id="participant_description-wrapper">
+      #   <label class="textarea__label" for="participant_description">
+      #     Describe the resaerch participant?
+      #     <span class="textarea__hint">Height, experience, mood</span>
+      #   </label>
+      #   <textarea id="participant_description" class="textarea__input" name="participant_description"></textarea>
+      # </div>
+      def labelled_text_area_tag(name, label, value = nil , error: nil,
+                                 text_options: {}, label_options: {})
+        content_tag :div, class: "textarea js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
+          concat(
+            label_tag(name, class: 'textarea__label') do
+              concat(label)
+              concat(content_tag(:span, label_options[:hint], class: 'textarea__hint')) if label_options[:hint]
+            end
+          )
+          concat(text_area_tag(name, value, class: 'textarea__input js-highlight-control__input', rows: '4'))
+          concat(content_tag(:div, error, class: 'textarea__error')) if error
         end
       end
 

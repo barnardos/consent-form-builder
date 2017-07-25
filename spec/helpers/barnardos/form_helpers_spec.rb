@@ -6,12 +6,12 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
   describe '#labelled_text_field_tag' do
     ##
     # <!-- Example HTML output -->
-    # <div class="textfield js-textfield" id="participant_name-wrapper">
+    # <div class="textfield js-highlight-control" id="participant_name-wrapper">
     #   <label class="textfield__label" for="participant_name">
     #     What is the name of the research participant?
     #     <span class="textfield__hint">Full name</span>
     #   </label>
-    #   <input id="participant_name" class="textfield__input" name="participant_name" type="text">
+    #   <input id="participant_name" class="textfield__input js-highlight-control__input" name="participant_name" type="text">
     # </div>
     context 'with a name and a label parameter' do
       let(:name) { :participant_name }
@@ -20,7 +20,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       subject(:rendered) { helper.labelled_text_field_tag(name, label) }
 
       it 'outputs an wrapper div with the class and id' do
-        expect(rendered).to have_tag('div', with: { class: 'textfield js-textfield', id: 'participant_name-wrapper' })
+        expect(rendered).to have_tag('div', with: { class: 'textfield', id: 'participant_name-wrapper' })
       end
 
       it 'renders a classed label and input as sibling children of the div' do
@@ -31,6 +31,11 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
 
       it 'names the input as given' do
         expect(rendered).to have_tag('input', with: { name: 'participant_name', type: 'text' })
+      end
+
+      it 'adds classes to allow highlighter to enhance interaction' do
+        expect(rendered).to have_tag('div.textfield.js-highlight-control')
+        expect(rendered).to have_tag('input.textfield__input.js-highlight-control__input')
       end
 
       context 'with parameters intended for text_field_tag' do
