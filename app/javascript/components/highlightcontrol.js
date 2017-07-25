@@ -2,10 +2,9 @@
 const { addClass, removeClass } = require('../lib/element_helpers')
 
 const focusClass = 'has-focus'
-const wrapperClass = 'js-textfield'
-const inputClass = 'textfield__input'
+const wrapperClass = 'js-highlight-control'
 
-class Textfield {
+class HighlightControl {
   constructor (wrapperElement) {
     this.cacheElements(wrapperElement)
     this.attachEvents()
@@ -13,7 +12,7 @@ class Textfield {
 
   cacheElements (wrapperElement) {
     this.wrapperElement = wrapperElement
-    this.input = wrapperElement.querySelector(`.${inputClass}`)
+    this.input = wrapperElement.querySelector('.js-highlight-control__input')
   }
 
   showFocus () {
@@ -31,9 +30,9 @@ class Textfield {
 
   static init (container = document) {
     container.querySelectorAll(`.${wrapperClass}`).forEach((element) => {
-      new Textfield(element)
+      new HighlightControl(element)
     })
   }
 }
 
-module.exports = Textfield
+module.exports = HighlightControl
