@@ -7,7 +7,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
     subject(:rendered) { helper.dynamic('some text') }
 
     it 'wraps in a span' do
-      expect(rendered).to have_tag('span.session-preview-element__highlighted', text: 'some text')
+      expect(rendered).to have_tag('span.highlight', text: 'some text')
     end
   end
 end

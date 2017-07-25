@@ -6,7 +6,7 @@ class ResearchSessionPresenter < Struct.new(:research_session)
   def methodology_list
     paras = research_session.methodologies.map do |methodology|
       i18n_key = "age.#{age}.#{methodology}"
-      "<p>#{I18n.t(i18n_key)}</p>"
+      "<p class='highlight'>#{I18n.t(i18n_key)}</p>"
     end
     paras.join("\n").html_safe
   end

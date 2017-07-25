@@ -1,6 +1,6 @@
 module ResearchSessionsHelper
   def dynamic(text)
-    content_tag :span, class: 'session-preview-element__highlighted' do
+    content_tag :span, class: 'highlight' do
       text
     end
   end

@@ -19,5 +19,5 @@ end
 
 And(/^I should see which areas have been affected by what I chose$/) do
   some = 5..50
-  expect(page).to have_tag('.session-preview-element__highlighted', count: some)
+  expect(page).to have_tag('.highlight', count: some)
 end
