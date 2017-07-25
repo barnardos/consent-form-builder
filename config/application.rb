@@ -30,5 +30,9 @@ module Myapp
 
     # Don't spray all helper modules across all views
     config.action_controller.include_all_helpers = false
+
+    config.after_initialize do |app|
+      app.config.paths.add 'app/presenters', :eager_load => true
+    end
   end
 end
