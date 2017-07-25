@@ -53,4 +53,27 @@ RSpec.describe ResearchSessionPresenter do
       end
     end
   end
+
+  describe '#recording_methods_list' do
+    subject(:list) { presenter.recording_methods_list }
+
+    before do
+      allow(research_session).to receive(:recording_methods).and_return(recording_methods)
+    end
+
+    context 'there is one recording method' do
+      let(:recording_methods) { [:audio] }
+      it { is_expected.to eql('audio') }
+    end
+
+    context 'there are two recording methods' do
+      let(:recording_methods) { [:audio, :video] }
+      it { is_expected.to eql('audio and video') }
+    end
+
+    context 'there are three recording methods' do
+      let(:recording_methods) { [:audio, :video, :written] }
+      it { is_expected.to eql('audio, video, and written notes') }
+    end
+  end
 end

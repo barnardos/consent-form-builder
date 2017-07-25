@@ -12,6 +12,9 @@ class ResearchSessionPresenter < Struct.new(:research_session)
   end
 
   def recording_methods_list
-    'recording_methods_list'
+    lowercase_words = research_session.recording_methods.map do |method|
+      RecordingMethods::NAME_VALUES.fetch(method).downcase
+    end
+    lowercase_words.to_sentence
   end
 end
