@@ -23,6 +23,7 @@ class ResearchSessionsController < ApplicationController
   end
 
   def preview
+    @research_session = ResearchSessionPresenter.new(current_research_session)
   end
 
   def update
