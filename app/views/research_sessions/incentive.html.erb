@@ -5,58 +5,21 @@
   <%= render 'error_summary' %>
 
   <%= form_for @research_session, url: wizard_path do %>
-      <fieldset class="horizontal-radio-list " id="incentive">
-        <legend class="horizontal-radio-list__legend">
-          Will an incentive be provided?
-        </legend>
+      <%= radio_group_vertical :incentive,
+                               'Will an incentive be provided?',
+                               { '1' => 'Yes', '0' => 'No' },
+                               @research_session.incentive ? '1' : '0'
+      %>
 
-        <div class="horizontal-radio-list__choice">
-          <%= radio_button_tag :incentive,
-                               '1',
-                               @research_session.incentive == true,
-                               class: 'horizontal-radio-list__checkbox',
-                               id: 'incentive-yes' %>
-          <label class="horizontal-radio-list__label" for="incentive-yes">Yes</label>
-        </div>
+      <%= radio_group_vertical :payment_type,
+                               'What form will the incentive take?',
+                               PaymentType::NAME_VALUES,
+                               @research_session.payment_type
+      %>
 
-        <div class="horizontal-radio-list__choice">
-          <%= radio_button_tag :incentive,
-                               '0',
-                               @research_session.incentive == false,
-                               class: 'horizontal-radio-list__checkbox',
-                               id: 'incentive-no' %>
-          <label class="horizontal-radio-list__label" for="incentive-no">No</label>
-        </div>
-
-      </fieldset>
-
-      <fieldset class="horizontal-radio-list " id="paymenttype">
-        <legend class="horizontal-radio-list__legend">
-          What form will the incentive take?
-        </legend>
-
-        <div class="horizontal-radio-list__choice">
-          <%= radio_button_tag :payment_type, :cash,
-                               @research_session.payment_type == 'cash',
-                               class: 'horizontal-radio-list__checkbox',
-                               id: 'payment_type-cash' %>
-          <label class="horizontal-radio-list__label" for="payment_type-cash">Cash</label>
-        </div>
-
-        <div class="horizontal-radio-list__choice">
-          <%= radio_button_tag :payment_type, :voucher,
-                               @research_session.payment_type == 'voucher',
-                               class: 'horizontal-radio-list__checkbox',
-                               id: 'payment_type-voucher'%>
-
-          <label class="horizontal-radio-list__label" for="payment_type-voucher">High street shopping voucher</label>
-        </div>
-      </fieldset>
-
-      <%=
-        labelled_text_field_tag :incentive_value,
-                                'Incentive value',
-                                @research_session.incentive_value %>
+      <%= labelled_text_field_tag :incentive_value,
+                                  'Incentive value',
+                                  @research_session.incentive_value %>
 
       <%= render 'ok_cancel' %>
   <% end %>

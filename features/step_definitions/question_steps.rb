@@ -25,7 +25,7 @@ When(/^I provide session details – a single age cohort, recording method and i
   end
   click_button 'Continue'
 
-  choose 'incentive-yes'
+  choose 'incentive-1'
 
   choose 'payment_type-cash'
   fill_in 'Incentive value', with: '10.50'
