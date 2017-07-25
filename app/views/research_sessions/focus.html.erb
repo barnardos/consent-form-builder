@@ -5,13 +5,13 @@
   <%= render 'error_summary' %>
 
   <%= form_for @research_session, url: wizard_path do %>
-      <%= labelled_text_field_tag(
+      <%= labelled_text_area_tag(
             :focus,
             'What is the focus of your research project?',
             @research_session.focus,
             label_options: {
-                hint: 'What you are researching and why - e.g. Barnardoʼs ' \
-                      'is currently doing some research about.' }
+                hint: 'Use simple language to explain what you are researching '\
+                      'and why you are doing it'}
           )
       %>
 
