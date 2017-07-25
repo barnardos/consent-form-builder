@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: ProximaNova;
-  src: url("pnalt-regular.otf") format("opentype");
+  src: font-url("pnalt-regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
@@ -11,7 +11,7 @@
 @font-face {
   font-family: ProximaNova;
   font-weight: bold;
-  src: url("pnalt-medium.otf") format("opentype");
+  src: font-url("pnalt-medium.otf") format("opentype");
 }
 
 .title {
