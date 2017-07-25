@@ -25,6 +25,29 @@ module Barnardos
       end
 
       ##
+      # <!-- Example HTML output for labelled_textarea_field_tag :participant_description -->
+      # <div class="textarea js-textarea" id="participant_description-wrapper">
+      #   <label class="textarea__label" for="participant_description">
+      #     Describe the resaerch participant?
+      #     <span class="textarea__hint">Height, experience, mood</span>
+      #   </label>
+      #   <textarea id="participant_description" class="textarea__input" name="participant_description"></textarea>
+      # </div>
+      def labelled_text_area_tag(name, label, value = nil , error: nil,
+                                 text_options: {}, label_options: {})
+        content_tag :div, class: "textarea js-textarea #{'has-error' if error}", id: "#{name}-wrapper" do
+          concat(
+            label_tag(name, class: 'textarea__label') do
+              concat(label)
+              concat(content_tag(:span, label_options[:hint], class: 'textarea__hint')) if label_options[:hint]
+            end
+          )
+          concat(text_area_tag(name, value, class: 'textarea__input', rows: '4'))
+          concat(content_tag(:div, error, class: 'textarea__error')) if error
+        end
+      end
+
+      ##
       # <!-- Example HTML output for:
       #    radio_group_vertical :age, 'This is a cool legend', [['under12', 'Under 12 years old']]
       #    or
