@@ -10,11 +10,15 @@ When(/^I provide session details – a single age cohort, recording method and i
   end
   click_button 'Continue'
 
-  check 'recording_methods[]-audio'
+  @recording_methods = [:audio, :video, :written]
+  @recording_methods.each do |method|
+    check "recording_methods[]-#{method}"
+  end
   click_button 'Continue'
 
+  @focus = 'Fresnel lenses and the under-5s'
   fill_in 'What is the focus of your research project?',
-          with: 'Fresnel lenses and the under-5s'
+          with: @focus
   click_button 'Continue'
 
   within '.first-researcher' do

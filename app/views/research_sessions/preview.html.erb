@@ -1,1 +1,71 @@
-<h2 class="heading-medium">Research session preview</h2>
+<h1 class="title">Research session preview</h1>
+
+<h2 class="heading-medium">About this research project</h2>
+<p class="text-lede">This information sheet will tell you more about the
+research so that you can decide whether or not you would like to take part.</p>
+
+<div class="grid-col-9">
+  <h2 class="heading-small" id="why">Why is the research being done?</h2>
+
+  <p><%= @research_session.focus %></p>
+
+  <p>
+    It is important that we test the current and future tools and services that
+    we are developing with people like you so that we can make them as good as
+    possible.
+  </p>
+
+  <h2 class="heading-small" id="who">Who is doing the research?</h2>
+  <p>
+    <%= @research_session.researcher_name %> is the researcher who will be leading the session.
+    <% if @research_session.researcher_other_name%>
+      <%= @research_session.researcher_name %>ʼs colleague, <%= @research_session.researcher_other_name %>,
+        may join <%= @research_session.researcher_name %> sometimes to help.
+    <% end %>
+  </p>
+
+  <h2 class="heading-small" id="what">What will happen next?</h2>
+
+  <%= @research_session.methodology_list %>
+
+  <p>
+    With your permission we will record the session using
+    <%= @research_session.recording_methods_list %>. Recording the session helps the
+    researcher and other research team members trying to improve the service, as
+    it allows them to review the most useful parts of the session after it has
+    finished.
+  </p>
+
+  <h2 class="heading-small" id="doi">Do I have to take part?</h2>
+  <p>
+    Taking part is entirely voluntary - it is up to you to decide whether or not
+    to take part. If you decide to take part you do not have to answer questions
+    you do not want to answer. You can also change your mind about taking part
+    at any time and withdraw without giving a reason.
+  </p>
+  <p>
+    If you agree to take part, you will be given a copy of this information
+    sheet and be asked to sign a consent form.
+  </p>
+
+  <h2 class="heading-small" id="more">Where can I find out more?</h2>
+  <p><%= @research_session.researcher_name %> will be able to answer further questions about the
+    research. <%= @research_session.researcher_name %> can be contacted by email at
+    <%= @research_session.researcher_email %> or by telephone on <%= @research_session.researcher_phone %>.</p>
+  <p>If you have any questions or concerns about the way in which this research has ben conducted then please contact
+    Joelle Bradly at <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
+
+  <h2 class="heading-small" id="private">Will what I say be kept confidential?</h2>
+  <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
+    insights we need to improve our services. We do not hand over the recordings; we
+    edit and share insights relevant to the project. Whenever we share these
+    insights, the material is fully anonymised and contributions cannot be
+    attributed to named individuals.</p>
+  <p>You will not be identifiable in anything published. All personal data
+    collected as part of the research is stored securely and kept strictly
+    confidential.</p>
+
+  <p class="button-bar">
+    <a href="/signconsent" class="button">Continue</a>
+  </p>
+</div>
