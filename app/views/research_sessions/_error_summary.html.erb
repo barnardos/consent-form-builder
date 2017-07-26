@@ -1,13 +1,14 @@
 <% if @research_session.errors.any? %>
-    <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
-      <h1 class="heading-medium" id="error-summary-heading">
-        Incomplete Information
-      </h1>
+  <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+    <h2 class=".subtitle-large" id="error-summary-heading">Error summary</h2>
 
-      <ul class="error-summary__list">
-        <% @research_session.errors.full_messages.each do |msg| %>
-            <li class="error-summary__item"><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul class="error-summary__list">
+      <% @research_session.errors.to_hash.each do |key, value| %>
+        <li class="error-summary__item">
+          <a href="#<%= key %>-wrapper"><%= @research_session.errors.full_message(key, value[0]) %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+

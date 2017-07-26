@@ -1,9 +1,7 @@
 <%= render 'back_link' %>
-
-<h2 class="heading-medium">Research Focus</h2>
 <div class="main-content">
   <%= render 'error_summary' %>
-
+  <h2 class="heading-medium">Research Focus</h2>
   <%= form_for @research_session, url: wizard_path do %>
       <%= labelled_text_area_tag(
             :focus,

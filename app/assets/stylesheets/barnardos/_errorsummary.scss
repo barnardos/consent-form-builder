@@ -1,0 +1,12 @@
+.error-summary {
+  background: $error-background;
+  margin: ($gutter * 2) 0;
+  padding:  ($gutter / 2) ($gutter * 2) ($gutter * 2);
+}
+
+.error-summary__item a {
+  color: $error-colour;
+  font-weight: bold;
+  text-decoration: underline;
+  text-transform: se
+}
