@@ -21,3 +21,7 @@ And(/^I should see which areas have been affected by what I chose$/) do
   some = 5..50
   expect(page).to have_tag('.highlight', count: some)
 end
+
+When(/^I click continue$/) do
+  click_link 'Continue'
+end

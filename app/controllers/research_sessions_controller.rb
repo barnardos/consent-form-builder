@@ -26,6 +26,10 @@ class ResearchSessionsController < ApplicationController
     @research_session = ResearchSessionPresenter.new(current_research_session)
   end
 
+  def preview_consent_form
+    @research_session = ResearchSessionPresenter.new(current_research_session)
+  end
+
   def update
     @research_session = current_research_session
     @research_session.status = step

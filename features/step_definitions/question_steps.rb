@@ -1,4 +1,4 @@
-When(/^I provide session details – a single age cohort, recording method and incentive details$/) do
+When(/^I provide full session details for a child-age cohort$/) do
   visit '/'
   click_link 'Create new form'
   choose 'Under 12 years old'

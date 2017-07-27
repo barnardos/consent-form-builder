@@ -1,6 +1,6 @@
 class ResearchSessionPresenter < Struct.new(:research_session)
   delegate :age, :focus, :researcher_name, :researcher_other_name,
-           :researcher_email, :researcher_phone,
+           :researcher_email, :researcher_phone, :unable_to_consent?,
            to: :research_session
 
   def methodology_list

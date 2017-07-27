@@ -1,0 +1,42 @@
+<h1 class="title">Preview: Declaration of consent</h1>
+
+<h2 class="heading-large">Review</h2>
+<p class="super-text">It is important to us that your consent
+  <%= 'for your child' if @research_session.unable_to_consent? %> to
+  take part in this research is freely given and fully informed.</p>
+<p>Please review the following points and indicate your agreement to the
+  statements underneath.</p>
+
+<ul class="bullet-point-list">
+  <li>I have read and understood the Information
+    Sheet for this research project and have had an opportunity to ask
+    questions.
+  </li>
+  <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
+    participation is voluntary and that I am free to withdraw them at any time
+    without giving any reason.
+  </li>
+  <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
+    activities during the research session may be observed and will be recorded.
+    The data captured, in the form of <%= @research_session.recording_methods_list %>,
+    will be used for current and future service development.
+  </li>
+  <li>I understand that this data will be stored securely and
+    covered by the Data Protection Act.
+  </li>
+</ul>
+
+<div class="checkbox-group__choice">
+  <input disabled type="checkbox"
+         id="__print_only_empty_checkbox"
+         class="checkbox-group__input">
+    <label class="checkbox-group__label" for="__print_only_empty_checkbox">
+      I agree to my <%='childʼs' if @research_session.unable_to_consent? %>
+      participation in this research and understand that
+      my childʼs data will be used as explained above.
+    </label>
+</div>
+
+<p class="button-bar">
+  <a class="button print">Print</a>
+</p>
