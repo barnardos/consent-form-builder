@@ -18,7 +18,8 @@ research so that you can decide whether or not you would like to take part.</p>
   <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
   <p>
     <%= dynamic(@research_session.researcher_name) %> is the researcher who will be leading the session.
-    <% if dynamic(@research_session.researcher_other_name) %>
+
+    <% if @research_session.researcher_other_name.present? %>
       <%= dynamic(@research_session.researcher_name) %>ʼs colleague, <%= dynamic(@research_session.researcher_other_name) %>,
         may join <%= dynamic(@research_session.researcher_name) %> sometimes to help.
     <% end %>
