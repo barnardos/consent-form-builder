@@ -53,7 +53,7 @@ $outer-ring: $inner-ring + ($ring-size * 3);
   box-shadow: 0 0 0 $inner-ring $white, 0 0 0 $border-ring $black;
 }
 
-.checkbox-group__input:disabled + .checkboxo-group__label::before {
+.checkbox-group__input:disabled + .checkbox-group__label::before {
   background: $grey-medium;
   box-shadow: 0 0 0 1px $grey-medium;
   cursor: not-allowed;
