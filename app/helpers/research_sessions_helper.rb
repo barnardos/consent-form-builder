@@ -1,6 +1,6 @@
 module ResearchSessionsHelper
-  def dynamic(text)
-    content_tag :span, class: 'highlight' do
+  def highlight(text)
+    content_tag :strong, class: 'highlight' do
       text
     end
   end
