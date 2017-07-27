@@ -1,0 +1,9 @@
+.bullet-point-list {
+  list-style-type: disc;
+  margin: 0 $gutter;
+
+  > * {
+    margin: $gutter;
+    line-height: 24px;
+  }
+}
