@@ -37,6 +37,14 @@ class ResearchSession < ApplicationRecord
     step_indices.fetch(status.to_sym) >= step_indices.fetch(step)
   end
 
+  def able_to_consent?
+    age.to_sym == :over18
+  end
+
+  def unable_to_consent?
+    !able_to_consent?
+  end
+
 private
   def step_keys
     @@step_keys ||= STEP_PARAMS.keys
