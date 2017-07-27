@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:show, :update], controller: 'research_sessions'
 
-  get 'research_session/preview', to: 'research_sessions#preview'
+  get 'research-session/preview', to: 'research_sessions#preview'
+  get 'research-session/preview-consent-form',
+      to: 'research_sessions#preview_consent_form',
+      as: 'consent_form_preview'
 
   get '/gallery/', to: 'gallery#index'
 end
