@@ -1,10 +1,12 @@
 <h1 class="title">Research session preview</h1>
 
-<h2 class="heading-medium">About this research project</h2>
-<p class="super-text">This information sheet will tell you more about the
-research so that you can decide whether or not you would like to take part.</p>
+<section>
+  <h2 class="heading-medium">About this research project</h2>
+  <p class="super-text">This information sheet will tell you more about the
+  research so that you can decide whether or not you would like to take part.</p>
+</div>
 
-<div class="grid-col-9">
+<section>
   <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
   <p class="highlight"><%= @research_session.focus %></p>
@@ -14,7 +16,8 @@ research so that you can decide whether or not you would like to take part.</p>
     we are developing with people like you so that we can make them as good as
     possible.
   </p>
-
+</section>
+<section>
   <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
   <p>
     <%= dynamic(@research_session.researcher_name) %> is the researcher who will be leading the session.
@@ -23,7 +26,8 @@ research so that you can decide whether or not you would like to take part.</p>
         may join <%= dynamic(@research_session.researcher_name) %> sometimes to help.
     <% end %>
   </p>
-
+</section>
+<section>
   <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
   <%= @research_session.methodology_list %>
@@ -35,7 +39,8 @@ research so that you can decide whether or not you would like to take part.</p>
     it allows them to review the most useful parts of the session after it has
     finished.
   </p>
-
+</section>
+<section>
   <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
   <p>
     Taking part is entirely voluntary - it is up to you to decide whether or not
@@ -47,14 +52,16 @@ research so that you can decide whether or not you would like to take part.</p>
     If you agree to take part, you will be given a copy of this information
     sheet and be asked to sign a consent form.
   </p>
-
+</section>
+<section>
   <h3 class="subtitle-small" id="more">Where can I find out more?</h3>
   <p><%= dynamic(@research_session.researcher_name) %> will be able to answer further questions about the
     research. <%= dynamic(@research_session.researcher_name) %> can be contacted by email at
     <%= dynamic(@research_session.researcher_email) %> or by telephone on <%= dynamic(@research_session.researcher_phone) %>.</p>
   <p>If you have any questions or concerns about the way in which this research has ben conducted then please contact
     Joelle Bradly at <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
-
+</section>
+<section>
   <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>
   <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
     insights we need to improve our services. We do not hand over the recordings; we
@@ -64,8 +71,8 @@ research so that you can decide whether or not you would like to take part.</p>
   <p>You will not be identifiable in anything published. All personal data
     collected as part of the research is stored securely and kept strictly
     confidential.</p>
+</section>
+<p class="button-bar">
+  <%= link_to 'Continue', consent_form_preview_path, class: 'button' %>
+</p>
 
-  <p class="button-bar">
-    <%= link_to 'Continue', consent_form_preview_path, class: 'button' %>
-  </p>
-</div>
