@@ -8,12 +8,12 @@ class HasAtLeastOneValidator < ActiveModel::EachValidator
     valid_values = options[:of]
 
     if values.blank?
-      record.errors[attribute] << "#{attribute} should have at least one of #{valid_values}"
+      record.errors[attribute] << "should have at least one of #{valid_values}"
       return
     end
 
     unless values.respond_to?(:each)
-      record.errors[attribute] << "#{attribute} should be an enumerable"
+      record.errors[attribute] << 'should be an enumerable'
       return
     end
 
@@ -24,6 +24,6 @@ class HasAtLeastOneValidator < ActiveModel::EachValidator
     end
 
     record.errors[attribute] << \
-      "#{attribute} has these invalid values: #{invalid_values_found}" if invalid_values_found.any?
+      "has these invalid values: #{invalid_values_found}" if invalid_values_found.any?
   end
 end

@@ -24,7 +24,7 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     it 'has an error' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients should have at least one of [:bacon, :eggs, :beans]')
+        eql('should have at least one of [:bacon, :eggs, :beans]')
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     it 'has an error' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients should have at least one of [:bacon, :eggs, :beans]')
+        eql('should have at least one of [:bacon, :eggs, :beans]')
     end
   end
 
@@ -46,7 +46,7 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     it 'has an error' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients should be an enumerable')
+        eql('should be an enumerable')
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     it 'indicates what is unpalatable in symbol-only form' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients has these invalid values: [:mushrooms, :tomatoes]')
+        eql('has these invalid values: [:mushrooms, :tomatoes]')
     end
 
   end
