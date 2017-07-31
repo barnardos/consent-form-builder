@@ -1,0 +1,8 @@
+@import "barnardos/colours";
+
+.highlight {
+  background: $highlight-background-colour;
+  border-radius: 3px;
+  font-weight: normal;
+  padding: 0 3px;
+}
