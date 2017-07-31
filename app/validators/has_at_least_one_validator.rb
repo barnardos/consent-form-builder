@@ -8,7 +8,8 @@ class HasAtLeastOneValidator < ActiveModel::EachValidator
     valid_values = options[:of]
 
     if values.blank?
-      record.errors[attribute] << "should have at least one of #{valid_values}"
+      record.errors[attribute] << 'should have at least one of '\
+        "#{valid_values.to_sentence(last_word_connector: ', or ')}"
       return
     end
 
@@ -18,12 +19,12 @@ class HasAtLeastOneValidator < ActiveModel::EachValidator
     end
 
     invalid_values_found = values.inject([]) do |found, value|
-      current_value = value.to_sym
-      found << current_value unless valid_values.include?(current_value)
+      found << value.to_s.humanize(capitalize: false) unless valid_values.include?(value.to_sym)
       found
     end
 
     record.errors[attribute] << \
-      "has these invalid values: #{invalid_values_found}" if invalid_values_found.any?
+      'has these invalid values: '\
+      "#{invalid_values_found.to_sentence}" if invalid_values_found.any?
   end
 end
