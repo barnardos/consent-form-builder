@@ -5,5 +5,5 @@ Then(/^I should see the age-appropriate consent form preview$/) do
 end
 
 And(/^I should see a way to print it$/) do
-  expect(page).to have_tag('a', with: { class: 'button print' })
+  expect(page).to have_tag('a', with: { class: 'print-link' })
 end

@@ -1,0 +1,10 @@
+.button,
+.print-link {
+  display: none;
+}
+
+section,
+p {
+  page-break-inside: avoid;
+}
+
