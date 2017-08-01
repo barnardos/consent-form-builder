@@ -41,16 +41,17 @@
 }
 
 .textarea__input {
-  display: block;
-  padding: $gutter / 2;
-  font-size: $base-font-size;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: $gutter / 2;
-  color: $black;
   border: solid 1px $border;
   border-radius: $border-radius;
+  box-sizing: border-box;
+  color: $black;
+  display: block;
+  font-family: $font-family;
+  font-size: $base-font-size;
+  margin-top: $gutter / 2;
   outline: none;
+  padding: $gutter / 2;
+  width: 100%;
 }
 
 .textarea.has-error .textarea__input {
