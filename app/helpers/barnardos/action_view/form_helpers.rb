@@ -14,7 +14,7 @@ module Barnardos
                                   text_options: {}, label_options: {})
         content_tag :div, class: "textfield js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
-            label_tag(name, class: "textfield__label #{label_options[:class] if label_options[:class]}") do
+            label_tag(name, class: "textfield__label #{label_options[:class]}") do
               concat(label)
               concat(content_tag(:span, label_options[:hint], class: 'textfield__hint')) if label_options[:hint]
             end
@@ -37,7 +37,7 @@ module Barnardos
                                  text_options: {}, label_options: {})
         content_tag :div, class: "textarea js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
-            label_tag(name, class: "textarea__label  #{label_options[:class] if label_options[:class]}") do
+            label_tag(name, class: "textarea__label  #{label_options[:class]}") do
               concat(label)
               concat(content_tag(:span, label_options[:hint], class: 'textarea__hint')) if label_options[:hint]
             end
