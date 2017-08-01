@@ -24,7 +24,7 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     it 'has an error' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients should have at least one of [:bacon, :eggs, :beans]')
+        eql('should have at least one of bacon, eggs, or beans')
     end
   end
 
@@ -35,18 +35,18 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
     it 'has an error' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients should have at least one of [:bacon, :eggs, :beans]')
+        eql('should have at least one of bacon, eggs, or beans')
     end
   end
 
-  context 'Our ingredients are not an array' do
+  context 'Our ingredients are not an array (non-human error)' do
     let(:ingredients) { :'A single hash brown' }
 
     it { is_expected.to be_invalid }
     it 'has an error' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients should be an enumerable')
+        eql('should be an enumerable')
     end
   end
 
@@ -61,11 +61,22 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
 
     it { is_expected.not_to be_valid }
 
-    it 'indicates what is unpalatable in symbol-only form' do
+    it 'indicates what is unpalatable in human-digestible form' do
       expect(ingredient_errors.length).to eql(1)
       expect(ingredient_errors.first).to \
-        eql('ingredients has these invalid values: [:mushrooms, :tomatoes]')
+        eql('has these invalid values: mushrooms and tomatoes')
     end
+  end
 
+  context 'Our validator hates mushrooms and tomatoes' do
+    let(:ingredients) { [:bacon, :eggs, :mushrooms, :black_pudding, 'tomatoes'] }
+
+    it { is_expected.not_to be_valid }
+
+    it 'indicates what is unpalatable in human-digestible form' do
+      expect(ingredient_errors.length).to eql(1)
+      expect(ingredient_errors.first).to \
+        eql('has these invalid values: mushrooms, black pudding, and tomatoes')
+    end
   end
 end
