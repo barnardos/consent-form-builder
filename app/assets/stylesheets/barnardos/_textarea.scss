@@ -19,23 +19,23 @@
 
 .textarea__label {
   display: block;
-  font-weight: normal;
   color: $black;
+  font-weight: normal;
   margin-top: $gutter / 2;
 
-  &::after {
+  .has-error &::after {
     content: "!";
-    box-sizing: border-box;
-    position: absolute;
-    top: $gutter;
-    right: $gutter;
-    color: $error-colour;
-    padding: 5px;
-    border-radius: 100%;
     border: 2px solid $error-colour;
-    text-align: center;
-    line-height: .75;
+    border-radius: 100%;
+    box-sizing: border-box;
+    color: $error-colour;
     height: 1.5em;
+    line-height: .75;
+    padding: 5px;
+    position: absolute;
+    right: $gutter;
+    text-align: center;
+    top: $gutter;
     width: 1.5em;
   }
 }
