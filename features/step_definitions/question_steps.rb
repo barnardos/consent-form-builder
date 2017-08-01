@@ -21,13 +21,13 @@ When(/^I provide full session details for a child-age cohort$/) do
           with: @focus
   click_button 'Continue'
 
-  within '.first-researcher' do
+  within '[name="first-researcher"]' do
     fill_in 'Full name', with: 'Rachel Researcher'
     fill_in 'Telephone number', with: '012345678'
     fill_in 'Email', with: 'rachel@researcher.com'
   end
 
-  within '.second-researcher' do
+  within '[name="second-researcher"]' do
     fill_in 'Full name', with: 'Steve Secondresearcher'
   end
   click_button 'Continue'
