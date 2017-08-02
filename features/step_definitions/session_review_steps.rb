@@ -13,7 +13,9 @@ And(/^I should see the formatted focus of the research along with why$/) do
   expect(page).to have_tag('p.highlight br')
   expect(page).to have_tag('p.highlight', text: "Whereas this becomes its own p\n")
 
-  expect(page).to have_content('It is important that we test the current and future tools and services')
+  expect(page).to have_content(
+    'It is important that we test the current and future tools and services'
+  )
 end
 
 And(/^I should see a humanised indication of recording methods used$/) do

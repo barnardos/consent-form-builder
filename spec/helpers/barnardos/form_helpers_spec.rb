@@ -11,7 +11,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     #     What is the name of the research participant?
     #     <span class="textfield__hint">Full name</span>
     #   </label>
-    #   <input id="participant_name" class="textfield__input js-highlight-control__input" name="participant_name" type="text">
+    #   <input id="participant_name" class="textfield__input js-highlight-control__input"
+    #       name="participant_name" type="text">
     # </div>
     context 'with a name and a label parameter' do
       let(:name) { :participant_name }
@@ -20,7 +21,10 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       subject(:rendered) { helper.labelled_text_field_tag(name, label) }
 
       it 'outputs an wrapper div with the class and id' do
-        expect(rendered).to have_tag('div', with: { class: 'textfield', id: 'participant_name-wrapper' })
+        expect(rendered).to have_tag(
+          'div',
+          with: { class: 'textfield', id: 'participant_name-wrapper' }
+        )
       end
 
       it 'renders a classed label and input as sibling children of the div' do
@@ -72,7 +76,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       it 'adds an element to display the error' do
-        expect(rendered).to have_tag('div.textfield.has-error > div.textfield__error', text: 'Error message' )
+        expect(rendered).to have_tag(
+          'div.textfield.has-error > div.textfield__error', text: 'Error message' )
       end
     end
   end

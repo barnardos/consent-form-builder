@@ -11,7 +11,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     #     What is the name of the research participant?
     #     <span class="textfield__hint">Full name</span>
     #   </label>
-    #   <textarea id="participant_name" class="textfield__input js-highlight-control__input" name="participant_name" type="text" rows="4">This is a test</textarea>
+    #   <textarea id="participant_name" class="textfield__input js-highlight-control__input"
+    #       name="participant_name" type="text" rows="4">This is a test</textarea>
     # </div>
     let(:name) { :description }
     let(:label) { 'Describe the thing' }
@@ -33,7 +34,9 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       it 'renders a label as a child of the wrapper' do
-        expect(rendered).to have_tag('div.textarea > label[for=description].textarea__label', text: label)
+        expect(rendered).to have_tag(
+          'div.textarea > label[for=description].textarea__label', text: label
+        )
       end
 
       it 'renders a textarea as a child of the wrapper' do
@@ -61,7 +64,9 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
         let(:label_options) { { :hint => 'Something helpful' } }
 
         it 'renders a hint span in the label' do
-          expect(rendered).to have_tag('label.textarea__label > span.textarea__hint', text: 'Something helpful')
+          expect(rendered).to have_tag(
+            'label.textarea__label > span.textarea__hint', text: 'Something helpful'
+          )
         end
       end
     end
@@ -74,7 +79,9 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       it 'adds an element to display the error' do
-        expect(rendered).to have_tag('div.textarea.has-error > div.textarea__error', text: 'Error message' )
+        expect(rendered).to have_tag(
+          'div.textarea.has-error > div.textarea__error', text: 'Error message'
+        )
       end
     end
   end

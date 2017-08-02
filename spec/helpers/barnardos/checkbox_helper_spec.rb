@@ -12,7 +12,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     #   </legend>
     #
     #   <div class="checkbox-group__choice">
-    #     <input class="checkbox-group__input" id="age-under12" type="checkbox" name="age" value="under12">
+    #     <input class="checkbox-group__input" id="age-under12" type="checkbox"
+    #         name="age" value="under12">
     #     <label class="checkbox-group__label" for="age-under12">Under 12 years old</label>
     #   </div>
     # </fieldset>
@@ -112,7 +113,9 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       it 'includes an optional hint in the legend' do
-        expect(rendered).to have_tag('legend.checkbox-group__legend span.checkbox-group__hint', text: 'A hint')
+        expect(rendered).to have_tag(
+          'legend.checkbox-group__legend span.checkbox-group__hint', text: 'A hint'
+        )
       end
     end
 
