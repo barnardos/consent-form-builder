@@ -9,7 +9,7 @@
 <section>
   <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
-  <p class="highlight"><%= @research_session.focus %></p>
+  <%= simple_format(@research_session.focus, class: 'highlight') %>
 
   <p>
     It is important that we test the current and future tools and services that

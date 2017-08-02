@@ -8,8 +8,11 @@ And(/^I should see an age\-specific text block for each research methodology sel
   expect(page).to have_content('Your child will be asked')
 end
 
-And(/^I should see the focus of the research along with why$/) do
-  expect(page).to have_content(@focus)
+And(/^I should see the formatted focus of the research along with why$/) do
+  expect(page).to have_tag('p.highlight', text: /^Fresnel lenses and the under-5s$/)
+  expect(page).to have_tag('p.highlight br')
+  expect(page).to have_tag('p.highlight', text: "Whereas this becomes its own p\n")
+
   expect(page).to have_content('It is important that we test the current and future tools and services')
 end
 

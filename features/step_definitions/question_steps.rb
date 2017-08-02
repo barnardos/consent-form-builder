@@ -16,7 +16,13 @@ When(/^I provide full session details for a child-age cohort$/) do
   end
   click_button 'Continue'
 
-  @focus = 'Fresnel lenses and the under-5s'
+  @focus = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+    Fresnel lenses and the under-5s
+    This line break follows a br
+
+    Whereas this becomes its own p
+  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+
   fill_in 'What is the focus of your research project?',
           with: @focus
   click_button 'Continue'
