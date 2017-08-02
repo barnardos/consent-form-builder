@@ -1,0 +1,11 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Include:
+    - Gemfile
+    - Rakefile
+    - config.ru
+    - lib/**/*.rake
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
