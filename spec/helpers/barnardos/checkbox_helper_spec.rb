@@ -63,7 +63,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       it 'labels the input' do
-        expect(rendered).to have_tag('label.checkbox-group__label', with: {for: 'age-one'})
+        expect(rendered).to have_tag('label.checkbox-group__label', with: { for: 'age-one' })
       end
 
       it 'renders a legend with the value specified' do

@@ -41,7 +41,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       context 'with parameters intended for text_field_tag' do
         subject(:rendered) do
           helper.labelled_text_field_tag(
-            name, label, text_options: {maxlength: 5, disabled: true})
+            name, label, text_options: { maxlength: 5, disabled: true })
         end
 
         it 'passes them all through' do

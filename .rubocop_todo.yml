@@ -116,7 +116,7 @@ Layout/SpaceInsideBrackets:
   Exclude:
     - 'config/environments/production.rb'
 
-# Offense count: 16
+# Cop supports --auto-correct.
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SupportedStylesForEmptyBraces.
 # SupportedStyles: space, no_space, compact
@@ -124,9 +124,6 @@ Layout/SpaceInsideBrackets:
 Layout/SpaceInsideHashLiteralBraces:
   Exclude:
     - 'lib/tasks/cucumber.rake'
-    - 'spec/helpers/barnardos/checkbox_helper_spec.rb'
-    - 'spec/helpers/barnardos/form_helpers_spec.rb'
-    - 'spec/helpers/barnardos/radio_helpers_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
