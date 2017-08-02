@@ -43,7 +43,7 @@ RSpec.describe ResearchSession, type: :model do
         let(:status) { 'age' }
         it 'raises an error' do
           expect { session.has_reached_step?('invalid-state') }.to \
-              raise_error(KeyError, /not found/)
+            raise_error(KeyError, /not found/)
         end
       end
       context 'we are at the first stage' do

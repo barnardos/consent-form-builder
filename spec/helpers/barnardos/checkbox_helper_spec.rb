@@ -55,11 +55,11 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
 
       it 'renders a checbox input with the name and value and a constructed id' do
         expect(rendered).to have_tag(
-                              'input.checkbox-group__input',
-                              with: {
-                                type: 'checkbox', name: 'age', value: 'one', id: 'age-one'
-                              }
-                            )
+          'input.checkbox-group__input',
+          with: {
+            type: 'checkbox', name: 'age', value: 'one', id: 'age-one'
+          }
+        )
       end
 
       it 'labels the input' do

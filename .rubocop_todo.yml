@@ -31,13 +31,6 @@ Layout/AlignHash:
   Exclude:
     - 'app/models/research_session.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - 'spec/helpers/barnardos/checkbox_helper_spec.rb'
-    - 'spec/helpers/barnardos/radio_helpers_spec.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLines:
@@ -86,16 +79,6 @@ Layout/EmptyLinesAroundModuleBody:
   Exclude:
     - 'app/helpers/barnardos/action_view/form_helpers.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
-# SupportedStyles: consistent, special_for_inner_method_call, special_for_inner_method_call_in_parentheses
-Layout/FirstParameterIndentation:
-  Exclude:
-    - 'spec/helpers/barnardos/checkbox_helper_spec.rb'
-    - 'spec/helpers/barnardos/radio_helpers_spec.rb'
-    - 'spec/models/research_session_spec.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
@@ -110,12 +93,6 @@ Layout/IndentationWidth:
 Layout/MultilineMethodCallBraceLayout:
   Exclude:
     - 'spec/helpers/barnardos/form_helpers_spec.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Layout/SpaceBeforeComma:
-  Exclude:
-    - 'app/helpers/barnardos/action_view/form_helpers.rb'
 
 # Offense count: 10
 # Cop supports --auto-correct.

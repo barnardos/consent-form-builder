@@ -10,7 +10,7 @@ module Barnardos
       #   </label>
       #   <input id="participant_name" class="textfield__input" name="participant_name" type="text">
       # </div>
-      def labelled_text_field_tag(name, label, value = nil , error: nil,
+      def labelled_text_field_tag(name, label, value = nil, error: nil,
                                   text_options: {}, label_options: {})
         content_tag :div, class: "textfield js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
@@ -33,7 +33,7 @@ module Barnardos
       #   </label>
       #   <textarea id="participant_description" class="textarea__input" name="participant_description"></textarea>
       # </div>
-      def labelled_text_area_tag(name, label, value = nil , error: nil,
+      def labelled_text_area_tag(name, label, value = nil, error: nil,
                                  text_options: {}, label_options: {})
         content_tag :div, class: "textarea js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
