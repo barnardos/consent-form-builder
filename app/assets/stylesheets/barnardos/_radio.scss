@@ -3,17 +3,34 @@ $inner-ring: 6px;
 $border-ring: $inner-ring + $ring-size;
 $outer-ring: $inner-ring + ($ring-size * 3);
 
+.radio-group {
+  margin: $gutter 0 0 (-$gutter / 2) ;
+  padding: $gutter / 2;
+}
+
+.radio-group.has-error {
+  background: $error-background;
+}
+
 .radio-group__legend {
   font-size: 23px;
   font-weight: normal;
   line-height: 24px;
   margin: ($gutter / 2) 0;
   color: $black;
+  float: left;
+  width: 100%;
 }
 
 .radio-group__choice {
   position: relative;
   margin: 8px 0;
+
+  &::before {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 .radio-group__input {
@@ -58,4 +75,9 @@ $outer-ring: $inner-ring + ($ring-size * 3);
   background: $grey-medium;
   box-shadow: 0 0 0 1px $grey-medium;
   cursor: not-allowed;
+}
+
+.radio-group__error {
+  color: $error-colour;
+  margin: ($gutter / 2);
 }
