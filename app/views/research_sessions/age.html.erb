@@ -1,7 +1,7 @@
 <%= render 'back_link' %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h2 class="heading-medium">Age</h2>
+  <h1 class="visually-hidden">Age</h1>
 
   <%= form_for @research_session, url: wizard_path do %>
     <%=
@@ -9,7 +9,7 @@
                              'What is the age of the research participant?',
                              Age::NAME_VALUES,
                              @research_session.age,
-                             legend_options: { class: 'visually-hidden' }
+                             legend_options: { class: 'subtitle-large' }
     %>
 
     <%= render 'ok_cancel' %>

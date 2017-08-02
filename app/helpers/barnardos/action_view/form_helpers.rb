@@ -14,7 +14,7 @@ module Barnardos
                                   text_options: {}, label_options: {})
         content_tag :div, class: "textfield js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
-            label_tag(name, class: 'textfield__label') do
+            label_tag(name, class: "textfield__label #{label_options[:class]}") do
               concat(label)
               concat(content_tag(:span, label_options[:hint], class: 'textfield__hint')) if label_options[:hint]
             end
@@ -37,7 +37,7 @@ module Barnardos
                                  text_options: {}, label_options: {})
         content_tag :div, class: "textarea js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
           concat(
-            label_tag(name, class: 'textarea__label') do
+            label_tag(name, class: "textarea__label  #{label_options[:class]}") do
               concat(label)
               concat(content_tag(:span, label_options[:hint], class: 'textarea__hint')) if label_options[:hint]
             end
@@ -73,7 +73,7 @@ module Barnardos
 
             # Render a legend for the fieldset, with an optional hint and optional class
             concat(
-              content_tag(:legend, class: "radio-group__legend #{legend_options[:class] if legend_options[:class]}") do
+              content_tag(:legend, class: "radio-group__legend #{legend_options[:class]}") do
                 concat(legend)
                 concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint')) if legend_options[:hint]
               end
@@ -101,7 +101,7 @@ module Barnardos
 
             # Render a legend for the fieldset, with an optional hint and optional class
             concat(
-              content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class] if legend_options[:class]}") do
+              content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class]}") do
                 concat(legend)
                 concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint')) if legend_options[:hint]
               end
