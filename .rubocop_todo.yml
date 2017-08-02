@@ -31,14 +31,6 @@ Layout/AlignHash:
   Exclude:
     - 'app/models/research_session.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentOneStep, IndentationWidth.
-# SupportedStyles: case, end
-Layout/CaseIndentation:
-  Exclude:
-    - 'node_modules/rails-erb-loader/erb_transformer.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Layout/ClosingParenthesisIndentation:
@@ -110,12 +102,6 @@ Layout/FirstParameterIndentation:
 Layout/IndentationWidth:
   Exclude:
     - 'lib/tasks/cucumber.rake'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/LeadingCommentSpace:
-  Exclude:
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -199,14 +185,6 @@ Lint/AmbiguousOperator:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleAlignWith, SupportedStylesAlignWith, AutoCorrect.
-# SupportedStylesAlignWith: keyword, variable, start_of_line
-Lint/EndAlignment:
-  Exclude:
-    - 'node_modules/rails-erb-loader/erb_transformer.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
 Lint/UnusedMethodArgument:
   Exclude:
@@ -236,11 +214,6 @@ Metrics/MethodLength:
 # Configuration parameters: CountKeywordArgs.
 Metrics/ParameterLists:
   Max: 6
-
-# Offense count: 1
-Security/Eval:
-  Exclude:
-    - 'node_modules/rails-erb-loader/erb_transformer.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -278,12 +251,6 @@ Style/EmptyMethod:
 # SupportedStyles: when_needed, always, never
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-# Offense count: 2
-# Configuration parameters: AllowedVariables.
-Style/GlobalVars:
-  Exclude:
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
 
 # Offense count: 21
 # Cop supports --auto-correct.
@@ -357,18 +324,7 @@ Style/StringLiterals:
     - 'db/schema.rb'
     - 'features/support/env.rb'
     - 'lib/tasks/cucumber.rake'
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
     - 'spec/rails_helper.rb'
-
-# Offense count: 7
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiteralsInInterpolation:
-  Exclude:
-    - 'bin/webpack-dev-server'
-    - 'bin/yarn'
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
 
 # Offense count: 2
 Style/StructInheritance:
