@@ -18,13 +18,13 @@ RSpec.describe ResearchSession, type: :model do
       before { session.age = age }
       context 'is too young' do
         let(:age) { 'under12' }
-        it { is_expected.not_to be_able_to_consent}
-        it { is_expected.to be_unable_to_consent}
+        it { is_expected.not_to be_able_to_consent }
+        it { is_expected.to be_unable_to_consent }
       end
       context 'is old enough' do
         let(:age) { 'over18' }
-        it { is_expected.to be_able_to_consent}
-        it { is_expected.not_to be_unable_to_consent}
+        it { is_expected.to be_able_to_consent }
+        it { is_expected.not_to be_unable_to_consent }
       end
     end
 

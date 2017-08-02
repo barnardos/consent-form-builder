@@ -102,18 +102,13 @@ Layout/SpaceInLambdaLiteral:
   Exclude:
     - 'app/models/research_session.rb'
 
-# Offense count: 12
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SupportedStylesForEmptyBraces, SpaceBeforeBlockParameters.
 # SupportedStyles: space, no_space
 # SupportedStylesForEmptyBraces: space, no_space
 Layout/SpaceInsideBlockBraces:
   Exclude:
-    - 'app/models/research_session.rb'
     - 'lib/tasks/cucumber.rake'
-    - 'spec/helpers/barnardos/checkbox_helper_spec.rb'
-    - 'spec/helpers/barnardos/text_area_helper_spec.rb'
-    - 'spec/models/research_session_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.

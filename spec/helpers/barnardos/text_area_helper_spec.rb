@@ -58,7 +58,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       context 'with a hint' do
-        let(:label_options) {{ :hint => 'Something helpful' }}
+        let(:label_options) { { :hint => 'Something helpful' } }
 
         it 'renders a hint span in the label' do
           expect(rendered).to have_tag('label.textarea__label > span.textarea__hint', text: 'Something helpful')

@@ -18,7 +18,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     # </fieldset>
     let(:name)            { :age }
     let(:legend)          { 'My legend' }
-    let(:legend_options)  {{}}
+    let(:legend_options)  { {} }
     let(:values)          { ['one'] }
 
     let(:selection_options) do
