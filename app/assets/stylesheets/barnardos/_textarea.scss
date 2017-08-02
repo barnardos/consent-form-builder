@@ -2,8 +2,8 @@
 @import "vars";
 
 .textarea {
-  margin: $gutter 0 0 (-$gutter / 2);
-  padding: $gutter / 2;
+  margin: $gutter 0 $gutter (-$gutter / 2);
+  padding: 0 $gutter / 2;
   position: relative;
 }
 

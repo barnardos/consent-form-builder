@@ -1,0 +1,25 @@
+.fieldset {
+  margin: $gutter 0;
+}
+
+.fieldset__legend {
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 32px;
+  margin: 12px 0;
+  color: $black;
+  float:left;
+  width: 100%;
+
+  @media (min-width: $tablet) {
+    font-size: 36px;
+    line-height: 48px;
+    color: $black;
+  }
+}
+
+.fieldset__hint {
+  color: $secondary-text;
+  display: block;
+  font-size: 18px;
+}
