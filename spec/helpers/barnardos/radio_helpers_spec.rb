@@ -51,15 +51,15 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
 
       it 'renders an radio input with the name and value and a constructed id' do
         expect(rendered).to have_tag(
-                              'input.radio-group__input',
-                              with: {
-                                type: 'radio', name: 'age', value: 'under12', id: 'age-under12'
-                              }
-                            )
+          'input.radio-group__input',
+          with: {
+            type: 'radio', name: 'age', value: 'under12', id: 'age-under12'
+          }
+        )
       end
 
       it 'labels the input' do
-        expect(rendered).to have_tag('label.radio-group__label', with: {for: 'age-under12'})
+        expect(rendered).to have_tag('label.radio-group__label', with: { for: 'age-under12' })
       end
     end
 
@@ -92,7 +92,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     end
 
     context 'a legend with optional class specified' do
-      let(:legend_options) { {:class => 'test'} }
+      let(:legend_options) { { :class => 'test' } }
 
       it 'includes an optional class in the legend' do
         expect(rendered).to have_tag('legend.radio-group__legend.test', text: 'My legend')
@@ -100,7 +100,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     end
 
     context 'a legend with an optional hint specified' do
-      let(:legend_options) { {:hint => 'A hint'} }
+      let(:legend_options) { { :hint => 'A hint' } }
 
       it 'includes an optional hint in the legend' do
         expect(rendered).to have_tag('legend.radio-group__legend span.radio-group__hint', text: 'A hint')

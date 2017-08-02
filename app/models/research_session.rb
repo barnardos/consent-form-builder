@@ -53,6 +53,6 @@ private
   ##
   # A hash of step names as symbols to numeric indices, with age: 0, name: 1 etc
   def step_indices
-    @@step_indices ||= step_keys.each_with_index.map {|step, index| [step, index]}.to_h
+    @@step_indices ||= step_keys.each_with_index.map { |step, index| [step, index] }.to_h
   end
 end

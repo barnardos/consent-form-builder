@@ -5,5 +5,10 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
+if %w[development test].include? Rails.env
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+end
+
 task(:default).clear
-task default: [:spec, :cucumber, 'npm:lint', 'npm:test:unit']
+task default: [:spec, :cucumber, :rubocop, 'npm:lint', 'npm:test:unit']

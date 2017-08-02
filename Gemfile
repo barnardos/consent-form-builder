@@ -17,6 +17,7 @@ gem 'wicked', '~> 1.3.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.0'
+  gem 'rubocop', '~> 0.49.1'
 end
 
 group :test do

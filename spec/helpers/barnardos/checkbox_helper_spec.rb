@@ -18,7 +18,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     # </fieldset>
     let(:name)            { :age }
     let(:legend)          { 'My legend' }
-    let(:legend_options)  {{}}
+    let(:legend_options)  { {} }
     let(:values)          { ['one'] }
 
     let(:selection_options) do
@@ -55,15 +55,15 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
 
       it 'renders a checbox input with the name and value and a constructed id' do
         expect(rendered).to have_tag(
-                              'input.checkbox-group__input',
-                              with: {
-                                type: 'checkbox', name: 'age', value: 'one', id: 'age-one'
-                              }
-                            )
+          'input.checkbox-group__input',
+          with: {
+            type: 'checkbox', name: 'age', value: 'one', id: 'age-one'
+          }
+        )
       end
 
       it 'labels the input' do
-        expect(rendered).to have_tag('label.checkbox-group__label', with: {for: 'age-one'})
+        expect(rendered).to have_tag('label.checkbox-group__label', with: { for: 'age-one' })
       end
 
       it 'renders a legend with the value specified' do

@@ -18,13 +18,13 @@ RSpec.describe ResearchSession, type: :model do
       before { session.age = age }
       context 'is too young' do
         let(:age) { 'under12' }
-        it { is_expected.not_to be_able_to_consent}
-        it { is_expected.to be_unable_to_consent}
+        it { is_expected.not_to be_able_to_consent }
+        it { is_expected.to be_unable_to_consent }
       end
       context 'is old enough' do
         let(:age) { 'over18' }
-        it { is_expected.to be_able_to_consent}
-        it { is_expected.not_to be_unable_to_consent}
+        it { is_expected.to be_able_to_consent }
+        it { is_expected.not_to be_unable_to_consent }
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe ResearchSession, type: :model do
         let(:status) { 'age' }
         it 'raises an error' do
           expect { session.has_reached_step?('invalid-state') }.to \
-              raise_error(KeyError, /not found/)
+            raise_error(KeyError, /not found/)
         end
       end
       context 'we are at the first stage' do
