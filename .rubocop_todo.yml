@@ -194,11 +194,6 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 20
 
-# Offense count: 27
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/BlockLength:
-  Max: 226
-
 # Offense count: 134
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https

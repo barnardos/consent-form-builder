@@ -9,3 +9,10 @@ AllCops:
   Exclude:
     - db/schema.rb
     - node_modules/**/*
+    - bin/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - features/step_definitions/**/*
+    - lib/tasks/**/*
