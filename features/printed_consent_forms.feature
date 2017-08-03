@@ -10,7 +10,7 @@ Feature:
     And I should see the formatted focus of the research along with why
     And I should see an age-specific text block for each research methodology selected
     And I should see a humanised indication of recording methods used
-    And I should see which areas have been affected by what I chose
+    And I should see links back to edit things that I provided
     When I click continue
     Then I should see the age-appropriate consent form preview
     And I should see a way to print it

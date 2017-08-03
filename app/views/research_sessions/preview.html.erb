@@ -9,7 +9,9 @@
 <section>
   <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
-  <%= simple_format(@research_session.focus, class: 'highlight') %>
+  <%= edit_link_for(:focus) do %>
+    <%= simple_format(@research_session.focus, class: 'highlight') %>
+  <% end %>
 
   <p>
     It is important that we test the current and future tools and services that
@@ -20,24 +22,27 @@
 <section>
   <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
   <p>
-    <%= dynamic(@research_session.researcher_name) %> is the researcher who will be leading the session.
-    <% if dynamic(@research_session.researcher_other_name) %>
-      <%= dynamic(@research_session.researcher_name) %>ʼs colleague, <%= dynamic(@research_session.researcher_other_name) %>,
-        may join <%= dynamic(@research_session.researcher_name) %> sometimes to help.
+    <%= edit_link_for(:researcher_name) %> is the researcher who will be leading the session.
+    <% if @research_session.researcher_other_name %>
+      <%= edit_link_for(:researcher_name) %>ʼs colleague,
+      <%= edit_link_for(:researcher_other_name) %>,
+      may join <%= edit_link_for(:researcher_name) %> sometimes to help.
     <% end %>
   </p>
 </section>
 <section>
   <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
-  <%= @research_session.methodology_list %>
+  <%= edit_link_for(:methodologies) do %>
+    <%= @research_session.methodology_list %>
+  <% end %>
 
   <p>
     With your permission we will record the session using
-    <%= dynamic(@research_session.recording_methods_list) %>. Recording the session helps the
-    researcher and other research team members trying to improve the service, as
-    it allows them to review the most useful parts of the session after it has
-    finished.
+    <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
+    Recording the session helps the researcher and other research team members
+    trying to improve the service, asit allows them to review the most useful
+    parts of the session after it hasfinished.
   </p>
 </section>
 <section>
@@ -55,11 +60,12 @@
 </section>
 <section>
   <h3 class="subtitle-small" id="more">Where can I find out more?</h3>
-  <p><%= dynamic(@research_session.researcher_name) %> will be able to answer further questions about the
-    research. <%= dynamic(@research_session.researcher_name) %> can be contacted by email at
-    <%= dynamic(@research_session.researcher_email) %> or by telephone on <%= dynamic(@research_session.researcher_phone) %>.</p>
-  <p>If you have any questions or concerns about the way in which this research has ben conducted then please contact
-    Joelle Bradly at <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
+  <p><%= edit_link_for(:researcher_name) %> will be able to answer further questions about the
+    research. <%= edit_link_for(:researcher_name) %> can be contacted by email at
+    <%= edit_link_for(:researcher_email) %> or by telephone on <%= edit_link_for(:researcher_phone) %>.</p>
+  <p>If you have any questions or concerns about the way in which this research has
+    been conducted then please contactJoelle Bradly at
+    <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
 </section>
 <section>
   <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>

@@ -22,9 +22,10 @@ And(/^I should see a humanised indication of recording methods used$/) do
   expect(page).to have_content('audio, video, and written notes')
 end
 
-And(/^I should see which areas have been affected by what I chose$/) do
-  some = 5..50
-  expect(page).to have_tag('.highlight', count: some)
+And(/^I should see links back to edit things that I provided$/) do
+  ResearchSession::Steps.instance.step_keys.each do |step|
+    expect(page).to have_tag('a', href: question_path(step))
+  end
 end
 
 When(/^I click continue$/) do
