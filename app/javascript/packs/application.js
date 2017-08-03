@@ -10,3 +10,5 @@
 const HighlightControl = require('../components/highlightcontrol')
 
 HighlightControl.init()
+
+require('../vendor/hotjar')
