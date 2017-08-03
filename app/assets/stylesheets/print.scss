@@ -1,6 +1,9 @@
-.button,
-.print-link {
-  display: none;
+body {
+  .button,
+  .print-link,
+  .screen-only {
+    display: none;
+  }
 }
 
 section,
