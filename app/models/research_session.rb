@@ -9,29 +9,29 @@ class ResearchSession < ApplicationRecord
   }]
 
   validates :age, inclusion: { in: Age.allowed_values },
-            if: -> (session) { session.has_reached_step?(:age) }
+            if: -> (session) { session.reached_step?(:age) }
   validates :methodologies,
             has_at_least_one: { of: Methodologies.allowed_values },
-            if: -> (session) { session.has_reached_step?(:methodologies) }
+            if: -> (session) { session.reached_step?(:methodologies) }
   validates :recording_methods,
             has_at_least_one: { of: RecordingMethods.allowed_values },
-            if: -> (session) { session.has_reached_step?(:recording) }
+            if: -> (session) { session.reached_step?(:recording) }
   validates :focus, presence: true,
-            if: -> (session) { session.has_reached_step?(:focus) }
+            if: -> (session) { session.reached_step?(:focus) }
   validates :researcher_name, presence: true,
-            if: -> (session) { session.has_reached_step?(:researcher) }
+            if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_phone, presence: true,
-            if: -> (session) { session.has_reached_step?(:researcher) }
+            if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, presence: true,
-            if: -> (session) { session.has_reached_step?(:researcher) }
+            if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, format: /@/,
-    if: -> (session) { session.researcher_email.present? && session.has_reached_step?(:researcher) }
+    if: -> (session) { session.researcher_email.present? && session.reached_step?(:researcher) }
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
-    if: -> (session) { session.incentive && session.has_reached_step?(:incentive) }
+    if: -> (session) { session.incentive && session.reached_step?(:incentive) }
   validates :incentive_value, presence: true,
-    if: -> (session) { session.incentive && session.has_reached_step?(:incentive) }
+    if: -> (session) { session.incentive && session.reached_step?(:incentive) }
 
-  def has_reached_step?(step)
+  def reached_step?(step)
     step = step.to_sym
     return false if status == 'new'
     step_indices.fetch(status.to_sym) >= step_indices.fetch(step)

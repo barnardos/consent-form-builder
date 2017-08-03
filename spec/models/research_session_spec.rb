@@ -28,11 +28,11 @@ RSpec.describe ResearchSession, type: :model do
       end
     end
 
-    describe '#has_reached_step?' do
+    describe '#reached_step?' do
       let(:status) { 'new' }
       before { session.status = status }
 
-      subject { session.has_reached_step?(at_least) }
+      subject { session.reached_step?(at_least) }
 
       context 'no state given beyond default new' do
         let(:at_least) { 'methodologies' }
@@ -42,7 +42,7 @@ RSpec.describe ResearchSession, type: :model do
       context 'invalid state given beyond the first state of new' do
         let(:status) { 'age' }
         it 'raises an error' do
-          expect { session.has_reached_step?('invalid-state') }.to \
+          expect { session.reached_step?('invalid-state') }.to \
             raise_error(KeyError, /not found/)
         end
       end
