@@ -9,9 +9,9 @@ And(/^I should see an age\-specific text block for each research methodology sel
 end
 
 And(/^I should see the formatted focus of the research along with why$/) do
-  expect(page).to have_tag('p.highlight', text: /^Fresnel lenses and the under-5s$/)
-  expect(page).to have_tag('p.highlight br')
-  expect(page).to have_tag('p.highlight', text: "Whereas this becomes its own p\n")
+  expect(page).to have_tag('.editable p', text: /^Fresnel lenses and the under-5s$/)
+  expect(page).to have_tag('.editable p br')
+  expect(page).to have_tag('.editable p', text: "Whereas this becomes its own p\n")
 
   expect(page).to have_content(
     'It is important that we test the current and future tools and services'
