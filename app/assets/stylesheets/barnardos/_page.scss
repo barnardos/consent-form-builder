@@ -1,10 +1,11 @@
 // sass-lint:disable no-ids
-@import "vars";
+@import "barnardos/colours";
+@import "barnardos/vars";
 
 #global-header {
 
   margin: $gutter auto;
-  max-width: $max-width;
+  max-width: $max-container-width;
   width: 100%;
 
   > * {
@@ -31,9 +32,14 @@
   height: $gutter / 2;
 }
 
-#content {
+#main {
   margin: $gutter auto;
-  max-width: $max-width;
   padding: 0 $gutter;
   width: 100%;
+  max-width: $max-container-width;
+}
+
+#content {
+  margin: 0 auto 0 0;
+  max-width: $max-content-width;
 }
