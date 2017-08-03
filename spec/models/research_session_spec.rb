@@ -29,40 +29,11 @@ RSpec.describe ResearchSession, type: :model do
     end
 
     describe '#reached_step?' do
-      let(:status) { 'new' }
-      before { session.status = status }
-
-      subject { session.reached_step?(at_least) }
-
-      context 'no state given beyond default new' do
-        let(:at_least) { 'methodologies' }
-
-        it { is_expected.to be false }
-      end
-      context 'invalid state given beyond the first state of new' do
-        let(:status) { 'age' }
-        it 'raises an error' do
-          expect { session.reached_step?('invalid-state') }.to \
-            raise_error(KeyError, /not found/)
-        end
-      end
-      context 'we are at the first stage' do
-        let(:status)   { 'age' }
-        let(:at_least) { 'methodologies' }
-
-        it { is_expected.to be false }
-      end
-      context 'we have reached the stage we are testing' do
-        let(:status)   { 'methodologies' }
-        let(:at_least) { 'methodologies' }
-
-        it { is_expected.to be true }
-      end
-      context 'we are past the stage we are testing' do
-        let(:status)   { 'incentive' }
-        let(:at_least) { 'methodologies' }
-
-        it { is_expected.to be true }
+      it 'passes through to Steps' do
+        steps_spy = spy('Steps')
+        allow(ResearchSession::Steps).to receive(:instance).and_return(steps_spy)
+        session.reached_step?(:methodologies)
+        expect(steps_spy).to have_received(:reached_step?)
       end
     end
 

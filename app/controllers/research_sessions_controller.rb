@@ -2,7 +2,7 @@ class ResearchSessionsController < ApplicationController
   helper Barnardos::ActionView::FormHelpers
 
   include Wicked::Wizard
-  steps *ResearchSession::STEP_PARAMS.keys
+  steps *ResearchSession::Steps::PARAMS.keys
 
   rescue_from Wicked::Wizard::InvalidStepError do
     render status: 404,
@@ -55,7 +55,7 @@ private
   end
 
   def question_params
-    params.permit(ResearchSession::STEP_PARAMS[step])
+    params.permit(ResearchSession::Steps::PARAMS[step])
   end
 end
 
