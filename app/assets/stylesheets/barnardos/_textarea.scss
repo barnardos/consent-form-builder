@@ -1,8 +1,9 @@
-@import "colours";
-@import "vars";
+@import "barnardos/colours";
+@import "barnardos/vars";
 
 .textarea {
   margin: $gutter 0 $gutter (-$gutter / 2);
+  max-width: $max-form-control-width;
   padding: 0 $gutter / 2;
   position: relative;
 }

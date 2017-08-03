@@ -1,10 +1,14 @@
+@import "barnardos/colours";
+@import "barnardos/vars";
+
 $ring-size: 2px;
 $inner-ring: 6px;
 $border-ring: $inner-ring + $ring-size;
 $outer-ring: $inner-ring + ($ring-size * 3);
 
 .checkbox-group {
-  margin: $gutter 0 0 (-$gutter / 2) ;
+  margin: $gutter 0 0 (-$gutter / 2);
+  max-width: $max-form-control-width;
   padding: $gutter / 2;
 }
 
