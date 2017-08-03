@@ -8,18 +8,29 @@ module Barnardos
       #     What is the name of the research participant?
       #     <span class="textfield__hint">Full name</span>
       #   </label>
-      #   <input id="participant_name" class="textfield__input" name="participant_name" type="text">
+      #   <input id="participant_name" class="textfield__input"
+      #          name="participant_name" type="text">
       # </div>
       def labelled_text_field_tag(name, label, value = nil, error: nil,
                                   text_options: {}, label_options: {})
-        content_tag :div, class: "textfield js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
+        content_tag :div,
+                    class: "textfield js-highlight-control #{'has-error' if error}",
+                    id: "#{name}-wrapper" do
           concat(
             label_tag(name, class: "textfield__label #{label_options[:class]}") do
               concat(label)
-              concat(content_tag(:span, label_options[:hint], class: 'textfield__hint')) if label_options[:hint]
+              if label_options[:hint]
+                concat(content_tag(:span, label_options[:hint], class: 'textfield__hint'))
+              end
             end
           )
-          concat(text_field_tag(name, value, text_options.reverse_merge(class: 'textfield__input js-highlight-control__input')))
+          concat(
+            text_field_tag(
+              name,
+              value,
+              text_options.reverse_merge(class: 'textfield__input js-highlight-control__input')
+            )
+          )
           concat(content_tag(:div, error, class: 'textfield__error')) if error
         end
       end
@@ -31,18 +42,24 @@ module Barnardos
       #     Describe the resaerch participant?
       #     <span class="textarea__hint">Height, experience, mood</span>
       #   </label>
-      #   <textarea id="participant_description" class="textarea__input" name="participant_description"></textarea>
+      #   <textarea id="participant_description"
+      #             class="textarea__input" name="participant_description"></textarea>
       # </div>
       def labelled_text_area_tag(name, label, value = nil, error: nil,
                                  text_options: {}, label_options: {})
-        content_tag :div, class: "textarea js-highlight-control #{'has-error' if error}", id: "#{name}-wrapper" do
+        content_tag :div,
+                    class: "textarea js-highlight-control #{'has-error' if error}",
+                    id: "#{name}-wrapper" do
           concat(
             label_tag(name, class: "textarea__label  #{label_options[:class]}") do
               concat(label)
-              concat(content_tag(:span, label_options[:hint], class: 'textarea__hint')) if label_options[:hint]
+              if label_options[:hint]
+                concat(content_tag(:span, label_options[:hint], class: 'textarea__hint'))
+              end
             end
           )
-          concat(text_area_tag(name, value, class: 'textarea__input js-highlight-control__input', rows: '4'))
+          concat(text_area_tag(name, value, class: 'textarea__input js-highlight-control__input',
+                                            rows: '4'))
           concat(content_tag(:div, error, class: 'textarea__error')) if error
         end
       end
@@ -51,7 +68,8 @@ module Barnardos
       # <!-- Example HTML output for:
       #    radio_group_vertical :age, 'This is a cool legend', [['under12', 'Under 12 years old']]
       #    or
-      #    radio_group_vertical :age, 'No one will see this', {'under12' => 'Under 12 years old'}, legend_options: { class: 'visually-hidden' } -->
+      #    radio_group_vertical :age, 'No one will see this',
+      #     {'under12' => 'Under 12 years old'}, legend_options: { class: 'visually-hidden' } -->
       #
       # Legend options include class and hint
       #
@@ -62,11 +80,15 @@ module Barnardos
       #   </legend>
       #
       #   <div class="radio-group__choice">
-      #     <input class="radio-group__input" id="age-under12" type="radio" name="age" value="under12">
+      #     <input class="radio-group__input" id="age-under12" type="radio" name="age"
+      #       value="under12">
       #     <label class="radio-group__label" for="age-under12">Under 12 years old</label>
       #   </div>
       # </fieldset>
-      def radio_group_vertical(name, legend, selection_list, value = nil, error: nil, legend_options: {})
+      def radio_group_vertical(
+        name, legend, selection_list,
+        value = nil, error: nil, legend_options: {}
+      )
         content_tag :fieldset, class: "radio-group radio-group__vertical #{'has-error' if error}" do
           # Only render markup if there are options to show
           if selection_list.present?
@@ -75,7 +97,9 @@ module Barnardos
             concat(
               content_tag(:legend, class: "radio-group__legend #{legend_options[:class]}") do
                 concat(legend)
-                concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint')) if legend_options[:hint]
+                if legend_options[:hint]
+                  concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint'))
+                end
               end
             )
 
@@ -85,8 +109,18 @@ module Barnardos
               checked = value.eql?(selection_item_value)
               concat(
                 content_tag(:div, class: 'radio-group__choice') do
-                  concat(radio_button_tag(name, selection_item_value, checked, class: 'radio-group__input', id: id))
-                  concat(label_tag(name, selection_item_text, class: 'radio-group__label', for: id))
+                  concat(
+                    radio_button_tag(
+                      name,
+                      selection_item_value,
+                      checked,
+                      class: 'radio-group__input',
+                      id: id
+                    )
+                  )
+                  concat(
+                    label_tag(name, selection_item_text, class: 'radio-group__label', for: id)
+                  )
                 end
               )
             end
@@ -94,8 +128,12 @@ module Barnardos
         end
       end
 
-      def checkbox_group_vertical(name, legend, selection_list, values = [], error: nil, legend_options: {})
-        content_tag :fieldset, class: "checkbox-group checkbox-group__vertical #{'has-error' if error}" do
+      def checkbox_group_vertical(name, legend, selection_list, values = [],
+                                  error: nil, legend_options: {})
+        content_tag(
+          :fieldset,
+          class: "checkbox-group checkbox-group__vertical #{'has-error' if error}"
+        ) do
           # Only render markup if there are options to show
           if selection_list.present?
 
@@ -103,7 +141,9 @@ module Barnardos
             concat(
               content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class]}") do
                 concat(legend)
-                concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint')) if legend_options[:hint]
+                if legend_options[:hint]
+                  concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint'))
+                end
               end
             )
 
@@ -113,8 +153,15 @@ module Barnardos
               checked = values&.include? selection_item_value
               concat(
                 content_tag(:div, class: 'checkbox-group__choice') do
-                  concat(check_box_tag(name, selection_item_value, checked, class: 'checkbox-group__input', id: id))
-                  concat(label_tag(name, selection_item_text, class: 'checkbox-group__label', for: id))
+                  concat(
+                    check_box_tag(
+                      name, selection_item_value,
+                      checked, class: 'checkbox-group__input', id: id
+                    )
+                  )
+                  concat(
+                    label_tag(name, selection_item_text, class: 'checkbox-group__label', for: id)
+                  )
                 end
               )
             end

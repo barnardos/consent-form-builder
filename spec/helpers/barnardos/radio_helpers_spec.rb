@@ -12,7 +12,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     #   </legend>
     #
     #   <div class="radio-group__choice">
-    #     <input class="radio-group__input" id="age-under12" type="radio" name="age" value="under12">
+    #     <input class="radio-group__input" id="age-under12" type="radio"
+    #         name="age" value="under12">
     #     <label class="radio-group__label" for="age-under12">Under 12 years old</label>
     #   </div>
     # </fieldset>
@@ -103,7 +104,9 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       let(:legend_options) { { :hint => 'A hint' } }
 
       it 'includes an optional hint in the legend' do
-        expect(rendered).to have_tag('legend.radio-group__legend span.radio-group__hint', text: 'A hint')
+        expect(rendered).to have_tag(
+          'legend.radio-group__legend span.radio-group__hint', text: 'A hint'
+        )
       end
     end
 

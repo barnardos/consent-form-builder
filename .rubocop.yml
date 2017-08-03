@@ -12,8 +12,26 @@ AllCops:
     - node_modules/**/*
     - bin/**/*
 
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - config/environments/**/*
+    - config/initializers/**/*
+    - db/seeds.rb
+    - lib/tasks/cucumber.rake
+    - features/support/env.rb
+    - script/cucumber
+
 Metrics/BlockLength:
+  Max: 35
   Exclude:
     - spec/**/*
     - features/step_definitions/**/*
     - lib/tasks/**/*
+
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/ModuleLength:
+  Max: 200
+
