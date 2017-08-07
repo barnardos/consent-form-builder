@@ -106,11 +106,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     end
 
     context 'a legend with an optional hint specified' do
-      let(:legend_options) do
-        {
-          :hint => 'A hint'
-        }
-      end
+      let(:legend_options) { { :hint => 'A hint' } }
 
       it 'includes an optional hint in the legend' do
         expect(rendered).to have_tag(
@@ -132,17 +128,31 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     end
 
     context 'multiple field values are supplied' do
-      let(:values) { ['one', 'three'] }
+      context 'as strings' do
+        let(:values) { ['one', 'three'] }
 
-      it 'marks multiple checkboxes for multiple values' do
-        expect(rendered).to have_tag('#age-one[checked="checked"]', checked: true)
-        expect(rendered).to have_tag('#age-three[checked="checked"]', checked: true)
+        it 'marks multiple checkboxes for multiple values' do
+          expect(rendered).to have_tag('#age-one[checked="checked"]', checked: true)
+          expect(rendered).to have_tag('#age-three[checked="checked"]', checked: true)
+        end
+
+        it 'does not check inputs that have not been selected' do
+          expect(rendered).to have_tag('#age-two:not([checked])')
+        end
       end
 
-      it 'does not check inputs that have not been selected' do
-        expect(rendered).to have_tag('#age-two:not([checked])')
-      end
+      context 'as symbols' do
+        let(:values) { [:one, :three] }
 
+        it 'marks multiple checkboxes for multiple values' do
+          expect(rendered).to have_tag('#age-one[checked="checked"]', checked: true)
+          expect(rendered).to have_tag('#age-three[checked="checked"]', checked: true)
+        end
+
+        it 'does not check inputs that have not been selected' do
+          expect(rendered).to have_tag('#age-two:not([checked])')
+        end
+      end
     end
   end
 end
