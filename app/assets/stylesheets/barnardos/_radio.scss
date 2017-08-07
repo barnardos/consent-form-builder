@@ -81,6 +81,15 @@ $outer-ring: $inner-ring + ($ring-size * 3);
   cursor: not-allowed;
 }
 
+.radio-group__hint {
+  color: $secondary-text;
+  display: block;
+  font-family: $font-family;
+  font-size: $base-font-size;
+  line-height: 24px;
+  margin-top: $gutter / 2;
+}
+
 .radio-group__error {
   color: $error-colour;
   margin: ($gutter / 2);

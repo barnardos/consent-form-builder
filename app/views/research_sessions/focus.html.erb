@@ -1,17 +1,17 @@
 <%= render 'back_link' %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="visually-hidden">Research Focus</h2>
+  <h1 class="visually-hidden">Research Focus</h1>
   <%= form_for @research_session, url: wizard_path do %>
       <%= labelled_text_area_tag(
             :focus,
             'What is the focus of your research project?',
             @research_session.focus,
             label_options: {
-                hint: 'Use simple language to explain what you are researching '\
-                      'and why you are doing it'
-            },
-            label_options: { class: 'subtitle-large' }
+              hint: 'Use simple language to explain what you are researching '\
+                    'and why you are doing it',
+              class: 'subtitle-large'
+            }
           )
       %>
 
