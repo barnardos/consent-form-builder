@@ -106,11 +106,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     end
 
     context 'a legend with an optional hint specified' do
-      let(:legend_options) do
-        {
-          :hint => 'A hint'
-        }
-      end
+      let(:legend_options) { { :hint => 'A hint' } }
 
       it 'includes an optional hint in the legend' do
         expect(rendered).to have_tag(
