@@ -49,6 +49,8 @@
   color: $secondary-text;
   display: block;
   margin-top: $gutter / 2;
+  font-size: $base-font-size;
+  line-height: 24px;
 }
 
 .textfield__error {
