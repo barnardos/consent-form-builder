@@ -29,9 +29,11 @@ class HighlightControl {
   }
 
   static init (container = document) {
-    container.querySelectorAll(`.${wrapperClass}`).forEach((element) => {
-      new HighlightControl(element)
-    })
+    Array
+      .from(container.querySelectorAll(`.${wrapperClass}`))
+      .forEach((element) => {
+        new HighlightControl(element)
+      })
   }
 }
 
