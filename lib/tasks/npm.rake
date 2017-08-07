@@ -1,4 +1,5 @@
 require 'json'
+require 'English'
 
 # Wrap the npm commands in package.json/scripts
 # in their own namespaced tasks
@@ -7,6 +8,11 @@ namespace :npm do
 
   package_json['scripts'].each do |name, _command|
     desc "#{name} from package.json/scripts"
-    task(name) { puts `npm run #{name}` }
+    task(name) do
+      unless system("npm run #{name}")
+        STDERR.puts "npm run #{name} failed with exit code #{$CHILD_STATUS.exitstatus}"
+        exit($CHILD_STATUS.exitstatus)
+      end
+    end
   end
 end
