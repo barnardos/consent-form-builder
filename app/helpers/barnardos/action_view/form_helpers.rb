@@ -130,6 +130,8 @@ module Barnardos
 
       def checkbox_group_vertical(name, legend, selection_list, values = [],
                                   error: nil, legend_options: {})
+        values = values&.map(&:to_s)
+
         content_tag(
           :fieldset,
           class: "checkbox-group checkbox-group__vertical #{'has-error' if error}"
@@ -150,7 +152,7 @@ module Barnardos
             # Render checkbox options
             selection_list.each do |selection_item_value, selection_item_text|
               id = "#{name}-#{selection_item_value}"
-              checked = values&.include? selection_item_value
+              checked = values&.include?(selection_item_value.to_s)
               concat(
                 content_tag(:div, class: 'checkbox-group__choice') do
                   concat(
