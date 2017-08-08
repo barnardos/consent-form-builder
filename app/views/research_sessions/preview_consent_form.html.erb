@@ -26,13 +26,20 @@
   </li>
 </ul>
 
-<div class="checkbox-group__choice">
-  <input disabled type="checkbox"
-         id="__print_only_empty_checkbox"
-         class="checkbox-group__input">
-    <label class="checkbox-group__label" for="__print_only_empty_checkbox">
-      I agree to my <%='childʼs' if @research_session.unable_to_consent? %>
-      participation in this research and understand that
-      my childʼs data will be used as explained above.
-    </label>
+<p class="highlight super-text">
+  I agree to my <%= 'childʼs' if @research_session.unable_to_consent? %>
+  participation in this research and understand that
+  my childʼs data will be used as explained above.
+</p>
+
+<%# Note: no whitespace between divs important here %>
+<div class="writing-field name">
+  <label for="name">Name</label>
+  <input disabled name="name" class="space-for-writing">
+</div><div class="writing-field signature">
+  <label for="signature">Signature</label>
+  <input disabled name="signature" class="space-for-writing">
+</div><div class="writing-field date">
+  <label for="date">Date</label>
+  <input disabled name="date" class="space-for-writing">
 </div>
