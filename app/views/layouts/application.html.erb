@@ -25,6 +25,10 @@
     <%= image_tag 'barnardos-logo.svg', alt: 'Barnardos logo' %>
   </div>
   <div id="global-header__menu"></div>
+
+  <div id="global-header__release">
+    <label>Release <%= link_to_current_sha %></label>
+  </div>
 </header>
 
 <div id="global-header-bar">
@@ -36,6 +40,7 @@
     <%= yield %>
   </div>
 </main>
+
 <%= javascript_pack_tag 'application' %>
 </body>
 </html>

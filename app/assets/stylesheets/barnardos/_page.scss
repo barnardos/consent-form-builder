@@ -27,6 +27,18 @@
   margin-right: $gutter;
 }
 
+#global-header__release {
+  width: auto;
+  max-width: 50em;
+  display: block;
+
+  > label {
+    font-size: 80%;
+    float: right;
+    margin-right: $gutter;
+  }
+}
+
 #global-header-bar {
   background: $primary-colour;
   height: $gutter / 2;
