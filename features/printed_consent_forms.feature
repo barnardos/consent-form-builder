@@ -18,14 +18,9 @@ Feature:
 
   Scenario: I am using a research methodology or recording method that is not in the list
     Given I have arrived at the methodologies step
-    And I should see an 'Other' checkbox for methodologies with a space to fill this in
     When I provide an 'Other' methodology
-    And I click the continue button
-    And I should see an 'Other' checkbox for recording methods with a space to fill this in
-    When I provide an 'Other' recording method
-    And I click the continue button
+    And I provide an 'Other' recording method
     And I fill in the remaining steps
     Then I should see the session review page
     And I should see my 'Other' methodology
     And I should see my 'Other' recording method
-

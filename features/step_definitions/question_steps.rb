@@ -64,14 +64,14 @@ And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) 
   expect(page).to have_tag('input', with: { id: "#{attr}[]-other" })
 end
 
-When(/^I provide an 'Other' methodology$/) do
+When(/^I fill in the 'Other' methodology$/) do
   check 'methodologies[]-other'
 
   @other_methodology = 'A.N. Other Methodology'
   fill_in 'What is the other methodology?', with: @other_methodology
 end
 
-When(/^I provide an 'Other' recording method$/) do
+When(/^I fill in the 'Other' recording method$/) do
   check 'recording_methods[]-other'
 
   @other_recording_method = 'A.N. Other Recording Method'
@@ -107,4 +107,16 @@ And(/^I fill in the remaining steps$/) do
   fill_in 'Incentive value', with: '10.50'
 
   click_button 'Continue'
+end
+
+When(/^I provide an 'Other' methodology$/) do
+  step "I should see an 'Other' checkbox for methodologies with a space to fill this in"
+  step "I fill in the 'Other' methodology"
+  step 'I click the continue button'
+end
+
+And(/^I provide an 'Other' recording method$/) do
+  step "I should see an 'Other' checkbox for recording methods with a space to fill this in"
+  step "I fill in the 'Other' recording method"
+  step 'I click the continue button'
 end
