@@ -57,14 +57,6 @@ Given(/^I have arrived at the methodologies step$/) do
   click_button 'Continue'
 end
 
-Then(/^I should see checkboxes for all the methodologies$/) do
-  Methodologies::NAME_VALUES.each_pair do |name, description|
-    input_id = "methodologies[]-#{name}"
-    expect(page).to have_tag('label', text: description, with: { for: input_id })
-    expect(page).to have_tag('input', with: { id: input_id })
-  end
-end
-
 And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
   attr = attr.downcase.tr(' ', '_')
   expect(page).to have_tag('label', with: { for: "#{attr}[]-other" })
@@ -84,14 +76,6 @@ When(/^I provide an 'Other' recording method$/) do
 
   @other_recording_method = 'A.N. Other Recording Method'
   fill_in 'What is the other recording method?', with: @other_recording_method
-end
-
-Then(/^I should see checkboxes for all the recording methods$/) do
-  RecordingMethods::NAME_VALUES.each_pair do |name, description|
-    input_id = "recording_methods[]-#{name}"
-    expect(page).to have_tag('label', text: description, with: { for: input_id })
-    expect(page).to have_tag('input', with: { id: input_id })
-  end
 end
 
 And(/^I fill in the remaining steps$/) do

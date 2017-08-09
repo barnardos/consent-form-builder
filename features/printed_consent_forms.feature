@@ -18,11 +18,9 @@ Feature:
 
   Scenario: I am using a research methodology or recording method that is not in the list
     Given I have arrived at the methodologies step
-    Then I should see checkboxes for all the methodologies
     And I should see an 'Other' checkbox for methodologies with a space to fill this in
     When I provide an 'Other' methodology
     And I click the continue button
-    Then I should see checkboxes for all the recording methods
     And I should see an 'Other' checkbox for recording methods with a space to fill this in
     When I provide an 'Other' recording method
     And I click the continue button
