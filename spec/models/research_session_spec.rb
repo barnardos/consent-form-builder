@@ -73,16 +73,37 @@ RSpec.describe ResearchSession, type: :model do
           session.age = Age.allowed_values.first
         end
 
-        context 'no methods are selected' do
+        context 'no methodologies are selected' do
           it { is_expected.not_to be_valid }
         end
 
-        context 'at least one valid method is selected' do
+        context 'at least one valid methodology is selected' do
           before do
             session.methodologies = [:interview]
             session.save
           end
           it { is_expected.to be_valid }
+        end
+
+        context 'the "other" methodology is selected' do
+          before do
+            session.methodologies = [:other]
+            session.other_methodology = other_methodology
+            session.save
+          end
+
+          context 'other methodology is blank' do
+            let(:other_methodology) { nil }
+            it { is_expected.not_to be_valid }
+            it 'has one error on other_methodology' do
+              expect(session.errors[:other_methodology].length).to eql(1)
+              expect(session.errors[:other_methodology].first).to eql("can't be blank")
+            end
+          end
+          context 'other methodology is supplied' do
+            let(:other_methodology) { 'Another methodology' }
+            it { is_expected.to be_valid }
+          end
         end
       end
 
@@ -104,6 +125,27 @@ RSpec.describe ResearchSession, type: :model do
             session.save
           end
           it { is_expected.to be_valid }
+        end
+
+        context 'the "other" recording methods is selected' do
+          before do
+            session.recording_methods = [:other]
+            session.other_recording_method = other_recording_method
+            session.save
+          end
+
+          context 'other methodology is blank' do
+            let(:other_recording_method) { nil }
+            it { is_expected.not_to be_valid }
+            it 'has one error on other_recording_method' do
+              expect(session.errors[:other_recording_method].length).to eql(1)
+              expect(session.errors[:other_recording_method].first).to eql("can't be blank")
+            end
+          end
+          context 'other methodology is supplied' do
+            let(:other_recording_method) { 'Another methodology' }
+            it { is_expected.to be_valid }
+          end
         end
       end
 
