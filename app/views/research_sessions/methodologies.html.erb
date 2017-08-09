@@ -12,6 +12,13 @@
           )
       %>
 
+      <%= labelled_text_area_tag(
+            :other_methodology,
+            'What is the other methodology?',
+            @research_session.other_methodology
+          )
+      %>
+
       <%= render 'ok_cancel' %>
   <% end %>
 </div>
