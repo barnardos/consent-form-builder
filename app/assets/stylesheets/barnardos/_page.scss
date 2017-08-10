@@ -27,18 +27,6 @@
   margin-right: $gutter;
 }
 
-#global-header__release {
-  width: auto;
-  max-width: 50em;
-  display: block;
-
-  > label {
-    font-size: 80%;
-    float: right;
-    margin-right: $gutter;
-  }
-}
-
 #global-header-bar {
   background: $primary-colour;
   height: $gutter / 2;
@@ -49,6 +37,22 @@
   padding: 0 $gutter;
   width: 100%;
   max-width: $max-container-width;
+}
+
+#global-footer__release {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid silver;
+  border-left: 1px solid silver;
+  border-top-left-radius: 3px;
+  padding: 3px ($gutter / 2) 5px ($gutter / 2);
+
+  > label {
+    font-size: 80%;
+    color: $black;
+  }
 }
 
 #content {
