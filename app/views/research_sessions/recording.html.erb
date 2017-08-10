@@ -12,6 +12,13 @@
           )
       %>
 
+      <%= labelled_text_field_tag(
+            :other_recording_method,
+            'What is the other recording method?',
+            @research_session.other_recording_method
+          )
+      %>
+
       <%= render 'ok_cancel' %>
   <% end %>
 </div>

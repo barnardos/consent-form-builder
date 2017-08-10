@@ -4,6 +4,16 @@ class ResearchSession < ApplicationRecord
   validates :methodologies,
             has_at_least_one: { of: Methodologies.allowed_values },
             if: -> (session) { session.reached_step?(:methodologies) }
+  validates :other_methodology, presence: true,
+            if: lambda { |session|
+              session.reached_step?(:methodologies) &&
+                session.methodologies&.any? { |item| item.to_s == 'other' }
+            }
+  validates :other_recording_method, presence: true,
+            if: lambda { |session|
+              session.reached_step?(:recording) &&
+                session.recording_methods&.any? { |item| item.to_s == 'other' }
+            }
   validates :recording_methods,
             has_at_least_one: { of: RecordingMethods.allowed_values },
             if: -> (session) { session.reached_step?(:recording) }

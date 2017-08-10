@@ -6,7 +6,8 @@ class Methodologies
     focusgroup:  'Focus group',
     codesign:    'Codesign workshop',
     observation: 'Observation/field study',
-    diary:       'Diary study'
+    diary:       'Diary study',
+    other:       'Other'
   }
 
   def self.allowed_values

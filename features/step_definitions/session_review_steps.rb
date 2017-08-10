@@ -28,6 +28,18 @@ And(/^I should see links back to edit things that I provided$/) do
   end
 end
 
-When(/^I click continue$/) do
+When(/^I click the continue link$/) do
   click_link 'Continue'
+end
+
+When(/^I click the continue button$/) do
+  click_button 'Continue'
+end
+
+Then(/^I should see my 'Other' methodology$/) do
+  expect(page).to have_content(@other_methodology)
+end
+
+And(/^I should see my 'Other' recording method$/) do
+  expect(page).to have_content(@other_recording_method)
 end

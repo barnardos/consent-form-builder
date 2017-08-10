@@ -6,8 +6,8 @@ class ResearchSession
 
     PARAMS = ActiveSupport::OrderedHash[{
       age:           [:age],
-      methodologies: [methodologies: []],
-      recording:     [recording_methods: []],
+      methodologies: [:other_methodology, methodologies: []],
+      recording:     [:other_recording_method, recording_methods: []],
       focus:         [:focus],
       researcher:    [:researcher_name, :researcher_phone,
                       :researcher_email, :researcher_other_name],
@@ -30,11 +30,15 @@ class ResearchSession
       @attrs_to_steps ||=
         PARAMS.each_with_object({}) do |kv, params_to_steps|
           step, params = *kv
-          case params.first
-          when Symbol
-            params.each { |param| params_to_steps[param] = step }
-          when Hash
-            params.first.keys.each { |param| params_to_steps[param] = step }
+          params.each do |param|
+            case param
+            when Symbol
+              params_to_steps[param] = step
+            when Hash
+              param.keys.each do |array_param|
+                params_to_steps[array_param] = step
+              end
+            end
           end
         end
       @attrs_to_steps.fetch(attr)

@@ -6,7 +6,8 @@ class RecordingMethods
     workshop: 'Workshop outputs',
     photo:    'Photographs',
     user:     'User generated content',
-    screen:   'Screen recording'
+    screen:   'Screen recording',
+    other:    'Other'
   }
 
   def self.allowed_values

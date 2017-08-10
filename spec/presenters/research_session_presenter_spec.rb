@@ -51,14 +51,26 @@ RSpec.describe ResearchSessionPresenter do
         expect(list).to include('You will be interviewed')
         expect(list).to include('You will be asked')
       end
+
+      context 'the research session contains "other"' do
+        let(:methodologies) { [:interview, :usability, :other] }
+        before { allow(research_session).to receive(:other_methodology).and_return('Reiki') }
+
+        it 'has it all' do
+          expect(list).to include('Reiki')
+        end
+      end
     end
   end
 
   describe '#recording_methods_list' do
+    let(:other_recording_method) { nil }
+
     subject(:list) { presenter.recording_methods_list }
 
     before do
       allow(research_session).to receive(:recording_methods).and_return(recording_methods)
+      allow(research_session).to receive(:other_recording_method).and_return(other_recording_method)
     end
 
     context 'there is one recording method' do
@@ -74,6 +86,12 @@ RSpec.describe ResearchSessionPresenter do
     context 'there are three recording methods' do
       let(:recording_methods) { [:audio, :video, :written] }
       it { is_expected.to eql('audio, video, and written notes') }
+    end
+
+    context 'there are three recording methods and one is "other"' do
+      let(:recording_methods) { [:audio, :video, :other] }
+      let(:other_recording_method) { 'comic books' }
+      it { is_expected.to eql('audio, video, and comic books') }
     end
   end
 end
