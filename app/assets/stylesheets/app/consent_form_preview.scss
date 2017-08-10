@@ -1,0 +1,32 @@
+.consent-agreement {
+  display: block;
+  background-color: $grey-medium;
+  padding: $gutter;
+  margin-top: $gutter * 2;
+}
+
+.writing-field {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding-right: $gutter;
+
+  label {
+    display: block;
+    margin-bottom: $gutter * 1.5;
+    margin-top: $gutter;
+  }
+
+  .space-for-writing {
+    border: 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
+
+  &.name {
+    width: 100%;
+  }
+
+  &.signature, &.date {
+    width: 50%;
+  }
+}

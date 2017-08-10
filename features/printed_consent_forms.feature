@@ -13,6 +13,7 @@ Feature:
     And I should see links back to edit things that I provided
     When I click continue
     Then I should see the age-appropriate consent form preview
+    And it should have a place for name, signature and date
     And I should see a way to print it
 
 
