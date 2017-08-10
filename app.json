@@ -1,0 +1,15 @@
+{
+  "name":"consent-form-builder-rails",
+  "scripts":{},
+  "env":{
+    "LANG": { "required": true },
+    "RAILS_LOG_TO_STDOUT": { "required": true },
+    "RAILS_SERVE_STATIC_FILES": { "required": true },
+    "SECRET_KEY_BASE": { "required": true },
+    "RACK_ENV": "development",
+    "RAILS_ENV": "development"
+  },
+  "addons":["heroku-postgresql:hobby-dev"],
+  "buildpacks": [{ "url": "heroku/ruby" }],
+  "formation": {}
+}
