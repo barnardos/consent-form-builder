@@ -7,7 +7,8 @@
     "RAILS_ENV": { "required": true },
     "RAILS_LOG_TO_STDOUT": { "required": true },
     "RAILS_SERVE_STATIC_FILES": { "required": true },
-    "SECRET_KEY_BASE": { "required": true }
+    "SECRET_KEY_BASE": { "required": true },
+    "HEROKU_SLUG_COMMIT": { "required": true }
   },
   "addons":["heroku-postgresql:hobby-dev"],
   "buildpacks": [{ "url": "heroku/ruby" }],
