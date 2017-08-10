@@ -39,6 +39,22 @@
   max-width: $max-container-width;
 }
 
+#global-footer__release {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid silver;
+  border-left: 1px solid silver;
+  border-top-left-radius: 3px;
+  padding: 3px ($gutter / 2) 5px ($gutter / 2);
+
+  > label {
+    font-size: 80%;
+    color: $black;
+  }
+}
+
 #content {
   margin: 0 auto 0 0;
   max-width: $max-content-width;
