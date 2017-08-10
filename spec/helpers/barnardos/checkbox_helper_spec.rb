@@ -21,6 +21,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     let(:legend)          { 'My legend' }
     let(:legend_options)  { {} }
     let(:values)          { ['one'] }
+    let(:block)           { nil }
 
     let(:selection_options) do
       {
@@ -35,7 +36,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
                                      legend,
                                      selection_options,
                                      values,
-                                     legend_options: legend_options)
+                                     legend_options: legend_options, &block)
     end
 
     context 'an empty enumerable is given' do
@@ -95,6 +96,19 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
       end
 
       it_behaves_like 'it has correctly classed and labelled input'
+
+      context 'a block is given' do
+        let(:block) do
+          proc do |value, _text, options|
+            options['data-some-value'] = 'foo' if value == 'one'
+          end
+        end
+
+        it 'has changed the thing we asked it to' do
+          expect(rendered).to have_tag(
+            'input.checkbox-group__input', with: { 'data-some-value' => 'foo' })
+        end
+      end
     end
 
     context 'a legend with optional class specified' do

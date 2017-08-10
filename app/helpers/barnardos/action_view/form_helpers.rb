@@ -155,10 +155,16 @@ module Barnardos
               checked = values&.include?(selection_item_value.to_s)
               concat(
                 content_tag(:div, class: 'checkbox-group__choice') do
+                  options = { class: 'checkbox-group__input', id: id }
+
+                  if block_given?
+                    yield selection_item_value, selection_item_text, options
+                  end
+
                   concat(
                     check_box_tag(
                       name, selection_item_value,
-                      checked, class: 'checkbox-group__input', id: id
+                      checked, options
                     )
                   )
                   concat(
