@@ -9,7 +9,9 @@
             Methodologies::NAME_VALUES,
             @research_session.methodologies,
             legend_options: { class: 'subtitle-large' }
-          )
+          ) do |value, _text, checkbox_options|
+            checkbox_options['data-hide-control'] = :other_methodology if value == :other
+          end
       %>
 
       <%= labelled_text_field_tag(

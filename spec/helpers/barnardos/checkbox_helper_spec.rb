@@ -106,7 +106,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
 
         it 'has changed the thing we asked it to' do
           expect(rendered).to have_tag(
-            'input.checkbox-group__input', with: { 'data-some-value' => 'foo' })
+            'input.checkbox-group__input', with: { id: 'age-one', 'data-some-value' => 'foo' }
+          )
         end
       end
     end

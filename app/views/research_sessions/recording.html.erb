@@ -9,7 +9,9 @@
             RecordingMethods::NAME_VALUES,
             @research_session.recording_methods,
             legend_options: { class: 'subtitle-large' }
-          )
+          ) do |value, _text, checkbox_options|
+            checkbox_options['data-hide-control'] = :other_recording_method if value == :other
+          end
       %>
 
       <%= labelled_text_field_tag(
