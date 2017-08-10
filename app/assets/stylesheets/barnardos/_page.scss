@@ -41,13 +41,13 @@
 
 #global-footer__release {
   position: fixed;
-  background-color: white;
+  background-color: $white;
   right: 0;
   bottom: 0;
-  border-top: 1px solid silver;
-  border-left: 1px solid silver;
+  border-top: 1px solid $border;
+  border-left: 1px solid $border;
   border-top-left-radius: 3px;
-  padding: 3px ($gutter / 2) 5px ($gutter / 2);
+  padding: 3px ($gutter / 2) 5px;
 
   > label {
     font-size: 80%;
