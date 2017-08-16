@@ -18,7 +18,7 @@
 
   .space-for-writing {
     border: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $black;
     width: 100%;
   }
 
@@ -26,7 +26,8 @@
     width: 100%;
   }
 
-  &.signature, &.date {
+  &.signature,
+  &.date {
     width: 50%;
   }
 }
