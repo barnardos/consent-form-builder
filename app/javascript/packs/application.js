@@ -7,9 +7,10 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-require('../lib/exit_warn')
 const HighlightControl = require('../components/highlightcontrol')
-
 HighlightControl.init()
+const HideThisOtherThing = require('../components/hide_this_other_thing')
+HideThisOtherThing.init()
 
+require('../lib/exit_warn')
 require('../vendor/hotjar')
