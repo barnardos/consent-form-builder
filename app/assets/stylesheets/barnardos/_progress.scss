@@ -2,10 +2,10 @@
 @import "barnardos/colours";
 
 .progress {
-  margin: $gutter * 2 $gutter / 2;
+  margin: ($gutter * 2) ($gutter / 2) ($gutter * 4) ($gutter / 2);
 
   @media (min-width: $tablet) {
-    margin: $gutter * 2;
+    margin: ($gutter * 2) 0;
     padding-bottom: $gutter / 2;
     padding-left: 30px;
   }
