@@ -30,9 +30,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
 
-  age:
+  hello: "Hello world"
+  methodologies: "Methodologies"
+  recording: "Recording"
+  focus: "Focus"
+  researcher: "Researcher"
+  incentive: "Incentive"
+  age: "Age"
+
+  report:
     over18:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
       usability: 'You will be asked to do several short tasks using a website while our researcher watches, listens and takes notes.
