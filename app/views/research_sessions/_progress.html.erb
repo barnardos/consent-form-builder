@@ -1,0 +1,23 @@
+<div class="progress">
+  <ol class="progress-bar">
+    <li class="progress__stage  is-complete">
+      <span class="progress__stage-title">
+        <%= link_to 'Start', start_path %>
+      </span>
+    </li>
+
+    <% wizard_steps.each do |step_key| %>
+      <li class="progress__stage">
+        <span class="progress__stage-title">
+          <%= link_to t(step_key), question_path(step_key) %>
+        </span>
+      </li>
+    <% end %>
+
+    <li class="progress__stage">
+      <span class="progress__stage-title">
+        <%= link_to 'Preview', research_session_preview_path %>
+      </span>
+    </li>
+  </ol>
+</div>
