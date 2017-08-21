@@ -1,22 +1,3 @@
-<style>
-  code {
-    font-family: monospace;
-    font-size: 80%;
-  }
-
-  .example {
-    margin-bottom: 1em;
-    padding: 0;
-  }
-
-  .example code {
-    display: block;
-    white-space: pre;
-    line-height: 1.2em;
-    color: #555;
-  }
-</style>
-
 <h1 class="title">Title</h1>
 <h2 class="subtitle-large">Subtitle Large</h2>
 <h3 class="subtitle-medium">Subtitle Medium</h3>
@@ -38,126 +19,40 @@
   grid while allowing more flexibility in setting type than multiples of 8.
 </p>
 
-<%= form_tag do %>
+<div class="progress">
+  <ol class="progress-bar ">
 
-  <h1 class="title"><code>Barnardos::ActionView::FormHelpers</code></h1>
-  <h2 class="title"><code>labelled_text_field_tag</code></h2>
+    <li class="progress__stage is-active">
+      <span class="progress__stage-title">Start</span>
+    </li>
 
-  <h3 class="subtitle-large">With hint</h3>
-  <div class="example">
-    <code>
-<%%= labelled_text_field_tag :participant_name,
-      'What is the name of the research participant?',
-      label_options: { hint: 'Full name' } %>
-    </code>
+    <li class="progress__stage is-active">
+      <span class="progress__stage-title">Age</span>
+    </li>
 
-    <%= labelled_text_field_tag :participant_name,
-        'What is the name of the research participant?',
-        label_options: { hint: 'Full name' } %>
-  </div>
+    <li class="progress__stage">
+      <span class="progress__stage-title">Method</span>
+    </li>
 
+    <li class="progress__stage">
+      <span class="progress__stage-title">Recording</span>
+    </li>
 
-  <h3 class="subtitle-large">With error</h3>
-  <div class="example">
-    <code>
-<%%= labelled_text_field_tag :participant_login,
-      'What is the login of the research participant?',
-      label_options: { hint: 'Full name' },
-      error: 'Test error message' %>
-    </code>
+    <li class="progress__stage">
+      <span class="progress__stage-title">Focus</span>
+    </li>
 
-    <%= labelled_text_field_tag :participant_login,
-          'What is the login of the research participant?',
-          label_options: { hint: 'Full name' },
-          error: 'Test error message' %>
-  </div>
+    <li class="progress__stage">
+      <span class="progress__stage-title">Name</span>
+    </li>
 
-  <h3 class="subtitle-large">With a hint and label class of <code>subtitle-large</code></h3>
-  <div class="example">
-    <code>
-<%%= labelled_text_field_tag :participant_login,
-      'What is the login of the research participant?',
-      label_options: { hint: 'Some hint', class: 'subtitle-large' } %>
-    </code>
+    <li class="progress__stage">
+      <span class="progress__stage-title">Incentive</span>
+    </li>
 
-    <%= labelled_text_field_tag :participant_login,
-          'What is the login of the research participant?',
-          label_options: { hint: 'Some hint', class: 'subtitle-large' } %>
-  </div>
-
-
-  <h2 class="title"><code>labelled_text_area_tag</code></h2>
-
-  <h3 class="subtitle-large">With error</h3>
-  <div class="example">
-    <code>
-<%%= labelled_text_area_tag(
-      :focus,
-      'What is the focus of your research project?',
-      label_options: {
-          hint: 'Use simple language to explain what you are researching '\
-              'and why you are doing it',
-          class: 'subtitle-large'
-      }
-  )
-%>
-    </code>
-    <%= labelled_text_area_tag(
-          :focus,
-          'What is the focus of your research project?',
-          label_options: {
-              hint: 'Use simple language to explain what you are researching '\
-                  'and why you are doing it',
-              class: 'subtitle-large'
-          }
-      )
-    %>
-  </div>
-
-  <h2 class="title"><code>checkbox_group_vertical</code></h2>
-
-  <h3 class="subtitle-large">With hint</h3>
-  <div class="example">
-    <code>
-<%%= checkbox_group_vertical(
-        'methodologies[]',
-        'What research methodologies will you be using?',
-        Methodologies::NAME_VALUES,
-        legend_options: { class: 'subtitle-large', hint: 'A sniff of a hint' }
-      )
-%>
-    </code>
-    <%= checkbox_group_vertical(
-            'methodologies[]',
-            'What research methodologies will you be using?',
-            Methodologies::NAME_VALUES,
-            legend_options: { class: 'subtitle-large', hint: 'A sniff of a hint' }
-        )
-    %>
-  </div>
-
-  <h2 class="title"><code>radio_group_vertical</code></h2>
-
-  <h3 class="subtitle-large">With hint</h3>
-  <div class="example">
-    <code>
-<%%=
-  radio_group_vertical :age,
-      'What is the age of the research participant?',
-      Age::NAME_VALUES,
-      @research_session.age,
-      legend_options: { class: 'subtitle-large' }
-%>
-    </code>
-    <%=
-      radio_group_vertical :age,
-          'What is the age of the research participant?',
-          Age::NAME_VALUES,
-          legend_options: { class: 'subtitle-large', hint: 'A sniff of a hint' }
-    %>
-  </div>
-
-
-
-
-<% end %>
+    <li class="progress__stage">
+      <span class="progress__stage-title">Finish</span>
+    </li>
+  </ol>
+  <p>&nbsp;</p>
+</div>
