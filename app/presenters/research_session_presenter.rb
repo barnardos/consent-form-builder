@@ -9,7 +9,7 @@ class ResearchSessionPresenter < Struct.new(:research_session)
       translation = if methodology.to_s == 'other'
                       other_methodology
                     else
-                      I18n.t("age.#{age}.#{methodology}")
+                      I18n.t("report.#{age}.#{methodology}")
                     end
       "<p class='highlight'>#{translation}</p>"
     end

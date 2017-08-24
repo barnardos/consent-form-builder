@@ -1,0 +1,51 @@
+<div class="progress">
+  <ol class="progress-bar">
+    <% if step %>
+      <li class="progress__stage is-complete">
+        <span class="progress__stage-title">
+          <%= link_to 'Start', start_path %>
+        </span>
+      </li>
+    <% else %>
+      <li class="progress__stage is-active">
+        <span class="progress__stage-title">Start</span>
+      </li>
+    <% end %>
+    <%#
+      Loop through each step from the wizard
+      Figure out where the user is in the flow
+      to indicate how far in the journey they are and
+      give the user a link to that step based on if
+      they have already visited it or not.
+    %>
+    <% wizard_steps.each do |this_step| %>
+      <li
+        class="progress__stage
+          <%= 'is-complete' if past_step?(this_step) %>
+          <%= 'is-active' if this_step == step %>">
+        <span class="progress__stage-title">
+          <% if this_step != step and @research_session and @research_session.reached_step?(this_step) %>
+            <%= link_to t(this_step), question_path(this_step) %>
+          <% else %>
+            <%= t(this_step) %>
+          <% end %>
+        </span>
+      </li>
+    <% end %>
+
+
+    <%#
+      If the user has completed the last step, provide
+      a link to the preview section
+    %>
+    <li class="progress__stage">
+      <span class="progress__stage-title">
+        <% if  @research_session and @research_session.reached_step?(wizard_steps[-1]) %>
+          <%= link_to 'Preview', research_session_preview_path %>
+        <% else %>
+          Preview
+        <% end %>
+      </a>
+    </li>
+  </ol>
+</div>
