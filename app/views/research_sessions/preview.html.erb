@@ -9,9 +9,17 @@
 <section>
   <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
-  <%= edit_link_for(:focus) do %>
-    <%= simple_format(@research_session.focus) %>
-  <% end %>
+  <p>
+    <%= edit_link_for(:topic) do %>
+      <%= simple_format(@research_session.topic) %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= edit_link_for(:purpose) do %>
+      <%= simple_format(@research_session.purpose) %>
+    <% end %>
+  </p>
 
   <p>
     It is important that we test the current and future tools and services that
