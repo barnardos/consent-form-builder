@@ -5,7 +5,7 @@
   <%= form_for @research_session, url: wizard_path do %>
       <%= checkbox_group_vertical(
             'recording_methods[]',
-            'What recording methods do you plan to use?',
+            'How will you be recording information?',
             RecordingMethods::NAME_VALUES,
             @research_session.recording_methods,
             legend_options: { class: 'subtitle-large' }
