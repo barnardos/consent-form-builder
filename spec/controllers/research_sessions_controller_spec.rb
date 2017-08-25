@@ -37,7 +37,7 @@ describe ResearchSessionsController, type: :controller do
           expect(response).to be_ok
         end
         it 'renders a template for the id given' do
-          expect(response.body).to include('What research methodologies will you be using?')
+          expect(response.body).to include('How will you be gathering information?')
         end
       end
 

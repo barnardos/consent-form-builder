@@ -52,8 +52,6 @@ en:
       codesign: 'You will take part in a short, intense, session lasting around 3 hours, with a number of other participants. During
         this time you will discuss idea and needs for a service or product and help formalise a solution and next steps.'
       observation: 'You will be observed carrying out tasks within your normal role'
-      diary: 'You will be asked to keep notes and a brief diary either for a task you already carry out or using a
-        new tool or services as part of the project.'
 
     12to18:
       interview: 'Your child will be interviewed and asked your views regarding the project being researched.'
@@ -66,8 +64,6 @@ en:
       codesign: 'You will take part in a short, intense, session lasting around 3 hours, with a number of other participants. During
         this time you will discuss idea and needs for a service or product and help formalise a solution and next steps.'
       observation: 'You will be observed carrying out tasks within your normal role'
-      diary: 'You will be asked to keep notes and a brief diary either for a task you already carry out or using a new
-        tool or services as part of the project.'
 
     under12:
       interview: 'Your child will be interviewed and asked your views regarding the project being researched.'
@@ -80,7 +76,6 @@ en:
       codesign: "You will take part in a short, intense, session lasting around 3 hours, with a number of other participants. During
         this time you will discuss idea and needs for a service or product and help formalise a solution and next steps."
       observation: 'You will be observed carrying out tasks within your normal role'
-      diary: 'You will be asked to keep notes and a brief diary either for a task you already carry out or using a new tool or services as part of the project.'
 
     over18dr:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
@@ -93,5 +88,3 @@ en:
       codesign: "You will take part in a short, intense, session lasting around 3 hours, with a number of other participants. During
         this time you will discuss idea and needs for a service or product and help formalise a solution and next steps."
       observation: 'You will be observed carrying out tasks within your normal role'
-      diary: 'You will be asked to keep notes and a brief diary either for a task you already carry out or using a
-        new tool or services as part of the project.'
