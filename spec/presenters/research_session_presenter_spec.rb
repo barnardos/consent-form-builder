@@ -11,7 +11,7 @@ RSpec.describe ResearchSessionPresenter do
     expect(presenter.research_session).to eql(research_session)
   end
 
-  [:age, :focus, :researcher_name, :researcher_other_name,
+  [:age, :topic, :purpose, :researcher_name, :researcher_other_name,
    :researcher_email, :researcher_phone].each do |method|
     it "delegates #{method} to the research_session" do
       presenter.send method
