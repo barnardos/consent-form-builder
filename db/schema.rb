@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809140248) do
+ActiveRecord::Schema.define(version: 20170825104045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170809140248) do
     t.datetime "updated_at", null: false
     t.string "other_methodology"
     t.string "other_recording_method"
+    t.boolean "researcher_other"
     t.index ["status"], name: "index_research_sessions_on_status"
   end
 
