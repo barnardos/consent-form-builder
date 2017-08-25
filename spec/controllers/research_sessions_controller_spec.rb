@@ -118,7 +118,8 @@ describe ResearchSessionsController, type: :controller do
           age: 'under12',
           methodologies: %w(interview),
           recording_methods: %w(audio),
-          focus: 'Some focus',
+          topic: 'Some topic',
+          purpose: 'Some purpose',
           researcher_name: 'Alice',
           researcher_phone: '0123456',
           researcher_email: 'a@b.com'

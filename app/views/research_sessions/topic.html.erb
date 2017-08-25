@@ -1,16 +1,18 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="visually-hidden">Research Focus</h1>
+  <h1 class="visually-hidden">Research Topic</h1>
   <%= form_for @research_session, url: wizard_path do %>
       <%= labelled_text_area_tag(
-            :focus,
-            'What is the focus of your research project?',
-            @research_session.focus,
+            :topic,
+            'What is the research or participation session about?',
+            @research_session.topic,
             label_options: {
-              hint: 'Use simple language to explain what you are researching '\
-                    'and why you are doing it',
+              hint: 'What is the research about?',
               class: 'subtitle-large'
+            },
+            text_options: {
+              placeholder: 'The topic is the project is...'
             }
           )
       %>

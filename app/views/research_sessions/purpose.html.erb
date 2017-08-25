@@ -1,0 +1,22 @@
+<%= render "research_sessions/progress" %>
+<div class="main-content">
+  <%= render 'error_summary' %>
+  <h1 class="visually-hidden">Research Purpose</h1>
+  <%= form_for @research_session, url: wizard_path do %>
+      <%= labelled_text_area_tag(
+            :purpose,
+            'Why are you doing this research or participation session?',
+            @research_session.purpose,
+            label_options: {
+              hint: 'Insert aims of the research.',
+              class: 'subtitle-large'
+            },
+            text_options: {
+              placeholder: 'Barnardo’s needs your help so we can...'
+            }
+          )
+      %>
+
+      <%= render 'ok_cancel' %>
+  <% end %>
+</div>
