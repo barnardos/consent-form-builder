@@ -3,9 +3,8 @@ class RecordingMethods
     audio:    'Audio',
     video:    'Video',
     written:  'Written notes',
-    workshop: 'Workshop outputs',
+    workshop: 'Workshop outputs, such as drawings and post-its',
     photo:    'Photographs',
-    user:     'User generated content',
     screen:   'Screen recording',
     other:    'Other'
   }
