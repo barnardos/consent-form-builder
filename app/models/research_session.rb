@@ -17,8 +17,10 @@ class ResearchSession < ApplicationRecord
   validates :recording_methods,
             has_at_least_one: { of: RecordingMethods.allowed_values },
             if: -> (session) { session.reached_step?(:recording) }
-  validates :focus, presence: true,
-            if: -> (session) { session.reached_step?(:focus) }
+  validates :topic, presence: true,
+            if: -> (session) { session.reached_step?(:topic) }
+  validates :purpose, presence: true,
+            if: -> (session) { session.reached_step?(:purpose) }
   validates :researcher_name, presence: true,
             if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_phone, presence: true,
