@@ -6,11 +6,11 @@ class ResearchSession
 
     PARAMS = ActiveSupport::OrderedHash[{
       age:           [:age],
-      researcher:    [:researcher_name, :researcher_phone,
-                      :researcher_email, :researcher_other_name],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
       focus:         [:focus],
+      researcher:    [:researcher_name, :researcher_phone,
+                      :researcher_email, :researcher_other_name, :researcher_other_name],
       incentive:     [:incentive, :payment_type, :incentive_value]
     }]
 
