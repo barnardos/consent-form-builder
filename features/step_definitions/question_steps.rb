@@ -16,15 +16,26 @@ When(/^I provide full session details for a child-age cohort$/) do
   end
   click_button 'Continue'
 
-  @focus = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+  @topic = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
     Fresnel lenses and the under-5s
     This line break follows a br
 
     Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-  fill_in 'What is the focus of your research project?',
-          with: @focus
+  @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+    Fresnel lenses and the under-5s
+    This line break follows a br
+
+    Whereas this becomes its own p
+  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+
+  fill_in 'What is the research or participation session about?',
+          with: @topic
+  click_button 'Continue'
+
+  fill_in 'Why are you doing this research or participation session?',
+          with: @purpose
   click_button 'Continue'
 
   within '[name="first-researcher"]' do
@@ -79,15 +90,26 @@ When(/^I fill in the 'Other' recording method$/) do
 end
 
 And(/^I fill in the remaining steps$/) do
-  @focus = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+  @topic = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
     Fresnel lenses and the under-5s
     This line break follows a br
 
     Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-  fill_in 'What is the focus of your research project?',
-          with: @focus
+  @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+    Fresnel lenses and the under-5s
+    This line break follows a br
+
+    Whereas this becomes its own p
+  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+
+  fill_in 'What is the research or participation session about?',
+          with: @topic
+  click_button 'Continue'
+
+  fill_in 'Why are you doing this research or participation session?',
+          with: @purpose
   click_button 'Continue'
 
   within '[name="first-researcher"]' do
