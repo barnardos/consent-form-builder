@@ -149,8 +149,8 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
-      describe 'validating the focus step' do
-        let(:step) { 'focus' }
+      describe 'validating the topic step' do
+        let(:step) { 'topic' }
 
         before do
           session.age = Age.allowed_values.first
@@ -158,13 +158,36 @@ RSpec.describe ResearchSession, type: :model do
           session.recording_methods = [RecordingMethods.allowed_values.first]
         end
 
-        context 'no focus is given' do
+        context 'no topic is given' do
           it { is_expected.not_to be_valid }
         end
 
-        context 'research focus is given' do
+        context 'research topic is given' do
           before do
-            session.focus = 'A nice long focus description'
+            session.topic = 'A nice long topic description'
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+      end
+
+      describe 'validating the purpose step' do
+        let(:step) { 'purpose' }
+
+        before do
+          session.age = Age.allowed_values.first
+          session.methodologies = [Methodologies.allowed_values.first]
+          session.recording_methods = [RecordingMethods.allowed_values.first]
+          session.topic = 'A nice long topic description'
+        end
+
+        context 'no purpose is given' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'research purpose is given' do
+          before do
+            session.purpose = 'A nice long puropose description'
             session.save
           end
           it { is_expected.to be_valid }
@@ -178,7 +201,8 @@ RSpec.describe ResearchSession, type: :model do
           session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
-          session.focus = 'A nice long focus'
+          session.topic = 'A nice long topic description'
+          session.purpose = 'A nice long puropose description'
           session.save
         end
 
@@ -229,7 +253,8 @@ RSpec.describe ResearchSession, type: :model do
           session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
-          session.focus = 'A nice long focus'
+          session.topic = 'A nice long topic description'
+          session.purpose = 'A nice long puropose description'
           session.researcher_name  = 'Miss Havisham'
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
