@@ -49,6 +49,11 @@ When(/^I provide full session details for a child-age cohort$/) do
   end
   click_button 'Continue'
 
+  choose 'Just the team'
+  fill_in 'How long will this information be held for?', with: '1 year'
+  fill_in 'The data will be used to?', with: 'Create better outcomes for more children'
+  click_button 'Continue'
+
   choose 'incentive-1'
 
   choose 'payment_type-cash'
@@ -121,6 +126,11 @@ And(/^I fill in the remaining steps$/) do
   within '[name="second-researcher"]' do
     fill_in 'Full name', with: 'Steve Secondresearcher'
   end
+  click_button 'Continue'
+
+  choose 'Just the team'
+  fill_in 'How long will this information be held for?', with: '1 year'
+  fill_in 'The data will be used to?', with: 'Create better outcomes for more children'
   click_button 'Continue'
 
   choose 'incentive-1'

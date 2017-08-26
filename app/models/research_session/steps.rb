@@ -12,6 +12,7 @@ class ResearchSession
       purpose:       [:purpose],
       researcher:    [:researcher_name, :researcher_phone,
                       :researcher_email, :researcher_other_name, :researcher_other_name],
+      data:          [:shared_with, :shared_duration, :shared_use],
       incentive:     [:incentive, :payment_type, :incentive_value]
     }]
 

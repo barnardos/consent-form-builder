@@ -29,6 +29,16 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, format: /@/,
     if: -> (session) { session.researcher_email.present? && session.reached_step?(:researcher) }
+
+  validates :shared_with, inclusion: { in: SharedWith.allowed_values },
+            if: -> (session) { session.reached_step?(:data) }
+
+  validates :shared_duration, presence: true,
+            if: -> (session) { session.reached_step?(:data) }
+
+  validates :shared_use, presence: true,
+            if: -> (session) { session.reached_step?(:data) }
+
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
     if: -> (session) { session.incentive && session.reached_step?(:incentive) }
   validates :incentive_value, presence: true,
