@@ -246,6 +246,60 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
+      describe 'validating the data step' do
+        let(:step) { 'data' }
+
+        before do
+          session.age = Age.allowed_values.first
+          session.methodologies = [Methodologies.allowed_values.first]
+          session.recording_methods = [RecordingMethods.allowed_values.first]
+          session.topic = 'A nice long topic description'
+          session.purpose = 'A nice long puropose description'
+          session.researcher_name  = 'Miss Havisham'
+          session.researcher_phone = '12345678'
+          session.researcher_email = 'a@b.com'
+          session.save
+        end
+
+        context 'no details are give' do
+          it { is_expected.not_to be_valid }
+          it 'has an error for shared with' do
+            expect(session.errors[:shared_with].length).to eql(1)
+          end
+          it 'has an error for shared duration' do
+            expect(session.errors[:shared_duration].length).to eql(1)
+          end
+          it 'has an error for use' do
+            expect(session.errors[:shared_use].length).to eql(1)
+          end
+        end
+
+        context 'all the details are given but the team in invalid' do
+          before do
+            session.shared_with = 'nobody'
+            session.shared_duration = '1 week'
+            session.shared_use = 'xxxxxxxxx'
+            session.save
+          end
+
+          it { is_expected.not_to be_valid }
+          it 'has an error for shared with' do
+            expect(session.errors[:shared_with].length).to eql(1)
+          end
+        end
+
+        context 'all the details are given' do
+          before do
+            session.shared_with = SharedWith.allowed_values.first
+            session.shared_duration = '1 week'
+            session.shared_use = 'xxxxxxxxx'
+            session.save
+          end
+
+          it { is_expected.to be_valid }
+        end
+      end
+
       describe 'validating the incentive step' do
         let(:step) { 'incentive' }
 
@@ -258,6 +312,9 @@ RSpec.describe ResearchSession, type: :model do
           session.researcher_name  = 'Miss Havisham'
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
+          session.shared_with = SharedWith.allowed_values.first
+          session.shared_duration = '1 week'
+          session.shared_use = 'xxxxxxxxx'
           session.save
         end
 
