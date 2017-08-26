@@ -1,0 +1,32 @@
+<%= render "research_sessions/progress" %>
+<div class="main-content">
+  <%= render 'error_summary' %>
+  <h1 class="visually-hidden">Data usage</h1>
+  <%= form_for @research_session, url: wizard_path do %>
+
+    <%= radio_group_vertical :shared_with,
+      'Who will data be shared with?',
+      SharedWith::NAME_VALUES,
+      @research_session.shared_with
+    %>
+
+    <%= labelled_text_field_tag(
+          :shared_duration,
+          'How long will this information be held for?',
+          @research_session.shared_duration
+        )
+    %>
+
+    <%= labelled_text_area_tag(
+          :shared_use,
+          'The data will be used to?',
+          @research_session.shared_use,
+          label_options: {
+            hint: 'insert how the participant’s information will be used',
+          }
+        )
+    %>
+
+    <%= render 'ok_cancel' %>
+  <% end %>
+</div>
