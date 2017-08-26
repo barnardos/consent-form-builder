@@ -1,0 +1,50 @@
+@import "barnardos/colours";
+@import "barnardos/vars";
+
+.datefield {
+  margin: $gutter 0 $gutter (-$gutter / 2);
+  max-width: $max-form-control-width;
+  padding: 0 ($gutter / 2);
+}
+
+.datefield.has-error {
+  background: $error-background;
+}
+
+.datefield__label {
+  display: block;
+  font-weight: normal;
+  color: $black;
+  margin-top: $gutter / 2;
+}
+
+.datefield.has-error .datefield__label {
+  color: $error-colour;
+}
+
+.datefield select {
+  padding: $gutter / 2;
+  font-size: $base-font-size;
+  margin-top: $gutter / 2;
+  color: $black;
+  border: solid 1px $border;
+  border-radius: $border-radius;
+  outline: none;
+}
+
+.datefield.has-error input {
+  border: 1px solid $error-colour;
+}
+
+.datefield__hint {
+  color: $secondary-text;
+  display: block;
+  margin-top: $gutter / 2;
+  font-size: $base-font-size;
+  line-height: 24px;
+}
+
+.datefield__error {
+  color: $error-colour;
+  margin-top: $gutter / 2;
+}
