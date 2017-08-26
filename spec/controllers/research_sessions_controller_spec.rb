@@ -122,7 +122,10 @@ describe ResearchSessionsController, type: :controller do
           purpose: 'Some purpose',
           researcher_name: 'Alice',
           researcher_phone: '0123456',
-          researcher_email: 'a@b.com'
+          researcher_email: 'a@b.com',
+          shared_with: 'team',
+          shared_duration: '1 Day',
+          shared_use: 'How to help people more'
         }
       end
 
