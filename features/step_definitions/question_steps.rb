@@ -54,6 +54,17 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'The data will be used to?', with: 'Create better outcomes for more children'
   click_button 'Continue'
 
+  within '#start_datetime' do
+    select '2017', from: 'research_session_start_datetime_1i', visible: false
+    select 'May', from: 'research_session_start_datetime_2i', visible: false
+    select '10', from: 'research_session_start_datetime_3i', visible: false
+    select '11', from: 'research_session_start_datetime_4i', visible: false
+    select '30', from: 'research_session_start_datetime_5i', visible: false
+  end
+  fill_in 'How long will the session be? (optional)', with: '5 minutes'
+  fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
+  click_button 'Continue'
+
   choose 'incentive-1'
 
   choose 'payment_type-cash'
@@ -131,6 +142,17 @@ And(/^I fill in the remaining steps$/) do
   choose 'Just the team'
   fill_in 'How long will this information be held for?', with: '1 year'
   fill_in 'The data will be used to?', with: 'Create better outcomes for more children'
+  click_button 'Continue'
+
+  within '#start_datetime' do
+    select '2017', from: 'research_session_start_datetime_1i', visible: false
+    select 'May', from: 'research_session_start_datetime_2i', visible: false
+    select '10', from: 'research_session_start_datetime_3i', visible: false
+    select '11', from: 'research_session_start_datetime_4i', visible: false
+    select '30', from: 'research_session_start_datetime_5i', visible: false
+  end
+  fill_in 'How long will the session be? (optional)', with: '5 minutes'
+  fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
   click_button 'Continue'
 
   choose 'incentive-1'
