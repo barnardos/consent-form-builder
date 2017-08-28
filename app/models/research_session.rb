@@ -1,6 +1,4 @@
 class ResearchSession < ApplicationRecord
-  validates :age, inclusion: { in: Age.allowed_values },
-            if: -> (session) { session.reached_step?(:age) }
   validates :methodologies,
             has_at_least_one: { of: Methodologies.allowed_values },
             if: -> (session) { session.reached_step?(:methodologies) }
@@ -45,7 +43,7 @@ class ResearchSession < ApplicationRecord
     if: -> (session) { session.incentive && session.reached_step?(:incentive) }
 
   def able_to_consent?
-    age.to_sym == :over18
+    age == 'over18'
   end
 
   def unable_to_consent?

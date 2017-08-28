@@ -1,5 +1,15 @@
 <a href="javascript:window.print()" class="print-link">Print</a>
 <h1 class="title screen-only">Research session preview</h1>
+
+<section class="split-link screen-only">
+  <div class="<%='active' if @research_session.able_to_consent? %>">
+    <a id="over18-link" href="?age=over18">Respondants who can give consent themselves</a>
+  </div>
+  <div class="<%='active' if @research_session.unable_to_consent? %>">
+    <a id="under18-link" href="?age=under18">Respondants who can't give consent</a>
+  </div>
+</section>
+
 <section>
   <h2 class="heading-medium">About this research project</h2>
   <p class="super-text">This information sheet will tell you more about the
@@ -44,7 +54,6 @@
   <%= edit_link_for(:methodologies) do %>
     <%= @research_session.methodology_list %>
   <% end %>
-
   <p>
     With your permission we will record the session using
     <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
@@ -86,7 +95,48 @@
     collected as part of the research is stored securely and kept strictly
     confidential.</p>
 </section>
-<p class="button-bar">
-  <%= link_to 'Continue', consent_form_preview_path, class: 'button' %>
+
+<h2 class="heading-large">Review</h2>
+
+<p class="super-text">It is important to us that your consent
+  <%= 'for your child' if @research_session.unable_to_consent? %> to
+  take part in this research is freely given and fully informed.</p>
+<p>Please review the following points and indicate your agreement to the
+  statements underneath.</p>
+
+<ul class="bullet-point-list">
+  <li>I have read and understood the Information
+    Sheet for this research project and have had an opportunity to ask
+    questions.
+  </li>
+  <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
+    participation is voluntary and that I am free to withdraw them at any time
+    without giving any reason.
+  </li>
+  <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
+    activities during the research session may be observed and will be recorded.
+    The data captured, in the form of <%= @research_session.recording_methods_list %>,
+    will be used for current and future service development.
+  </li>
+  <li>I understand that this data will be stored securely and
+    covered by the Data Protection Act.
+  </li>
+</ul>
+
+<p class="highlight super-text">
+  I agree to my <%= 'childʼs' if @research_session.unable_to_consent? %>
+  participation in this research and understand that
+  my childʼs data will be used as explained above.
 </p>
 
+<%# Note: no whitespace between divs important here %>
+<div class="writing-field name">
+  <label for="name">Name</label>
+  <input disabled name="name" class="space-for-writing">
+</div><div class="writing-field signature">
+  <label for="signature">Signature</label>
+  <input disabled name="signature" class="space-for-writing">
+</div><div class="writing-field date">
+  <label for="date">Date</label>
+  <input disabled name="date" class="space-for-writing">
+</div>

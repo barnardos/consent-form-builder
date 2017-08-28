@@ -6,7 +6,7 @@ describe ResearchSessionsController, type: :controller do
   describe '#start' do
     it 'redirects to the first question' do
       get :start
-      expect(response).to redirect_to('/questions/age')
+      expect(response).to redirect_to('/questions/methodologies')
     end
   end
 
@@ -16,20 +16,6 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'when the template exists' do
-      context 'the first step, age' do
-        let(:template_id) { :age }
-
-        it 'is ok' do
-          expect(response).to be_ok
-        end
-        it 'renders a template for the id given' do
-          expect(response.body).to include('What is the age of the research participant?')
-        end
-        it 'holds the id of a fresh research session' do
-          expect(session[:current_research_session_id]).to be_an(Integer)
-        end
-      end
-
       context 'methodologies' do
         let(:template_id) { 'methodologies' }
 
@@ -77,29 +63,8 @@ describe ResearchSessionsController, type: :controller do
       put :update, params: params
     end
 
-    context 'there is something useful in the session' do
-      let(:params) { { id: 'age', age: 'over18' } }
-
-      it 'updates the current session' do
-        expect(research_session.age).to eql('over18')
-      end
-      it 'redirects to the next question in sequence, which is methodologies' do
-        expect(response).to redirect_to('/questions/methodologies')
-      end
-    end
-
-
-    context 'the age param is invalid, because it is blank' do
-      let(:params) { { id: 'age', age: nil } }
-
-      it 'does not progress to the next step, it asks for age again' do
-        expect(response).to be_ok
-        expect(response).to render_template(:age)
-      end
-    end
-
     context 'accepting methodologies' do
-      let(:existing_params) { { age: 'under12' } }
+      let(:existing_params) { { age: 'over18' } }
       let(:params) do
         {
           id: 'methodologies',

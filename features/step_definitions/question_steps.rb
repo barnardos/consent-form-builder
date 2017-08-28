@@ -1,8 +1,6 @@
 When(/^I provide full session details for a child-age cohort$/) do
   visit '/'
   click_link 'Create new form'
-  choose 'Under 12 years old'
-  click_button 'Continue'
 
   @methodologies = [:interview, :usability]
   @methodologies.each do |methodology|
@@ -71,6 +69,8 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'Incentive value', with: '10.50'
 
   click_button 'Continue'
+
+  click_link "Respondants who can't give consent"
 end
 
 Then(/^I should see the session review page$/) do
@@ -80,8 +80,6 @@ end
 Given(/^I have arrived at the methodologies step$/) do
   visit '/'
   click_link 'Create new form'
-  choose 'Under 12 years old'
-  click_button 'Continue'
 end
 
 And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|

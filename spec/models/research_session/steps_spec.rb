@@ -24,8 +24,8 @@ RSpec.describe ResearchSession::Steps do
       end
     end
     context 'we are at the first stage' do
-      let(:status)   { 'age' }
-      let(:at_least) { 'methodologies' }
+      let(:status)   { 'methodologies' }
+      let(:at_least) { 'recording' }
 
       it { is_expected.to be false }
     end
