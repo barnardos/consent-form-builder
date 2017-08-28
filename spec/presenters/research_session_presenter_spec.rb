@@ -29,7 +29,7 @@ RSpec.describe ResearchSessionPresenter do
     subject(:list) { presenter.methodology_list }
 
     context 'the research session is targeted at children' do
-      let(:age) { 'under12' }
+      let(:age) { 'under18' }
       it 'has as many paragraphs as there are methodologies' do
         expect(list).to have_tag('p', count: 2)
       end
