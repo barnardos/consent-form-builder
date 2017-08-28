@@ -17,7 +17,7 @@ RSpec.describe ResearchSession, type: :model do
     describe '#un/able_to_consent?' do
       before { session.age = age }
       context 'is too young' do
-        let(:age) { 'under12' }
+        let(:age) { 'under18' }
         it { is_expected.not_to be_able_to_consent }
         it { is_expected.to be_unable_to_consent }
       end
@@ -42,36 +42,8 @@ RSpec.describe ResearchSession, type: :model do
         session.status = step
       end
 
-      describe 'validating the age step' do
-        let(:step) { 'age' }
-
-        before { session.age = age }
-
-        context 'a blank age' do
-          let(:age) { nil }
-          it { is_expected.not_to be_valid }
-        end
-
-        context 'limiting to given age values' do
-          context 'a given value' do
-            Age.allowed_values.each do |allowed_age_value|
-              let(:age) { allowed_age_value }
-              it { is_expected.to be_valid }
-            end
-          end
-          context 'a value outside of the enum' do
-            let(:age) { 'not_a_valid_age_value' }
-            it { is_expected.not_to be_valid }
-          end
-        end
-      end
-
       describe 'validating the methodologies step' do
         let(:step) { 'methodologies' }
-
-        before do
-          session.age = Age.allowed_values.first
-        end
 
         context 'no methodologies are selected' do
           it { is_expected.not_to be_valid }
@@ -111,7 +83,6 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { 'recording' }
 
         before do
-          session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
         end
 
@@ -153,7 +124,6 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { 'topic' }
 
         before do
-          session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
         end
@@ -175,7 +145,6 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { 'purpose' }
 
         before do
-          session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
           session.topic = 'A nice long topic description'
@@ -198,7 +167,6 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { 'researcher' }
 
         before do
-          session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
           session.topic = 'A nice long topic description'
@@ -250,7 +218,6 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { 'data' }
 
         before do
-          session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
           session.topic = 'A nice long topic description'
@@ -304,7 +271,6 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { 'incentive' }
 
         before do
-          session.age = Age.allowed_values.first
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
           session.topic = 'A nice long topic description'
