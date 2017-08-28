@@ -23,11 +23,14 @@ class ResearchSessionsController < ApplicationController
   end
 
   def preview
-    @research_session = ResearchSessionPresenter.new(current_research_session)
-  end
+    @research_session = current_research_session
 
-  def preview_consent_form
-    @research_session = ResearchSessionPresenter.new(current_research_session)
+    # Allow the user to pass a parameter to switch between over 18 and under 18 mode
+    if params.key?('age')
+      @research_session.assign_attributes(params.permit(:age))
+    end
+
+    @research_session = ResearchSessionPresenter.new(@research_session)
   end
 
   def update
