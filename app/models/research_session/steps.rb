@@ -5,12 +5,12 @@ class ResearchSession
     include Singleton
 
     PARAMS = ActiveSupport::OrderedHash[{
-      methodologies: [:other_methodology, methodologies: []],
-      recording:     [:other_recording_method, recording_methods: []],
-      topic:         [:topic],
-      purpose:       [:purpose],
       researcher:    [:researcher_name, :researcher_phone,
                       :researcher_email, :researcher_other_name, :researcher_other_name],
+      topic:         [:topic],
+      purpose:       [:purpose],
+      methodologies: [:other_methodology, methodologies: []],
+      recording:     [:other_recording_method, recording_methods: []],
       data:          [:shared_with, :shared_duration, :shared_use],
       time_equipment: [:start_datetime, :duration, :participant_equipment],
       incentive:     [:incentive, :payment_type, :incentive_value]

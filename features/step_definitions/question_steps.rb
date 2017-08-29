@@ -2,15 +2,14 @@ When(/^I provide full session details for a child-age cohort$/) do
   visit '/'
   click_link 'Create new form'
 
-  @methodologies = [:interview, :usability]
-  @methodologies.each do |methodology|
-    check "methodologies[]-#{methodology}"
+  within '[name="first-researcher"]' do
+    fill_in 'Full name', with: 'Rachel Researcher'
+    fill_in 'Telephone number', with: '012345678'
+    fill_in 'Email', with: 'rachel@researcher.com'
   end
-  click_button 'Continue'
 
-  @recording_methods = [:audio, :video, :written]
-  @recording_methods.each do |method|
-    check "recording_methods[]-#{method}"
+  within '[name="second-researcher"]' do
+    fill_in 'Full name', with: 'Steve Secondresearcher'
   end
   click_button 'Continue'
 
@@ -28,22 +27,21 @@ When(/^I provide full session details for a child-age cohort$/) do
     Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-  fill_in 'What is the research or participation session about?',
-          with: @topic
+  fill_in 'What is the research or participation session about?', with: @topic
   click_button 'Continue'
 
-  fill_in 'Why are you doing this research or participation session?',
-          with: @purpose
+  fill_in 'Why are you doing this research or participation session?', with: @purpose
   click_button 'Continue'
 
-  within '[name="first-researcher"]' do
-    fill_in 'Full name', with: 'Rachel Researcher'
-    fill_in 'Telephone number', with: '012345678'
-    fill_in 'Email', with: 'rachel@researcher.com'
+  @methodologies = [:interview, :usability]
+  @methodologies.each do |methodology|
+    check "methodologies[]-#{methodology}"
   end
+  click_button 'Continue'
 
-  within '[name="second-researcher"]' do
-    fill_in 'Full name', with: 'Steve Secondresearcher'
+  @recording_methods = [:audio, :video, :written]
+  @recording_methods.each do |method|
+    check "recording_methods[]-#{method}"
   end
   click_button 'Continue'
 
@@ -80,6 +78,37 @@ end
 Given(/^I have arrived at the methodologies step$/) do
   visit '/'
   click_link 'Create new form'
+
+  within '[name="first-researcher"]' do
+    fill_in 'Full name', with: 'Rachel Researcher'
+    fill_in 'Telephone number', with: '012345678'
+    fill_in 'Email', with: 'rachel@researcher.com'
+  end
+
+  within '[name="second-researcher"]' do
+    fill_in 'Full name', with: 'Steve Secondresearcher'
+  end
+  click_button 'Continue'
+
+  @topic = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+    Fresnel lenses and the under-5s
+    This line break follows a br
+
+    Whereas this becomes its own p
+  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+
+  @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+    Fresnel lenses and the under-5s
+    This line break follows a br
+
+    Whereas this becomes its own p
+  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
+
+  fill_in 'What is the research or participation session about?', with: @topic
+  click_button 'Continue'
+
+  fill_in 'Why are you doing this research or participation session?', with: @purpose
+  click_button 'Continue'
 end
 
 And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
@@ -104,39 +133,6 @@ When(/^I fill in the 'Other' recording method$/) do
 end
 
 And(/^I fill in the remaining steps$/) do
-  @topic = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-    Fresnel lenses and the under-5s
-    This line break follows a br
-
-    Whereas this becomes its own p
-  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-
-  @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-    Fresnel lenses and the under-5s
-    This line break follows a br
-
-    Whereas this becomes its own p
-  TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-
-  fill_in 'What is the research or participation session about?',
-          with: @topic
-  click_button 'Continue'
-
-  fill_in 'Why are you doing this research or participation session?',
-          with: @purpose
-  click_button 'Continue'
-
-  within '[name="first-researcher"]' do
-    fill_in 'Full name', with: 'Rachel Researcher'
-    fill_in 'Telephone number', with: '012345678'
-    fill_in 'Email', with: 'rachel@researcher.com'
-  end
-
-  within '[name="second-researcher"]' do
-    fill_in 'Full name', with: 'Steve Secondresearcher'
-  end
-  click_button 'Continue'
-
   choose 'Just the team'
   fill_in 'How long will this information be held for?', with: '1 year'
   fill_in 'The data will be used to?', with: 'Create better outcomes for more children'

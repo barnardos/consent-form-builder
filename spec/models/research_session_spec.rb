@@ -40,139 +40,11 @@ RSpec.describe ResearchSession, type: :model do
     describe 'step-by-step validation' do
       before do
         session.status = step
-      end
-
-      describe 'validating the methodologies step' do
-        let(:step) { 'methodologies' }
-
-        context 'no methodologies are selected' do
-          it { is_expected.not_to be_valid }
-        end
-
-        context 'at least one valid methodology is selected' do
-          before do
-            session.methodologies = [:interview]
-            session.save
-          end
-          it { is_expected.to be_valid }
-        end
-
-        context 'the "other" methodology is selected' do
-          before do
-            session.methodologies = [:other]
-            session.other_methodology = other_methodology
-            session.save
-          end
-
-          context 'other methodology is blank' do
-            let(:other_methodology) { nil }
-            it { is_expected.not_to be_valid }
-            it 'has one error on other_methodology' do
-              expect(session.errors[:other_methodology].length).to eql(1)
-              expect(session.errors[:other_methodology].first).to eql("can't be blank")
-            end
-          end
-          context 'other methodology is supplied' do
-            let(:other_methodology) { 'Another methodology' }
-            it { is_expected.to be_valid }
-          end
-        end
-      end
-
-      describe 'validating the recording step' do
-        let(:step) { 'recording' }
-
-        before do
-          session.methodologies = [Methodologies.allowed_values.first]
-        end
-
-        context 'no recording methods are selected' do
-          it { is_expected.not_to be_valid }
-        end
-
-        context 'at least one valid method is selected' do
-          before do
-            session.recording_methods = [:audio]
-            session.save
-          end
-          it { is_expected.to be_valid }
-        end
-
-        context 'the "other" recording methods is selected' do
-          before do
-            session.recording_methods = [:other]
-            session.other_recording_method = other_recording_method
-            session.save
-          end
-
-          context 'other methodology is blank' do
-            let(:other_recording_method) { nil }
-            it { is_expected.not_to be_valid }
-            it 'has one error on other_recording_method' do
-              expect(session.errors[:other_recording_method].length).to eql(1)
-              expect(session.errors[:other_recording_method].first).to eql("can't be blank")
-            end
-          end
-          context 'other methodology is supplied' do
-            let(:other_recording_method) { 'Another methodology' }
-            it { is_expected.to be_valid }
-          end
-        end
-      end
-
-      describe 'validating the topic step' do
-        let(:step) { 'topic' }
-
-        before do
-          session.methodologies = [Methodologies.allowed_values.first]
-          session.recording_methods = [RecordingMethods.allowed_values.first]
-        end
-
-        context 'no topic is given' do
-          it { is_expected.not_to be_valid }
-        end
-
-        context 'research topic is given' do
-          before do
-            session.topic = 'A nice long topic description'
-            session.save
-          end
-          it { is_expected.to be_valid }
-        end
-      end
-
-      describe 'validating the purpose step' do
-        let(:step) { 'purpose' }
-
-        before do
-          session.methodologies = [Methodologies.allowed_values.first]
-          session.recording_methods = [RecordingMethods.allowed_values.first]
-          session.topic = 'A nice long topic description'
-        end
-
-        context 'no purpose is given' do
-          it { is_expected.not_to be_valid }
-        end
-
-        context 'research purpose is given' do
-          before do
-            session.purpose = 'A nice long puropose description'
-            session.save
-          end
-          it { is_expected.to be_valid }
-        end
+        session.save
       end
 
       describe 'validating the researcher step' do
         let(:step) { 'researcher' }
-
-        before do
-          session.methodologies = [Methodologies.allowed_values.first]
-          session.recording_methods = [RecordingMethods.allowed_values.first]
-          session.topic = 'A nice long topic description'
-          session.purpose = 'A nice long puropose description'
-          session.save
-        end
 
         context 'no details are given' do
           it { is_expected.not_to be_valid }
@@ -214,18 +86,153 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
+      describe 'validating the topic step' do
+        let(:step) { 'topic' }
+
+        before do
+          session.researcher_name  = 'Miss Havisham'
+          session.researcher_phone = '12345678'
+          session.researcher_email = 'a@b.com'
+        end
+
+        context 'no topic is given' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'research topic is given' do
+          before do
+            session.topic = 'A nice long topic description'
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+      end
+
+      describe 'validating the purpose step' do
+        let(:step) { 'purpose' }
+
+        before do
+          session.researcher_name  = 'Miss Havisham'
+          session.researcher_phone = '12345678'
+          session.researcher_email = 'a@b.com'
+          session.topic = 'A nice long topic description'
+        end
+
+        context 'no purpose is given' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'research purpose is given' do
+          before do
+            session.purpose = 'A nice long puropose description'
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+      end
+
+      describe 'validating the methodologies step' do
+        let(:step) { 'methodologies' }
+
+        before do
+          session.researcher_name  = 'Miss Havisham'
+          session.researcher_phone = '12345678'
+          session.researcher_email = 'a@b.com'
+          session.topic = 'A nice long topic description'
+          session.purpose = 'A nice long puropose description'
+        end
+
+        context 'no methodologies are selected' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'at least one valid methodology is selected' do
+          before do
+            session.methodologies = [:interview]
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+
+        context 'the "other" methodology is selected' do
+          before do
+            session.methodologies = [:other]
+            session.other_methodology = other_methodology
+            session.save
+          end
+
+          context 'other methodology is blank' do
+            let(:other_methodology) { nil }
+            it { is_expected.not_to be_valid }
+            it 'has one error on other_methodology' do
+              expect(session.errors[:other_methodology].length).to eql(1)
+              expect(session.errors[:other_methodology].first).to eql("can't be blank")
+            end
+          end
+          context 'other methodology is supplied' do
+            let(:other_methodology) { 'Another methodology' }
+            it { is_expected.to be_valid }
+          end
+        end
+      end
+
+      describe 'validating the recording step' do
+        let(:step) { 'recording' }
+
+        before do
+          session.researcher_name  = 'Miss Havisham'
+          session.researcher_phone = '12345678'
+          session.researcher_email = 'a@b.com'
+          session.topic = 'A nice long topic description'
+          session.purpose = 'A nice long puropose description'
+          session.methodologies = [Methodologies.allowed_values.first]
+        end
+
+        context 'no recording methods are selected' do
+          it { is_expected.not_to be_valid }
+        end
+
+        context 'at least one valid method is selected' do
+          before do
+            session.recording_methods = [:audio]
+            session.save
+          end
+          it { is_expected.to be_valid }
+        end
+
+        context 'the "other" recording methods is selected' do
+          before do
+            session.recording_methods = [:other]
+            session.other_recording_method = other_recording_method
+            session.save
+          end
+
+          context 'other methodology is blank' do
+            let(:other_recording_method) { nil }
+            it { is_expected.not_to be_valid }
+            it 'has one error on other_recording_method' do
+              expect(session.errors[:other_recording_method].length).to eql(1)
+              expect(session.errors[:other_recording_method].first).to eql("can't be blank")
+            end
+          end
+          context 'other methodology is supplied' do
+            let(:other_recording_method) { 'Another methodology' }
+            it { is_expected.to be_valid }
+          end
+        end
+      end
+
       describe 'validating the data step' do
         let(:step) { 'data' }
 
         before do
-          session.methodologies = [Methodologies.allowed_values.first]
-          session.recording_methods = [RecordingMethods.allowed_values.first]
-          session.topic = 'A nice long topic description'
-          session.purpose = 'A nice long puropose description'
           session.researcher_name  = 'Miss Havisham'
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
-          session.save
+          session.topic = 'A nice long topic description'
+          session.purpose = 'A nice long puropose description'
+          session.methodologies = [Methodologies.allowed_values.first]
+          session.recording_methods = [RecordingMethods.allowed_values.first]
         end
 
         context 'no details are give' do
