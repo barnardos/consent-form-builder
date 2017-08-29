@@ -6,7 +6,7 @@ describe ResearchSessionsController, type: :controller do
   describe '#start' do
     it 'redirects to the first question' do
       get :start
-      expect(response).to redirect_to('/questions/methodologies')
+      expect(response).to redirect_to('/questions/researcher')
     end
   end
 
@@ -64,7 +64,16 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'accepting methodologies' do
-      let(:existing_params) { { age: 'over18' } }
+      let(:existing_params) do
+        {
+          age: 'under18',
+          researcher_name: 'Alice',
+          researcher_phone: '0123456',
+          researcher_email: 'a@b.com',
+          topic: 'some topic',
+          purpose: 'some purppose'
+        }
+      end
       let(:params) do
         {
           id: 'methodologies',
