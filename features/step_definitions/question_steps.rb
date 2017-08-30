@@ -68,7 +68,7 @@ When(/^I provide full session details for a child-age cohort$/) do
 
   click_button 'Continue'
 
-  click_link "Respondants who can't give consent"
+  click_link "Respondents who can't give consent"
 end
 
 Then(/^I should see the session review page$/) do
