@@ -3,10 +3,10 @@
 
 <section class="split-link screen-only">
   <div class="<%='active' if @research_session.able_to_consent? %>">
-    <a id="over18-link" href="?age=over18">Respondants who can give consent themselves</a>
+    <a id="over18-link" href="?age=over18">Respondents who can give consent themselves</a>
   </div>
   <div class="<%='active' if @research_session.unable_to_consent? %>">
-    <a id="under18-link" href="?age=under18">Respondants who can't give consent</a>
+    <a id="under18-link" href="?age=under18">Respondents who can't give consent</a>
   </div>
 </section>
 
