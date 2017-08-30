@@ -18,6 +18,7 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
     let(:label) { 'Describe the thing' }
     let(:value) { 'Some description text' }
     let(:label_options) { {} }
+    let(:text_options) { {} }
     let(:error) {}
 
     subject(:rendered) do
@@ -25,7 +26,8 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
                                     label,
                                     value,
                                     error: error,
-                                    label_options: label_options)
+                                    label_options: label_options,
+                                    text_options: text_options)
     end
 
     context 'with a name and a label parameter' do
@@ -82,6 +84,14 @@ RSpec.describe Barnardos::ActionView::FormHelpers, :type => :helper do
         expect(rendered).to have_tag(
           'div.textarea.has-error > div.textarea__error', text: 'Error message'
         )
+      end
+    end
+
+    context 'with a placeholder' do
+      let(:text_options) { { placeholder: 'test placeholder' } }
+
+      it 'should add a placeholder if provided' do
+        expect(rendered).to have_tag('textarea[placeholder="test placeholder"].textarea__input')
       end
     end
   end
