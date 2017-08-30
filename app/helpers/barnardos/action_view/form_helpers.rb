@@ -58,8 +58,13 @@ module Barnardos
               end
             end
           )
-          concat(text_area_tag(name, value, class: 'textarea__input js-highlight-control__input',
-                                            rows: '4'))
+
+          textarea_options = text_options.reverse_merge(
+            class: 'textarea__input js-highlight-control__input',
+            rows: '4'
+          )
+
+          concat(text_area_tag(name, value, textarea_options))
           concat(content_tag(:div, error, class: 'textarea__error')) if error
         end
       end
