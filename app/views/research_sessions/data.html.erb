@@ -19,10 +19,10 @@
 
     <%= labelled_text_area_tag(
           :shared_use,
-          'The data will be used to?',
+          'How will the data be used?',
           @research_session.shared_use,
-          label_options: {
-            hint: 'insert how the participant’s information will be used',
+          text_options: {
+            placeholder: 'The data will be used to...',
           }
         )
     %>
