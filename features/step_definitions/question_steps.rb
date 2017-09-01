@@ -61,6 +61,10 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
   click_button 'Continue'
 
+  fill_in 'Travel expense limit', with: '50.00'
+  fill_in 'Food expense limit', with: '20.00'
+  click_button 'Continue'
+
   choose 'incentive-1'
 
   choose 'payment_type-cash'
@@ -147,6 +151,10 @@ And(/^I fill in the remaining steps$/) do
   end
   fill_in 'How long will the session be? (optional)', with: '5 minutes'
   fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
+  click_button 'Continue'
+
+  fill_in 'Travel expense limit', with: '50.00'
+  fill_in 'Food expense limit', with: '20.00'
   click_button 'Continue'
 
   choose 'incentive-1'
