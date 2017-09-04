@@ -5,7 +5,7 @@
   <%= form_for @research_session, url: wizard_path do %>
 
     <fieldset class="datefield" id="start_datetime">
-      <legend class="datefield__label " for="duration">Please enter the time and date of the session (optional)</legend>
+      <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
       <%= datetime_select :research_session, :start_datetime %>
     </fieldset>
 
