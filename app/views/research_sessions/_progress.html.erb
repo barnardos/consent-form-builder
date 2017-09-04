@@ -40,7 +40,7 @@
     %>
     <li class="progress__stage">
       <span class="progress__stage-title">
-        <% if  @research_session and @research_session.reached_step?(wizard_steps[-1]) %>
+        <% if  @research_session and @research_session.reached_step?(wizard_steps.last) %>
           <%= link_to 'Preview', research_session_preview_path %>
         <% else %>
           Preview
