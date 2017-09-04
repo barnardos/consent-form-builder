@@ -124,7 +124,7 @@ RSpec.describe ResearchSession, type: :model do
 
         context 'research purpose is given' do
           before do
-            session.purpose = 'A nice long puropose description'
+            session.purpose = 'A nice long purpose description'
             session.save
           end
           it { is_expected.to be_valid }
@@ -139,7 +139,7 @@ RSpec.describe ResearchSession, type: :model do
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
           session.topic = 'A nice long topic description'
-          session.purpose = 'A nice long puropose description'
+          session.purpose = 'A nice long purpose description'
         end
 
         context 'no methodologies are selected' do
@@ -184,7 +184,7 @@ RSpec.describe ResearchSession, type: :model do
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
           session.topic = 'A nice long topic description'
-          session.purpose = 'A nice long puropose description'
+          session.purpose = 'A nice long purpose description'
           session.methodologies = [Methodologies.allowed_values.first]
         end
 
@@ -230,7 +230,7 @@ RSpec.describe ResearchSession, type: :model do
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
           session.topic = 'A nice long topic description'
-          session.purpose = 'A nice long puropose description'
+          session.purpose = 'A nice long purpose description'
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
         end
@@ -248,7 +248,7 @@ RSpec.describe ResearchSession, type: :model do
           end
         end
 
-        context 'all the details are given but the team in invalid' do
+        context 'all the details are given but the shared_with team is invalid' do
           before do
             session.shared_with = 'nobody'
             session.shared_duration = '1 week'
@@ -259,6 +259,7 @@ RSpec.describe ResearchSession, type: :model do
           it { is_expected.not_to be_valid }
           it 'has an error for shared with' do
             expect(session.errors[:shared_with].length).to eql(1)
+            expect(session.errors[:shared_with].first).to match(/is not included in the list/)
           end
         end
 
@@ -281,7 +282,7 @@ RSpec.describe ResearchSession, type: :model do
           session.methodologies = [Methodologies.allowed_values.first]
           session.recording_methods = [RecordingMethods.allowed_values.first]
           session.topic = 'A nice long topic description'
-          session.purpose = 'A nice long puropose description'
+          session.purpose = 'A nice long purpose description'
           session.researcher_name  = 'Miss Havisham'
           session.researcher_phone = '12345678'
           session.researcher_email = 'a@b.com'
@@ -326,9 +327,7 @@ RSpec.describe ResearchSession, type: :model do
             end
             context 'and an incentive_value has been provided' do
               before { session.incentive_value = 10.00 }
-              it do
-                is_expected.to be_valid
-              end
+              it     { is_expected.to be_valid }
             end
           end
         end
