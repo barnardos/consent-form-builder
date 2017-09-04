@@ -30,16 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-
-  hello: "Hello world"
-  methodologies: "Methodologies"
-  recording: "Recording"
-  topic: "Topic"
-  purpose: "Purpose"
-  researcher: "Researcher"
-  incentive: "Incentive"
-  age: "Age"
-
   report:
     over18:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
