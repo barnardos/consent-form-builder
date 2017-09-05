@@ -2,7 +2,7 @@ class ResearchSessionPresenter < Struct.new(:research_session)
   delegate :age, :topic, :purpose, :researcher_name, :researcher_other_name,
            :researcher_email, :researcher_phone, :unable_to_consent?,
            :able_to_consent?, :other_methodology, :other_recording_method,
-           to: :research_session
+           :reached_step?, to: :research_session
 
   def methodology_list
     paras = research_session.methodologies.map do |methodology|
