@@ -1,24 +1,25 @@
-<%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'error_summary' %>
-  <h2 class="heading-medium">Incentives</h2>
-  <%= form_for @research_session, url: wizard_path do %>
-      <%= radio_group_vertical :incentive,
-                               'Will an incentive be provided?',
-                               { '1' => 'Yes', '0' => 'No' },
-                               @research_session.incentive ? '1' : '0'
-      %>
+<% content_for :left_nav do %>
+    <%= render "research_sessions/progress" %>
+<% end %>
 
-      <%= radio_group_vertical :payment_type,
-                               'What form will the incentive take?',
-                               PaymentType::NAME_VALUES,
-                               @research_session.payment_type
-      %>
+<%= render 'error_summary' %>
+<h2 class="heading-medium">Incentives</h2>
+<%= form_for @research_session, url: wizard_path do %>
+    <%= radio_group_vertical :incentive,
+                              'Will an incentive be provided?',
+                              { '1' => 'Yes', '0' => 'No' },
+                              @research_session.incentive ? '1' : '0'
+    %>
 
-      <%= labelled_text_field_tag :incentive_value,
-                                  'Incentive value',
-                                  @research_session.incentive_value %>
+    <%= radio_group_vertical :payment_type,
+                              'What form will the incentive take?',
+                              PaymentType::NAME_VALUES,
+                              @research_session.payment_type
+    %>
 
-      <%= render 'ok_cancel' %>
-  <% end %>
-</div>
+    <%= labelled_text_field_tag :incentive_value,
+                                'Incentive value',
+                                @research_session.incentive_value %>
+
+    <%= render 'ok_cancel' %>
+<% end %>

@@ -1,22 +1,23 @@
-<%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'error_summary' %>
-  <h1 class="visually-hidden">Research Topic</h1>
-  <%= form_for @research_session, url: wizard_path do %>
-      <%= labelled_text_area_tag(
-            :topic,
-            'What is the research or participation session about?',
-            @research_session.topic,
-            label_options: {
-              hint: 'What is the research about?',
-              class: 'subtitle-large'
-            },
-            text_options: {
-              placeholder: 'The topic of the project is...'
-            }
-          )
-      %>
+<% content_for :left_nav do %>
+    <%= render "research_sessions/progress" %>
+<% end %>
 
-      <%= render 'ok_cancel' %>
-  <% end %>
-</div>
+<%= render 'error_summary' %>
+<h1 class="visually-hidden">Research Topic</h1>
+<%= form_for @research_session, url: wizard_path do %>
+    <%= labelled_text_area_tag(
+          :topic,
+          'What is the research or participation session about?',
+          @research_session.topic,
+          label_options: {
+            hint: 'What is the research about?',
+            class: 'subtitle-large'
+          },
+          text_options: {
+            placeholder: 'The topic of the project is...'
+          }
+        )
+    %>
+
+    <%= render 'ok_cancel' %>
+<% end %>
