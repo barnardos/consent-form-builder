@@ -1,0 +1,24 @@
+.left-nav {
+  @media (min-width: $tablet) {
+    .left-nav__nav {
+      float: left;
+      width: 10em;
+    }
+    .left-nav__content {
+      margin-left: 10em;
+    }
+  }
+}
+
+@media print {
+  .left-nav {
+
+    .left-nav__nav {
+      display: none;
+    }
+
+    .left-nav__content {
+      margin-left: 0;
+    }
+  }
+}
