@@ -563,7 +563,7 @@ describe.only('Conditional subfields', () => {
       select.value = 'green'
       ConditionalSubfields.onChange({ target: select })
 
-      expect(document.querySelector('[name="other_colour"]').value).to.equal('')
+      expect(document.querySelector('[name="other_colour"][disabled]').value).to.equal('something')
     })
 
     it('should clear multiple optional fields when they are hidden', () => {
@@ -596,8 +596,8 @@ describe.only('Conditional subfields', () => {
       select.value = 'green'
       ConditionalSubfields.onChange({ target: select })
 
-      expect(document.querySelector('[name="other_colour"]').value).to.equal('')
-      expect(document.querySelector('[name="other_shade"]').value).to.equal('')
+      expect(document.querySelector('[name="other_colour"][disabled]').value).to.equal('something')
+      expect(document.querySelector('[name="other_shade"][disabled]').value).to.equal('dark')
     })
   })
 })

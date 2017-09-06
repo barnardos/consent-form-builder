@@ -139,18 +139,15 @@ const ConditionalSubfields = {
     subField.setAttribute('aria-expanded', isVisible)
     subField.setAttribute('aria-hidden', !isVisible)
 
-    if (!isVisible && !subField.getAttribute('data-persist-values')) {
-      const children = subField.querySelectorAll('input, select, checkbox, textarea')
+    const children = subField.querySelectorAll('input, select, checkbox, textarea')
 
-      Array.from(children).forEach((field) => {
-        field.value = ''
-        field.checked = false
-
-        const event = this.wrapper.createEvent('HTMLEvents')
-        event.initEvent('change', true, false)
-        field.dispatchEvent(event)
-      })
-    }
+    Array.from(children).forEach((field) => {
+      if (isVisible) {
+        field.removeAttribute('disabled')
+      } else {
+        field.setAttribute('disabled', 'disabled')
+      }
+    })
   }
 }
 
