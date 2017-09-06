@@ -41,7 +41,7 @@
   <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
   <p>
     <%= edit_link_for(:researcher_name) %> is the researcher who will be leading the session.
-    <% if @research_session.researcher_other_name %>
+    <% if @research_session.researcher_other_name.present? %>
       <%= edit_link_for(:researcher_name) %>ʼs colleague,
       <%= edit_link_for(:researcher_other_name) %>,
       may join <%= edit_link_for(:researcher_name) %> sometimes to help.
