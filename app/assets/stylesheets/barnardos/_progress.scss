@@ -1,7 +1,7 @@
 @import "barnardos/vars";
 @import "barnardos/colours";
 
-.progress {
+.progress.progress--horizontal {
   margin: ($gutter * 2) ($gutter / 2) ($gutter * 4);
 
   @media (min-width: $tablet) {
@@ -9,79 +9,134 @@
     padding-bottom: $gutter / 2;
     padding-left: 30px;
   }
-}
 
-.progress-bar {
-  @media (min-width: $tablet) {
-    display: table;
-    width: 100%;
+  .progress-bar {
+    @media (min-width: $tablet) {
+      display: table;
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  .progress__stage {
+    font-size: 14px;
     position: relative;
-  }
-}
-
-.progress__stage {
-  font-size: 14px;
-  position: relative;
-  border-color: $grey-medium;
-  border-width: 0 0 0 2px;
-  border-style: solid;
-
-  @media (min-width: $tablet) {
-    display: table-cell;
-    border-width: 2px 0 0;
-  }
-
-  &::before {
-    position: absolute;
-    left: -8px;
-    width: 14px;
-    height: 14px;
-    content: "";
-    border-radius: 20px;
-    background-color: $white;
-    border: 2px solid $grey-medium;
-    outline: 2px solid $white;
-    display: block;
-    z-index: 30;
+    border-color: $grey-medium;
+    border-width: 0 0 0 2px;
+    border-style: solid;
 
     @media (min-width: $tablet) {
-      top: -8px;
+      display: table-cell;
+      border-width: 2px 0 0;
     }
-  }
-
-  &.is-complete {
-    border-color: $primary-colour;
 
     &::before {
-      background-color: $primary-colour;
-      border: 2px solid $primary-colour;
-    }
-  }
-
-  &.is-active {
-    font-weight: 600;
-
-    &::before {
+      position: absolute;
+      left: -8px;
+      width: 14px;
+      height: 14px;
+      content: "";
+      border-radius: 20px;
       background-color: $white;
-      border: 2px solid $primary-colour;
+      border: 2px solid $grey-medium;
+      outline: 2px solid $white;
+      display: block;
+      z-index: 30;
+
+      @media (min-width: $tablet) {
+        top: -8px;
+      }
+    }
+
+    &.is-complete {
+      border-color: $primary-colour;
+
+      &::before {
+        background-color: $primary-colour;
+        border: 2px solid $primary-colour;
+      }
+    }
+
+    &.is-active {
+      font-weight: 600;
+
+      &::before {
+        background-color: $white;
+        border: 2px solid $primary-colour;
+      }
+    }
+
+    &:last-child {
+      border-color: transparent;
+      width: 50px;
     }
   }
 
-  &:last-child {
-    border-color: transparent;
-    width: 50px;
+  .progress__stage-title {
+    display: block;
+    padding: 0 0 $gutter $gutter;
+
+    @media (min-width: $tablet) {
+      position: absolute;
+      left: -50px;
+      width: 100px;
+      text-align: center;
+      padding: $gutter 0 0;
+    }
   }
 }
 
-.progress__stage-title {
-  display: block;
-  padding: 0 0 $gutter $gutter;
+.progress,
+.progress.progress--vertical {
+  margin: $gutter * 2 ($gutter / 2) 0;
 
-  @media (min-width: $tablet) {
-    position: absolute;
-    left: -50px;
-    width: 100px;
-    text-align: center;
-    padding: $gutter 0 0;
+  .progress__stage {
+    font-size: 14px;
+    position: relative;
+    border-color: $grey-medium;
+    border-width: 0 0 0 2px;
+    border-style: solid;
+
+    &::before {
+      position: absolute;
+      left: -8px;
+      width: 14px;
+      height: 14px;
+      content: "";
+      border-radius: 20px;
+      background-color: $white;
+      border: 2px solid $grey-medium;
+      outline: 2px solid $white;
+      display: block;
+      z-index: 30;
+    }
+
+    &.is-complete {
+      border-color: $primary-colour;
+
+      &::before {
+        background-color: $primary-colour;
+        border: 2px solid $primary-colour;
+      }
+    }
+
+    &.is-active {
+      font-weight: 600;
+
+      &::before {
+        background-color: $white;
+        border: 2px solid $primary-colour;
+      }
+    }
+
+    &:last-child {
+      border-color: transparent;
+      width: 50px;
+    }
+  }
+
+  .progress__stage-title {
+    display: block;
+    padding: 0 0 $gutter $gutter;
   }
 }

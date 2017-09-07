@@ -31,11 +31,23 @@
   &nbsp;
 </div>
 
-<main id="main" role="main">
-  <div id="content">
-    <%= yield %>
-  </div>
-</main>
+<% if content_for?(:left_nav) %>
+  <main id="main" role="main" class="left-nav">
+    <nav class="left-nav__nav">
+      <%= yield :left_nav %>
+    </nav>
+
+    <div class="content left-nav__content">
+      <%= yield %>
+    </div>
+  </main>
+<% else %>
+  <main id="main" role="main">
+    <div id="content">
+      <%= yield %>
+    </div>
+  </main>
+<% end %>
 
 <%= javascript_pack_tag 'application' %>
 

@@ -1,26 +1,27 @@
-<%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'error_summary' %>
-  <h1 class="visually-hidden">Recording Methods</h1>
-  <%= form_for @research_session, url: wizard_path do %>
-      <%= checkbox_group_vertical(
-            'recording_methods[]',
-            'How will you be recording information?',
-            RecordingMethods::NAME_VALUES,
-            @research_session.recording_methods,
-            legend_options: { class: 'subtitle-large' }
+<% content_for :left_nav do %>
+    <%= render "research_sessions/progress" %>
+<% end %>
+
+<%= render 'error_summary' %>
+<h1 class="visually-hidden">Recording Methods</h1>
+<%= form_for @research_session, url: wizard_path do %>
+    <%= checkbox_group_vertical(
+          'recording_methods[]',
+          'How will you be recording information?',
+          RecordingMethods::NAME_VALUES,
+          @research_session.recording_methods,
+          legend_options: { class: 'subtitle-large' }
+        )
+    %>
+
+    <div class="js-ConditionalSubfield" data-controlled-by="recording_methods[]" data-control-value="other">
+      <%= labelled_text_field_tag(
+            :other_recording_method,
+            'What is the other recording method?',
+            @research_session.other_recording_method
           )
       %>
+    </div>
 
-      <div class="js-ConditionalSubfield" data-controlled-by="recording_methods[]" data-control-value="other">
-        <%= labelled_text_field_tag(
-              :other_recording_method,
-              'What is the other recording method?',
-              @research_session.other_recording_method
-            )
-        %>
-      </div>
-
-      <%= render 'ok_cancel' %>
-  <% end %>
-</div>
+    <%= render 'ok_cancel' %>
+<% end %>

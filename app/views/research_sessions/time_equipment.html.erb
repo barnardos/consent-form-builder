@@ -1,26 +1,27 @@
-<%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'error_summary' %>
-  <h1 class="title">Session details</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+<% content_for :left_nav do %>
+    <%= render "research_sessions/progress" %>
+<% end %>
 
-    <fieldset class="datefield" id="start_datetime">
-      <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
-      <%= datetime_select :research_session, :start_datetime %>
-    </fieldset>
+<%= render 'error_summary' %>
+<h1 class="title">Session details</h1>
+<%= form_for @research_session, url: wizard_path do %>
 
-    <%= labelled_text_field_tag(
-      :duration,
-      'How long will the session be? (optional)',
-      @research_session.duration
-    ) %>
+  <fieldset class="datefield" id="start_datetime">
+    <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
+    <%= datetime_select :research_session, :start_datetime %>
+  </fieldset>
 
-    <%= labelled_text_area_tag(
-      :participant_equipment,
-      'What do participants need to bring? (optional)',
-      @research_session.participant_equipment
-    ) %>
+  <%= labelled_text_field_tag(
+    :duration,
+    'How long will the session be? (optional)',
+    @research_session.duration
+  ) %>
 
-    <%= render 'ok_cancel' %>
-  <% end %>
-</div>
+  <%= labelled_text_area_tag(
+    :participant_equipment,
+    'What do participants need to bring? (optional)',
+    @research_session.participant_equipment
+  ) %>
+
+  <%= render 'ok_cancel' %>
+<% end %>
