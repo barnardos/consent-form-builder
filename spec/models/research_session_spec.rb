@@ -51,9 +51,6 @@ RSpec.describe ResearchSession, type: :model do
           it 'has an error for researcher name' do
             expect(session.errors[:researcher_name].length).to eql(1)
           end
-          it 'has an error for researcher telephone number' do
-            expect(session.errors[:researcher_phone].length).to eql(1)
-          end
           it 'has an error for researcher email' do
             expect(session.errors[:researcher_email].length).to eql(1)
           end

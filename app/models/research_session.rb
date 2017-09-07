@@ -1,8 +1,6 @@
 class ResearchSession < ApplicationRecord
   validates :researcher_name, presence: true,
             if: -> (session) { session.reached_step?(:researcher) }
-  validates :researcher_phone, presence: true,
-            if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, presence: true,
             if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, format: /@/,
