@@ -1,6 +1,6 @@
 module Barnardos
   module ActionView
-    module FormHelpers
+    module FormTagHelper
       ##
       # <!-- Example HTML output for labelled_text_field_tag :participant_name -->
       # <div class="textfield js-textfield" id="participant_name-wrapper">
@@ -175,7 +175,6 @@ module Barnardos
           end
         end
       end
-
     end
   end
 end

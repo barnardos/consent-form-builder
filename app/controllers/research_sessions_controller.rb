@@ -1,6 +1,6 @@
 class ResearchSessionsController < ApplicationController
   helper Barnardos::ActionView::FormHelper
-  helper Barnardos::ActionView::FormHelpers
+  helper Barnardos::ActionView::FormTagHelper
 
   include Wicked::Wizard
   steps *ResearchSession::Steps::PARAMS.keys
