@@ -5,7 +5,7 @@
   <%= form_for @research_session, url: wizard_path do %>
 
     <%= radio_group_vertical :shared_with,
-      'Who will data be shared with?',
+      'Who will the data be shared with?',
       SharedWith::NAME_VALUES,
       @research_session.shared_with
     %>

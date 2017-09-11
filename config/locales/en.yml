@@ -30,6 +30,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    attributes:
+      research_session:
+        shared_duration: "How long will this information be held for?"
+        shared_use: "How will the data be used?"
+
+  errors:
+    format: '"%{attribute}" %{message}'
+
   report:
     over18:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
