@@ -2,7 +2,7 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Data</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
     <%= radio_group_vertical :shared_with,
       'Who will the data be shared with?',

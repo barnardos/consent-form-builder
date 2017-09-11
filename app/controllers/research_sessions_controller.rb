@@ -1,4 +1,5 @@
 class ResearchSessionsController < ApplicationController
+  helper Barnardos::ActionView::FormHelper
   helper Barnardos::ActionView::FormHelpers
 
   include Wicked::Wizard

@@ -2,7 +2,7 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Purpose</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= labelled_text_area_tag(
             :purpose,
             'Why are you doing this research or participation session?',

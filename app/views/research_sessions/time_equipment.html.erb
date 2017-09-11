@@ -2,7 +2,7 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Time and equipment</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
     <fieldset class="datefield" id="start_datetime">
       <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>

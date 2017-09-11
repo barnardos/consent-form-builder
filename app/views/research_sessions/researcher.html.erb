@@ -1,14 +1,8 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="subtitle-large">Researcher</h1>
-  <p>
-    Who is the person who is leading the research or participation session? Please note:
-    participants will be informed that they can get further information from this person,
-    and their contact details will be included on the information sheet.
-  </p>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-  <%= form_for @research_session, url: wizard_path do %>
     <fieldset class="fieldset" name="first-researcher">
       <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
 
@@ -29,7 +23,7 @@
       <div class="js-ConditionalSubfield" data-controlled-by="researcher_other" data-control-value="1">
         <%= labelled_text_field_tag :researcher_other_name, 'Full name', @research_session.researcher_other_name %>
       </div>
-    </fielset>
+    </fieldset>
 
     <%= render 'ok_cancel' %>
   <% end %>

@@ -2,7 +2,7 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Incentive</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= radio_group_vertical :incentive,
                                'Will an incentive be provided?',
                                { '1' => 'Yes', '0' => 'No' },

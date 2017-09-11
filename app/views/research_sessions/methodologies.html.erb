@@ -2,7 +2,7 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Methodologies</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= checkbox_group_vertical(
             'methodologies[]',
             'How will you be gathering information?',
