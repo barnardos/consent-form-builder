@@ -30,11 +30,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  research_session_attr_labels: &attr_labels
+    shared_duration: "How long will this information be held for?"
+    shared_use: "How will the data be used?"
+    researcher_name: 'Full name'
+    researcher_phone: 'Telephone number (optional)'
+    researcher_email: 'Email'
+
   activerecord:
     attributes:
       research_session:
-        shared_duration: "How long will this information be held for?"
-        shared_use: "How will the data be used?"
+        *attr_labels
+
+  helpers:
+    label:
+      research_session:
+        *attr_labels
 
   errors:
     format: '"%{attribute}" %{message}'
