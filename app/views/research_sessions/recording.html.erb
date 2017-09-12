@@ -1,14 +1,13 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="visually-hidden">Recording Methods</h1>
+  <h1 class="subtitle-large">Recording</h1>
   <%= form_for @research_session, url: wizard_path do %>
       <%= checkbox_group_vertical(
             'recording_methods[]',
             'How will you be recording information?',
             RecordingMethods::NAME_VALUES,
-            @research_session.recording_methods,
-            legend_options: { class: 'subtitle-large' }
+            @research_session.recording_methods
           )
       %>
 

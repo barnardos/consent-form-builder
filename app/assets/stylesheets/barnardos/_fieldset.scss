@@ -6,7 +6,7 @@
 }
 
 .fieldset__legend {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: normal;
   line-height: 32px;
   margin: 12px 0;
@@ -15,7 +15,7 @@
   width: 100%;
 
   @media (min-width: $tablet) {
-    font-size: 36px;
+    font-size: 23px;
     line-height: 48px;
     color: $black;
   }
