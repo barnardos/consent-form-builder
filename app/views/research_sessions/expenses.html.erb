@@ -37,7 +37,7 @@
         }
       %>
 
-      <%= radio_group_vertical :receipts_required,
+      <%= radio_group_vertical_tag :receipts_required,
         'Must the participant provide a receipt for any expenses claimed?',
         { '1' => 'Yes', '0' => 'No' },
         @research_session.receipts_required ? '1' : '0'

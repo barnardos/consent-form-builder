@@ -331,7 +331,7 @@ RSpec.describe Barnardos::ActionView::FormTagHelper, type: :helper do
     end
   end
 
-  describe '#radio_group_vertical' do
+  describe '#radio_group_vertical_tag' do
     # <!-- Example HTML output -->
     # <fieldset class="radio-group radio-group__vertical">
     #   <legend class="radio-group__legend">
@@ -358,11 +358,13 @@ RSpec.describe Barnardos::ActionView::FormTagHelper, type: :helper do
     end
 
     subject(:rendered) do
-      helper.radio_group_vertical(name,
-                                  legend,
-                                  selection_options,
-                                  value,
-                                  legend_options: legend_options)
+      helper.radio_group_vertical_tag(
+        name,
+        legend,
+        selection_options,
+        value,
+        legend_options: legend_options
+      )
     end
 
     context 'an empty enumerable is given' do

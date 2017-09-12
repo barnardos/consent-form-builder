@@ -4,7 +4,7 @@
   <h1 class="subtitle-large">Data</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-    <%= radio_group_vertical :shared_with,
+    <%= radio_group_vertical_tag :shared_with,
       'Who will the data be shared with?',
       SharedWith::NAME_VALUES,
       @research_session.shared_with

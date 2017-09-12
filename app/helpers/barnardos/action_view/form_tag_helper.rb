@@ -90,7 +90,7 @@ module Barnardos
       #     <label class="radio-group__label" for="age-under12">Under 12 years old</label>
       #   </div>
       # </fieldset>
-      def radio_group_vertical(
+      def radio_group_vertical_tag(
         name, legend, selection_list,
         value = nil, error: nil, legend_options: {}
       )

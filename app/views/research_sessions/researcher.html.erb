@@ -19,7 +19,7 @@
     <fieldset class="fieldset" name="second-researcher">
       <legend class="visually-hidden">Additional researcher</legend>
 
-      <%= radio_group_vertical :researcher_other,
+      <%= radio_group_vertical_tag :researcher_other,
         'Will the participants meet any other researchers / participants?',
         { '0' => 'No', '1' => 'Yes' },
         @research_session.researcher_other ? '1' : '0'
