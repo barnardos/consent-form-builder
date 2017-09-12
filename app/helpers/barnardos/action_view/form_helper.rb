@@ -35,6 +35,35 @@ module Barnardos
         end
       end
 
+      ##
+      # <!-- Example HTML output for labelled_textarea_field_tag :participant_description -->
+      # <div class="textarea js-textarea" id="participant_description-wrapper">
+      #   <label class="textarea__label" for="participant_description">
+      #     Describe the research participant
+      #     <span class="textarea__hint">Height, experience, mood</span>
+      #   </label>
+      #   <textarea id="participant_description"
+      #             class="textarea__input" name="participant_description"></textarea>
+      # </div>
+      def labelled_text_area(object_name, method, label: nil,
+                             label_options: {}, text_options: {})
+        text_options[:class] =
+          "#{(text_options[:class] || '')} textarea__input js-highlight-control__input"
+        label_options[:class] = (label_options[:class] || '') + ' textarea__label'
+
+        content_tag :div, class: 'textarea js-highlight-control', id: "#{method}-wrapper" do
+          concat(
+            label(object_name, method, label_options) do
+              concat(label.present? ? label : label(object_name, method, label_options))
+              if label_options[:hint]
+                concat(content_tag(:span, label_options[:hint], class: 'textarea__hint'))
+              end
+            end
+          )
+          concat(text_area(object_name, method, text_options.reverse_merge(rows: 4)))
+        end
+      end
+
       def radio_group_vertical(object, method, collection, legend: nil, legend_options: {})
         content_tag :fieldset, class: 'radio-group radio-group__vertical' do
           next unless collection.any?

@@ -52,6 +52,90 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
     end
   end
 
+  describe '#labelled_text_area' do
+    ##
+    # <!-- Example HTML output -->
+    # <div class="textfield js-highlight-control" id="participant_name-wrapper">
+    #   <label class="textfield__label" for="participant_name">
+    #     What is the name of the research participant?
+    #     <span class="textfield__hint">Full name</span>
+    #   </label>
+    #   <textarea id="participant_name" class="textfield__input js-highlight-control__input"
+    #       name="participant_name" type="text" rows="4">This is a test</textarea>
+    # </div>
+
+    let(:label)         { nil }
+    let(:label_options) { {} }
+    let(:text_options)  { {} }
+
+    subject(:rendered) do
+      helper.labelled_text_area(
+        :research_session, :topic, label: label, label_options: label_options,
+                                   text_options: text_options
+      )
+    end
+
+    context 'with only the object name and method' do
+      before do
+        research_session = double('ResearchSession', topic: 'Topic from the object')
+        assign(:research_session, research_session)
+      end
+
+      it 'outputs an wrapper div with the class and id' do
+        expect(rendered).to have_tag(
+          'div.textarea.js-highlight-control', with: { id: 'topic-wrapper' }
+        )
+      end
+
+      it 'renders what is on the named object in a highlighted control' do
+        expect(rendered).to have_tag('textarea.textarea__input', text: /Topic from the object/)
+      end
+
+      it 'labels according to en.yml' do
+        expect(rendered).to have_tag(
+          'label', text: 'What is the research or participation session about?'
+        )
+      end
+
+      it 'renders a textarea with 4 rows' do
+        expect(rendered).to have_tag('textarea.textarea__input[rows="4"]')
+      end
+
+      it 'adds classes to allow highlighter to enhance interaction' do
+        expect(rendered).to have_tag('div.textarea.js-highlight-control')
+        expect(rendered).to have_tag('textarea.textarea__input.js-highlight-control__input')
+      end
+    end
+
+    context 'a label is given as a keyword param' do
+      let(:label) { 'A label' }
+
+      it 'renders a label as a child of the wrapper' do
+        expect(rendered).to have_tag(
+          'div.textarea > label[for=research_session_topic].textarea__label', text: label
+        )
+      end
+    end
+
+    context 'label_options specifies a hint' do
+      let(:label_options) { { hint: 'Something helpful' } }
+
+      it 'renders a hint span in the label' do
+        expect(rendered).to have_tag(
+          'label.textarea__label > span.textarea__hint', text: 'Something helpful'
+        )
+      end
+    end
+
+    context 'text_options specifies a placeholder' do
+      let(:text_options) { { placeholder: 'test placeholder' } }
+
+      it 'adds a placeholder' do
+        expect(rendered).to have_tag('textarea[placeholder="test placeholder"].textarea__input')
+      end
+    end
+  end
+
   describe '#radio_group_vertical' do
     before do
       research_session = double('ResearchSession', to_s: 'research_session', shared_with: :team)

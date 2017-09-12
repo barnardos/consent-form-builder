@@ -51,7 +51,7 @@ module Barnardos
                     class: "textarea js-highlight-control #{'has-error' if error}",
                     id: "#{name}-wrapper" do
           concat(
-            label_tag(name, class: "textarea__label  #{label_options[:class]}") do
+            label_tag(name, class: "textarea__label #{label_options[:class]}") do
               concat(label)
               if label_options[:hint]
                 concat(content_tag(:span, label_options[:hint], class: 'textarea__hint'))

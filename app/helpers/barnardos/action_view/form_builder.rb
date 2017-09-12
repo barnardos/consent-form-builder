@@ -8,6 +8,13 @@ module Barnardos
         )
       end
 
+      def labelled_text_area(method, label: nil, label_options: {}, text_options: {})
+        @template.labelled_text_area(
+          @object_name, method, label: label,
+                                label_options: label_options, text_options: text_options
+        )
+      end
+
       def radio_group_vertical(method, collection, legend: nil, legend_options: {})
         @template.radio_group_vertical(
           @object_name, method, collection, legend: legend, legend_options: legend_options

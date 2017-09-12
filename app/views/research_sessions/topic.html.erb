@@ -3,14 +3,15 @@
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Topic</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= labelled_text_area_tag(
-            :topic,
-            'What is the research or participation session about?',
-            @research_session.topic,
-            text_options: {
+      <%= form.labelled_text_area \
+          :topic,
+          label_options: {
+              hint: 'What is the research about?',
+              class: 'subtitle-large'
+          },
+          text_options: {
               placeholder: 'The topic of the project is...'
-            }
-          )
+          }
       %>
 
       <%= render 'ok_cancel' %>
