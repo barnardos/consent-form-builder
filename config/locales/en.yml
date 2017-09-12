@@ -38,6 +38,7 @@ en:
     researcher_phone: 'Telephone number (optional)'
     researcher_email: 'Email'
     topic: 'What is the research or participation session about?'
+    purpose: 'Why are you doing this research or participation session?'
 
   activerecord:
     attributes:
