@@ -7,6 +7,12 @@ module Barnardos
                                       label_options: label_options, &block
         )
       end
+
+      def radio_group_vertical(method, collection, legend: nil, legend_options: {})
+        @template.radio_group_vertical(
+          @object_name, method, collection, legend: legend, legend_options: legend_options
+        )
+      end
     end
   end
 end

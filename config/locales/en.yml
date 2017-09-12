@@ -34,6 +34,7 @@ en:
     shared_duration: "How long will this information be held for?"
     shared_use: "How will the data be used?"
     researcher_name: 'Full name'
+    researcher_other_name: 'Full name'
     researcher_phone: 'Telephone number (optional)'
     researcher_email: 'Email'
 

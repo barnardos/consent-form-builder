@@ -34,6 +34,34 @@ module Barnardos
           concat(text_field(object_name, method, text_options))
         end
       end
+
+      def radio_group_vertical(object, method, collection, legend: nil, legend_options: {})
+        content_tag :fieldset, class: 'radio-group radio-group__vertical' do
+          next unless collection.any?
+
+          # Render a legend for the fieldset, with an optional hint and optional class
+          concat(
+            content_tag(:legend, class: "radio-group__legend #{legend_options[:class]}") do
+              concat(legend)
+              if legend_options[:hint]
+                concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint'))
+              end
+            end
+          )
+
+          collection = Array(collection)
+          buttons = collection_radio_buttons(
+            object, method, collection, :first, :last, include_hidden: false
+          ) do |b|
+            content_tag :div, class: 'radio-group__choice' do
+              b.radio_button(class: 'radio-group__input') +
+                b.label(class: 'radio-group__label')
+            end
+          end
+
+          concat(buttons)
+        end
+      end
     end
   end
 end
