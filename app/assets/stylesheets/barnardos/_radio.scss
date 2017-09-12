@@ -17,10 +17,10 @@ $outer-ring: $inner-ring + ($ring-size * 3);
 }
 
 .radio-group__legend {
-  font-size: 23px;
+  font-size: $base-font-size;
   font-weight: normal;
   line-height: 24px;
-  margin: ($gutter / 2) 0;
+  margin: 0 0 ($gutter / 2);
   color: $black;
   float: left;
   width: 100%;
