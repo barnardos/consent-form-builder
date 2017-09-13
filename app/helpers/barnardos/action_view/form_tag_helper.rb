@@ -133,8 +133,8 @@ module Barnardos
         end
       end
 
-      def checkbox_group_vertical(name, legend, selection_list, values = [],
-                                  error: nil, legend_options: {})
+      def checkbox_group_vertical_tag(name, legend, selection_list, values = [],
+                                      error: nil, legend_options: {})
         values = values&.map(&:to_s)
 
         content_tag(

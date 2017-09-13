@@ -208,11 +208,13 @@ RSpec.describe Barnardos::ActionView::FormTagHelper, type: :helper do
     end
 
     subject(:rendered) do
-      helper.checkbox_group_vertical(name,
-                                     legend,
-                                     selection_options,
-                                     values,
-                                     legend_options: legend_options)
+      helper.checkbox_group_vertical_tag(
+        name,
+        legend,
+        selection_options,
+        values,
+        legend_options: legend_options
+      )
     end
 
     context 'an empty enumerable is given' do

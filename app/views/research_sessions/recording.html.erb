@@ -3,7 +3,7 @@
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Recording</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= checkbox_group_vertical(
+      <%= checkbox_group_vertical_tag(
             'recording_methods[]',
             'How will you be recording information?',
             RecordingMethods::NAME_VALUES,
