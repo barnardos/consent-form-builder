@@ -33,15 +33,15 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'Why are you doing this research or participation session?', with: @purpose
   click_button 'Continue'
 
-  @methodologies = [:interview, :usability]
+  @methodologies = ['Interview', 'Usability testing']
   @methodologies.each do |methodology|
-    check "methodologies[]-#{methodology}"
+    check methodology
   end
   click_button 'Continue'
 
-  @recording_methods = [:audio, :video, :written]
+  @recording_methods = ['Audio', 'Video', 'Written notes']
   @recording_methods.each do |method|
-    check "recording_methods[]-#{method}"
+    check method
   end
   click_button 'Continue'
 
@@ -65,9 +65,9 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'Food expense limit', with: '20.00'
   click_button 'Continue'
 
-  choose 'incentive-1'
+  choose 'Yes'
 
-  choose 'payment_type-cash'
+  choose 'Cash'
   fill_in 'Incentive value', with: '10.50'
 
   click_button 'Continue'
@@ -117,20 +117,19 @@ end
 
 And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
   attr = attr.downcase.tr(' ', '_')
-  expect(page).to have_tag('label', with: { for: "#{attr}[]-other" })
-  expect(page).to have_tag('input', with: { id: "#{attr}[]-other" })
-  expect(page).to have_tag('input', with: { id: "#{attr}[]-other" })
+  expect(page).to have_tag('label', with: { for: "research_session_#{attr}_other" })
+  expect(page).to have_tag('input', with: { id: "research_session_#{attr}_other" })
 end
 
 When(/^I fill in the 'Other' methodology$/) do
-  check 'methodologies[]-other'
+  check 'Other'
 
   @other_methodology = 'A.N. Other Methodology'
   fill_in 'What is the other methodology?', with: @other_methodology
 end
 
 When(/^I fill in the 'Other' recording method$/) do
-  check 'recording_methods[]-other'
+  check 'Other'
 
   @other_recording_method = 'A.N. Other Recording Method'
   fill_in 'What is the other recording method?', with: @other_recording_method
@@ -157,9 +156,9 @@ And(/^I fill in the remaining steps$/) do
   fill_in 'Food expense limit', with: '20.00'
   click_button 'Continue'
 
-  choose 'incentive-1'
+  choose 'Yes'
 
-  choose 'payment_type-cash'
+  choose 'Cash'
   fill_in 'Incentive value', with: '10.50'
 
   click_button 'Continue'

@@ -1,35 +1,33 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="subtitle-large">Researcher</h1>
-  <p>
-    Who is the person who is leading the research or participation session? Please note:
-    participants will be informed that they can get further information from this person,
-    and their contact details will be included on the information sheet.
-  </p>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-  <%= form_for @research_session, url: wizard_path do %>
     <fieldset class="fieldset" name="first-researcher">
       <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
+      <p>
+        Who is the person who is leading the research or participation session? Please note:
+        participants will be informed that they can get further information from this person,
+        and their contact details will be included on the information sheet.
+      </p>
 
-      <%= labelled_text_field_tag :researcher_name, 'Full name', @research_session.researcher_name %>
-      <%= labelled_text_field_tag :researcher_phone, 'Telephone number (optional)', @research_session.researcher_phone %>
-      <%= labelled_text_field_tag :researcher_email, 'Email', @research_session.researcher_email %>
+      <%= form.labelled_text_field :researcher_name %>
+      <%= form.labelled_text_field :researcher_phone %>
+      <%= form.labelled_text_field :researcher_email %>
     </fieldset>
 
     <fieldset class="fieldset" name="second-researcher">
       <legend class="visually-hidden">Additional researcher</legend>
 
-      <%= radio_group_vertical :researcher_other,
-        'Will the participants meet any other researchers / participants?',
-        { '0' => 'No', '1' => 'Yes' },
-        @research_session.researcher_other ? '1' : '0'
-      %>
+      <%= form.radio_group_vertical \
+          :researcher_other,
+          { false => 'No', true => 'Yes' },
+          legend: 'Will the participants meet any other researchers / participants?' %>
 
-      <div class="js-ConditionalSubfield" data-controlled-by="researcher_other" data-control-value="1">
-        <%= labelled_text_field_tag :researcher_other_name, 'Full name', @research_session.researcher_other_name %>
+      <div class="js-ConditionalSubfield" data-controlled-by="research_session[researcher_other]" data-control-value="true">
+        <%= form.labelled_text_field :researcher_other_name %>
       </div>
-    </fielset>
+    </fieldset>
 
     <%= render 'ok_cancel' %>
   <% end %>

@@ -1,5 +1,5 @@
 class ResearchSessionsController < ApplicationController
-  helper Barnardos::ActionView::FormHelpers
+  helper Barnardos::ActionView::FormHelper
 
   include Wicked::Wizard
   steps *ResearchSession::Steps::PARAMS.keys
@@ -58,7 +58,7 @@ private
   end
 
   def question_params
-    params.permit(ResearchSession::Steps::PARAMS[step])
+    params.require(:research_session).permit(ResearchSession::Steps::PARAMS[step])
   end
 end
 

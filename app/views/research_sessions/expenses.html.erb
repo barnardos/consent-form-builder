@@ -2,52 +2,41 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Expenses</h1>
-  <%= form_for @research_session, url: wizard_path do %>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-      <%= labelled_text_field_tag :travel_expenses_limit,
-        'Travel expense limit',
-        @research_session.travel_expenses_limit,
-        label_options: {
-          hint: 'If you allow travel expenses, what is the maximum allowed?'
-        },
-        text_options: {
-          placeholder: '0.00'
-        }
+      <%= form.labelled_text_field :travel_expenses_limit,
+            label_options: {
+              hint: 'If you allow travel expenses, what is the maximum allowed?'
+            },
+            text_options: {
+              placeholder: '0.00'
+            }
       %>
 
-      <%= labelled_text_field_tag :food_expenses_limit,
-        'Food expense limit',
-        @research_session.food_expenses_limit,
-        label_options: {
-          hint: 'If you allow food expenses, what is the maximum allowed?'
-        },
-        text_options: {
-          placeholder: '0.00'
-        }
+      <%= form.labelled_text_field :food_expenses_limit,
+            label_options: {
+              hint: 'If you allow food expenses, what is the maximum allowed?'
+            },
+            text_options: {
+              placeholder: '0.00'
+            }
       %>
 
-      <%= labelled_text_field_tag :other_expenses_limit,
-        'Other expense limit',
-        @research_session.other_expenses_limit,
-        label_options: {
-          hint: 'If you allow the participant to expense other items, what is the maximum allowed?'
-        },
-        text_options: {
-          placeholder: '0.00'
-        }
+      <%= form.labelled_text_field :other_expenses_limit,
+            label_options: {
+              hint: 'If you allow the participant to expense other items, what is the maximum allowed?'
+            },
+            text_options: {
+              placeholder: '0.00'
+            }
       %>
 
-      <%= radio_group_vertical :receipts_required,
-        'Must the participant provide a receipt for any expenses claimed?',
-        { '1' => 'Yes', '0' => 'No' },
-        @research_session.receipts_required ? '1' : '0'
+      <%= form.radio_group_vertical :receipts_required,
+            { true => 'Yes', false => 'No' },
+            legend: 'Must the participant provide a receipt for any expenses claimed?'
       %>
 
-      <%= labelled_text_area_tag(
-        :food_provided,
-        'Will you provide food or refreshments at the session? (optional)',
-        @research_session.food_provided)
-      %>
+      <%= form.labelled_text_area :food_provided %>
 
       <%= render 'ok_cancel' %>
   <% end %>

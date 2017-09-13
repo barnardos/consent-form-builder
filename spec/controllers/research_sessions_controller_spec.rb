@@ -77,7 +77,7 @@ describe ResearchSessionsController, type: :controller do
       let(:params) do
         {
           id: 'methodologies',
-          'methodologies' => %w(interview usability)
+          research_session: { 'methodologies' => %w(interview usability) }
         }
       end
 
@@ -106,9 +106,11 @@ describe ResearchSessionsController, type: :controller do
       let(:params) do
         {
           id: 'incentive',
-          incentive: '1',
-          payment_type: 'cash',
-          incentive_value: 10.00
+          research_session: {
+            incentive: '1',
+            payment_type: 'cash',
+            incentive_value: 10.00
+          }
         }
       end
 

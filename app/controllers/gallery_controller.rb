@@ -1,5 +1,5 @@
 class GalleryController < ApplicationController
-  helper Barnardos::ActionView::FormHelpers
+  helper Barnardos::ActionView::FormTagHelper
 
   def index
   end
