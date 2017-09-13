@@ -44,6 +44,8 @@ en:
     other_methodology: "What is the other methodology?"
     recording_methods: "How will you be recording information?"
     other_recording_method: "What is the other recording method?"
+    duration: "How long will the session be? (optional)"
+    participant_equipment: "What do participants need to bring? (optional)"
 
   activerecord:
     attributes:
