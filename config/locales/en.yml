@@ -46,6 +46,11 @@ en:
     other_recording_method: "What is the other recording method?"
     duration: "How long will the session be? (optional)"
     participant_equipment: "What do participants need to bring? (optional)"
+    travel_expenses_limit: "Travel expense limit"
+    food_expenses_limit: "Food expense limit"
+    other_expenses_limit: "Other expense limit"
+    receipts_required: "Must the participant provide a receipt for any expenses claimed?"
+    food_provided: "Will you provide food or refreshments at the session? (optional)"
 
   activerecord:
     attributes:
