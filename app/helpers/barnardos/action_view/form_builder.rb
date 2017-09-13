@@ -20,6 +20,12 @@ module Barnardos
           @object_name, method, collection, legend: legend, legend_options: legend_options
         )
       end
+
+      def checkbox_group_vertical(method, collection, legend: nil, legend_options: {})
+        @template.checkbox_group_vertical(
+          @object_name, method, collection, legend: legend, legend_options: legend_options
+        )
+      end
     end
   end
 end

@@ -91,6 +91,36 @@ module Barnardos
           concat(buttons)
         end
       end
+
+      def checkbox_group_vertical(object, method, collection, legend: nil, legend_options: {})
+        content_tag :fieldset, class: 'checkbox-group checkbox-group__vertical' do
+          next unless collection.any?
+
+          concat(
+            content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class]}") do
+              concat(legend)
+              if legend_options[:hint]
+                concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint'))
+              end
+            end
+          )
+
+          # Make sure we're not using Symbols for key comparison, as collection_check_boxes
+          # will use a straight `include?` to check for checked values. to_s it here
+          # This map will deal with both Hash and Array
+          collection = collection.map { |k, v| [k.to_s, v] }
+          concat(
+            collection_check_boxes(
+              object, method, collection, :first, :last, include_hidden: false
+            ) do |b|
+              content_tag :div, class: 'checkbox-group__choice' do
+                b.check_box(class: 'checkbox-group__input') +
+                  b.label(class: 'checkbox-group__label')
+              end
+            end
+          )
+        end
+      end
     end
   end
 end

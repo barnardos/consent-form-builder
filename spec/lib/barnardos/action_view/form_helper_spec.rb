@@ -221,4 +221,108 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       it_behaves_like 'it has correctly classed and labelled input'
     end
   end
+
+  describe '#checkbox_group_vertical' do
+    let(:legend)         { 'My legend' }
+    let(:legend_options) { {} }
+    let(:collection) do
+      {
+        interview: 'Interview',
+        usability: 'Usability testing',
+        survey:    'Survey'
+      }
+    end
+
+    before do
+      assign(
+        :research_session,
+        double(:research_session, methodologies: %w[interview survey])
+      )
+    end
+
+    subject(:rendered) do
+      helper.checkbox_group_vertical(
+        :research_session, :methodologies, collection,
+        legend: legend, legend_options: legend_options
+      )
+    end
+
+    shared_examples 'it has correctly classed, labelled and selected inputs' do
+      it 'renders a div with an input and label for each value' do
+        expect(rendered).to have_tag('div.checkbox-group__choice', count: collection.length)
+      end
+
+      it 'renders a selected checkbox input with the name and value and a constructed id' do
+        expect(rendered).to have_tag(
+          'input.checkbox-group__input',
+          with: {
+            type: 'checkbox',
+            name: 'research_session[methodologies][]',
+            value: 'interview',
+            id: 'research_session_methodologies_interview'
+          }
+        )
+      end
+
+      it 'labels the input' do
+        expect(rendered).to have_tag(
+          'label.checkbox-group__label', with: { for: 'research_session_methodologies_interview' }
+        )
+      end
+
+      it 'renders a legend with the value specified' do
+        expect(rendered).to have_tag('legend.checkbox-group__legend', text: 'My legend')
+      end
+
+      it 'checks inputs whose values are present' do
+        expect(rendered).to have_tag('#research_session_methodologies_interview[checked="checked"]')
+        expect(rendered).to have_tag('#research_session_methodologies_survey[checked="checked"]')
+      end
+      it "'does not check those that aren't'" do
+        expect(rendered).to have_tag('#research_session_methodologies_usability:not([checked])')
+      end
+    end
+
+    context 'an empty enumerable is given' do
+      let(:collection) { [] }
+
+      it 'generates an empty fieldset' do
+        expect(rendered).to have_empty_tag('fieldset.checkbox-group.checkbox-group__vertical')
+      end
+    end
+
+    context 'a hash of name/value pairs is given' do
+      it_behaves_like 'it has correctly classed, labelled and selected inputs'
+    end
+
+    context 'an Array of value/text array pairs is given' do
+      let(:collection) do
+        [
+          [:interview, 'Interview'],
+          [:usability, 'Usability testing'],
+          [:survey,    'Survey']
+        ]
+      end
+
+      it_behaves_like 'it has correctly classed, labelled and selected inputs'
+    end
+
+    context 'a legend class is specified' do
+      let(:legend_options) { { class: 'test' } }
+
+      it 'includes that class in the legend' do
+        expect(rendered).to have_tag('legend.checkbox-group__legend.test', text: 'My legend')
+      end
+    end
+
+    context 'a legend hint is specified' do
+      let(:legend_options) { { hint: 'A hint' } }
+
+      it 'includes the hint in the legend' do
+        expect(rendered).to have_tag(
+          'legend.checkbox-group__legend span.checkbox-group__hint', text: 'A hint'
+        )
+      end
+    end
+  end
 end
