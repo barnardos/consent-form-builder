@@ -3,21 +3,18 @@
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Recording</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= checkbox_group_vertical_tag(
-            'recording_methods[]',
-            'How will you be recording information?',
+      <%= form.checkbox_group_vertical(
+            :recording_methods,
             RecordingMethods::NAME_VALUES,
-            @research_session.recording_methods
+            legend: 'How will you be recording information?',
+            legend_options: { class: 'subtitle-large' }
           )
       %>
 
-      <div class="js-ConditionalSubfield" data-controlled-by="recording_methods[]" data-control-value="other">
-        <%= labelled_text_field_tag(
-              :other_recording_method,
-              'What is the other recording method?',
-              @research_session.other_recording_method
-            )
-        %>
+      <div class="js-ConditionalSubfield"
+           data-controlled-by="research_session[recording_methods][]"
+           data-control-value="other">
+        <%= form.labelled_text_field :other_recording_method %>
       </div>
 
       <%= render 'ok_cancel' %>

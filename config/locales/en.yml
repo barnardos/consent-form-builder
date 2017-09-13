@@ -39,6 +39,10 @@ en:
     researcher_email: 'Email'
     topic: 'What is the research or participation session about?'
     purpose: 'Why are you doing this research or participation session?'
+    methodologies: 'How will you be gathering information?'
+    other_methodology: "What is the other methodology?"
+    recording_methods: "How will you be recording information?"
+    other_recording_method: "What is the other recording method?"
 
   activerecord:
     attributes:
