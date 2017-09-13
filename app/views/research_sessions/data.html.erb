@@ -4,27 +4,12 @@
   <h1 class="subtitle-large">Data</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-    <%= radio_group_vertical_tag :shared_with,
-      'Who will the data be shared with?',
-      SharedWith::NAME_VALUES,
-      @research_session.shared_with
-    %>
+    <%= form.radio_group_vertical :shared_with, SharedWith::NAME_VALUES %>
 
-    <%= labelled_text_field_tag(
-          :shared_duration,
-          'How long will this information be held for?',
-          @research_session.shared_duration
-        )
-    %>
+    <%= form.labelled_text_field :shared_duration %>
 
-    <%= labelled_text_area_tag(
-          :shared_use,
-          'How will the data be used?',
-          @research_session.shared_use,
-          text_options: {
-            placeholder: 'The data will be used to...',
-          }
-        )
+    <%= form.labelled_text_area \
+          :shared_use, text_options: { placeholder: 'The data will be used to...' }
     %>
 
     <%= render 'ok_cancel' %>
