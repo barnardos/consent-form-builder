@@ -60,10 +60,6 @@ private
 
   def question_params
     params.require(:research_session).permit(ResearchSession::Steps::PARAMS[step])
-  rescue ActionController::ParameterMissing
-    # Allow the old, non-Rails parameter naming style. Move everything to the form_with
-    # style, then delete this rescue block.
-    params.permit(ResearchSession::Steps::PARAMS[step])
   end
 end
 
