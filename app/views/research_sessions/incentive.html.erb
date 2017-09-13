@@ -3,21 +3,17 @@
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Incentive</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= radio_group_vertical_tag :incentive,
-                               'Will an incentive be provided?',
-                               { '1' => 'Yes', '0' => 'No' },
-                               @research_session.incentive ? '1' : '0'
+      <%= form.radio_group_vertical :incentive,
+          { true => 'Yes', false => 'No' },
+          legend: 'Will an incentive be provided?'
       %>
 
-      <%= radio_group_vertical_tag :payment_type,
-                               'What form will the incentive take?',
-                               PaymentType::NAME_VALUES,
-                               @research_session.payment_type
+      <%= form.radio_group_vertical :payment_type,
+          PaymentType::NAME_VALUES,
+          legend: 'What form will the incentive take?'
       %>
 
-      <%= labelled_text_field_tag :incentive_value,
-                                  'Incentive value',
-                                  @research_session.incentive_value %>
+      <%= form.labelled_text_field :incentive_value %>
 
       <%= render 'ok_cancel' %>
   <% end %>

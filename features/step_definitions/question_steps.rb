@@ -65,9 +65,9 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'Food expense limit', with: '20.00'
   click_button 'Continue'
 
-  choose 'incentive-1'
+  choose 'Yes'
 
-  choose 'payment_type-cash'
+  choose 'Cash'
   fill_in 'Incentive value', with: '10.50'
 
   click_button 'Continue'
@@ -156,9 +156,9 @@ And(/^I fill in the remaining steps$/) do
   fill_in 'Food expense limit', with: '20.00'
   click_button 'Continue'
 
-  choose 'incentive-1'
+  choose 'Yes'
 
-  choose 'payment_type-cash'
+  choose 'Cash'
   fill_in 'Incentive value', with: '10.50'
 
   click_button 'Continue'

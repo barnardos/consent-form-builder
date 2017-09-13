@@ -51,6 +51,8 @@ en:
     other_expenses_limit: "Other expense limit"
     receipts_required: "Must the participant provide a receipt for any expenses claimed?"
     food_provided: "Will you provide food or refreshments at the session? (optional)"
+    incentive: "Will an incentive be provided?"
+    payment_type: "What form will the incentive take?"
 
   activerecord:
     attributes:
