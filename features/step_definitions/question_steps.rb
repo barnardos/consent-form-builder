@@ -61,8 +61,8 @@ When(/^I provide full session details for a child-age cohort$/) do
   fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
   click_button 'Continue'
 
-  fill_in 'Travel expense limit', with: '50.00'
-  fill_in 'Food expense limit', with: '20.00'
+  fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
+  fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
   click_button 'Continue'
 
   choose 'Yes'
@@ -152,8 +152,8 @@ And(/^I fill in the remaining steps$/) do
   fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
   click_button 'Continue'
 
-  fill_in 'Travel expense limit', with: '50.00'
-  fill_in 'Food expense limit', with: '20.00'
+  fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
+  fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
   click_button 'Continue'
 
   choose 'Yes'
