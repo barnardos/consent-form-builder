@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'action_dispatch/routing'
 
 RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
   include RSpecHtmlMatchers
@@ -8,6 +9,51 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     it 'looks just like another form' do
       expect(rendered).to have_tag('form[action=custom]')
+    end
+
+    describe 'The suppression of field_error_proc' do
+      # A horrible integration test but forms are so tightly wrapped around
+      # models that we don't have much alternative. Create a new session, then
+      # set it to the researcher step and leave the name blank. Attempt to validate
+      # through an expectation, which will create the errors on which we rely.
+
+      let!(:session) do
+        ResearchSession.create.tap do |session|
+          session.status = :researcher
+          expect(session.valid?).to be false
+          assign(:research_session, session)
+        end
+      end
+
+      def with_stub_routing
+        with_routing do |routes|
+          routes.draw { resources :research_sessions, only: [:show] }
+          yield
+        end
+      end
+
+      it 'does not render the rails default error div around fields' do
+        with_stub_routing do
+          rendered = helper.barnardos_form_with model: session do |form|
+            form.labelled_text_field :researcher_name
+          end
+
+          expect(rendered).not_to have_tag('div.field_with_errors')
+        end
+      end
+
+      it 'replaces, then restores field_error_proc' do
+        rails_proc = ActionView::Base.field_error_proc
+        our_proc   = Barnardos::ActionView::FormHelper::TAG_PASSTHROUGH_PROC
+
+        with_stub_routing do
+          helper.barnardos_form_with model: session do
+            expect(ActionView::Base.field_error_proc).to eql(our_proc)
+          end
+
+          expect(ActionView::Base.field_error_proc).to eql(rails_proc)
+        end
+      end
     end
   end
 
@@ -20,7 +66,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     context 'there is a value on research session' do
       before do
-        research_session = double('ResearchSession', researcher_name: 'Alice')
+        research_session = double('ResearchSession', researcher_name: 'Alice', errors: {})
         assign(:research_session, research_session)
       end
 
@@ -50,6 +96,21 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag('label', text: 'A text value')
       end
     end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          researcher_name: 'Fred',
+          errors: { researcher_name: ["Can't be blank"] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper div' do
+        expect(rendered).to have_tag('div.has-error')
+      end
+    end
   end
 
   describe '#labelled_text_area' do
@@ -77,7 +138,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     context 'with only the object name and method' do
       before do
-        research_session = double('ResearchSession', topic: 'Topic from the object')
+        research_session = double('ResearchSession', topic: 'Topic from the object', errors: {})
         assign(:research_session, research_session)
       end
 
@@ -134,11 +195,26 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag('textarea[placeholder="test placeholder"].textarea__input')
       end
     end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          topic: 'Lion bars',
+          errors: { topic: ["Can't be blank"] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper div' do
+        expect(rendered).to have_tag('div.has-error')
+      end
+    end
   end
 
   describe '#radio_group_vertical' do
     before do
-      research_session = double('ResearchSession', to_s: 'research_session', shared_with: :team)
+      research_session = double('ResearchSession', shared_with: :team, errors: {})
       assign(:research_session, research_session)
     end
 
@@ -220,9 +296,26 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       it_behaves_like 'it has a legend'
       it_behaves_like 'it has correctly classed and labelled input'
     end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          shared_with: :team,
+          errors: { shared_with: ['is not in the list'] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper fieldset' do
+        expect(rendered).to have_tag('fieldset.has-error')
+      end
+    end
   end
 
   describe '#checkbox_group_vertical' do
+    let(:session) { double(:research_session, methodologies: %w[interview survey], errors: {}) }
+
     let(:legend)         { 'My legend' }
     let(:legend_options) { {} }
     let(:collection) do
@@ -234,10 +327,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
     end
 
     before do
-      assign(
-        :research_session,
-        double(:research_session, methodologies: %w[interview survey])
-      )
+      assign(:research_session, session)
     end
 
     subject(:rendered) do
@@ -322,6 +412,21 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag(
           'legend.checkbox-group__legend span.checkbox-group__hint', text: 'A hint'
         )
+      end
+    end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          methodologies: [],
+          errors: { methodologies: ['is not in the list'] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper fieldset' do
+        expect(rendered).to have_tag('fieldset.has-error')
       end
     end
   end
