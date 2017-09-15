@@ -5,30 +5,15 @@
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
       <%= form.labelled_text_field :travel_expenses_limit,
-            label_options: {
-              hint: 'If you allow travel expenses, what is the maximum allowed?'
-            },
-            text_options: {
-              placeholder: '0.00'
-            }
+            text_options: { placeholder: '0.00' }
       %>
 
       <%= form.labelled_text_field :food_expenses_limit,
-            label_options: {
-              hint: 'If you allow food expenses, what is the maximum allowed?'
-            },
-            text_options: {
-              placeholder: '0.00'
-            }
+            text_options: { placeholder: '0.00' }
       %>
 
       <%= form.labelled_text_field :other_expenses_limit,
-            label_options: {
-              hint: 'If you allow the participant to expense other items, what is the maximum allowed?'
-            },
-            text_options: {
-              placeholder: '0.00'
-            }
+            text_options: { placeholder: '0.00' }
       %>
 
       <%= form.radio_group_vertical :receipts_required,

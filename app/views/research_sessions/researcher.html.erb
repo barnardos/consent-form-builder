@@ -1,6 +1,7 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
+  <h1 class="subtitle-large">Researcher</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
     <fieldset class="fieldset" name="first-researcher">
