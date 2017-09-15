@@ -2,7 +2,21 @@ module Barnardos
   module ActionView
     module FormHelper
       def barnardos_form_with(**options, &block)
-        form_with(**options.merge(builder: Barnardos::ActionView::FormBuilder), &block)
+        disable_field_error_proc do
+          form_with(**options.merge(builder: Barnardos::ActionView::FormBuilder), &block)
+        end
+      end
+
+      TAG_PASSTHROUGH_PROC = proc do |html_tag, _instance|
+        html_tag.html_safe
+      end
+
+      def disable_field_error_proc
+        original_field_error_proc = ::ActionView::Base.field_error_proc
+        ::ActionView::Base.field_error_proc = TAG_PASSTHROUGH_PROC
+        yield
+      ensure
+        ::ActionView::Base.field_error_proc = original_field_error_proc
       end
 
       ##

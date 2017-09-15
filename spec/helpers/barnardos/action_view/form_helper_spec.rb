@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'action_dispatch/routing'
 
 RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
   include RSpecHtmlMatchers
@@ -8,6 +9,51 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     it 'looks just like another form' do
       expect(rendered).to have_tag('form[action=custom]')
+    end
+
+    describe 'The suppression of field_error_proc' do
+      # A horrible integration test but forms are so tightly wrapped around
+      # models that we don't have much alternative. Create a new session, then
+      # set it to the researcher step and leave the name blank. Attempt to validate
+      # through an expectation, which will create the errors on which we rely.
+
+      let!(:session) do
+        ResearchSession.create.tap do |session|
+          session.status = :researcher
+          expect(session.valid?).to be false
+          assign(:research_session, session)
+        end
+      end
+
+      def with_stub_routing
+        with_routing do |routes|
+          routes.draw { resources :research_sessions, only: [:show] }
+          yield
+        end
+      end
+
+      it 'does not render the rails default error div around fields' do
+        with_stub_routing do
+          rendered = helper.barnardos_form_with model: session do |form|
+            form.labelled_text_field :researcher_name
+          end
+
+          expect(rendered).not_to have_tag('div.field_with_errors')
+        end
+      end
+
+      it 'replaces, then restores field_error_proc' do
+        rails_proc = ActionView::Base.field_error_proc
+        our_proc   = Barnardos::ActionView::FormHelper::TAG_PASSTHROUGH_PROC
+
+        with_stub_routing do
+          helper.barnardos_form_with model: session do
+            expect(ActionView::Base.field_error_proc).to eql(our_proc)
+          end
+
+          expect(ActionView::Base.field_error_proc).to eql(rails_proc)
+        end
+      end
     end
   end
 
