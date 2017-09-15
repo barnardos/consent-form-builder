@@ -31,10 +31,8 @@ module Barnardos
       # </div>
       def labelled_text_field(object_name, method, text = nil,
                               text_options: {}, label_options: {}, &block)
-        content_tag(
-          :div,
-          class: 'textfield js-highlight-control', # #{'has-error' if error}",
-          id: "#{method}-wrapper"
+        wrapper_tag(
+          object_name, method, class: 'textfield js-highlight-control'
         ) do
           label_options = label_options.merge(class: "textfield__label #{label_options[:class]}")
           text_options = text_options.merge(
@@ -65,7 +63,7 @@ module Barnardos
           "#{(text_options[:class] || '')} textarea__input js-highlight-control__input"
         label_options[:class] = (label_options[:class] || '') + ' textarea__label'
 
-        content_tag :div, class: 'textarea js-highlight-control', id: "#{method}-wrapper" do
+        wrapper_tag(object_name, method, class: 'textarea js-highlight-control') do
           concat(
             label(object_name, method, label_options) do
               concat(label.present? ? label : label(object_name, method, label_options))
@@ -74,12 +72,13 @@ module Barnardos
               end
             end
           )
+
           concat(text_area(object_name, method, text_options.reverse_merge(rows: 4)))
         end
       end
 
       def radio_group_vertical(object, method, collection, legend: nil, legend_options: {})
-        content_tag :fieldset, class: 'radio-group radio-group__vertical' do
+        wrapper_tag object, method, tag: :fieldset, class: 'radio-group radio-group__vertical' do
           next unless collection.any?
 
           # Render a legend for the fieldset, with an optional hint and optional class
@@ -106,8 +105,11 @@ module Barnardos
         end
       end
 
-      def checkbox_group_vertical(object, method, collection, legend: nil, legend_options: {})
-        content_tag :fieldset, class: 'checkbox-group checkbox-group__vertical' do
+      def checkbox_group_vertical(object_name, method, collection, legend: nil, legend_options: {})
+        wrapper_tag(
+          object_name, method,
+          tag: :fieldset, class: 'checkbox-group checkbox-group__vertical'
+        ) do
           next unless collection.any?
 
           concat(
@@ -125,7 +127,7 @@ module Barnardos
           collection = collection.map { |k, v| [k.to_s, v] }
           concat(
             collection_check_boxes(
-              object, method, collection, :first, :last, include_hidden: false
+              object_name, method, collection, :first, :last, include_hidden: false
             ) do |b|
               content_tag :div, class: 'checkbox-group__choice' do
                 b.check_box(class: 'checkbox-group__input') +
@@ -134,6 +136,23 @@ module Barnardos
             end
           )
         end
+      end
+
+    private
+
+      def wrapper_tag(object_name, method, options = {})
+        options.reverse_merge!(tag: :div)
+        content_tag(
+          options[:tag],
+          id: "#{method}-wrapper",
+          class: "#{options[:class]} #{'has-error' if errors_on?(object_name, method)}"
+        ) do
+          yield
+        end
+      end
+
+      def errors_on?(object_name, method)
+        assigns[object_name]&.errors&.[](method)&.any?
       end
     end
   end

@@ -66,7 +66,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     context 'there is a value on research session' do
       before do
-        research_session = double('ResearchSession', researcher_name: 'Alice')
+        research_session = double('ResearchSession', researcher_name: 'Alice', errors: {})
         assign(:research_session, research_session)
       end
 
@@ -96,6 +96,21 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag('label', text: 'A text value')
       end
     end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          researcher_name: 'Fred',
+          errors: { researcher_name: ["Can't be blank"] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper div' do
+        expect(rendered).to have_tag('div.has-error')
+      end
+    end
   end
 
   describe '#labelled_text_area' do
@@ -123,7 +138,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     context 'with only the object name and method' do
       before do
-        research_session = double('ResearchSession', topic: 'Topic from the object')
+        research_session = double('ResearchSession', topic: 'Topic from the object', errors: {})
         assign(:research_session, research_session)
       end
 
@@ -180,11 +195,26 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag('textarea[placeholder="test placeholder"].textarea__input')
       end
     end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          topic: 'Lion bars',
+          errors: { topic: ["Can't be blank"] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper div' do
+        expect(rendered).to have_tag('div.has-error')
+      end
+    end
   end
 
   describe '#radio_group_vertical' do
     before do
-      research_session = double('ResearchSession', to_s: 'research_session', shared_with: :team)
+      research_session = double('ResearchSession', shared_with: :team, errors: {})
       assign(:research_session, research_session)
     end
 
@@ -266,9 +296,26 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       it_behaves_like 'it has a legend'
       it_behaves_like 'it has correctly classed and labelled input'
     end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          shared_with: :team,
+          errors: { shared_with: ['is not in the list'] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper fieldset' do
+        expect(rendered).to have_tag('fieldset.has-error')
+      end
+    end
   end
 
   describe '#checkbox_group_vertical' do
+    let(:session) { double(:research_session, methodologies: %w[interview survey], errors: {}) }
+
     let(:legend)         { 'My legend' }
     let(:legend_options) { {} }
     let(:collection) do
@@ -280,10 +327,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
     end
 
     before do
-      assign(
-        :research_session,
-        double(:research_session, methodologies: %w[interview survey])
-      )
+      assign(:research_session, session)
     end
 
     subject(:rendered) do
@@ -368,6 +412,21 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag(
           'legend.checkbox-group__legend span.checkbox-group__hint', text: 'A hint'
         )
+      end
+    end
+
+    context 'an error is on the model' do
+      before do
+        session = double(
+          'ResearchSession',
+          methodologies: [],
+          errors: { methodologies: ['is not in the list'] }
+        )
+        assign(:research_session, session)
+      end
+
+      it 'renders an error class on the wrapper fieldset' do
+        expect(rendered).to have_tag('fieldset.has-error')
       end
     end
   end
