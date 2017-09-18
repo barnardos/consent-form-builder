@@ -24,7 +24,7 @@ end
 
 And(/^I should see links back to edit things that I provided$/) do
   ResearchSession::Steps.instance.step_keys.each do |step|
-    expect(page).to have_tag('a', href: question_path(step))
+    expect(page).to have_tag('a', href: Regexp.new("^/research-sessions/[0-9]*/questions/#{step}/"))
   end
 end
 
@@ -42,4 +42,8 @@ end
 
 And(/^I should see my 'Other' recording method$/) do
   expect(page).to have_content(@other_recording_method)
+end
+
+Then(/^the session should be immediately addressable$/) do
+  expect(page.current_path).to match(%r{^/research-sessions/[0-9]*/questions/researcher})
 end

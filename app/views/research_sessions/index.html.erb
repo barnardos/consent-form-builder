@@ -5,5 +5,7 @@
   for your project(s).
 </p>
 <p class="button-bar">
-  <%= link_to 'Create new form', start_path, class: 'button'  %>
+  <%= form_with model: @research_session do %>
+    <button class="button" type="submit">Create new form</button>
+  <% end %>
 </p>

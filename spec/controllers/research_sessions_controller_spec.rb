@@ -3,16 +3,23 @@ require 'rails_helper'
 describe ResearchSessionsController, type: :controller do
   render_views
 
-  describe '#start' do
+  describe '#create' do
     it 'redirects to the first question' do
-      get :start
-      expect(response).to redirect_to('/questions/researcher')
+      post :create
+      research_session = ResearchSession.first
+      expect(response).to \
+        redirect_to(research_session_question_path(research_session, id: 'researcher'))
     end
   end
 
   describe '#show' do
+    let(:existing_session) { ResearchSession.create }
+    subject(:research_session) do
+      ResearchSession.find(existing_session.id)
+    end
+
     before do
-      get :show, params: { id: template_id }
+      get :show, params: { research_session_id: research_session.id, id: template_id }
     end
 
     context 'when the template exists' do
@@ -50,13 +57,9 @@ describe ResearchSessionsController, type: :controller do
 
   describe '#update' do
     let(:existing_params) { {} }
-    let!(:existing_session) do
-      ResearchSession.create(existing_params).tap do |new_session|
-        session[:current_research_session_id] = new_session.id
-      end
-    end
+    let(:existing_session) { ResearchSession.create(existing_params) }
     subject(:research_session) do
-      ResearchSession.find(session[:current_research_session_id])
+      ResearchSession.find(existing_session.id)
     end
 
     before do
@@ -76,8 +79,9 @@ describe ResearchSessionsController, type: :controller do
       end
       let(:params) do
         {
+          research_session_id: existing_session.id,
           id: 'methodologies',
-          research_session: { 'methodologies' => %w(interview usability) }
+          research_session: { 'methodologies' => %w[interview usability] }
         }
       end
 
@@ -105,9 +109,10 @@ describe ResearchSessionsController, type: :controller do
 
       let(:params) do
         {
+          research_session_id: existing_session.id,
           id: 'incentive',
           research_session: {
-            incentive: '1',
+            incentive: true,
             payment_type: 'cash',
             incentive_value: 10.00
           }
@@ -121,7 +126,12 @@ describe ResearchSessionsController, type: :controller do
       end
 
       it 'redirects to the wicked finish step for questions' do
-        expect(response).to redirect_to(question_path(Wicked::FINISH_STEP))
+        expect(response).to redirect_to(
+          research_session_question_path(
+            research_session_id: existing_session.id,
+            id: Wicked::FINISH_STEP
+          )
+        )
       end
     end
   end
