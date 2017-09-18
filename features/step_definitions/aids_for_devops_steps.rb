@@ -27,5 +27,5 @@ When(/^I visit the home page$/) do
 end
 
 When(/^I start to create a form$/) do
-  click_link 'Create new form'
+  click_button 'Create new form'
 end

@@ -5,7 +5,7 @@
 
     <li class="progress__stage is-complete">
       <span class="progress__stage-title">
-        <%= link_to 'Start', start_path %>
+        <%= link_to 'Start', root_path %>
       </span>
     </li>
 
@@ -23,7 +23,7 @@
           <%= 'is-active' if this_step == step %>">
         <span class="progress__stage-title">
           <% if this_step != step and @research_session and @research_session.reached_step?(this_step) %>
-            <%= link_to this_step.to_s.humanize, question_path(this_step) %>
+            <%= link_to this_step.to_s.humanize, research_session_question_path(@research_session.id, this_step) %>
           <% else %>
             <%= this_step.to_s.humanize %>
           <% end %>
@@ -38,7 +38,7 @@
     <li class="progress__stage <%= 'is-active' if preview %>">
       <span class="progress__stage-title">
         <% if !preview && @research_session && @research_session.reached_step?(wizard_steps.last) %>
-          <%= link_to 'Preview', research_session_preview_path %>
+          <%= link_to 'Preview', research_session_preview_path(@research_session.id) %>
         <% else %>
           Preview
         <% end %>

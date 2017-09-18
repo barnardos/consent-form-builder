@@ -10,11 +10,12 @@ class ResearchSessionsController < ApplicationController
   end
 
   def index
+    @research_session = ResearchSession.new
   end
 
-  def start
-    session[:current_research_session_id] = nil
-    redirect_to(first_question_path)
+  def create
+    session_id = ResearchSession.create.id
+    redirect_to(first_question_path(session_id))
   end
 
   def show
@@ -46,15 +47,11 @@ class ResearchSessionsController < ApplicationController
 
 private
   def current_research_session
-    id = session[:current_research_session_id]
-    research_session = ResearchSession.find(id) if id.present?
-    research_session ||= ResearchSession.create
-    session[:current_research_session_id] = research_session.id
-    research_session
+    ResearchSession.find(params[:research_session_id])
   end
 
-  def first_question_path
-    question_path(id: steps.first)
+  def first_question_path(id)
+    research_session_question_path(research_session_id: id, id: steps.first)
   end
 
   def question_params

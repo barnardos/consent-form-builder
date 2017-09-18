@@ -1,6 +1,6 @@
 When(/^I provide full session details for a child-age cohort$/) do
   visit '/'
-  click_link 'Create new form'
+  click_button 'Create new form'
 
   within '[name="first-researcher"]' do
     fill_in 'Full name', with: 'Rachel Researcher'
@@ -81,7 +81,7 @@ end
 
 Given(/^I have arrived at the methodologies step$/) do
   visit '/'
-  click_link 'Create new form'
+  click_button 'Create new form'
 
   within '[name="first-researcher"]' do
     fill_in 'Full name', with: 'Rachel Researcher'
@@ -174,4 +174,9 @@ And(/^I provide an 'Other' recording method$/) do
   step "I should see an 'Other' checkbox for recording methods with a space to fill this in"
   step "I fill in the 'Other' recording method"
   step 'I click the continue button'
+end
+
+When(/^I begin a new session at the start$/) do
+  visit '/'
+  click_button 'Create new form'
 end

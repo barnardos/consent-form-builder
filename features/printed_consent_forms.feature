@@ -23,3 +23,8 @@ Feature:
     Then I should see the session review page
     And I should see my 'Other' methodology
     And I should see my 'Other' recording method
+
+  Scenario: Beginning a new session
+    When I begin a new session at the start
+    Then the session should be immediately addressable
+
