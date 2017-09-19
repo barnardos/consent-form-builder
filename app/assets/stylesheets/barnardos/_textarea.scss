@@ -64,10 +64,6 @@ $error-icon-size: 22px;
   width: 100%;
 }
 
-.textarea.has-error .textarea__input {
-  border: 1px solid $error-colour;
-}
-
 .textarea__hint {
   color: $secondary-text;
   display: block;

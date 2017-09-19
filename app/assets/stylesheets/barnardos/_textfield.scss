@@ -25,7 +25,6 @@
 }
 
 .textfield.has-error .textfield__label {
-  color: $error-colour;
 }
 
 .textfield__input {
@@ -39,10 +38,6 @@
   border: solid 1px $border;
   border-radius: $border-radius;
   outline: none;
-}
-
-.textfield.has-error .textfield__input {
-  border: 1px solid $error-colour;
 }
 
 .textfield__hint {
