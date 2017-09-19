@@ -66,7 +66,15 @@ module Barnardos
         wrapper_tag(object_name, method, class: 'textarea js-highlight-control') do
           concat(
             label(object_name, method, label_options) do
-              concat(label.present? ? label : label(object_name, method, label_options))
+              if label.present?
+                concat(label)
+              else
+                concat(
+                  ::ActionView::Helpers::Tags::Translator.new(
+                    nil, object_name.to_s, method.to_s, scope: 'helpers.label'
+                  ).translate
+                )
+              end
               if label_options[:hint]
                 concat(content_tag(:span, label_options[:hint], class: 'textarea__hint'))
               end
