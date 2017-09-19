@@ -209,6 +209,10 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       it 'renders an error class on the wrapper div' do
         expect(rendered).to have_tag('div.has-error')
       end
+
+      it 'does not render a label within a label' do
+        expect(rendered).not_to have_tag('label label')
+      end
     end
   end
 
