@@ -1,8 +1,6 @@
 @import "barnardos/colours";
 @import "barnardos/vars";
 
-$error-icon-size: 22px;
-
 .textarea {
   margin: $gutter 0 $gutter (-$gutter / 2);
   max-width: $max-form-control-width;
@@ -27,7 +25,7 @@ $error-icon-size: 22px;
   margin-top: $gutter / 2;
   position: relative;
 
-  .has-error > & {
+  .has-error & {
     position: relative;
     padding-right: ($error-icon-size + $gutter + $gutter / 2);
 
