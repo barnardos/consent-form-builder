@@ -17,12 +17,8 @@ $outer-ring: $inner-ring + ($ring-size * 3);
 }
 
 .checkbox-group__legend {
-  font-size: $base-font-size;
-  font-weight: normal;
-  line-height: 24px;
-  margin: ($gutter / 2) 0;
+  margin-top: ($gutter / 2);
   color: $black;
-  float: left;
   width: 100%;
 }
 
