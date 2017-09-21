@@ -135,7 +135,7 @@ module Barnardos
           collection = collection.map { |k, v| [k.to_s, v] }
           concat(
             collection_check_boxes(
-              object_name, method, collection, :first, :last, include_hidden: false
+              object_name, method, collection, :first, :last
             ) do |b|
               content_tag :div, class: 'checkbox-group__choice' do
                 b.check_box(class: 'checkbox-group__input') +

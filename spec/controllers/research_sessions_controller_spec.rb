@@ -56,8 +56,7 @@ describe ResearchSessionsController, type: :controller do
   end
 
   describe '#update' do
-    let(:existing_params) { {} }
-    let(:existing_session) { ResearchSession.create(existing_params) }
+    let(:existing_session) { create(existing_step) }
     subject(:research_session) do
       ResearchSession.find(existing_session.id)
     end
@@ -67,45 +66,37 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'accepting methodologies' do
-      let(:existing_params) do
-        {
-          age: 'under18',
-          researcher_name: 'Alice',
-          researcher_phone: '0123456',
-          researcher_email: 'a@b.com',
-          topic: 'some topic',
-          purpose: 'some purppose'
-        }
-      end
+      let(:existing_step) { :purpose }
       let(:params) do
         {
           research_session_id: existing_session.id,
           id: 'methodologies',
-          research_session: { 'methodologies' => %w[interview usability] }
+          research_session: { 'methodologies' => ['', 'interview', 'usability'] }
         }
       end
 
-      it 'updates the research session' do
-        expect(research_session.methodologies).to eql(%w(interview usability))
+      it 'updates the research session, stripping the blank' do
+        expect(research_session.methodologies).to eql(%w[interview usability])
+      end
+    end
+
+    context 'accepting recording methods' do
+      let(:existing_step) { :methodologies }
+      let(:params) do
+        {
+          research_session_id: existing_session.id,
+          id: 'recording',
+          research_session: { 'recording_methods' => ['', 'audio', 'video'] }
+        }
+      end
+
+      it 'updates the research session, stripping the blank' do
+        expect(research_session.recording_methods).to eql(%w[audio video])
       end
     end
 
     context 'the last step' do
-      let(:existing_params) do
-        {
-          age: 'under12',
-          methodologies: %w(interview),
-          recording_methods: %w(audio),
-          topic: 'Some topic',
-          purpose: 'Some purpose',
-          researcher_name: 'Alice',
-          researcher_phone: '0123456',
-          researcher_email: 'a@b.com',
-          shared_with: 'team',
-          shared_duration: '1 Day',
-          shared_use: 'How to help people more'
-        }
-      end
+      let(:existing_step) { :data }
 
       let(:params) do
         {
