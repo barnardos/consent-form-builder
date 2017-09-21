@@ -10,6 +10,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
     before do
       allow(session).to receive(attr).and_return('Some attr value')
       allow(session).to receive(attr).with(:i_dont_exist).and_raise(NameError)
+      allow(session).to receive(:id).and_return(1234)
       @research_session = session
     end
 

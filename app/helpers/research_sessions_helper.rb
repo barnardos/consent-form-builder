@@ -5,6 +5,6 @@ module ResearchSessionsHelper
     step_for_attr = ResearchSession::Steps.instance.attr_to_step(attr)
 
     link_to value,
-            research_session_question_path(@research_session, step_for_attr), class: 'editable'
+            research_session_question_path(@research_session.id, step_for_attr), class: 'editable'
   end
 end
