@@ -4,7 +4,7 @@
 .textarea {
   margin: $gutter 0 $gutter (-$gutter / 2);
   max-width: $max-form-control-width;
-  padding: $gutter / 2;
+  padding: ($gutter / 2) ($gutter / 2) $gutter;
   position: relative;
 }
 
@@ -23,21 +23,28 @@
   color: $black;
   font-weight: normal;
   margin-top: $gutter / 2;
+  position: relative;
 
-  .has-error &::after {
-    content: "!";
-    border: 2px solid $error-colour;
-    border-radius: 100%;
-    box-sizing: border-box;
-    color: $error-colour;
-    height: 1.5em;
-    line-height: .75;
-    padding: 5px;
-    position: absolute;
-    right: $gutter;
-    text-align: center;
-    top: $gutter;
-    width: 1.5em;
+  .has-error & {
+    position: relative;
+    padding-right: ($error-icon-size + $gutter + $gutter / 2);
+
+    &::after {
+      content: "!";
+      position: absolute;
+      right: $gutter;
+      top: -2px;
+      width: $error-icon-size;
+      height: $error-icon-size;
+      padding: 5px;
+      border: 1px solid $error-colour;
+      border-radius: 100%;
+      box-sizing: border-box;
+      color: $error-colour;
+      line-height: .65;
+      font-weight: bold;
+      text-align: center;
+    }
   }
 }
 
@@ -53,10 +60,6 @@
   outline: none;
   padding: $gutter / 2;
   width: 100%;
-}
-
-.textarea.has-error .textarea__input {
-  border: 1px solid $error-colour;
 }
 
 .textarea__hint {

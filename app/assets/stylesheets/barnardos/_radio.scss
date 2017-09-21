@@ -17,13 +17,31 @@ $outer-ring: $inner-ring + ($ring-size * 3);
 }
 
 .radio-group__legend {
-  font-size: $base-font-size;
-  font-weight: normal;
-  line-height: 24px;
-  margin: 0 0 ($gutter / 2);
+  margin-top: ($gutter / 2);
   color: $black;
-  float: left;
   width: 100%;
+
+  .has-error & {
+    position: relative;
+    padding-right: ($error-icon-size + $gutter + $gutter / 2);
+
+    &::after {
+      content: "!";
+      position: absolute;
+      right: $gutter;
+      top: -2px;
+      width: $error-icon-size;
+      height: $error-icon-size;
+      padding: 5px;
+      border: 1px solid $error-colour;
+      border-radius: 100%;
+      box-sizing: border-box;
+      color: $error-colour;
+      line-height: .65;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
 }
 
 .radio-group__choice {

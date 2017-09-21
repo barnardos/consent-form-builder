@@ -91,10 +91,12 @@ module Barnardos
 
           # Render a legend for the fieldset, with an optional hint and optional class
           concat(
-            content_tag(:legend, class: "radio-group__legend #{legend_options[:class]}") do
-              concat(legend)
-              if legend_options[:hint]
-                concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint'))
+            content_tag(:span) do
+              content_tag(:legend, class: "radio-group__legend #{legend_options[:class]}") do
+                concat(legend)
+                if legend_options[:hint]
+                  concat(content_tag(:span, legend_options[:hint], class: 'radio-group__hint'))
+                end
               end
             end
           )
@@ -121,10 +123,12 @@ module Barnardos
           next unless collection.any?
 
           concat(
-            content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class]}") do
-              concat(legend)
-              if legend_options[:hint]
-                concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint'))
+            content_tag(:span) do
+              content_tag(:legend, class: "checkbox-group__legend #{legend_options[:class]}") do
+                concat(legend)
+                if legend_options[:hint]
+                  concat(content_tag(:span, legend_options[:hint], class: 'checkbox-group__hint'))
+                end
               end
             end
           )
