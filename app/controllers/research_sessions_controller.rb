@@ -55,7 +55,10 @@ private
   end
 
   def question_params
-    params.require(:research_session).permit(ResearchSession::Steps::PARAMS[step])
+    params.require(:research_session).permit(ResearchSession::Steps::PARAMS[step]).tap do |p|
+      p['methodologies']&.reject!(&:blank?)
+      p['recording_methods']&.reject!(&:blank?)
+    end
   end
 end
 

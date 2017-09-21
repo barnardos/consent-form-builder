@@ -160,6 +160,42 @@ describe.only('Conditional subfields', () => {
       expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
     })
 
+    it('should reveal that optional fragment on page load when a hidden field is present', () => {
+      const markup = `
+        <fieldset id="methodologies-wrapper" class="checkbox-group checkbox-group__vertical ">
+            <legend class="checkbox-group__legend">How will you be gathering information?</legend>
+            <input type="hidden" name="research_session[methodologies][]" value="">
+            <div><input type="checkbox" value="interview"
+                        checked="checked" name="research_session[methodologies][]"
+                        id="research_session_methodologies_interview">
+                <label for="research_session_methodologies_interview">Interview</label></div>
+            <div><input type="checkbox" value="usability"
+                        name="research_session[methodologies][]"
+                        id="research_session_methodologies_usability">
+                <label for="research_session_methodologies_usability">Usability testing</label></div>
+            <div><input type="checkbox" value="other"
+                        checked="checked" name="research_session[methodologies][]"
+                        id="research_session_methodologies_other">
+                <label for="research_session_methodologies_other">Other</label></div>
+        </fieldset>      
+        <div id="subfield-wrapper" class="js-ConditionalSubfield" data-controlled-by="research_session[methodologies][]"
+             data-control-value="other">
+            <div id="other_methodology-wrapper" class="textfield js-highlight-control ">
+                <label class="textfield__label" for="research_session_other_methodology">
+                    What is the other methodology?
+                </label>
+                <input class="textfield__input js-highlight-control__input " type="text"
+                       value="Things" name="research_session[other_methodology]"
+                       id="research_session_other_methodology"></div>
+        </div>        
+      `
+
+      const document = render(markup)
+      ConditionalSubfields.init(document)
+
+      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
+    })
+
     it('should mark a fragment visible with target value selected', () => {
       const markup = `
         <html>

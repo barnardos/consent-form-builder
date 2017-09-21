@@ -95,7 +95,7 @@ const ConditionalSubfields = {
    * Get the value that changed and decide if we should show
    * or hide the optional subfield.
    *
-   * If we hide the optional subfield, clear it's value also, so the form posts what the user expects
+   * If we hide the optional subfield, disable the field also, so the form posts what the user expects
    */
   _handleField (controlInput) {
     if (!controlInput) {
@@ -110,7 +110,7 @@ const ConditionalSubfields = {
     } else if (tagName === 'INPUT') {
       const type = controlInput.type
 
-      if (type === 'radio' || type === 'checkbox') {
+      if (type === 'radio' || type === 'checkbox' || type === 'hidden') {
         controlInputValue = Array
           .from(this.wrapper.querySelectorAll(`[name="${controlInput.name}"]:checked`))
           .map(input => input.value)
