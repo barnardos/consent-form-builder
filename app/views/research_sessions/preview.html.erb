@@ -1,6 +1,14 @@
 <%= render "research_sessions/progress", preview: true %>
 
-<a href="javascript:window.print()" class="print-link">Print</a>
+<form class="print-section screen-only js-print-section" action="#">
+  <select name="area-to-print" id="area-to-print" class="print-section__select js-area-to-print">
+    <option value="#consent-form,#info-sheets">Consent Form and Info Sheet</option>
+    <option value="#consent-form">Consent Form</option>
+    <option value="#info-sheets">Info Sheet</option>
+  </select>
+  <button type="submit" class="print-section__submit button">Print</button>
+</form>
+
 <h1 class="title screen-only">Research session preview</h1>
 
 <section class="split-link screen-only">

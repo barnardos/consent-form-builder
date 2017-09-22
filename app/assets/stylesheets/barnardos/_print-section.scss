@@ -1,0 +1,38 @@
+@import "barnardos/colours";
+
+.print-section {
+
+  @media (min-width: $tablet) {
+    text-align: right;
+    padding-right: 5%;
+  }
+
+  &__select {
+    font-size: 1rem;
+    margin-bottom: $gutter;
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      width: auto;
+    }
+  }
+
+  &__submit {
+    background-image: image-url("printer-tool");
+    background-repeat: no-repeat;
+    background-position: right $gutter center;
+    background-size: 22px 22px;
+    padding: $gutter (22px + $gutter*2);
+    margin: 0;
+
+    @media (min-width: $tablet) {
+      padding-left: $gutter;
+      margin-left: $gutter;
+    }
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
