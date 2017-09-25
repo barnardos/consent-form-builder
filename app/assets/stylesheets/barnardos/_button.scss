@@ -3,7 +3,7 @@
 
 .button {
   -webkit-appearance: none;
-  background: $primary;
+  background-color: $primary;
   border: 2px solid $primary;
   border-radius: 4px;
   color: $white;
@@ -31,7 +31,7 @@
 
     &:hover,
     &:focus {
-      background: $primary-select;
+      background-color: $primary-select;
       border-color: $primary-select;
     }
 
@@ -39,7 +39,7 @@
 }
 
 .button--secondary {
-  background: $white;
+  background-color: $white;
   border: 2px solid $grey-dark;
   color: $grey-dark;
 
@@ -50,7 +50,7 @@
   }
 
   &:active {
-    background: $grey-dark;
+    background-color: $grey-dark;
     border-color: $grey-dark;
     color: $white;
   }
@@ -58,7 +58,7 @@
   @media (min-width: $tablet) {
     &:hover,
     &:focus {
-      background: $grey-medium;
+      background-color: $grey-medium;
       border-color: $grey-dark;
       color: $grey-dark;
     }

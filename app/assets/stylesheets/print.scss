@@ -1,9 +1,12 @@
 body {
   .button,
-  .print-link,
   .screen-only {
     display: none;
   }
+}
+
+.print-area {
+  page-break-after: always;
 }
 
 section,
