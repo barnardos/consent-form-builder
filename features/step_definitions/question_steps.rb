@@ -164,8 +164,11 @@ And(/^I fill in the remaining steps$/) do
     select '11', from: 'research_session_start_datetime_4i', visible: false
     select '30', from: 'research_session_start_datetime_5i', visible: false
   end
-  fill_in 'How long will the session be? (optional)', with: '5 minutes'
-  fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
+
+  @session_duration = '5 minutes'
+  fill_in 'How long will the session be? (optional)', with: @session_duration
+  @what_to_bring = 'Nothing'
+  fill_in 'What do participants need to bring? (optional)', with: @what_to_bring
   click_button 'Continue'
 
   fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
