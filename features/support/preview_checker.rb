@@ -28,7 +28,9 @@ module PreviewChecker
   end
 
   def check_recording
-    puts "#{__method__} not implemented"
+    @recording_methods.each do |recording_method|
+      expect(page.body).to include(recording_method.downcase)
+    end
   end
 
   def check_data
