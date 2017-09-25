@@ -18,7 +18,13 @@ module PreviewChecker
   end
 
   def check_methodologies
-    puts "#{__method__} not implemented"
+    @methodologies.each do |methodology_display_name|
+      methodology = Methodologies::NAME_VALUES.key(methodology_display_name)
+      expect(page.body).to have_tag(
+        'a.editable',
+        text: Regexp.new(I18n.t("report.under18.#{methodology}"))
+      )
+    end
   end
 
   def check_recording
