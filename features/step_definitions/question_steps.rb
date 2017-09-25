@@ -54,8 +54,11 @@ When(/^I provide full session details for a child-age cohort$/) do
   click_button 'Continue'
 
   choose 'Just the team'
-  fill_in 'How long will this information be held for?', with: '1 year'
-  fill_in 'How will the data be used?', with: 'Create better outcomes for more children'
+  @shared_duration = '1 year'
+  @shared_usage = 'The data will be used to create better outcomes for more children'
+
+  fill_in 'How long will this information be held for?', with: @shared_duration
+  fill_in 'How will the data be used?', with: @shared_usage
   Percy::Capybara.snapshot(page, name: :data)
   click_button 'Continue'
 

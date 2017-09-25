@@ -106,6 +106,57 @@
       collected as part of the research is stored securely and kept strictly
       confidential.</p>
   </section>
+  <section>
+    <%= edit_link_for(:methodologies) do %>
+      <%= @research_session.methodology_list %>
+    <% end %>
+    <p>
+      With your permission we will record the session using
+      <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
+      Recording the session helps the researcher and other research team members
+      trying to improve the service, as it allows them to review the most useful
+      parts of the session after it hasfinished.
+    </p>
+  </section>
+  <section>
+    <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
+    <p>
+      Taking part is entirely voluntary - it is up to you to decide whether or not
+      to take part. If you decide to take part you do not have to answer questions
+      you do not want to answer. You can also change your mind about taking part
+      at any time and withdraw without giving a reason.
+    </p>
+    <p>
+      If you agree to take part, you will be given a copy of this information
+      sheet and be asked to sign a consent form.
+    </p>
+  </section>
+  <section>
+    <h3 class="subtitle-small" id="more">Where can I find out more?</h3>
+    <p><%= edit_link_for(:researcher_name) %> will be able to answer further questions about the
+      research. <%= edit_link_for(:researcher_name) %> can be contacted by email at
+      <%= edit_link_for(:researcher_email) %> or by telephone on <%= edit_link_for(:researcher_phone) %>.</p>
+    <p>If you have any questions or concerns about the way in which this research has
+      been conducted then please contact Joelle Bradly at
+      <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
+  </section>
+  <section>
+    <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>
+    <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
+      insights we need to improve our services. We do not hand over the recordings; we
+      edit and share insights relevant to the project. Whenever we share these
+      insights, the material is fully anonymised and contributions cannot be
+      attributed to named individuals.</p>
+    <p>You will not be identifiable in anything published. All personal data
+      collected as part of the research is stored securely and kept strictly
+      confidential.</p>
+  </section>
+  <section>
+    <h3 class="subtitle-small" id="private">How will the data be used?</h3>
+    <p><%= edit_link_for(:shared_use) %></p>
+
+    <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
+  </section>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">

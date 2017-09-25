@@ -34,7 +34,8 @@ module PreviewChecker
   end
 
   def check_data
-    puts "#{__method__} not implemented"
+    expect(page).to have_tag('p', text: "The data will be kept for #{@shared_duration}.")
+    expect(page).to have_tag('p', text: @shared_usage)
   end
 
   def check_time_equipment
