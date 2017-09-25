@@ -25,10 +25,10 @@ When(/^I provide full session details for a child-age cohort$/) do
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-    Fresnel lenses and the under-5s
-    This line break follows a br
+    PURPOSE: Fresnel lenses and the under-5s
+    PURPOSE: This line break follows a br
 
-    Whereas this becomes its own p
+    PURPOSE: Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   fill_in 'What is the research or participation session about?', with: @topic
@@ -115,10 +115,10 @@ Given(/^I have arrived at the methodologies step$/) do
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-    Fresnel lenses and the under-5s
-    This line break follows a br
+    PURPOSE: Fresnel lenses and the under-5s
+    PURPOSE: This line break follows a br
 
-    Whereas this becomes its own p
+    PURPOSE: Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   fill_in 'What is the research or participation session about?', with: @topic

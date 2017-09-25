@@ -12,7 +12,9 @@ module PreviewChecker
   end
 
   def check_purpose
-    puts "#{__method__} not implemented"
+    @purpose.split("\n").each do |line|
+      expect(page.body).to include(line)
+    end
   end
 
   def check_methodologies
