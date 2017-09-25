@@ -6,7 +6,9 @@ module PreviewChecker
   end
 
   def check_topic
-    puts "#{__method__} not implemented"
+    @topic.split("\n").each do |line|
+      expect(page.body).to include(line)
+    end
   end
 
   def check_purpose
