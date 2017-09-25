@@ -1,5 +1,7 @@
 When(/^I provide full session details for a child-age cohort$/) do
   visit '/'
+  Percy::Capybara.snapshot(page, name: :home)
+
   click_button 'Create new form'
 
   within '[name="first-researcher"]' do
@@ -11,6 +13,8 @@ When(/^I provide full session details for a child-age cohort$/) do
   within '[name="second-researcher"]' do
     fill_in 'Full name', with: 'Steve Secondresearcher'
   end
+
+  Percy::Capybara.snapshot(page, name: :researcher)
   click_button 'Continue'
 
   @topic = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
@@ -28,26 +32,31 @@ When(/^I provide full session details for a child-age cohort$/) do
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   fill_in 'What is the research or participation session about?', with: @topic
+  Percy::Capybara.snapshot(page, name: :topic)
   click_button 'Continue'
 
   fill_in 'Why are you doing this research or participation session?', with: @purpose
+  Percy::Capybara.snapshot(page, name: :purpose)
   click_button 'Continue'
 
   @methodologies = ['Interview', 'Usability testing']
   @methodologies.each do |methodology|
     check methodology
   end
+  Percy::Capybara.snapshot(page, name: :methodologies)
   click_button 'Continue'
 
   @recording_methods = ['Audio', 'Video', 'Written notes']
   @recording_methods.each do |method|
     check method
   end
+  Percy::Capybara.snapshot(page, name: :recording)
   click_button 'Continue'
 
   choose 'Just the team'
   fill_in 'How long will this information be held for?', with: '1 year'
   fill_in 'How will the data be used?', with: 'Create better outcomes for more children'
+  Percy::Capybara.snapshot(page, name: :data)
   click_button 'Continue'
 
   within '#start_datetime' do
@@ -59,20 +68,24 @@ When(/^I provide full session details for a child-age cohort$/) do
   end
   fill_in 'How long will the session be? (optional)', with: '5 minutes'
   fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
+  Percy::Capybara.snapshot(page, name: :time_equipment)
   click_button 'Continue'
 
   fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
   fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
+  Percy::Capybara.snapshot(page, name: :expenses)
   click_button 'Continue'
 
   choose 'Yes'
 
   choose 'Cash'
   fill_in 'Incentive value', with: '10.50'
-
+  Percy::Capybara.snapshot(page, name: :incentive)
   click_button 'Continue'
 
+  Percy::Capybara.snapshot(page, name: :can_consent_preview)
   click_link "Respondents who can't give consent"
+  Percy::Capybara.snapshot(page, name: :Cannot_consent_preview)
 end
 
 Then(/^I should see the session review page$/) do
