@@ -1,6 +1,8 @@
 module PreviewChecker
   def check_researcher
-    puts "#{__method__} not implemented"
+    expect(page.body).to include('Rachel Researcher')
+    expect(page.body).to include('012345678')
+    expect(page.body).to include('rachel@researcher.com')
   end
 
   def check_topic
