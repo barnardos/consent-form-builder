@@ -1,4 +1,6 @@
 class ResearchSessionPresenter < Struct.new(:research_session)
+  include ActionView::Helpers::NumberHelper
+
   ResearchSession.attribute_names.each do |attribute|
     delegate attribute, to: :research_session
   end
@@ -27,5 +29,29 @@ class ResearchSessionPresenter < Struct.new(:research_session)
       end
     end
     lowercase_words.to_sentence
+  end
+
+  def any_expenses?
+    !!(
+      travel_expenses_limit&.nonzero? ||
+        food_expenses_limit&.nonzero? ||
+        other_expenses_limit&.nonzero?
+    )
+  end
+
+  def expenses_sentence
+    return nil unless any_expenses?
+    fragments = [
+      :travel_expenses,
+      :food_expenses,
+      :other_expenses
+    ].map do |expense_attr|
+      value = send("#{expense_attr}_limit")
+      if value&.nonzero?
+        "#{expense_attr.to_s.humanize.downcase} of up to "\
+        "#{number_to_currency(value, locale: 'en')}"
+      end
+    end
+    "We allow #{fragments.compact.to_sentence}."
   end
 end

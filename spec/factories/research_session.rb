@@ -55,5 +55,17 @@ FactoryGirl.define do
       payment_type :cash
       incentive_value '40.00'
     end
+
+    trait :nil_expenses do
+      travel_expenses_limit nil
+      food_expenses_limit   nil
+      other_expenses_limit  nil
+    end
+
+    trait :zero_expenses do
+      travel_expenses_limit 0.00
+      food_expenses_limit   0.00
+      other_expenses_limit  0.00
+    end
   end
 end

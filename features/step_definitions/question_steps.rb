@@ -76,6 +76,8 @@ When(/^I provide full session details for a child-age cohort$/) do
 
   fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
   fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
+  fill_in 'If you allow the participant to expense other items, '\
+          'what is the maximum allowed?', with: '10.00'
   Percy::Capybara.snapshot(page, name: :expenses)
   click_button 'Continue'
 
@@ -173,6 +175,8 @@ And(/^I fill in the remaining steps$/) do
 
   fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
   fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
+  fill_in 'If you allow the participant to expense other items, '\
+          'what is the maximum allowed?', with: '10.00'
   click_button 'Continue'
 
   choose 'Yes'

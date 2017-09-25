@@ -46,7 +46,13 @@ module PreviewChecker
   end
 
   def check_expenses
-    puts "#{__method__} not implemented"
+    expect(page.body).to include(
+      'We allow travel expenses of up to £50.00, food expenses of up to £20.00, '\
+      'and other expenses of up to £10.00.'
+    )
+    expect(page.body).to include(
+      'Receipts must be provided.'
+    )
   end
 
   def check_incentive

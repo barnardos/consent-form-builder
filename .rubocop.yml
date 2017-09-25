@@ -41,3 +41,6 @@ Layout/EndOfLine:
 Style/PredicateName:
   Exclude:
     - 'spec/**/*'
+
+Style/DoubleNegation:
+  Enabled: false

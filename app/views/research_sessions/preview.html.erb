@@ -176,6 +176,23 @@
       </p>
     <% end %>
   </section>
+  <% if @research_session.any_expenses? %>
+    <section>
+      <h3 class="subtitle-small">Expenses</h3>
+      <p>
+        <%= edit_link_for(:travel_expenses_limit) do %>
+          <%= @research_session.expenses_sentence %>
+        <% end %>
+      </p>
+      <% if @research_session.receipts_required %>
+        <p>
+          <%= edit_link_for(:receipts_required) do %>
+            Receipts must be provided.
+          <% end %>
+        </p>
+      <% end %>
+    </section>
+  <% end %>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">
