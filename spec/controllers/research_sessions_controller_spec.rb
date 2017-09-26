@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe ResearchSessionsController, type: :controller do
-  render_views
-
   describe '#create' do
     it 'redirects to the first question' do
       post :create
@@ -30,7 +28,7 @@ describe ResearchSessionsController, type: :controller do
           expect(response).to be_ok
         end
         it 'renders a template for the id given' do
-          expect(response.body).to include('How will you be gathering information?')
+          expect(response.body).to render_template('methodologies')
         end
       end
 
