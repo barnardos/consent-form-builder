@@ -94,4 +94,103 @@ RSpec.describe ResearchSessionPresenter do
       it { is_expected.to eql('audio, video, and comic books') }
     end
   end
+
+  describe '#any_expenses?' do
+    subject { presenter.any_expenses? }
+
+    context 'no expenses given (all nil)' do
+      let(:research_session) { build_stubbed :research_session, :nil_expenses }
+      it { is_expected.to be false }
+    end
+
+    context 'no expenses given (all zero)' do
+      let(:research_session) { build_stubbed :research_session, :zero_expenses }
+      it { is_expected.to be false }
+    end
+
+    context 'expenses given' do
+      let(:research_session) { build_stubbed :expenses }
+      it { is_expected.to be true }
+    end
+  end
+
+  describe '#expenses_sentence' do
+    subject { presenter.expenses_sentence }
+
+    context 'no expenses given (all nil)' do
+      let(:research_session) { build_stubbed :research_session, :nil_expenses }
+      it { is_expected.to be_nil }
+    end
+
+    context 'no expenses given (all zero)' do
+      let(:research_session) { build_stubbed :research_session, :zero_expenses }
+      it { is_expected.to be_nil }
+    end
+
+    context 'One expense is given' do
+      let(:research_session) do
+        build_stubbed :time_equipment, travel_expenses_limit: 50.00
+      end
+      it { is_expected.to eql('We allow travel expenses of up to £50.00.') }
+    end
+
+    context 'Two expenses are given' do
+      let(:research_session) do
+        build_stubbed :time_equipment,
+                      travel_expenses_limit: 50.00,
+                      food_expenses_limit: 10.00
+      end
+      it do
+        is_expected.to eql(
+          'We allow travel expenses of up to £50.00 and food expenses of up to £10.00.'
+        )
+      end
+    end
+
+    context 'Three expenses are given' do
+      let(:research_session) do
+        build_stubbed :time_equipment,
+                      travel_expenses_limit: 50.00,
+                      food_expenses_limit: 10.00,
+                      other_expenses_limit: 5.00
+      end
+      it do
+        is_expected.to eql(
+          'We allow travel expenses of up to £50.00, food expenses of up to £10.00, '\
+          'and other expenses of up to £5.00.'
+        )
+      end
+    end
+  end
+
+  describe '#incentive_text' do
+    subject(:text) { presenter.incentive_text }
+
+    context 'no incentive is given' do
+      let(:research_session) { build_stubbed :incentive, incentive: false }
+      it { is_expected.to be_empty }
+    end
+
+    let(:formatted_value) do
+      format('%.02f', research_session.incentive_value)
+    end
+
+    context 'a cash incentive is provided' do
+      let(:research_session) { build_stubbed :incentive }
+      it 'has a message about the cash value' do
+        expect(text).to eql(
+          "a cash incentive of £#{formatted_value}"
+        )
+      end
+    end
+
+    context 'a high street voucher incentive is provided' do
+      let(:research_session) { build_stubbed :incentive, payment_type: 'voucher' }
+      it 'has a message about the high street voucher value' do
+        expect(text).to eql(
+          "high street vouchers to the value of £#{formatted_value}"
+        )
+      end
+    end
+  end
 end

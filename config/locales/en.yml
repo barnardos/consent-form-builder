@@ -67,6 +67,15 @@ en:
   errors:
     format: '"%{attribute}" %{message}'
 
+  number:
+    currency:
+      format:
+        unit: '£'
+        delimiter: ','
+        separator: '.'
+        precision: 2
+        format: '%u%n'
+
   report:
     over18:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'

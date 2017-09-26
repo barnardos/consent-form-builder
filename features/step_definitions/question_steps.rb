@@ -25,10 +25,10 @@ When(/^I provide full session details for a child-age cohort$/) do
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-    Fresnel lenses and the under-5s
-    This line break follows a br
+    PURPOSE: Fresnel lenses and the under-5s
+    PURPOSE: This line break follows a br
 
-    Whereas this becomes its own p
+    PURPOSE: Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   fill_in 'What is the research or participation session about?', with: @topic
@@ -54,8 +54,11 @@ When(/^I provide full session details for a child-age cohort$/) do
   click_button 'Continue'
 
   choose 'Just the team'
-  fill_in 'How long will this information be held for?', with: '1 year'
-  fill_in 'How will the data be used?', with: 'Create better outcomes for more children'
+  @shared_duration = '1 year'
+  @shared_usage = 'The data will be used to create better outcomes for more children'
+
+  fill_in 'How long will this information be held for?', with: @shared_duration
+  fill_in 'How will the data be used?', with: @shared_usage
   Percy::Capybara.snapshot(page, name: :data)
   click_button 'Continue'
 
@@ -73,6 +76,8 @@ When(/^I provide full session details for a child-age cohort$/) do
 
   fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
   fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
+  fill_in 'If you allow the participant to expense other items, '\
+          'what is the maximum allowed?', with: '10.00'
   Percy::Capybara.snapshot(page, name: :expenses)
   click_button 'Continue'
 
@@ -115,10 +120,10 @@ Given(/^I have arrived at the methodologies step$/) do
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
-    Fresnel lenses and the under-5s
-    This line break follows a br
+    PURPOSE: Fresnel lenses and the under-5s
+    PURPOSE: This line break follows a br
 
-    Whereas this becomes its own p
+    PURPOSE: Whereas this becomes its own p
   TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
   fill_in 'What is the research or participation session about?', with: @topic
@@ -161,12 +166,17 @@ And(/^I fill in the remaining steps$/) do
     select '11', from: 'research_session_start_datetime_4i', visible: false
     select '30', from: 'research_session_start_datetime_5i', visible: false
   end
-  fill_in 'How long will the session be? (optional)', with: '5 minutes'
-  fill_in 'What do participants need to bring? (optional)', with: 'Nothing'
+
+  @session_duration = '5 minutes'
+  fill_in 'How long will the session be? (optional)', with: @session_duration
+  @what_to_bring = 'Nothing'
+  fill_in 'What do participants need to bring? (optional)', with: @what_to_bring
   click_button 'Continue'
 
   fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
   fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
+  fill_in 'If you allow the participant to expense other items, '\
+          'what is the maximum allowed?', with: '10.00'
   click_button 'Continue'
 
   choose 'Yes'
