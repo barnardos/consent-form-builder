@@ -1,46 +1,53 @@
 FactoryGirl.define do
   factory :research_session do
-    factory :researcher do
+    trait :step_researcher do
       status :researcher
       researcher_name 'Rachel Researcher'
       researcher_email 'r.researcher@barnardos.org.uk'
     end
 
-    factory :topic, parent: :researcher do
+    trait :step_topic do
+      step_researcher
       status :topic
       topic 'A topic'
     end
 
-    factory :purpose, parent: :topic do
+    trait :step_purpose do
+      step_topic
       status :purpose
       purpose 'A purpose'
     end
 
-    factory :methodologies, parent: :purpose do
+    trait :step_methodologies do
+      step_purpose
       status :methodologies
       methodologies %w[interview survey]
     end
 
-    factory :recording, parent: :methodologies do
+    trait :step_recording do
+      step_methodologies
       status :recording
       recording_methods %w[audio video]
     end
 
-    factory :data, parent: :recording do
+    trait :step_data do
+      step_recording
       status :data
       shared_with :team
       shared_duration '1 year'
       shared_use 'To train others'
     end
 
-    factory :time_equipment, parent: :data do
+    trait :step_time_equipment do
+      step_data
       status :time_equipment
       start_datetime DateTime.parse('1st Sep 2017')
       duration '1 week'
       participant_equipment 'A coat'
     end
 
-    factory :expenses, parent: :time_equipment do
+    trait :step_expenses do
+      step_time_equipment
       status :expenses
       travel_expenses_limit '10.00'
       food_expenses_limit '20.00'
@@ -49,7 +56,8 @@ FactoryGirl.define do
       food_provided 'Light canapés'
     end
 
-    factory :incentive, parent: :expenses do
+    trait :step_incentive do
+      step_expenses
       status :incentive
       incentive true
       payment_type :cash
