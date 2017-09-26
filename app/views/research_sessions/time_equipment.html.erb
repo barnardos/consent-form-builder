@@ -6,7 +6,11 @@
 
     <fieldset class="datefield" id="start_datetime">
       <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
-      <%= form.datetime_select :start_datetime %>
+      <%= form.datetime_select :start_datetime, {
+        :include_blank => true,
+        :default => nil,
+        minute_step: 15
+      } %>
     </fieldset>
 
     <%= form.labelled_text_field :duration %>
