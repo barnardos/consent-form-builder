@@ -193,6 +193,16 @@
       <% end %>
     </section>
   <% end %>
+  <% if @research_session.incentive %>
+    <section>
+      <h3 class="subtitle-small">Incentive</h3>
+      <p>
+        We are offering
+        <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>
+        for participation in this session.
+      </p>
+    </section>
+  <% end %>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">
@@ -228,7 +238,6 @@
     participation in this research and understand that
     my childʼs data will be used as explained above.
   </p>
-
 
   <%# Note: no whitespace between divs important here %>
   <div class="writing-field name">

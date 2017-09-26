@@ -54,4 +54,16 @@ class ResearchSessionPresenter < Struct.new(:research_session)
     end
     "We allow #{fragments.compact.to_sentence}."
   end
+
+  def incentive_text
+    return '' unless research_session.incentive
+
+    formatted_value = number_to_currency(research_session.incentive_value, locale: 'en')
+
+    if research_session.payment_type == 'cash'
+      "a cash incentive of #{formatted_value}"
+    elsif research_session.payment_type == 'voucher'
+      "high street vouchers to the value of #{formatted_value}"
+    end
+  end
 end

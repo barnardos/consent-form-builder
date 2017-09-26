@@ -1,3 +1,7 @@
+##
+# Check the content for the happy path where everything is
+# filled in
+#
 module PreviewChecker
   def check_researcher
     expect(page.body).to include('Rachel Researcher')
@@ -56,7 +60,9 @@ module PreviewChecker
   end
 
   def check_incentive
-    puts "#{__method__} not implemented"
+    expect(page.body).to include('We are offering')
+    expect(page).to have_tag('a.editable', text: 'a cash incentive of £10.50')
+    expect(page.body).to include('for participation in this session')
   end
 end
 
