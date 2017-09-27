@@ -64,6 +64,10 @@ FactoryGirl.define do
       incentive_value '40.00'
     end
 
+    trait :previewable do
+      step_incentive # really just a readable alias
+    end
+
     trait :nil_expenses do
       travel_expenses_limit nil
       food_expenses_limit   nil

@@ -112,25 +112,28 @@
 
     <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
   </section>
-  <section>
-    <h3 class="subtitle-small" id="private">When is the session and what should I bring?</h3>
-    <p>
-      The session is on
-      <%= edit_link_for(:start_datetime) do %>
-        <strong><%= @research_session.start_datetime.strftime("%B %d, %Y") %></strong> at
-        <strong><%= @research_session.start_datetime.strftime("%I:%M%p") %></strong>.
+  <% if @research_session.start_datetime.present? or @research_session.duration.present? %>
+    <section>
+      <h3 class="subtitle-small" id="private">When is the session and what should I bring?</h3>
+        <p>
+          <% if @research_session.start_datetime %>
+            The session is on
+            <%= edit_link_for(:start_datetime) do %>
+              <strong><%= @research_session.start_datetime.strftime("%B %d, %Y") %></strong> at
+              <strong><%= @research_session.start_datetime.strftime("%I:%M%p") %></strong>.
+            <% end %>
+          <% end %>
+          <% if @research_session.duration.present? %>
+            The session will last for <%= edit_link_for(:duration) %>.
+          <% end %>
+        </p>
+      <% if @research_session.participant_equipment.present? %>
+        <p>
+          <%= edit_link_for(:participant_equipment) %>
+        </p>
       <% end %>
-
-      <% if @research_session.duration.present? %>
-        The session will last for <%= edit_link_for(:duration) %>.
-      <% end %>
-    </p>
-    <% if @research_session.participant_equipment.present? %>
-      <p>
-        <%= edit_link_for(:participant_equipment) %>
-      </p>
-    <% end %>
-  </section>
+    </section>
+  <% end %>
   <% if @research_session.any_expenses? %>
     <section>
       <h3 class="subtitle-small">Expenses</h3>
