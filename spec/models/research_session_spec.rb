@@ -38,7 +38,7 @@ RSpec.describe ResearchSession, type: :model do
       before do
         session.status = step
         if step != :new
-          attrs = attributes_for(step)
+          attrs = attributes_for(:research_session, "step_#{step}".to_sym)
           session.assign_attributes(attrs.merge(set_attrs))
         end
         session.validate

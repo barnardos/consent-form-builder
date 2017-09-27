@@ -56,7 +56,7 @@ describe ResearchSessionsController, type: :controller do
   end
 
   describe '#update' do
-    let(:existing_session) { create(existing_step) }
+    let(:existing_session) { create(:research_session, :"step_#{existing_step}") }
     subject(:research_session) do
       ResearchSession.find(existing_session.id)
     end
