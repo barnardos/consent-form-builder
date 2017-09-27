@@ -19,15 +19,17 @@ module Barnardos
         )
       end
 
-      def radio_group_vertical(method, collection, legend: nil, legend_options: {})
+      def radio_group_vertical(method, collection, options = {}, legend: nil, legend_options: {})
         @template.radio_group_vertical(
-          @object_name, method, collection, legend: legend, legend_options: legend_options
+          @object_name, method, collection, objectify_options(options),
+          legend: legend, legend_options: legend_options
         )
       end
 
-      def checkbox_group_vertical(method, collection, legend: nil, legend_options: {})
+      def checkbox_group_vertical(method, collection, options = {}, legend: nil, legend_options: {})
         @template.checkbox_group_vertical(
-          @object_name, method, collection, legend: legend, legend_options: legend_options
+          @object_name, method, collection, objectify_options(options),
+          legend: legend, legend_options: legend_options
         )
       end
     end
