@@ -85,7 +85,9 @@ module Barnardos
         end
       end
 
-      def radio_group_vertical(object, method, collection, legend: nil, legend_options: {})
+      def radio_group_vertical(
+        object, method, collection, options = {}, legend: nil, legend_options: {}
+      )
         wrapper_tag object, method, tag: :fieldset, class: 'radio-group radio-group__vertical' do
           next unless collection.any?
 
@@ -103,7 +105,7 @@ module Barnardos
 
           collection = Array(collection)
           buttons = collection_radio_buttons(
-            object, method, collection, :first, :last, include_hidden: false
+            object, method, collection, :first, :last, options
           ) do |b|
             content_tag :div, class: 'radio-group__choice' do
               b.radio_button(class: 'radio-group__input') +
@@ -115,7 +117,9 @@ module Barnardos
         end
       end
 
-      def checkbox_group_vertical(object_name, method, collection, legend: nil, legend_options: {})
+      def checkbox_group_vertical(
+        object_name, method, collection, options = {}, legend: nil, legend_options: {}
+      )
         wrapper_tag(
           object_name, method,
           tag: :fieldset, class: 'checkbox-group checkbox-group__vertical'
@@ -139,7 +143,7 @@ module Barnardos
           collection = collection.map { |k, v| [k.to_s, v] }
           concat(
             collection_check_boxes(
-              object_name, method, collection, :first, :last
+              object_name, method, collection, :first, :last, options
             ) do |b|
               content_tag :div, class: 'checkbox-group__choice' do
                 b.check_box(class: 'checkbox-group__input') +
