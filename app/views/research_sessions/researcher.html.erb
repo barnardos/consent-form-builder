@@ -2,34 +2,23 @@
 <div class="main-content">
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Researcher</h1>
+
+  <p>
+    Who are the researchers working on this sesion? Please note:
+    participants will be informed that they can get further information from these people,
+    and their contact details will be included on the information sheet.
+  </p>
+
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-
-    <fieldset class="fieldset" name="first-researcher">
-      <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
-      <p>
-        Who is the person who is leading the research or participation session? Please note:
-        participants will be informed that they can get further information from this person,
-        and their contact details will be included on the information sheet.
-      </p>
-
-      <%= form.labelled_text_field :researcher_name %>
-      <%= form.labelled_text_field :researcher_phone %>
-      <%= form.labelled_text_field :researcher_email %>
-    </fieldset>
-
-    <fieldset class="fieldset" name="second-researcher">
-      <legend class="visually-hidden">Additional researcher</legend>
-
-      <%= form.radio_group_vertical \
-          :researcher_other,
-          { false => 'No', true => 'Yes' },
-          legend: 'Will the participants meet any other researchers / observers?' %>
-
-      <div class="js-ConditionalSubfield" data-controlled-by="research_session[researcher_other]" data-control-value="true">
-        <%= form.labelled_text_field :researcher_other_name %>
-      </div>
-    </fieldset>
+    <%= form.fields_for :researchers do |research_fields| %>
+      <fieldset class="fieldset">
+        <%= research_fields.labelled_text_field :researcher_name %>
+        <%= research_fields.labelled_text_field :researcher_phone %>
+        <%= research_fields.labelled_text_field :researcher_email %>
+      </fieldset>
+    <% end %>
 
     <%= render 'button_bar' %>
+
   <% end %>
 </div>

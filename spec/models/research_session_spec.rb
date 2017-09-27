@@ -36,43 +36,44 @@ RSpec.describe ResearchSession, type: :model do
       let(:set_attrs) { {} }
 
       before do
-        session.status = step
         if step != :new
-          attrs = attributes_for(:research_session, "step_#{step}".to_sym)
+          attrs = attributes_for(:research_session, :"step_#{step}")
           session.assign_attributes(attrs.merge(set_attrs))
         end
         session.validate
       end
 
       describe 'validating the researcher step' do
-        context 'no details are given' do
+        before do
+          session.status = :researcher
+        end
+
+        context 'no researchers are given' do
           before do
-            session.status = :researcher
+            session.researchers = []
             session.validate
           end
 
           it { is_expected.not_to be_valid }
-          it 'has an error for researcher name' do
-            expect(session.errors[:researcher_name].length).to eql(1)
-          end
-          it 'has an error for researcher email' do
-            expect(session.errors[:researcher_email].length).to eql(1)
+          it 'has an error for the researchers collection' do
+            expect(session.errors[:researchers].first).to match(/can't be blank/)
           end
         end
 
-        context "all the details are given but the email isn't valid" do
-          let(:step) { :researcher }
-          let(:set_attrs) { { researcher_email: 'xxxxxxxx' } }
+        context 'a researcher is given with missing details' do
+          before do
+            session.researchers.build do |researcher|
+              researcher.researcher_name = ''
+              researcher.researcher_email = ''
+            end
+            session.validate
+          end
 
           it { is_expected.not_to be_valid }
-          it 'has an error for email' do
-            expect(session.errors[:researcher_email].length).to eql(1)
-            expect(session.errors[:researcher_email].first).to match(/is invalid/)
+          it 'errors on the nested researcher attributes' do
+            expect(session.errors['researchers.researcher_name'].first).to match(/can't be blank/)
+            expect(session.errors['researchers.researcher_email'].first).to match(/is invalid/)
           end
-        end
-
-        context 'all the details are given' do
-          it { is_expected.to be_valid }
         end
       end
 

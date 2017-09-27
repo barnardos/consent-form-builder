@@ -4,15 +4,9 @@ When(/^I provide full session details for a child-age cohort$/) do
 
   click_button 'Create new form'
 
-  within '[name="first-researcher"]' do
-    fill_in 'Full name', with: 'Rachel Researcher'
-    fill_in 'Telephone number', with: '012345678'
-    fill_in 'Email', with: 'rachel@researcher.com'
-  end
-
-  within '[name="second-researcher"]' do
-    fill_in 'Full name', with: 'Steve Secondresearcher'
-  end
+  fill_in 'Full name', with: 'Rachel Researcher'
+  fill_in 'Telephone number', with: '012345678'
+  fill_in 'Email', with: 'rachel@researcher.com'
 
   Percy::Capybara.snapshot(page, name: :researcher)
   click_button 'Continue'
