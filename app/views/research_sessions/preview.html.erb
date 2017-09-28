@@ -66,23 +66,22 @@
       <%= @research_session.methodology_list %>
     <% end %>
     <p>
-      With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the childʼs in your care' : 'the' %> session using
+      With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
       <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
       Recording the session helps the researcher and other research team members
       trying to improve the service, as it allows them to review the most useful
-      parts of the session after it hasfinished.
+      parts of the session after it has finished.
     </p>
   </section>
   <section>
     <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
     <p>
       Taking part is entirely voluntary - it is up to you to decide whether or not <%= you_or_your_child %>
-      to take part. If you decide  <%= 'your child/the child in your care' if @research_session.unable_to_consent? %> to take part <%= you_or_they %> do not have to answer questions
-      <%= you_or_they %> do not want to answer. <%= you_or_they.capitalize %> can also change <%= @research_session.able_to_consent? ? 'your' : 'their' %> mind about taking part
+      should take part. If you decide <%= you_or_your_child %> should take part <%= you_or_they %> do not have to answer questions <%= you_or_they %> do not want to answer. <%= you_or_they.capitalize %> can also change <%= @research_session.able_to_consent? ? 'your' : 'their' %> mind about taking part
       at any time and withdraw without giving a reason.
     </p>
     <p>
-      If you agree <%= 'for your childʼs/the childʼs in your care' if @research_session.unable_to_consent? %> to take part, you will be given a copy of this information
+      If you agree <%= 'for your child/the child in your care' if @research_session.unable_to_consent? %> to take part, you will be given a copy of this information
       sheet and be asked to sign a consent form.
     </p>
   </section>
