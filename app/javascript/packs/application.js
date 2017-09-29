@@ -13,7 +13,10 @@ require('../lib/exit_warn')
 const HighlightControl = require('../components/highlightcontrol')
 const ConditionalSubfields = require('../components/conditional_subfields')
 const PrintSection = require('../components/print_section')
+const AddAnother = require('../components/add_another')
+
 
 HighlightControl.init()
 ConditionalSubfields.init()
 PrintSection.init()
+AddAnother.init()
