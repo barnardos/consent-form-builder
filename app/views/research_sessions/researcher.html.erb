@@ -1,7 +1,7 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="subtitle-large">Researcher</h1>
+  <h1 class="subtitle-large">Researchers</h1>
 
   <p>
     Who are the researchers working on this sesion? Please note:
@@ -10,15 +10,20 @@
   </p>
 
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <%= form.fields_for :researchers do |research_fields| %>
-      <fieldset class="fieldset">
-        <%= research_fields.labelled_text_field :researcher_name %>
-        <%= research_fields.labelled_text_field :researcher_phone %>
-        <%= research_fields.labelled_text_field :researcher_email %>
-      </fieldset>
-    <% end %>
+    <div class="js-AddAnother fieldset-list"
+      data-item-selector=".js-researcher"
+      data-item-name="researcher"
+    >
+      <%= form.fields_for :researchers do |research_fields| %>
+        <fieldset class="fieldset js-researcher">
+          <legend class="subtitle-medium">Researcher</legend>
+          <%= research_fields.labelled_text_field :researcher_name %>
+          <%= research_fields.labelled_text_field :researcher_phone %>
+          <%= research_fields.labelled_text_field :researcher_email %>
+        </fieldset>
+      <% end %>
+    </div>
 
     <%= render 'button_bar' %>
-
   <% end %>
 </div>
