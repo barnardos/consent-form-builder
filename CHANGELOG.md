@@ -1,4 +1,4 @@
-# 0.2.0 / Unreleased
+# 0.2.0 / 2017-10-04
 
 * [USABILITY] - [Major preview copy changes – bring through data sharing, incentives etc](https://trello.com/c/lxrTEvdo/157-5-validate-that-all-relevant-content-from-the-form-is-reflected-in-the-preview-copy)
 * [USABILITY] - [Dynamic Preview Copy - Can or Can't give consent](https://trello.com/c/uexOizmX/146-dynamic-preview-copy-can-or-cant-give-consent)
