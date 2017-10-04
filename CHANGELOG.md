@@ -13,6 +13,7 @@
 * [BUGFIX] - Researcher screen: font size issue
 * [BUGFIX] - [Fix hard crash when no checkboxes are selected](https://trello.com/c/Yz48ihXf/177-3-bug-if-you-dont-select-from-a-list-of-checkboxes-when-thats-the-only-input-you-get-this-error)
 * [USABILITY] - [Researcher page: Last question should not read "/participant" it should say /secondary researcher or /observer](https://trello.com/c/vVxZhTh1/168-1-researcher-page-last-question-should-not-read-participant-it-should-say-secondary-researcher-or-observer)
+* [CHORE] - [This changelog](https://trello.com/c/8HFvUI0z/109-spike-ensure-that-each-release-has-an-appropriate-version-and-codename-based-on-semver-and-ntwicm-releases-4h#comment-59d3aa4e68fe1471489a1090)
 
 # 0.1.0 / 2017-09-19
 
