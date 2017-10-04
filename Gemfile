@@ -18,7 +18,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'webpacker', '~> 2.0'
 gem 'wicked', '~> 1.3.2'
 gem 'percy-capybara'
-gem 'vandamme', '~> 0.0.12'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.0'
