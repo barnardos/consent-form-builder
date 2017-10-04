@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe ResearchSessionPresenter do
   include RSpecHtmlMatchers
 
-  let(:research_session) { spy('ResearchSession') }
+  let(:research_session) { spy('ResearchSession', researchers: [researcher]) }
+  let(:researcher)       { spy('Researcher') }
 
   subject(:presenter) { ResearchSessionPresenter.new(research_session) }
 
@@ -11,11 +12,17 @@ RSpec.describe ResearchSessionPresenter do
     expect(presenter.research_session).to eql(research_session)
   end
 
-  [:age, :topic, :purpose, :researcher_name, :researcher_other_name,
-   :researcher_email, :researcher_phone].each do |method|
+  [:age, :topic, :purpose].each do |method|
     it "delegates #{method} to the research_session" do
       presenter.send method
       expect(research_session).to have_received(method)
+    end
+  end
+
+  [:researcher_name, :researcher_email, :researcher_phone].each do |method|
+    it "delegates #{method} to the first researcher" do
+      presenter.send method
+      expect(researcher).to have_received(method)
     end
   end
 

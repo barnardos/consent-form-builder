@@ -24,11 +24,11 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
     end
 
     context 'the attr is one we know about' do
-      let(:attr) { :researcher_name }
+      let(:attr) { :topic }
 
-      context 'a researcher attribute' do
-        it 'links to the researcher step' do
-          expect(rendered).to have_tag('a', href: '/questions/researcher', text: /Some attr value/)
+      context 'a topic attribute' do
+        it 'links to the topic step' do
+          expect(rendered).to have_tag('a', href: '/questions/topic', text: /Some attr value/)
         end
       end
 

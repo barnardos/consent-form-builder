@@ -65,6 +65,32 @@
   }
 }
 
+.button--danger {
+  background-color: $error-colour;
+  border-color: $grey-dark;
+
+  &:visited,
+  &:link {
+    color: $grey-dark;
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: $grey-dark;
+    border-color: $grey-dark;
+    color: $white;
+  }
+
+  @media (min-width: $tablet) {
+    &:hover,
+    &:focus {
+      background-color:  $grey-dark;
+      border-color:  $grey-dark;
+      color: $white;
+    }
+  }
+}
+
 .button-bar {
   display: block;
   margin: (4 * $gutter) 0;

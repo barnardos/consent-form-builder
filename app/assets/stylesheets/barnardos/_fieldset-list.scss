@@ -1,0 +1,15 @@
+.fieldset-list {
+  .fieldset {
+    legend {
+      margin-bottom: 0;
+    }
+
+    .textfield {
+      margin-top: 0;
+    }
+
+    padding-bottom: $gutter;
+    margin-bottom: $gutter;
+    border-bottom: $border 1px solid;
+  }
+}

@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :research_session do
     trait :step_researcher do
       status :researcher
-      researcher_name 'Rachel Researcher'
-      researcher_email 'r.researcher@barnardos.org.uk'
+
+      researchers { build_list :researcher, 1 }
     end
 
     trait :step_topic do

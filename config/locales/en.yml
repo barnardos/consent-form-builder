@@ -34,10 +34,6 @@ en:
     shared_duration: "How long will this information be held for?"
     shared_use: "How will the data be used?"
     shared_with: "Who will the data be shared with?"
-    researcher_name: 'Full name'
-    researcher_other_name: 'Full name'
-    researcher_phone: 'Telephone number (optional)'
-    researcher_email: 'Email'
     topic: 'What is the research or participation session about?'
     purpose: 'Why are you doing this research or participation session?'
     methodologies: 'How will you be gathering information?'
@@ -53,7 +49,18 @@ en:
     food_provided: "Will you provide food or refreshments at the session? (optional)"
     incentive: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
-
+    researchers:
+      researcher_name: 'Full name'
+      researcher_phone: 'Telephone number (optional)'
+      researcher_email: 'Email'
+      one:
+        researcher_name: 'Full name'
+        researcher_phone: 'Telephone number (optional)'
+        researcher_email: 'Email'
+      other:
+        researcher_name: 'Full name'
+        researcher_phone: 'Telephone number (optional)'
+        researcher_email: 'Email'
   activerecord:
     attributes:
       research_session:

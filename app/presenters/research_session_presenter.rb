@@ -8,6 +8,12 @@ class ResearchSessionPresenter < Struct.new(:research_session)
   delegate :unable_to_consent?, :able_to_consent?, :reached_step?,
            to: :research_session
 
+  [:researcher_name, :researcher_email, :researcher_phone].each do |attr|
+    define_method(attr) do
+      research_session.researchers.first.send attr
+    end
+  end
+
   def methodology_list
     paras = research_session.methodologies.map do |methodology|
       translation = if methodology.to_s == 'other'
