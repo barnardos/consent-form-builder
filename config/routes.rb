@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
 
   get '/gallery/', to: 'gallery#index'
+  resource :changelog
 end

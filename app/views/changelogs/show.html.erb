@@ -1,0 +1,20 @@
+<style>
+  .changelog ul {
+    list-style-type: disc;
+    margin: 0 32px;
+  }
+
+  .changelog ul > * {
+    line-height: 24px;
+  }
+
+</style>
+
+<h1 class="subtitle-large">Changelog</h1>
+
+<div class="changelog">
+<% @_parser.to_html.each do |release, body| %>
+  <h1 class="subtitle-medium">v<%= release %></h1>
+  <%= body.html_safe %>
+<% end %>
+</div>
