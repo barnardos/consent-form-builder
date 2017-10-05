@@ -44,14 +44,6 @@ class ResearchSession < ApplicationRecord
   validates :incentive_value, presence: true,
             if: -> (session) { session.incentive && session.reached_step?(:incentive) }
 
-  def able_to_consent?
-    age == 'over18'
-  end
-
-  def unable_to_consent?
-    !able_to_consent?
-  end
-
   def reached_step?(step)
     Steps.instance.reached_step?(self, step)
   end

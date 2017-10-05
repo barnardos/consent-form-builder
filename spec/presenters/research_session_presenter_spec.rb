@@ -4,14 +4,20 @@ RSpec.describe ResearchSessionPresenter do
   include RSpecHtmlMatchers
 
   let(:research_session) { spy('ResearchSession') }
+  let(:able_to_consent) { false }
 
-  subject(:presenter) { ResearchSessionPresenter.new(research_session) }
+  subject(:presenter) do
+    ResearchSessionPresenter.new(
+      research_session,
+      able_to_consent: able_to_consent
+    )
+  end
 
   it 'holds on to the research session' do
     expect(presenter.research_session).to eql(research_session)
   end
 
-  [:age, :topic, :purpose, :researcher_name, :researcher_other_name,
+  [:topic, :purpose, :researcher_name, :researcher_other_name,
    :researcher_email, :researcher_phone].each do |method|
     it "delegates #{method} to the research_session" do
       presenter.send method
@@ -19,17 +25,29 @@ RSpec.describe ResearchSessionPresenter do
     end
   end
 
+  describe '#un/able_to_consent?' do
+    context 'participant is unable to consent' do
+      let(:able_to_consent) { false }
+      it { is_expected.not_to be_able_to_consent }
+      it { is_expected.to be_unable_to_consent }
+    end
+    context 'participant is able to consent' do
+      let(:able_to_consent) { true }
+      it { is_expected.to be_able_to_consent }
+      it { is_expected.not_to be_unable_to_consent }
+    end
+  end
+
   describe '#methodology_list' do
     let(:methodologies) { [:interview, :usability] }
     before do
-      allow(research_session).to receive(:age).and_return(age)
       allow(research_session).to receive(:methodologies).and_return(methodologies)
     end
 
     subject(:list) { presenter.methodology_list }
 
-    context 'the research session is targeted at children' do
-      let(:age) { 'under18' }
+    context 'participants are unable to consent' do
+      let(:able_to_consent) { false }
       it 'has as many paragraphs as there are methodologies' do
         expect(list).to have_tag('p', count: 2)
       end
@@ -42,8 +60,8 @@ RSpec.describe ResearchSessionPresenter do
       end
     end
 
-    context 'the research session is targeted at adults' do
-      let(:age) { 'over18' }
+    context 'participants are able to consent' do
+      let(:able_to_consent) { true }
       it 'has as many paragraphs as there are methodologies' do
         expect(list).to have_tag('p', count: 2)
       end

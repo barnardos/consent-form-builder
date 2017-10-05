@@ -27,11 +27,12 @@ class ResearchSessionsController < ApplicationController
     @research_session = current_research_session
 
     # Allow the user to pass a parameter to switch between over 18 and under 18 mode
-    if params.key?('age')
-      @research_session.assign_attributes(params.permit(:age))
-    end
+    able_to_consent = params['able-to-consent'] == 'yes' ? true : false
 
-    @research_session = ResearchSessionPresenter.new(@research_session)
+    @research_session = ResearchSessionPresenter.new(
+      @research_session,
+      able_to_consent: able_to_consent
+    )
   end
 
   def update

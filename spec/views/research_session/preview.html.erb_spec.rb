@@ -1,12 +1,22 @@
 require 'rails_helper'
 
 describe 'research_sessions/preview' do
+  let(:extra_attrs)     { {} }
+  let(:able_to_consent) { false }
+
   let(:research_session) do
     build_stubbed :research_session, :previewable, extra_attrs
   end
 
+  let(:presenter) do
+    ResearchSessionPresenter.new(
+      research_session,
+      able_to_consent: able_to_consent
+    )
+  end
+
   before do
-    assign(:research_session, ResearchSessionPresenter.new(research_session))
+    assign(:research_session, presenter)
     stub_template 'research_sessions/_progress' => '<%= NOT RENDERED %>'
     render
   end
@@ -43,7 +53,7 @@ describe 'research_sessions/preview' do
   end
 
   context 'the participant is able to give consent' do
-    let(:extra_attrs) { { age: 'over18' } }
+    let(:able_to_consent) { true }
 
     it 'phrases blocks using "you"' do
       expect(rendered).to have_content(
@@ -59,7 +69,7 @@ describe 'research_sessions/preview' do
   end
 
   context 'the participant is not able to give consent' do
-    let(:extra_attrs) { { age: 'under18' } }
+    let(:able_to_consent) { false }
 
     it 'phrases blocks using "your child"' do
       expect(rendered).to have_content(
