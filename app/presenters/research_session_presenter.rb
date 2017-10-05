@@ -1,19 +1,33 @@
-class ResearchSessionPresenter < Struct.new(:research_session)
+class ResearchSessionPresenter
   include ActionView::Helpers::NumberHelper
+
+  attr_accessor :research_session
+  def initialize(research_session, able_to_consent: false)
+    self.research_session = research_session
+    @able_to_consent = able_to_consent
+  end
 
   ResearchSession.attribute_names.each do |attribute|
     delegate attribute, to: :research_session
   end
 
-  delegate :unable_to_consent?, :able_to_consent?, :reached_step?,
-           to: :research_session
+  delegate :reached_step?, to: :research_session
+
+  def able_to_consent?
+    @able_to_consent
+  end
+
+  def unable_to_consent?
+    !@able_to_consent
+  end
 
   def methodology_list
+    consent_translation_key = @able_to_consent ? 'able_to_consent' : 'unable_to_consent'
     paras = research_session.methodologies.map do |methodology|
       translation = if methodology.to_s == 'other'
                       other_methodology
                     else
-                      I18n.t("report.#{age}.#{methodology}")
+                      I18n.t("report.#{consent_translation_key}.#{methodology}")
                     end
       "<p class='highlight'>#{translation}</p>"
     end

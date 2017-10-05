@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904155000) do
+ActiveRecord::Schema.define(version: 20171005095604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "research_sessions", force: :cascade do |t|
     t.string "status", default: "new"
-    t.string "age", default: "over18"
     t.string "methodologies", array: true
     t.string "recording_methods", array: true
     t.string "researcher_name"

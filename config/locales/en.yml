@@ -77,7 +77,7 @@ en:
         format: '%u%n'
 
   report:
-    over18:
+    able_to_consent:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
       usability: 'You will be asked to do several short tasks using a website while our researcher watches, listens and takes notes.
         Youʼll need to think out loud as you work so that the researcher can understand what youʼre doing and why.
@@ -89,7 +89,7 @@ en:
         this time you will discuss idea and needs for a service or product and help formalise a solution and next steps.'
       observation: 'You will be observed carrying out tasks within your normal role'
 
-    under18:
+    unable_to_consent:
       interview: 'Your child will be interviewed and asked your views regarding the project being researched.'
       usability: "Your child will be asked to do several short tasks using a website while our researcher watches, listens and takes notes.
         Your child will need to think out loud as they work so that the researcher can understand what they're doing and why.

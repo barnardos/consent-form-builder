@@ -8,20 +8,6 @@ RSpec.describe ResearchSession, type: :model do
       expect(session.status).to eql('new')
     end
 
-    describe '#un/able_to_consent?' do
-      before { session.age = age }
-      context 'is too young' do
-        let(:age) { 'under18' }
-        it { is_expected.not_to be_able_to_consent }
-        it { is_expected.to be_unable_to_consent }
-      end
-      context 'is old enough' do
-        let(:age) { 'over18' }
-        it { is_expected.to be_able_to_consent }
-        it { is_expected.not_to be_unable_to_consent }
-      end
-    end
-
     describe '#reached_step?' do
       it 'passes through to Steps' do
         steps_spy = spy('Steps')
