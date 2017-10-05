@@ -1,0 +1,32 @@
+.selectfield {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: $black transparent transparent transparent;
+    position: absolute;
+    right: $gutter;
+    top: 50%;
+    margin-top: -3px;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    padding: $gutter / 2;
+    padding-right: $gutter + 10px + $gutter;
+    font-size: $base-font-size;
+    margin: 0;
+    color: $black;
+    border: solid 1px $border;
+    border-radius: $border-radius;
+    background-color: transparent;
+  }
+}
