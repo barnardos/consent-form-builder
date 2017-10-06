@@ -15,4 +15,8 @@ module ResearchSessionsHelper
   def you_or_they
     @research_session.able_to_consent? ? 'you' : 'they'
   end
+
+  def consent_link
+    @research_session.unable_to_consent? ? '?able-to-consent=yes' : '?able-to-consent=no'
+  end
 end
