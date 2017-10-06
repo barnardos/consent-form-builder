@@ -22,7 +22,7 @@
 
       <%= form.radio_group_vertical \
           :researcher_other,
-          { false => 'No', true => 'Yes' },
+          { true => 'Yes', false => 'No' },
           legend: 'Will the participants meet any other researchers / observers?' %>
 
       <div class="js-ConditionalSubfield" data-controlled-by="research_session[researcher_other]" data-control-value="true">
