@@ -31,6 +31,7 @@
 
     &:hover,
     &:focus {
+      cursor: pointer;
       background-color: $primary-select;
       border-color: $primary-select;
     }
@@ -58,6 +59,7 @@
   @media (min-width: $tablet) {
     &:hover,
     &:focus {
+      cursor: pointer;
       background-color: $grey-medium;
       border-color: $grey-dark;
       color: $grey-dark;
