@@ -1,11 +1,13 @@
 <%= render "research_sessions/progress", preview: true %>
 
 <form class="print-section screen-only js-print-section" action="#">
-  <select name="area-to-print" id="area-to-print" class="print-section__select js-area-to-print">
-    <option value="#consent-form,#info-sheets">Consent Form and Info Sheet</option>
-    <option value="#consent-form">Consent Form</option>
-    <option value="#info-sheets">Info Sheet</option>
-  </select>
+  <label for="area-to-print" class="selectfield">
+      <select name="area-to-print" id="area-to-print" class="print-section__select js-area-to-print">
+        <option value="#consent-form,#info-sheets">Consent Form and Info Sheet</option>
+        <option value="#consent-form">Consent Form</option>
+        <option value="#info-sheets">Info Sheet</option>
+      </select>
+  </label>
   <button type="submit" class="print-section__submit button">Print</button>
 </form>
 

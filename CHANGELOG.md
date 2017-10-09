@@ -1,6 +1,7 @@
 # 0.3.0 / Unreleased
 
 * [USABILITY] - [Consistency: change order of No then Yes](https://trello.com/c/IjZuVOkS/182-consistency-change-order-of-no-then-yes)
+* [FEATURE] - [Style select form fields](https://trello.com/c/Oi7CBb0t/180-style-select-form-fields)
 
 # 0.2.0 / 2017-10-04
 
