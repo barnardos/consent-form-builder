@@ -1,3 +1,7 @@
+# 0.3.0 / Unreleased
+
+* [USABILITY] - [Consistency: change order of No then Yes](https://trello.com/c/IjZuVOkS/182-consistency-change-order-of-no-then-yes)
+
 # 0.2.0 / 2017-10-04
 
 * [USABILITY] - [Major preview copy changes – bring through data sharing, incentives etc](https://trello.com/c/lxrTEvdo/157-5-validate-that-all-relevant-content-from-the-form-is-reflected-in-the-preview-copy)
