@@ -25,3 +25,8 @@ rules:
   quotes:
     - 1
     - style: double
+  shorthand-values:
+    - 1
+    - allowed-shorthands:
+      - 1
+      - 2
