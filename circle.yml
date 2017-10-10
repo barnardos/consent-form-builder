@@ -12,3 +12,4 @@ machine:
 test:
   override:
     - bundle exec rake
+    - bundle exec danger
