@@ -18,6 +18,10 @@ class ResearchSessionsController < ApplicationController
     redirect_to(first_question_path(session_id))
   end
 
+  # This is a frivolous change to a file in app/
+  # Danger! High Voltage!
+  #
+  # We should see an alert from DangerBot on this PR
   def show
     @research_session = current_research_session
     render_wizard
