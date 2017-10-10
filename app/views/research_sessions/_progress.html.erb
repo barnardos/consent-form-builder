@@ -22,7 +22,7 @@
           <%= 'is-complete' if past_step?(this_step) || preview %>
           <%= 'is-active' if this_step == step %>">
         <span class="progress__stage-title">
-          <% if this_step != step and @research_session and @research_session.reached_step?(this_step) %>
+          <% if this_step != step && @research_session.reached_step?(this_step) %>
             <%= link_to this_step.to_s.humanize, research_session_question_path(@research_session.id, this_step) %>
           <% else %>
             <%= this_step.to_s.humanize %>
@@ -37,7 +37,7 @@
     %>
     <li class="progress__stage <%= 'is-active' if preview %>">
       <span class="progress__stage-title">
-        <% if !preview && @research_session && @research_session.reached_step?(wizard_steps.last) %>
+        <% if !preview && @research_session.reached_step?(wizard_steps.last) %>
           <%= link_to 'Preview', research_session_preview_path(@research_session.id) %>
         <% else %>
           Preview
