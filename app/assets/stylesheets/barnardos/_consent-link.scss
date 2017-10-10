@@ -1,0 +1,45 @@
+@import "barnardos/colours";
+@import "barnardos/vars";
+
+.consent-link {
+  color: $black;
+  text-decoration: none;
+  display: inline-block;
+  padding-right: 60px;
+  position: relative;
+
+  &__toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 10px;
+    margin-top: -5px;
+    background-color: $border;
+    border-radius: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      background-color: $grey-medium;
+      border: 1px solid $black;
+      border-radius: 50%;
+
+      .consent-link--active & {
+        left: auto;
+        right: 0;
+        background-color: $white;
+      }
+    }
+
+    .consent-link--active & {
+      background-color: $primary;
+    }
+  }
+}

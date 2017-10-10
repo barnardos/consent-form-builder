@@ -13,13 +13,8 @@
 
 <h1 class="title screen-only">Research session preview</h1>
 
-<section class="split-link screen-only">
-  <div class="<%='active' if @research_session.able_to_consent? %>">
-    <a href="?able-to-consent=yes">Respondents who can give consent themselves</a>
-  </div>
-  <div class="<%='active' if @research_session.unable_to_consent? %>">
-    <a href="?able-to-consent=no">Respondents who can't give consent</a>
-  </div>
+<section class="screen-only">
+  <a href="<%= consent_link %>" class="consent-link <%='consent-link--active' if @research_session.able_to_consent? %>">Is participant able to give consent? <span class="consent-link__toggle"></span></a>
 </section>
 
 <div class="print-area js-print-area" id="info-sheets">
