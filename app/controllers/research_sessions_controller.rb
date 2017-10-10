@@ -37,7 +37,7 @@ class ResearchSessionsController < ApplicationController
 
   def update
     @research_session = current_research_session
-    @research_session.status = step
+    @research_session.status = step unless @research_session.reached_step?(step)
     @research_session.assign_attributes(question_params)
     render_wizard @research_session
   end
