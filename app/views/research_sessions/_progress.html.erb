@@ -19,7 +19,7 @@
     <% wizard_steps.each do |this_step| %>
       <li
         class="progress__stage
-          <%= 'is-complete' if past_step?(this_step) || preview %>
+          <%= 'is-complete' if @research_session.reached_step?(this_step) %>
           <%= 'is-active' if this_step == step %>">
         <span class="progress__stage-title">
           <% if this_step != step && @research_session.reached_step?(this_step) %>
@@ -35,7 +35,9 @@
       If the user has completed the last step, provide
       a link to the preview section
     %>
-    <li class="progress__stage <%= 'is-active' if preview %>">
+    <li class="progress__stage
+          <%= 'is-complete' if @research_session.reached_step?(wizard_steps.last) %>
+          <%= 'is-active' if preview %>">
       <span class="progress__stage-title">
         <% if !preview && @research_session.reached_step?(wizard_steps.last) %>
           <%= link_to 'Preview', research_session_preview_path(@research_session.id) %>
