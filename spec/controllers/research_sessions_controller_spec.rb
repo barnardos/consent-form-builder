@@ -93,6 +93,21 @@ describe ResearchSessionsController, type: :controller do
       end
     end
 
+    context 'returning to a previous step' do
+      let(:existing_step) { :incentive }
+      let(:params) do
+        {
+          research_session_id: existing_session.id,
+          id: 'methodologies',
+          research_session: { 'methodologies' => ['', 'interview', 'usability'] }
+        }
+      end
+
+      it 'keeps the research session at the step it had reached' do
+        expect(research_session.status).to eql('incentive')
+      end
+    end
+
     context 'the last step' do
       let(:existing_step) { :data }
 
