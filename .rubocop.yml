@@ -38,6 +38,18 @@ Metrics/ModuleLength:
 Layout/EndOfLine:
   EnforcedStyle: lf
 
+Style/FileName:
+  Exclude:
+    - 'Dangerfile'
+
+Style/SignalException:
+  Exclude:
+    - 'Dangerfile'
+
+Lint/UnreachableCode:
+  Exclude:
+    - 'Dangerfile'
+
 Style/PredicateName:
   Exclude:
     - 'spec/**/*'
