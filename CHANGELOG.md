@@ -5,6 +5,7 @@
 * [FEATURE] - [Style select form fields](https://trello.com/c/Oi7CBb0t/180-style-select-form-fields)
 * [FEATURE] - [When a field is edited from preview, the continue button should return the editor to the preview](https://trello.com/c/6PUIvgXx/196-when-a-field-is-edited-from-preview-the-continue-button-should-return-the-editor-to-the-preview)
 * [BUG] - [Left gutter is absent on IE11](https://trello.com/c/MHPi5b2K/198-left-gutter-is-absent-on-ie11)
+* [BUG] - ["Other" checkboxes do not show/hide associated fields on IE11](https://trello.com/c/vU78qwtO/197-other-checkboxes-do-not-show-hide-associated-fields-on-ie11)
 
 # 0.2.0 / 2017-10-04
 
