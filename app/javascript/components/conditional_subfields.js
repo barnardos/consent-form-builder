@@ -123,7 +123,7 @@ const ConditionalSubfields = {
       const value = subField.getAttribute('data-control-value') + ''
       let isVisible
 
-      isVisible = controlInputValue.includes(value)
+      isVisible = includes(controlInputValue, value)
 
       this._toggleSubField(subField, isVisible)
     })
