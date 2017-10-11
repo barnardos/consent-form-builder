@@ -47,3 +47,7 @@ end
 Then(/^the session should be immediately addressable$/) do
   expect(page.current_path).to match(%r{^/research-sessions/[0-9]*/questions/researcher})
 end
+
+Then(/^I should see an updated preview$/) do
+  expect(page).to have_content(@new_phone_number)
+end

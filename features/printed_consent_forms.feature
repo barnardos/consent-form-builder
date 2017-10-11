@@ -3,8 +3,8 @@ Feature:
   I want to generate combinations of printed consent materials
   So that I can get consent from parents and participants without making mistakes
 
-  Scenario: The session is for a child
-    When I provide full session details for a child-age cohort
+  Scenario: The happy path
+    When I provide full session details for every step
     Then I should see the session review page
     And I should see confirmation that this is a preview
     And I should see the formatted focus of the research along with why
@@ -14,6 +14,10 @@ Feature:
     And I should see the age-appropriate consent form preview
     And it should have a place for name, signature and date
     And I should see a way to print it
+    When I go back to a previous step
+    Then I should see a way of getting straight back to the preview
+    When I edit that step and continue
+    Then I should see an updated preview
 
   Scenario: I am using a research methodology or recording method that is not in the list
     Given I have arrived at the methodologies step

@@ -1,4 +1,4 @@
-When(/^I provide full session details for a child-age cohort$/) do
+When(/^I provide full session details for every step$/) do
   visit '/'
   Percy::Capybara.snapshot(page, name: :home)
 
@@ -202,4 +202,18 @@ end
 When(/^I begin a new session at the start$/) do
   visit '/'
   click_button 'Create new form'
+end
+
+When(/^I go back to a previous step$/) do
+  click_link 'Rachel Researcher', match: :first
+end
+
+Then(/^I should see a way of getting straight back to the preview$/) do
+  expect(page).to have_tag('button', text: 'Save and return')
+end
+
+When(/^I edit that step and continue$/) do
+  @new_phone_number = '0772233445566'
+  fill_in 'Telephone number', with: @new_phone_number
+  click_button 'Save and return'
 end
