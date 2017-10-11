@@ -1,4 +1,4 @@
-When(/^I provide full session details for a child-age cohort$/) do
+When(/^I provide full session details for every step$/) do
   visit '/'
   Percy::Capybara.snapshot(page, name: :home)
 

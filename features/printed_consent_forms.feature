@@ -3,8 +3,8 @@ Feature:
   I want to generate combinations of printed consent materials
   So that I can get consent from parents and participants without making mistakes
 
-  Scenario: The session is for a child
-    When I provide full session details for a child-age cohort
+  Scenario: The happy path
+    When I provide full session details for every step
     Then I should see the session review page
     And I should see confirmation that this is a preview
     And I should see the formatted focus of the research along with why
