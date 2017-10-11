@@ -3,6 +3,7 @@
 * [BUG] - [Returning to previous steps in the preview bar disables links to subsequent steps](https://trello.com/c/0k7u2liM/199-bug-returning-to-previous-steps-in-the-preview-bar-disables-links-to-subsequent-steps)
 * [USABILITY] - [Consistency: change order of No then Yes](https://trello.com/c/IjZuVOkS/182-consistency-change-order-of-no-then-yes)
 * [FEATURE] - [Style select form fields](https://trello.com/c/Oi7CBb0t/180-style-select-form-fields)
+* [FEATURE] - [When a field is edited from preview, the continue button should return the editor to the preview](https://trello.com/c/6PUIvgXx/196-when-a-field-is-edited-from-preview-the-continue-button-should-return-the-editor-to-the-preview)
 
 # 0.2.0 / 2017-10-04
 
