@@ -14,6 +14,10 @@ Feature:
     And I should see the age-appropriate consent form preview
     And it should have a place for name, signature and date
     And I should see a way to print it
+    When I go back to a previous step
+    Then I should see a way of getting straight back to the preview
+    When I edit that step and continue
+    Then I should see an updated preview
 
   Scenario: I am using a research methodology or recording method that is not in the list
     Given I have arrived at the methodologies step

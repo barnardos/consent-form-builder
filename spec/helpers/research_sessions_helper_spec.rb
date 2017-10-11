@@ -29,7 +29,8 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       context 'a researcher attribute' do
         it 'links to the researcher step' do
           expect(rendered).to have_tag(
-            'a', text: /Some attr value/, with: { href: '/research-sessions/1234/questions/researcher?edit-preview=1' }
+            'a', text: /Some attr value/,
+                 with: { href: '/research-sessions/1234/questions/researcher?edit-preview=1' }
           )
         end
       end

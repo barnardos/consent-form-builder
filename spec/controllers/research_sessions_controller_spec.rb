@@ -108,6 +108,29 @@ describe ResearchSessionsController, type: :controller do
       end
     end
 
+    context 'editing a previous step and returning directly to preview' do
+      let(:existing_step) { :incentive }
+      let(:new_phone_number) { '01010101010101' }
+      let(:params) do
+        {
+          research_session_id: existing_session.id,
+          id: 'researcher',
+          research_session: { 'researcher_phone' => new_phone_number },
+          'edit-preview' => '1'
+        }
+      end
+
+      it 'updates the research session' do
+        expect(research_session.researcher_phone).to eql(new_phone_number)
+      end
+
+      it 'returns to the preview' do
+        expect(response).to redirect_to(
+          research_session_preview_path(research_session_id: existing_session.id)
+        )
+      end
+    end
+
     context 'the last step' do
       let(:existing_step) { :data }
 

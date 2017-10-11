@@ -39,7 +39,11 @@ class ResearchSessionsController < ApplicationController
     @research_session = current_research_session
     @research_session.status = step unless @research_session.reached_step?(step)
     @research_session.assign_attributes(question_params)
-    render_wizard @research_session
+    if returning_to_preview? && @research_session.save
+      redirect_to(research_session_preview_path, research_session_id: @research_session.id)
+    else
+      render_wizard @research_session
+    end
   end
 
   def finish_wizard_path
@@ -47,6 +51,10 @@ class ResearchSessionsController < ApplicationController
   end
 
 private
+  def returning_to_preview?
+    params['edit-preview'] == '1'
+  end
+
   def current_research_session
     ResearchSession.find(params[:research_session_id])
   end

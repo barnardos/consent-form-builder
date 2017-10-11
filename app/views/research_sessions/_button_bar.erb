@@ -1,3 +1,8 @@
 <p class="button-bar">
-  <%= button_tag('Continue', type: :submit, class: 'button') %>
+  <% if params['edit-preview'] == '1' %>
+    <%= hidden_field_tag 'edit-preview', '1' %>
+    <%= button_tag 'Save and return', type: :submit, class: 'button' %>
+  <% else %>
+    <%= button_tag 'Continue', type: :submit, class: 'button' %>
+  <% end %>
 </p>
