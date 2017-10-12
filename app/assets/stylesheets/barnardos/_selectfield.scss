@@ -28,5 +28,9 @@
     border: solid 1px $border;
     border-radius: $border-radius;
     background-color: transparent;
+
+    &::-ms-expand {
+      display: none;
+    }
   }
 }
