@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017154810) do
+ActiveRecord::Schema.define(version: 20171019140044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20171017154810) do
     t.string "shared_with"
     t.string "shared_duration"
     t.text "shared_use"
-    t.datetime "start_datetime"
     t.string "duration"
     t.text "participant_equipment"
     t.decimal "travel_expenses_limit"
@@ -45,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171017154810) do
     t.boolean "receipts_required", default: true
     t.text "food_provided"
     t.string "location"
+    t.string "when_text"
     t.index ["status"], name: "index_research_sessions_on_status"
   end
 

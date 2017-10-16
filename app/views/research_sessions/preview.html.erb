@@ -117,15 +117,14 @@
       <p>The session will be held at <%= edit_link_for(:location) %>.</p>
     <% end %>
   </section>
-  <% if @research_session.start_datetime.present? or @research_session.duration.present? %>
+  <% if @research_session.when_text.present? or @research_session.duration.present? %>
     <section>
       <h3 class="subtitle-small" id="private">When is the session and what should <%= @research_session.able_to_consent? ? 'I' : 'my child/the child in my care' %> bring?</h3>
         <p>
-          <% if @research_session.start_datetime %>
+          <% if @research_session.when_text %>
             The session is on
-            <%= edit_link_for(:start_datetime) do %>
-              <strong><%= @research_session.start_datetime.strftime("%B %d, %Y") %></strong> at
-              <strong><%= @research_session.start_datetime.strftime("%I:%M%p") %></strong>.
+            <%= edit_link_for(:when_text) do %>
+              <strong><%= @research_session.when_text %></strong>.
             <% end %>
           <% end %>
           <% if @research_session.duration.present? %>

@@ -4,14 +4,14 @@
   <h1 class="subtitle-large">Time and equipment</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-    <fieldset class="datefield" id="start_datetime">
+    <fieldset class="datefield">
       <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
-      <%=
-        form.datetime_select :start_datetime, {
-          include_blank: true,
-          default: nil,
-          minute_step: 15
-        }
+      <%= form.labelled_text_field \
+               :when_text,
+               text_options: {
+                 placeholder: 'Monday 27th September 2017 at 3:00pm',
+                 autofocus: true
+               }
       %>
     </fieldset>
 
