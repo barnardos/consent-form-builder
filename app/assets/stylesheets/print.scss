@@ -1,6 +1,10 @@
+// sass-lint:disable no-ids
+
 body {
   .button,
-  .screen-only {
+  .screen-only,
+  #global-footer__release,
+  #_hj_feedback_container {
     display: none;
   }
 }

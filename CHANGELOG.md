@@ -7,6 +7,7 @@
 * [BUG] - [Left gutter is absent on IE11](https://trello.com/c/MHPi5b2K/198-left-gutter-is-absent-on-ie11)
 * [BUG] - ["Other" checkboxes do not show/hide associated fields on IE11](https://trello.com/c/vU78qwtO/197-other-checkboxes-do-not-show-hide-associated-fields-on-ie11)
 * [BUG] - [IE11 shows two arrows on the print area select field](https://trello.com/c/Y55ixqL5/206-ie11-shows-two-arrows-on-the-print-area-select-field)
+* [BUG] - [some page furniture obscuring printed preview](https://trello.com/c/1EKgH3tL/188-2-bug-some-page-furniture-obscuring-printed-preview)
 
 # 0.2.0 / 2017-10-04
 
