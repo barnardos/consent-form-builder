@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005095604) do
+ActiveRecord::Schema.define(version: 20171017154810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171005095604) do
     t.decimal "other_expenses_limit"
     t.boolean "receipts_required", default: true
     t.text "food_provided"
+    t.string "location"
     t.index ["status"], name: "index_research_sessions_on_status"
   end
 

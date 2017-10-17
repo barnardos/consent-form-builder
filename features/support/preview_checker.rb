@@ -46,6 +46,7 @@ module PreviewChecker
     expect(page.body).to include('The session is on')
     expect(page).to have_tag('a.editable', text: /May 10, 2017.*at.*11:30AM/m)
     expect(page).to have_tag('a.editable', text: @session_duration)
+    expect(page).to have_tag('a.editable', text: @session_location)
     expect(page).to have_tag('a.editable', text: @what_to_bring)
   end
 
