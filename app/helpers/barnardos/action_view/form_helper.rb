@@ -141,12 +141,15 @@ module Barnardos
           # will use a straight `include?` to check for checked values. to_s it here
           # This map will deal with both Hash and Array
           collection = collection.map { |k, v| [k.to_s, v] }
+          on_first_item = true
           concat(
             collection_check_boxes(
               object_name, method, collection, :first, :last, options
             ) do |b|
+              should_autofocus = options[:autofocus_first_item] && on_first_item
+              on_first_item = false
               content_tag :div, class: 'checkbox-group__choice' do
-                b.check_box(class: 'checkbox-group__input') +
+                b.check_box(class: 'checkbox-group__input', autofocus: should_autofocus) +
                   b.label(class: 'checkbox-group__label')
               end
             end
