@@ -3,6 +3,7 @@
 
 .progress {
   margin: ($gutter * 2) ($gutter / 2) ($gutter * 4);
+  max-width: $max-content-width;
 
   @media (min-width: $tablet) {
     margin: ($gutter * 2) 0;
