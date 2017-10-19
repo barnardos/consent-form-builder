@@ -104,11 +104,14 @@ module Barnardos
           )
 
           collection = Array(collection)
+          on_first_item = true
           buttons = collection_radio_buttons(
             object, method, collection, :first, :last, options
           ) do |b|
+            should_autofocus = options[:autofocus_first_item] && on_first_item
+            on_first_item = false
             content_tag :div, class: 'radio-group__choice' do
-              b.radio_button(class: 'radio-group__input') +
+              b.radio_button(class: 'radio-group__input', autofocus: should_autofocus) +
                 b.label(class: 'radio-group__label')
             end
           end
