@@ -6,6 +6,7 @@
       <%= form.checkbox_group_vertical(
             :recording_methods,
             RecordingMethods::NAME_VALUES,
+            { autofocus_first_item: true },
             legend: 'How will you be recording information?'
           )
       %>

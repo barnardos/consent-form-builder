@@ -6,6 +6,7 @@
       <%= form.checkbox_group_vertical(
             :methodologies,
             Methodologies::NAME_VALUES,
+            { autofocus_first_item: true },
             legend: 'How will you be gathering information?'
           )
       %>
