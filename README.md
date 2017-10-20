@@ -15,7 +15,7 @@ how to get the application running and how to make and submit changes.
 The consent form service is built on Ruby on Rails 5 and uses Sass as a CSS preprocessor and 
 Webpack/Babel/Yarn to handle client side javascript transpilation and dependency management.
 
-Data is stored in Postgresl.
+Data is stored in Postgres.
 
 The service comes with configuration files to allow it to be deployed to Heroku or any Docker container
 service.
