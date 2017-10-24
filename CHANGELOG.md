@@ -9,6 +9,8 @@
 * [BUG] - [IE11 shows two arrows on the print area select field](https://trello.com/c/Y55ixqL5/206-ie11-shows-two-arrows-on-the-print-area-select-field)
 * [BUG] - [some page furniture obscuring printed preview](https://trello.com/c/1EKgH3tL/188-2-bug-some-page-furniture-obscuring-printed-preview)
 * [FEATURE] - [Add Location (or service information) to the research session screen](https://trello.com/c/yzOexm0b/175-3-add-location-or-service-information-to-the-research-session-screen)
+* [BUG] - [Tabbing through radio buttons isn't working](https://trello.com/c/dRpWMj0g/220-tabbing-through-radio-buttons-isnt-working)
+* [FEATURE] - [Autofocusing first field](https://trello.com/c/g7JyFg0O/141-3-autofocusing-first-field)
 
 # 0.2.0 / 2017-10-04
 

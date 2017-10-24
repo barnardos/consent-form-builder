@@ -5,6 +5,7 @@
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= form.radio_group_vertical :incentive,
           { true => 'Yes', false => 'No' },
+          { autofocus_first_item: true },
           legend: 'Will an incentive be provided?'
       %>
 

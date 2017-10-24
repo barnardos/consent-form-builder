@@ -224,6 +224,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     let(:legend)         { 'My legend' }
     let(:legend_options) { { class: 'my-legend-class' } }
+    let(:options)        { {} }
 
     let(:collection) do
       HashWithIndifferentAccess.new(
@@ -235,7 +236,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     subject(:rendered) do
       helper.radio_group_vertical(
-        :research_session, :shared_with, collection,
+        :research_session, :shared_with, collection, options,
         legend: legend, legend_options: legend_options
       )
     end
@@ -301,6 +302,37 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       it_behaves_like 'it has correctly classed and labelled input'
     end
 
+    describe 'the option :autofocus_first_item' do
+      context 'autofocus_first_item is false' do
+        let(:options) { { autofocus_first_item: false } }
+
+        it 'does not autofocus any checkbox' do
+          expect(rendered).not_to have_tag(
+            'input[autofocus]'
+          )
+        end
+      end
+
+      context 'autofocus_first_item is true' do
+        let(:options) { { autofocus_first_item: true } }
+
+        it 'applies autofocus to the first radio button' do
+          expect(rendered).to have_tag(
+            '.radio-group__choice:nth-of-type(1) > input[autofocus]'
+          )
+        end
+
+        it 'does not apply autofocus to the rest of the radios' do
+          expect(rendered).not_to have_tag(
+            '.radio-group__choice:nth-of-type(2) > input[autofocus]'
+          )
+          expect(rendered).not_to have_tag(
+            '.radio-group__choice:nth-of-type(3) > input[autofocus]'
+          )
+        end
+      end
+    end
+
     context 'an error is on the model' do
       before do
         session = double(
@@ -322,6 +354,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     let(:legend)         { 'My legend' }
     let(:legend_options) { {} }
+    let(:options)        { {} }
     let(:collection) do
       {
         interview: 'Interview',
@@ -336,7 +369,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
     subject(:rendered) do
       helper.checkbox_group_vertical(
-        :research_session, :methodologies, collection,
+        :research_session, :methodologies, collection, options,
         legend: legend, legend_options: legend_options
       )
     end
@@ -416,6 +449,37 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
         expect(rendered).to have_tag(
           'legend.checkbox-group__legend span.checkbox-group__hint', text: 'A hint'
         )
+      end
+    end
+
+    describe 'the option :autofocus_first_item' do
+      context 'autofocus_first_item is false' do
+        let(:options) { { autofocus_first_item: false } }
+
+        it 'does not autofocus any checkbox' do
+          expect(rendered).not_to have_tag(
+            'input[autofocus]'
+          )
+        end
+      end
+
+      context 'autofocus_first_item is true' do
+        let(:options) { { autofocus_first_item: true } }
+
+        it 'applies autofocus to the first checkbox' do
+          expect(rendered).to have_tag(
+            '.checkbox-group__choice:nth-of-type(1) > input[autofocus]'
+          )
+        end
+
+        it 'does not apply autofocus to the rest of the checkboxes' do
+          expect(rendered).not_to have_tag(
+            '.checkbox-group__choice:nth-of-type(2) > input[autofocus]'
+          )
+          expect(rendered).not_to have_tag(
+            '.checkbox-group__choice:nth-of-type(3) > input[autofocus]'
+          )
+        end
       end
     end
 

@@ -12,7 +12,8 @@
         and their contact details will be included on the information sheet.
       </p>
 
-      <%= form.labelled_text_field :researcher_name %>
+      <%= form.labelled_text_field :researcher_name,
+          text_options: { autofocus: true } %>
       <%= form.labelled_text_field :researcher_phone %>
       <%= form.labelled_text_field :researcher_email %>
     </fieldset>

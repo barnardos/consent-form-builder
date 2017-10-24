@@ -5,7 +5,7 @@
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
       <%= form.labelled_text_field :travel_expenses_limit,
-            text_options: { placeholder: '0.00' }
+            text_options: { placeholder: '0.00', autofocus: true }
       %>
 
       <%= form.labelled_text_field :food_expenses_limit,
