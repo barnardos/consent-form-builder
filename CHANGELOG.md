@@ -11,6 +11,7 @@
 * [FEATURE] - [Add Location (or service information) to the research session screen](https://trello.com/c/yzOexm0b/175-3-add-location-or-service-information-to-the-research-session-screen)
 * [BUG] - [Tabbing through radio buttons isn't working](https://trello.com/c/dRpWMj0g/220-tabbing-through-radio-buttons-isnt-working)
 * [FEATURE] - [Autofocusing first field](https://trello.com/c/g7JyFg0O/141-3-autofocusing-first-field)
+* [FEATURE] - [Change the date time form fields to not use `form.datetime_select`](https://trello.com/c/91fUZw28/189-3-change-the-date-time-form-fields-to-not-use-formdatetimeselect)
 
 # 0.2.0 / 2017-10-04
 

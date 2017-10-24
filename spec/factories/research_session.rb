@@ -41,7 +41,7 @@ FactoryGirl.define do
     trait :step_time_equipment do
       step_data
       status :time_equipment
-      start_datetime DateTime.parse('1st Sep 2017')
+      when_text '1st Sep 2017'
       duration '1 week'
       participant_equipment 'A coat'
     end

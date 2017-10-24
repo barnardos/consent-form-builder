@@ -21,7 +21,7 @@ describe 'research_sessions/preview' do
     render
   end
   context 'no date or duration is given' do
-    let(:extra_attrs) { { start_datetime: nil, duration: nil } }
+    let(:extra_attrs) { { when_text: nil, duration: nil } }
 
     it 'does not show the date or time' do
       expect(rendered).not_to include('When is the session and what should I bring?')
@@ -29,7 +29,7 @@ describe 'research_sessions/preview' do
   end
 
   context 'no date is given, but a duration is given' do
-    let(:extra_attrs) { { start_datetime: nil, duration: 'Three minutes' } }
+    let(:extra_attrs) { { when_text: nil, duration: 'Three minutes' } }
 
     it 'does not show the date or time' do
       expect(rendered).not_to match('The session is on')
@@ -41,10 +41,10 @@ describe 'research_sessions/preview' do
   end
 
   context 'no duration is given, but a date is given' do
-    let(:extra_attrs) { { start_datetime: DateTime.parse('27 Sep 2017'), duration: nil } }
+    let(:extra_attrs) { { when_text: '27th September 2017', duration: nil } }
 
     it 'shows the date and time' do
-      expect(rendered).to match(/The session is on.*September 27, 2017/m)
+      expect(rendered).to match(/The session is on.*27th September 2017/m)
     end
 
     it 'does not show the duration' do

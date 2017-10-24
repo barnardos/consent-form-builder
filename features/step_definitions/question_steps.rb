@@ -62,13 +62,8 @@ When(/^I provide full session details for every step$/) do
   Percy::Capybara.snapshot(page, name: :data)
   click_button 'Continue'
 
-  within '#start_datetime' do
-    select '2017', from: 'research_session_start_datetime_1i', visible: false
-    select 'May', from: 'research_session_start_datetime_2i', visible: false
-    select '10', from: 'research_session_start_datetime_3i', visible: false
-    select '11', from: 'research_session_start_datetime_4i', visible: false
-    select '30', from: 'research_session_start_datetime_5i', visible: false
-  end
+  @held_on = '27th September at 2pm'
+  fill_in 'The session is held on (optional)', with: @held_on
   @session_duration = '5 minutes'
   fill_in 'How long will the session be? (optional)', with: @session_duration
   @session_location = 'Rockford House, Leeds'
@@ -163,14 +158,8 @@ And(/^I fill in the remaining steps$/) do
   fill_in 'How will the data be used?', with: 'Create better outcomes for more children'
   click_button 'Continue'
 
-  within '#start_datetime' do
-    select '2017', from: 'research_session_start_datetime_1i', visible: false
-    select 'May', from: 'research_session_start_datetime_2i', visible: false
-    select '10', from: 'research_session_start_datetime_3i', visible: false
-    select '11', from: 'research_session_start_datetime_4i', visible: false
-    select '30', from: 'research_session_start_datetime_5i', visible: false
-  end
-
+  @held_on = '27th September at 2pm'
+  fill_in 'The session is held on (optional)', with: @held_on
   @session_duration = '5 minutes'
   fill_in 'How long will the session be? (optional)', with: @session_duration
   @what_to_bring = 'Nothing'
