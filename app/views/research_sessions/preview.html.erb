@@ -33,12 +33,11 @@
     <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
     <p>
+     Barnardo's is doing research to learn about 
       <%= edit_link_for(:topic) do %>
         <%= simple_format(@research_session.topic) %>
       <% end %>
-    </p>
-
-    <p>
+     to
       <%= edit_link_for(:purpose) do %>
         <%= simple_format(@research_session.purpose) %>
       <% end %>
