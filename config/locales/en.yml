@@ -34,7 +34,7 @@ en:
     name: 'Please name your research session'
     shared_duration: "How long will this information be held for?"
     shared_use: "How will the data be used?"
-    shared_with: "How will the information recorded in this session be stored and processed?"
+    shared_with: "Who will the data be shared with?"
     researcher_name: 'Full name'
     researcher_other_name: 'Full name'
     researcher_phone: 'Telephone number (optional)'
@@ -56,7 +56,7 @@ en:
     food_provided: "Will you provide food or refreshments at the session? (optional)"
     incentive: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
-
+  
   activerecord:
     attributes:
       research_session:
@@ -66,7 +66,13 @@ en:
     label:
       research_session:
         *attr_labels
-
+      storing_information:
+        shared_with: 
+          anonymised: "All identifiable information will be anonymised as we process it"
+          team:       "Identifiable information will only be shared with the research team at Barnardo's"
+          internal:   "Identifiable information will be shared with other teams in Barnardo's"
+          external:   "Identifiable information will be used in external publications"
+          
   errors:
     format: '"%{attribute}" %{message}'
 
@@ -78,7 +84,7 @@ en:
         separator: '.'
         precision: 2
         format: '%u%n'
-
+  
   report:
     able_to_consent:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
