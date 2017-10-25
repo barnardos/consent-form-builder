@@ -1,12 +1,5 @@
-BULLYING_NAME = ' Bullying in schools '.freeze
-
 When(/^I create a session with a|that name$/) do
-  visit '/'
-
-  @session_name = BULLYING_NAME
-  fill_in 'Session name', with: @session_name
-
-  click_button 'Create new form'
+  create_new_form
 end
 
 Then(/^I should see that name in the URL$/) do
@@ -19,7 +12,7 @@ Then(/^I should see that name in the URL$/) do
 end
 
 Given(/^there is an existing session with a name$/) do
-  FactoryGirl.create(:research_session, name: BULLYING_NAME)
+  FactoryGirl.create(:research_session, name: StepCompletions::BULLYING_NAME)
 end
 
 Then(/^I should see a disambiguated name in the URL$/) do
