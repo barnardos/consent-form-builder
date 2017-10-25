@@ -1,18 +1,18 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="subtitle-large">Data</h1>
+  <h1 class="subtitle-large">Storing information</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
     <%= form.radio_group_vertical \
         :shared_with,
         SharedWith::NAME_VALUES,
         { autofocus_first_item: true },
-        legend: 'Who will the data be shared with?'
+        legend: 'How will the information recorded in this session be stored and processed?'
     %>
 
     <%= form.labelled_text_field :shared_duration %>
-
+    
     <%= form.labelled_text_area \
           :shared_use, text_options: { placeholder: 'The data will be used to...' }
     %>
