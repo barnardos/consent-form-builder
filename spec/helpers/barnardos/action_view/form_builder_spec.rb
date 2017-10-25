@@ -63,13 +63,14 @@ RSpec.describe Barnardos::ActionView::FormBuilder do
   end
 
   describe '#radio_group_vertical' do
-    let(:model) { ResearchSession.new shared_with: 'team' }
+    let(:model) { ResearchSession.new shared_with: 'anonymised' }
 
     let(:collection) do
       {
-        team:     'Just the team',
-        internal: 'Other teams internally',
-        external: 'Other teams externally'
+        anonymised: 'The first label',
+        team:       'The second label',
+        internal:   'The third label',
+        external:   'The fourth label'
       }
     end
 
@@ -78,9 +79,10 @@ RSpec.describe Barnardos::ActionView::FormBuilder do
     end
 
     it 'selects the value checked on the model' do
-      expect(rendered).to have_tag('input[value=team][checked]')
+      expect(rendered).to have_tag('input[value=anonymised][checked]')
     end
     it 'does not select values unchecked on the model' do
+      expect(rendered).to have_tag('input:not(checked)[value=team]')
       expect(rendered).to have_tag('input:not(checked)[value=internal]')
       expect(rendered).to have_tag('input:not(checked)[value=external]')
     end

@@ -38,7 +38,7 @@ FactoryBot.define do
     trait :step_data do
       step_recording
       status :data
-      shared_with :team
+      shared_with :anonymised
       shared_duration '1 year'
       shared_use 'To train others'
     end
