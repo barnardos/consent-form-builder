@@ -27,7 +27,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
       def with_stub_routing
         with_routing do |routes|
-          routes.draw { resources :research_sessions, only: [:show] }
+          routes.draw { resources :research_sessions, only: :create }
           yield
         end
       end
