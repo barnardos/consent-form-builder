@@ -66,10 +66,6 @@ And(/^I provide an 'Other' recording method$/) do
   step 'I click the continue button'
 end
 
-When(/^I begin a new session at the start$/) do
-  create_new_form
-end
-
 When(/^I go back to a previous step$/) do
   click_link 'Rachel Researcher', match: :first
 end
