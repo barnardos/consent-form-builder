@@ -5,7 +5,7 @@ module StepCompletions
     visit '/'
 
     @session_name = BULLYING_NAME
-    fill_in 'Session name', with: @session_name
+    fill_in I18n.t('helpers.label.research_session.name'), with: @session_name
 
     click_button 'Create new form'
   end
