@@ -13,6 +13,7 @@
 * [FEATURE] - [Autofocusing first field](https://trello.com/c/g7JyFg0O/141-3-autofocusing-first-field)
 * [FEATURE] - [Change the date time form fields to not use `form.datetime_select`](https://trello.com/c/91fUZw28/189-3-change-the-date-time-form-fields-to-not-use-formdatetimeselect)
 * [BUG] - [Style the links and highlights on the preview page](https://trello.com/c/DI8wiPw2/110-spike-style-the-links-and-highlights-on-the-preview-page)
+* [FEATURE] - [Session naming](https://trello.com/c/VQbfdtLM/222-8-session-naming)
 
 # 0.2.0 / 2017-10-04
 
