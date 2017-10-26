@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class ResearchSession < ApplicationRecord
-  before_validation :set_slug_from_name!
+  before_create :set_slug_from_name!
 
   validates :name, presence: true
 

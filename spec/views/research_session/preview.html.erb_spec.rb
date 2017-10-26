@@ -5,7 +5,7 @@ describe 'research_sessions/preview' do
   let(:able_to_consent) { false }
 
   let(:research_session) do
-    build_stubbed :research_session, :previewable, extra_attrs
+    build_stubbed(:research_session, :previewable, extra_attrs).tap(&:set_slug_from_name!)
   end
 
   let(:presenter) do

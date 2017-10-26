@@ -16,7 +16,7 @@ class ResearchSessionsController < ApplicationController
   def create
     @research_session = ResearchSession.new(session_creation_params)
     if @research_session.save
-      redirect_to(first_question_path(@research_session.id))
+      redirect_to(first_question_path(@research_session.slug))
     else
       render :new
     end
@@ -64,11 +64,11 @@ private
   end
 
   def current_research_session
-    ResearchSession.find(params[:research_session_id])
+    ResearchSession.find_by(slug: params[:research_session_id])
   end
 
-  def first_question_path(id)
-    research_session_question_path(research_session_id: id, id: steps.first)
+  def first_question_path(slug)
+    research_session_question_path(research_session_id: slug, id: steps.first)
   end
 
   def question_params

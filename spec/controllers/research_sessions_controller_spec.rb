@@ -14,7 +14,7 @@ describe ResearchSessionsController, type: :controller do
         post :create, params: { research_session: { name: 'My session' } }
         research_session = ResearchSession.first
         expect(response).to \
-          redirect_to(research_session_question_path(research_session, id: 'researcher'))
+          redirect_to(research_session_question_path(research_session.slug, id: 'researcher'))
       end
     end
   end
@@ -22,11 +22,11 @@ describe ResearchSessionsController, type: :controller do
   describe '#show' do
     let(:existing_session) { create :research_session }
     subject(:research_session) do
-      ResearchSession.find_by(slug: existing_session.slug)
+      ResearchSession.find(existing_session.id)
     end
 
     before do
-      get :show, params: { research_session_id: research_session.id, id: template_id }
+      get :show, params: { research_session_id: research_session.slug, id: template_id }
     end
 
     context 'when the template exists' do
@@ -76,7 +76,7 @@ describe ResearchSessionsController, type: :controller do
       let(:existing_step) { :purpose }
       let(:params) do
         {
-          research_session_id: existing_session.id,
+          research_session_id: existing_session.slug,
           id: 'methodologies',
           research_session: { 'methodologies' => ['', 'interview', 'usability'] }
         }
@@ -91,7 +91,7 @@ describe ResearchSessionsController, type: :controller do
       let(:existing_step) { :methodologies }
       let(:params) do
         {
-          research_session_id: existing_session.id,
+          research_session_id: existing_session.slug,
           id: 'recording',
           research_session: { 'recording_methods' => ['', 'audio', 'video'] }
         }
@@ -106,7 +106,7 @@ describe ResearchSessionsController, type: :controller do
       let(:existing_step) { :incentive }
       let(:params) do
         {
-          research_session_id: existing_session.id,
+          research_session_id: existing_session.slug,
           id: 'methodologies',
           research_session: { 'methodologies' => ['', 'interview', 'usability'] }
         }
@@ -122,7 +122,7 @@ describe ResearchSessionsController, type: :controller do
       let(:new_phone_number) { '01010101010101' }
       let(:params) do
         {
-          research_session_id: existing_session.id,
+          research_session_id: existing_session.slug,
           id: 'researcher',
           research_session: { 'researcher_phone' => new_phone_number },
           'edit-preview' => '1'
@@ -135,7 +135,7 @@ describe ResearchSessionsController, type: :controller do
 
       it 'returns to the preview' do
         expect(response).to redirect_to(
-          research_session_preview_path(research_session_id: existing_session.id)
+          research_session_preview_path(research_session_id: existing_session.slug)
         )
       end
     end
@@ -145,7 +145,7 @@ describe ResearchSessionsController, type: :controller do
 
       let(:params) do
         {
-          research_session_id: existing_session.id,
+          research_session_id: existing_session.slug,
           id: 'incentive',
           research_session: {
             incentive: true,
@@ -164,7 +164,7 @@ describe ResearchSessionsController, type: :controller do
       it 'redirects to the wicked finish step for questions' do
         expect(response).to redirect_to(
           research_session_question_path(
-            research_session_id: existing_session.id,
+            research_session_id: existing_session.slug,
             id: Wicked::FINISH_STEP
           )
         )

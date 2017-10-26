@@ -5,8 +5,7 @@ RSpec.describe ResearchSession, type: :model do
     let(:name) { 'Bullying in schools' }
 
     subject(:slug) do
-      session = ResearchSession.new(name: name)
-      expect(session).to be_valid
+      session = ResearchSession.new(name: name).tap(&:set_slug_from_name!)
       session.slug
     end
 
