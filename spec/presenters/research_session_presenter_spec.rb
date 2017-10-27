@@ -38,49 +38,6 @@ RSpec.describe ResearchSessionPresenter do
     end
   end
 
-  describe '#methodology_list' do
-    let(:methodologies) { [:interview, :usability] }
-    before do
-      allow(research_session).to receive(:methodologies).and_return(methodologies)
-    end
-
-    subject(:list) { presenter.methodology_list }
-
-    context 'participants are unable to consent' do
-      let(:able_to_consent) { false }
-      it 'has as many paragraphs as there are methodologies' do
-        expect(list).to have_tag('p', count: 2)
-      end
-      it 'assembles a child-appropriate list of methodology segments' do
-        expect(list).to include('Your child will be interviewed')
-        expect(list).to include('Your child will be asked')
-      end
-      it 'is html_safe' do
-        expect(list).to be_html_safe
-      end
-    end
-
-    context 'participants are able to consent' do
-      let(:able_to_consent) { true }
-      it 'has as many paragraphs as there are methodologies' do
-        expect(list).to have_tag('p', count: 2)
-      end
-      it 'assembles an adult-appropriate list of methodology segments' do
-        expect(list).to include('You will be interviewed')
-        expect(list).to include('You will be asked')
-      end
-
-      context 'the research session contains "other"' do
-        let(:methodologies) { [:interview, :usability, :other] }
-        before { allow(research_session).to receive(:other_methodology).and_return('Reiki') }
-
-        it 'has it all' do
-          expect(list).to include('Reiki')
-        end
-      end
-    end
-  end
-
   describe '#recording_methods_list' do
     let(:other_recording_method) { nil }
 

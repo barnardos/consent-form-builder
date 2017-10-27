@@ -11,6 +11,16 @@ module ResearchSessionsHelper
             class: 'editable'
   end
 
+  def methodology_lookup(methodology)
+    consent_translation_key =
+      @research_session.able_to_consent? ? 'able_to_consent' : 'unable_to_consent'
+    if methodology.to_s == 'other'
+      @research_session.other_methodology
+    else
+      I18n.t("report.#{consent_translation_key}.#{methodology}")
+    end
+  end
+
   def you_or_your_child
     @research_session.able_to_consent? ? 'you' : 'your child/the child in your care'
   end

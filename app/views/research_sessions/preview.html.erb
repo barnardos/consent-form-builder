@@ -64,8 +64,12 @@
   <section>
     <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
-    <%= edit_link_for(:methodologies) do %>
-      <%= @research_session.methodology_list %>
+    <% @research_session.methodologies.each do |methodology| %>
+      <p>
+        <%= edit_link_for(:methodologies) do %>
+          <%= methodology_lookup(methodology) %>
+        <% end %>
+      </p>
     <% end %>
     <p>
       With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
