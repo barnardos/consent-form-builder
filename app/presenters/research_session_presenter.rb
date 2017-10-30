@@ -21,19 +21,6 @@ class ResearchSessionPresenter
     !@able_to_consent
   end
 
-  def methodology_list
-    consent_translation_key = @able_to_consent ? 'able_to_consent' : 'unable_to_consent'
-    paras = research_session.methodologies.map do |methodology|
-      translation = if methodology.to_s == 'other'
-                      other_methodology
-                    else
-                      I18n.t("report.#{consent_translation_key}.#{methodology}")
-                    end
-      "<p class='highlight'>#{translation}</p>"
-    end
-    paras.join("\n").html_safe
-  end
-
   def recording_methods_list
     lowercase_words = research_session.recording_methods.map do |method|
       if method.to_s == 'other'

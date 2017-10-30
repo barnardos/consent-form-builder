@@ -32,17 +32,19 @@
   <section>
     <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
-    <p>
+    <div>
       <%= edit_link_for(:topic) do %>
         <%= simple_format(@research_session.topic) %>
       <% end %>
-    </p>
+    </div>
 
-    <p>
+    <br>
+
+    <div>
       <%= edit_link_for(:purpose) do %>
         <%= simple_format(@research_session.purpose) %>
       <% end %>
-    </p>
+    </div>
 
     <p>
       It is important that we test the current and future tools and services that
@@ -64,8 +66,12 @@
   <section>
     <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
-    <%= edit_link_for(:methodologies) do %>
-      <%= @research_session.methodology_list %>
+    <% @research_session.methodologies.each do |methodology| %>
+      <p>
+        <%= edit_link_for(:methodologies) do %>
+          <%= methodology_lookup(methodology) %>
+        <% end %>
+      </p>
     <% end %>
     <p>
       With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
