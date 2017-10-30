@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :research_session do
     name 'My session'
 
