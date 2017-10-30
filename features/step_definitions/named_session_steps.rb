@@ -12,7 +12,7 @@ Then(/^I should see that name in the URL$/) do
 end
 
 Given(/^there is an existing session with a name$/) do
-  FactoryGirl.create(:research_session, name: StepCompletions::BULLYING_NAME)
+  FactoryBot.create(:research_session, name: StepCompletions::BULLYING_NAME)
 end
 
 Then(/^I should see a disambiguated name in the URL$/) do
