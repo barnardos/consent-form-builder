@@ -1,4 +1,10 @@
+require 'securerandom'
+
 class ResearchSession < ApplicationRecord
+  before_create :set_slug_from_name!
+
+  validates :name, presence: true
+
   validates :researcher_name, presence: true,
             if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, presence: true,
@@ -46,5 +52,13 @@ class ResearchSession < ApplicationRecord
 
   def reached_step?(step)
     Steps.instance.reached_step?(self, step)
+  end
+
+  def set_slug_from_name!
+    return if name.blank?
+
+    slug = name.strip.downcase.tr(' ', '-')
+    slug = "#{slug}-#{SecureRandom.uuid}" if ResearchSession.exists?(slug: slug)
+    self.slug = slug
   end
 end

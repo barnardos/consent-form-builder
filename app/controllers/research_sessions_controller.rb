@@ -9,13 +9,17 @@ class ResearchSessionsController < ApplicationController
            plain: %(Step "#{params[:id]}" not found)
   end
 
-  def index
+  def new
     @research_session = ResearchSession.new
   end
 
   def create
-    session_id = ResearchSession.create.id
-    redirect_to(first_question_path(session_id))
+    @research_session = ResearchSession.new(session_creation_params)
+    if @research_session.save
+      redirect_to(first_question_path(@research_session.slug))
+    else
+      render :new
+    end
   end
 
   def show
@@ -51,16 +55,20 @@ class ResearchSessionsController < ApplicationController
   end
 
 private
+  def session_creation_params
+    params.require(:research_session).permit(:name)
+  end
+
   def returning_to_preview?
     params['edit-preview'] == '1'
   end
 
   def current_research_session
-    ResearchSession.find(params[:research_session_id])
+    ResearchSession.find_by(slug: params[:research_session_id])
   end
 
-  def first_question_path(id)
-    research_session_question_path(research_session_id: id, id: steps.first)
+  def first_question_path(slug)
+    research_session_question_path(research_session_id: slug, id: steps.first)
   end
 
   def question_params

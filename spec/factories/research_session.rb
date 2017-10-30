@@ -1,5 +1,10 @@
 FactoryGirl.define do
   factory :research_session do
+    name 'My session'
+
+    trait :step_new do
+    end
+
     trait :step_researcher do
       status :researcher
       researcher_name 'Rachel Researcher'

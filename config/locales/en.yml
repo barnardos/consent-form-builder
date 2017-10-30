@@ -31,6 +31,7 @@
 
 en:
   research_session_attr_labels: &attr_labels
+    name: 'Please name your research session'
     shared_duration: "How long will this information be held for?"
     shared_use: "How will the data be used?"
     shared_with: "Who will the data be shared with?"

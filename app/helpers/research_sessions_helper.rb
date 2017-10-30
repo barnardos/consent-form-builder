@@ -6,7 +6,7 @@ module ResearchSessionsHelper
 
     link_to value,
             research_session_question_path(
-              @research_session.id, step_for_attr, 'edit-preview' => '1'
+              @research_session.slug, step_for_attr, 'edit-preview' => '1'
             ),
             class: 'editable'
   end

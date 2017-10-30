@@ -1,6 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe ResearchSession, type: :model do
+  describe 'slugs from names' do
+    let(:name) { 'Bullying in schools' }
+
+    subject(:slug) do
+      session = ResearchSession.new(name: name).tap(&:set_slug_from_name!)
+      session.slug
+    end
+
+    context 'there is no name clash' do
+      it 'is dasherized' do
+        expect(slug).to eql('bullying-in-schools')
+      end
+    end
+
+    context 'a session with the same slug already exists' do
+      before { create :research_session, name: 'Bullying in schools' }
+      it 'disambiguates with a UUID' do
+        uuid = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+        expect(slug).to match(Regexp.new("^bullying-in-schools-#{uuid}$"))
+      end
+    end
+  end
+
   describe 'partial validation on status' do
     subject(:session) { ResearchSession.new }
 
@@ -23,10 +46,8 @@ RSpec.describe ResearchSession, type: :model do
 
       before do
         session.status = step
-        if step != :new
-          attrs = attributes_for(:research_session, "step_#{step}".to_sym)
-          session.assign_attributes(attrs.merge(set_attrs))
-        end
+        attrs = attributes_for(:research_session, "step_#{step}".to_sym)
+        session.assign_attributes(attrs.merge(set_attrs))
         session.validate
       end
 
@@ -57,7 +78,7 @@ RSpec.describe ResearchSession, type: :model do
           end
         end
 
-        context 'all the details are given' do
+        context 'all the details for "new" are given' do
           it { is_expected.to be_valid }
         end
       end

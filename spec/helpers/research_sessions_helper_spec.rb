@@ -6,11 +6,12 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
   describe '#edit_link_for' do
     let(:session) { double('ResearchSession') }
     let(:block) { nil }
+    let(:slug) { 'foobar' }
 
     before do
       allow(session).to receive(attr).and_return('Some attr value')
       allow(session).to receive(attr).with(:i_dont_exist).and_raise(NameError)
-      allow(session).to receive(:id).and_return(1234)
+      allow(session).to receive(:slug).and_return(slug)
       @research_session = session
     end
 
@@ -30,7 +31,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
         it 'links to the researcher step' do
           expect(rendered).to have_tag(
             'a', text: /Some attr value/,
-                 with: { href: '/research-sessions/1234/questions/researcher?edit-preview=1' }
+                 with: { href: "/research-sessions/#{slug}/questions/researcher?edit-preview=1" }
           )
         end
       end

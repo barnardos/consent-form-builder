@@ -1,6 +1,12 @@
 module StepCompletions
+  BULLYING_NAME = ' Bullying in schools '.freeze
+
   def create_new_form
     visit '/'
+
+    @session_name = BULLYING_NAME
+    fill_in I18n.t('helpers.label.research_session.name'), with: @session_name
+
     click_button 'Create new form'
   end
 
