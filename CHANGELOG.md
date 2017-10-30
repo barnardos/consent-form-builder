@@ -1,4 +1,4 @@
-# 0.3.0 / Unreleased
+# 0.3.0 / 2017-10-30
 
 * [BUG] - [Returning to previous steps in the preview bar disables links to subsequent steps](https://trello.com/c/0k7u2liM/199-bug-returning-to-previous-steps-in-the-preview-bar-disables-links-to-subsequent-steps)
 * [USABILITY] - [Consistency: change order of No then Yes](https://trello.com/c/IjZuVOkS/182-consistency-change-order-of-no-then-yes)
