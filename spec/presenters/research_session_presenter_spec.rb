@@ -104,14 +104,14 @@ RSpec.describe ResearchSessionPresenter do
 
     context 'One expense is given' do
       let(:research_session) do
-        build_stubbed :research_session, :step_time_equipment, travel_expenses_limit: 50.00
+        build_stubbed :research_session, :step_where_when, travel_expenses_limit: 50.00
       end
       it { is_expected.to eql('We allow travel expenses of up to £50.00.') }
     end
 
     context 'Two expenses are given' do
       let(:research_session) do
-        build_stubbed :research_session, :step_time_equipment,
+        build_stubbed :research_session, :step_where_when,
                       travel_expenses_limit: 50.00,
                       food_expenses_limit: 10.00
       end
@@ -124,7 +124,7 @@ RSpec.describe ResearchSessionPresenter do
 
     context 'Three expenses are given' do
       let(:research_session) do
-        build_stubbed :research_session, :step_time_equipment,
+        build_stubbed :research_session, :step_where_when,
                       travel_expenses_limit: 50.00,
                       food_expenses_limit: 10.00,
                       other_expenses_limit: 5.00
@@ -142,7 +142,7 @@ RSpec.describe ResearchSessionPresenter do
     subject(:text) { presenter.incentive_text }
 
     context 'no incentive is given' do
-      let(:research_session) { build_stubbed :research_session, :step_incentive, incentive: false }
+      let(:research_session) { build_stubbed :research_session, :step_incentives, incentive: false }
       it { is_expected.to be_empty }
     end
 
@@ -151,7 +151,7 @@ RSpec.describe ResearchSessionPresenter do
     end
 
     context 'a cash incentive is provided' do
-      let(:research_session) { build_stubbed :research_session, :step_incentive }
+      let(:research_session) { build_stubbed :research_session, :step_incentives }
       it 'has a message about the cash value' do
         expect(text).to eql(
           "a cash incentive of £#{formatted_value}"
@@ -161,7 +161,7 @@ RSpec.describe ResearchSessionPresenter do
 
     context 'a high street voucher incentive is provided' do
       let(:research_session) do
-        build_stubbed :research_session, :step_incentive, payment_type: 'voucher'
+        build_stubbed :research_session, :step_incentives, payment_type: 'voucher'
       end
       it 'has a message about the high street voucher value' do
         expect(text).to eql(

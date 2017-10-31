@@ -30,6 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  application:
+    title: 'Consent Form Builder'
+    create_new_form: 'Create a new form'
+    preview_step_name: 'Preview & print'
+
   research_session_attr_labels: &attr_labels
     name: 'Please name your research session'
     shared_with: 'How will the information recorded in this session be stored and processed?<br />All identifiable information will be:'
@@ -38,15 +43,15 @@ en:
     researcher_other_name: 'Full name'
     researcher_phone: 'Telephone number (optional)'
     researcher_email: 'Email'
-    topic: 'What is the research or participation session about?'
-    purpose: 'Why are you doing this research or participation session?'
+    topic: "Barnardo's is doing research to learn about"
+    purpose: 'so that we can'
     methodologies: 'How will you be gathering information?'
     other_methodology: "What is the other methodology?"
     recording_methods: "How will you be recording information?"
     other_recording_method: "What is the other recording method?"
     when_text: "The session is held on (optional)"
     duration: "How long will the session be? (optional)"
-    location: "Where will the session be? (optional)"
+    location: "The session will be held at (optional)"
     participant_equipment: "What do participants need to bring? (optional)"
     travel_expenses_limit: "If you allow travel expenses, what is the maximum allowed?"
     food_expenses_limit: "If you allow food expenses, what is the maximum allowed?"
@@ -55,7 +60,11 @@ en:
     food_provided: "Will you provide food or refreshments at the session? (optional)"
     incentive: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
-  
+
+  pages:
+    research_session:
+      new:
+
   activerecord:
     attributes:
       research_session:
@@ -71,7 +80,12 @@ en:
           team:       "shared only with the research team at Barnardo's"
           internal:   "shared with other teams in Barnardo's"
           external:   "used in external publications"
-          
+    placeholder:
+      research_session:
+        topic: "e.g. how young people think of consent and research"
+        purpose: "e.g. talk to them in a way that they understand."
+
+
   errors:
     format: '"%{attribute}" %{message}'
 

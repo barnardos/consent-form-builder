@@ -3,13 +3,12 @@ When(/^I provide full session details for every step$/) do
 
   complete_researcher_step
   complete_topic_step
-  complete_purpose_step
   complete_methodologies_step
   complete_recording_methods_step
   complete_storing_step
-  complete_time_equipment_step
+  complete_where_when_step
   complete_expenses_step
-  complete_incentive_step
+  complete_incentives_step
 
   click_link "Respondents who can't give consent"
 end
@@ -23,7 +22,6 @@ Given(/^I have arrived at the methodologies step$/) do
 
   complete_researcher_step
   complete_topic_step
-  complete_purpose_step
 end
 
 And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
@@ -48,10 +46,10 @@ end
 
 And(/^I fill in the remaining steps$/) do
   complete_storing_step
-  complete_time_equipment_step
+  complete_where_when_step
   complete_expenses_step
 
-  complete_incentive_step
+  complete_incentives_step
 end
 
 When(/^I provide an 'Other' methodology$/) do

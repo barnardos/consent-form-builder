@@ -1,7 +1,7 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'error_summary' %>
-  <h1 class="subtitle-large">Time and equipment</h1>
+  <h1 class="subtitle-large">Where &amp; when</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
     <fieldset class="datefield">
@@ -19,6 +19,8 @@
     <%= form.labelled_text_field :location %>
 
     <%= form.labelled_text_area :participant_equipment %>
+
+    <%= form.labelled_text_area :food_provided %>
 
     <%= render 'button_bar' %>
   <% end %>

@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Consent Form Builder</title>
+  <title><%= title(@research_session, step) %></title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= stylesheet_link_tag 'print', media: 'print' %>
@@ -25,8 +25,8 @@
   <div id="global-header__menu"></div>
 </header>
 
-<div id="global-header-bar">
-  &nbsp;
+<div class="global-header-bar">
+  <%= render 'share' if @research_session.name %>
 </div>
 
 <main id="main" role="main">

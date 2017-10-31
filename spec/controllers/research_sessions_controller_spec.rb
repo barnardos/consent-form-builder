@@ -73,7 +73,7 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'accepting methodologies' do
-      let(:existing_step) { :purpose }
+      let(:existing_step) { :topic }
       let(:params) do
         {
           research_session_id: existing_session.slug,
@@ -103,7 +103,7 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'returning to a previous step' do
-      let(:existing_step) { :incentive }
+      let(:existing_step) { :incentives }
       let(:params) do
         {
           research_session_id: existing_session.slug,
@@ -113,12 +113,12 @@ describe ResearchSessionsController, type: :controller do
       end
 
       it 'keeps the research session at the step it had reached' do
-        expect(research_session.status).to eql('incentive')
+        expect(research_session.status).to eql('incentives')
       end
     end
 
     context 'editing a previous step and returning directly to preview' do
-      let(:existing_step) { :incentive }
+      let(:existing_step) { :incentives }
       let(:new_phone_number) { '01010101010101' }
       let(:params) do
         {
@@ -146,7 +146,7 @@ describe ResearchSessionsController, type: :controller do
       let(:params) do
         {
           research_session_id: existing_session.slug,
-          id: 'incentive',
+          id: 'incentives',
           research_session: {
             incentive: true,
             payment_type: 'cash',

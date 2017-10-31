@@ -27,9 +27,13 @@
   margin-right: $gutter;
 }
 
-#global-header-bar {
-  background: $primary-colour;
-  height: $gutter / 2;
+.global-header-bar {
+  border-style: solid;
+  border-color: $primary-colour;
+  border-width: 4px 0;
+  margin: $gutter auto;
+
+  background-color: $black;
 }
 
 #main {

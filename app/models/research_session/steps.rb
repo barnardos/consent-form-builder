@@ -7,15 +7,15 @@ class ResearchSession
     PARAMS = ActiveSupport::OrderedHash[{
       researcher:    [:researcher_name, :researcher_phone, :researcher_email,
                       :researcher_other, :researcher_other_name, :researcher_other_name],
-      topic:         [:topic],
-      purpose:       [:purpose],
+      topic:         [:topic, :purpose],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
       storing:       [:shared_with, :shared_duration],
-      time_equipment: [:when_text, :duration, :location, :participant_equipment],
+      where_when:    [:when_text, :duration, :location, :participant_equipment,
+                      :food_provided],
       expenses:      [:travel_expenses_limit, :food_expenses_limit, :other_expenses_limit,
-                      :receipts_required, :food_provided],
-      incentive:     [:incentive, :payment_type, :incentive_value]
+                      :receipts_required],
+      incentives:    [:incentive, :payment_type, :incentive_value]
     }]
 
     def reached_step?(session, step)

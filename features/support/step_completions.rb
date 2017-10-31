@@ -32,11 +32,8 @@ module StepCompletions
       Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'What is the research or participation session about?', with: @topic
-    click_button 'Continue'
-  end
+    fill_in "Barnardo's is doing research to learn about", with: @topic
 
-  def complete_purpose_step
     @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
       PURPOSE: Fresnel lenses and the under-5s
       PURPOSE: This line break follows a br
@@ -44,7 +41,7 @@ module StepCompletions
       PURPOSE: Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'Why are you doing this research or participation session?', with: @purpose
+    fill_in 'so that we can', with: @purpose
     click_button 'Continue'
   end
 
@@ -65,22 +62,20 @@ module StepCompletions
   end
 
   def complete_storing_step
-    choose 'All identifiable information will be anonymised as we process it'
+    choose 'anonymised as we process it'
     @shared_duration = '1 year'
-    @shared_usage = 'The data will be used to create better outcomes for more children'
 
     fill_in 'How long will this information be held for?', with: @shared_duration
-    fill_in 'How will the data be used?', with: @shared_usage
     click_button 'Continue'
   end
 
-  def complete_time_equipment_step
+  def complete_where_when_step
     @held_on = '27th September at 2pm'
     fill_in 'The session is held on (optional)', with: @held_on
     @session_duration = '5 minutes'
     fill_in 'How long will the session be? (optional)', with: @session_duration
     @session_location = 'Rockford House, Leeds'
-    fill_in 'Where will the session be? (optional)', with: @session_location
+    fill_in 'The session will be held at (optional)', with: @session_location
     @what_to_bring = 'Nothing'
     fill_in 'What do participants need to bring? (optional)', with: @what_to_bring
     click_button 'Continue'
@@ -94,7 +89,7 @@ module StepCompletions
     click_button 'Continue'
   end
 
-  def complete_incentive_step
+  def complete_incentives_step
     choose 'Yes'
 
     choose 'Cash'
