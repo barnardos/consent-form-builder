@@ -37,13 +37,13 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.reached_step?(:recording) }
 
   validates :shared_with, inclusion: { in: SharedWith.allowed_values },
-            if: -> (session) { session.reached_step?(:data) }
+            if: -> (session) { session.reached_step?(:storing) }
 
   validates :shared_duration, presence: true,
-            if: -> (session) { session.reached_step?(:data) }
+            if: -> (session) { session.reached_step?(:storing) }
 
   validates :shared_use, presence: true,
-            if: -> (session) { session.reached_step?(:data) }
+            if: -> (session) { session.reached_step?(:storing) }
 
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
             if: -> (session) { session.incentive && session.reached_step?(:incentive) }

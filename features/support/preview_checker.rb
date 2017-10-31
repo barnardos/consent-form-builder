@@ -37,7 +37,7 @@ module PreviewChecker
     end
   end
 
-  def check_data
+  def check_storing
     expect(page).to have_tag('p', text: "The data will be kept for #{@shared_duration}.")
     expect(page).to have_tag('p', text: @shared_usage)
   end

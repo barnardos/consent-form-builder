@@ -1,8 +1,9 @@
 class SharedWith
   NAME_VALUES = HashWithIndifferentAccess.new(
-    team:     'Just the team',
-    internal: 'Other teams internally',
-    external:  'Other teams externally'
+    anonymised: I18n.t('helpers.label.storing_information.shared_with.anonymised'),
+    team:       I18n.t('helpers.label.storing_information.shared_with.team'),
+    internal:   I18n.t('helpers.label.storing_information.shared_with.internal'),
+    external:   I18n.t('helpers.label.storing_information.shared_with.xternal')
   )
 
   def self.allowed_values

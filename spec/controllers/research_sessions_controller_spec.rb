@@ -141,7 +141,7 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'the last step' do
-      let(:existing_step) { :data }
+      let(:existing_step) { :storing }
 
       let(:params) do
         {
