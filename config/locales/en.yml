@@ -47,7 +47,7 @@ en:
     other_recording_method: "What is the other recording method?"
     when_text: "The session is held on (optional)"
     duration: "How long will the session be? (optional)"
-    location: "Where will the session be? (optional)"
+    location: "The session will be held at (optional)"
     participant_equipment: "What do participants need to bring? (optional)"
     travel_expenses_limit: "If you allow travel expenses, what is the maximum allowed?"
     food_expenses_limit: "If you allow food expenses, what is the maximum allowed?"
