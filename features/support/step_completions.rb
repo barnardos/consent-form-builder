@@ -64,7 +64,7 @@ module StepCompletions
     click_button 'Continue'
   end
 
-  def complete_data_step
+  def complete_storing_step
     choose 'All identifiable information will be anonymised as we process it'
     @shared_duration = '1 year'
     @shared_usage = 'The data will be used to create better outcomes for more children'
