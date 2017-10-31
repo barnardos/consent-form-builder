@@ -14,6 +14,7 @@
 * [FEATURE] - [Change the date time form fields to not use `form.datetime_select`](https://trello.com/c/91fUZw28/189-3-change-the-date-time-form-fields-to-not-use-formdatetimeselect)
 * [BUG] - [Style the links and highlights on the preview page](https://trello.com/c/DI8wiPw2/110-spike-style-the-links-and-highlights-on-the-preview-page)
 * [FEATURE] - [Session naming](https://trello.com/c/VQbfdtLM/222-8-session-naming)
+* [FEATURE] - [GDPR compliance for our Data (now Storing) step](https://trello.com/c/kkuQxS8T/224-gdpr-compliance-for-our-data-step)
 
 # 0.2.0 / 2017-10-04
 
