@@ -1,3 +1,7 @@
+# 0.4.0 / Unreleased
+
+* [FEATURE] - [Add location input to where&when](https://trello.com/c/wdLqH6qT/228-1-add-location-input-to-wherewhen)
+
 # 0.3.0 / 2017-10-30
 
 * [BUG] - [Returning to previous steps in the preview bar disables links to subsequent steps](https://trello.com/c/0k7u2liM/199-bug-returning-to-previous-steps-in-the-preview-bar-disables-links-to-subsequent-steps)
