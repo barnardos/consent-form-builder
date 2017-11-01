@@ -95,6 +95,17 @@
   margin: 0;
 }
 
+.button--copy {
+  background-image: image-url("copy");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 22px 22px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 8px calc(22px + 8px * 2) 8px 8px;
+  margin: 0;
+}
+
 .button-bar {
   display: block;
   margin: (4 * $gutter) 0;
