@@ -7,7 +7,7 @@ Feature:
     When I provide full session details for every step
     Then I should see the session review page
     And I should see confirmation that this is a preview
-    And I should see the formatted focus of the research along with why
+    And I should see the focus of the research along with why
     And I should see an age-specific text block for each research methodology selected
     And I should see a humanised indication of recording methods used
     And I should see links back to edit things that I provided

@@ -26,25 +26,18 @@
   <section>
     <h2 class="heading-medium">About this research project</h2>
     <p class="super-text">This information sheet will tell you more about the
-    research so that you can decide whether or not <%= you_or_your_child %> would like to take part.</p>
+      research so that you can decide whether or not <%= you_or_your_child %> would like to take part.</p>
   </section>
 
   <section>
     <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
 
-    <div>
-      <%= edit_link_for(:topic) do %>
-        <%= simple_format(@research_session.topic) %>
-      <% end %>
-    </div>
-
-    <br>
-
-    <div>
-      <%= edit_link_for(:purpose) do %>
-        <%= simple_format(@research_session.purpose) %>
-      <% end %>
-    </div>
+    <p>
+      <%= I18n.t('research_session_attr_labels.topic') %>
+      <%= edit_link_for(:topic) %>
+      <%= I18n.t('research_session_attr_labels.purpose') %>
+      <%= edit_link_for(:purpose) %>.
+    </p>
 
     <p>
       It is important that we test the current and future tools and services that
@@ -52,6 +45,7 @@
       possible.
     </p>
   </section>
+
   <section>
     <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
     <p>

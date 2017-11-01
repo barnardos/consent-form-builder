@@ -3,19 +3,19 @@
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Topic</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <%= form.labelled_text_area(
+    <%= form.labelled_text_field(
           :topic,
           text_options: {
-            placeholder: 'The topic of the project is...',
+            placeholder: 'e.g. how young people think of consent and research',
             autofocus: true
           }
         )
     %>
 
-    <%= form.labelled_text_area(
+    <%= form.labelled_text_field(
           :purpose,
           text_options: {
-            placeholder: 'Barnardo’s needs your help so we can...',
+            placeholder: 'e.g. talk to them in a way that they understand.',
             autofocus: true
           }
         )
