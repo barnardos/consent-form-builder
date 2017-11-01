@@ -34,9 +34,9 @@
           <%= 'is-active' if preview %>">
       <span class="progress__stage-title">
         <% if !preview && @research_session.reached_step?(wizard_steps.last) %>
-          <%= link_to 'Preview', research_session_preview_path(@research_session.slug) %>
+          <%= link_to t('application.preview_step_name'), research_session_preview_path(@research_session.slug) %>
         <% else %>
-          Preview
+          <%= t('application.preview_step_name') %>
         <% end %>
       </span>
     </li>

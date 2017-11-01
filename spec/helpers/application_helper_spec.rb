@@ -65,7 +65,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:step) { nil }
       let(:research_session) { create :research_session, :previewable }
 
-      it { is_expected.to eql('Preview – My session') }
+      it { is_expected.to eql('Preview & print – My session') }
     end
 
     context 'We are not looking at a research session at all' do
