@@ -173,8 +173,8 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
-      describe 'validating the data step' do
-        let(:step) { :data }
+      describe 'validating the storing step' do
+        let(:step) { :storing }
 
         context 'no details are given' do
           let(:set_attrs) { { shared_with: nil, shared_duration: nil, shared_use: nil } }

@@ -61,7 +61,7 @@ module StepCompletions
     click_button 'Continue'
   end
 
-  def complete_data_step
+  def complete_storing_step
     choose 'Just the team'
     @shared_duration = '1 year'
     @shared_usage = 'The data will be used to create better outcomes for more children'

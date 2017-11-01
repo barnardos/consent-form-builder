@@ -5,8 +5,8 @@ When(/^I provide full session details for every step$/) do
   complete_topic_step
   complete_methodologies_step
   complete_recording_methods_step
-  complete_data_step
   complete_time_equipment_step
+  complete_storing_step
   complete_expenses_step
   complete_incentive_step
 
@@ -45,8 +45,8 @@ When(/^I fill in the 'Other' recording method$/) do
 end
 
 And(/^I fill in the remaining steps$/) do
-  complete_data_step
   complete_time_equipment_step
+  complete_storing_step
   complete_expenses_step
 
   complete_incentive_step

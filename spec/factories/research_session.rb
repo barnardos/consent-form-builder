@@ -30,17 +30,17 @@ FactoryBot.define do
       recording_methods %w[audio video]
     end
 
-    trait :step_data do
+    trait :step_storing do
       step_recording
-      status :data
+      status :storing
       shared_with :team
       shared_duration '1 year'
       shared_use 'To train others'
     end
 
     trait :step_time_equipment do
-      step_data
       status :time_equipment
+      step_storing
       when_text '1st Sep 2017'
       duration '1 week'
       participant_equipment 'A coat'
