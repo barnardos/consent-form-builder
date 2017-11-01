@@ -30,6 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  application:
+    title: 'Consent Form Builder'
+    create_new_form: 'Create a new form'
+
   research_session_attr_labels: &attr_labels
     name: 'Please name your research session'
     shared_duration: "How long will this information be held for?"
@@ -56,6 +60,10 @@ en:
     food_provided: "Will you provide food or refreshments at the session? (optional)"
     incentive: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
+
+  pages:
+    research_session:
+      new:
 
   activerecord:
     attributes:

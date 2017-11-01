@@ -10,9 +10,9 @@ module ApplicationHelper
 
   def title(research_session, step)
     if research_session.nil?
-      'Consent Form Builder'
+      I18n.t('application.title')
     elsif research_session.new_record?
-      'Create a new form – Consent Form Builder'
+      "#{I18n.t('application.create_new_form')} – #{I18n.t('application.title')}"
     elsif research_session.status == 'incentive' && step.nil?
       "Preview – #{research_session.name.strip}"
     else
