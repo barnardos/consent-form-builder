@@ -56,16 +56,16 @@ FactoryBot.define do
       food_provided 'Light canapés'
     end
 
-    trait :step_incentive do
+    trait :step_incentives do
       step_expenses
-      status :incentive
+      status :incentives
       incentive true
       payment_type :cash
       incentive_value '40.00'
     end
 
     trait :previewable do
-      step_incentive # really just a readable alias
+      step_incentives # really just a readable alias
     end
 
     trait :nil_expenses do

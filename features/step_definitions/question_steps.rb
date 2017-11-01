@@ -8,7 +8,7 @@ When(/^I provide full session details for every step$/) do
   complete_storing_step
   complete_where_when_step
   complete_expenses_step
-  complete_incentive_step
+  complete_incentives_step
 
   click_link "Respondents who can't give consent"
 end
@@ -49,7 +49,7 @@ And(/^I fill in the remaining steps$/) do
   complete_where_when_step
   complete_expenses_step
 
-  complete_incentive_step
+  complete_incentives_step
 end
 
 When(/^I provide an 'Other' methodology$/) do

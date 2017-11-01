@@ -45,9 +45,9 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.reached_step?(:storing) }
 
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
-            if: -> (session) { session.incentive && session.reached_step?(:incentive) }
+            if: -> (session) { session.incentive && session.reached_step?(:incentives) }
   validates :incentive_value, presence: true,
-            if: -> (session) { session.incentive && session.reached_step?(:incentive) }
+            if: -> (session) { session.incentive && session.reached_step?(:incentives) }
 
   def reached_step?(step)
     Steps.instance.reached_step?(self, step)

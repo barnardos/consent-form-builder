@@ -91,7 +91,7 @@ module StepCompletions
     click_button 'Continue'
   end
 
-  def complete_incentive_step
+  def complete_incentives_step
     choose 'Yes'
 
     choose 'Cash'

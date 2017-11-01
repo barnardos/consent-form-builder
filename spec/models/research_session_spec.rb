@@ -205,8 +205,8 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
-      describe 'validating the incentive step' do
-        let(:step) { :incentive }
+      describe 'validating the incentives step' do
+        let(:step) { :incentives }
 
         context 'no incentives are given, and no-one cares' do
           let(:set_attrs) { { incentive: nil } }
