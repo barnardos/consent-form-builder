@@ -71,7 +71,7 @@ module StepCompletions
     click_button 'Continue'
   end
 
-  def complete_time_equipment_step
+  def complete_where_when_step
     @held_on = '27th September at 2pm'
     fill_in 'The session is held on (optional)', with: @held_on
     @session_duration = '5 minutes'

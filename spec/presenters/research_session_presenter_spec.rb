@@ -104,14 +104,14 @@ RSpec.describe ResearchSessionPresenter do
 
     context 'One expense is given' do
       let(:research_session) do
-        build_stubbed :research_session, :step_time_equipment, travel_expenses_limit: 50.00
+        build_stubbed :research_session, :step_where_when, travel_expenses_limit: 50.00
       end
       it { is_expected.to eql('We allow travel expenses of up to £50.00.') }
     end
 
     context 'Two expenses are given' do
       let(:research_session) do
-        build_stubbed :research_session, :step_time_equipment,
+        build_stubbed :research_session, :step_where_when,
                       travel_expenses_limit: 50.00,
                       food_expenses_limit: 10.00
       end
@@ -124,7 +124,7 @@ RSpec.describe ResearchSessionPresenter do
 
     context 'Three expenses are given' do
       let(:research_session) do
-        build_stubbed :research_session, :step_time_equipment,
+        build_stubbed :research_session, :step_where_when,
                       travel_expenses_limit: 50.00,
                       food_expenses_limit: 10.00,
                       other_expenses_limit: 5.00

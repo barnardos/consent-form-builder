@@ -39,7 +39,7 @@ module PreviewChecker
     expect(page).to have_tag('p', text: @shared_usage)
   end
 
-  def check_time_equipment
+  def check_where_when
     expect(page.body).to include('The session is on')
     expect(page).to have_tag('a.editable', text: @session_duration)
     expect(page).to have_tag('a.editable', text: @session_location)

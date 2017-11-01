@@ -38,16 +38,16 @@ FactoryBot.define do
       shared_use 'To train others'
     end
 
-    trait :step_time_equipment do
-      status :time_equipment
+    trait :step_where_when do
       step_storing
+      status :where_when
       when_text '1st Sep 2017'
       duration '1 week'
       participant_equipment 'A coat'
     end
 
     trait :step_expenses do
-      step_time_equipment
+      step_where_when
       status :expenses
       travel_expenses_limit '10.00'
       food_expenses_limit '20.00'
