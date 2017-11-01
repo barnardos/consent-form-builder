@@ -25,8 +25,8 @@
   <div id="global-header__menu"></div>
 </header>
 
-<div id="global-header-bar">
-  &nbsp;
+<div class="global-header-bar">
+  <%= render 'share' if @research_session.name %>
 </div>
 
 <main id="main" role="main">

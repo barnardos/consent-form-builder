@@ -67,6 +67,34 @@
   }
 }
 
+.button--small {
+  padding: 8px;
+}
+
+.button--green {
+  background-color: $green;
+  border-color: $green;
+
+  &:hover,
+  &:focus {
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+.button--no-margin {
+  margin: 0;
+}
+
+.button--share {
+  background-image: image-url("share");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 22px 22px;
+  padding: 8px calc(22px + 8px * 2) 8px 8px;
+  margin: 0;
+}
+
 .button-bar {
   display: block;
   margin: (4 * $gutter) 0;
