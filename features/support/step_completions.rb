@@ -33,10 +33,7 @@ module StepCompletions
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
     fill_in 'What is the research or participation session about?', with: @topic
-    click_button 'Continue'
-  end
 
-  def complete_purpose_step
     @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
       PURPOSE: Fresnel lenses and the under-5s
       PURPOSE: This line break follows a br

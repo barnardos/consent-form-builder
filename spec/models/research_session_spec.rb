@@ -83,28 +83,26 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
-      describe 'validating the topic step' do
+      describe 'validating the topic/purpose step' do
         let(:step) { :topic }
 
         context 'no topic is given' do
-          let(:set_attrs) { { topic: nil } }
+          let(:set_attrs) { { topic: nil, purpose: 'something' } }
           it { is_expected.not_to be_valid }
+          it 'has a topic error' do
+            expect(session.errors[:topic].first).to eql("can't be blank")
+          end
+        end
+
+        context 'no purpose is given' do
+          let(:set_attrs) { { purpose: nil, topic: 'something' } }
+          it { is_expected.not_to be_valid }
+          it 'has a purpose error' do
+            expect(session.errors[:purpose].first).to eql("can't be blank")
+          end
         end
 
         context 'research topic is given' do
-          it { is_expected.to be_valid }
-        end
-      end
-
-      describe 'validating the purpose step' do
-        let(:step) { :purpose }
-
-        context 'no purpose is given' do
-          let(:set_attrs) { { purpose: nil } }
-          it { is_expected.not_to be_valid }
-        end
-
-        context 'research purpose is given' do
           it { is_expected.to be_valid }
         end
       end

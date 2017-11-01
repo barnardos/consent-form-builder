@@ -7,8 +7,7 @@ class ResearchSession
     PARAMS = ActiveSupport::OrderedHash[{
       researcher:    [:researcher_name, :researcher_phone, :researcher_email,
                       :researcher_other, :researcher_other_name, :researcher_other_name],
-      topic:         [:topic],
-      purpose:       [:purpose],
+      topic:         [:topic, :purpose],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
       data:          [:shared_with, :shared_duration, :shared_use],

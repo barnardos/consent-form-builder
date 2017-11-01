@@ -73,7 +73,7 @@ describe ResearchSessionsController, type: :controller do
     end
 
     context 'accepting methodologies' do
-      let(:existing_step) { :purpose }
+      let(:existing_step) { :topic }
       let(:params) do
         {
           research_session_id: existing_session.slug,

@@ -15,16 +15,11 @@ FactoryBot.define do
       step_researcher
       status :topic
       topic 'A topic'
-    end
-
-    trait :step_purpose do
-      step_topic
-      status :purpose
       purpose 'A purpose'
     end
 
     trait :step_methodologies do
-      step_purpose
+      step_topic
       status :methodologies
       methodologies %w[interview survey]
     end
