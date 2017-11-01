@@ -7,7 +7,7 @@
 * Remove 'start' step from progress bar
 * Rename steps: 'Data' to 'storing', 'Time & equipment' to 'Where & when', and 'Incentive' to 'Incentives'
 * Progress bar should reflect latest design
-
+* [FEATURE] - [Share / Save consent form session](https://trello.com/c/zU3zqiy1/92-5-share-save-consent-form-session)
 
 # 0.3.0 / 2017-10-30
 
