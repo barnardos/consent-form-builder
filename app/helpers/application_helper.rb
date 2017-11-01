@@ -7,4 +7,16 @@ module ApplicationHelper
 
     link_to sha[0..7], COMMIT_STEM + sha
   end
+
+  def title(research_session, step)
+    if research_session.nil?
+      'Consent Form Builder'
+    elsif research_session.new_record?
+      'Create a new form – Consent Form Builder'
+    elsif research_session.status == 'incentive' && step.nil?
+      "Preview – #{research_session.name.strip}"
+    else
+      "#{step.to_s.humanize} – #{research_session.name.strip}"
+    end
+  end
 end

@@ -11,7 +11,7 @@ class ResearchSessionPresenter
     delegate attribute, to: :research_session
   end
 
-  delegate :reached_step?, to: :research_session
+  delegate :new_record?, :reached_step?, to: :research_session
 
   def able_to_consent?
     @able_to_consent
