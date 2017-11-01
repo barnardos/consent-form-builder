@@ -80,7 +80,7 @@ module StepCompletions
     @session_duration = '5 minutes'
     fill_in 'How long will the session be? (optional)', with: @session_duration
     @session_location = 'Rockford House, Leeds'
-    fill_in 'Where will the session be? (optional)', with: @session_location
+    fill_in 'The session will be held at (optional)', with: @session_location
     @what_to_bring = 'Nothing'
     fill_in 'What do participants need to bring? (optional)', with: @what_to_bring
     click_button 'Continue'
