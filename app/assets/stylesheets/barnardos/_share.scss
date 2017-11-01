@@ -1,3 +1,5 @@
+$share-box-shadow-colour: rgba(29, 29, 27, .5);
+
 .share {
   position: relative;
   z-index: 2;
@@ -9,4 +11,65 @@
 
 .share__button {
   margin-left: auto;
+}
+
+.share__content {
+  background-color: $white;
+  box-shadow: 1px 1px 8px 2px $share-box-shadow-colour;
+  padding: $gutter;
+  max-width: $max-container-width;
+  display: none;
+  position: absolute;
+  top: calc(100% + 2px);
+  right: 0;
+  margin: 0 $gutter;
+  z-index: 2;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: $gutter;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent $white transparent;
+  }
+
+  &.is-active {
+    display: block;
+  }
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+}
+
+.share__url {
+  display: flex;
+  margin-top: $gutter;
+}
+
+.share__input {
+  color: $black;
+  font: 400 18px/24px ProximaNova, sans-serif;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid $grey-dark;
+}
+
+.share__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
 }

@@ -15,10 +15,11 @@ $progress-indicator-color-active: #e2f2ce;
 }
 
 .progress-bar {
+  z-index: 1;
+  position: relative;
   @media (min-width: $tablet) {
     display: table;
     width: 100%;
-    position: relative;
   }
 }
 
