@@ -1,6 +1,8 @@
 @import "barnardos/vars";
 @import "barnardos/colours";
 
+$progress-indicator-color-active: #e2f2ce;
+
 .progress {
   margin: ($gutter * 2) ($gutter / 2) ($gutter * 4);
   max-width: $max-content-width;
@@ -54,8 +56,8 @@
     border-color: $primary-colour;
 
     &::before {
-      background-color: $primary-colour;
-      border: 2px solid $primary-colour;
+      background-color: $progress-indicator-color-active;
+      border-color: $progress-indicator-color-active;
     }
   }
 
@@ -63,8 +65,8 @@
     font-weight: 600;
 
     &::before {
-      background-color: $white;
-      border: 2px solid $primary-colour;
+      background-color: $primary-colour;
+      border-color: $primary-colour;
     }
   }
 
