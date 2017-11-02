@@ -1,0 +1,32 @@
+<div class="share">
+  <div class="share__button">
+    <button class="button button--share button--small button--green button--no-margin js-share-trigger">Share</button>
+  </div>
+  <div class="share__content js-share-target">
+    <p>Here is the link you can share and use at any time:</p>
+
+    <div class="share__url">
+      <input
+        type="text"
+        id="share-input"
+        class="share__input"
+        value="<%= request.original_url %>"
+        readonly />
+
+      <button class="button button--no-margin button--copy js-copy-url-button" data-clipboard-target="#share-input">Copy</button>
+    </div>
+
+    <p>
+      <a href="mailto:?subject=<%= URI.escape(@research_session.name) %>&body=<%= URI.escape(request.original_url) %>" target="_blank">
+        Email this link
+      </a>
+    </p>
+
+    <p>Bookmark this link by pressing:</p>
+    <ul class="bullet-point-list">
+      <li>Command/Cmd + D on Mac</li>
+      <li>CTRL + D on Windows</li>
+    </ul>
+  </div>
+  <div class="share__overlay js-share-target js-share-trigger"></div>
+</div>
