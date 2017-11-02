@@ -13,9 +13,6 @@ module PreviewChecker
     @topic.split("\n").each do |line|
       expect(page.body).to include(line)
     end
-  end
-
-  def check_purpose
     @purpose.split("\n").each do |line|
       expect(page.body).to include(line)
     end

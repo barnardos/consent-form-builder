@@ -43,8 +43,8 @@ en:
     researcher_other_name: 'Full name'
     researcher_phone: 'Telephone number (optional)'
     researcher_email: 'Email'
-    topic: 'What is the research or participation session about?'
-    purpose: 'Why are you doing this research or participation session?'
+    topic: "Barnardo's is doing research to learn about"
+    purpose: 'so that we can'
     methodologies: 'How will you be gathering information?'
     other_methodology: "What is the other methodology?"
     recording_methods: "How will you be recording information?"
@@ -74,6 +74,11 @@ en:
     label:
       research_session:
         *attr_labels
+    placeholder:
+      research_session:
+        topic: "e.g. how young people think of consent and research"
+        purpose: "e.g. talk to them in a way that they understand."
+
 
   errors:
     format: '"%{attribute}" %{message}'

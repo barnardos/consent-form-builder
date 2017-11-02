@@ -14,9 +14,8 @@ class ResearchSession < ApplicationRecord
 
   validates :topic, presence: true,
     if: -> (session) { session.reached_step?(:topic) }
-
   validates :purpose, presence: true,
-    if: -> (session) { session.reached_step?(:purpose) }
+    if: -> (session) { session.reached_step?(:topic) }
 
   validates :methodologies,
             has_at_least_one: { of: Methodologies.allowed_values },

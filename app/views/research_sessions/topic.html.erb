@@ -3,14 +3,24 @@
   <%= render 'error_summary' %>
   <h1 class="subtitle-large">Topic</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= form.labelled_text_area \
+    <%= form.labelled_text_field(
           :topic,
           text_options: {
-              placeholder: 'The topic of the project is...',
-              autofocus: true
+            placeholder: t('helpers.placeholder.research_session.topic'),
+            autofocus: true
           }
-      %>
+        )
+    %>
 
-      <%= render 'button_bar' %>
+    <%= form.labelled_text_field(
+          :purpose,
+          text_options: {
+            placeholder: t('helpers.placeholder.research_session.purpose'),
+            autofocus: true
+          }
+        )
+    %>
+
+    <%= render 'button_bar' %>
   <% end %>
 </div>

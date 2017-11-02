@@ -3,7 +3,6 @@ When(/^I provide full session details for every step$/) do
 
   complete_researcher_step
   complete_topic_step
-  complete_purpose_step
   complete_methodologies_step
   complete_recording_methods_step
   complete_data_step
@@ -23,7 +22,6 @@ Given(/^I have arrived at the methodologies step$/) do
 
   complete_researcher_step
   complete_topic_step
-  complete_purpose_step
 end
 
 And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
