@@ -74,6 +74,11 @@ en:
     label:
       research_session:
         *attr_labels
+    placeholder:
+      research_session:
+        topic: "e.g. how young people think of consent and research"
+        purpose: "e.g. talk to them in a way that they understand."
+
 
   errors:
     format: '"%{attribute}" %{message}'
