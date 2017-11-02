@@ -117,7 +117,7 @@ RSpec.describe ResearchSessions::QuestionsController, type: :controller do
 
       it 'returns to the preview' do
         expect(response).to redirect_to(
-          research_session_preview_path(research_session_id: existing_session.slug)
+          research_session_preview_path(existing_session)
         )
       end
     end

@@ -18,9 +18,9 @@ module ResearchSessions
       @research_session.status = step unless @research_session.reached_step?(step)
       @research_session.assign_attributes(question_params)
       if returning_to_preview? && @research_session.save
-        redirect_to(research_session_preview_path, research_session_id: @research_session.id)
+        redirect_to(research_session_preview_path(@research_session))
       else
-        render_wizard @research_session
+        render_wizard(@research_session)
       end
     end
 

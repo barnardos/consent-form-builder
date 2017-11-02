@@ -14,7 +14,7 @@ describe ResearchSessionsController, type: :controller do
         post :create, params: { research_session: { name: 'My session' } }
         research_session = ResearchSession.first
         expect(response).to \
-          redirect_to(research_session_question_path(research_session.slug, id: 'researcher'))
+          redirect_to(research_session_question_path(research_session, id: 'researcher'))
       end
     end
   end
