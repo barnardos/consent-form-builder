@@ -6,7 +6,7 @@
     for your project(s).
   </p>
 
-  <%= render 'error_summary' %>
+  <%= render 'shared/error_summary' %>
 
   <%= barnardos_form_with model: @research_session do |form| %>
     <%= form.labelled_text_field :name, text_options: { autofocus: true } %>

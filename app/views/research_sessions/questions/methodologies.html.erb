@@ -1,20 +1,20 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
-  <%= render 'error_summary' %>
-  <h1 class="subtitle-large">Recording</h1>
+  <%= render 'shared/error_summary' %>
+  <h1 class="subtitle-large">Methodologies</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= form.checkbox_group_vertical(
-            :recording_methods,
-            RecordingMethods::NAME_VALUES,
+            :methodologies,
+            Methodologies::NAME_VALUES,
             { autofocus_first_item: true },
-            legend: 'How will you be recording information?'
+            legend: 'How will you be gathering information?'
           )
       %>
 
       <div class="js-ConditionalSubfield"
-           data-controlled-by="research_session[recording_methods][]"
+           data-controlled-by="research_session[methodologies][]"
            data-control-value="other">
-        <%= form.labelled_text_field :other_recording_method %>
+        <%= form.labelled_text_field :other_methodology %>
       </div>
 
       <%= render 'button_bar' %>

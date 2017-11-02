@@ -8,7 +8,7 @@ module ApplicationHelper
     link_to sha[0..7], COMMIT_STEM + sha
   end
 
-  def title(research_session, step)
+  def title(research_session, step = nil)
     if research_session.nil?
       I18n.t('application.title')
     elsif research_session.new_record?
