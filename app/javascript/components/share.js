@@ -1,4 +1,6 @@
 /* eslint no-new: 0 */
+const Clipboard = require('clipboard')
+
 class Share {
   constructor (container) {
     this.cacheElements(container)
@@ -25,6 +27,7 @@ class Share {
 
   static init (container = document) {
     new Share(container)
+    new Clipboard('.js-copy-url-button')
   }
 }
 
