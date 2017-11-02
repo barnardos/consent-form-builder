@@ -36,7 +36,7 @@ RSpec.describe ResearchSession::Steps do
       it { is_expected.to be true }
     end
     context 'we are past the stage we are testing' do
-      let(:status)   { 'incentive' }
+      let(:status)   { 'incentives' }
       let(:at_least) { 'methodologies' }
 
       it { is_expected.to be true }

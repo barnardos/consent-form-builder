@@ -5,10 +5,10 @@ When(/^I provide full session details for every step$/) do
   complete_topic_step
   complete_methodologies_step
   complete_recording_methods_step
-  complete_data_step
-  complete_time_equipment_step
+  complete_storing_step
+  complete_where_when_step
   complete_expenses_step
-  complete_incentive_step
+  complete_incentives_step
 
   click_link "Respondents who can't give consent"
 end
@@ -45,11 +45,11 @@ When(/^I fill in the 'Other' recording method$/) do
 end
 
 And(/^I fill in the remaining steps$/) do
-  complete_data_step
-  complete_time_equipment_step
+  complete_storing_step
+  complete_where_when_step
   complete_expenses_step
 
-  complete_incentive_step
+  complete_incentives_step
 end
 
 When(/^I provide an 'Other' methodology$/) do

@@ -3,6 +3,11 @@
 * [FEATURE] - [Add location input to where&when](https://trello.com/c/wdLqH6qT/228-1-add-location-input-to-wherewhen)
 * [FEATURE] - [Create page titles for each step](https://trello.com/c/iZY1S1ZC/200-3-create-page-titles-for-each-step)
 * [FEATURE] - [Merge Topic / Purpose and update copy](https://trello.com/c/YIQw4isH/208-3-merge-topic-purpose-and-update-copy)
+* [FEATURE] - [Navigation improvements](https://trello.com/c/nVXG9lGt/144-navigation-improvements)
+* Remove 'start' step from progress bar
+* Rename steps: 'Data' to 'storing', 'Time & equipment' to 'Where & when', and 'Incentive' to 'Incentives'
+* Progress bar should reflect latest design
+
 
 # 0.3.0 / 2017-10-30
 

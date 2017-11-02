@@ -30,24 +30,24 @@ FactoryBot.define do
       recording_methods %w[audio video]
     end
 
-    trait :step_data do
+    trait :step_storing do
       step_recording
-      status :data
+      status :storing
       shared_with :team
       shared_duration '1 year'
       shared_use 'To train others'
     end
 
-    trait :step_time_equipment do
-      step_data
-      status :time_equipment
+    trait :step_where_when do
+      step_storing
+      status :where_when
       when_text '1st Sep 2017'
       duration '1 week'
       participant_equipment 'A coat'
     end
 
     trait :step_expenses do
-      step_time_equipment
+      step_where_when
       status :expenses
       travel_expenses_limit '10.00'
       food_expenses_limit '20.00'
@@ -56,16 +56,16 @@ FactoryBot.define do
       food_provided 'Light canapés'
     end
 
-    trait :step_incentive do
+    trait :step_incentives do
       step_expenses
-      status :incentive
+      status :incentives
       incentive true
       payment_type :cash
       incentive_value '40.00'
     end
 
     trait :previewable do
-      step_incentive # really just a readable alias
+      step_incentives # really just a readable alias
     end
 
     trait :nil_expenses do

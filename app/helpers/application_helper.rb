@@ -13,8 +13,8 @@ module ApplicationHelper
       I18n.t('application.title')
     elsif research_session.new_record?
       "#{I18n.t('application.create_new_form')} – #{I18n.t('application.title')}"
-    elsif research_session.status == 'incentive' && step.nil?
-      "Preview – #{research_session.name.strip}"
+    elsif research_session.status == 'incentives' && step.nil?
+      "#{I18n.t('application.preview_step_name')} – #{research_session.name.strip}"
     else
       "#{step.to_s.humanize} – #{research_session.name.strip}"
     end

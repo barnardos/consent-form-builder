@@ -4,7 +4,7 @@
 # are locale specific, and you may define rules for as many different
 # locales as you wish.
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.human 'time_equipment', 'Time / Equipment'
+  inflect.human 'where_when', 'Where & when'
 end
 
 # These inflection rules are supported but not enabled by default:

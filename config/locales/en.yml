@@ -33,6 +33,7 @@ en:
   application:
     title: 'Consent Form Builder'
     create_new_form: 'Create a new form'
+    preview_step_name: 'Preview & print'
 
   research_session_attr_labels: &attr_labels
     name: 'Please name your research session'

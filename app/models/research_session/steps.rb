@@ -10,11 +10,11 @@ class ResearchSession
       topic:         [:topic, :purpose],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
-      data:          [:shared_with, :shared_duration, :shared_use],
-      time_equipment: [:when_text, :duration, :location, :participant_equipment],
+      storing:       [:shared_with, :shared_duration, :shared_use],
+      where_when:    [:when_text, :duration, :location, :participant_equipment],
       expenses:      [:travel_expenses_limit, :food_expenses_limit, :other_expenses_limit,
                       :receipts_required, :food_provided],
-      incentive:     [:incentive, :payment_type, :incentive_value]
+      incentives:    [:incentive, :payment_type, :incentive_value]
     }]
 
     def reached_step?(session, step)

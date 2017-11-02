@@ -34,12 +34,12 @@ module PreviewChecker
     end
   end
 
-  def check_data
+  def check_storing
     expect(page).to have_tag('p', text: "The data will be kept for #{@shared_duration}.")
     expect(page).to have_tag('p', text: @shared_usage)
   end
 
-  def check_time_equipment
+  def check_where_when
     expect(page.body).to include('The session is on')
     expect(page).to have_tag('a.editable', text: @session_duration)
     expect(page).to have_tag('a.editable', text: @session_location)
@@ -57,7 +57,7 @@ module PreviewChecker
     )
   end
 
-  def check_incentive
+  def check_incentives
     expect(page.body).to include('We are offering')
     expect(page).to have_tag('a.editable', text: 'a cash incentive of £10.50')
     expect(page.body).to include('for participation in this session')
