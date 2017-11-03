@@ -8,6 +8,7 @@
 * Rename steps: 'Data' to 'storing', 'Time & equipment' to 'Where & when', and 'Incentive' to 'Incentives'
 * Progress bar should reflect latest design
 * [FEATURE] - [Share / Save consent form session](https://trello.com/c/zU3zqiy1/92-5-share-save-consent-form-session)
+* [BUG] - [Expenses / refreshments improvements](https://trello.com/c/2mT0SkHT/212-2-expenses-refreshments-improvements)
 
 # 0.3.0 / 2017-10-30
 
