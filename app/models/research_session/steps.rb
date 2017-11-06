@@ -28,6 +28,10 @@ class ResearchSession
       @step_keys ||= PARAMS.keys
     end
 
+    def first
+      PARAMS.keys.first
+    end
+
     ##
     # Returns a hash of attribute names to step names in the wizard
     def attr_to_step(attr)

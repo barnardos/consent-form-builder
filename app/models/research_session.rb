@@ -60,4 +60,8 @@ class ResearchSession < ApplicationRecord
     slug = "#{slug}-#{SecureRandom.uuid}" if ResearchSession.exists?(slug: slug)
     self.slug = slug
   end
+
+  def to_param
+    slug
+  end
 end

@@ -1,6 +1,6 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
-  <%= render 'error_summary' %>
+  <%= render 'shared/error_summary' %>
   <h1 class="subtitle-large">Incentives</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= form.radio_group_vertical :incentive,
