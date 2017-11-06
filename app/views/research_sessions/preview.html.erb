@@ -102,11 +102,14 @@
       what <%= @research_session.unable_to_consent? ? 'the child in your care says' : 'you say' %> 
       in the session will be the researchers running the session, 
       other young people taking part and service workers facilitating the session.</p>
-    <p>Barnardo’s only holds research data for the duration of the project and it is then deleted. 
-      All data will be deleted after 5 years. You can also ask us to delete it any time.</p>
-      
-    <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
+    
+    <p><%= edit_link_for(:shared_with) do %>
+        <%= I18n.t('report.shared_with.' + @research_session.send(:shared_with), 
+                   person: you_or_your_child ) %>
+       <% end %></p>
 
+    <p>Barnardo’s only holds research data for the duration of the project and it is then deleted. 
+      All data will be deleted after <%= edit_link_for(:shared_duration) %>. You can also ask us to delete it any time.</p>
   </section>
   <section>
     

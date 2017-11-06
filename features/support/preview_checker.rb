@@ -35,7 +35,14 @@ module PreviewChecker
   end
 
   def check_storing
-    expect(page).to have_tag('p', text: "The data will be kept for #{@shared_duration}.")
+    expect(page.body).to have_tag(
+      'a.editable', 
+      text: Regexp.new(I18n.t("report.shared_with.anonymised", person: 'your child/the child in your care'))
+    )
+    expect(page.body).to have_tag(
+      'p', 
+      text: Regexp.new("All data will be deleted after #{@shared_duration}.")
+    )
   end
 
   def check_where_when

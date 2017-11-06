@@ -101,6 +101,11 @@ en:
         format: '%u%n'
   
   report:
+    shared_with:
+      anonymised: 'Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, %{person} will not be identifiable by the research recordings.'
+      team: 'Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research.'
+      internal: 'Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff.'
+      external: 'Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website.'
     able_to_consent:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
       usability: 'You will be asked to do several short tasks using a website while our researcher watches, listens and takes notes.
