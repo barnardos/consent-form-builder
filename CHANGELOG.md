@@ -9,6 +9,7 @@
 * Progress bar should reflect latest design
 * [FEATURE] - [Share / Save consent form session](https://trello.com/c/zU3zqiy1/92-5-share-save-consent-form-session)
 * [BUG] - [Expenses / refreshments improvements](https://trello.com/c/2mT0SkHT/212-2-expenses-refreshments-improvements)
+* [FEATURE] - [GDPR compliance for our Data (now Storing) step](https://trello.com/c/kkuQxS8T/224-gdpr-compliance-for-our-data-step)
 
 # 0.3.0 / 2017-10-30
 
@@ -26,7 +27,7 @@
 * [FEATURE] - [Change the date time form fields to not use `form.datetime_select`](https://trello.com/c/91fUZw28/189-3-change-the-date-time-form-fields-to-not-use-formdatetimeselect)
 * [BUG] - [Style the links and highlights on the preview page](https://trello.com/c/DI8wiPw2/110-spike-style-the-links-and-highlights-on-the-preview-page)
 * [FEATURE] - [Session naming](https://trello.com/c/VQbfdtLM/222-8-session-naming)
-* [FEATURE] - [GDPR compliance for our Data (now Storing) step](https://trello.com/c/kkuQxS8T/224-gdpr-compliance-for-our-data-step)
+
 
 # 0.2.0 / 2017-10-04
 
