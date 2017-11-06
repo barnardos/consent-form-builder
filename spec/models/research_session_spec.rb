@@ -179,16 +179,13 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { :storing }
 
         context 'no details are given' do
-          let(:set_attrs) { { shared_with: nil, shared_duration: nil, shared_use: nil } }
+          let(:set_attrs) { { shared_with: nil, shared_duration: nil } }
           it { is_expected.not_to be_valid }
           it 'has an error for shared with' do
             expect(session.errors[:shared_with].length).to eql(1)
           end
           it 'has an error for shared duration' do
             expect(session.errors[:shared_duration].length).to eql(1)
-          end
-          it 'has an error for use' do
-            expect(session.errors[:shared_use].length).to eql(1)
           end
         end
 

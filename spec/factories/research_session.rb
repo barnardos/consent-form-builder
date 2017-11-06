@@ -40,7 +40,6 @@ FactoryBot.define do
       status :storing
       shared_with :anonymised
       shared_duration '1 year'
-      shared_use 'To train others'
     end
 
     trait :step_time_equipment do

@@ -11,7 +11,7 @@ class ResearchSession
       purpose:       [:purpose],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
-      storing:       [:shared_with, :shared_duration, :shared_use],
+      storing:       [:shared_with, :shared_duration],
       time_equipment: [:when_text, :duration, :location, :participant_equipment],
       expenses:      [:travel_expenses_limit, :food_expenses_limit, :other_expenses_limit,
                       :receipts_required, :food_provided],

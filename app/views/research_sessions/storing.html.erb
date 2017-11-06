@@ -8,15 +8,14 @@
         :shared_with,
         SharedWith::NAME_VALUES,
         { autofocus_first_item: true },
-        legend: 'How will the information recorded in this session be stored and processed?'
+        legend: (raw I18n.t('research_session_attr_labels.shared_with'))
     %>
 
-    <%= form.labelled_text_field :shared_duration %>
+    <%= form.labelled_text_field \
+        :shared_duration, 
+        (raw I18n.t('research_session_attr_labels.shared_duration'))
+    %>
     
-    <%= form.labelled_text_area \
-          :shared_use, text_options: { placeholder: 'The data will be used to...' }
-    %>
-
     <%= render 'button_bar' %>
   <% end %>
 </div>

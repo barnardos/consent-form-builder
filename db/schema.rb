@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025094245) do
+ActiveRecord::Schema.define(version: 20171105211516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20171025094245) do
     t.text "purpose"
     t.string "shared_with"
     t.string "shared_duration"
-    t.text "shared_use"
+    t.datetime "start_datetime"
     t.string "duration"
     t.text "participant_equipment"
     t.decimal "travel_expenses_limit"

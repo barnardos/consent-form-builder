@@ -110,13 +110,12 @@
       other young people taking part and service workers facilitating the session.</p>
     <p>Barnardo’s only holds research data for the duration of the project and it is then deleted. 
       All data will be deleted after 5 years. You can also ask us to delete it any time.</p>
-  </section>
-  <section>
-    <h3 class="subtitle-small" id="private">How will the data be used?</h3>
-    <p><%= edit_link_for(:shared_use) %></p>
-
+      
     <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
 
+  </section>
+  <section>
+    
     <% if @research_session.location.present? %>
       <p>The session will be held at <%= edit_link_for(:location) %>.</p>
     <% end %>

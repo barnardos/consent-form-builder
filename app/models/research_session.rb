@@ -42,9 +42,6 @@ class ResearchSession < ApplicationRecord
   validates :shared_duration, presence: true,
             if: -> (session) { session.reached_step?(:storing) }
 
-  validates :shared_use, presence: true,
-            if: -> (session) { session.reached_step?(:storing) }
-
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
             if: -> (session) { session.incentive && session.reached_step?(:incentive) }
   validates :incentive_value, presence: true,
