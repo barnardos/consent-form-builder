@@ -8,12 +8,14 @@
         :shared_with,
         SharedWith::NAME_VALUES,
         { autofocus_first_item: true },
-        legend: (raw I18n.t('research_session_attr_labels.shared_with'))
+        legend: (raw I18n.t('research_session_attr_labels.shared_with') \
+                     + '<br />' + I18n.t('research_session_attr_labels.shared_with_sublabel'))
     %>
 
     <%= form.labelled_text_field \
         :shared_duration, 
-        (raw I18n.t('research_session_attr_labels.shared_duration'))
+        (raw I18n.t('research_session_attr_labels.shared_duration') \
+             + '<br />' + I18n.t('research_session_attr_labels.shared_duration_sublabel'))
     %>
     
     <%= render 'button_bar' %>

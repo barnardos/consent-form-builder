@@ -37,8 +37,10 @@ en:
 
   research_session_attr_labels: &attr_labels
     name: 'Please name your research session'
-    shared_with: 'How will the information recorded in this session be stored and processed?<br />All identifiable information will be:'
-    shared_duration: 'How long will this information be held for?<br />2 years after the closure of the project is the duration we recommend'
+    shared_with: 'How will the information recorded in this session be stored and processed?'
+    shared_with_sublabel: 'All identifiable information will be:'
+    shared_duration: 'How long will this information be held for?'
+    shared_duration_sublabel: '2 years after the closure of the project is the duration we recommend'
     researcher_name: 'Full name'
     researcher_other_name: 'Full name'
     researcher_phone: 'Telephone number (optional)'
