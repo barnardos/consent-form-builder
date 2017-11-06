@@ -7,6 +7,8 @@ class ResearchSessionPresenter
     @able_to_consent = able_to_consent
   end
 
+  delegate :to_param, to: :research_session
+
   def respond_to_missing?(method, *)
     research_session.respond_to?(method)
   end

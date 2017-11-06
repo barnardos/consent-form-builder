@@ -1,0 +1,16 @@
+<div class="main-content">
+  <h1 class="title">Create a copy</h1>
+
+  <%= render 'shared/error_summary' %>
+
+  <%= barnardos_form_with(
+        model: @research_session,
+        url: research_session_create_a_copy_path(research_session_id: @existing_session_id)
+      ) do |form|
+  %>
+      <%= form.labelled_text_field :name, text_options: { autofocus: true } %>
+      <p class="button-bar">
+        <%= form.submit 'Continue', class: 'button' %>
+      </p>
+  <% end %>
+</div>
