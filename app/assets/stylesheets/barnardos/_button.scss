@@ -15,6 +15,7 @@
   padding: 17px 40px;
   text-align: center;
   width: 100%;
+  line-height: 24px;
 
   &:visited,
   &:link {
@@ -97,6 +98,15 @@
 
 .button--copy {
   background-image: image-url("copy");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 22px 22px;
+  padding: 8px calc(22px + 8px * 2) 8px 8px;
+  margin: 0;
+}
+
+.button--add {
+  background-image: image-url("add");
   background-repeat: no-repeat;
   background-position: right 8px center;
   background-size: 22px 22px;
