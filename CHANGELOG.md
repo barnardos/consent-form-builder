@@ -1,4 +1,4 @@
-# 0.4.0 / Unreleased
+# 0.4.0 / 2017-11-07
 
 * [FEATURE] - [Add location input to where&when](https://trello.com/c/wdLqH6qT/228-1-add-location-input-to-wherewhen)
 * [FEATURE] - [Create page titles for each step](https://trello.com/c/iZY1S1ZC/200-3-create-page-titles-for-each-step)
