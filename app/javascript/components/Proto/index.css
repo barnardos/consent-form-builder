@@ -1,0 +1,80 @@
+.root {
+  padding: 16px;
+}
+
+.step {
+  display: flex;
+}
+
+.step:not(:first-child) {
+  margin-top: 64px;
+  position: relative;
+}
+
+.step:not(:first-child)::before {
+  background: grey;
+  content: "";
+  height: 4px;
+  position: absolute;
+  top: -30px;
+  width: 100%;
+}
+
+.form {
+  flex: 1;
+}
+
+.input {
+  border: 1px solid black;
+  display: block;
+  font: 16px/30px sans-serif;
+  margin-top: 8px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.checkboxes {
+  margin-top: 8px;
+}
+
+.checkbox {
+  display: flex;
+}
+
+.checkbox-label {
+  font: 16px/24px sans-serif;
+  margin-left: 8px;
+  order: 2;
+}
+
+.checkbox-input {
+  height: 24px;
+  order: 1;
+}
+
+.previews {
+  flex: 1;
+  margin-left: 32px;
+  margin-top: -8px;
+}
+
+.preview {
+  background: whitesmoke;
+  font: 16px/24px sans-serif;
+  padding: 8px;
+}
+
+.preview:not(:first-child) {
+  margin-top: 8px;
+}
+
+.output {
+  background: moccasin;
+}
+
+.output:empty {
+  display: inline-block;
+  min-height: 16px;
+  min-width: 32px;
+  vertical-align: middle;
+}

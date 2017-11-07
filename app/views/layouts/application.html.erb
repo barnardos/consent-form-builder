@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]-->
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,47 +11,48 @@
   <title>
     <% if defined?(step) %>
       <%= title(@research_session, step) %>
-    <% else %>
-      <%= title(@research_session) %>
-  <% end %>
+        <% else %>
+          <%= title(@research_session) %>
+            <% end %>
   </title>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= stylesheet_link_tag 'print', media: 'print' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%= stylesheet_link_tag 'print', media: 'print' %>
 </head>
 
 <body>
-<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
-<div class="visually-hidden">
-  <a href="#content">Skip to main content</a>
-</div>
-
-<header role="banner" id="global-header">
-  <div id="global-header__logo">
-    <%= image_tag 'barnardos-logo.svg', alt: 'Barnardos logo' %>
+  <div class="visually-hidden">
+    <a href="#content">Skip to main content</a>
   </div>
-  <div id="global-header__menu"></div>
-</header>
 
-<div class="global-header-bar">
-  <%= render 'shared/share' if @research_session&.name %>
-</div>
+  <header role="banner" id="global-header">
+    <div id="global-header__logo">
+      <%= image_tag 'barnardos-logo.svg', alt: 'Barnardos logo' %>
+    </div>
+    <div id="global-header__menu"></div>
+  </header>
 
-<main id="main" role="main">
-  <%= yield :progress %>
-  <div id="content">
-    <%= yield %>
+  <div class="global-header-bar">
+    <%= render 'shared/share' if @research_session&.name %>
   </div>
-</main>
 
-<%= javascript_pack_tag 'application' %>
+  <main id="main" role="main">
+    <%= yield :progress %>
+      <div id="content">
+        <%= yield %>
+      </div>
+  </main>
 
-<footer id="global-footer__release">
-  <label>Release <%= link_to_current_sha %></label>
-</footer>
+  <%= javascript_pack_tag 'application' %>
+
+    <footer id="global-footer__release">
+      <label>Release
+        <%= link_to_current_sha %>
+      </label>
+    </footer>
 
 </body>
+
 </html>
-
-

@@ -1,0 +1,11 @@
+.fieldset {
+  border: none;
+}
+
+.fieldset:not(:first-child) {
+  margin-top: 16px;
+}
+
+.label {
+  font: 16px/24px sans-serif;
+}
