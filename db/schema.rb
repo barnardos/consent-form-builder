@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20171109124132) do
     t.string "slug"
     t.boolean "where_when_enabled", default: false
     t.boolean "expenses_enabled", default: false
+    t.string "researcher_job_title"
     t.index ["slug"], name: "index_research_sessions_on_slug", unique: true
     t.index ["status"], name: "index_research_sessions_on_status"
   end
