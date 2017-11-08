@@ -7,11 +7,15 @@ class ResearchSessionPresenter
     @able_to_consent = able_to_consent
   end
 
-  ResearchSession.attribute_names.each do |attribute|
-    delegate attribute, to: :research_session
+  def respond_to_missing?(method, *)
+    research_session.respond_to?(method)
   end
 
-  delegate :new_record?, :reached_step?, to: :research_session
+  def method_missing(*args, &block)
+    research_session.send(*args, &block)
+  rescue NoMethodError
+    super
+  end
 
   def able_to_consent?
     @able_to_consent
