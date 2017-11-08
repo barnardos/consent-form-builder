@@ -40,6 +40,7 @@ en:
     shared_duration: "How long will this information be held for?"
     shared_use: "How will the data be used?"
     shared_with: "Who will the data be shared with?"
+    researcher_job_title: 'Job title (optional)'
     researcher_name: 'Full name'
     researcher_other_name: 'Full name'
     researcher_phone: 'Telephone number (optional)'
