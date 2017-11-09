@@ -112,14 +112,13 @@
     <p><%= edit_link_for(:shared_use) %></p>
 
     <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
-
-    <% if @research_session.location.present? %>
-      <p>The session will be held at <%= edit_link_for(:location) %>.</p>
-    <% end %>
   </section>
   <% if @research_session.when_text.present? or @research_session.duration.present? %>
     <section>
       <h3 class="subtitle-small" id="private">When is the session and what should <%= @research_session.able_to_consent? ? 'I' : 'my child/the child in my care' %> bring?</h3>
+        <% if @research_session.location.present? %>
+          <p>The session will be held at <%= edit_link_for(:location) %>.</p>
+        <% end %>
         <p>
           <% if @research_session.when_text %>
             The session is on
