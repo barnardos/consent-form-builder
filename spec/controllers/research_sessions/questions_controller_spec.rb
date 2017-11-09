@@ -130,7 +130,7 @@ RSpec.describe ResearchSessions::QuestionsController, type: :controller do
           research_session_id: existing_session.slug,
           id: 'incentives',
           research_session: {
-            incentive: true,
+            incentives_enabled: true,
             payment_type: 'cash',
             incentive_value: 10.00
           }
@@ -138,7 +138,7 @@ RSpec.describe ResearchSessions::QuestionsController, type: :controller do
       end
 
       it 'updates the research session' do
-        expect(research_session.incentive).to be true
+        expect(research_session.incentives_enabled).to be true
         expect(research_session.payment_type).to eql('cash')
         expect(research_session.incentive_value).to eql(10.00)
       end

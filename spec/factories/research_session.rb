@@ -59,7 +59,7 @@ FactoryBot.define do
     trait :step_incentives do
       step_expenses
       status :incentives
-      incentive true
+      incentives_enabled true
       payment_type :cash
       incentive_value '40.00'
     end

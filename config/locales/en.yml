@@ -59,7 +59,7 @@ en:
     other_expenses_limit: "If you allow the participant to expense other items, what is the maximum allowed?"
     receipts_required: "Must the participant provide a receipt for any expenses claimed?"
     food_provided: "Will you provide food or refreshments at the session? (optional)"
-    incentive: "Will an incentive be provided?"
+    incentives_enabled: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
 
   pages:

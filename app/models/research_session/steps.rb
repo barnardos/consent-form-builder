@@ -15,7 +15,7 @@ class ResearchSession
                       :food_provided],
       expenses:      [:travel_expenses_limit, :food_expenses_limit, :other_expenses_limit,
                       :receipts_required],
-      incentives:    [:incentive, :payment_type, :incentive_value]
+      incentives:    [:incentives_enabled, :payment_type, :incentive_value]
     }]
 
     def reached_step?(session, step)

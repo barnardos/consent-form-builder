@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101163623) do
+ActiveRecord::Schema.define(version: 20171109124132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171101163623) do
     t.string "researcher_phone"
     t.string "researcher_email"
     t.string "researcher_other_name"
-    t.boolean "incentive", default: false
+    t.boolean "incentives_enabled", default: false
     t.string "payment_type"
     t.decimal "incentive_value"
     t.datetime "created_at", null: false
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20171101163623) do
     t.string "when_text"
     t.string "name"
     t.string "slug"
+    t.boolean "where_when_enabled", default: false
+    t.boolean "expenses_enabled", default: false
     t.index ["slug"], name: "index_research_sessions_on_slug", unique: true
     t.index ["status"], name: "index_research_sessions_on_status"
   end

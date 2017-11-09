@@ -151,7 +151,9 @@ RSpec.describe ResearchSessionPresenter do
     subject(:text) { presenter.incentive_text }
 
     context 'no incentive is given' do
-      let(:research_session) { build_stubbed :research_session, :step_incentives, incentive: false }
+      let(:research_session) do
+        build_stubbed :research_session, :step_incentives, incentives_enabled: false
+      end
       it { is_expected.to be_empty }
     end
 

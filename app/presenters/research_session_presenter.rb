@@ -61,7 +61,7 @@ class ResearchSessionPresenter
   end
 
   def incentive_text
-    return '' unless research_session.incentive
+    return '' unless research_session.incentives_enabled
 
     formatted_value = number_to_currency(research_session.incentive_value, locale: 'en')
 
