@@ -113,7 +113,7 @@
 
     <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
   </section>
-  <% if @research_session.when_text.present? or @research_session.duration.present? %>
+  <% if @research_session.where_when_enabled %>
     <section>
       <h3 class="subtitle-small" id="private">When is the session and what should <%= @research_session.able_to_consent? ? 'I' : 'my child/the child in my care' %> bring?</h3>
         <% if @research_session.location.present? %>
@@ -137,7 +137,7 @@
       <% end %>
     </section>
   <% end %>
-  <% if @research_session.any_expenses? %>
+  <% if @research_session.expenses_enabled %>
     <section>
       <h3 class="subtitle-small">Expenses</h3>
       <p>

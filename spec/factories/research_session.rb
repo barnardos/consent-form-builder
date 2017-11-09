@@ -41,6 +41,7 @@ FactoryBot.define do
     trait :step_where_when do
       step_storing
       status :where_when
+      where_when_enabled true
       when_text '1st Sep 2017'
       duration '1 week'
       participant_equipment 'A coat'
@@ -49,6 +50,7 @@ FactoryBot.define do
     trait :step_expenses do
       step_where_when
       status :expenses
+      expenses_enabled true
       travel_expenses_limit '10.00'
       food_expenses_limit '20.00'
       other_expenses_limit '1.00'

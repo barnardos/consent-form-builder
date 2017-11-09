@@ -72,6 +72,8 @@ module StepCompletions
   end
 
   def complete_where_when_step
+    choose 'Yes'
+
     @held_on = '27th September at 2pm'
     fill_in 'The session is held on (optional)', with: @held_on
     @session_duration = '5 minutes'
@@ -84,6 +86,8 @@ module StepCompletions
   end
 
   def complete_expenses_step
+    choose 'Yes', name: 'research_session[expenses_enabled]'
+
     fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
     fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
     fill_in 'If you allow the participant to expense other items, '\
