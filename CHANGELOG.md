@@ -1,3 +1,7 @@
+# 0.5.0 / Unreleased
+
+* [FEATURE] - [Add yes/no radiobuttons on top of Where&When, Expenses and Incentives](https://trello.com/c/Ncnz0D6S/229-2-add-yes-no-radiobuttons-on-top-of-wherewhen-expenses-and-incentives)
+
 # 0.4.0 / 2017-11-07
 
 * [FEATURE] - [Add location input to where&when](https://trello.com/c/wdLqH6qT/228-1-add-location-input-to-wherewhen)
