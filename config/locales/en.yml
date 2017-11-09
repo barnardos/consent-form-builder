@@ -79,6 +79,11 @@ en:
       research_session:
         topic: "e.g. how young people think of consent and research"
         purpose: "e.g. talk to them in a way that they understand."
+    legend:
+      research_session:
+        expenses_enabled: "Will expenses be allowed?"
+        incentives_enabled: "Will an incentive be provided?"
+        where_when_enabled: "Is time and location specified?"
 
 
   errors:

@@ -4,6 +4,13 @@
   <h1 class="subtitle-large">Expenses</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
+    <%= form.radio_group_vertical :expenses_enabled,
+      { true => 'Yes', false => 'No' },
+      { autofocus_first_item: true },
+      legend: t('helpers.legend.research_session.expenses_enabled')
+    %>
+
+    <div class="js-ConditionalSubfield" data-controlled-by="research_session[expenses_enabled]" data-control-value="true">
       <%= form.labelled_text_field :travel_expenses_limit,
             text_options: { placeholder: '0.00', autofocus: true }
       %>
@@ -13,14 +20,15 @@
       %>
 
       <%= form.labelled_text_field :other_expenses_limit,
-            text_options: { placeholder: '0.00' }
+        text_options: { placeholder: '0.00' }
       %>
 
       <%= form.radio_group_vertical :receipts_required,
             { true => 'Yes', false => 'No' },
             legend: 'Must the participant provide a receipt for any expenses claimed?'
       %>
+    </div>
 
-      <%= render 'button_bar' %>
+    <%= render 'button_bar' %>
   <% end %>
 </div>
