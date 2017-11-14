@@ -12,6 +12,7 @@ module StepCompletions
 
   def complete_researcher_step
     within '[name="first-researcher"]' do
+      fill_in 'Job title', with: 'Director of Research'
       fill_in 'Full name', with: 'Rachel Researcher'
       fill_in 'Telephone number', with: '012345678'
       fill_in 'Email', with: 'rachel@researcher.com'

@@ -4,6 +4,7 @@
 #
 module PreviewChecker
   def check_researcher
+    expect(page.body).to include('Director of Research')
     expect(page.body).to include('Rachel Researcher')
     expect(page.body).to include('012345678')
     expect(page.body).to include('rachel@researcher.com')
