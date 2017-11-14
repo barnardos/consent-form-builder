@@ -1,0 +1,32 @@
+.ResearcherPreviews {
+  position: relative;
+}
+
+.previews {
+  position: fixed;
+  right: 0;
+  top: 240px;
+  width: 25%;
+}
+
+.preview {
+  background: whitesmoke;
+  font: 16px/24px;
+  padding: 8px 8px 8px 16px;
+}
+
+.preview:not(:first-child) {
+  margin-top: 8px;
+}
+
+.output {
+  background: moccasin;
+}
+
+.output:empty {
+  display: inline-block;
+  min-height: 16px;
+  min-width: 32px;
+  vertical-align: middle;
+}
+

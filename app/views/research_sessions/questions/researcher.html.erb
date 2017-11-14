@@ -1,37 +1,48 @@
 <%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="subtitle-large">Researcher</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+  <div class="main-content">
+    <%= render 'shared/error_summary' %>
+      <h1 class="subtitle-large">Researcher</h1>
+      <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-    <fieldset class="fieldset" name="first-researcher">
-      <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
-      <p>
-        Who is the person who is leading the research or participation session? Please note:
-        participants will be informed that they can get further information from this person,
-        and their contact details will be included on the information sheet.
-      </p>
+        <fieldset class="fieldset" name="first-researcher">
+          <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
+          <p>
+            Who is the person who is leading the research or participation session? Please note: participants will be informed that they
+            can get further information from this person, and their contact details will be included on the information sheet.
+          </p>
 
-      <%= form.labelled_text_field :researcher_job_title,
-        text_options: { autofocus: true } %>
-      <%= form.labelled_text_field :researcher_name %>
-      <%= form.labelled_text_field :researcher_phone %>
-      <%= form.labelled_text_field :researcher_email %>
-    </fieldset>
+          <%= previewed_on_page = { 'data-previewed-by' => 'ResearcherPreviews' } %>
+            <%= form.labelled_text_field :researcher_job_title,
+        text_options: { autofocus: true }.merge(previewed_on_page) %>
+              <%= form.labelled_text_field :researcher_name, text_options: previewed_on_page %>
+                <%= form.labelled_text_field :researcher_phone, text_options: previewed_on_page %>
+                  <%= form.labelled_text_field :researcher_email, text_options: previewed_on_page %>
+        </fieldset>
 
-    <fieldset class="fieldset" name="second-researcher">
-      <legend class="visually-hidden">Additional researcher</legend>
+        <fieldset class="fieldset" name="second-researcher">
+          <legend class="visually-hidden">Additional researcher</legend>
 
-      <%= form.radio_group_vertical \
+          <%= form.radio_group_vertical \
           :researcher_other,
           { true => 'Yes', false => 'No' },
           legend: 'Will the participants meet any other researchers / observers?' %>
 
-      <div class="js-ConditionalSubfield" data-controlled-by="research_session[researcher_other]" data-control-value="true">
-        <%= form.labelled_text_field :researcher_other_name %>
-      </div>
-    </fieldset>
+            <div class="js-ConditionalSubfield" data-controlled-by="research_session[researcher_other]" data-control-value="true">
+              <%= form.labelled_text_field :researcher_other_name,
+                                     text_options: previewed_on_page %>
+            </div>
+        </fieldset>
 
-    <%= render 'button_bar' %>
-  <% end %>
-</div>
+        <%=
+      react_component('ResearcherPreviews/index',
+        {
+          researcher_job_title: @research_session.researcher_job_title,
+          researcher_name: @research_session.researcher_name,
+          researcher_other_name: @research_session.researcher_other_name,
+          researcher_email: @research_session.researcher_email
+        }
+      )
+    %>
+          <%= render 'button_bar' %>
+            <% end %>
+  </div>
