@@ -3,18 +3,20 @@
   <%= render 'shared/error_summary' %>
   <h1 class="subtitle-large">Incentives</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= form.radio_group_vertical :incentive,
+      <%= form.radio_group_vertical :incentives_enabled,
           { true => 'Yes', false => 'No' },
           { autofocus_first_item: true },
-          legend: 'Will an incentive be provided?'
+          legend: t('helpers.legend.research_session.incentives_enabled')
       %>
 
-      <%= form.radio_group_vertical :payment_type,
-          PaymentType::NAME_VALUES,
-          legend: 'What form will the incentive take?'
-      %>
+      <div class="js-ConditionalSubfield" data-controlled-by="research_session[incentives_enabled]" data-control-value="true">
+        <%= form.radio_group_vertical :payment_type,
+            PaymentType::NAME_VALUES,
+            legend: 'What form will the incentive take?'
+        %>
 
-      <%= form.labelled_text_field :incentive_value %>
+        <%= form.labelled_text_field :incentive_value %>
+      </div>
 
       <%= render 'button_bar' %>
   <% end %>

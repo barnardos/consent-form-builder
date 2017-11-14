@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe ResearchSessionPresenter do
   include RSpecHtmlMatchers
 
-  let(:research_session) { spy('ResearchSession') }
+  let(:topic) { 'from the research session' }
+  let(:research_session) { ResearchSession.new topic: topic }
   let(:able_to_consent) { false }
 
   subject(:presenter) do
@@ -17,12 +18,20 @@ RSpec.describe ResearchSessionPresenter do
     expect(presenter.research_session).to eql(research_session)
   end
 
-  [:topic, :purpose, :researcher_name, :researcher_other_name,
-   :researcher_email, :researcher_phone].each do |method|
-    it "delegates #{method} to the research_session" do
-      presenter.send method
-      expect(research_session).to have_received(method)
-    end
+  it 'delegates to the research session' do
+    expect(presenter.topic).to eql(topic)
+  end
+
+  it 'raises errors for attributes found neither on the presenter or model' do
+    expect { presenter.i_dont_exist }.to raise_error(NoMethodError)
+  end
+
+  it 'does not respond to non-existent messages' do
+    expect(presenter.respond_to?(:i_dont_exist)).to eql(false)
+  end
+
+  it 'responds to messages found only on the model' do
+    expect(presenter.respond_to?(:persisted?)).to eql(true)
   end
 
   describe '#un/able_to_consent?' do
@@ -142,7 +151,9 @@ RSpec.describe ResearchSessionPresenter do
     subject(:text) { presenter.incentive_text }
 
     context 'no incentive is given' do
-      let(:research_session) { build_stubbed :research_session, :step_incentives, incentive: false }
+      let(:research_session) do
+        build_stubbed :research_session, :step_incentives, incentives_enabled: false
+      end
       it { is_expected.to be_empty }
     end
 

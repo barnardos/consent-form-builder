@@ -209,7 +209,7 @@ RSpec.describe ResearchSession, type: :model do
         let(:step) { :incentives }
 
         context 'no incentives are given, and no-one cares' do
-          let(:set_attrs) { { incentive: nil } }
+          let(:set_attrs) { { incentives_enabled: nil } }
 
           it { is_expected.to be_valid }
         end

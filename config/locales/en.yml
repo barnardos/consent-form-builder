@@ -59,7 +59,7 @@ en:
     other_expenses_limit: "If you allow the participant to expense other items, what is the maximum allowed?"
     receipts_required: "Must the participant provide a receipt for any expenses claimed?"
     food_provided: "Will you provide food or refreshments at the session? (optional)"
-    incentive: "Will an incentive be provided?"
+    incentives_enabled: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
 
   pages:
@@ -79,6 +79,11 @@ en:
       research_session:
         topic: "e.g. how young people think of consent and research"
         purpose: "e.g. talk to them in a way that they understand."
+    legend:
+      research_session:
+        expenses_enabled: "Will expenses be allowed?"
+        incentives_enabled: "Will an incentive be provided?"
+        where_when_enabled: "Is time and location specified?"
 
 
   errors:
