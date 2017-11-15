@@ -44,9 +44,16 @@ class ResearchSession < ApplicationRecord
   validates :shared_use, presence: true,
             if: -> (session) { session.reached_step?(:storing) }
 
+  validates :travel_expenses_limit, numericality: true,
+            if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
+  validates :food_expenses_limit, numericality: true,
+            if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
+  validates :other_expenses_limit, numericality: true,
+            if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
+
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
             if: -> (session) { session.incentives_enabled && session.reached_step?(:incentives) }
-  validates :incentive_value, presence: true,
+  validates :incentive_value, presence: true, numericality: true,
             if: -> (session) { session.incentives_enabled && session.reached_step?(:incentives) }
 
   def reached_step?(step)
