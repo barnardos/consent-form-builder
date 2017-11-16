@@ -111,7 +111,7 @@ en:
       internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
       external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
 
-  # ugh
+  # this should lose all reference to "report" and be merged into preview
   report:
     able_to_consent:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'
