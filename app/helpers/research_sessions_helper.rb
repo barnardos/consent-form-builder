@@ -21,6 +21,10 @@ module ResearchSessionsHelper
     end
   end
 
+  def shared_with_lookup(shared_with)
+    I18n.t("preview.shared_with.#{shared_with}", person: you_or_your_child)
+  end
+
   def you_or_your_child
     @research_session.able_to_consent? ? 'you' : 'your child/the child in your care'
   end
