@@ -11,7 +11,15 @@
         legend: 'Who will the data be shared with?'
     %>
 
-    <%= form.labelled_text_field :shared_duration %>
+    <%= form.labelled_text_field \
+        :shared_duration,
+        label_options: {
+          hint: t('helpers.hint.research_session.shared_duration')
+        },
+        text_options: {
+          placeholder: t('helpers.placeholder.research_session.shared_duration'),
+        }
+    %>
 
     <%= render 'button_bar' %>
   <% end %>
