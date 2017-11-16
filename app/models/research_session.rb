@@ -56,6 +56,10 @@ class ResearchSession < ApplicationRecord
   validates :incentive_value, presence: true, numericality: true,
             if: -> (session) { session.incentives_enabled && session.reached_step?(:incentives) }
 
+  def previewable?
+    status == Steps.instance.last.to_s
+  end
+
   def reached_step?(step)
     Steps.instance.reached_step?(self, step)
   end

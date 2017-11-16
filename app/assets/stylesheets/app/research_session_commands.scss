@@ -1,0 +1,15 @@
+.research-session-commands {
+  display: flex;
+  justify-content: flex-end;
+  max-width: $max-container-width;
+  margin: 0 auto;
+  padding: 0 $gutter;
+}
+
+.research-session-commands__item {
+  margin: 8px 0;
+}
+
+.research-session-commands__item:not(:first-child) {
+  margin-left: $gutter;
+}

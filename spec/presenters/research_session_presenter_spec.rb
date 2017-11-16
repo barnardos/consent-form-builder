@@ -4,7 +4,7 @@ RSpec.describe ResearchSessionPresenter do
   include RSpecHtmlMatchers
 
   let(:topic) { 'from the research session' }
-  let(:research_session) { ResearchSession.new topic: topic }
+  let(:research_session) { ResearchSession.new topic: topic, slug: 'my-session' }
   let(:able_to_consent) { false }
 
   subject(:presenter) do
@@ -32,6 +32,10 @@ RSpec.describe ResearchSessionPresenter do
 
   it 'responds to messages found only on the model' do
     expect(presenter.respond_to?(:persisted?)).to eql(true)
+  end
+
+  it 'delegates to_param despite that somehow existing on the base presenter' do
+    expect(presenter.to_param).to eql(research_session.to_param)
   end
 
   describe '#un/able_to_consent?' do

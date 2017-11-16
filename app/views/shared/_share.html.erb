@@ -11,9 +11,12 @@
         id="share-input"
         class="share__input"
         value="<%= request.original_url %>"
-        readonly />
+        readonly/>
 
-      <button class="button button--no-margin button--copy js-copy-url-button" data-clipboard-target="#share-input">Copy</button>
+      <button class="button button--no-margin button--copy button--flush js-copy-url-button"
+              data-clipboard-target="#share-input">
+        Copy
+      </button>
     </div>
 
     <p>

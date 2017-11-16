@@ -3,10 +3,6 @@ $share-box-shadow-colour: rgba(29, 29, 27, .5);
 .share {
   position: relative;
   z-index: 2;
-  display: flex;
-  padding: 8px $gutter;
-  max-width: $max-container-width;
-  margin: 0 auto;
 }
 
 .share__button {
@@ -18,6 +14,7 @@ $share-box-shadow-colour: rgba(29, 29, 27, .5);
   box-shadow: 1px 1px 8px 2px $share-box-shadow-colour;
   padding: $gutter;
   max-width: $max-container-width;
+  min-width: 280px;
   display: none;
   position: absolute;
   top: calc(100% + 2px);

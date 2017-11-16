@@ -31,9 +31,28 @@
   <div id="global-header__menu"></div>
 </header>
 
-<div class="global-header-bar">
-  <%= render 'shared/share' if @research_session&.name %>
-</div>
+<nav class="global-header-bar">
+  <ul class="research-session-commands">
+    <% unless already_creating_session? %>
+      <li class="research-session-commands__item">
+        <%=
+          link_to 'New', new_research_session_path,
+                  class: 'button button--add button--small button--green button--no-margin'
+        %>
+      </li>
+    <% end %>
+    <% if @research_session&.previewable?  %>
+      <li class="research-session-commands__item">
+        <%= create_a_copy_link(@research_session) %>
+      </li>
+    <% end %>
+    <% if @research_session&.name  %>
+      <li class="research-session-commands__item">
+        <%= render 'shared/share' %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
 
 <main id="main" role="main">
   <%= yield :progress %>

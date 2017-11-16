@@ -33,6 +33,10 @@ class ResearchSession
       PARAMS.keys.first
     end
 
+    def last
+      PARAMS.keys.last
+    end
+
     ##
     # Returns a hash of attribute names to step names in the wizard
     def attr_to_step(attr)

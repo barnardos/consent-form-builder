@@ -34,6 +34,7 @@ en:
     title: 'Consent Form Builder'
     create_new_form: 'Create a new form'
     preview_step_name: 'Preview & print'
+    create_a_copy: "Create a copy"
 
   research_session_attr_labels: &attr_labels
     name: 'Please name your research session'

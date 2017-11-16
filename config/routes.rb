@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :research_sessions, only: [:new, :create], path: 'research-sessions' do
     resources :questions, only: [:show, :update], controller: 'research_sessions/questions'
     get :preview
+    post :create_a_copy
   end
 
   get '/gallery/', to: 'gallery#index'

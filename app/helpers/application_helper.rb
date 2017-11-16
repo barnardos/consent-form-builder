@@ -1,6 +1,18 @@
 module ApplicationHelper
   COMMIT_STEM = 'https://github.com/barnardos/consent-form-builder-rails/commit/'.freeze
 
+  def already_creating_session?
+    current_page?(new_research_session_path) || current_page?(root_path)
+  end
+
+  def create_a_copy_link(research_session)
+    link_to(
+      t('application.create_a_copy'),
+      new_research_session_path(from_existing: research_session.slug),
+      class: 'button button--copy button--small button--green button--no-margin'
+    )
+  end
+
   def link_to_current_sha(sha_getter = -> { `git rev-parse HEAD` })
     sha = ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call
     return 'unavailable' if sha.nil?

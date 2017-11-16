@@ -275,4 +275,18 @@ RSpec.describe ResearchSession, type: :model do
       end
     end
   end
+
+  describe 'previewable?' do
+    subject { session.previewable? }
+
+    context 'we are before incentives' do
+      let(:session) { build_stubbed :research_session, :step_researcher }
+      it { is_expected.to be false }
+    end
+
+    context 'we are at incentives' do
+      let(:session) { build_stubbed :research_session, :step_incentives }
+      it { is_expected.to be true }
+    end
+  end
 end
