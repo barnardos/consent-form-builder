@@ -41,9 +41,6 @@ class ResearchSession < ApplicationRecord
   validates :shared_duration, presence: true,
             if: -> (session) { session.reached_step?(:storing) }
 
-  validates :shared_use, presence: true,
-            if: -> (session) { session.reached_step?(:storing) }
-
   validates :travel_expenses_limit, numericality: true,
             if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
   validates :food_expenses_limit, numericality: true,
