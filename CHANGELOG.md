@@ -2,6 +2,7 @@
 
 * [FEATURE] - [Add yes/no radiobuttons on top of Where&When, Expenses and Incentives](https://trello.com/c/Ncnz0D6S/229-2-add-yes-no-radiobuttons-on-top-of-wherewhen-expenses-and-incentives)
 * [FEATURE] - [Researcher page: we should have job title of the lead researcher as a field](https://trello.com/c/HvKi9NwT/169-2-researcher-page-we-should-have-job-title-of-the-lead-researcher-as-a-field)
+* [BUG] - [When a sterling sign is added in, the preview generates 0.00](https://trello.com/c/IHdoFxEl/246-3-bug-when-a-sterling-sign-is-added-in-the-preview-generates-000)
 
 # 0.4.0 / 2017-11-07
 

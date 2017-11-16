@@ -42,6 +42,15 @@ module ResearchSessions
       params.require(:research_session).permit(ResearchSession::Steps::PARAMS[step]).tap do |p|
         p['methodologies']&.reject!(&:blank?)
         p['recording_methods']&.reject!(&:blank?)
+
+        %w[
+          travel_expenses_limit
+          food_expenses_limit
+          other_expenses_limit
+          incentive_value
+        ].each do |attr|
+          p[attr] = p[attr].delete('£') if p[attr]
+        end
       end
     end
   end

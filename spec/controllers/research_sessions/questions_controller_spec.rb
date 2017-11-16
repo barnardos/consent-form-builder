@@ -122,7 +122,30 @@ RSpec.describe ResearchSessions::QuestionsController, type: :controller do
       end
     end
 
-    context 'the last step' do
+    context 'numerical values with currency symbols are given' do
+      let(:existing_step) { :where_when }
+
+      let(:params) do
+        {
+          research_session_id: existing_session.slug,
+          id: 'expenses',
+          research_session: {
+            expenses_enabled: true,
+            travel_expenses_limit: '£10.00',
+            food_expenses_limit: '£10.00',
+            other_expenses_limit: '£10.00'
+          }
+        }
+      end
+
+      it 'saves the numerical values correctly' do
+        expect(research_session.travel_expenses_limit).to eql(10.00)
+        expect(research_session.food_expenses_limit).to eql(10.00)
+        expect(research_session.other_expenses_limit).to eql(10.00)
+      end
+    end
+
+    context 'the last step, incentives' do
       let(:existing_step) { :storing }
 
       let(:params) do
@@ -132,7 +155,7 @@ RSpec.describe ResearchSessions::QuestionsController, type: :controller do
           research_session: {
             incentives_enabled: true,
             payment_type: 'cash',
-            incentive_value: 10.00
+            incentive_value: '£10.00'
           }
         }
       end

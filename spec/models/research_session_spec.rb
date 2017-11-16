@@ -205,6 +205,28 @@ RSpec.describe ResearchSession, type: :model do
         end
       end
 
+      describe 'validating the expenses step' do
+        let(:step) { :expenses }
+
+        context 'expenses provided are not numerical' do
+          let(:set_attrs) do
+            {
+              expenses_enabled: true,
+              travel_expenses_limit: 'roughly £10',
+              food_expenses_limit: 'roughly £10',
+              other_expenses_limit: 'roughly £10'
+            }
+          end
+
+          it { is_expected.not_to be_valid }
+          it 'has error messages' do
+            expect(session.errors[:travel_expenses_limit].first).to eql('is not a number')
+            expect(session.errors[:food_expenses_limit].first).to eql('is not a number')
+            expect(session.errors[:other_expenses_limit].first).to eql('is not a number')
+          end
+        end
+      end
+
       describe 'validating the incentives step' do
         let(:step) { :incentives }
 
@@ -231,13 +253,22 @@ RSpec.describe ResearchSession, type: :model do
 
               it { is_expected.not_to be_valid }
               it 'has an error on incentive_value' do
-                expect(session.errors[:incentive_value].length).to eql(1)
+                expect(session.errors[:incentive_value].length).to eql(2)
                 expect(session.errors[:incentive_value].first).to match(/can't be blank/)
               end
             end
 
             context 'and an incentive_value has been provided' do
               it { is_expected.to be_valid }
+            end
+
+            context 'an invalid incentive_value has been provided' do
+              let(:set_attrs) { { incentive_value: 'roughly £10' } }
+
+              it { is_expected.not_to be_valid }
+              it 'has an error about numericality' do
+                expect(session.errors[:incentive_value].first).to eql('is not a number')
+              end
             end
           end
         end
