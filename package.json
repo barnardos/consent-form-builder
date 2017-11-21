@@ -59,6 +59,9 @@
     "standard": "^10.0.2",
     "webpack-dev-server": "^2.5.0"
   },
+  "jest": {
+    "testPathIgnorePatterns": ["/node_modules/", "/config/webpack/test.js"]
+  },
   "scripts": {
     "lint": "npm run lint:styles && npm run lint:js",
     "lint:js": "eslint ./app ./config ./spec *.js",
