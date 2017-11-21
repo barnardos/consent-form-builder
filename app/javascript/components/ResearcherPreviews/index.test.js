@@ -59,10 +59,16 @@ describe('ResearcherPreviews', () => {
       })
 
       it("renders the researcher's job title and name in a readable sentence", () => {
-        expect(researcherPreviews().text()).to.contain(`${props.researcher_name}, ${props.researcher_job_title}, is the researcher who will be leading the session.`)
+        expect(researcherPreviews().text()).to.contain(
+          `${props.researcher_name}, ${props.researcher_job_title}, ` +
+          `is the researcher who will be leading the session.`
+        )
       })
       it("renders the researcher's contact details in a readable sentence", () => {
-        expect(researcherPreviews().text()).to.contain(`${props.researcher_name} can be contacted by email at ${props.researcher_email} or by telephone on ${props.researcher_phone}`)
+        expect(researcherPreviews().text()).to.contain(
+          `${props.researcher_name} can be contacted by email at ${props.researcher_email} ` +
+          `or by telephone on ${props.researcher_phone}`
+        )
       })
     })
   })
