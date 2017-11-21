@@ -66,4 +66,38 @@ describe('ResearcherPreviews', () => {
       })
     })
   })
+
+  describe('values changing', () => {
+    describe('the researcher name changing', () => {
+      beforeEach(() => {
+        props = {
+          researcher_name: 'Rachel',
+          researcher_other_name: undefined
+        }
+      })
+
+      describe('receipt of an input change', () => {
+        // Simulate change from a field such as
+        // <input name="research_session[researcher_name]" data-previewed-by="ResearcherPreviews" />
+        // - usually triggered oninput, but that link is not tested here, we're just simulating the
+        //   resulting event
+
+        it('changes the researcher name', () => {
+          researcherPreviews().instance().handleInputChange({
+            target: { name: 'research_session[researcher_name]', value: 'Leanne' }
+          })
+
+          expect(researcherPreviews().find('output').first().text()).to.eql('Leanne')
+        })
+
+        it('changes the other researcher name', () => {
+          researcherPreviews().instance().handleInputChange({
+            target: { name: 'research_session[researcher_other_name]', value: 'Steve' }
+          })
+
+          expect(researcherPreviews().text()).to.include('Rachel\'s colleague, Steve')
+        })
+      })
+    })
+  })
 })
