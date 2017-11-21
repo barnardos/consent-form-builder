@@ -60,13 +60,15 @@
     "webpack-dev-server": "^2.5.0"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", "/config/webpack/test.js"]
+    "testPathIgnorePatterns": ["/node_modules/", "/config/webpack/test.js"],
+    "setupFiles": ["./app/javascript/support/requestAnimationFrameTestShim.js"]
   },
   "scripts": {
     "lint": "npm run lint:styles && npm run lint:js",
     "lint:js": "eslint ./app ./config ./spec *.js",
     "lint:styles": "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
     "test:unit": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts",
+    "test:unit:watch": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
     "test:jest": "jest app/javascript/components/**/*.js",
     "test:jest:watch": "jest --watch app/javascript/components/**/*.test.js"
   }
