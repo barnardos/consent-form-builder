@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109124132) do
+ActiveRecord::Schema.define(version: 20171116154338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20171109124132) do
     t.text "purpose"
     t.string "shared_with"
     t.string "shared_duration"
-    t.text "shared_use"
     t.string "duration"
     t.text "participant_equipment"
     t.decimal "travel_expenses_limit"
@@ -47,9 +46,9 @@ ActiveRecord::Schema.define(version: 20171109124132) do
     t.string "when_text"
     t.string "name"
     t.string "slug"
+    t.string "researcher_job_title"
     t.boolean "where_when_enabled", default: false
     t.boolean "expenses_enabled", default: false
-    t.string "researcher_job_title"
     t.index ["slug"], name: "index_research_sessions_on_slug", unique: true
     t.index ["status"], name: "index_research_sessions_on_status"
   end

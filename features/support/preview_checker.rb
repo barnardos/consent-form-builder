@@ -37,7 +37,9 @@ module PreviewChecker
 
   def check_storing
     expect(page).to have_tag('p', text: "The data will be kept for #{@shared_duration}.")
-    expect(page).to have_tag('p', text: @shared_usage)
+    expect(page).to have_content(
+      'Any research recordings will have names and personal details removed and replaced'
+    )
   end
 
   def check_where_when

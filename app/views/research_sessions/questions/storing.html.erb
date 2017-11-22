@@ -8,13 +8,17 @@
         :shared_with,
         SharedWith::NAME_VALUES,
         { autofocus_first_item: true },
-        legend: 'Who will the data be shared with?'
+        legend: t('helpers.legend.research_session.shared_with')
     %>
 
-    <%= form.labelled_text_field :shared_duration %>
-
-    <%= form.labelled_text_area \
-          :shared_use, text_options: { placeholder: 'The data will be used to...' }
+    <%= form.labelled_text_field \
+        :shared_duration,
+        label_options: {
+          hint: t('helpers.hint.research_session.shared_duration')
+        },
+        text_options: {
+          placeholder: t('helpers.placeholder.research_session.shared_duration'),
+        }
     %>
 
     <%= render 'button_bar' %>

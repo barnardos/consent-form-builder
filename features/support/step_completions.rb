@@ -63,12 +63,10 @@ module StepCompletions
   end
 
   def complete_storing_step
-    choose 'Just the team'
+    choose 'anonymised as we process it'
     @shared_duration = '1 year'
-    @shared_usage = 'The data will be used to create better outcomes for more children'
 
     fill_in 'How long will this information be held for?', with: @shared_duration
-    fill_in 'How will the data be used?', with: @shared_usage
     click_button 'Continue'
   end
 

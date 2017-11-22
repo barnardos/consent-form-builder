@@ -39,7 +39,6 @@ en:
   research_session_attr_labels: &attr_labels
     name: 'Please name your research session'
     shared_duration: "How long will this information be held for?"
-    shared_use: "How will the data be used?"
     shared_with: "Who will the data be shared with?"
     researcher_job_title: 'Job title (optional)'
     researcher_name: 'Full name'
@@ -81,11 +80,16 @@ en:
       research_session:
         topic: "e.g. how young people think of consent and research"
         purpose: "e.g. talk to them in a way that they understand."
+        shared_duration: "2 years"
     legend:
       research_session:
         expenses_enabled: "Will expenses be allowed?"
         incentives_enabled: "Will an incentive be provided?"
         where_when_enabled: "Is time and location specified?"
+        shared_with: "How will the information recorded in this session be stored and processed? Identifiable information will be:"
+    hint:
+      research_session:
+        shared_duration: "We recommend two years after the closure of the project"
 
 
   errors:
@@ -100,6 +104,14 @@ en:
         precision: 2
         format: '%u%n'
 
+  preview:
+    shared_with:
+      anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, %{person} will not be identifiable by the research recordings."
+      team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
+      internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
+      external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
+
+  # this should lose all reference to "report" and be merged into preview
   report:
     able_to_consent:
       interview: 'You will be interviewed and asked your views regarding the project being researched.'

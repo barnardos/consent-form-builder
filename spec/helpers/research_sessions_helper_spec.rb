@@ -87,4 +87,39 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       end
     end
   end
+
+  describe '#shared_with_lookup' do
+    let(:research_session) { double('ResearchSessionPresenter', able_to_consent?: false) }
+
+    before { assign(:research_session, research_session) }
+
+    subject { helper.shared_with_lookup(shared_with) }
+
+    context 'a static string' do
+      let(:shared_with) { :team }
+
+      it {
+        is_expected.to include(
+          'will be shared no more widely than the team undertaking the research'
+        )
+      }
+    end
+
+    context 'a consent-sensitive string' do
+      let(:shared_with) { :anonymised }
+
+      context 'not able_to_consent?' do
+        it {
+          is_expected.to include(
+            'Therefore, your child/the child in your care will not be identifiable'
+          )
+        }
+      end
+
+      context 'Actually able_to_consent?' do
+        let(:research_session) { double('ResearchSessionPresenter', able_to_consent?: true) }
+        it { is_expected.to include('Therefore, you will not be identifiable') }
+      end
+    end
+  end
 end
