@@ -25,6 +25,25 @@ class ResearcherPreviews extends React.Component {
     })
   }
 
+  editLinkFor (attr) {
+    const attrValue = this.state[attr]
+    if(this.state.finalPreview) {
+      return(
+        <output className="highlight">
+          <a className="editable" href={this.state.editLinks[attr]}>
+            {attrValue}
+          </a>
+        </output>
+      )
+    }
+
+    return(
+      <output className="highlight">
+        {attrValue}
+      </output>
+    )
+  }
+
   render () {
     const present = (attr) => { return this.state[attr] && this.state[attr].length > 0 }
 
@@ -45,7 +64,7 @@ class ResearcherPreviews extends React.Component {
     }
 
     if (present('researcher_phone')) {
-      researcherPhone = <span>or by telephone on <output className="highlight">{this.state.researcher_phone}</output></span>
+      researcherPhone = <span>or by telephone on {this.editLinkFor('researcher_phone')}</span>
     } else {
       researcherPhone = ''
     }
@@ -57,8 +76,8 @@ class ResearcherPreviews extends React.Component {
             Who is doing the research?
           </h3>
           <p>
-            <output className="highlight">{this.state.researcher_name}</output>{', '}
-            <output className="highlight">{this.state.researcher_job_title}</output>{', '}
+            {this.editLinkFor('researcher_name')}{', '}
+            {this.editLinkFor('researcher_job_title')}{', '}
             is the researcher who will be leading the session.&nbsp;
             {otherResearcher}
           </p>
@@ -68,10 +87,11 @@ class ResearcherPreviews extends React.Component {
             Where can I find out more?
           </h3>
           <p>
-            <output className="highlight">{this.state.researcher_name}</output> will be able to answer further questions about the
-            research. <output className="highlight">{this.state.researcher_name}</output> can be contacted by email at{' '}
-            <output className="highlight">{this.state.researcher_email}</output>{' '}
-            <output className="highlight">{researcherPhone}</output>
+            {this.editLinkFor('researcher_name')} will be able to answer further questions about the
+            research.
+            {this.editLinkFor('researcher_name')} can be contacted by email at{' '}
+            {this.editLinkFor('researcher_email')}{' '}
+            {researcherPhone}
           </p>
         </section>
       </div>

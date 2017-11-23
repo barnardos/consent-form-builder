@@ -5,6 +5,8 @@ import ResearcherPreviews from './index.js'
 import { mount, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import chai from 'chai'
+import chaiEnzyme from 'chai-enzyme'
+chai.use(chaiEnzyme())
 
 configure({ adapter: new Adapter() })
 const expect = chai.expect
@@ -26,7 +28,8 @@ describe('ResearcherPreviews', () => {
       researcher_job_title: undefined,
       researcher_name: undefined,
       researcher_email: undefined,
-      researcher_other_name: undefined
+      researcher_other_name: undefined,
+      edit_links: {}
     }
     mountedResearcherPreviews = undefined
   })
@@ -47,14 +50,19 @@ describe('ResearcherPreviews', () => {
       })
     })
 
-    describe('props are given', () => {
+    describe('props for the finalPreview are given', () => {
       beforeEach(() => {
         props = {
+          finalPreview: true,
           researcher_job_title: 'Director of Research',
           researcher_name: 'Rachael Researcher',
           researcher_email: 'rachael.researcher@barnardos.org.uk',
           researcher_phone: '07123456789',
-          researcher_other_name: 'Steve SecondaryResearcher'
+          researcher_other_name: 'Steve SecondaryResearcher',
+          editLinks: {
+            researcher_name: '/rails/path/to/researcher_name',
+            researcher_job_title: '/rails/path/to/researcher_job_title'
+          }
         }
       })
 
@@ -62,6 +70,18 @@ describe('ResearcherPreviews', () => {
         expect(researcherPreviews().text()).to.contain(
           `${props.researcher_name}, ${props.researcher_job_title}, ` +
           `is the researcher who will be leading the session.`
+        )
+      })
+      it("renders an editLink with the supplied rails route for the name", () => {
+        expect(researcherPreviews()).to.contain(
+          <output className="highlight">
+            <a className="editable" href="/rails/path/to/researcher_name">Rachael Researcher</a>
+          </output>
+        )
+      })
+      it("renders an editLink with the supplied rails route for the job title", () => {
+        expect(researcherPreviews()).to.contain(
+          <a className="editable" href="/rails/path/to/researcher_job_title">Director of Research</a>
         )
       })
       it("renders the researcher's contact details in a readable sentence", () => {
