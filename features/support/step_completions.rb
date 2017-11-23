@@ -1,5 +1,6 @@
 module StepCompletions
   BULLYING_NAME = ' Bullying in schools '.freeze
+  BULLYING_SLUG = BULLYING_NAME.strip.downcase.tr(' ', '-').freeze
 
   def create_new_form
     visit '/'
@@ -12,10 +13,15 @@ module StepCompletions
 
   def complete_researcher_step
     within '[name="first-researcher"]' do
-      fill_in 'Job title', with: 'Director of Research'
-      fill_in 'Full name', with: 'Rachel Researcher'
-      fill_in 'Telephone number', with: '012345678'
-      fill_in 'Email', with: 'rachel@researcher.com'
+      @job_title = 'Director of Research'
+      @researcher_name = 'Rachel Researcher'
+      @researcher_phone = '012345678'
+      @researcher_email = 'rachel@researcher.com'
+
+      fill_in 'Job title', with: @job_title
+      fill_in 'Full name', with: @researcher_name
+      fill_in 'Telephone number', with: @researcher_phone
+      fill_in 'Email', with: @researcher_email
     end
 
     within '[name="second-researcher"]' do

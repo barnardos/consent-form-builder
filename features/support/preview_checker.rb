@@ -4,10 +4,13 @@
 #
 module PreviewChecker
   def check_researcher
-    expect(page.body).to include('Director of Research')
-    expect(page.body).to include('Rachel Researcher')
-    expect(page.body).to include('012345678')
-    expect(page.body).to include('rachel@researcher.com')
+    researcher_path = research_session_question_path(
+      StepCompletions::BULLYING_SLUG, 'researcher', 'edit-preview' => 1
+    )
+    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @job_title)
+    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_name)
+    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_phone)
+    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_email)
   end
 
   def check_topic
