@@ -66,7 +66,8 @@
     ],
     "setupFiles": [
       "./app/javascript/support/requestAnimationFrameTestShim.js"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "./app/javascript/support/testSetup.js"
   },
   "scripts": {
     "lint": "npm run lint:styles && npm run lint:js",

@@ -1,15 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import ResearcherPreviews from './index.js'
-/* eslint-enable no-unused-vars */
-import { mount, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import chai from 'chai'
-import chaiEnzyme from 'chai-enzyme'
-chai.use(chaiEnzyme())
-
-configure({ adapter: new Adapter() })
-const expect = chai.expect
 
 describe('ResearcherPreviews', () => {
   let props
