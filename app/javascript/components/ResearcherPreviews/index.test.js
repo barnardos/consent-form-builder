@@ -62,14 +62,14 @@ describe('ResearcherPreviews', () => {
           `is the researcher who will be leading the session.`
         )
       })
-      it("renders an editLink with the supplied rails route for the name", () => {
+      it('renders an editLink with the supplied rails route for the name', () => {
         expect(researcherPreviews()).to.contain(
           <output className="highlight">
             <a className="editable" href="/rails/path/to/researcher_name">Rachael Researcher</a>
           </output>
         )
       })
-      it("renders an editLink with the supplied rails route for the job title", () => {
+      it('renders an editLink with the supplied rails route for the job title', () => {
         expect(researcherPreviews()).to.contain(
           <a className="editable" href="/rails/path/to/researcher_job_title">Director of Research</a>
         )

@@ -1,5 +1,6 @@
-import React from "react"
-import Output from "./Output"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Output from './Output'
 
 const WhereCanIFindOutMore = (props) => {
   let researcherPhone = ''
@@ -9,7 +10,7 @@ const WhereCanIFindOutMore = (props) => {
   }
 
   return (
-    <section className={ props.finalPreview ? "" : "preview" }>
+    <section className={ props.finalPreview ? '' : 'preview' }>
       <h3 className="subtitle-small" id="more">
         Where can I find out more?
       </h3>
@@ -22,5 +23,10 @@ const WhereCanIFindOutMore = (props) => {
       </p>
     </section>
   )
+}
+
+WhereCanIFindOutMore.propTypes = {
+  researcher_phone: PropTypes.string,
+  finalPreview: PropTypes.bool
 }
 export default WhereCanIFindOutMore

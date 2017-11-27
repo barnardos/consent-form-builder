@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Output = (props, attr) => {
   const attrValue = props[attr]
@@ -19,6 +20,11 @@ const Output = (props, attr) => {
       {linkOrValue}
     </output>
   )
+}
+
+Output.propTypes = {
+  finalPreview: PropTypes.bool,
+  editLinks: PropTypes.array
 }
 
 export default Output
