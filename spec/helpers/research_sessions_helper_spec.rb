@@ -3,6 +3,60 @@ require 'rails_helper'
 RSpec.describe ResearchSessionsHelper, :type => :helper do
   include RSpecHtmlMatchers
 
+  describe '#component_params' do
+    let(:session) { double('ResearchSession', session_attrs.merge(slug: 'my-session')) }
+
+    before do
+      assign(:research_session, session)
+    end
+
+    subject(:params) { helper.component_params(*attrs, final_preview: final_preview) }
+
+    context 'all params exist on the object' do
+      let(:session_attrs)  { { researcher_name: 'Joe', researcher_job_title: 'Janitor' } }
+      let(:attrs)          { session_attrs.keys }
+
+      context 'final_preview is false' do
+        let(:final_preview)  { false }
+
+        it 'has no editLinks' do
+          expect(params[:editLinks]).to be_empty
+        end
+
+        it 'has finalPreview as provided' do
+          expect(params[:finalPreview]).to eql(false)
+        end
+
+        it 'has the values for each' do
+          expect(params[:researcher_name]).to eql(session.researcher_name)
+          expect(params[:researcher_job_title]).to eql(session.researcher_job_title)
+        end
+      end
+
+      context 'final_preview is true' do
+        let(:final_preview)  { true }
+
+        it 'makes rails-routed editLinks for each' do
+          expect(params[:editLinks]).to eql(
+            researcher_name:
+              '/research-sessions/my-session/questions/researcher?edit-preview=1',
+            researcher_job_title:
+              '/research-sessions/my-session/questions/researcher?edit-preview=1'
+          )
+        end
+
+        it 'has finalPreview as provided' do
+          expect(params[:finalPreview]).to eql(true)
+        end
+
+        it 'has the values for each' do
+          expect(params[:researcher_name]).to eql(session.researcher_name)
+          expect(params[:researcher_job_title]).to eql(session.researcher_job_title)
+        end
+      end
+    end
+  end
+
   describe '#edit_link_for' do
     let(:session) { double('ResearchSession') }
     let(:block) { nil }

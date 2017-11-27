@@ -36,13 +36,14 @@
       </fieldset>
 
       <%=
-        react_component('ResearcherPreviews/index',
-            {
-                researcher_job_title: @research_session.researcher_job_title,
-                researcher_name: @research_session.researcher_name,
-                researcher_other_name: @research_session.researcher_other_name,
-                researcher_email: @research_session.researcher_email
-            }
+        react_component(
+          'ResearcherPreviews/index',
+          {
+            researcher_job_title: @research_session.researcher_job_title,
+            researcher_name: @research_session.researcher_name,
+            researcher_other_name: @research_session.researcher_other_name,
+            researcher_email: @research_session.researcher_email
+          }
         )
       %>
       <%= render 'button_bar' %>
