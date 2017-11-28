@@ -1,3 +1,7 @@
+# 0.6.0 / Unreleased
+
+* [FEATURE] - [Live preview: Researcher](https://trello.com/c/T2MeDlYY/255-13-live-preview-researcher)
+
 # 0.5.0 / 2017-11-16
 
 * [FEATURE] - [Add yes/no radiobuttons on top of Where&When, Expenses and Incentives](https://trello.com/c/Ncnz0D6S/229-2-add-yes-no-radiobuttons-on-top-of-wherewhen-expenses-and-incentives)
