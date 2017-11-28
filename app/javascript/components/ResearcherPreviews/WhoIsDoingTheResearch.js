@@ -10,7 +10,7 @@ const WhoIsDoingTheResearch = props => {
   }
 
   return (
-    <section className={ props.finalPreview ? '' : 'preview' }>
+    <section className={ props.finalPreview ? '' : 'reactive-preview__section' }>
       <h3 className="subtitle-small" id="who">
         Who is doing the research?
       </h3>

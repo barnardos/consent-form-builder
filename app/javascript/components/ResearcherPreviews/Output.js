@@ -16,7 +16,7 @@ const Output = (props, attr) => {
   }
 
   return (
-    <output className="highlight">
+    <output className="reactive-preview__highlight">
       {linkOrValue}
     </output>
   )

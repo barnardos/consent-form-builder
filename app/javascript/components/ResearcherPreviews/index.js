@@ -29,7 +29,7 @@ class ResearcherPreviews extends React.Component {
 
   render () {
     return (
-      <div className="previews">
+      <div>
         <WhoIsDoingTheResearch {...this.state} />
         <WhereCanIFindOutMore {...this.state} />
       </div>

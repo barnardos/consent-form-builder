@@ -13,12 +13,30 @@
           sheet.
         </p>
 
-        <% previewed_on_page = { 'data-previewed-by' => 'ResearcherPreviews' } %>
-        <%= form.labelled_text_field :researcher_job_title,
-            text_options: { autofocus: true }.merge(previewed_on_page) %>
-        <%= form.labelled_text_field :researcher_name, text_options: previewed_on_page %>
-        <%= form.labelled_text_field :researcher_phone, text_options: previewed_on_page %>
-        <%= form.labelled_text_field :researcher_email, text_options: previewed_on_page %>
+        <div class="reactive-container">
+          <div class="reactive-container__form">
+            <% previewed_on_page = { 'data-previewed-by' => 'ResearcherPreviews' } %>
+            <%= form.labelled_text_field :researcher_job_title,
+                text_options: { autofocus: true }.merge(previewed_on_page) %>
+            <%= form.labelled_text_field :researcher_name, text_options: previewed_on_page %>
+            <%= form.labelled_text_field :researcher_phone, text_options: previewed_on_page %>
+            <%= form.labelled_text_field :researcher_email, text_options: previewed_on_page %>
+          </div>
+          <div class="reactive-container__preview">
+            <%=
+              react_component(
+                'ResearcherPreviews/index',
+                {
+                  researcher_job_title: @research_session.researcher_job_title,
+                  researcher_name: @research_session.researcher_name,
+                  researcher_other_name: @research_session.researcher_other_name,
+                  researcher_email: @research_session.researcher_email
+                }
+              )
+            %>
+          </div>
+        </div>
+
       </fieldset>
 
       <fieldset class="fieldset" name="second-researcher">
@@ -35,17 +53,6 @@
         </div>
       </fieldset>
 
-      <%=
-        react_component(
-          'ResearcherPreviews/index',
-          {
-            researcher_job_title: @research_session.researcher_job_title,
-            researcher_name: @research_session.researcher_name,
-            researcher_other_name: @research_session.researcher_other_name,
-            researcher_email: @research_session.researcher_email
-          }
-        )
-      %>
       <%= render 'button_bar' %>
   <% end %>
 </div>
