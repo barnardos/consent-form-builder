@@ -28,7 +28,9 @@ const otherResearcher = (props) => {
   if (props.researcher_other_name) {
     return (
       <span>
-        {Output(props, 'researcher_name')}&apos;s colleague,{' '}
+        <span className="nowrap">
+          {Output(props, 'researcher_name')}&apos;s
+        </span> colleague,{' '}
         {Output(props, 'researcher_other_name')}{' '}
         may join sometimes to help.
       </span>
