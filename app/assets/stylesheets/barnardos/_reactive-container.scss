@@ -1,0 +1,17 @@
+.reactive-container {
+  display: flex;
+}
+
+.reactive-container__form {
+  flex: 2;
+}
+
+.reactive-container__preview {
+  flex: 1;
+  margin-left: 16px;
+  margin-top: 16px;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}

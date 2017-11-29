@@ -1,4 +1,16 @@
 {
-  "extends": "standard",
-  "parser": "babel-eslint"
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "jest": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "mount": false
+  }
 }

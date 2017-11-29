@@ -46,21 +46,19 @@
     </p>
   </section>
 
-  <section>
-    <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
-    <p>
-      <%= edit_link_for(:researcher_name) -%>
-      <% if @research_session.researcher_job_title.present? %>
-, <%= edit_link_for(:researcher_job_title) %>
-      <% end %>
-      will be leading the session.
-      <% if @research_session.researcher_other_name.present? %>
-        <%= edit_link_for(:researcher_name) %>ʼs colleague,
-        <%= edit_link_for(:researcher_other_name) %>,
-        may join <%= edit_link_for(:researcher_name) %> sometimes to help.
-      <% end %>
-    </p>
-  </section>
+  <%=
+    react_component(
+      'ResearcherPreviews/WhoIsDoingTheResearch',
+      component_params(
+        :researcher_job_title, :researcher_name, :researcher_other_name,
+        final_preview: true
+      ),
+      {
+        prerender: true
+      }
+    )
+  %>
+
   <section>
     <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
