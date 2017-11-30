@@ -46,10 +46,7 @@
     </p>
   </section>
 
-
-  <section>
-    <h3 class="subtitle-small" id="what">What will happen next?</h3>
-
+  <% methodologies = capture do %>
     <% @research_session.methodologies.each do |methodology| %>
       <p>
         <%= edit_link_for(:methodologies) do %>
@@ -57,6 +54,9 @@
         <% end %>
       </p>
     <% end %>
+  <% end %>
+
+  <% recording = capture do %>
     <p>
       With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
       <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
@@ -64,7 +64,21 @@
       trying to improve the service, as it allows them to review the most useful
       parts of the session after it has finished.
     </p>
-  </section>
+  <% end %>
+
+  <%=
+    react_component(
+      'Shared/WhatHappensInThisResearchSession',
+      component_params(:researcher_job_title, :researcher_name, final_preview: true).merge({
+        methodologies_markup: methodologies,
+        recording_markup: recording,
+      }),
+      {
+        prerender: true
+      }
+    )
+  %>
+
   <section>
     <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
     <p>
