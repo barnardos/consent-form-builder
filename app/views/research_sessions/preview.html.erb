@@ -46,18 +46,6 @@
     </p>
   </section>
 
-  <%=
-    react_component(
-      'ResearcherPreviews/WhoIsDoingTheResearch',
-      component_params(
-        :researcher_job_title, :researcher_name, :researcher_other_name,
-        final_preview: true
-      ),
-      {
-        prerender: true
-      }
-    )
-  %>
 
   <section>
     <h3 class="subtitle-small" id="what">What will happen next?</h3>
