@@ -5,7 +5,6 @@ class Methodologies
     survey:      'a survey or paper questionnaire',
     focusgroup:  'a group discussion',
     codesign:    'a group activity',
-    observation: 'HAS BEEN REPLACED',
     other:       'Other'
   }
 
