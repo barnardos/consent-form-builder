@@ -15,7 +15,7 @@ const WhatHappensInThisResearchSession = (props) => {
       <h3 className="subtitle-small" id="what">What happens in this research session?</h3>
 
       {Output(props, 'researcher_name')}
-      {jobTitle} would like you to take part in
+      {jobTitle} would like {props.you_or_your_child} to take part in
       {colonOrEllipsis}
 
       <div dangerouslySetInnerHTML={{__html: props.methodologies_markup}} />
@@ -34,6 +34,7 @@ WhatHappensInThisResearchSession.propTypes = {
   researcher_job_title: PropTypes.string,
   methodologies_markup: PropTypes.string,
   recording_markup: PropTypes.string,
+  you_or_your_child: PropTypes.string,
   finalPreview: PropTypes.bool
 }
 
