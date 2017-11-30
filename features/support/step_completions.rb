@@ -47,9 +47,12 @@ module StepCompletions
   end
 
   def complete_methodologies_step
-    @methodologies = ['Interview', 'Usability testing']
+    @methodologies = [
+      Methodologies::NAME_VALUES[:interview],
+      Methodologies::NAME_VALUES[:usability]
+    ]
     @methodologies.each do |methodology|
-      check methodology
+      check methodology.capitalize
     end
     click_button 'Continue'
   end

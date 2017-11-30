@@ -1,11 +1,11 @@
 class Methodologies
   NAME_VALUES = {
-    interview:   'Interview',
-    usability:   'Usability testing',
-    survey:      'Survey',
-    focusgroup:  'Focus group',
-    codesign:    'Codesign workshop',
-    observation: 'Observation/field study',
+    interview:   'a one-on-one interview',
+    usability:   'an observation of trying out (the new tool) we’re designing',
+    survey:      'a survey or paper questionnaire',
+    focusgroup:  'a group discussion',
+    codesign:    'a group activity',
+    observation: 'HAS BEEN REPLACED',
     other:       'Other'
   }
 

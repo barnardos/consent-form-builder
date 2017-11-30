@@ -24,11 +24,7 @@ module PreviewChecker
 
   def check_methodologies
     @methodologies.each do |methodology_display_name|
-      methodology = Methodologies::NAME_VALUES.key(methodology_display_name)
-      expect(page.body).to have_tag(
-        'a.editable',
-        text: Regexp.new(I18n.t("report.unable_to_consent.#{methodology}"))
-      )
+      expect(page.body).to have_link(methodology_display_name, class: 'editable')
     end
   end
 

@@ -47,13 +47,15 @@
   </section>
 
   <% methodologies = capture do %>
-    <% @research_session.methodologies.each do |methodology| %>
-      <p>
-        <%= edit_link_for(:methodologies) do %>
-          <%= methodology_lookup(methodology) %>
-        <% end %>
-      </p>
-    <% end %>
+    <ul class="bullet-point-list">
+      <% @research_session.methodologies.each do |methodology| %>
+        <li>
+          <%= edit_link_for(:methodologies) do %>
+            <%= methodology_lookup(methodology) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 
   <% recording = capture do %>
