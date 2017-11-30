@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import WhoIsDoingTheResearch from './WhoIsDoingTheResearch'
-import WhereCanIFindOutMore from './WhereCanIFindOutMore'
+import WhereCanIFindOutMore from '../Shared/WhereCanIFindOutMore'
 
 class ResearcherPreviews extends React.Component {
   constructor (props) {
