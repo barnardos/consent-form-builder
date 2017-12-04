@@ -62,24 +62,24 @@ RSpec.describe ResearchSessionPresenter do
     end
 
     context 'there is one recording method' do
-      let(:recording_methods) { [:audio] }
-      it { is_expected.to eql('audio') }
+      let(:recording_methods) { [:voice] }
+      it { is_expected.to eql('voice recording') }
     end
 
     context 'there are two recording methods' do
-      let(:recording_methods) { [:audio, :video] }
-      it { is_expected.to eql('audio and video') }
+      let(:recording_methods) { [:voice, :video] }
+      it { is_expected.to eql('voice recording and video recording') }
     end
 
     context 'there are three recording methods' do
-      let(:recording_methods) { [:audio, :video, :written] }
-      it { is_expected.to eql('audio, video, and written notes') }
+      let(:recording_methods) { [:voice, :video, :written] }
+      it { is_expected.to eql('voice recording, video recording, and written notes') }
     end
 
     context 'there are three recording methods and one is "other"' do
-      let(:recording_methods) { [:audio, :video, :other] }
+      let(:recording_methods) { [:voice, :video, :other] }
       let(:other_recording_method) { 'comic books' }
-      it { is_expected.to eql('audio, video, and comic books') }
+      it { is_expected.to eql('voice recording, video recording, and comic books') }
     end
   end
 
