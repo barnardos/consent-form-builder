@@ -27,7 +27,7 @@ class ResearchSessionPresenter
     !@able_to_consent
   end
 
-  def recording_methods_list
+  def recording_methods_sentence
     lowercase_words = research_session.recording_methods.map do |method|
       if method.to_s == 'other'
         other_recording_method

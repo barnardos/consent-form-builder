@@ -51,10 +51,10 @@ RSpec.describe ResearchSessionPresenter do
     end
   end
 
-  describe '#recording_methods_list' do
+  describe '#recording_methods_sentence' do
     let(:other_recording_method) { nil }
 
-    subject(:list) { presenter.recording_methods_list }
+    subject(:list) { presenter.recording_methods_sentence }
 
     before do
       allow(research_session).to receive(:recording_methods).and_return(recording_methods)
