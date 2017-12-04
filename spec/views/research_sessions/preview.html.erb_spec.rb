@@ -66,6 +66,10 @@ describe 'research_sessions/preview' do
         TEXT
       )
     end
+
+    it 'phrases React component blocks as "you"' do
+      expect(rendered).to have_content('would like you to take part')
+    end
   end
 
   context 'the participant is not able to give consent' do
@@ -81,6 +85,10 @@ describe 'research_sessions/preview' do
           at any time and withdraw without giving a reason.
         TEXT
       )
+    end
+
+    it 'phrases React component blocks as "your child"' do
+      expect(rendered).to have_content('would like your child/the child in your care to take part')
     end
   end
 end

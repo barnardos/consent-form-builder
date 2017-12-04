@@ -38,12 +38,10 @@ module ResearchSessionsHelper
   end
 
   def methodology_lookup(methodology)
-    consent_translation_key =
-      @research_session.able_to_consent? ? 'able_to_consent' : 'unable_to_consent'
     if methodology.to_s == 'other'
       @research_session.other_methodology
     else
-      I18n.t("report.#{consent_translation_key}.#{methodology}")
+      Methodologies::NAME_VALUES[methodology.to_sym]
     end
   end
 

@@ -46,29 +46,19 @@
     </p>
   </section>
 
-  <%=
-    react_component(
-      'ResearcherPreviews/WhoIsDoingTheResearch',
-      component_params(
-        :researcher_job_title, :researcher_name, :researcher_other_name,
-        final_preview: true
-      ),
-      {
-        prerender: true
-      }
-    )
-  %>
+  <% methodologies = capture do %>
+    <ul class="bullet-point-list">
+      <% @research_session.methodologies.each do |methodology| %>
+        <li>
+          <%= edit_link_for(:methodologies) do %>
+            <%= methodology_lookup(methodology) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
-  <section>
-    <h3 class="subtitle-small" id="what">What will happen next?</h3>
-
-    <% @research_session.methodologies.each do |methodology| %>
-      <p>
-        <%= edit_link_for(:methodologies) do %>
-          <%= methodology_lookup(methodology) %>
-        <% end %>
-      </p>
-    <% end %>
+  <% recording = capture do %>
     <p>
       With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
       <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
@@ -76,7 +66,22 @@
       trying to improve the service, as it allows them to review the most useful
       parts of the session after it has finished.
     </p>
-  </section>
+  <% end %>
+
+  <%=
+    react_component(
+      'Shared/WhatHappensInThisResearchSession',
+      component_params(:researcher_job_title, :researcher_name, final_preview: true).merge({
+        methodologies_markup: methodologies,
+        recording_markup: recording,
+        you_or_your_child: you_or_your_child
+      }),
+      {
+        prerender: true
+      }
+    )
+  %>
+
   <section>
     <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
     <p>

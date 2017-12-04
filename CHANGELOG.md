@@ -1,6 +1,8 @@
 # 0.6.0 / Unreleased
 
 * [FEATURE] - [Live preview: Researcher](https://trello.com/c/T2MeDlYY/255-13-live-preview-researcher)
+* [FEATURE] - [Remove additional researchers from the builder](https://trello.com/c/sDbgJ6dQ/276-8-remove-additional-researchers-from-the-builder)
+* [FEATURE] - [Update the methodologies list in the form builder and info sheet](https://trello.com/c/oI7k0fFy/210-5-update-the-methodologies-list-in-the-form-builder-and-info-sheet)
 
 # 0.5.0 / 2017-11-16
 
