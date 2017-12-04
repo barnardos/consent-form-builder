@@ -1,12 +1,12 @@
 class RecordingMethods
   NAME_VALUES = {
-    audio:    'Audio',
-    video:    'Video',
-    written:  'Written notes',
-    workshop: 'Workshop outputs, such as drawings and post-its',
-    photo:    'Photographs',
-    screen:   'Screen recording',
-    other:    'Other'
+    voice:    'voice recording',
+    video:    'video recording',
+    written:  'written notes',
+    workshop: 'the work created by participants during the session',
+    photo:    'photos',
+    screen:   'a video of your screen as the participant uses the tool',
+    other:    'other'
   }
 
   def self.allowed_values
