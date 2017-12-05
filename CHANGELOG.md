@@ -4,6 +4,7 @@
 * [FEATURE] - [Remove additional researchers from the builder](https://trello.com/c/sDbgJ6dQ/276-8-remove-additional-researchers-from-the-builder)
 * [FEATURE] - [Update the methodologies list in the form builder and info sheet](https://trello.com/c/oI7k0fFy/210-5-update-the-methodologies-list-in-the-form-builder-and-info-sheet)
 * [FEATURE] - [Add "Concerns and complaints" to the information sheet (static)](https://trello.com/c/Rvs9PGTM/279-2-add-concerns-and-complaints-to-the-information-sheet-static)
+* [FEATURE] - [Add "Sharing information" section to information sheet (static)](https://trello.com/c/4BEtxvHd)
 
 # 0.5.0 / 2017-11-16
 
