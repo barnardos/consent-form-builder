@@ -58,11 +58,9 @@ describe 'research_sessions/preview' do
     it 'phrases blocks using "you"' do
       expect(rendered).to have_content(
         <<~TEXT
-          Taking part is entirely voluntary -
-          it is up to you to decide whether or not you should take part.
-          If you decide you should take part you do not have to answer
-          questions you do not want to answer. You can also change your mind about taking part
-          at any time and withdraw without giving a reason.
+          It is important that we test the current and future tools and services
+          that we are developing with people like you so that we can make them as
+          good as possible.
         TEXT
       )
     end
@@ -78,11 +76,9 @@ describe 'research_sessions/preview' do
     it 'phrases blocks using "your child"' do
       expect(rendered).to have_content(
         <<~TEXT
-          Taking part is entirely voluntary -
-          it is up to you to decide whether or not your child/the child in your care should take part.
-          If you decide your child/the child in your care should take part they do not have to answer
-          questions they do not want to answer. They can also change their mind about taking part
-          at any time and withdraw without giving a reason.
+          It is important that we test the current and future tools and services
+          that we are developing with people like your child/the child in your
+          care so that we can make them as good as possible.
         TEXT
       )
     end
