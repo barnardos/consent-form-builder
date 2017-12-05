@@ -88,19 +88,6 @@
   %>
 
   <section>
-    <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
-    <p>
-      Taking part is entirely voluntary - it is up to you to decide whether or not <%= you_or_your_child %>
-      should take part. If you decide <%= you_or_your_child %> should take part <%= you_or_they %> do not have to answer questions <%= you_or_they %> do not want to answer. <%= you_or_they.capitalize %> can also change <%= @research_session.able_to_consent? ? 'your' : 'their' %> mind about taking part
-      at any time and withdraw without giving a reason.
-    </p>
-    <p>
-      If you agree <%= 'for your child/the child in your care' if @research_session.unable_to_consent? %> to take part, you will be given a copy of this information
-      sheet and be asked to sign a consent form.
-    </p>
-  </section>
-
-  <section>
     <h3 class="subtitle-small" id="about-taking-part">About taking part</h3>
     <p>
       <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
