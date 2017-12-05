@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import WhereCanIFindOutMore from '../Shared/WhereCanIFindOutMore'
+import FindOutMore from '../Shared/FindOutMore'
 import WhatHappensInThisResearchSession from '../Shared/WhatHappensInThisResearchSession'
 
 class ResearcherPreviews extends React.Component {
@@ -31,7 +31,7 @@ class ResearcherPreviews extends React.Component {
     return (
       <div>
         <WhatHappensInThisResearchSession {...this.state} />
-        <WhereCanIFindOutMore {...this.state} />
+        <FindOutMore {...this.state} />
       </div>
     )
   }
