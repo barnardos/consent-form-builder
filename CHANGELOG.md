@@ -6,6 +6,7 @@
 * [FEATURE] - [Add "Concerns and complaints" to the information sheet (static)](https://trello.com/c/Rvs9PGTM/279-2-add-concerns-and-complaints-to-the-information-sheet-static)
 * [FEATURE] - [Add "Sharing information" section to information sheet (static)](https://trello.com/c/4BEtxvHd)
 * [FEATURE] - [Add "About taking part" to the information sheet (static)](https://trello.com/c/eth5vJYW)
+* [FEATURE] - [Add "Decide if you want the child in your care to take part" part to the info sheet (static)](https://trello.com/c/uzbzifmd/280-2-add-decide-if-you-want-the-child-in-your-care-to-take-part-part-to-the-info-sheet-static)
 
 # 0.5.0 / 2017-11-16
 

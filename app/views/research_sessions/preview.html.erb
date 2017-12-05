@@ -165,6 +165,25 @@
     </p>
   </section>
   <section>
+    <h3 class="subtitle-small" id="concerns">
+      Decide if you want<%= 
+        ' the child in your care' if @research_session.unable_to_consent? 
+      %> to take part</h3>
+
+    <p>If you are happy<%=
+      ' for the child in your care' if @research_session.unable_to_consent?
+      %> to take part, we will ask you to sign a consent form. This will ask you to confirm:</p>
+
+    <ol class="numbered-list">
+      <li>that you are happy with the information you have received, and;</li>
+      <li>that you understand what we are going to do with the research recordings collected, and;</li>
+      <li>that you know who to ask for more information, and;</li>
+      <li>that your decision is voluntary</li>
+    </ol>
+
+    <p>Thank you!</p>
+  </section>
+  <section>
     <h3 class="subtitle-small" id="private">How will the data be used?</h3>
     <p>
       <%= edit_link_for(:shared_with) do %>
