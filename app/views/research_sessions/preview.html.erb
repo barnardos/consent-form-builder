@@ -120,15 +120,6 @@
     </p>
   </section>
   <section>
-    <h3 class="subtitle-small" id="more">Where can I find out more?</h3>
-    <p><%= edit_link_for(:researcher_name) %> will be able to answer further questions about the
-      research. <%= edit_link_for(:researcher_name) %> can be contacted by email at
-      <%= edit_link_for(:researcher_email) %> or by telephone on <%= edit_link_for(:researcher_phone) %>.</p>
-    <p>If you have any questions or concerns about the way in which this research has
-      been conducted then please contact Joelle Bradly at
-      <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
-  </section>
-  <section>
     <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>
     <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
       insights we need to improve our services. We do not hand over the recordings; we
@@ -164,6 +155,17 @@
       and ask you what you want to do about the situation.
     </p>
   </section>
+
+  <%=
+    react_component(
+      'Shared/FindOutMore',
+      component_params(:researcher_name, :researcher_phone, :researcher_email, final_preview: true),
+      {
+        prerender: true
+      }
+    )
+  %>
+
   <section>
     <h3 class="subtitle-small" id="concerns">
       Decide if you want<%= 
