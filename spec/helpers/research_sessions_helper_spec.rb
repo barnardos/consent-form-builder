@@ -124,6 +124,30 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
     end
   end
 
+  describe '#recording_method_lookup' do
+    subject(:lookup) { helper.recording_method_lookup(method) }
+
+    context 'is a non-other recording method' do
+      let(:method) { 'voice' }
+      it { is_expected.to eql('voice recording') }
+    end
+
+    context 'is an Other method' do
+      let(:research_session) do
+        double('ResearchSession', other_recording_method: 'A.N. Other Recording Method')
+      end
+
+      before do
+        assign(:research_session, research_session)
+      end
+
+      let(:method) { 'other' }
+      it 'is equal to the "other" methodology on the research session' do
+        is_expected.to eql(research_session.other_recording_method)
+      end
+    end
+  end
+
   describe '#shared_with_lookup' do
     let(:research_session) { double('ResearchSessionPresenter', able_to_consent?: false) }
 

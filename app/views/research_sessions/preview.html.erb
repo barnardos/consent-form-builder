@@ -60,11 +60,16 @@
 
   <% recording = capture do %>
     <p>
-      With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
-      <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
-      Recording the session helps the researcher and other research team members
-      trying to improve the service, as it allows them to review the most useful
-      parts of the session after it has finished.
+      Which we will record using:
+      <ul class="bullet-point-list">
+        <% @research_session.recording_methods.each do |recording_method| %>
+          <li>
+            <%= edit_link_for(:recording_methods) do %>
+              <%= recording_method_lookup(recording_method) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </p>
   <% end %>
 
@@ -213,7 +218,7 @@
     </li>
     <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
       activities during the research session may be observed and will be recorded.
-      The data captured, in the form of <%= @research_session.recording_methods_list %>,
+      The data captured, in the form of <%= @research_session.recording_methods_sentence %>,
       will be used for current and future service development.
     </li>
     <li>I understand that this data will be stored securely and
