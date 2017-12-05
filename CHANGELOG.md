@@ -5,6 +5,7 @@
 * [FEATURE] - [Update the methodologies list in the form builder and info sheet](https://trello.com/c/oI7k0fFy/210-5-update-the-methodologies-list-in-the-form-builder-and-info-sheet)
 * [FEATURE] - [Add "Concerns and complaints" to the information sheet (static)](https://trello.com/c/Rvs9PGTM/279-2-add-concerns-and-complaints-to-the-information-sheet-static)
 * [FEATURE] - [Add "Sharing information" section to information sheet (static)](https://trello.com/c/4BEtxvHd)
+* [FEATURE] - [Add "About taking part" to the information sheet (static)](https://trello.com/c/eth5vJYW)
 
 # 0.5.0 / 2017-11-16
 
