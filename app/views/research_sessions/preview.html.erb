@@ -140,6 +140,33 @@
   </section>
 
   <section>
+    <h3 class="subtitle-small" id="confidential">
+      Will anyone know what <%= i_or_they %> say in the discussion?
+    </h3>
+
+    <p>
+      The only people who will hear what <%= you_or_your_child %> <%= say_or_says %> in the session
+      will be the researchers running the session, other young people taking part, and
+      service workers facilitating the session.
+    </p>
+
+    <p>
+      <%= edit_link_for(:shared_with) do %>
+        <%= shared_with_lookup(@research_session.shared_with) %>
+      <% end %>
+    </p>
+
+    <p>
+      Barnardo’s will hold research data for <%= edit_link_for(:shared_duration) %>
+      after the closure of this project, after which it will be deleted.
+      Personal data is stored in a safe and secure way.
+    </p>
+    <p>
+      You can contact Jason Caplin to ask us to delete your personal data at any time.
+    </p>
+  </section>
+
+  <section>
     <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>
     <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
       insights we need to improve our services. We do not hand over the recordings; we
@@ -225,15 +252,6 @@
     </ol>
 
     <p>Thank you!</p>
-  </section>
-  <section>
-    <h3 class="subtitle-small" id="private">How will the data be used?</h3>
-    <p>
-      <%= edit_link_for(:shared_with) do %>
-        <%= shared_with_lookup(@research_session.shared_with) %>
-      <% end %>
-    </p>
-    <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
   </section>
 </div>
 
