@@ -61,6 +61,10 @@ module ResearchSessionsHelper
     @research_session.able_to_consent? ? 'you' : 'your child/the child in your care'
   end
 
+  def your_or_your_childs
+    @research_session.able_to_consent? ? 'your' : "your child's/the child in your care's"
+  end
+
   def you_or_they
     @research_session.able_to_consent? ? 'you' : 'they'
   end
