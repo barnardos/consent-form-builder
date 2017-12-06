@@ -36,7 +36,7 @@ describe 'research_sessions/preview' do
     end
 
     it 'shows the duration' do
-      expect(rendered).to match(/The session will last for.*Three minutes/m)
+      expect(rendered).to match(/Duration.*Three minutes/m)
     end
   end
 
@@ -44,11 +44,11 @@ describe 'research_sessions/preview' do
     let(:extra_attrs) { { when_text: '27th September 2017', duration: nil } }
 
     it 'shows the date and time' do
-      expect(rendered).to match(/The session is on.*27th September 2017/m)
+      expect(rendered).to match(/On.*27th September 2017/m)
     end
 
     it 'does not show the duration' do
-      expect(rendered).not_to match(/The session will last for/m)
+      expect(rendered).not_to have_content('Duration')
     end
   end
 

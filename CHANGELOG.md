@@ -9,6 +9,8 @@
 * [FEATURE] - [Add "Decide if you want the child in your care to take part" part to the info sheet (static)](https://trello.com/c/uzbzifmd/280-2-add-decide-if-you-want-the-child-in-your-care-to-take-part-part-to-the-info-sheet-static)
 * [FEATURE] - [Improve the "Where can I find out more?" section of information sheet](https://trello.com/c/VrKLhmWK/274-2-improve-the-where-can-i-find-out-more-section-of-information-sheet)
 * [FEATURE] - [Remove "Do I have to take part" from info sheet](https://trello.com/c/ZJt7BJ6n)
+* [FEATURE] - [Update "When is the session..." content and change to "Session details"](https://trello.com/c/Xj2WfSpH/289-8-update-when-is-the-session-content-and-change-to-session-details)
+* [FEATURE] - [Merge Incentives, Expenses into "When is the session..."](https://trello.com/c/cmTxdOPX/281-2-merge-incentives-expenses-into-when-is-the-session)
 
 # 0.5.0 / 2017-11-16
 

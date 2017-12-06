@@ -42,7 +42,6 @@ module PreviewChecker
   end
 
   def check_where_when
-    expect(page.body).to include('The session is on')
     expect(page).to have_tag('a.editable', text: @session_duration)
     expect(page).to have_tag('a.editable', text: @session_location)
     expect(page).to have_tag('a.editable', text: @held_on)
@@ -60,9 +59,8 @@ module PreviewChecker
   end
 
   def check_incentives
-    expect(page.body).to include('We are offering')
+    expect(page.body).to include('As a thank you, we will give your child')
     expect(page).to have_tag('a.editable', text: 'a cash incentive of £10.50')
-    expect(page.body).to include('for participation in this session')
   end
 end
 

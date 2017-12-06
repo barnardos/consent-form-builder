@@ -88,6 +88,58 @@
   %>
 
   <section>
+    <h3 class="subtitle-small" id="session-details">Session details</h3>
+    <% if @research_session.where_when_enabled %>
+      <p>The session is</p>
+      <dl class="definition-list">
+        <%
+          {
+            when_text: 'On',
+            location:  'At',
+            duration:  'Duration'
+          }.each_pair do |attr, term|
+        %>
+          <% if @research_session.send(attr).present? %>
+            <div>
+              <dt><%= term %>:</dt>
+              <dd><%= edit_link_for(attr) %></dd>
+            </div>
+          <% end  %>
+        <% end %>
+      </dl>
+      <p>
+        <%= your_or_your_childs.capitalize %> time and what <%= you_or_they %>
+        say is really important to us.
+
+        <% if @research_session.incentives_enabled %>
+          As a thank you, we will give <%= you_or_your_child %>
+          <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>.
+        <% end %>
+      </p>
+      <% if @research_session.participant_equipment.present? %>
+        <p>
+          <%= you_or_your_child.capitalize %> will need to bring
+          <%= edit_link_for(:participant_equipment) %>.
+        </p>
+      <% end %>
+    <% end %>
+    <% if @research_session.expenses_enabled %>
+      <p>
+        <%= edit_link_for(:travel_expenses_limit) do %>
+          <%= @research_session.expenses_sentence %>
+        <% end %>
+      </p>
+      <% if @research_session.receipts_required %>
+        <p>
+          <%= edit_link_for(:receipts_required) do %>
+            Receipts must be provided.
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section>
     <h3 class="subtitle-small" id="about-taking-part">About taking part</h3>
     <p>
       <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
@@ -155,8 +207,8 @@
 
   <section>
     <h3 class="subtitle-small" id="concerns">
-      Decide if you want<%= 
-        ' the child in your care' if @research_session.unable_to_consent? 
+      Decide if you want<%=
+        ' the child in your care' if @research_session.unable_to_consent?
       %> to take part</h3>
 
     <p>If you are happy<%=
@@ -181,57 +233,6 @@
     </p>
     <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
   </section>
-  <% if @research_session.where_when_enabled %>
-    <section>
-      <h3 class="subtitle-small" id="private">When is the session and what should <%= @research_session.able_to_consent? ? 'I' : 'my child/the child in my care' %> bring?</h3>
-        <% if @research_session.location.present? %>
-          <p>The session will be held at <%= edit_link_for(:location) %>.</p>
-        <% end %>
-        <p>
-          <% if @research_session.when_text %>
-            The session is on
-            <%= edit_link_for(:when_text) do %>
-              <strong><%= @research_session.when_text %></strong>.
-            <% end %>
-          <% end %>
-          <% if @research_session.duration.present? %>
-            The session will last for <%= edit_link_for(:duration) %>.
-          <% end %>
-        </p>
-      <% if @research_session.participant_equipment.present? %>
-        <p>
-          <%= edit_link_for(:participant_equipment) %>
-        </p>
-      <% end %>
-    </section>
-  <% end %>
-  <% if @research_session.expenses_enabled %>
-    <section>
-      <h3 class="subtitle-small">Expenses</h3>
-      <p>
-        <%= edit_link_for(:travel_expenses_limit) do %>
-          <%= @research_session.expenses_sentence %>
-        <% end %>
-      </p>
-      <% if @research_session.receipts_required %>
-        <p>
-          <%= edit_link_for(:receipts_required) do %>
-            Receipts must be provided.
-          <% end %>
-        </p>
-      <% end %>
-    </section>
-  <% end %>
-  <% if @research_session.incentives_enabled %>
-    <section>
-      <h3 class="subtitle-small">Incentives</h3>
-      <p>
-        We are offering
-        <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>
-        for participation in this session.
-      </p>
-    </section>
-  <% end %>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">
