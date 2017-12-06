@@ -140,25 +140,6 @@
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="about-taking-part">About taking part</h3>
-    <p>
-      <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
-      not have to take part in this session. It is your decision<%= ' as the parent/carer' if @research_session.unable_to_consent? %>.
-    </p>
-    <p>
-      We will also ask <%= you_or_your_child %> if <%= you_or_they %> want to take
-      part before the session.
-    </p>
-    <p>
-      Don’t worry! If you do not want <%= 'the child in your care' if @research_session.unable_to_consent? %>
-      to take part it will not affect the service <%= you_or_they %> may receive.
-    </p>
-    <p>
-      <%= you_or_they.capitalize %> can change your mind at any point for any
-      reason - just let us know!
-    </p>
-  </section>
-  <section>
     <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>
     <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
       insights we need to improve our services. We do not hand over the recordings; we
@@ -192,6 +173,26 @@
       your consent if we think <%= you_or_they %> or someone else is at risk
       of serious harm. Where possible, the lead researcher speak to you first
       and ask you what you want to do about the situation.
+    </p>
+  </section>
+
+  <section>
+    <h3 class="subtitle-small" id="about-taking-part">About taking part</h3>
+    <p>
+      <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
+      not have to take part in this session. It is your decision<%= ' as the parent/carer' if @research_session.unable_to_consent? %>.
+    </p>
+    <p>
+      We will also ask <%= you_or_your_child %> if <%= you_or_they %> want to take
+      part before the session.
+    </p>
+    <p>
+      Don’t worry! If you do not want <%= 'the child in your care' if @research_session.unable_to_consent? %>
+      to take part it will not affect the service <%= you_or_they %> may receive.
+    </p>
+    <p>
+      <%= you_or_they.capitalize %> can change your mind at any point for any
+      reason - just let us know!
     </p>
   </section>
 
