@@ -11,6 +11,7 @@
 * [FEATURE] - [Remove "Do I have to take part" from info sheet](https://trello.com/c/ZJt7BJ6n)
 * [FEATURE] - [Update "When is the session..." content and change to "Session details"](https://trello.com/c/Xj2WfSpH/289-8-update-when-is-the-session-content-and-change-to-session-details)
 * [FEATURE] - [Merge Incentives, Expenses into "When is the session..."](https://trello.com/c/cmTxdOPX/281-2-merge-incentives-expenses-into-when-is-the-session)
+* [FEATURE] - [Review the headers/section order of the information sheet](https://trello.com/c/VIAe530f/272-1-review-the-headers-section-order-of-the-information-sheet)
 
 # 0.5.0 / 2017-11-16
 
