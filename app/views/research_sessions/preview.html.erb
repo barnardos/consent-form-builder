@@ -181,30 +181,33 @@
     </p>
     <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
   </section>
-  <% if @research_session.where_when_enabled %>
-    <section>
-      <h3 class="subtitle-small" id="private">When is the session and what should <%= @research_session.able_to_consent? ? 'I' : 'my child/the child in my care' %> bring?</h3>
-        <% if @research_session.location.present? %>
-          <p>The session will be held at <%= edit_link_for(:location) %>.</p>
+  <section>
+    <h3 class="subtitle-small" id="session-details">Session details</h3>
+    <% if @research_session.where_when_enabled %>
+      <p>The session is</p>
+      <dl class="definition-list definition-list__aligned">
+        <%
+          {
+            when_text: 'On',
+            location:  'At',
+            duration:  'Duration'
+          }.each_pair do |attr, term|
+        %>
+          <% if @research_session.send(attr).present? %>
+            <div>
+              <dt><%= term %>:</dt>
+              <dd><%= edit_link_for(attr) %></dd>
+            </div>
+          <% end  %>
         <% end %>
-        <p>
-          <% if @research_session.when_text %>
-            The session is on
-            <%= edit_link_for(:when_text) do %>
-              <strong><%= @research_session.when_text %></strong>.
-            <% end %>
-          <% end %>
-          <% if @research_session.duration.present? %>
-            The session will last for <%= edit_link_for(:duration) %>.
-          <% end %>
-        </p>
+      </dl>
       <% if @research_session.participant_equipment.present? %>
         <p>
           <%= edit_link_for(:participant_equipment) %>
         </p>
       <% end %>
-    </section>
-  <% end %>
+    <% end %>
+  </section>
   <% if @research_session.expenses_enabled %>
     <section>
       <h3 class="subtitle-small">Expenses</h3>

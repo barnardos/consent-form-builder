@@ -42,7 +42,6 @@ module PreviewChecker
   end
 
   def check_where_when
-    expect(page.body).to include('The session is on')
     expect(page).to have_tag('a.editable', text: @session_duration)
     expect(page).to have_tag('a.editable', text: @session_location)
     expect(page).to have_tag('a.editable', text: @held_on)
