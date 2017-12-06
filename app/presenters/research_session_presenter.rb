@@ -70,7 +70,8 @@ class ResearchSessionPresenter
     if research_session.payment_type == 'cash'
       "a cash incentive of #{formatted_value}"
     elsif research_session.payment_type == 'voucher'
-      "high street vouchers to the value of #{formatted_value}"
+      "vouchers to the value of #{formatted_value}. "\
+      'They can be used in many high street shops'
     end
   end
 end

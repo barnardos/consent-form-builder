@@ -155,8 +155,8 @@
 
   <section>
     <h3 class="subtitle-small" id="concerns">
-      Decide if you want<%= 
-        ' the child in your care' if @research_session.unable_to_consent? 
+      Decide if you want<%=
+        ' the child in your care' if @research_session.unable_to_consent?
       %> to take part</h3>
 
     <p>If you are happy<%=
@@ -222,16 +222,17 @@
       <% end %>
     </section>
   <% end %>
-  <% if @research_session.incentives_enabled %>
     <section>
       <h3 class="subtitle-small">Incentives</h3>
       <p>
-        We are offering
-        <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>
-        for participation in this session.
+        <%= your_or_your_childs.capitalize %> time and what <%= you_or_they %> say is really important to us.
+
+        <% if @research_session.incentives_enabled %>
+          As a thank you, we will give <%= you_or_your_child %>
+          <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>.
+        <% end %>
       </p>
     </section>
-  <% end %>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">

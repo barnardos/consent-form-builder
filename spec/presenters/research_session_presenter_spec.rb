@@ -180,7 +180,8 @@ RSpec.describe ResearchSessionPresenter do
       end
       it 'has a message about the high street voucher value' do
         expect(text).to eql(
-          "high street vouchers to the value of £#{formatted_value}"
+          "vouchers to the value of £#{formatted_value}. "\
+          'They can be used in many high street shops'
         )
       end
     end

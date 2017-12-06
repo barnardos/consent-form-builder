@@ -60,9 +60,8 @@ module PreviewChecker
   end
 
   def check_incentives
-    expect(page.body).to include('We are offering')
+    expect(page.body).to include('As a thank you, we will give your child')
     expect(page).to have_tag('a.editable', text: 'a cash incentive of £10.50')
-    expect(page.body).to include('for participation in this session')
   end
 end
 
