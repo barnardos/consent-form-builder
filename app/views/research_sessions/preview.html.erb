@@ -203,7 +203,8 @@
       </dl>
       <% if @research_session.participant_equipment.present? %>
         <p>
-          <%= edit_link_for(:participant_equipment) %>
+          <%= you_or_your_child.capitalize %> will need to bring
+          <%= edit_link_for(:participant_equipment) %>.
         </p>
       <% end %>
     <% end %>
