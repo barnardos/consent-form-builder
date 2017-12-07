@@ -69,6 +69,10 @@ module ResearchSessionsHelper
     @research_session.able_to_consent? ? 'you' : 'they'
   end
 
+  def your_or_their
+    @research_session.able_to_consent? ? 'your' : 'their'
+  end
+
   def i_or_they
     @research_session.able_to_consent? ? 'I' : 'they'
   end
