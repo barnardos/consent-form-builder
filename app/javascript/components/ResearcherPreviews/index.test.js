@@ -19,6 +19,7 @@ describe('ResearcherPreviews', () => {
       researcher_name: undefined,
       researcher_email: undefined,
       researcher_other_name: undefined,
+      you_or_your_child: undefined,
       edit_links: {}
     }
     mountedResearcherPreviews = undefined
@@ -48,6 +49,7 @@ describe('ResearcherPreviews', () => {
           researcher_name: 'Rachael Researcher',
           researcher_email: 'rachael.researcher@barnardos.org.uk',
           researcher_phone: '07123456789',
+          you_or_your_child: 'you',
           editLinks: {
             researcher_name: '/rails/path/to/researcher_name',
             researcher_job_title: '/rails/path/to/researcher_job_title'
@@ -57,8 +59,8 @@ describe('ResearcherPreviews', () => {
 
       it("renders the researcher's job title and name in a readable sentence", () => {
         expect(researcherPreviews().text()).to.contain(
-          `${props.researcher_name}, ${props.researcher_job_title}, ` +
-          `is the researcher who will be leading the session.`
+          `${props.researcher_name}, ${props.researcher_job_title},` +
+          ` would like you to take part in`
         )
       })
       it('renders an editLink with the supplied rails route for the name', () => {
