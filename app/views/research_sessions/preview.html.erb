@@ -30,14 +30,19 @@
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="why">Why we are doing research</h3>
-
-    <p>
-      <%= I18n.t('research_session_attr_labels.topic') %>
-      <%= edit_link_for(:topic) %>
-      <%= I18n.t('research_session_attr_labels.purpose') %>
-      <%= edit_link_for(:purpose) %>.
-    </p>
+    <%= react_component(
+        'TopicPurposePreviews',
+        component_params(:topic, :purpose, final_preview: true).merge(
+          labels: {
+            topic: t('research_session_attr_labels.topic'),
+            purpose: t('research_session_attr_labels.purpose')
+          }
+        ),
+        {
+          prerender: true
+        }
+      )
+    %>
 
     <p>
       It is important that we test the current and future tools and services that
