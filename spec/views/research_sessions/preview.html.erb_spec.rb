@@ -44,7 +44,7 @@ describe 'research_sessions/preview' do
     let(:extra_attrs) { { when_text: '27th September 2017', duration: nil } }
 
     it 'shows the date and time' do
-      expect(rendered).to match(/On.*27th September 2017/m)
+      expect(rendered).to match(/When.*27th September 2017/m)
     end
 
     it 'does not show the duration' do
