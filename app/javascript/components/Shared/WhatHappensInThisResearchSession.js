@@ -23,7 +23,7 @@ const WhatHappensInThisResearchSession = (props) => {
 
       <p>
         There may be another researcher or observer supporting{' '}
-        {Output(props, 'researcher_name')}.
+        {Output(props, 'researcher_name')} at this session.
       </p>
     </section>
   )
