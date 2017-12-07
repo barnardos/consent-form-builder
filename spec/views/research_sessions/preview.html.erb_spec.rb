@@ -87,4 +87,18 @@ describe 'research_sessions/preview' do
       expect(rendered).to have_content('would like your child/the child in your care to take part')
     end
   end
+
+  context 'there are no incentives, expenses or where_when details' do
+    let(:extra_attrs) do
+      {
+        incentives_enabled: false,
+        expenses_enabled: false,
+        where_when_enabled: false
+      }
+    end
+
+    it 'has no "Session details" section' do
+      expect(rendered).not_to have_selector('h3', text: 'Session details')
+    end
+  end
 end
