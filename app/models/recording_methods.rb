@@ -5,7 +5,7 @@ class RecordingMethods
     written:  'written notes',
     workshop: 'the work created by participants during the session',
     photo:    'photos',
-    screen:   'a video of your screen as the participant uses the tool',
+    screen:   'screen recording',
     other:    'other'
   }
 
