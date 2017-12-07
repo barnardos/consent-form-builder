@@ -65,7 +65,7 @@ describe('ResearcherPreviews', () => {
       })
       it('renders an editLink with the supplied rails route for the name', () => {
         expect(researcherPreviews()).to.contain(
-          <output className="highlight">
+          <output className="reactive-preview__highlight">
             <a className="editable" href="/rails/path/to/researcher_name">Rachael Researcher</a>
           </output>
         )
@@ -75,10 +75,12 @@ describe('ResearcherPreviews', () => {
           <a className="editable" href="/rails/path/to/researcher_job_title">Director of Research</a>
         )
       })
-      it("renders the researcher's contact details in a readable sentence", () => {
+      it("renders the researcher's contact details in a definition list", () => {
         expect(researcherPreviews().text()).to.contain(
-          `${props.researcher_name} can be contacted by email at ${props.researcher_email} ` +
-          `or by telephone on ${props.researcher_phone}`
+          `Email:${props.researcher_email}`
+        )
+        expect(researcherPreviews().text()).to.contain(
+          `Telephone:${props.researcher_phone}`
         )
       })
     })
