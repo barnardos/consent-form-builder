@@ -38,12 +38,18 @@ module ResearchSessionsHelper
   end
 
   def methodology_lookup(methodology)
-    consent_translation_key =
-      @research_session.able_to_consent? ? 'able_to_consent' : 'unable_to_consent'
     if methodology.to_s == 'other'
       @research_session.other_methodology
     else
-      I18n.t("report.#{consent_translation_key}.#{methodology}")
+      Methodologies::NAME_VALUES[methodology.to_sym]
+    end
+  end
+
+  def recording_method_lookup(recording_method)
+    if recording_method.to_s == 'other'
+      @research_session.other_recording_method
+    else
+      RecordingMethods::NAME_VALUES[recording_method.to_sym]
     end
   end
 
@@ -55,7 +61,23 @@ module ResearchSessionsHelper
     @research_session.able_to_consent? ? 'you' : 'your child/the child in your care'
   end
 
+  def your_or_your_childs
+    @research_session.able_to_consent? ? 'your' : "your child's/the child in your care's"
+  end
+
   def you_or_they
     @research_session.able_to_consent? ? 'you' : 'they'
+  end
+
+  def your_or_their
+    @research_session.able_to_consent? ? 'your' : 'their'
+  end
+
+  def i_or_they
+    @research_session.able_to_consent? ? 'I' : 'they'
+  end
+
+  def say_or_says
+    @research_session.able_to_consent? ? 'say' : 'says'
   end
 end

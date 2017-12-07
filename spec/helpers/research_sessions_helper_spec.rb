@@ -101,43 +101,49 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
   end
 
   describe '#methodology_lookup' do
-    let(:research_session) { double('ResearchSession') }
-
-    let(:able_to_consent) { true }
-    let(:methodology) { 'interview' }
-    before do
-      allow(research_session).to receive(:able_to_consent?).and_return(able_to_consent)
-      assign(:research_session, research_session)
-    end
-
     subject(:translation) { helper.methodology_lookup(methodology) }
 
-    context 'participants are unable to consent' do
-      let(:able_to_consent) { false }
-      it 'returns a child-appropriate translation' do
-        expect(translation).to eql(
-          'Your child will be interviewed ' \
-          'and asked their views regarding the project being researched.'
-        )
-      end
+    context 'is a non-other methodology' do
+      let(:methodology) { 'interview' }
+      it { is_expected.to eql('a one-on-one interview') }
     end
 
-    context 'participants are able to consent' do
-      let(:able_to_consent) { true }
-      it 'returns a adult-appropriate translation' do
-        expect(translation).to eql(
-          'You will be interviewed ' \
-          'and asked your views regarding the project being researched.'
-        )
+    context 'is an Other methodology' do
+      let(:research_session) do
+        double('ResearchSession', other_methodology: 'A.N. Other Methodology')
       end
-    end
 
-    context 'the research session contains "other"' do
+      before do
+        assign(:research_session, research_session)
+      end
+
       let(:methodology) { 'other' }
-      before { allow(research_session).to receive(:other_methodology).and_return('Reiki') }
+      it 'is equal to the "other" methodology on the research session' do
+        is_expected.to eql(research_session.other_methodology)
+      end
+    end
+  end
 
-      it 'has asked the research session for the translation' do
-        expect(translation).to eql('Reiki')
+  describe '#recording_method_lookup' do
+    subject(:lookup) { helper.recording_method_lookup(method) }
+
+    context 'is a non-other recording method' do
+      let(:method) { 'voice' }
+      it { is_expected.to eql('voice recording') }
+    end
+
+    context 'is an Other method' do
+      let(:research_session) do
+        double('ResearchSession', other_recording_method: 'A.N. Other Recording Method')
+      end
+
+      before do
+        assign(:research_session, research_session)
+      end
+
+      let(:method) { 'other' }
+      it 'is equal to the "other" methodology on the research session' do
+        is_expected.to eql(research_session.other_recording_method)
       end
     end
   end

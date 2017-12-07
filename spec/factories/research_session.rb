@@ -27,7 +27,7 @@ FactoryBot.define do
     trait :step_recording do
       step_methodologies
       status :recording
-      recording_methods %w[audio video]
+      recording_methods %w[voice video]
     end
 
     trait :step_storing do

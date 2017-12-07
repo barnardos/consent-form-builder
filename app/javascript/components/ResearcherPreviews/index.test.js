@@ -48,7 +48,6 @@ describe('ResearcherPreviews', () => {
           researcher_name: 'Rachael Researcher',
           researcher_email: 'rachael.researcher@barnardos.org.uk',
           researcher_phone: '07123456789',
-          researcher_other_name: 'Steve SecondaryResearcher',
           editLinks: {
             researcher_name: '/rails/path/to/researcher_name',
             researcher_job_title: '/rails/path/to/researcher_job_title'
@@ -87,8 +86,7 @@ describe('ResearcherPreviews', () => {
     describe('the researcher name changing', () => {
       beforeEach(() => {
         props = {
-          researcher_name: 'Rachel',
-          researcher_other_name: undefined
+          researcher_name: 'Rachel'
         }
       })
 
@@ -104,14 +102,6 @@ describe('ResearcherPreviews', () => {
           })
 
           expect(researcherPreviews().find('output').first().text()).to.eql('Leanne')
-        })
-
-        it('changes the other researcher name', () => {
-          researcherPreviews().instance().handleInputChange({
-            target: { name: 'research_session[researcher_other_name]', value: 'Steve' }
-          })
-
-          expect(researcherPreviews().text()).to.include('Rachel\'s colleague, Steve')
         })
       })
     })

@@ -110,29 +110,3 @@ en:
       team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
       internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
       external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
-
-  # this should lose all reference to "report" and be merged into preview
-  report:
-    able_to_consent:
-      interview: 'You will be interviewed and asked your views regarding the project being researched.'
-      usability: 'You will be asked to do several short tasks using a website while our researcher watches, listens and takes notes.
-        Youʼll need to think out loud as you work so that the researcher can understand what youʼre doing and why.
-        You will also be asked questions about your experience and perceptions of the website.
-        The session will last no longer than one hour.'
-      survey: 'You will be asked to answer a series of questions related to this project.'
-      focusgroup: 'You will be asked to take part in a discussion with our researcher and other volunteers'
-      codesign: 'You will take part in a short, intense, session lasting around 3 hours, with a number of other participants. During
-        this time you will discuss idea and needs for a service or product and help formalise a solution and next steps.'
-      observation: 'You will be observed carrying out tasks within your normal role'
-
-    unable_to_consent:
-      interview: 'Your child will be interviewed and asked their views regarding the project being researched.'
-      usability: "Your child will be asked to do several short tasks using a website while our researcher watches, listens and takes notes.
-        Your child will need to think out loud as they work so that the researcher can understand what they're doing and why.
-        Your child also be asked questions about their experience and perceptions of the website.
-        The session will last no longer than one hour."
-      survey: 'Your child will be asked to answer a series of questions related to this project.'
-      focusgroup: 'Your child will be asked to take part in a discussion with our researcher and other volunteers'
-      codesign: 'Your child will take part in a short, intense, session lasting around 3 hours, with a number of other participants. During
-        this time they will discuss idea and needs for a service or product and help formalise a solution and next steps.'
-      observation: 'Your child will be observed carrying out tasks within their normal role'

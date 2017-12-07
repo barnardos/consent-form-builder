@@ -4,7 +4,7 @@
   <h1 class="subtitle-large">Researcher</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-      <fieldset class="fieldset" name="first-researcher">
+      <fieldset class="fieldset">
         <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
         <p>
           Who is the person who is leading the research or participation session? Please note: participants will be
@@ -29,7 +29,6 @@
                 {
                   researcher_job_title: @research_session.researcher_job_title,
                   researcher_name: @research_session.researcher_name,
-                  researcher_other_name: @research_session.researcher_other_name,
                   researcher_email: @research_session.researcher_email
                 }
               )
@@ -37,20 +36,6 @@
           </div>
         </div>
 
-      </fieldset>
-
-      <fieldset class="fieldset" name="second-researcher">
-        <legend class="visually-hidden">Additional researcher</legend>
-
-        <%= form.radio_group_vertical \
-          :researcher_other,
-            { true => 'Yes', false => 'No' },
-            legend: 'Will the participants meet any other researchers / observers?' %>
-
-        <div class="js-ConditionalSubfield" data-controlled-by="research_session[researcher_other]" data-control-value="true">
-          <%= form.labelled_text_field :researcher_other_name,
-              text_options: previewed_on_page %>
-        </div>
       </fieldset>
 
       <%= render 'button_bar' %>

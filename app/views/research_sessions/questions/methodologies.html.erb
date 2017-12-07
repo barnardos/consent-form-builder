@@ -5,7 +5,7 @@
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= form.checkbox_group_vertical(
             :methodologies,
-            Methodologies::NAME_VALUES,
+            Methodologies::NAME_VALUES.map { |name, value| [name, value.capitalize] },
             { autofocus_first_item: true },
             legend: 'How will you be gathering information?'
           )

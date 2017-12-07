@@ -27,7 +27,7 @@ class ResearchSessionPresenter
     !@able_to_consent
   end
 
-  def recording_methods_list
+  def recording_methods_sentence
     lowercase_words = research_session.recording_methods.map do |method|
       if method.to_s == 'other'
         other_recording_method
@@ -70,7 +70,8 @@ class ResearchSessionPresenter
     if research_session.payment_type == 'cash'
       "a cash incentive of #{formatted_value}"
     elsif research_session.payment_type == 'voucher'
-      "high street vouchers to the value of #{formatted_value}"
+      "vouchers to the value of #{formatted_value}. "\
+      'They can be used in many high street shops'
     end
   end
 end

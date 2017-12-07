@@ -7,3 +7,24 @@
     line-height: 24px;
   }
 }
+
+.numbered-list {
+  list-style-type: decimal;
+  margin: 0 $gutter;
+
+  > * {
+    margin: $gutter;
+    line-height: 24px;
+  }
+}
+
+.definition-list {
+  div {
+    line-height: 24px;
+
+    dt,
+    dd {
+      display: inline;
+    }
+  }
+}

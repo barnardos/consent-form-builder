@@ -24,11 +24,7 @@ module PreviewChecker
 
   def check_methodologies
     @methodologies.each do |methodology_display_name|
-      methodology = Methodologies::NAME_VALUES.key(methodology_display_name)
-      expect(page.body).to have_tag(
-        'a.editable',
-        text: Regexp.new(I18n.t("report.unable_to_consent.#{methodology}"))
-      )
+      expect(page.body).to have_link(methodology_display_name, class: 'editable')
     end
   end
 
@@ -39,14 +35,13 @@ module PreviewChecker
   end
 
   def check_storing
-    expect(page).to have_tag('p', text: "The data will be kept for #{@shared_duration}.")
+    expect(page).to have_content("Barnardo’s will hold research data for #{@shared_duration}")
     expect(page).to have_content(
       'Any research recordings will have names and personal details removed and replaced'
     )
   end
 
   def check_where_when
-    expect(page.body).to include('The session is on')
     expect(page).to have_tag('a.editable', text: @session_duration)
     expect(page).to have_tag('a.editable', text: @session_location)
     expect(page).to have_tag('a.editable', text: @held_on)
@@ -64,9 +59,8 @@ module PreviewChecker
   end
 
   def check_incentives
-    expect(page.body).to include('We are offering')
+    expect(page.body).to include('As a thank you, we will give your child')
     expect(page).to have_tag('a.editable', text: 'a cash incentive of £10.50')
-    expect(page.body).to include('for participation in this session')
   end
 end
 

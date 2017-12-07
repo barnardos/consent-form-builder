@@ -1,6 +1,17 @@
 # 0.6.0 / Unreleased
 
 * [FEATURE] - [Live preview: Researcher](https://trello.com/c/T2MeDlYY/255-13-live-preview-researcher)
+* [FEATURE] - [Remove additional researchers from the builder](https://trello.com/c/sDbgJ6dQ/276-8-remove-additional-researchers-from-the-builder)
+* [FEATURE] - [Update the methodologies list in the form builder and info sheet](https://trello.com/c/oI7k0fFy/210-5-update-the-methodologies-list-in-the-form-builder-and-info-sheet)
+* [FEATURE] - [Add "Concerns and complaints" to the information sheet (static)](https://trello.com/c/Rvs9PGTM/279-2-add-concerns-and-complaints-to-the-information-sheet-static)
+* [FEATURE] - [Add "Sharing information" section to information sheet (static)](https://trello.com/c/4BEtxvHd)
+* [FEATURE] - [Add "About taking part" to the information sheet (static)](https://trello.com/c/eth5vJYW)
+* [FEATURE] - [Add "Decide if you want the child in your care to take part" part to the info sheet (static)](https://trello.com/c/uzbzifmd/280-2-add-decide-if-you-want-the-child-in-your-care-to-take-part-part-to-the-info-sheet-static)
+* [FEATURE] - [Improve the "Where can I find out more?" section of information sheet](https://trello.com/c/VrKLhmWK/274-2-improve-the-where-can-i-find-out-more-section-of-information-sheet)
+* [FEATURE] - [Remove "Do I have to take part" from info sheet](https://trello.com/c/ZJt7BJ6n)
+* [FEATURE] - [Update "When is the session..." content and change to "Session details"](https://trello.com/c/Xj2WfSpH/289-8-update-when-is-the-session-content-and-change-to-session-details)
+* [FEATURE] - [Merge Incentives, Expenses into "When is the session..."](https://trello.com/c/cmTxdOPX/281-2-merge-incentives-expenses-into-when-is-the-session)
+* [FEATURE] - [Review the headers/section order of the information sheet](https://trello.com/c/VIAe530f/272-1-review-the-headers-section-order-of-the-information-sheet)
 
 # 0.5.0 / 2017-11-16
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import WhoIsDoingTheResearch from './WhoIsDoingTheResearch'
-import WhereCanIFindOutMore from './WhereCanIFindOutMore'
+import FindOutMore from '../Shared/FindOutMore'
+import WhatHappensInThisResearchSession from '../Shared/WhatHappensInThisResearchSession'
 
 class ResearcherPreviews extends React.Component {
   constructor (props) {
@@ -30,8 +30,8 @@ class ResearcherPreviews extends React.Component {
   render () {
     return (
       <div>
-        <WhoIsDoingTheResearch {...this.state} />
-        <WhereCanIFindOutMore {...this.state} />
+        <WhatHappensInThisResearchSession {...this.state} />
+        <FindOutMore {...this.state} />
       </div>
     )
   }
@@ -41,8 +41,12 @@ ResearcherPreviews.propTypes = {
   researcher_job_title: PropTypes.string,
   researcher_name: PropTypes.string,
   researcher_email: PropTypes.string,
-  researcher_other_name: PropTypes.string,
-  researcher_phone: PropTypes.string
+  researcher_phone: PropTypes.string,
+  finalPreview: PropTypes.bool
+}
+
+ResearcherPreviews.defaultProps = {
+  finalPreview: false
 }
 
 export default ResearcherPreviews
