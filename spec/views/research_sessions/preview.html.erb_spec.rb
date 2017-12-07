@@ -31,10 +31,6 @@ describe 'research_sessions/preview' do
   context 'no date is given, but a duration is given' do
     let(:extra_attrs) { { when_text: nil, duration: 'Three minutes' } }
 
-    it 'does not show the date or time' do
-      expect(rendered).not_to match('The session is on')
-    end
-
     it 'shows the duration' do
       expect(rendered).to match(/Duration.*Three minutes/m)
     end
