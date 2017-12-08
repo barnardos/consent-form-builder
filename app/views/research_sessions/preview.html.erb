@@ -32,7 +32,7 @@
   <section>
     <%= react_component(
         'TopicPurposePreviews',
-        component_params(:topic, :purpose, final_preview: true).merge(
+        preview_params(:topic).merge(
           labels: {
             topic: t('research_session_attr_labels.topic'),
             purpose: t('research_session_attr_labels.purpose')
@@ -81,7 +81,7 @@
   <%=
     react_component(
       'Shared/WhatHappensInThisResearchSession',
-      component_params(:researcher_job_title, :researcher_name, final_preview: true).merge({
+      preview_params(:researcher).merge({
         methodologies_markup: methodologies,
         recording_markup: recording,
         you_or_your_child: you_or_your_child
@@ -211,10 +211,7 @@
   <%=
     react_component(
       'Shared/FindOutMore',
-      component_params(:researcher_name, :researcher_phone, :researcher_email, final_preview: true),
-      {
-        prerender: true
-      }
+      preview_params(:researcher), { prerender: true }
     )
   %>
 

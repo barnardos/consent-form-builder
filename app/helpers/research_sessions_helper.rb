@@ -29,6 +29,10 @@ module ResearchSessionsHelper
     component_params(*ResearchSession::Steps::PARAMS[step])
   end
 
+  def preview_params(step)
+    component_params(*ResearchSession::Steps::PARAMS[step], final_preview: true)
+  end
+
   def edit_link_for(attr, &block)
     value = block_given? ? capture(&block) : @research_session.send(attr)
 
