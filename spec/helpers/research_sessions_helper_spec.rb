@@ -10,7 +10,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       assign(:research_session, session)
     end
 
-    subject(:params) { helper.component_params(*attrs, final_preview: final_preview) }
+    subject(:params) { helper.send(:component_params, *attrs, final_preview: final_preview) }
 
     context 'all params exist on the object' do
       let(:session_attrs)  { { researcher_name: 'Joe', researcher_job_title: 'Janitor' } }
