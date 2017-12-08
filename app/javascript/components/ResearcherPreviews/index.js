@@ -1,32 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import PreviewBase from '../Shared/PreviewBase'
 import FindOutMore from '../Shared/FindOutMore'
 import WhatHappensInThisResearchSession from '../Shared/WhatHappensInThisResearchSession'
 
-class ResearcherPreviews extends React.Component {
-  constructor (props) {
-    super(props)
-
-    Array.from(
-      document.querySelectorAll('[data-previewed-by=ResearcherPreviews]')
-    ).forEach(element => {
-      element.oninput = this.handleInputChange.bind(this)
-    })
-
-    this.state = props
-  }
-
-  handleInputChange (event) {
-    const { target: { value, name: railsName } } = event
-
-    const namePattern = /research_session\[(.*)\]/
-    const name = namePattern.exec(railsName)[1]
-
-    this.setState({
-      [name]: value
-    })
-  }
-
+class ResearcherPreviews extends PreviewBase {
   render () {
     return (
       <div>

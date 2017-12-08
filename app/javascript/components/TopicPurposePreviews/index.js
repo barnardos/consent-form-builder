@@ -1,33 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import PreviewBase from '../Shared/PreviewBase'
 import Output from '../Shared/Output'
 
-class TopicPurposePreviews extends React.Component {
-  constructor (props) {
-    super(props)
-
-    if (!props.finalPreview) {
-      Array.from(
-        document.querySelectorAll('[data-previewed-by=TopicPurposePreviews]')
-      ).forEach(element => {
-        element.oninput = this.handleInputChange.bind(this)
-      })
-    }
-
-    this.state = props
-  }
-
-  handleInputChange (event) {
-    const { target: { value, name: railsName } } = event
-
-    const namePattern = /research_session\[(.*)\]/
-    const name = namePattern.exec(railsName)[1]
-
-    this.setState({
-      [name]: value
-    })
-  }
-
+class TopicPurposePreviews extends PreviewBase {
   render () {
     return (
       <div>
