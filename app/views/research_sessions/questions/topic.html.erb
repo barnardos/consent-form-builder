@@ -31,14 +31,12 @@
           <%=
             react_component(
               'TopicPurposePreviews',
-              {
-                topic: @research_session.topic,
-                purpose: @research_session.purpose,
+              component_params(:topic, :purpose).merge(
                 labels: {
                   topic: t('research_session_attr_labels.topic'),
                   purpose: t('research_session_attr_labels.purpose')
                 }
-              }
+              )
             )
           %>
         </section>
