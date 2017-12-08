@@ -26,16 +26,7 @@
             <%=
               react_component(
                 'ResearcherPreviews/index',
-                component_params(
-                  :researcher_job_title,
-                  :researcher_name,
-                  :researcher_phone,
-                  :researcher_email
-                ).merge(
-                  {
-                    you_or_your_child: 'you'
-                  }
-                )
+                current_step_params.merge(you_or_your_child: 'you')
               )
             %>
           </div>

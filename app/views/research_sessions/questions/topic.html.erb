@@ -31,7 +31,7 @@
           <%=
             react_component(
               'TopicPurposePreviews',
-              component_params(:topic, :purpose).merge(
+              current_step_params.merge(
                 labels: {
                   topic: t('research_session_attr_labels.topic'),
                   purpose: t('research_session_attr_labels.purpose')
