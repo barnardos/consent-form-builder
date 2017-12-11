@@ -3,6 +3,58 @@ require 'rails_helper'
 RSpec.describe ResearchSessionsHelper, :type => :helper do
   include RSpecHtmlMatchers
 
+  describe '#current_step_params' do
+    let(:research_session) { double('ResearchSession') }
+
+    before do
+      helper.extend Wicked::Controller::Concerns::Steps
+      assign(:research_session, research_session)
+      allow(helper).to receive(:step).and_return(step)
+    end
+
+    context 'a normal step' do
+      let(:step) { :topic }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:topic, :purpose)
+        helper.current_step_params
+      end
+    end
+
+    context 'a step with an array param' do
+      let(:step) { :recording }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:other_recording_method, :recording_methods)
+        helper.current_step_params
+      end
+    end
+  end
+
+  describe '#preview_params' do
+    context 'a normal step' do
+      let(:step) { :topic }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:topic, :purpose, final_preview: true)
+        helper.preview_params(step)
+      end
+    end
+
+    context 'a step with an array param' do
+      let(:step) { :recording }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:other_recording_method, :recording_methods, final_preview: true)
+        helper.preview_params(step)
+      end
+    end
+  end
+
   describe '#component_params' do
     let(:session) { double('ResearchSession', session_attrs.merge(slug: 'my-session')) }
 
