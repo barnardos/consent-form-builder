@@ -452,6 +452,21 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       end
     end
 
+    context 'extra options to the input elements are present' do
+      let(:options) do
+        { input: { 'data-previewed-by' => 'SomeComponent', 'data-moar' => 'SomethingElse' } }
+      end
+
+      it 'passes that through to all the inputs' do
+        expect(rendered).to have_tag(
+          'input[data-previewed-by=SomeComponent]', count: collection.length
+        )
+        expect(rendered).to have_tag(
+          'input[data-moar=SomethingElse]', count: collection.length
+        )
+      end
+    end
+
     describe 'the option :autofocus_first_item' do
       context 'autofocus_first_item is false' do
         let(:options) { { autofocus_first_item: false } }
