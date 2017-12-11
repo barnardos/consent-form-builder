@@ -17,6 +17,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "glob": "^7.1.2",
+    "humanize-list": "^1.0.1",
     "js-yaml": "^3.8.4",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
