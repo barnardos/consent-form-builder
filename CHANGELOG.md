@@ -16,6 +16,7 @@
 * [FEATURE] - [Live preview: Topic / Purpose](https://trello.com/c/JiSAAKBv/256-3-live-preview-topic-purpose)
 * [BUG] - [Researcher preview phone number/word missing](https://trello.com/c/Vt4JdtH5/293-bugs-researcher-preview)
 * [BUG] - [Live previews broken in every live environment](https://trello.com/c/BV2jgy9O/295-live-previews-broken-in-every-live-environment)
+* [BUG] - [Apply design rules featured in the original Barnardo's styleguide](https://trello.com/c/CtYloVeU/286-apply-design-rules-featured-in-the-original-barnardos-styleguide)
 
 # 0.5.0 / 2017-11-16
 
