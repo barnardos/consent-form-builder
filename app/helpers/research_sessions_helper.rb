@@ -1,10 +1,10 @@
 module ResearchSessionsHelper
   def current_step_params
-    component_params(*ResearchSession::Steps::PARAMS[step])
+    component_params(*flat_params(step))
   end
 
   def preview_params(step)
-    component_params(*ResearchSession::Steps::PARAMS[step], final_preview: true)
+    component_params(*flat_params(step), final_preview: true)
   end
 
   def edit_link_for(attr, &block)
@@ -64,6 +64,12 @@ module ResearchSessionsHelper
   end
 
 private
+
+  def flat_params(step)
+    ResearchSession::Steps::PARAMS[step].map do |param|
+      param.is_a?(Hash) ? param.keys : param
+    end.flatten
+  end
 
   ##
   # Assemble Rails-y research session params for a React component that
