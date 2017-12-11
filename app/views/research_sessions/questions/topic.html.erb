@@ -3,23 +3,45 @@
   <%= render 'shared/error_summary' %>
   <h1 class="subtitle-large">Topic</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <%= form.labelled_text_field(
-          :topic,
-          text_options: {
-            placeholder: t('helpers.placeholder.research_session.topic'),
-            autofocus: true
-          }
-        )
-    %>
+    <div class="reactive-container">
+      <div class="reactive-container__form">
+        <%= form.labelled_text_field(
+              :topic,
+              text_options: {
+                placeholder: t('helpers.placeholder.research_session.topic'),
+                autofocus: true,
+                'data-previewed-by' => 'TopicPurposePreviews'
+              }
+            )
+        %>
 
-    <%= form.labelled_text_field(
-          :purpose,
-          text_options: {
-            placeholder: t('helpers.placeholder.research_session.purpose'),
-            autofocus: true
-          }
-        )
-    %>
+        <%= form.labelled_text_field(
+              :purpose,
+              text_options: {
+                placeholder: t('helpers.placeholder.research_session.purpose'),
+                autofocus: true,
+                'data-previewed-by' => 'TopicPurposePreviews'
+              }
+            )
+        %>
+      </div>
+
+      <div class="reactive-container__preview">
+        <section class="reactive-preview__section">
+          <%=
+            react_component(
+              'TopicPurposePreviews',
+              current_step_params.merge(
+                labels: {
+                  topic: t('research_session_attr_labels.topic'),
+                  purpose: t('research_session_attr_labels.purpose')
+                }
+              )
+            )
+          %>
+        </section>
+      </div>
+    </div>
 
     <%= render 'button_bar' %>
   <% end %>

@@ -1,5 +1,7 @@
 module ResearchSessions
   class QuestionsController < ApplicationController
+    helper ResearchSessionsHelper
+
     include Wicked::Wizard
     steps(*ResearchSession::Steps::PARAMS.keys)
 

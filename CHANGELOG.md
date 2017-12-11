@@ -13,6 +13,8 @@
 * [FEATURE] - [Merge Incentives, Expenses into "When is the session..."](https://trello.com/c/cmTxdOPX/281-2-merge-incentives-expenses-into-when-is-the-session)
 * [FEATURE] - [Review the headers/section order of the information sheet](https://trello.com/c/VIAe530f/272-1-review-the-headers-section-order-of-the-information-sheet)
 * [BUG] - [Change 'review' consent form heading to 'Consent form'](https://trello.com/c/2Hjw3duY/294-change-review-consent-form-heading-to-consent-form)
+* [FEATURE] - [Live preview: Topic / Purpose](https://trello.com/c/JiSAAKBv/256-3-live-preview-topic-purpose)
+* [BUG] - [Researcher preview phone number/word missing](https://trello.com/c/Vt4JdtH5/293-bugs-researcher-preview)
 
 # 0.5.0 / 2017-11-16
 

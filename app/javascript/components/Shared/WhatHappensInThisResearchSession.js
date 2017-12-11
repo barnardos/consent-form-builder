@@ -7,7 +7,7 @@ const WhatHappensInThisResearchSession = (props) => {
   let jobTitle = ''
 
   if (props.researcher_job_title) {
-    jobTitle = <span>{', '}{Output(props, 'researcher_job_title')}{', '}</span>
+    jobTitle = <span>{', '}{Output(props, 'researcher_job_title')}{','}</span>
   }
 
   return (

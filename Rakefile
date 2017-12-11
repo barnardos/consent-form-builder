@@ -11,4 +11,4 @@ if %w[development test].include? Rails.env
 end
 
 task(:default).clear
-task default: [:spec, :cucumber, :rubocop, 'npm:lint', 'npm:test:unit']
+task default: [:spec, :cucumber, :rubocop, 'npm:test:unit', 'npm:test:jest', 'npm:lint']
