@@ -1,22 +1,38 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Recording</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= form.checkbox_group_vertical(
-            :recording_methods,
-            RecordingMethods::NAME_VALUES.map { |name, value| [name, value.capitalize] },
-            { autofocus_first_item: true },
-            legend: 'How will you be recording information?'
-          )
-      %>
+  <div class="reactive-container">
+    <div class="reactive-container__form">
+      <%= render 'shared/error_summary' %>
+      <h1 class="page-heading">Recording</h1>
+      <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+        <%= form.checkbox_group_vertical(
+              :recording_methods,
+              RecordingMethods::NAME_VALUES.map { |name, value| [name, value.capitalize] },
+              {
+                autofocus_first_item: true
+              },
+              legend: 'How will you be recording information?'
+            )
+        %>
 
-      <div class="js-ConditionalSubfield"
-           data-controlled-by="research_session[recording_methods][]"
-           data-control-value="other">
-        <%= form.labelled_text_field :other_recording_method %>
-      </div>
+        <div class="js-ConditionalSubfield"
+             data-controlled-by="research_session[recording_methods][]"
+             data-control-value="other">
+          <%= form.labelled_text_field :other_recording_method %>
+        </div>
 
-      <%= render 'button_bar' %>
-  <% end %>
+        <%= render 'button_bar' %>
+      <% end %>
+    </div>
+
+    <%=
+      react_component(
+        'RecordingMethodsPreviews',
+        current_step_params.merge(
+          all_recording_methods: RecordingMethods::NAME_VALUES.merge(other: @research_session.other_recording_method),
+          able_to_consent: false # Fixed – we don't have an idea until preview
+        )
+      )
+    %>
+  </div>
 </div>

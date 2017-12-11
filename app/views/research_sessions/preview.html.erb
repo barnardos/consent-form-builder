@@ -64,16 +64,15 @@
   <% end %>
 
   <% recording = capture do %>
-    <p>Which we will record using:</p>
-    <ul class="bullet-point-list">
-      <% @research_session.recording_methods.each do |recording_method| %>
-        <li>
-          <%= edit_link_for(:recording_methods) do %>
-            <%= recording_method_lookup(recording_method) %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%=
+      react_component(
+        'Shared/WhichWeWillRecordUsing',
+        preview_params(:recording).merge(
+          all_recording_methods:
+            RecordingMethods::NAME_VALUES.merge(other: @research_session.other_recording_method)
+        )
+      )
+    %>
   <% end %>
 
   <%=
@@ -269,11 +268,17 @@
       participation is voluntary and that I am free to withdraw them at any time
       without giving any reason.
     </li>
-    <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
-      activities during the research session may be observed and will be recorded.
-      The data captured, in the form of <%= @research_session.recording_methods_sentence %>,
-      will be used for current and future service development.
-    </li>
+    <%=
+      react_component(
+        'Shared/WhichWeWillRecordUsingSentence',
+        preview_params(:recording).merge(
+          all_recording_methods: RecordingMethods::NAME_VALUES.merge(other: @research_session.other_recording_method),
+          able_to_consent:  @research_session.able_to_consent?
+        ),
+        { prerender: true }
+      )
+    %>
+
     <li>I understand that this data will be stored securely and
       covered by the Data Protection Act.
     </li>
