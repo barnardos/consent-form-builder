@@ -15,91 +15,47 @@
   src: font-url("pnalt-medium.otf") format("opentype");
 }
 
-.title {
+h1 {
+  font-size: 52px;
+  font-weight: bold;
+  line-height: 56px;
+  margin: 48px 0 0 0;
+}
+
+h2 {
   font-size: 36px;
   font-weight: bold;
-  line-height: 36px;
-  margin: 16px 0;
-
-  @media (min-width: $tablet) {
-    font-size: 52px;
-    line-height: 56px;
-    margin: 32px 0;
-  }
+  line-height: 48px;
+  margin: 32px 0 0 0;
 }
 
-h2,
-.subtitle-large {
+h3 {
   font-size: 29px;
-  font-weight: normal;
-  line-height: 32px;
-  margin: 12px 0;
-
-  @media (min-width: $tablet) {
-    font-size: 36px;
-    line-height: 48px;
-    margin: 16px 0;
-  }
+  font-weight: bold;
+  line-height: 42px;
+  margin: 32px 0 0 0;
+  color: $black;
 }
 
-h3,
-.subtitle-medium {
+.super-text {
   font-size: 23px;
-  font-weight: normal;
-  line-height: 24px;
-  margin: 16px 0;
-  color: $black;
-
-  @media (min-width: $tablet) {
-    font-size: 29px;
-    line-height: 42px;
-    color: $black;
-  }
+  line-height: 36px;
+  margin: 16px 0 0 0;
 }
 
-h4,
-.subtitle-small {
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 24px;
-  margin: 16px 0;
-  color: $black;
-
-  @media (min-width: $tablet) {
-    font-size: 23px;
-    line-height: 28px;
-    color: $black;
-  }
-}
-
-.shorter-text,
-p,
-p.short-text {
-
-  font-size: 16px;
-  line-height: 16px;
-  margin: 24px 0;
-
-  @media (min-width: $tablet) {
-    font-size: 18px;
-    line-height: 24px;
-    margin: 32px 0;
-  }
-}
-
-.super-text,
-p.super-text {
+p {
   font-size: 18px;
   line-height: 24px;
-  margin: 24px 0;
-
-  @media (min-width: $tablet) {
-    font-size: 23px;
-    line-height: 36px;
-    margin: 32px 0;
-  }
+  margin: 16px 0 0 0;
 }
 
 .nowrap {
   white-space: nowrap;
+}
+
+.page-heading {
+  font-size: 52px;
+  font-weight: bold;
+  line-height: 56px;
+  margin: 48px 0 0 0;
 }

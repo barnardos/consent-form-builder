@@ -1,7 +1,7 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'shared/error_summary' %>
-  <h1 class="subtitle-large">Recording</h1>
+  <h1 class="page-heading">Recording</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
       <%= form.checkbox_group_vertical(
             :recording_methods,
