@@ -7,11 +7,17 @@ $preview-highlight-background-colour: #ffe4b5;
 
 .reactive-preview__section {
   background: $preview-section-background-colour;
-  padding: 8px 16px;
+  padding: 16px;
 }
 
 .reactive-preview__section:not(:first-child) {
   margin-top: 8px;
+}
+
+.reactive-preview__heading {
+  font-size: 23px;
+  line-height: 28px;
+  margin-top: 0;
 }
 
 .reactive-preview__highlight {

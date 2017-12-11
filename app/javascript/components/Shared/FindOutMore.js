@@ -14,7 +14,7 @@ const FindOutMore = (props) => {
 
   return (
     <section className={ props.finalPreview ? '' : 'reactive-preview__section' }>
-      <h3 className="subtitle-small" id="more">Find out more</h3>
+      <h3 className={ props.finalPreview ? '' : 'reactive-preview__heading' } id="more">Find out more</h3>
       <p>If you have any questions about the research please contact {Output(props, 'researcher_name')}:</p>
       <dl className="definition-list">
         <div>

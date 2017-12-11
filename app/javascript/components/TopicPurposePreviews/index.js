@@ -11,8 +11,7 @@ class TopicPurposePreviews extends PreviewBase {
   render () {
     return (
       <div>
-        <h3 className="subtitle-small" id="why">Why we are doing research</h3>
-
+        <h3 className={ this.props.finalPreview ? '' : 'reactive-preview__heading' } id="why">Why we are doing research</h3>
         <p>
           {this.props.labels.topic}
           {' '}{Output(this.state, 'topic')}{' '}
