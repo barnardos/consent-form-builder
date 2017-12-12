@@ -116,8 +116,8 @@ describe('RecordingMethodsPreviews', () => {
           recording_methods: ['voice', 'video'],
           other_recording_method: 'The other value',
           all_recording_methods: {
-            'voice': 'The Voice',
-            'video': 'The Video',
+            'voice': 'the voice',
+            'video': 'the video',
             'another_thing': 'An added value'
           }
         }
@@ -149,16 +149,28 @@ describe('RecordingMethodsPreviews', () => {
         //   resulting event
         beforeEach(() => {
           props['recording_methods'] = ['voice', 'video', 'other']
+          recordingMethodsPreviews().instance().handleTextChange({
+            target: {
+              name: 'research_session[other_recording_method]', value: 'a new other value'
+            }
+          })
+          recordingMethodsPreviews().update()
         })
 
         it('changes the value in the list', () => {
-          recordingMethodsPreviews().instance().handleTextChange({
-            target: {
-              name: 'research_session[other_recording_method]', value: 'A new other value'
-            }
-          })
+          expect(recordingMethodsPreviews()).to.contain(
+            <output className="reactive-preview__highlight">
+              a new other value
+            </output>
+          )
+        })
 
-          expect(recordingMethodsPreviews().text()).to.contain('A new other value')
+        it('changes the value in the sentence', () => {
+          expect(recordingMethodsPreviews()).to.contain(
+            <output className="reactive-preview__highlight">
+              the voice, the video, and a new other value
+            </output>
+          )
         })
       })
 
@@ -177,7 +189,7 @@ describe('RecordingMethodsPreviews', () => {
             }
           })
 
-          expect(recordingMethodsPreviews().text()).not.to.contain('The Voice')
+          expect(recordingMethodsPreviews().text()).not.to.contain('the voice')
         })
       })
     })
