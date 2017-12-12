@@ -1,10 +1,10 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
-  <div class="reactive-container">
-    <div class="reactive-container__form">
-      <%= render 'shared/error_summary' %>
-      <h1 class="page-heading">Recording</h1>
-      <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+  <%= render 'shared/error_summary' %>
+  <h1 class="page-heading">Recording</h1>
+  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+    <div class="reactive-container">
+      <div class="reactive-container__form">
         <%= form.checkbox_group_vertical(
               :recording_methods,
               RecordingMethods::NAME_VALUES.map { |name, value| [name, value.capitalize] },
@@ -15,10 +15,9 @@
               legend: 'How will you be recording information?'
             )
         %>
-
         <div class="js-ConditionalSubfield"
-             data-controlled-by="research_session[recording_methods][]"
-             data-control-value="other">
+              data-controlled-by="research_session[recording_methods][]"
+              data-control-value="other">
           <%=
             form.labelled_text_field(
               :other_recording_method,
@@ -26,19 +25,19 @@
             )
           %>
         </div>
-
-        <%= render 'button_bar' %>
-      <% end %>
+      </div>
+      <div class="reactive-container__preview">
+        <%=
+          react_component(
+            'RecordingMethodsPreviews',
+            current_step_params.merge(
+              all_recording_methods: RecordingMethods::NAME_VALUES,
+              able_to_consent: false # Fixed – we don't have an idea until preview
+            )
+          )
+        %>
+      </div>
     </div>
-
-    <%=
-      react_component(
-        'RecordingMethodsPreviews',
-        current_step_params.merge(
-          all_recording_methods: RecordingMethods::NAME_VALUES,
-          able_to_consent: false # Fixed – we don't have an idea until preview
-        )
-      )
-    %>
-  </div>
+    <%= render 'button_bar' %>
+  <% end %>
 </div>
