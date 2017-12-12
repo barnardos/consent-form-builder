@@ -8,6 +8,14 @@ const WhichWeWillRecordUsing = (props) => {
   if (props.recording_methods) {
     listItems =
       props.recording_methods.map((method) => {
+        if (method === 'other') {
+          return (
+            <li key={method}>
+              {Output(props, 'other_recording_method')}
+            </li>
+          )
+        }
+
         return (
           <li key={method}>
             {Output(props, 'recording_methods', props.all_recording_methods[method])}
@@ -32,7 +40,8 @@ const WhichWeWillRecordUsing = (props) => {
 
 WhichWeWillRecordUsing.propTypes = {
   recording_methods: PropTypes.array,
-  all_recording_methods: PropTypes.object
+  all_recording_methods: PropTypes.object,
+  other_recording_method: PropTypes.string
 }
 
 export default WhichWeWillRecordUsing

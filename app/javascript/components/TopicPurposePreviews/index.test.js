@@ -103,7 +103,7 @@ describe('TopicPurposePreviews', () => {
         //   resulting event
 
         it('changes the topic', () => {
-          topicPurposePreviews().instance().handleInputChange({
+          topicPurposePreviews().instance().handleTextChange({
             target: { name: 'research_session[topic]', value: 'a new topic' }
           })
 

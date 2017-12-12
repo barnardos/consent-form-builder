@@ -21,18 +21,41 @@ class PreviewBase extends React.Component {
     Array.from(
       document.querySelectorAll(`[data-previewed-by=${this.componentName()}]`)
     ).forEach(element => {
-      element.oninput = this.handleInputChange.bind(this)
+      if (element.type === 'checkbox') {
+        element.onchange = this.handleCheckboxChange.bind(this)
+      } else {
+        element.oninput = this.handleTextChange.bind(this)
+      }
     })
   }
 
-  handleInputChange (event) {
+  handleTextChange (event) {
     const { target: { value, name: railsName } } = event
 
-    const namePattern = /research_session\[(.*)\]/
+    const namePattern = /research_session\[(.+?)]/
     const name = namePattern.exec(railsName)[1]
 
     this.setState({
       [name]: value
+    })
+  }
+
+  handleCheckboxChange (event) {
+    const { target: { checked, value, name: railsName } } = event
+
+    const namePattern = /research_session\[(.+?)[[\]]/
+    const name = namePattern.exec(railsName)[1]
+
+    const values = new Set(this.state[name])
+
+    if (checked) {
+      values.add(value)
+    } else {
+      values.delete(value)
+    }
+
+    this.setState({
+      [name]: Array.from(values)
     })
   }
 }
