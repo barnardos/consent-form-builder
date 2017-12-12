@@ -5,8 +5,8 @@ import FindOutMore from '../Shared/FindOutMore'
 import WhatHappensInThisResearchSession from '../Shared/WhatHappensInThisResearchSession'
 
 class ResearcherPreviews extends PreviewBase {
-  constructor (props) {
-    super(props)
+  componentName () {
+    return 'ResearcherPreviews'
   }
 
   render () {

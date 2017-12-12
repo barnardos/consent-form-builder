@@ -13,9 +13,13 @@ class PreviewBase extends React.Component {
     this.state = props
   }
 
+  componentName() {
+    throw new Error('componentName should be implemented in base classes')
+  }
+
   componentDidMount () {
     Array.from(
-      document.querySelectorAll(`[data-previewed-by=${this.constructor.name}]`)
+      document.querySelectorAll(`[data-previewed-by=${this.componentName()}]`)
     ).forEach(element => {
       element.oninput = this.handleInputChange.bind(this)
     })
