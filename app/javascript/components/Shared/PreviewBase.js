@@ -19,7 +19,7 @@ class PreviewBase extends React.Component {
 
   componentDidMount () {
     Array.from(
-      document.querySelectorAll(`[data-previewed-by=${this.componentName()}]`)
+      document.querySelectorAll(`[data-previewed-by=${this.constructor.name}]`)
     ).forEach(element => {
       element.oninput = this.handleInputChange.bind(this)
     })
