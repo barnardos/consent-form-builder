@@ -4,6 +4,10 @@ import PreviewBase from '../Shared/PreviewBase'
 import Output from '../Shared/Output'
 
 class TopicPurposePreviews extends PreviewBase {
+  componentName () {
+    return 'TopicPurposePreviews'
+  }
+
   render () {
     return (
       <div>
