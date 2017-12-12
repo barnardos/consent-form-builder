@@ -5,6 +5,10 @@ import FindOutMore from '../Shared/FindOutMore'
 import WhatHappensInThisResearchSession from '../Shared/WhatHappensInThisResearchSession'
 
 class ResearcherPreviews extends PreviewBase {
+  componentName () {
+    return 'ResearcherPreviews'
+  }
+
   render () {
     return (
       <div>

@@ -13,6 +13,10 @@ class PreviewBase extends React.Component {
     this.state = props
   }
 
+  componentName () {
+    throw new Error('componentName should be implemented in derived classes')
+  }
+
   componentDidMount () {
     Array.from(
       document.querySelectorAll(`[data-previewed-by=${this.constructor.name}]`)
