@@ -48,7 +48,8 @@ describe('RecordingMethodsPreviews', () => {
           recording_methods: ['voice', 'video', 'other'],
           other_recording_method: 'some other recording method',
           editLinks: {
-            recording_methods: '/path/to/rails/recording_methods'
+            recording_methods: '/path/to/rails/recording_methods',
+            other_recording_method: '/path/to/rails/recording_methods'
           },
           finalPreview: true
         }
@@ -103,6 +104,80 @@ describe('RecordingMethodsPreviews', () => {
 
         it('removes "my child"', () => {
           expect(recordingMethodsPreviews().text()).to.contain('I understand that my activities')
+        })
+      })
+    })
+  })
+
+  describe('values changing', () => {
+    describe('the researcher name changing', () => {
+      beforeEach(() => {
+        props = {
+          recording_methods: ['voice', 'video'],
+          other_recording_method: 'The other value',
+          all_recording_methods: {
+            'voice': 'The Voice',
+            'video': 'The Video',
+            'another_thing': 'An added value'
+          }
+        }
+      })
+
+      describe('adding an item that is not there', () => {
+        // Simulate change from a field such as
+        // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
+        // - usually triggered onchange, but that link is not tested here, we're just simulating the
+        //   resulting event
+
+        it('adds that value to the list', () => {
+          recordingMethodsPreviews().instance().handleCheckboxChange({
+            target: {
+              name: 'research_session[recording_methods][]',
+              value: 'another_thing',
+              checked: true
+            }
+          })
+
+          expect(recordingMethodsPreviews().text()).to.contain('An added value')
+        })
+      })
+
+      describe('changing the "other" value', () => {
+        // Simulate change from a field such as
+        // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
+        // - usually triggered onchange, but that link is not tested here, we're just simulating the
+        //   resulting event
+        beforeEach(() => {
+          props['recording_methods'] = ['voice', 'video', 'other']
+        })
+
+        it('changes the value in the list', () => {
+          recordingMethodsPreviews().instance().handleTextChange({
+            target: {
+              name: 'research_session[other_recording_method]', value: 'A new other value'
+            }
+          })
+
+          expect(recordingMethodsPreviews().text()).to.contain('A new other value')
+        })
+      })
+
+      describe('removing an item that is there', () => {
+        // Simulate change from a field such as
+        // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
+        // - usually triggered onchange, but that link is not tested here, we're just simulating the
+        //   resulting event
+
+        it('removes that value from the list', () => {
+          recordingMethodsPreviews().instance().handleCheckboxChange({
+            target: {
+              name: 'research_session[recording_methods][]',
+              value: 'voice',
+              checked: false
+            }
+          })
+
+          expect(recordingMethodsPreviews().text()).not.to.contain('The Voice')
         })
       })
     })

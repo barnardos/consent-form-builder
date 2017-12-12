@@ -68,10 +68,8 @@
       <%=
         react_component(
           'Shared/WhichWeWillRecordUsing',
-          preview_params(:recording).merge(
-            all_recording_methods:
-              RecordingMethods::NAME_VALUES.merge(other: @research_session.other_recording_method)
-          )
+          preview_params(:recording).merge(all_recording_methods: RecordingMethods::NAME_VALUES),
+          { prerender: true }
         )
       %>
     </p>
@@ -274,7 +272,7 @@
       react_component(
         'Shared/WhichWeWillRecordUsingSentence',
         preview_params(:recording).merge(
-          all_recording_methods: RecordingMethods::NAME_VALUES.merge(other: @research_session.other_recording_method),
+          all_recording_methods: RecordingMethods::NAME_VALUES,
           able_to_consent:  @research_session.able_to_consent?
         ),
         { prerender: true }
