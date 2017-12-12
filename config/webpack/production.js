@@ -23,7 +23,11 @@ module.exports = merge(sharedConfig, {
 
       output: {
         comments: false
-      }
+      },
+
+      uglifyOptions: {
+        mangle: false
+      },
     }),
 
     new CompressionPlugin({
