@@ -7,7 +7,11 @@ const WhichWeWillRecordUsingSentence = (props) => {
 
   if (props.recording_methods) {
     const recordingMethodLabels =
-      props.recording_methods.map((method) => props.all_recording_methods[method])
+      props.recording_methods.map((method) => {
+        return method === 'other'
+          ? props.other_recording_method
+          : props.all_recording_methods[method]
+      })
     recordingMethodsSentence = humanizeList(
       recordingMethodLabels, { oxfordComma: true }
     )
@@ -28,6 +32,7 @@ const WhichWeWillRecordUsingSentence = (props) => {
 WhichWeWillRecordUsingSentence.propTypes = {
   recording_methods: PropTypes.array,
   all_recording_methods: PropTypes.object,
+  other_recording_method: PropTypes.string,
   able_to_consent: PropTypes.bool
 }
 
