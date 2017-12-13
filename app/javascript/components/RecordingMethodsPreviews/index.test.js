@@ -125,7 +125,7 @@ describe('RecordingMethodsPreviews', () => {
 
       describe('adding an item that is not there', () => {
         // Simulate change from a field such as
-        // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
+        // <input name="research_session[recording_methods][]" data-previewed-by="RecordingMethodsPreviews" />
         // - usually triggered onchange, but that link is not tested here, we're just simulating the
         //   resulting event
         beforeEach(() => {
@@ -158,8 +158,8 @@ describe('RecordingMethodsPreviews', () => {
 
       describe('changing the "other" value', () => {
         // Simulate change from a field such as
-        // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
-        // - usually triggered onchange, but that link is not tested here, we're just simulating the
+        // <input name="research_session[other_recording_method]" data-previewed-by="RecordingMethodsPreviews" />
+        // - usually triggered oninput, but that link is not tested here, we're just simulating the
         //   resulting event
         beforeEach(() => {
           props['recording_methods'] = ['voice', 'video', 'other']
@@ -190,7 +190,7 @@ describe('RecordingMethodsPreviews', () => {
 
       describe('removing an item that is there', () => {
         // Simulate change from a field such as
-        // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
+        // <input name="research_session[recording_methods][]" data-previewed-by="RecordingMethodsPreviews" />
         // - usually triggered onchange, but that link is not tested here, we're just simulating the
         //   resulting event
 
