@@ -18,12 +18,13 @@ const WhichWeWillRecordUsingSentence = (props) => {
   }
 
   const childsIfUnable = props.able_to_consent ? '' : ' childʼs'
+  const options = props.finalPreview ? {} : { className: 'reactive-preview__highlight' }
 
   return (
     <li>
       I understand that my{childsIfUnable} activities during the research session may
       be observed and will be recorded. The data captured, in the form of{' '}
-      <output className="reactive-preview__highlight">{recordingMethodsSentence}</output>
+      <output {...options}>{recordingMethodsSentence}</output>
       {' '}will be used for current and future service development.
     </li>
   )
@@ -33,7 +34,8 @@ WhichWeWillRecordUsingSentence.propTypes = {
   recording_methods: PropTypes.array,
   all_recording_methods: PropTypes.object,
   other_recording_method: PropTypes.string,
-  able_to_consent: PropTypes.bool
+  able_to_consent: PropTypes.bool,
+  finalPreview: PropTypes.bool
 }
 
 export default WhichWeWillRecordUsingSentence
