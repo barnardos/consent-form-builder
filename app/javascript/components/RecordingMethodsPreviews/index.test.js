@@ -113,12 +113,12 @@ describe('RecordingMethodsPreviews', () => {
     describe('the researcher name changing', () => {
       beforeEach(() => {
         props = {
-          recording_methods: ['voice', 'video'],
+          recording_methods: ['voice', 'another_thing'],
           other_recording_method: 'The other value',
           all_recording_methods: {
             'voice': 'the voice',
             'video': 'the video',
-            'another_thing': 'An added value'
+            'another_thing': 'another thing'
           }
         }
       })
@@ -128,17 +128,31 @@ describe('RecordingMethodsPreviews', () => {
         // <input name="research_session[recording_methids][]" data-previewed-by="RecordingMethodsPreviews" />
         // - usually triggered onchange, but that link is not tested here, we're just simulating the
         //   resulting event
-
-        it('adds that value to the list', () => {
+        beforeEach(() => {
           recordingMethodsPreviews().instance().handleCheckboxChange({
             target: {
               name: 'research_session[recording_methods][]',
-              value: 'another_thing',
+              value: 'video',
               checked: true
             }
           })
+          recordingMethodsPreviews().update()
+        })
 
-          expect(recordingMethodsPreviews().text()).to.contain('An added value')
+        it('adds that value to the list in order', () => {
+          expect(recordingMethodsPreviews()).to.contain(
+            <ul className="bullet-point-list">
+              <li><output className="reactive-preview__highlight">the voice</output></li>
+              <li><output className="reactive-preview__highlight">the video</output></li>
+              <li><output className="reactive-preview__highlight">another thing</output></li>
+            </ul>
+          )
+        })
+
+        it('adds that value to the sentence in order', () => {
+          expect(recordingMethodsPreviews().text()).to.contain(
+            'the voice, the video, and another thing'
+          )
         })
       })
 

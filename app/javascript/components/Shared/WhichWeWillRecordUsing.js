@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Output from './Output'
+import sortAgainst from './sort-against'
 
 const WhichWeWillRecordUsing = (props) => {
   let listItems
 
   if (props.recording_methods) {
+    const sortedRecordingMethods = sortAgainst(props.recording_methods, props.all_recording_methods)
     listItems =
-      props.recording_methods.map((method) => {
+      sortedRecordingMethods.map((method) => {
         if (method === 'other') {
           return (
             <li key={method}>

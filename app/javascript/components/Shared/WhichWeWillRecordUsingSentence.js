@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import humanizeList from 'humanize-list'
+import sortAgainst from './sort-against'
 
 const WhichWeWillRecordUsingSentence = (props) => {
   let recordingMethodsSentence = ''
 
   if (props.recording_methods) {
+    const sortedRecordingMethods = sortAgainst(props.recording_methods, props.all_recording_methods)
     const recordingMethodLabels =
-      props.recording_methods.map((method) => {
+      sortedRecordingMethods.map((method) => {
         return method === 'other'
           ? props.other_recording_method
           : props.all_recording_methods[method]
       })
-    recordingMethodsSentence = humanizeList(
-      recordingMethodLabels, { oxfordComma: true }
-    )
+    recordingMethodsSentence = humanizeList(recordingMethodLabels, { oxfordComma: true })
   }
 
   const childsIfUnable = props.able_to_consent ? '' : ' childʼs'
