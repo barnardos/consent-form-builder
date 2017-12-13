@@ -11,7 +11,7 @@
   <button type="submit" class="print-section__submit button">Print</button>
 </form>
 
-<h1 class="title screen-only">Research session preview</h1>
+<h1 class="page-heading screen-only">Research session preview</h1>
 
 <section class="split-link screen-only">
   <div class="<%='active' if @research_session.able_to_consent? %>">
@@ -24,7 +24,7 @@
 
 <div class="print-area js-print-area" id="info-sheets">
   <section>
-    <h2 class="heading-medium">About this research project</h2>
+    <h2>About this research project</h2>
     <p class="super-text">This information sheet will tell you more about the
       research so that you can decide whether or not <%= you_or_your_child %> would like to take part.</p>
   </section>
@@ -64,18 +64,16 @@
   <% end %>
 
   <% recording = capture do %>
-    <p>
-      Which we will record using:
-      <ul class="bullet-point-list">
-        <% @research_session.recording_methods.each do |recording_method| %>
-          <li>
-            <%= edit_link_for(:recording_methods) do %>
-              <%= recording_method_lookup(recording_method) %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </p>
+    <p>Which we will record using:</p>
+    <ul class="bullet-point-list">
+      <% @research_session.recording_methods.each do |recording_method| %>
+        <li>
+          <%= edit_link_for(:recording_methods) do %>
+            <%= recording_method_lookup(recording_method) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 
   <%=
@@ -96,7 +94,7 @@
         @research_session.where_when_enabled ||
         @research_session.expenses_enabled %>
     <section>
-      <h3 class="subtitle-small" id="session-details">Session details</h3>
+      <h3 id="session-details">Session details</h3>
       <% if @research_session.where_when_enabled %>
         <dl class="definition-list">
           <%
@@ -152,7 +150,7 @@
   <% end %>
 
   <section>
-    <h3 class="subtitle-small" id="confidential">
+    <h3 id="confidential">
       Will anyone know what <%= i_or_they %> say in the discussion?
     </h3>
 
@@ -179,7 +177,7 @@
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="sharing-information">Sharing information</h3>
+    <h3 id="sharing-information">Sharing information</h3>
     <p>
       We may have to share information about <%= you_or_your_child %> without
       your consent if we think <%= you_or_they %> or someone else is at risk
@@ -189,7 +187,7 @@
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="about-taking-part">About taking part</h3>
+    <h3 id="about-taking-part">About taking part</h3>
     <p>
       <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
       not have to take part in this session. It is your decision<%= ' as the parent/carer' if @research_session.unable_to_consent? %>.
@@ -216,7 +214,7 @@
   %>
 
   <section>
-    <h3 class="subtitle-small" id="concerns">Concerns and complaints</h3>
+    <h3 id="concerns">Concerns and complaints</h3>
 
     <p>If you have any concerns or a complaint, or would like to have your data deleted please contact:
 
@@ -233,7 +231,7 @@
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="decide">
+    <h3 id="decide">
       Decide if you want<%=
         ' the child in your care' if @research_session.unable_to_consent?
       %> to take part</h3>
@@ -254,9 +252,9 @@
 </div>
 
 <div class="print-area js-print-area" id="consent-form">
-  <h2 class="heading-large">Consent form</h2>
+  <h2 class="page-heading">Consent form</h2>
 
-  <p class="super-text">It is important to us that your consent
+  <p>It is important to us that your consent
     <%= 'for your child' if @research_session.unable_to_consent? %> to
     take part in this research is freely given and fully informed.</p>
   <p>Please review the following points and indicate your agreement to the
@@ -281,7 +279,7 @@
     </li>
   </ul>
 
-  <p class="highlight super-text">
+  <p>
     I agree to my <%= 'childʼs' if @research_session.unable_to_consent? %>
     participation in this research and understand that
     my childʼs data will be used as explained above.

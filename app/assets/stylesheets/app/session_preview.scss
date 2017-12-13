@@ -1,10 +1,4 @@
 .editable {
-  display: inline-block;
   background: $highlight-background-colour;
   padding: .2em;
-
-  // TODO: Remove `> p` when topic and purpose are no longer useing `simple_format`
-  > p {
-    margin: 0;
-  }
 }

@@ -5,10 +5,10 @@ $progress-indicator-color-active: #e2f2ce;
 
 .progress {
   margin: ($gutter * 2) ($gutter / 2) ($gutter * 4);
-  max-width: $max-content-width;
+  max-width: $max-container-width;
 
   @media (min-width: $tablet) {
-    margin: ($gutter * 2) 0;
+    margin: ($gutter * 2) auto;
     padding-bottom: $gutter * 3;
     padding-left: 30px;
   }

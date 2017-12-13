@@ -12,11 +12,12 @@ const WhatHappensInThisResearchSession = (props) => {
 
   return (
     <section className={ props.finalPreview ? '' : 'reactive-preview__section' }>
-      <h3 className="subtitle-small" id="what">What happens in this research session?</h3>
-
-      {Output(props, 'researcher_name')}
-      {jobTitle} would like {props.you_or_your_child} to take part in
-      {colonOrEllipsis}
+      <h3 className={ props.finalPreview ? '' : 'reactive-preview__heading' } id="what">What happens in this research session?</h3>
+      <p>
+        {Output(props, 'researcher_name')}
+        {jobTitle} would like {props.you_or_your_child} to take part in
+        {colonOrEllipsis}
+      </p>
 
       <div dangerouslySetInnerHTML={{__html: props.methodologies_markup}} />
       <div dangerouslySetInnerHTML={{__html: props.recording_markup}} />
