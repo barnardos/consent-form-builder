@@ -35,7 +35,7 @@ describe('Output', () => {
       it('renders that property as an output with a link to the path in editLinks', () => {
         const output = mount(Output(props, 'my_property'))
         expect(output).to.contain(
-          <output className="reactive-preview__highlight">
+          <output>
             <a className="editable" href="/path/to/my_property">this is my value</a>
           </output>
         )
@@ -44,7 +44,7 @@ describe('Output', () => {
         it('renders the override but keeps the link', () => {
           const output = mount(Output(props, 'my_property', 'the override'))
           expect(output).to.contain(
-            <output className="reactive-preview__highlight">
+            <output>
               <a className="editable" href="/path/to/my_property">the override</a>
             </output>
           )

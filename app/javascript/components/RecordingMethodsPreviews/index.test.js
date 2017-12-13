@@ -64,7 +64,7 @@ describe('RecordingMethodsPreviews', () => {
       it('has a li for items', () => {
         expect(recordingMethodsPreviews()).to.contain(
           <li>
-            <output className="reactive-preview__highlight">
+            <output>
               <a className="editable" href="/path/to/rails/recording_methods">
                 voice recording
               </a>
@@ -76,7 +76,7 @@ describe('RecordingMethodsPreviews', () => {
       it('has a li for the "other" item', () => {
         expect(recordingMethodsPreviews()).to.contain(
           <li>
-            <output className="reactive-preview__highlight">
+            <output>
               <a className="editable" href="/path/to/rails/recording_methods">
                 some other recording method
               </a>
@@ -87,7 +87,7 @@ describe('RecordingMethodsPreviews', () => {
 
       it('has a sentence with the checked items', () => {
         expect(recordingMethodsPreviews()).to.contain(
-          <output className="reactive-preview__highlight">
+          <output>
             voice recording, video recording, and some other recording method
           </output>
         )
