@@ -1,4 +1,4 @@
-# 0.6.0 / Unreleased
+# 0.6.0 / 2017-12-14
 
 * [FEATURE] - [Live preview: Researcher](https://trello.com/c/T2MeDlYY/255-13-live-preview-researcher)
 * [FEATURE] - [Remove additional researchers from the builder](https://trello.com/c/sDbgJ6dQ/276-8-remove-additional-researchers-from-the-builder)
