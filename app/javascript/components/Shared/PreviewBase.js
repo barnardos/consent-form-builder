@@ -14,7 +14,10 @@ class PreviewBase extends React.Component {
   }
 
   componentName () {
-    throw new Error('componentName should be implemented in derived classes')
+    throw new Error(
+      'componentName should be implemented in derived classes ' +
+      '(have you returned the name of the class?)'
+    )
   }
 
   componentDidMount () {
