@@ -33,6 +33,7 @@ class RecordingMethodsPreviews extends PreviewBase {
 
 RecordingMethodsPreviews.propTypes = {
   all_recording_methods: PropTypes.object,
+  other_recording_method: PropTypes.string,
   selected_recording_methods: PropTypes.array
 }
 
