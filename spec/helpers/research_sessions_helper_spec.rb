@@ -33,14 +33,14 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
     end
   end
 
-  describe '#preview_params' do
+  describe '#final_preview_params' do
     context 'a normal step' do
       let(:step) { :topic }
 
       it 'calls component_params with all the parameters for the current step' do
         expect(helper).to receive(:component_params)
           .with(:topic, :purpose, final_preview: true)
-        helper.preview_params(step)
+        helper.final_preview_params(step)
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       it 'calls component_params with all the parameters for the current step' do
         expect(helper).to receive(:component_params)
           .with(:other_recording_method, :recording_methods, final_preview: true)
-        helper.preview_params(step)
+        helper.final_preview_params(step)
       end
     end
   end

@@ -3,7 +3,7 @@ module ResearchSessionsHelper
     component_params(*flat_params(step))
   end
 
-  def preview_params(step)
+  def final_preview_params(step)
     component_params(*flat_params(step), final_preview: true)
   end
 

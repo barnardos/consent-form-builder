@@ -32,7 +32,7 @@
   <section>
     <%= react_component(
         'TopicPurposePreviews',
-        preview_params(:topic).merge(
+        final_preview_params(:topic).merge(
           labels: {
             topic: t('research_session_attr_labels.topic'),
             purpose: t('research_session_attr_labels.purpose')
@@ -67,7 +67,7 @@
     <%=
       react_component(
         'Shared/WhichWeWillRecordUsingList',
-        preview_params(:recording).merge(all_recording_methods: RecordingMethods::NAME_VALUES),
+        final_preview_params(:recording).merge(all_recording_methods: RecordingMethods::NAME_VALUES),
         { prerender: true }
       )
     %>
@@ -76,7 +76,7 @@
   <%=
     react_component(
       'Shared/WhatHappensInThisResearchSession',
-      preview_params(:researcher).merge({
+      final_preview_params(:researcher).merge({
         methodologies_markup: methodologies,
         recording_markup: recording,
         you_or_your_child: you_or_your_child
@@ -206,7 +206,7 @@
   <%=
     react_component(
       'Shared/FindOutMore',
-      preview_params(:researcher), { prerender: true }
+      final_preview_params(:researcher), { prerender: true }
     )
   %>
 
@@ -269,7 +269,7 @@
     <%=
       react_component(
         'Shared/WhichWeWillRecordUsingSentence',
-        preview_params(:recording).merge(
+        final_preview_params(:recording).merge(
           all_recording_methods: RecordingMethods::NAME_VALUES,
           able_to_consent:  @research_session.able_to_consent?
         ),
