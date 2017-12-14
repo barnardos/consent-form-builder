@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Output from './Output'
 import sortAgainst from './sort-against'
 
-const WhichWeWillRecordUsing = (props) => {
+const WhichWeWillRecordUsingList = (props) => {
   let listItems
 
   if (props.recording_methods) {
@@ -40,10 +40,10 @@ const WhichWeWillRecordUsing = (props) => {
   )
 }
 
-WhichWeWillRecordUsing.propTypes = {
+WhichWeWillRecordUsingList.propTypes = {
   recording_methods: PropTypes.array,
   all_recording_methods: PropTypes.object,
   other_recording_method: PropTypes.string
 }
 
-export default WhichWeWillRecordUsing
+export default WhichWeWillRecordUsingList

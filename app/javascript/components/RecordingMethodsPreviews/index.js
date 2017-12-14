@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PreviewBase from '../Shared/PreviewBase'
-import WhichWeWillRecordUsing from '../Shared/WhichWeWillRecordUsing'
+import WhichWeWillRecordUsing from '../Shared/WhichWeWillRecordUsingList'
 import WhichWeWillRecordUsingSentence from '../Shared/WhichWeWillRecordUsingSentence'
 
 class RecordingMethodsPreviews extends PreviewBase {
