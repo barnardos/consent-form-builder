@@ -72,14 +72,14 @@ describe('TopicPurposePreviews', () => {
       })
       it('renders an editLink with the supplied rails route for the topic', () => {
         expect(topicPurposePreviews()).to.contain(
-          <output className="reactive-preview__highlight">
+          <output>
             <a className="editable" href="/rails/path/to/topic">{props.topic}</a>
           </output>
         )
       })
       it('renders an editLink with the supplied rails route for the purpose', () => {
         expect(topicPurposePreviews()).to.contain(
-          <output className="reactive-preview__highlight">
+          <output>
             <a className="editable" href="/rails/path/to/purpose">{props.purpose}</a>
           </output>
         )
@@ -103,7 +103,7 @@ describe('TopicPurposePreviews', () => {
         //   resulting event
 
         it('changes the topic', () => {
-          topicPurposePreviews().instance().handleInputChange({
+          topicPurposePreviews().instance().handleTextChange({
             target: { name: 'research_session[topic]', value: 'a new topic' }
           })
 

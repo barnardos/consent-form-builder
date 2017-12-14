@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Output = (props, attr) => {
-  const attrValue = props[attr]
+const Output = (props, attr, value) => {
+  const attrValue = value || props[attr]
   let linkOrValue
 
   if (props.finalPreview) {
@@ -15,8 +15,10 @@ const Output = (props, attr) => {
     linkOrValue = attrValue
   }
 
+  const optionalClass = props.finalPreview ? {} : { className: 'reactive-preview__highlight' }
+
   return (
-    <output className="reactive-preview__highlight">
+    <output {...optionalClass}>
       {linkOrValue}
     </output>
   )

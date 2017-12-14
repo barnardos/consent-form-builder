@@ -152,7 +152,8 @@ module Barnardos
               should_autofocus = options[:autofocus_first_item] && on_first_item
               on_first_item = false
               content_tag :div, class: 'checkbox-group__choice' do
-                b.check_box(class: 'checkbox-group__input', autofocus: should_autofocus) +
+                checkbox_options = { class: 'checkbox-group__input', autofocus: should_autofocus }
+                b.check_box(checkbox_options.merge(options[:input] || {})) +
                   b.label(class: 'checkbox-group__label')
               end
             end

@@ -65,7 +65,7 @@ describe('ResearcherPreviews', () => {
       })
       it('renders an editLink with the supplied rails route for the name', () => {
         expect(researcherPreviews()).to.contain(
-          <output className="reactive-preview__highlight">
+          <output>
             <a className="editable" href="/rails/path/to/researcher_name">Rachael Researcher</a>
           </output>
         )
@@ -101,7 +101,7 @@ describe('ResearcherPreviews', () => {
         //   resulting event
 
         it('changes the researcher name', () => {
-          researcherPreviews().instance().handleInputChange({
+          researcherPreviews().instance().handleTextChange({
             target: { name: 'research_session[researcher_name]', value: 'Leanne' }
           })
 

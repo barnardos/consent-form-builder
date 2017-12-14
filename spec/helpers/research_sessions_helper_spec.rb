@@ -3,6 +3,58 @@ require 'rails_helper'
 RSpec.describe ResearchSessionsHelper, :type => :helper do
   include RSpecHtmlMatchers
 
+  describe '#current_step_params' do
+    let(:research_session) { double('ResearchSession') }
+
+    before do
+      helper.extend Wicked::Controller::Concerns::Steps
+      assign(:research_session, research_session)
+      allow(helper).to receive(:step).and_return(step)
+    end
+
+    context 'a normal step' do
+      let(:step) { :topic }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:topic, :purpose)
+        helper.current_step_params
+      end
+    end
+
+    context 'a step with an array param' do
+      let(:step) { :recording }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:other_recording_method, :recording_methods)
+        helper.current_step_params
+      end
+    end
+  end
+
+  describe '#final_preview_params' do
+    context 'a normal step' do
+      let(:step) { :topic }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:topic, :purpose, final_preview: true)
+        helper.final_preview_params(step)
+      end
+    end
+
+    context 'a step with an array param' do
+      let(:step) { :recording }
+
+      it 'calls component_params with all the parameters for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:other_recording_method, :recording_methods, final_preview: true)
+        helper.final_preview_params(step)
+      end
+    end
+  end
+
   describe '#component_params' do
     let(:session) { double('ResearchSession', session_attrs.merge(slug: 'my-session')) }
 
@@ -120,30 +172,6 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       let(:methodology) { 'other' }
       it 'is equal to the "other" methodology on the research session' do
         is_expected.to eql(research_session.other_methodology)
-      end
-    end
-  end
-
-  describe '#recording_method_lookup' do
-    subject(:lookup) { helper.recording_method_lookup(method) }
-
-    context 'is a non-other recording method' do
-      let(:method) { 'voice' }
-      it { is_expected.to eql('voice recording') }
-    end
-
-    context 'is an Other method' do
-      let(:research_session) do
-        double('ResearchSession', other_recording_method: 'A.N. Other Recording Method')
-      end
-
-      before do
-        assign(:research_session, research_session)
-      end
-
-      let(:method) { 'other' }
-      it 'is equal to the "other" methodology on the research session' do
-        is_expected.to eql(research_session.other_recording_method)
       end
     end
   end

@@ -32,7 +32,7 @@
   <section>
     <%= react_component(
         'TopicPurposePreviews',
-        preview_params(:topic).merge(
+        final_preview_params(:topic).merge(
           labels: {
             topic: t('research_session_attr_labels.topic'),
             purpose: t('research_session_attr_labels.purpose')
@@ -64,22 +64,19 @@
   <% end %>
 
   <% recording = capture do %>
-    <p>Which we will record using:</p>
-    <ul class="bullet-point-list">
-      <% @research_session.recording_methods.each do |recording_method| %>
-        <li>
-          <%= edit_link_for(:recording_methods) do %>
-            <%= recording_method_lookup(recording_method) %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%=
+      react_component(
+        'Shared/WhichWeWillRecordUsingList',
+        final_preview_params(:recording).merge(all_recording_methods: RecordingMethods::NAME_VALUES),
+        { prerender: true }
+      )
+    %>
   <% end %>
 
   <%=
     react_component(
       'Shared/WhatHappensInThisResearchSession',
-      preview_params(:researcher).merge({
+      final_preview_params(:researcher).merge({
         methodologies_markup: methodologies,
         recording_markup: recording,
         you_or_your_child: you_or_your_child
@@ -209,7 +206,7 @@
   <%=
     react_component(
       'Shared/FindOutMore',
-      preview_params(:researcher), { prerender: true }
+      final_preview_params(:researcher), { prerender: true }
     )
   %>
 
@@ -269,11 +266,17 @@
       participation is voluntary and that I am free to withdraw them at any time
       without giving any reason.
     </li>
-    <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
-      activities during the research session may be observed and will be recorded.
-      The data captured, in the form of <%= @research_session.recording_methods_sentence %>,
-      will be used for current and future service development.
-    </li>
+    <%=
+      react_component(
+        'Shared/WhichWeWillRecordUsingSentence',
+        final_preview_params(:recording).merge(
+          all_recording_methods: RecordingMethods::NAME_VALUES,
+          able_to_consent:  @research_session.able_to_consent?
+        ),
+        { prerender: true }
+      )
+    %>
+
     <li>I understand that this data will be stored securely and
       covered by the Data Protection Act.
     </li>

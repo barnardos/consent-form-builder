@@ -1,10 +1,10 @@
 module ResearchSessionsHelper
   def current_step_params
-    component_params(*ResearchSession::Steps::PARAMS[step])
+    component_params(*flat_params(step))
   end
 
-  def preview_params(step)
-    component_params(*ResearchSession::Steps::PARAMS[step], final_preview: true)
+  def final_preview_params(step)
+    component_params(*flat_params(step), final_preview: true)
   end
 
   def edit_link_for(attr, &block)
@@ -24,14 +24,6 @@ module ResearchSessionsHelper
       @research_session.other_methodology
     else
       Methodologies::NAME_VALUES[methodology.to_sym]
-    end
-  end
-
-  def recording_method_lookup(recording_method)
-    if recording_method.to_s == 'other'
-      @research_session.other_recording_method
-    else
-      RecordingMethods::NAME_VALUES[recording_method.to_sym]
     end
   end
 
@@ -64,6 +56,12 @@ module ResearchSessionsHelper
   end
 
 private
+
+  def flat_params(step)
+    ResearchSession::Steps::PARAMS[step].map do |param|
+      param.is_a?(Hash) ? param.keys : param
+    end.flatten
+  end
 
   ##
   # Assemble Rails-y research session params for a React component that

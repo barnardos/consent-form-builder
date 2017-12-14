@@ -23,12 +23,7 @@ ResearcherPreviews.propTypes = {
   researcher_job_title: PropTypes.string,
   researcher_name: PropTypes.string,
   researcher_email: PropTypes.string,
-  researcher_phone: PropTypes.string,
-  finalPreview: PropTypes.bool
-}
-
-ResearcherPreviews.defaultProps = {
-  finalPreview: false
+  researcher_phone: PropTypes.string
 }
 
 export default ResearcherPreviews
