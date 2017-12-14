@@ -27,14 +27,6 @@ module ResearchSessionsHelper
     end
   end
 
-  def recording_method_lookup(recording_method)
-    if recording_method.to_s == 'other'
-      @research_session.other_recording_method
-    else
-      RecordingMethods::NAME_VALUES[recording_method.to_sym]
-    end
-  end
-
   def shared_with_lookup(shared_with)
     I18n.t("preview.shared_with.#{shared_with}", person: you_or_your_child)
   end
