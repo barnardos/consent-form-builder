@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Output from './Output'
+import DisplayAdditionalCopy from './DisplayAdditionalCopy'
 
 const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
   return (
@@ -8,9 +9,10 @@ const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
       <section className='reactive-preview__section'>
         <h3 className="reactive-preview__heading" id="storing">Will anyone know what they say in the discussion?</h3>
         <p>
-          The only people who will hear what you say in the session will be the researchers
-          running the session, other young people taking part, and service workers
-          facilitating the session.
+          <DisplayAdditionalCopy
+            content="The only people who will hear what you say in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session."
+            finalPreview={props.finalPreview}
+          />
         </p>
         <p>
           {Output(props, 'shared_with')}
@@ -22,7 +24,10 @@ const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
           be deleted. Personal data is stored in a safe and secure way.
         </p>
         <p>
-          You can contact Jason Caplin to ask us to delete your personal data at any time.
+          <DisplayAdditionalCopy
+            content="You can contact Jason Caplin to ask us to delete your personal data at any time."
+            finalPreview={props.finalPreview}
+          />
         </p>
       </section>
     </div>
