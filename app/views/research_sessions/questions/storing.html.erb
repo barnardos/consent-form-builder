@@ -8,7 +8,12 @@
         <%= form.radio_group_vertical \
             :shared_with,
             SharedWith::NAME_VALUES,
-            { autofocus_first_item: true },
+            {
+              autofocus_first_item: true,
+              input: {
+                'data-previewed-by' => 'StoringPreviews'
+              }
+            },
             legend: t('helpers.legend.research_session.shared_with')
         %>
 
