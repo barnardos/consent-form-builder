@@ -26,6 +26,8 @@ class PreviewBase extends React.Component {
     ).forEach(element => {
       if (element.type === 'checkbox') {
         element.onchange = this.handleCheckboxChange.bind(this)
+      } else if (element.type === 'radio') {
+        element.onchange = this.handleTextOrRadioChange.bind(this)
       } else {
         element.oninput = this.handleTextOrRadioChange.bind(this)
       }
