@@ -65,7 +65,7 @@ describe('ResearcherPreviews', () => {
       })
       it('renders an editLink with the supplied rails route for the name', () => {
         expect(researcherPreviews()).to.contain(
-          <output>
+          <output data-field="researcher_name">
             <a className="editable" href="/rails/path/to/researcher_name">Rachael Researcher</a>
           </output>
         )

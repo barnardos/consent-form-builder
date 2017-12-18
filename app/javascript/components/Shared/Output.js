@@ -18,7 +18,7 @@ const Output = (props, attr, value) => {
   const optionalClass = props.finalPreview ? {} : { className: 'reactive-preview__highlight' }
 
   return (
-    <output {...optionalClass}>
+    <output {...optionalClass} data-field={attr}>
       {linkOrValue}
     </output>
   )

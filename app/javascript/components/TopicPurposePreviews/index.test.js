@@ -72,14 +72,14 @@ describe('TopicPurposePreviews', () => {
       })
       it('renders an editLink with the supplied rails route for the topic', () => {
         expect(topicPurposePreviews()).to.contain(
-          <output>
+          <output data-field="topic">
             <a className="editable" href="/rails/path/to/topic">{props.topic}</a>
           </output>
         )
       })
       it('renders an editLink with the supplied rails route for the purpose', () => {
         expect(topicPurposePreviews()).to.contain(
-          <output>
+          <output data-field="purpose">
             <a className="editable" href="/rails/path/to/purpose">{props.purpose}</a>
           </output>
         )
