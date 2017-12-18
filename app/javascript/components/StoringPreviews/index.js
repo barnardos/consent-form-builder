@@ -18,7 +18,8 @@ class StoringPreviews extends PreviewBase {
 }
 
 StoringPreviews.propTypes = {
-  shared_duration: PropTypes.string
+  shared_duration: PropTypes.string,
+  shared_with_sentences: PropTypes.object
 }
 
 export default StoringPreviews

@@ -4,6 +4,12 @@ import Output from './Output'
 import DisplayAdditionalCopy from './DisplayAdditionalCopy'
 
 const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
+  let sharedWithSentence = ''
+
+  if (props.shared_with) {
+    sharedWithSentence = props.shared_with_sentences[props.shared_with]
+  }
+
   return (
     <div className="reactive-container__preview">
       <section className='reactive-preview__section'>
@@ -15,7 +21,7 @@ const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
           />
         </p>
         <p>
-          {Output(props, 'shared_with')}
+          {Output(props, 'shared_with', sharedWithSentence)}
         </p>
         <p>
           Barnardo’s will hold research data for{' '}
@@ -37,6 +43,7 @@ const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
 WillAnyoneKnowWhatISayInTheDiscussion.propTypes = {
   shared_duration: PropTypes.string,
   shared_with: PropTypes.string,
+  shared_with_sentences: PropTypes.object,
   finalPreview: PropTypes.bool
 }
 

@@ -33,7 +33,13 @@
           react_component(
             'StoringPreviews',
             current_step_params.merge(
-              able_to_consent: false # Fixed – we don't have an idea until preview
+              able_to_consent: false,
+              shared_with_sentences: {
+                anonymised: t('preview.shared_with.anonymised', person: 'you'),
+                team: t('preview.shared_with.team'),
+                internal: t('preview.shared_with.internal'),
+                external: t('preview.shared_with.external')
+              }
             )
           )
         %>

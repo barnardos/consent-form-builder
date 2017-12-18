@@ -15,7 +15,10 @@ describe('StoringPreviews', () => {
 
   beforeEach(() => {
     props = {
-      shared_duration: undefined
+      shared_duration: undefined,
+      shared_with: undefined,
+      shared_with_sentences: undefined,
+      finalPreview: false
     }
     mountedStoringPreviews = undefined
   })
@@ -38,6 +41,10 @@ describe('StoringPreviews', () => {
       beforeEach(() => {
         props = {
           shared_duration: 'one year',
+          shared_with: 'anonymised',
+          shared_with_sentences: {
+            anonymised: 'anonymised sentence'
+          },
           editLinks: {
             shared_duration: '/path/to/rails/storing'
           },
@@ -46,19 +53,14 @@ describe('StoringPreviews', () => {
         mountedStoringPreviews = undefined
       })
 
-      it('has a total of two outputs, both are sentences', () => {
-        const outputs = storingPreviews().find('output')
-        expect(outputs.length).to.eql(2)
+      it('displays the shared duration content', () => {
+        const sharedDurationOutput = storingPreviews().find('output[data-field="shared_duration"]')
+        expect(sharedDurationOutput).text().to.eql(props.shared_duration)
       })
 
-      it('has an output for shared_duration', () => {
-        expect(storingPreviews()).to.contain(
-          <output data-field="shared_duration">
-            <a className="editable" href="/path/to/rails/storing">
-              one year
-            </a>
-          </output>
-        )
+      it('displays the shared_with sentence', () => {
+        const sharedWithOutput = storingPreviews().find('output[data-field="shared_with"]')
+        expect(sharedWithOutput).text().to.eql(props.shared_with_sentences.anonymised)
       })
     })
   })
@@ -66,7 +68,13 @@ describe('StoringPreviews', () => {
   describe('values changing', () => {
     beforeEach(() => {
       props = {
-        shared_duration: 'one year'
+        shared_duration: 'one year',
+        shared_with: 'anonymised',
+        shared_with_sentences: {
+          anonymised: 'anonymised sentence',
+          internal: 'internal sentence'
+        },
+        finalPreview: false
       }
     })
 
@@ -77,6 +85,14 @@ describe('StoringPreviews', () => {
         })
 
         expect(storingPreviews().find('output[data-field="shared_duration"]').text()).to.eql('two years')
+      })
+
+      it('changes the shared with sentence', () => {
+        storingPreviews().instance().handleTextOrRadioChange({
+          target: { name: 'research_session[shared_with]', value: 'internal' }
+        })
+
+        expect(storingPreviews().find('output[data-field="shared_with"]').text()).to.eql(props.shared_with_sentences.internal)
       })
     })
   })
