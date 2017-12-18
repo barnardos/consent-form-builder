@@ -166,7 +166,7 @@ describe('RecordingMethodsPreviews', () => {
         //   resulting event
         beforeEach(() => {
           props['recording_methods'] = ['voice', 'video', 'other']
-          recordingMethodsPreviews().instance().handleTextChange({
+          recordingMethodsPreviews().instance().handleTextOrRadioChange({
             target: {
               name: 'research_session[other_recording_method]', value: 'a new other value'
             }

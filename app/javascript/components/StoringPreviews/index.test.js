@@ -72,7 +72,7 @@ describe('StoringPreviews', () => {
 
     describe('receipt of an input change', () => {
       it('changes the shared duration', () => {
-        storingPreviews().instance().handleTextChange({
+        storingPreviews().instance().handleTextOrRadioChange({
           target: { name: 'research_session[shared_duration]', value: 'two years' }
         })
 

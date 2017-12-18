@@ -101,7 +101,7 @@ describe('ResearcherPreviews', () => {
         //   resulting event
 
         it('changes the researcher name', () => {
-          researcherPreviews().instance().handleTextChange({
+          researcherPreviews().instance().handleTextOrRadioChange({
             target: { name: 'research_session[researcher_name]', value: 'Leanne' }
           })
 
