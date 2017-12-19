@@ -13,7 +13,7 @@ const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
   return (
     <div className="reactive-container__preview">
       <section className='reactive-preview__section'>
-        <h3 className="reactive-preview__heading" id="storing">Will anyone know what they say in the discussion?</h3>
+        <h3 className="reactive-preview__heading" id="storing">{props.shared_title}</h3>
         <p>
           <DisplayAdditionalCopy
             content="The only people who will hear what you say in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session."
@@ -44,6 +44,7 @@ WillAnyoneKnowWhatISayInTheDiscussion.propTypes = {
   shared_duration: PropTypes.string,
   shared_with: PropTypes.string,
   shared_with_sentences: PropTypes.object,
+  shared_title: PropTypes.string,
   finalPreview: PropTypes.bool
 }
 
