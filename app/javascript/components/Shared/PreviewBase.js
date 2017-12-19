@@ -26,13 +26,15 @@ class PreviewBase extends React.Component {
     ).forEach(element => {
       if (element.type === 'checkbox') {
         element.onchange = this.handleCheckboxChange.bind(this)
+      } else if (element.type === 'radio') {
+        element.onchange = this.handleTextOrRadioChange.bind(this)
       } else {
-        element.oninput = this.handleTextChange.bind(this)
+        element.oninput = this.handleTextOrRadioChange.bind(this)
       }
     })
   }
 
-  handleTextChange (event) {
+  handleTextOrRadioChange (event) {
     const { target: { value, name: railsName } } = event
 
     const namePattern = /research_session\[(.+?)]/

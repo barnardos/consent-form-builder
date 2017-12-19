@@ -64,7 +64,7 @@ describe('RecordingMethodsPreviews', () => {
       it('has a li for items', () => {
         expect(recordingMethodsPreviews()).to.contain(
           <li>
-            <output>
+            <output data-field="recording_methods">
               <a className="editable" href="/path/to/rails/recording_methods">
                 voice recording
               </a>
@@ -76,7 +76,7 @@ describe('RecordingMethodsPreviews', () => {
       it('has a li for the "other" item', () => {
         expect(recordingMethodsPreviews()).to.contain(
           <li>
-            <output>
+            <output data-field="other_recording_method">
               <a className="editable" href="/path/to/rails/recording_methods">
                 some other recording method
               </a>
@@ -87,8 +87,10 @@ describe('RecordingMethodsPreviews', () => {
 
       it('has a sentence with the checked items', () => {
         expect(recordingMethodsPreviews()).to.contain(
-          <output>
-            voice recording, video recording, and some other recording method
+          <output data-field="recording_methods">
+            <a className="editable" href="/path/to/rails/recording_methods">
+              voice recording, video recording, and some other recording method
+            </a>
           </output>
         )
       })
@@ -119,7 +121,8 @@ describe('RecordingMethodsPreviews', () => {
             'voice': 'the voice',
             'video': 'the video',
             'another_thing': 'another thing'
-          }
+          },
+          finalPreview: false
         }
       })
 
@@ -142,9 +145,9 @@ describe('RecordingMethodsPreviews', () => {
         it('adds that value to the list in order', () => {
           expect(recordingMethodsPreviews()).to.contain(
             <ul className="bullet-point-list">
-              <li><output className="reactive-preview__highlight">the voice</output></li>
-              <li><output className="reactive-preview__highlight">the video</output></li>
-              <li><output className="reactive-preview__highlight">another thing</output></li>
+              <li><output className="reactive-preview__highlight" data-field="recording_methods">the voice</output></li>
+              <li><output className="reactive-preview__highlight" data-field="recording_methods">the video</output></li>
+              <li><output className="reactive-preview__highlight" data-field="recording_methods">another thing</output></li>
             </ul>
           )
         })
@@ -163,7 +166,7 @@ describe('RecordingMethodsPreviews', () => {
         //   resulting event
         beforeEach(() => {
           props['recording_methods'] = ['voice', 'video', 'other']
-          recordingMethodsPreviews().instance().handleTextChange({
+          recordingMethodsPreviews().instance().handleTextOrRadioChange({
             target: {
               name: 'research_session[other_recording_method]', value: 'a new other value'
             }
@@ -173,7 +176,7 @@ describe('RecordingMethodsPreviews', () => {
 
         it('changes the value in the list', () => {
           expect(recordingMethodsPreviews()).to.contain(
-            <output className="reactive-preview__highlight">
+            <output className="reactive-preview__highlight" data-field="other_recording_method">
               a new other value
             </output>
           )
@@ -181,7 +184,7 @@ describe('RecordingMethodsPreviews', () => {
 
         it('changes the value in the sentence', () => {
           expect(recordingMethodsPreviews()).to.contain(
-            <output className="reactive-preview__highlight">
+            <output className="reactive-preview__highlight" data-field="recording_methods">
               the voice, the video, and a new other value
             </output>
           )

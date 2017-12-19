@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import humanizeList from 'humanize-list'
 import sortAgainst from './sort-against'
+import Output from './Output'
 
 const WhichWeWillRecordUsingSentence = (props) => {
   let recordingMethodsSentence = ''
@@ -18,13 +19,12 @@ const WhichWeWillRecordUsingSentence = (props) => {
   }
 
   const childsIfUnable = props.able_to_consent ? '' : ' childʼs'
-  const options = props.finalPreview ? {} : { className: 'reactive-preview__highlight' }
 
   return (
     <li>
       I understand that my{childsIfUnable} activities during the research session may
       be observed and will be recorded. The data captured, in the form of{' '}
-      <output {...options}>{recordingMethodsSentence}</output>
+      {Output(props, 'recording_methods', recordingMethodsSentence)}
       {' '}will be used for current and future service development.
     </li>
   )

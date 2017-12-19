@@ -1,3 +1,7 @@
+# 0.7.0 / Unreleased
+
+* [FEATURE] - [Live preview: Storing](https://trello.com/c/2RNcewZH)
+
 # 0.6.0 / 2017-12-14
 
 * [FEATURE] - [Live preview: Researcher](https://trello.com/c/T2MeDlYY/255-13-live-preview-researcher)
