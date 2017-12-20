@@ -55,6 +55,7 @@
     "jsdom": "^11.1.0",
     "mocha": "^3.4.2",
     "mocha-multi": "^0.11.0",
+    "prettier": "1.9.2",
     "react-test-renderer": "^16.1.1",
     "sass-lint": "^1.12.1",
     "sinon": "^2.3.8",
@@ -73,9 +74,11 @@
     "setupTestFrameworkScriptFile": "./app/javascript/support/testSetup.js"
   },
   "scripts": {
+    "format": "prettier '**/*.{scss,json,js,md}' '!package.json' --write --ignore-path .gitignore",
     "lint": "npm run lint:styles && npm run lint:js",
-    "lint:styles": "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
     "lint:js": "eslint ./app ./spec *.js",
+    "lint:styles":
+      "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
     "test:unit": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts",
     "test:unit:watch": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
     "test:jest": "jest app/javascript/components/**/*.js",
