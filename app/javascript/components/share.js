@@ -1,4 +1,4 @@
-/* eslint no-new: 0 */
+/* eslint import/unambiguous:0 */
 const Clipboard = require('clipboard')
 
 class Share {

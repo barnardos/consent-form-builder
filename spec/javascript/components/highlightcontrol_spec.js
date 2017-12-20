@@ -1,4 +1,5 @@
-/* eslint no-new: 0 */
+/* eslint import/unambiguous:0 */
+/* global render:true */
 const HighlightControl = require('../../../app/javascript/components/highlightcontrol')
 const { hasClass } = require('../../../app/javascript/lib/element_helpers')
 

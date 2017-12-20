@@ -1,3 +1,4 @@
+/* eslint import/unambiguous:0 */
 let changed = false
 const form = document.querySelector('form')
 

@@ -1,3 +1,5 @@
+/* eslint import/unambiguous:0 */
+/* global render:true */
 const ConditionalSubfields = require('../../../app/javascript/components/conditional_subfields')
 
 describe.only('Conditional subfields', () => {

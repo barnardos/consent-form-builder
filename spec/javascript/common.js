@@ -1,3 +1,4 @@
+/* eslint import/unambiguous:0 */
 const chai = require('chai')
 const sinon = require('sinon')
 const jsdom = require('jsdom')

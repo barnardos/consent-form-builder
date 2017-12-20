@@ -1,3 +1,5 @@
+/* eslint import/unambiguous:0 */
+/* global render:true */
 const elementHelpers = require('../../../app/javascript/lib/element_helpers')
 
 const markup = `

@@ -1,4 +1,4 @@
-/* eslint no-new: 0 */
+/* eslint import/unambiguous:0 */
 const { addClass, removeClass } = require('../lib/element_helpers')
 
 const focusClass = 'has-focus'

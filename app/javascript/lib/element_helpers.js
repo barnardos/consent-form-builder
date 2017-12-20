@@ -1,3 +1,4 @@
+/* eslint import/unambiguous:0 */
 function addClass (element, className) {
   if (!element) return
   if (isNodeList(element)) {
