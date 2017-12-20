@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 /*
  * Responsible for wiring itself up via the data-previewed-by attribute
@@ -8,61 +8,61 @@ import React from 'react'
 class PreviewBase extends React.Component {
   // Abstract
 
-  constructor (props) {
-    super(props)
-    this.state = props
+  constructor(props) {
+    super(props);
+    this.state = props;
   }
 
-  componentName () {
+  componentName() {
     throw new Error(
-      'componentName should be implemented in derived classes ' +
-      '(have you returned the name of the class?)'
-    )
+      "componentName should be implemented in derived classes " +
+        "(have you returned the name of the class?)"
+    );
   }
 
-  componentDidMount () {
+  componentDidMount() {
     Array.from(
       document.querySelectorAll(`[data-previewed-by=${this.componentName()}]`)
     ).forEach(element => {
-      if (element.type === 'checkbox') {
-        element.onchange = this.handleCheckboxChange.bind(this)
-      } else if (element.type === 'radio') {
-        element.onchange = this.handleTextOrRadioChange.bind(this)
+      if (element.type === "checkbox") {
+        element.onchange = this.handleCheckboxChange.bind(this);
+      } else if (element.type === "radio") {
+        element.onchange = this.handleTextOrRadioChange.bind(this);
       } else {
-        element.oninput = this.handleTextOrRadioChange.bind(this)
+        element.oninput = this.handleTextOrRadioChange.bind(this);
       }
-    })
+    });
   }
 
-  handleTextOrRadioChange (event) {
-    const { target: { value, name: railsName } } = event
+  handleTextOrRadioChange(event) {
+    const { target: { value, name: railsName } } = event;
 
-    const namePattern = /research_session\[(.+?)]/
-    const name = namePattern.exec(railsName)[1]
+    const namePattern = /research_session\[(.+?)]/;
+    const name = namePattern.exec(railsName)[1];
 
     this.setState({
       [name]: value
-    })
+    });
   }
 
-  handleCheckboxChange (event) {
-    const { target: { checked, value, name: railsName } } = event
+  handleCheckboxChange(event) {
+    const { target: { checked, value, name: railsName } } = event;
 
-    const namePattern = /research_session\[(.+?)[[\]]/
-    const name = namePattern.exec(railsName)[1]
+    const namePattern = /research_session\[(.+?)[[\]]/;
+    const name = namePattern.exec(railsName)[1];
 
-    const values = new Set(this.state[name])
+    const values = new Set(this.state[name]);
 
     if (checked) {
-      values.add(value)
+      values.add(value);
     } else {
-      values.delete(value)
+      values.delete(value);
     }
 
     this.setState({
       [name]: Array.from(values)
-    })
+    });
   }
 }
 
-export default PreviewBase
+export default PreviewBase;

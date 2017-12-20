@@ -10,15 +10,15 @@
 
   'other' isn't expected to be present in the hash and will always come last.
  */
-function sortAgainst (array, hash) {
-  const hashKeys = Object.keys(hash)
-  hashKeys.push('other')
+function sortAgainst(array, hash) {
+  const hashKeys = Object.keys(hash);
+  hashKeys.push("other");
 
   const index = array.reduce((hash, key) => {
-    hash[key] = hashKeys.indexOf(key)
-    return hash
-  }, {})
-  return array.sort((a, b) => index[a] > index[b] ? 1 : -1)
+    hash[key] = hashKeys.indexOf(key);
+    return hash;
+  }, {});
+  return array.sort((a, b) => (index[a] > index[b] ? 1 : -1));
 }
 
-export default sortAgainst
+export default sortAgainst;

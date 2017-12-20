@@ -1,32 +1,39 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Output from './Output'
-import DisplayAdditionalCopy from './DisplayAdditionalCopy'
+import React from "react";
+import PropTypes from "prop-types";
+import Output from "./Output";
+import DisplayAdditionalCopy from "./DisplayAdditionalCopy";
 
-const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
-  let sharedWithSentence = ''
+const WillAnyoneKnowWhatISayInTheDiscussion = props => {
+  let sharedWithSentence = "";
 
   if (props.shared_with) {
-    sharedWithSentence = props.shared_with_sentences[props.shared_with]
+    sharedWithSentence = props.shared_with_sentences[props.shared_with];
   }
 
   return (
-    <section className={ props.finalPreview ? '' : 'reactive-preview__section' }>
-      <h3 className={ props.finalPreview ? '' : 'reactive-preview__heading' } id="storing">{props.shared_title}</h3>
+    <section className={props.finalPreview ? "" : "reactive-preview__section"}>
+      <h3
+        className={props.finalPreview ? "" : "reactive-preview__heading"}
+        id="storing"
+      >
+        {props.shared_title}
+      </h3>
       <p>
         <DisplayAdditionalCopy
-          content={`The only people who will hear what ${props.you_or_your_child} ${props.say_or_says} in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session.`}
+          content={`The only people who will hear what ${
+            props.you_or_your_child
+          } ${
+            props.say_or_says
+          } in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session.`}
           finalPreview={props.finalPreview}
         />
       </p>
+      <p>{Output(props, "shared_with", sharedWithSentence)}</p>
       <p>
-        {Output(props, 'shared_with', sharedWithSentence)}
-      </p>
-      <p>
-        Barnardo’s will hold research data for{' '}
-        {Output(props, 'shared_duration')}{' '}
-        after the closure of this project, after which it will
-        be deleted. Personal data is stored in a safe and secure way.
+        Barnardo’s will hold research data for{" "}
+        {Output(props, "shared_duration")} after the closure of this project,
+        after which it will be deleted. Personal data is stored in a safe and
+        secure way.
       </p>
       <p>
         <DisplayAdditionalCopy
@@ -35,8 +42,8 @@ const WillAnyoneKnowWhatISayInTheDiscussion = (props) => {
         />
       </p>
     </section>
-  )
-}
+  );
+};
 
 WillAnyoneKnowWhatISayInTheDiscussion.propTypes = {
   shared_duration: PropTypes.string,
@@ -46,6 +53,6 @@ WillAnyoneKnowWhatISayInTheDiscussion.propTypes = {
   finalPreview: PropTypes.bool,
   you_or_your_child: PropTypes.string,
   say_or_says: PropTypes.string
-}
+};
 
-export default WillAnyoneKnowWhatISayInTheDiscussion
+export default WillAnyoneKnowWhatISayInTheDiscussion;

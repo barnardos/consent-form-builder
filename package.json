@@ -64,13 +64,8 @@
     "webpack-dev-server": "^2.9.7"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/config/webpack/test.js"
-    ],
-    "setupFiles": [
-      "./app/javascript/support/requestAnimationFrameTestShim.js"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", "/config/webpack/test.js"],
+    "setupFiles": ["./app/javascript/support/requestAnimationFrameTestShim.js"],
     "setupTestFrameworkScriptFile": "./app/javascript/support/testSetup.js"
   },
   "scripts": {
@@ -80,7 +75,8 @@
     "lint:styles":
       "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
     "test:unit": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts",
-    "test:unit:watch": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
+    "test:unit:watch":
+      "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
     "test:jest": "jest app/javascript/components/**/*.js",
     "test:jest:watch": "jest --watch app/javascript/components/**/*.test.js"
   }
