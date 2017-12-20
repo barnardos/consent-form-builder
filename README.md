@@ -9,6 +9,10 @@ initially be paper signed by a participant, and later be digitally signed.
 The following sections of the readme outline the software stack used to create the application,
 how to get the application running and how to make and submit changes.
 
+For this repo, we are using [prettier](https://prettier.io/) to handle formatting of our JS / json / Markdown / scss files.
+The [prettier documentation](https://prettier.io/docs/en/editors.html) explains how you can install the plugin to your IDE.
+You can also run `yarn format` to format your files.
+
 ### Stack
 
 The consent form service is built on Ruby on Rails 5 and uses Sass as a CSS preprocessor and
