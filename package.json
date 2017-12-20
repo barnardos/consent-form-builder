@@ -70,10 +70,12 @@
   },
   "scripts": {
     "format": "prettier '**/*.{scss,json,js,md}' '!package.json' --write --ignore-path .gitignore",
+    "check-format": "prettier '**/*.{scss,json,js,md}' '!package.json' --list-different --ignore-path .gitignore",
     "lint": "npm run lint:styles && npm run lint:js",
     "lint:js": "eslint ./app ./spec *.js",
     "lint:styles":
       "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
+    "pretest": "npm run check-format && npm run lint",
     "test:unit": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts",
     "test:unit:watch":
       "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
