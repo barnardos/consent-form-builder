@@ -92,6 +92,9 @@ private
           SharedWith::NAME_VALUES.keys.each_with_object({}) do |attr, result|
             result[attr.to_sym] = I18n.t("preview.shared_with.#{attr}", person: you_or_your_child)
           end
+      },
+      recording: {
+        all_recording_methods: RecordingMethods::NAME_VALUES
       }
     }
     unvarying_params[step] || {}

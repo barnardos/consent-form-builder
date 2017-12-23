@@ -28,12 +28,7 @@
       </div>
       <div class="reactive-container__preview">
         <%=
-          react_component(
-            'RecordingMethodsPreviews',
-            current_step_params.merge(
-              all_recording_methods: RecordingMethods::NAME_VALUES
-            )
-          )
+          react_component('RecordingMethodsPreviews', current_step_params)
         %>
       </div>
     </div>

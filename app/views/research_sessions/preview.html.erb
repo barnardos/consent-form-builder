@@ -61,8 +61,7 @@
   <% recording = capture do %>
     <%=
       react_component(
-        'Shared/WhichWeWillRecordUsingList',
-        final_preview_params(:recording).merge(all_recording_methods: RecordingMethods::NAME_VALUES),
+        'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
         { prerender: true }
       )
     %>
