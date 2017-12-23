@@ -58,9 +58,9 @@ module ResearchSessionsHelper
 private
 
   def flat_params(step)
-    ResearchSession::Steps::PARAMS[step].map do |param|
+    ResearchSession::Steps::PARAMS[step].flat_map do |param|
       param.is_a?(Hash) ? param.keys : param
-    end.flatten
+    end
   end
 
   ##
