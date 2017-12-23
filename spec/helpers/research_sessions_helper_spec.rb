@@ -46,7 +46,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
   describe '#final_preview_params' do
     context 'a normal step' do
       let(:step) { :topic }
-      let(:research_session) { double('ResearchSession') }
+      let(:research_session) { double('ResearchSession', able_to_consent?: false) }
 
       before do
         assign(:research_session, research_session)

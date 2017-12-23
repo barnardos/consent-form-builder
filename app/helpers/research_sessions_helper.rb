@@ -2,11 +2,13 @@ module ResearchSessionsHelper
   def current_step_params
     component_params(*flat_params(step))
       .merge(unvarying_params(step))
+      .merge(able_to_consent: false)
   end
 
   def final_preview_params(step)
     component_params(*flat_params(step), final_preview: true)
       .merge(unvarying_params(step))
+      .merge(able_to_consent: @research_session.able_to_consent?)
   end
 
   def edit_link_for(attr, &block)
