@@ -84,7 +84,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
   end
 
   describe '#unvarying_params' do
-    subject { helper.send(:unvarying_params, step) }
+    subject(:unvarying_params) { helper.send(:unvarying_params, step) }
 
     context 'the step has no unvarying params that would repeat across live/final preview' do
       let(:step) { :researcher }
@@ -94,6 +94,17 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
     context 'the step has unvarying params that would repeat across live/final preview' do
       let(:step) { :topic }
       it { is_expected.to have_key(:labels) }
+    end
+
+    context 'the step has params that should default to no consent' do
+      let(:step) { :storing }
+      it { is_expected.to have_key(:shared_with_sentences) }
+
+      it 'defaults anonymised to unable_to_consent?' do
+        expect(unvarying_params.dig(:shared_with_sentences, :anonymised)).to include(
+          'your child/the child in your care will not be identifiable'
+        )
+      end
     end
   end
 

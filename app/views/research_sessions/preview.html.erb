@@ -146,12 +146,6 @@
       'Shared/WillAnyoneKnowWhatISayInTheDiscussion',
       final_preview_params(:storing).merge(
         able_to_consent: @research_session.able_to_consent?,
-        shared_with_sentences: {
-          anonymised: t('preview.shared_with.anonymised', person: you_or_your_child),
-          team: t('preview.shared_with.team'),
-          internal: t('preview.shared_with.internal'),
-          external: t('preview.shared_with.external')
-        },
         shared_title: "Will anyone know what #{i_or_they} say in the discussion?",
         you_or_your_child: you_or_your_child,
         say_or_says: say_or_says

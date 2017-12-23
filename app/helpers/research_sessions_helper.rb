@@ -33,28 +33,37 @@ module ResearchSessionsHelper
     I18n.t("preview.shared_with.#{shared_with}", person: you_or_your_child)
   end
 
+  ##
+  # On final preview the research session has a presenter that can
+  # respond to able_to_consent?. In live previews this is not the case
+  # and we need to default to no consent.
+  #
+  def able_to_consent?
+    @research_session.respond_to?(:able_to_consent?) ? @research_session.able_to_consent? : false
+  end
+
   def you_or_your_child
-    @research_session.able_to_consent? ? 'you' : 'your child/the child in your care'
+    able_to_consent? ? 'you' : 'your child/the child in your care'
   end
 
   def your_or_your_childs
-    @research_session.able_to_consent? ? 'your' : "your child's/the child in your care's"
+    able_to_consent? ? 'your' : "your child's/the child in your care's"
   end
 
   def you_or_they
-    @research_session.able_to_consent? ? 'you' : 'they'
+    able_to_consent? ? 'you' : 'they'
   end
 
   def your_or_their
-    @research_session.able_to_consent? ? 'your' : 'their'
+    able_to_consent? ? 'your' : 'their'
   end
 
   def i_or_they
-    @research_session.able_to_consent? ? 'I' : 'they'
+    able_to_consent? ? 'I' : 'they'
   end
 
   def say_or_says
-    @research_session.able_to_consent? ? 'say' : 'says'
+    able_to_consent? ? 'say' : 'says'
   end
 
 private
@@ -68,17 +77,22 @@ private
   ##
   # For any given step, provide params that would not vary called
   # from live preview/final preview to avoid duplication
-  UNVARYING_PARAMS = {
-    topic: {
-      labels: {
-        topic: I18n.t('research_session_attr_labels.topic'),
-        purpose: I18n.t('research_session_attr_labels.purpose')
+  def unvarying_params(step)
+    unvarying_params = {
+      topic: {
+        labels: {
+          topic: I18n.t('research_session_attr_labels.topic'),
+          purpose: I18n.t('research_session_attr_labels.purpose')
+        }
+      },
+      storing: {
+        shared_with_sentences:
+          SharedWith::NAME_VALUES.keys.each_with_object({}) do |attr, result|
+            result[attr.to_sym] = I18n.t("preview.shared_with.#{attr}", person: you_or_your_child)
+          end
       }
     }
-  }.freeze
-
-  def unvarying_params(step)
-    UNVARYING_PARAMS[step] || {}
+    unvarying_params[step] || {}
   end
 
   ##
