@@ -1,10 +1,12 @@
 module ResearchSessionsHelper
   def current_step_params
     component_params(*flat_params(step))
+      .merge(unvarying_params(step))
   end
 
   def final_preview_params(step)
     component_params(*flat_params(step), final_preview: true)
+      .merge(unvarying_params(step))
   end
 
   def edit_link_for(attr, &block)
@@ -61,6 +63,22 @@ private
     ResearchSession::Steps::PARAMS[step].flat_map do |param|
       param.is_a?(Hash) ? param.keys : param
     end
+  end
+
+  ##
+  # For any given step, provide params that would not vary called
+  # from live preview/final preview to avoid duplication
+  UNVARYING_PARAMS = {
+    topic: {
+      labels: {
+        topic: I18n.t('research_session_attr_labels.topic'),
+        purpose: I18n.t('research_session_attr_labels.purpose')
+      }
+    }
+  }.freeze
+
+  def unvarying_params(step)
+    UNVARYING_PARAMS[step] || {}
   end
 
   ##

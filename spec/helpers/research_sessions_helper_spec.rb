@@ -18,6 +18,15 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       it 'calls component_params with all the parameters for the current step' do
         expect(helper).to receive(:component_params)
           .with(:topic, :purpose)
+          .and_return({})
+        helper.current_step_params
+      end
+
+      it 'calls unvarying_params for the current step' do
+        expect(helper).to receive(:component_params)
+          .with(:topic, :purpose)
+          .and_return({})
+        expect(helper).to receive(:unvarying_params).with(:topic).and_return({})
         helper.current_step_params
       end
     end
@@ -28,6 +37,7 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
       it 'calls component_params with all the parameters for the current step' do
         expect(helper).to receive(:component_params)
           .with(:other_recording_method, :recording_methods)
+          .and_return({})
         helper.current_step_params
       end
     end
@@ -36,22 +46,54 @@ RSpec.describe ResearchSessionsHelper, :type => :helper do
   describe '#final_preview_params' do
     context 'a normal step' do
       let(:step) { :topic }
+      let(:research_session) { double('ResearchSession') }
+
+      before do
+        assign(:research_session, research_session)
+      end
 
       it 'calls component_params with all the parameters for the current step' do
         expect(helper).to receive(:component_params)
           .with(:topic, :purpose, final_preview: true)
+          .and_return({})
         helper.final_preview_params(step)
       end
     end
 
     context 'a step with an array param' do
       let(:step) { :recording }
+      let(:research_session) { double('ResearchSession').as_null_object }
+
+      before do
+        assign(:research_session, research_session)
+      end
 
       it 'calls component_params with all the parameters for the current step' do
-        expect(helper).to receive(:component_params)
+        allow(helper).to receive(:component_params)
           .with(:other_recording_method, :recording_methods, final_preview: true)
+          .and_return({})
         helper.final_preview_params(step)
       end
+
+      it 'calls unvarying_params for the current step' do
+        allow(helper).to receive(:component_params).and_return({})
+        expect(helper).to receive(:unvarying_params).with(:recording).and_return({})
+        helper.final_preview_params(step)
+      end
+    end
+  end
+
+  describe '#unvarying_params' do
+    subject { helper.send(:unvarying_params, step) }
+
+    context 'the step has no unvarying params that would repeat across live/final preview' do
+      let(:step) { :researcher }
+      it { is_expected.to be_empty }
+    end
+
+    context 'the step has unvarying params that would repeat across live/final preview' do
+      let(:step) { :topic }
+      it { is_expected.to have_key(:labels) }
     end
   end
 

@@ -32,12 +32,7 @@
   <section>
     <%= react_component(
         'TopicPurposePreviews',
-        final_preview_params(:topic).merge(
-          labels: {
-            topic: t('research_session_attr_labels.topic'),
-            purpose: t('research_session_attr_labels.purpose')
-          }
-        ),
+        final_preview_params(:topic),
         {
           prerender: true
         }
