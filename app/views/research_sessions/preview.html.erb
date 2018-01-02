@@ -32,12 +32,7 @@
   <section>
     <%= react_component(
         'TopicPurposePreviews',
-        final_preview_params(:topic).merge(
-          labels: {
-            topic: t('research_session_attr_labels.topic'),
-            purpose: t('research_session_attr_labels.purpose')
-          }
-        ),
+        final_preview_params(:topic),
         {
           prerender: true
         }
@@ -66,8 +61,7 @@
   <% recording = capture do %>
     <%=
       react_component(
-        'Shared/WhichWeWillRecordUsingList',
-        final_preview_params(:recording).merge(all_recording_methods: RecordingMethods::NAME_VALUES),
+        'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
         { prerender: true }
       )
     %>
@@ -150,13 +144,6 @@
     react_component(
       'Shared/WillAnyoneKnowWhatISayInTheDiscussion',
       final_preview_params(:storing).merge(
-        able_to_consent: @research_session.able_to_consent?,
-        shared_with_sentences: {
-          anonymised: t('preview.shared_with.anonymised', person: you_or_your_child),
-          team: t('preview.shared_with.team'),
-          internal: t('preview.shared_with.internal'),
-          external: t('preview.shared_with.external')
-        },
         shared_title: "Will anyone know what #{i_or_they} say in the discussion?",
         you_or_your_child: you_or_your_child,
         say_or_says: say_or_says
@@ -261,10 +248,7 @@
     <%=
       react_component(
         'Shared/WhichWeWillRecordUsingSentence',
-        final_preview_params(:recording).merge(
-          all_recording_methods: RecordingMethods::NAME_VALUES,
-          able_to_consent:  @research_session.able_to_consent?
-        ),
+        final_preview_params(:recording),
         { prerender: true }
       )
     %>
