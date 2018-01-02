@@ -1,25 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import PreviewBase from '../Shared/PreviewBase'
-import WhichWeWillRecordUsing from '../Shared/WhichWeWillRecordUsingList'
-import WhichWeWillRecordUsingSentence from '../Shared/WhichWeWillRecordUsingSentence'
+import React from "react";
+import PropTypes from "prop-types";
+import PreviewBase from "../Shared/PreviewBase";
+import WhichWeWillRecordUsing from "../Shared/WhichWeWillRecordUsingList";
+import WhichWeWillRecordUsingSentence from "../Shared/WhichWeWillRecordUsingSentence";
 
 class RecordingMethodsPreviews extends PreviewBase {
-  componentName () {
-    return 'RecordingMethodsPreviews'
+  componentName() {
+    return "RecordingMethodsPreviews";
   }
 
-  render () {
+  render() {
     return (
       <div className="reactive-container__preview">
-        <section className='reactive-preview__section'>
-          <h3 className="reactive-preview__heading" id="what">What happens in this research session?</h3>
+        <section className="reactive-preview__section">
+          <h3 className="reactive-preview__heading" id="what">
+            What happens in this research session?
+          </h3>
           <p>&hellip;</p>
-          <WhichWeWillRecordUsing {...this.state } />
+          <WhichWeWillRecordUsing {...this.state} />
           <p>&hellip;</p>
         </section>
-        <section className='reactive-preview__section'>
-          <h3 className="reactive-preview__heading" id="consent-form">Consent Form</h3>
+        <section className="reactive-preview__section">
+          <h3 className="reactive-preview__heading" id="consent-form">
+            Consent Form
+          </h3>
           <ul className="bullet-point-list">
             <li>&hellip;</li>
             <WhichWeWillRecordUsingSentence {...this.state} />
@@ -27,7 +31,7 @@ class RecordingMethodsPreviews extends PreviewBase {
           </ul>
         </section>
       </div>
-    )
+    );
   }
 }
 
@@ -35,6 +39,6 @@ RecordingMethodsPreviews.propTypes = {
   all_recording_methods: PropTypes.object,
   other_recording_method: PropTypes.string,
   selected_recording_methods: PropTypes.array
-}
+};
 
-export default RecordingMethodsPreviews
+export default RecordingMethodsPreviews;

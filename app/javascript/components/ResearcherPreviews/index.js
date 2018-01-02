@@ -1,21 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import PreviewBase from '../Shared/PreviewBase'
-import FindOutMore from '../Shared/FindOutMore'
-import WhatHappensInThisResearchSession from '../Shared/WhatHappensInThisResearchSession'
+import React from "react";
+import PropTypes from "prop-types";
+import PreviewBase from "../Shared/PreviewBase";
+import FindOutMore from "../Shared/FindOutMore";
+import WhatHappensInThisResearchSession from "../Shared/WhatHappensInThisResearchSession";
 
 class ResearcherPreviews extends PreviewBase {
-  componentName () {
-    return 'ResearcherPreviews'
+  componentName() {
+    return "ResearcherPreviews";
   }
 
-  render () {
+  render() {
     return (
       <div>
         <WhatHappensInThisResearchSession {...this.state} />
         <FindOutMore {...this.state} />
       </div>
-    )
+    );
   }
 }
 
@@ -24,6 +24,6 @@ ResearcherPreviews.propTypes = {
   researcher_name: PropTypes.string,
   researcher_email: PropTypes.string,
   researcher_phone: PropTypes.string
-}
+};
 
-export default ResearcherPreviews
+export default ResearcherPreviews;

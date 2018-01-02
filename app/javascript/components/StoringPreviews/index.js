@@ -1,19 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import PreviewBase from '../Shared/PreviewBase'
-import WillAnyoneKnowWhatISayInTheDiscussion from '../Shared/WillAnyoneKnowWhatISayInTheDiscussion'
+import React from "react";
+import PropTypes from "prop-types";
+import PreviewBase from "../Shared/PreviewBase";
+import WillAnyoneKnowWhatISayInTheDiscussion from "../Shared/WillAnyoneKnowWhatISayInTheDiscussion";
 
 class StoringPreviews extends PreviewBase {
-  componentName () {
-    return 'StoringPreviews'
+  componentName() {
+    return "StoringPreviews";
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <WillAnyoneKnowWhatISayInTheDiscussion {...this.state } />
+        <WillAnyoneKnowWhatISayInTheDiscussion {...this.state} />
       </div>
-    )
+    );
   }
 }
 
@@ -24,6 +24,6 @@ StoringPreviews.propTypes = {
   able_to_consent: PropTypes.bool,
   shared_title: PropTypes.string,
   finalPreview: PropTypes.bool
-}
+};
 
-export default StoringPreviews
+export default StoringPreviews;
