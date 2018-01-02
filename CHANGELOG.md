@@ -5,6 +5,7 @@
 * [CHORE] - [Implement Prettier and amend `.eslint` to be inline with Digital Tranformation repo](https://trello.com/c/YzaEzJ1B/300-3-implement-prettier-and-amend-eslint-to-be-inline-with-digital-tranformation-repo)
 * [FEATURE] - [Live preview: Methodologies](https://trello.com/c/2D5821QQ)
 * [CHORE] - Change "start" to "server" in README
+* [FEATURE] - [Live preview: Where and When](https://trello.com/c/ZJDBrILw)
 
 # 0.6.0 / 2017-12-14
 

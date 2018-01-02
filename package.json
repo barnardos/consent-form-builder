@@ -65,8 +65,13 @@
     "webpack-dev-server": "^2.9.7"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", "/config/webpack/test.js"],
-    "setupFiles": ["./app/javascript/support/requestAnimationFrameTestShim.js"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/config/webpack/test.js"
+    ],
+    "setupFiles": [
+      "./app/javascript/support/requestAnimationFrameTestShim.js"
+    ],
     "setupTestFrameworkScriptFile": "./app/javascript/support/testSetup.js"
   },
   "scripts": {
@@ -74,13 +79,11 @@
     "check-format": "prettier '**/*.{scss,json,js,md}' '!package.json' --list-different --ignore-path .gitignore",
     "lint": "npm-run-all --parallel lint:*",
     "lint:js": "eslint ./app ./spec *.js",
-    "lint:styles":
-      "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
+    "lint:styles": "sass-lint -c .sass-lint.yml 'app/assets/stylesheets/**/*.scss' -v -q",
     "pretest": "npm-run-all --parallel lint check-format",
     "test": "npm-run-all test:unit test:jest",
     "test:unit": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts",
-    "test:unit:watch":
-      "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
+    "test:unit:watch": "mocha ./spec/javascript --opts ./spec/javascript/mocha.opts --watch",
     "test:jest": "jest app/javascript/components/**/*.js",
     "test:jest:watch": "jest --watch app/javascript/components/**/*.test.js"
   }
