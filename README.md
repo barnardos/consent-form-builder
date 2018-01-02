@@ -43,8 +43,10 @@ this is possible, it just takes a few more steps.
 #### Steps
 
 * If you haven't already, install docker. For Windows install [Docker for Windows](https://www.docker.com/docker-windows)
-  For mac install [Docker for Mac](https://www.docker.com/docker-mac) and for Ubuntu [Install via package manager](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#uninstall-old-versions). Additionally for
-  Ubuntu you should install [Docker Compose](https://docs.docker.com/compose/install/#install-compose).
+
+For mac install [Docker for Mac](https://www.docker.com/docker-mac) and for Ubuntu [Install via package manager](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#uninstall-old-versions). Additionally for
+Ubuntu you should install [Docker Compose](https://docs.docker.com/compose/install/#install-compose).
+
 * Checkout the repo via git `git@github.com:barnardos/consent-form-builder-rails.git` or
   [download it here](https://github.com/barnardos/consent-form-builder-rails/archive/master.zip).
 * Open a bash prompt or powershell prompt and goto the project folder.
@@ -96,7 +98,7 @@ You can now start the rails server.
 
 #### Starting/Stopping Native
 
-To start the server use `bundle exec rails start`. This will start rails but doesn't handle compiling
+To start the server use `bundle exec rails server`. This will start rails but doesn't handle compiling
 javascript.
 
 To start a webpack server, open a second bash prompt and from the project folder enter

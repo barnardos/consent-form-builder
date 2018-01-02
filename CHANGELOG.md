@@ -4,6 +4,7 @@
 * [CHORE] - [Unvarying parameters](https://github.com/barnardos/consent-form-builder-rails/pull/194)
 * [CHORE] - [Implement Prettier and amend `.eslint` to be inline with Digital Tranformation repo](https://trello.com/c/YzaEzJ1B/300-3-implement-prettier-and-amend-eslint-to-be-inline-with-digital-tranformation-repo)
 * [FEATURE] - [Live preview: Methodologies](https://trello.com/c/2D5821QQ)
+* [CHORE] - Change "start" to "server" in README
 
 # 0.6.0 / 2017-12-14
 
