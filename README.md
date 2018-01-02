@@ -1,7 +1,7 @@
 # Barnardos consent form generator
 
 The purpose of the consent form generator is to allow a Barnardos researcher to
-enter details about an upcoming research session and produce consent forms that can 
+enter details about an upcoming research session and produce consent forms that can
 initially be paper signed by a participant, and later be digitally signed.
 
 ## Developer guide
@@ -12,7 +12,7 @@ how to get the application running and how to make and submit changes.
 
 ### Stack
 
-The consent form service is built on Ruby on Rails 5 and uses Sass as a CSS preprocessor and 
+The consent form service is built on Ruby on Rails 5 and uses Sass as a CSS preprocessor and
 Webpack/Babel/Yarn to handle client side javascript transpilation and dependency management.
 
 Data is stored in Postgres.
@@ -22,12 +22,12 @@ service.
 
 ### Installation
 
-There are 2 ways in which you can install the service, either natively on your machine or 
+There are 2 ways in which you can install the service, either natively on your machine or
 using [Docker](https://www.docker.com/). The easiest way to get started is to use Docker as it takes care of all the
-installation steps for you, you simply have to install docker, checkout the source and 
+installation steps for you, you simply have to install docker, checkout the source and
 tell it to start.
 
-If you do not wish to use docker, but instead want to use run natively on your machine then 
+If you do not wish to use docker, but instead want to use run natively on your machine then
 this is possible, it just takes a few more steps.
 
 ### Docker installation
@@ -38,9 +38,9 @@ this is possible, it just takes a few more steps.
 
 #### Steps
 * If you haven't already, install docker. For Windows install [Docker for Windows](https://www.docker.com/docker-windows)
-For mac install [Docker for Mac](https://www.docker.com/docker-mac) and for Ubuntu [Install via package manager](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#uninstall-old-versions). Additionally for 
+For mac install [Docker for Mac](https://www.docker.com/docker-mac) and for Ubuntu [Install via package manager](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#uninstall-old-versions). Additionally for
 Ubuntu you should install [Docker Compose](https://docs.docker.com/compose/install/#install-compose).
-* Checkout the repo via git `git@github.com:barnardos/consent-form-builder-rails.git` or 
+* Checkout the repo via git `git@github.com:barnardos/consent-form-builder-rails.git` or
 [download it here](https://github.com/barnardos/consent-form-builder-rails/archive/master.zip).
 * Open a bash prompt or powershell prompt and goto the project folder.
 * Type `docker-compose up`.
@@ -51,14 +51,14 @@ you should see a message saying the server started and is listening on port 3000
 #### Development with Docker
 Docker Compose Docker mounts your local source folders into the Docker containers, this
 means when you make any changes to the source locally, they will show up on the site. In addition to
-this the Docker version also runs Webpacker in watch mode, so any changes made to Javascript are instantly 
+this the Docker version also runs Webpacker in watch mode, so any changes made to Javascript are instantly
 compiled.
 
 ### Native installation
 
 #### Requirements
-Running the service natively on Windows is not supported, however it can be run using 
-[WSL](https://msdn.microsoft.com/en-gb/commandline/wsl/about), in any 
+Running the service natively on Windows is not supported, however it can be run using
+[WSL](https://msdn.microsoft.com/en-gb/commandline/wsl/about), in any
 case open up an Ubuntu prompt and install it from there.  
 
 The majority of the installation is actually the dependencies, and there are better guides out there for
@@ -73,7 +73,7 @@ installing these yourself, use the Docker version.
 
 #### Steps
 This guide is assuming you are using bash and installing on MacOS or Ubuntu.
-* Checkout the repo via git `git@github.com:barnardos/consent-form-builder-rails.git` or 
+* Checkout the repo via git `git@github.com:barnardos/consent-form-builder-rails.git` or
 [download it here](https://github.com/barnardos/consent-form-builder-rails/archive/master.zip).
 * Open a bash prompt in the project folder
 * Use `bundle install` to install all the Ruby dependecies
@@ -87,11 +87,11 @@ You can now start the rails server.
 
 #### Starting/Stopping Native
 
-To start the server use `bundle exec rails start`. This will start rails but doesn't handle compiling
+To start the server use `bundle exec rails server`. This will start rails but doesn't handle compiling
 javascript.
 
-To start a webpack server, open a second bash prompt and from the project folder enter 
-`./bin/webpack --watch --progress --colors`. This will start Webpack, compile client side Javascript 
+To start a webpack server, open a second bash prompt and from the project folder enter
+`./bin/webpack --watch --progress --colors`. This will start Webpack, compile client side Javascript
 and then continue to watch the source files for changes to autocompile.
 
 *Todo*
