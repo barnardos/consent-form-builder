@@ -29,15 +29,7 @@
       <div class="reactive-container__preview">
         <section class="reactive-preview__section">
           <%=
-            react_component(
-              'TopicPurposePreviews',
-              current_step_params.merge(
-                labels: {
-                  topic: t('research_session_attr_labels.topic'),
-                  purpose: t('research_session_attr_labels.purpose')
-                }
-              )
-            )
+            react_component('TopicPurposePreviews', current_step_params)
           %>
         </section>
       </div>
