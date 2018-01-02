@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import PreviewBase from "../Shared/PreviewBase";
 import FindOutMore from "../Shared/FindOutMore";
-import WhatHappensInThisResearchSession from "../Shared/WhatHappensInThisResearchSession";
+import TakePartIn from "../Shared/TakePartIn";
+import AnotherResearcherSentence from "../Shared/AnotherResearcherSentence";
 
 class ResearcherPreviews extends PreviewBase {
   componentName() {
@@ -12,7 +13,13 @@ class ResearcherPreviews extends PreviewBase {
   render() {
     return (
       <div>
-        <WhatHappensInThisResearchSession {...this.state} />
+        <section className="reactive-preview__section">
+          <h3 className="reactive-preview__heading">
+            What happens in this research session?
+          </h3>
+          <TakePartIn {...this.state} />
+          <AnotherResearcherSentence {...this.state} />
+        </section>
         <FindOutMore {...this.state} />
       </div>
     );

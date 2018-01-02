@@ -46,40 +46,38 @@
     </p>
   </section>
 
-  <% methodologies = capture do %>
-    <ul class="bullet-point-list">
-      <% @research_session.methodologies.each do |methodology| %>
-        <li>
-          <%= edit_link_for(:methodologies) do %>
-            <%= methodology_lookup(methodology) %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <% recording = capture do %>
+  <section>
+    <h3 id="what">What happens in this research session?</h3>
+    <%=
+      react_component(
+        'Shared/TakePartIn',
+        final_preview_params(:researcher).merge({
+          you_or_your_child: you_or_your_child
+        }),
+        { prerender: true }
+      )
+    %>
+    <%=
+      react_component(
+        'Shared/WeWillRecordBy',
+        final_preview_params(:methodologies),
+        { prerender: true }
+      )
+    %>
     <%=
       react_component(
         'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
         { prerender: true }
       )
     %>
-  <% end %>
-
-  <%=
-    react_component(
-      'Shared/WhatHappensInThisResearchSession',
-      final_preview_params(:researcher).merge({
-        methodologies_markup: methodologies,
-        recording_markup: recording,
-        you_or_your_child: you_or_your_child
-      }),
-      {
-        prerender: true
-      }
-    )
-  %>
+    <%=
+      react_component(
+        'Shared/AnotherResearcherSentence',
+        final_preview_params(:researcher),
+        { prerender: true }
+      )
+    %>
+  </section>
 
   <% if @research_session.incentives_enabled ||
         @research_session.where_when_enabled ||

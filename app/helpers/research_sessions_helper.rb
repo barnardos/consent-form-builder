@@ -95,6 +95,9 @@ private
       },
       recording: {
         all_recording_methods: RecordingMethods::NAME_VALUES
+      },
+      methodologies: {
+        all_methodologies: Methodologies::NAME_VALUES
       }
     }
     unvarying_params[step] || {}
