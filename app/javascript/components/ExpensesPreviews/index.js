@@ -1,6 +1,6 @@
 import React from "react";
 import PreviewBase from "../Shared/PreviewBase";
-import SessionDetails from "../Shared/SessionDetails";
+import Expenses from "../Shared/Expenses";
 
 class ExpensesPreviews extends PreviewBase {
   componentName() {
@@ -8,12 +8,16 @@ class ExpensesPreviews extends PreviewBase {
   }
 
   render() {
-    let expenses_enabled = this.state.expenses_enabled || false;
-    if (JSON.parse(expenses_enabled)) {
-      return <SessionDetails {...this.state} />;
-    } else {
-      return <div />;
-    }
+    return (
+      <section className="reactive-preview__section">
+        <h3 className="reactive-preview__heading" id="session">
+          Session details
+        </h3>
+        <span>&hellip;</span>
+        <Expenses {...this.state} />
+        <span>&hellip;</span>
+      </section>
+    );
   }
 }
 

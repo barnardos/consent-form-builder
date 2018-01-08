@@ -6,6 +6,7 @@
 * [FEATURE] - [Live preview: Methodologies](https://trello.com/c/2D5821QQ)
 * [CHORE] - Change "start" to "server" in README
 * [FEATURE] - [Live preview: Where and When](https://trello.com/c/ZJDBrILw)
+* [FEATURE] - [Live preview: Expenses](https://trello.com/c/8w2kqaa6/261-3-live-preview-expenses)
 
 # 0.6.0 / 2017-12-14
 

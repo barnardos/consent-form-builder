@@ -115,18 +115,13 @@
       %>
 
       <% if @research_session.expenses_enabled %>
-          <p>
-            <%= edit_link_for(:travel_expenses_limit) do %>
-              <%= @research_session.expenses_sentence %>
-            <% end %>
-          </p>
-          <% if @research_session.receipts_required %>
-            <p>
-              <%= edit_link_for(:receipts_required) do %>
-                Receipts must be provided.
-              <% end %>
-            </p>
-          <% end %>
+        <%=
+          react_component(
+            'Shared/Expenses',
+            final_preview_params(:expenses),
+            { prerender: true }
+          )
+        %>
       <% end %>
 
       <%=

@@ -46,22 +46,6 @@ class ResearchSessionPresenter
     )
   end
 
-  def expenses_sentence
-    return nil unless any_expenses?
-    fragments = [
-      :travel_expenses,
-      :food_expenses,
-      :other_expenses
-    ].map do |expense_attr|
-      value = send("#{expense_attr}_limit")
-      if value&.nonzero?
-        "#{expense_attr.to_s.humanize.downcase} of up to "\
-        "#{number_to_currency(value, locale: 'en')}"
-      end
-    end
-    "We allow #{fragments.compact.to_sentence}."
-  end
-
   def incentive_text
     return '' unless research_session.incentives_enabled
 
