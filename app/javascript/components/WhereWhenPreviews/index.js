@@ -1,6 +1,8 @@
 import React from "react";
 import PreviewBase from "../Shared/PreviewBase";
-import SessionDetails from "../Shared/SessionDetails";
+import SessionInformation from "../Shared/SessionInformation";
+import ParticipantEquipment from "../Shared/ParticipantEquipment";
+import Refreshments from "../Shared/Refreshments";
 
 class WhereWhenPreviews extends PreviewBase {
   componentName() {
@@ -8,12 +10,18 @@ class WhereWhenPreviews extends PreviewBase {
   }
 
   render() {
-    let where_when_enabled = this.state.where_when_enabled || false;
-    if (JSON.parse(where_when_enabled)) {
-      return <SessionDetails {...this.state} />;
-    } else {
-      return <div />;
-    }
+    return (
+      <section className="reactive-preview__section">
+        <h3 className="reactive-preview__heading" id="session">
+          Session details
+        </h3>
+        <SessionInformation {...this.state} />
+        <span>&hellip;</span>
+        <ParticipantEquipment {...this.state} />
+        <span>&hellip;</span>
+        <Refreshments {...this.state} />
+      </section>
+    );
   }
 }
 

@@ -79,50 +79,65 @@
     %>
   </section>
 
-  <% if @research_session.incentives_enabled %>
-    <% incentives = capture do %>
-      <p>
-        <%= your_or_your_childs.capitalize %> time and what <%= you_or_they %>
-        say is really important to us.
-      </p>
-      <p>
-        As a thank you, we will give <%= you_or_your_child %>
-        <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>.
-      </p>
-    <% end %>
-  <% end %>
-
-  <% if @research_session.expenses_enabled %>
-    <% expenses = capture do %>
-      <p>
-        <%= edit_link_for(:travel_expenses_limit) do %>
-          <%= @research_session.expenses_sentence %>
-        <% end %>
-      </p>
-      <% if @research_session.receipts_required %>
-        <p>
-          <%= edit_link_for(:receipts_required) do %>
-            Receipts must be provided.
-          <% end %>
-        </p>
-      <% end %>
-    <% end %>
-  <% end %>
-
   <% if @research_session.incentives_enabled ||
         @research_session.where_when_enabled ||
         @research_session.expenses_enabled %>
-    <%=
-      react_component(
-        'Shared/SessionDetails',
-        final_preview_params(:where_when).merge({
-          incentives_markup: incentives,
-          expenses_markup: expenses,
-          you_or_your_child: you_or_your_child.capitalize
-          }),
-        { prerender: true }
-      )
-    %>
+    <section>
+      <h3 id="session">Session details</h3>
+
+      <%=
+        react_component(
+          'Shared/SessionInformation',
+          final_preview_params(:where_when),
+          { prerender: true }
+        )
+      %>
+
+      <% if @research_session.incentives_enabled %>
+        <p>
+          <%= your_or_your_childs.capitalize %> time and what <%= you_or_they %>
+          say is really important to us.
+        </p>
+        <p>
+          As a thank you, we will give <%= you_or_your_child %>
+          <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>.
+        </p>
+      <% end %>
+
+      <%=
+        react_component(
+          'Shared/ParticipantEquipment',
+          final_preview_params(:where_when).merge({
+            you_or_your_child: you_or_your_child.capitalize
+            }),
+          { prerender: true }
+        )
+      %>
+
+      <% if @research_session.expenses_enabled %>
+          <p>
+            <%= edit_link_for(:travel_expenses_limit) do %>
+              <%= @research_session.expenses_sentence %>
+            <% end %>
+          </p>
+          <% if @research_session.receipts_required %>
+            <p>
+              <%= edit_link_for(:receipts_required) do %>
+                Receipts must be provided.
+              <% end %>
+            </p>
+          <% end %>
+      <% end %>
+
+      <%=
+        react_component(
+          'Shared/Refreshments',
+          final_preview_params(:where_when),
+          { prerender: true }
+        )
+      %>
+
+    </section>
   <% end %>
 
   <%=
