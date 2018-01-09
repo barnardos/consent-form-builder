@@ -1,7 +1,6 @@
 @import "barnardos/colours";
 
 .print-section {
-
   @media (min-width: $tablet) {
     text-align: right;
     padding-right: 5%;
@@ -9,8 +8,8 @@
 
   &__select {
     font-size: 1rem;
-    margin-bottom: $gutter;
     width: 100%;
+    display: block;
 
     @media (min-width: $tablet) {
       width: auto;
@@ -23,11 +22,11 @@
     background-position: right $gutter center;
     background-size: 22px 22px;
     padding: $gutter (22px + $gutter * 2);
-    margin: 0;
+    margin: 16px 0 0 0;
 
     @media (min-width: $tablet) {
       padding-left: $gutter;
-      margin-left: $gutter;
+      margin: 0 0 0 16px;
     }
 
     &:hover {

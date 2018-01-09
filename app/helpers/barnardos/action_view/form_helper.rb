@@ -111,7 +111,8 @@ module Barnardos
             should_autofocus = options[:autofocus_first_item] && on_first_item
             on_first_item = false
             content_tag :div, class: 'radio-group__choice' do
-              b.radio_button(class: 'radio-group__input', autofocus: should_autofocus) +
+              radio_button_options = { class: 'radio-group__input', autofocus: should_autofocus }
+              b.radio_button(radio_button_options.merge(options[:input] || {})) +
                 b.label(class: 'radio-group__label')
             end
           end
@@ -152,7 +153,8 @@ module Barnardos
               should_autofocus = options[:autofocus_first_item] && on_first_item
               on_first_item = false
               content_tag :div, class: 'checkbox-group__choice' do
-                b.check_box(class: 'checkbox-group__input', autofocus: should_autofocus) +
+                checkbox_options = { class: 'checkbox-group__input', autofocus: should_autofocus }
+                b.check_box(checkbox_options.merge(options[:input] || {})) +
                   b.label(class: 'checkbox-group__label')
               end
             end

@@ -75,12 +75,12 @@ RSpec.describe ResearchSessions::QuestionsController, type: :controller do
         {
           research_session_id: existing_session.slug,
           id: 'recording',
-          research_session: { 'recording_methods' => ['', 'audio', 'video'] }
+          research_session: { 'recording_methods' => ['', 'voice', 'video'] }
         }
       end
 
       it 'updates the research session, stripping the blank' do
-        expect(research_session.recording_methods).to eql(%w[audio video])
+        expect(research_session.recording_methods).to eql(%w[voice video])
       end
     end
 

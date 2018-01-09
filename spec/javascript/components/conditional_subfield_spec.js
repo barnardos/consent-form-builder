@@ -1,8 +1,10 @@
-const ConditionalSubfields = require('../../../app/javascript/components/conditional_subfields')
+/* eslint import/unambiguous:0 */
+/* global render:true */
+const ConditionalSubfields = require("../../../app/javascript/components/conditional_subfields");
 
-describe.only('Conditional subfields', () => {
-  describe('<select>', () => {
-    it('should reveal an optional fragment if the initial value is the trigger value', () => {
+describe.only("Conditional subfields", () => {
+  describe("<select>", () => {
+    it("should reveal an optional fragment if the initial value is the trigger value", () => {
       const markup = `
         <html>
           <body>
@@ -21,15 +23,17 @@ describe.only('Conditional subfields', () => {
               <input name="other_colour">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should mark a fragment visible with target value selected', () => {
+    it("should mark a fragment visible with target value selected", () => {
       const markup = `
         <html>
           <body>
@@ -48,20 +52,22 @@ describe.only('Conditional subfields', () => {
               <input name="other_colour">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const select = document.getElementById('select')
-      select.value = 'other'
-      ConditionalSubfields.onChange({ target: select })
+      const select = document.getElementById("select");
+      select.value = "other";
+      ConditionalSubfields.onChange({ target: select });
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should hide the optional field if the trigger is initially set then deselected', () => {
+    it("should hide the optional field if the trigger is initially set then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -80,19 +86,21 @@ describe.only('Conditional subfields', () => {
               <input name="other_colour">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      const select = document.getElementById('select')
-      select.value = 'green'
-      ConditionalSubfields.onChange({ target: select })
+      const select = document.getElementById("select");
+      select.value = "green";
+      ConditionalSubfields.onChange({ target: select });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
 
-    it('should hide the optional field if the trigger is selected then deselected', () => {
+    it("should hide the optional field if the trigger is selected then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -111,25 +119,27 @@ describe.only('Conditional subfields', () => {
               <input name="other_colour">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const select = document.getElementById('select')
-      select.value = 'other'
-      ConditionalSubfields.onChange({ target: select })
+      const select = document.getElementById("select");
+      select.value = "other";
+      ConditionalSubfields.onChange({ target: select });
 
-      select.value = 'green'
-      ConditionalSubfields.onChange({ target: select })
+      select.value = "green";
+      ConditionalSubfields.onChange({ target: select });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
-  })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
+  });
 
   describe('<input type="radio">', () => {
-    it('should reveal an optional fragment if the initial value is the trigger value', () => {
+    it("should reveal an optional fragment if the initial value is the trigger value", () => {
       const markup = `
         <html>
           <body>
@@ -152,15 +162,17 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should reveal that optional fragment on page load when a hidden field is present', () => {
+    it("should reveal that optional fragment on page load when a hidden field is present", () => {
       const markup = `
         <fieldset id="methodologies-wrapper" class="checkbox-group checkbox-group__vertical ">
             <legend class="checkbox-group__legend">How will you be gathering information?</legend>
@@ -177,7 +189,7 @@ describe.only('Conditional subfields', () => {
                         checked="checked" name="research_session[methodologies][]"
                         id="research_session_methodologies_other">
                 <label for="research_session_methodologies_other">Other</label></div>
-        </fieldset>      
+        </fieldset>
         <div id="subfield-wrapper" class="js-ConditionalSubfield" data-controlled-by="research_session[methodologies][]"
              data-control-value="other">
             <div id="other_methodology-wrapper" class="textfield js-highlight-control ">
@@ -187,16 +199,18 @@ describe.only('Conditional subfields', () => {
                 <input class="textfield__input js-highlight-control__input " type="text"
                        value="Things" name="research_session[other_methodology]"
                        id="research_session_other_methodology"></div>
-        </div>        
-      `
+        </div>
+      `;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should mark a fragment visible with target value selected', () => {
+    it("should mark a fragment visible with target value selected", () => {
       const markup = `
         <html>
           <body>
@@ -219,20 +233,22 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const input = document.getElementById('ask-yes')
-      input.checked = true
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask-yes");
+      input.checked = true;
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should hide the optional field if the trigger is initially set then deselected', () => {
+    it("should hide the optional field if the trigger is initially set then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -255,19 +271,21 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      const input = document.getElementById('ask-yes')
-      input.checked = false
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask-yes");
+      input.checked = false;
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
 
-    it('should hide the optional field if the trigger is selected then deselected', () => {
+    it("should hide the optional field if the trigger is selected then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -290,25 +308,27 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const input = document.getElementById('ask-yes')
-      input.checked = true
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask-yes");
+      input.checked = true;
+      ConditionalSubfields.onChange({ target: input });
 
-      input.checked = false
-      ConditionalSubfields.onChange({ target: input })
+      input.checked = false;
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
-  })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
+  });
 
   describe('<input type="checkbox">', () => {
-    it('should reveal an optional fragment if the initial value is the trigger value', () => {
+    it("should reveal an optional fragment if the initial value is the trigger value", () => {
       const markup = `
         <html>
           <body>
@@ -331,15 +351,17 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should mark a fragment visible with target value selected', () => {
+    it("should mark a fragment visible with target value selected", () => {
       const markup = `
         <html>
           <body>
@@ -362,20 +384,22 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const input = document.getElementById('ask-yes')
-      input.checked = true
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask-yes");
+      input.checked = true;
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should hide the optional field if the trigger is initially set then deselected', () => {
+    it("should hide the optional field if the trigger is initially set then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -398,19 +422,21 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      const input = document.getElementById('ask-yes')
-      input.checked = false
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask-yes");
+      input.checked = false;
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
 
-    it('should hide the optional field if the trigger is selected then deselected', () => {
+    it("should hide the optional field if the trigger is selected then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -433,25 +459,27 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const input = document.getElementById('ask-yes')
-      input.checked = true
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask-yes");
+      input.checked = true;
+      ConditionalSubfields.onChange({ target: input });
 
-      input.checked = false
-      ConditionalSubfields.onChange({ target: input })
+      input.checked = false;
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
-  })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
+  });
 
   describe('<input type="text"> ', () => {
-    it('should reveal an optional fragment if the initial value is the trigger value', () => {
+    it("should reveal an optional fragment if the initial value is the trigger value", () => {
       const markup = `
         <html>
           <body>
@@ -468,15 +496,17 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should mark a fragment visible with target value selected', () => {
+    it("should mark a fragment visible with target value selected", () => {
       const markup = `
         <html>
           <body>
@@ -493,20 +523,22 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const input = document.getElementById('ask')
-      input.value = 'yes'
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask");
+      input.value = "yes";
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.include('is-active')
-    })
+      expect(document.getElementById("subfield-wrapper").className).to.include(
+        "is-active"
+      );
+    });
 
-    it('should hide the optional field if the trigger is initially set then deselected', () => {
+    it("should hide the optional field if the trigger is initially set then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -523,19 +555,21 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      const input = document.getElementById('ask')
-      input.value = 'no'
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask");
+      input.value = "no";
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
 
-    it('should hide the optional field if the trigger is selected then deselected', () => {
+    it("should hide the optional field if the trigger is selected then deselected", () => {
       const markup = `
         <html>
           <body>
@@ -552,25 +586,27 @@ describe.only('Conditional subfields', () => {
               <input name="name">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
       // Change the source field to the trigger value
-      const input = document.getElementById('ask')
-      input.value = 'yes'
-      ConditionalSubfields.onChange({ target: input })
+      const input = document.getElementById("ask");
+      input.value = "yes";
+      ConditionalSubfields.onChange({ target: input });
 
-      input.value = 'no'
-      ConditionalSubfields.onChange({ target: input })
+      input.value = "no";
+      ConditionalSubfields.onChange({ target: input });
 
-      expect(document.getElementById('subfield-wrapper').className).to.not.include('is-active')
-    })
-  })
+      expect(
+        document.getElementById("subfield-wrapper").className
+      ).to.not.include("is-active");
+    });
+  });
 
-  describe('clear optional field values', () => {
-    it('should clear a single optional field when it is hidden', () => {
+  describe("clear optional field values", () => {
+    it("should clear a single optional field when it is hidden", () => {
       const markup = `
         <html>
           <body>
@@ -590,19 +626,21 @@ describe.only('Conditional subfields', () => {
               <input name="other_colour" value="something">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      const select = document.getElementById('select')
-      select.value = 'green'
-      ConditionalSubfields.onChange({ target: select })
+      const select = document.getElementById("select");
+      select.value = "green";
+      ConditionalSubfields.onChange({ target: select });
 
-      expect(document.querySelector('[name="other_colour"][disabled]').value).to.equal('something')
-    })
+      expect(
+        document.querySelector('[name="other_colour"][disabled]').value
+      ).to.equal("something");
+    });
 
-    it('should clear multiple optional fields when they are hidden', () => {
+    it("should clear multiple optional fields when they are hidden", () => {
       const markup = `
         <html>
           <body>
@@ -623,17 +661,21 @@ describe.only('Conditional subfields', () => {
               <input name="other_shade" value="dark">
             </div>
           </body>
-        </html>`
+        </html>`;
 
-      const document = render(markup)
-      ConditionalSubfields.init(document)
+      const document = render(markup);
+      ConditionalSubfields.init(document);
 
-      const select = document.getElementById('select')
-      select.value = 'green'
-      ConditionalSubfields.onChange({ target: select })
+      const select = document.getElementById("select");
+      select.value = "green";
+      ConditionalSubfields.onChange({ target: select });
 
-      expect(document.querySelector('[name="other_colour"][disabled]').value).to.equal('something')
-      expect(document.querySelector('[name="other_shade"][disabled]').value).to.equal('dark')
-    })
-  })
-})
+      expect(
+        document.querySelector('[name="other_colour"][disabled]').value
+      ).to.equal("something");
+      expect(
+        document.querySelector('[name="other_shade"][disabled]').value
+      ).to.equal("dark");
+    });
+  });
+});

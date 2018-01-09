@@ -1,3 +1,4 @@
+/* eslint import/unambiguous:0 */
 /**
  * Conditional sub fields
  *
@@ -32,58 +33,62 @@
  *
  */
 
-const uniq = require('lodash/uniq')
-const includes = require('lodash/includes')
+const uniq = require("lodash/uniq");
+const includes = require("lodash/includes");
 
-const { addClass, removeClass } = require('../lib/element_helpers')
+const { addClass, removeClass } = require("../lib/element_helpers");
 
 const ConditionalSubfields = {
-  selector: 'js-ConditionalSubfield',
-  activeClass: 'is-active',
+  selector: "js-ConditionalSubfield",
+  activeClass: "is-active",
   onChangeHandler: null,
   controllers: [],
   wrapper: null,
 
-  init (wrapper = document) {
-    this.wrapper = wrapper
+  init(wrapper = document) {
+    this.wrapper = wrapper;
 
-    this.cacheEls()
+    this.cacheEls();
 
     if (this.controllers.length) {
-      this.bindEvents()
-      this.render()
+      this.bindEvents();
+      this.render();
     }
   },
 
-  cacheEls () {
-    const conditionalSubFields = this.wrapper.getElementsByClassName(this.selector)
+  cacheEls() {
+    const conditionalSubFields = this.wrapper.getElementsByClassName(
+      this.selector
+    );
 
-    this.onChangeHandler = this.onChange.bind(this)
-    this.controllers = uniq([...conditionalSubFields].map((controller, i) => {
-      return controller.getAttribute('data-controlled-by')
-    }))
+    this.onChangeHandler = this.onChange.bind(this);
+    this.controllers = uniq(
+      [...conditionalSubFields].map(controller => {
+        return controller.getAttribute("data-controlled-by");
+      })
+    );
   },
 
-  bindEvents () {
-    this.wrapper.addEventListener('change', this.onChangeHandler)
+  bindEvents() {
+    this.wrapper.addEventListener("change", this.onChangeHandler);
   },
 
-  render () {
-    this.controllers.forEach((controller) => {
-      const field = this.wrapper.querySelector(`[name="${controller}"]`)
+  render() {
+    this.controllers.forEach(controller => {
+      const field = this.wrapper.querySelector(`[name="${controller}"]`);
 
-      this._handleField(field)
-    })
+      this._handleField(field);
+    });
   },
 
-  destroy () {
-    this.wrapper.removeEventListener('change', this.onChangeHandler)
+  destroy() {
+    this.wrapper.removeEventListener("change", this.onChangeHandler);
   },
 
-  onChange (evt) {
-    const field = evt.target
+  onChange(evt) {
+    const field = evt.target;
     if (includes(this.controllers, field.name)) {
-      this._handleField(field)
+      this._handleField(field);
     }
   },
 
@@ -97,58 +102,62 @@ const ConditionalSubfields = {
    *
    * If we hide the optional subfield, disable the field also, so the form posts what the user expects
    */
-  _handleField (controlInput) {
+  _handleField(controlInput) {
     if (!controlInput) {
-      return
+      return;
     }
-    const subFields = this.wrapper.querySelectorAll(`[data-controlled-by="${controlInput.name}"]`)
-    const tagName = controlInput.tagName
-    let controlInputValue = []
+    const subFields = this.wrapper.querySelectorAll(
+      `[data-controlled-by="${controlInput.name}"]`
+    );
+    const tagName = controlInput.tagName;
+    let controlInputValue = [];
 
-    if (tagName === 'SELECT') {
-      controlInputValue[0] = controlInput.value
-    } else if (tagName === 'INPUT') {
-      const type = controlInput.type
+    if (tagName === "SELECT") {
+      controlInputValue[0] = controlInput.value;
+    } else if (tagName === "INPUT") {
+      const type = controlInput.type;
 
-      if (type === 'radio' || type === 'checkbox' || type === 'hidden') {
-        controlInputValue = Array
-          .from(this.wrapper.querySelectorAll(`[name="${controlInput.name}"]:checked`))
-          .map(input => input.value)
+      if (type === "radio" || type === "checkbox" || type === "hidden") {
+        controlInputValue = Array.from(
+          this.wrapper.querySelectorAll(`[name="${controlInput.name}"]:checked`)
+        ).map(input => input.value);
       } else {
-        controlInputValue[0] = controlInput.value
+        controlInputValue[0] = controlInput.value;
       }
     }
 
-    Array.from(subFields).forEach((subField) => {
-      const value = subField.getAttribute('data-control-value') + ''
-      let isVisible
+    Array.from(subFields).forEach(subField => {
+      const value = subField.getAttribute("data-control-value") + "";
+      let isVisible;
 
-      isVisible = includes(controlInputValue, value)
+      isVisible = includes(controlInputValue, value);
 
-      this._toggleSubField(subField, isVisible)
-    })
+      this._toggleSubField(subField, isVisible);
+    });
   },
 
-  _toggleSubField (subField, isVisible) {
+  _toggleSubField(subField, isVisible) {
     if (isVisible) {
-      addClass(subField, this.activeClass)
+      addClass(subField, this.activeClass);
     } else {
-      removeClass(subField, this.activeClass)
+      removeClass(subField, this.activeClass);
     }
 
-    subField.setAttribute('aria-expanded', isVisible)
-    subField.setAttribute('aria-hidden', !isVisible)
+    subField.setAttribute("aria-expanded", isVisible);
+    subField.setAttribute("aria-hidden", !isVisible);
 
-    const children = subField.querySelectorAll('input, select, checkbox, textarea')
+    const children = subField.querySelectorAll(
+      "input, select, checkbox, textarea"
+    );
 
-    Array.from(children).forEach((field) => {
+    Array.from(children).forEach(field => {
       if (isVisible) {
-        field.removeAttribute('disabled')
+        field.removeAttribute("disabled");
       } else {
-        field.setAttribute('disabled', 'disabled')
+        field.setAttribute("disabled", "disabled");
       }
-    })
+    });
   }
-}
+};
 
-module.exports = ConditionalSubfields
+module.exports = ConditionalSubfields;

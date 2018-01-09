@@ -1,9 +1,40 @@
+# 0.7.0 / Unreleased
+
+* [FEATURE] - [Live preview: Storing](https://trello.com/c/2RNcewZH)
+* [CHORE] - [Unvarying parameters](https://github.com/barnardos/consent-form-builder-rails/pull/194)
+* [CHORE] - [Implement Prettier and amend `.eslint` to be inline with Digital Tranformation repo](https://trello.com/c/YzaEzJ1B/300-3-implement-prettier-and-amend-eslint-to-be-inline-with-digital-tranformation-repo)
+* [FEATURE] - [Live preview: Methodologies](https://trello.com/c/2D5821QQ)
+* [CHORE] - Change "start" to "server" in README
+* [FEATURE] - [Live preview: Where and When](https://trello.com/c/ZJDBrILw)
+
+# 0.6.0 / 2017-12-14
+
+* [FEATURE] - [Live preview: Researcher](https://trello.com/c/T2MeDlYY/255-13-live-preview-researcher)
+* [FEATURE] - [Remove additional researchers from the builder](https://trello.com/c/sDbgJ6dQ/276-8-remove-additional-researchers-from-the-builder)
+* [FEATURE] - [Update the methodologies list in the form builder and info sheet](https://trello.com/c/oI7k0fFy/210-5-update-the-methodologies-list-in-the-form-builder-and-info-sheet)
+* [FEATURE] - [Add "Concerns and complaints" to the information sheet (static)](https://trello.com/c/Rvs9PGTM/279-2-add-concerns-and-complaints-to-the-information-sheet-static)
+* [FEATURE] - [Add "Sharing information" section to information sheet (static)](https://trello.com/c/4BEtxvHd)
+* [FEATURE] - [Add "About taking part" to the information sheet (static)](https://trello.com/c/eth5vJYW)
+* [FEATURE] - [Add "Decide if you want the child in your care to take part" part to the info sheet (static)](https://trello.com/c/uzbzifmd/280-2-add-decide-if-you-want-the-child-in-your-care-to-take-part-part-to-the-info-sheet-static)
+* [FEATURE] - [Improve the "Where can I find out more?" section of information sheet](https://trello.com/c/VrKLhmWK/274-2-improve-the-where-can-i-find-out-more-section-of-information-sheet)
+* [FEATURE] - [Remove "Do I have to take part" from info sheet](https://trello.com/c/ZJt7BJ6n)
+* [FEATURE] - [Update "When is the session..." content and change to "Session details"](https://trello.com/c/Xj2WfSpH/289-8-update-when-is-the-session-content-and-change-to-session-details)
+* [FEATURE] - [Merge Incentives, Expenses into "When is the session..."](https://trello.com/c/cmTxdOPX/281-2-merge-incentives-expenses-into-when-is-the-session)
+* [FEATURE] - [Review the headers/section order of the information sheet](https://trello.com/c/VIAe530f/272-1-review-the-headers-section-order-of-the-information-sheet)
+* [BUG] - [Change 'review' consent form heading to 'Consent form'](https://trello.com/c/2Hjw3duY/294-change-review-consent-form-heading-to-consent-form)
+* [FEATURE] - [Live preview: Topic / Purpose](https://trello.com/c/JiSAAKBv/256-3-live-preview-topic-purpose)
+* [BUG] - [Researcher preview phone number/word missing](https://trello.com/c/Vt4JdtH5/293-bugs-researcher-preview)
+* [BUG] - [Live previews broken in every live environment](https://trello.com/c/BV2jgy9O/295-live-previews-broken-in-every-live-environment)
+* [BUG] - [Apply design rules featured in the original Barnardo's styleguide](https://trello.com/c/CtYloVeU/286-apply-design-rules-featured-in-the-original-barnardos-styleguide)
+* [FEATURE] - [Live preview: Recording](https://trello.com/c/YY9TDLiB/258-5-live-preview-recording)
+
 # 0.5.0 / 2017-11-16
 
 * [FEATURE] - [Add yes/no radiobuttons on top of Where&When, Expenses and Incentives](https://trello.com/c/Ncnz0D6S/229-2-add-yes-no-radiobuttons-on-top-of-wherewhen-expenses-and-incentives)
 * [FEATURE] - [Researcher page: we should have job title of the lead researcher as a field](https://trello.com/c/HvKi9NwT/169-2-researcher-page-we-should-have-job-title-of-the-lead-researcher-as-a-field)
 * [BUG] - [When a sterling sign is added in, the preview generates 0.00](https://trello.com/c/IHdoFxEl/246-3-bug-when-a-sterling-sign-is-added-in-the-preview-generates-000)
 * [FEATURE] - [Create a New Form and Info Sheet from a Saved Form and Info Sheet (aka Research Session)](https://trello.com/c/qYBbtDC9/87-create-a-new-form-and-info-sheet-from-a-saved-form-and-info-sheet-aka-research-session)
+* [FEATURE] - [GDPR compliance for our Data (now Storing) step](https://trello.com/c/kkuQxS8T/224-gdpr-compliance-for-our-data-now-storing-step)
 
 # 0.4.0 / 2017-11-07
 

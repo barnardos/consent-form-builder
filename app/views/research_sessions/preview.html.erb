@@ -11,7 +11,7 @@
   <button type="submit" class="print-section__submit button">Print</button>
 </form>
 
-<h1 class="title screen-only">Research session preview</h1>
+<h1 class="page-heading screen-only">Research session preview</h1>
 
 <section class="split-link screen-only">
   <div class="<%='active' if @research_session.able_to_consent? %>">
@@ -24,20 +24,20 @@
 
 <div class="print-area js-print-area" id="info-sheets">
   <section>
-    <h2 class="heading-medium">About this research project</h2>
+    <h2>About this research project</h2>
     <p class="super-text">This information sheet will tell you more about the
       research so that you can decide whether or not <%= you_or_your_child %> would like to take part.</p>
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="why">Why is the research being done?</h3>
-
-    <p>
-      <%= I18n.t('research_session_attr_labels.topic') %>
-      <%= edit_link_for(:topic) %>
-      <%= I18n.t('research_session_attr_labels.purpose') %>
-      <%= edit_link_for(:purpose) %>.
-    </p>
+    <%= react_component(
+        'TopicPurposePreviews',
+        final_preview_params(:topic),
+        {
+          prerender: true
+        }
+      )
+    %>
 
     <p>
       It is important that we test the current and future tools and services that
@@ -47,103 +47,53 @@
   </section>
 
   <section>
-    <h3 class="subtitle-small" id="who">Who is doing the research?</h3>
-    <p>
-      <%= edit_link_for(:researcher_name) -%>
-      <% if @research_session.researcher_job_title.present? %>
-, <%= edit_link_for(:researcher_job_title) %>
-      <% end %>
-      will be leading the session.
-      <% if @research_session.researcher_other_name.present? %>
-        <%= edit_link_for(:researcher_name) %>ʼs colleague,
-        <%= edit_link_for(:researcher_other_name) %>,
-        may join <%= edit_link_for(:researcher_name) %> sometimes to help.
-      <% end %>
-    </p>
+    <h3 id="what">What happens in this research session?</h3>
+    <%=
+      react_component(
+        'Shared/TakePartIn',
+        final_preview_params(:researcher).merge({
+          you_or_your_child: you_or_your_child
+        }),
+        { prerender: true }
+      )
+    %>
+    <%=
+      react_component(
+        'Shared/WeWillRecordBy',
+        final_preview_params(:methodologies),
+        { prerender: true }
+      )
+    %>
+    <%=
+      react_component(
+        'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
+        { prerender: true }
+      )
+    %>
+    <%=
+      react_component(
+        'Shared/AnotherResearcherSentence',
+        final_preview_params(:researcher),
+        { prerender: true }
+      )
+    %>
   </section>
-  <section>
-    <h3 class="subtitle-small" id="what">What will happen next?</h3>
 
-    <% @research_session.methodologies.each do |methodology| %>
+  <% if @research_session.incentives_enabled %>
+    <% incentives = capture do %>
       <p>
-        <%= edit_link_for(:methodologies) do %>
-          <%= methodology_lookup(methodology) %>
-        <% end %>
+        <%= your_or_your_childs.capitalize %> time and what <%= you_or_they %>
+        say is really important to us.
+      </p>
+      <p>
+        As a thank you, we will give <%= you_or_your_child %>
+        <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>.
       </p>
     <% end %>
-    <p>
-      With your permission we will record <%= @research_session.unable_to_consent? ? 'your childʼs/the child in your care‘s' : 'the' %> session using
-      <%= edit_link_for(:recording_methods) { @research_session.recording_methods_list } %>.
-      Recording the session helps the researcher and other research team members
-      trying to improve the service, as it allows them to review the most useful
-      parts of the session after it has finished.
-    </p>
-  </section>
-  <section>
-    <h3 class="subtitle-small" id="doi">Do I have to take part?</h3>
-    <p>
-      Taking part is entirely voluntary - it is up to you to decide whether or not <%= you_or_your_child %>
-      should take part. If you decide <%= you_or_your_child %> should take part <%= you_or_they %> do not have to answer questions <%= you_or_they %> do not want to answer. <%= you_or_they.capitalize %> can also change <%= @research_session.able_to_consent? ? 'your' : 'their' %> mind about taking part
-      at any time and withdraw without giving a reason.
-    </p>
-    <p>
-      If you agree <%= 'for your child/the child in your care' if @research_session.unable_to_consent? %> to take part, you will be given a copy of this information
-      sheet and be asked to sign a consent form.
-    </p>
-  </section>
-  <section>
-    <h3 class="subtitle-small" id="more">Where can I find out more?</h3>
-    <p><%= edit_link_for(:researcher_name) %> will be able to answer further questions about the
-      research. <%= edit_link_for(:researcher_name) %> can be contacted by email at
-      <%= edit_link_for(:researcher_email) %> or by telephone on <%= edit_link_for(:researcher_phone) %>.</p>
-    <p>If you have any questions or concerns about the way in which this research has
-      been conducted then please contact Joelle Bradly at
-      <a href="mailto:joelle.bradly@barnardos.org.uk">joelle.bradly@barnardos.org.uk</a></p>
-  </section>
-  <section>
-    <h3 class="subtitle-small" id="private">Will what I say be kept confidential?</h3>
-    <p>Yes. The goal of design research isnʼt to collect data, itʼs to find the
-      insights we need to improve our services. We do not hand over the recordings; we
-      edit and share insights relevant to the project. Whenever we share these
-      insights, the material is fully anonymised and contributions cannot be
-      attributed to named individuals.</p>
-    <p><%= you_or_your_child.capitalize %> will not be identifiable in anything published. All personal data
-      collected as part of the research is stored securely and kept strictly
-      confidential.</p>
-  </section>
-  <section>
-    <h3 class="subtitle-small" id="private">How will the data be used?</h3>
-    <p><%= edit_link_for(:shared_use) %></p>
-
-    <p>The data will be kept for <%= edit_link_for(:shared_duration) %>.</p>
-  </section>
-  <% if @research_session.where_when_enabled %>
-    <section>
-      <h3 class="subtitle-small" id="private">When is the session and what should <%= @research_session.able_to_consent? ? 'I' : 'my child/the child in my care' %> bring?</h3>
-        <% if @research_session.location.present? %>
-          <p>The session will be held at <%= edit_link_for(:location) %>.</p>
-        <% end %>
-        <p>
-          <% if @research_session.when_text %>
-            The session is on
-            <%= edit_link_for(:when_text) do %>
-              <strong><%= @research_session.when_text %></strong>.
-            <% end %>
-          <% end %>
-          <% if @research_session.duration.present? %>
-            The session will last for <%= edit_link_for(:duration) %>.
-          <% end %>
-        </p>
-      <% if @research_session.participant_equipment.present? %>
-        <p>
-          <%= edit_link_for(:participant_equipment) %>
-        </p>
-      <% end %>
-    </section>
   <% end %>
+
   <% if @research_session.expenses_enabled %>
-    <section>
-      <h3 class="subtitle-small">Expenses</h3>
+    <% expenses = capture do %>
       <p>
         <%= edit_link_for(:travel_expenses_limit) do %>
           <%= @research_session.expenses_sentence %>
@@ -156,24 +106,116 @@
           <% end %>
         </p>
       <% end %>
-    </section>
+    <% end %>
   <% end %>
-  <% if @research_session.incentives_enabled %>
-    <section>
-      <h3 class="subtitle-small">Incentives</h3>
-      <p>
-        We are offering
-        <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>
-        for participation in this session.
-      </p>
-    </section>
+
+  <% if @research_session.incentives_enabled ||
+        @research_session.where_when_enabled ||
+        @research_session.expenses_enabled %>
+    <%=
+      react_component(
+        'Shared/SessionDetails',
+        final_preview_params(:where_when).merge({
+          incentives_markup: incentives,
+          expenses_markup: expenses,
+          you_or_your_child: you_or_your_child.capitalize
+          }),
+        { prerender: true }
+      )
+    %>
   <% end %>
+
+  <%=
+    react_component(
+      'Shared/WillAnyoneKnowWhatISayInTheDiscussion',
+      final_preview_params(:storing).merge(
+        shared_title: "Will anyone know what #{i_or_they} say in the discussion?",
+        you_or_your_child: you_or_your_child,
+        say_or_says: say_or_says
+      ),
+      { prerender: true }
+    )
+  %>
+
+  <section>
+    <h3 id="sharing-information">Sharing information</h3>
+    <p>
+      We may have to share information about <%= you_or_your_child %> without
+      your consent if we think <%= you_or_they %> or someone else is at risk
+      of serious harm. Where possible, the lead researcher will speak to you
+      first and ask you what you want to do about the situation.
+    </p>
+  </section>
+
+  <section>
+    <h3 id="about-taking-part">About taking part</h3>
+    <p>
+      <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
+      not have to take part in this session. It is your decision<%= ' as the parent/carer' if @research_session.unable_to_consent? %>.
+    </p>
+    <p>
+      We will also ask <%= you_or_your_child %> if <%= you_or_they %> want to take
+      part before the session.
+    </p>
+    <p>
+      Don’t worry! If you do not want <%= 'the child in your care' if @research_session.unable_to_consent? %>
+      to take part it will not affect the service <%= you_or_they %> receive.
+    </p>
+    <p>
+      <%= you_or_your_child.capitalize %> can change <%= your_or_their %> mind at any point for any
+      reason by letting the researcher know <%= you_or_they %> want to stop.
+    </p>
+  </section>
+
+  <%=
+    react_component(
+      'Shared/FindOutMore',
+      final_preview_params(:researcher), { prerender: true }
+    )
+  %>
+
+  <section>
+    <h3 id="concerns">Concerns and complaints</h3>
+
+    <p>If you have any concerns or a complaint, or would like to have your data deleted please contact:
+
+    <dl class="definition-list">
+      <div>
+        <dt class="definition-list__term">Telephone:</dt>
+        <dd>+442084987869</dd>
+      </div>
+      <div>
+        <dt class="definition-list__term">Email:</dt>
+        <dd><%= mail_to 'jason.caplin@barnardos.org.uk' %></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section>
+    <h3 id="decide">
+      Decide if you want<%=
+        ' the child in your care' if @research_session.unable_to_consent?
+      %> to take part</h3>
+
+    <p>If you are happy<%=
+      ' for the child in your care' if @research_session.unable_to_consent?
+      %> to take part, we will ask you to sign a consent form. This will ask you to confirm:</p>
+
+    <ol class="numbered-list">
+      <li>that you are happy with the information you have received, and;</li>
+      <li>that you understand what we are going to do with the research recordings collected, and;</li>
+      <li>that you know who to ask for more information, and;</li>
+      <li>that your decision is voluntary</li>
+    </ol>
+
+    <p>Thank you!</p>
+  </section>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">
-  <h2 class="heading-large">Review</h2>
+  <h2 class="page-heading">Consent form</h2>
 
-  <p class="super-text">It is important to us that your consent
+  <p>It is important to us that your consent
     <%= 'for your child' if @research_session.unable_to_consent? %> to
     take part in this research is freely given and fully informed.</p>
   <p>Please review the following points and indicate your agreement to the
@@ -188,17 +230,20 @@
       participation is voluntary and that I am free to withdraw them at any time
       without giving any reason.
     </li>
-    <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
-      activities during the research session may be observed and will be recorded.
-      The data captured, in the form of <%= @research_session.recording_methods_list %>,
-      will be used for current and future service development.
-    </li>
+    <%=
+      react_component(
+        'Shared/WhichWeWillRecordUsingSentence',
+        final_preview_params(:recording),
+        { prerender: true }
+      )
+    %>
+
     <li>I understand that this data will be stored securely and
       covered by the Data Protection Act.
     </li>
   </ul>
 
-  <p class="highlight super-text">
+  <p>
     I agree to my <%= 'childʼs' if @research_session.unable_to_consent? %>
     participation in this research and understand that
     my childʼs data will be used as explained above.

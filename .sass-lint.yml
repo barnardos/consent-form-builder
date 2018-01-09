@@ -25,6 +25,10 @@ rules:
   quotes:
     - 1
     - style: double
+  indentation:
+    - 0
+  leading-zero:
+    - 0
   shorthand-values:
     - 1
     - allowed-shorthands:

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109124132) do
+ActiveRecord::Schema.define(version: 20171204115351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20171109124132) do
     t.string "researcher_name"
     t.string "researcher_phone"
     t.string "researcher_email"
-    t.string "researcher_other_name"
     t.boolean "incentives_enabled", default: false
     t.string "payment_type"
     t.decimal "incentive_value"
@@ -30,12 +29,10 @@ ActiveRecord::Schema.define(version: 20171109124132) do
     t.datetime "updated_at", null: false
     t.string "other_methodology"
     t.string "other_recording_method"
-    t.boolean "researcher_other"
     t.text "topic"
     t.text "purpose"
     t.string "shared_with"
     t.string "shared_duration"
-    t.text "shared_use"
     t.string "duration"
     t.text "participant_equipment"
     t.decimal "travel_expenses_limit"
@@ -47,9 +44,9 @@ ActiveRecord::Schema.define(version: 20171109124132) do
     t.string "when_text"
     t.string "name"
     t.string "slug"
+    t.string "researcher_job_title"
     t.boolean "where_when_enabled", default: false
     t.boolean "expenses_enabled", default: false
-    t.string "researcher_job_title"
     t.index ["slug"], name: "index_research_sessions_on_slug", unique: true
     t.index ["status"], name: "index_research_sessions_on_status"
   end

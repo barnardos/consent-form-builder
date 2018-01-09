@@ -1,5 +1,6 @@
 module StepCompletions
   BULLYING_NAME = ' Bullying in schools '.freeze
+  BULLYING_SLUG = BULLYING_NAME.strip.downcase.tr(' ', '-').freeze
 
   def create_new_form
     visit '/'
@@ -11,16 +12,15 @@ module StepCompletions
   end
 
   def complete_researcher_step
-    within '[name="first-researcher"]' do
-      fill_in 'Job title', with: 'Director of Research'
-      fill_in 'Full name', with: 'Rachel Researcher'
-      fill_in 'Telephone number', with: '012345678'
-      fill_in 'Email', with: 'rachel@researcher.com'
-    end
+    @job_title = 'Director of Research'
+    @researcher_name = 'Rachel Researcher'
+    @researcher_phone = '012345678'
+    @researcher_email = 'rachel@researcher.com'
 
-    within '[name="second-researcher"]' do
-      fill_in 'Full name', with: 'Steve Secondresearcher'
-    end
+    fill_in 'Job title', with: @job_title
+    fill_in 'Full name', with: @researcher_name
+    fill_in 'Telephone number', with: @researcher_phone
+    fill_in 'Email', with: @researcher_email
 
     click_button 'Continue'
   end
@@ -47,15 +47,18 @@ module StepCompletions
   end
 
   def complete_methodologies_step
-    @methodologies = ['Interview', 'Usability testing']
+    @methodologies = [
+      Methodologies::NAME_VALUES[:interview],
+      Methodologies::NAME_VALUES[:usability]
+    ]
     @methodologies.each do |methodology|
-      check methodology
+      check methodology.capitalize
     end
     click_button 'Continue'
   end
 
   def complete_recording_methods_step
-    @recording_methods = ['Audio', 'Video', 'Written notes']
+    @recording_methods = ['Voice recording', 'Video recording', 'Written notes']
     @recording_methods.each do |method|
       check method
     end
@@ -63,12 +66,10 @@ module StepCompletions
   end
 
   def complete_storing_step
-    choose 'Just the team'
+    choose 'anonymised as we process it'
     @shared_duration = '1 year'
-    @shared_usage = 'The data will be used to create better outcomes for more children'
 
     fill_in 'How long will this information be held for?', with: @shared_duration
-    fill_in 'How will the data be used?', with: @shared_usage
     click_button 'Continue'
   end
 

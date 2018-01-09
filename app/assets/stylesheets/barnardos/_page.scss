@@ -3,7 +3,6 @@
 @import "barnardos/vars";
 
 #global-header {
-
   margin: $gutter auto;
   max-width: $max-container-width;
   width: 100%;
@@ -16,7 +15,6 @@
       width: 50%;
     }
   }
-
 }
 
 #global-header__logo {
@@ -60,6 +58,6 @@
 }
 
 #content {
-  margin: 0 auto 0 0;
+  margin: 0 auto 0 auto;
   max-width: $max-content-width;
 }

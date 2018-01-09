@@ -2,13 +2,14 @@
 @import "barnardos/vars";
 
 .split-link {
+  margin-top: 32px;
   display: block;
 
   > * {
     background: $grey-medium;
     border-radius: 4px;
     display: block;
-    margin: $gutter 0;
+    margin: $gutter 0 0 0;
     padding: $gutter $gutter * 4;
     text-align: center;
     text-decoration: none;

@@ -2,10 +2,10 @@ And(/^I should see confirmation that this is a preview$/) do
   expect(page).to have_content('Research session preview')
 end
 
-And(/^I should see an age\-specific text block for each research methodology selected$/) do
+And(/^I should see each methodology selected$/) do
   # Interview, Usability as set in question_steps.rb
-  expect(page).to have_content('Your child will be interviewed')
-  expect(page).to have_content('Your child will be asked')
+  expect(page).to have_content('a one-on-one interview')
+  expect(page).to have_content('looking at how you use a new tool we’re designing')
 end
 
 And(/^I should see the focus of the research along with why$/) do
@@ -18,7 +18,7 @@ And(/^I should see the focus of the research along with why$/) do
 end
 
 And(/^I should see a humanised indication of recording methods used$/) do
-  expect(page).to have_content('audio, video, and written notes')
+  expect(page).to have_content('voice recording, video recording, and written notes')
 end
 
 And(/^I should see links back to edit things that I provided$/) do

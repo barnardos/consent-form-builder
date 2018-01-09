@@ -1,32 +1,68 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'shared/error_summary' %>
-  <h1 class="subtitle-large">Where &amp; when</h1>
+  <h1 class="page-heading">Where &amp; when</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-    <%= form.radio_group_vertical :where_when_enabled,
-      { true => 'Yes', false => 'No' },
-      { autofocus_first_item: true },
-      legend: t('helpers.legend.research_session.where_when_enabled')
-    %>
-
-    <div class="js-ConditionalSubfield" data-controlled-by="research_session[where_when_enabled]" data-control-value="true">
-      <fieldset class="datefield">
-        <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
-        <%= form.labelled_text_field \
-                :when_text,
-                text_options: {
-                  placeholder: 'Monday 27th September 2017 at 3:00pm',
-                  autofocus: true
-                }
+    <div class="reactive-container">
+      <div class="reactive-container__form">
+        <%= form.radio_group_vertical :where_when_enabled,
+          { true => 'Yes', false => 'No' },
+          { autofocus_first_item: true,
+            input: {
+              'data-previewed-by' => 'WhereWhenPreviews'
+            }
+          },
+          legend: t('helpers.legend.research_session.where_when_enabled')
         %>
-      </fieldset>
 
-      <%= form.labelled_text_field :duration %>
-      <%= form.labelled_text_field :location %>
+        <div class="js-ConditionalSubfield" data-controlled-by="research_session[where_when_enabled]" data-control-value="true">
+          <fieldset class="datefield">
+            <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
+            <%= form.labelled_text_field \
+                    :when_text,
+                    text_options: {
+                      'data-previewed-by' => 'WhereWhenPreviews',
+                      placeholder: 'Monday 27th September 2018 at 3:00pm',
+                      autofocus: true
+                    }
+            %>
+          </fieldset>
 
-      <%= form.labelled_text_area :participant_equipment %>
-      <%= form.labelled_text_area :food_provided %>
+          <%=
+            form.labelled_text_field(
+              :duration,
+              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
+            )
+          %>
+          <%=
+            form.labelled_text_field(
+              :location,
+              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
+            )
+          %>
+          <%=
+            form.labelled_text_field(
+              :participant_equipment,
+              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
+            )
+          %>
+          <%=
+            form.labelled_text_field(
+              :food_provided,
+              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
+            )
+          %>
+        </div>
+      </div>
+
+      <div class="reactive-container__preview">
+        <%=
+          react_component(
+            'WhereWhenPreviews', current_step_params.merge(you_or_your_child: 'You')
+          )
+        %>
+      </div>
     </div>
 
     <%= render 'button_bar' %>

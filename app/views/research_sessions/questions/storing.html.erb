@@ -1,22 +1,44 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'shared/error_summary' %>
-  <h1 class="subtitle-large">Storing</h1>
+  <h1 class="page-heading">Storing</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+    <div class="reactive-container">
+      <div class="reactive-container__form">
+        <%= form.radio_group_vertical \
+            :shared_with,
+            SharedWith::NAME_VALUES,
+            {
+              autofocus_first_item: true,
+              input: {
+                'data-previewed-by' => 'StoringPreviews'
+              }
+            },
+            legend: t('helpers.legend.research_session.shared_with')
+        %>
 
-    <%= form.radio_group_vertical \
-        :shared_with,
-        SharedWith::NAME_VALUES,
-        { autofocus_first_item: true },
-        legend: 'Who will the data be shared with?'
-    %>
-
-    <%= form.labelled_text_field :shared_duration %>
-
-    <%= form.labelled_text_area \
-          :shared_use, text_options: { placeholder: 'The data will be used to...' }
-    %>
-
+        <%= form.labelled_text_field \
+            :shared_duration,
+            label_options: {
+              hint: t('helpers.hint.research_session.shared_duration')
+            },
+            text_options: {
+              placeholder: t('helpers.placeholder.research_session.shared_duration'),
+              'data-previewed-by' => 'StoringPreviews'
+            }
+        %>
+      </div>
+      <div class="reactive-container__preview">
+        <%=
+          react_component(
+            'StoringPreviews',
+            current_step_params.merge(
+              shared_title: 'Will anyone know what I say in the discussion?'
+            )
+          )
+        %>
+      </div>
+    </div>
     <%= render 'button_bar' %>
   <% end %>
 </div>

@@ -6,12 +6,11 @@ class ResearchSession
 
     PARAMS = ActiveSupport::OrderedHash[{
       researcher:    [:researcher_job_title, :researcher_name, :researcher_phone,
-                      :researcher_email, :researcher_other, :researcher_other_name,
-                      :researcher_other_name],
+                      :researcher_email],
       topic:         [:topic, :purpose],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
-      storing:       [:shared_with, :shared_duration, :shared_use],
+      storing:       [:shared_with, :shared_duration],
       where_when:    [:where_when_enabled, :when_text, :duration, :location, :participant_equipment,
                       :food_provided],
       expenses:      [:expenses_enabled, :travel_expenses_limit, :food_expenses_limit,

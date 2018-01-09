@@ -1,22 +1,43 @@
 <%= render "research_sessions/progress" %>
 <div class="main-content">
   <%= render 'shared/error_summary' %>
-  <h1 class="subtitle-large">Methodologies</h1>
+  <h1 class="page-heading">Methodologies</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= form.checkbox_group_vertical(
-            :methodologies,
-            Methodologies::NAME_VALUES,
-            { autofocus_first_item: true },
-            legend: 'How will you be gathering information?'
-          )
-      %>
+    <div class="reactive-container">
+      <div class="reactive-container__form">
+        <%= form.checkbox_group_vertical(
+              :methodologies,
+              Methodologies::NAME_VALUES.map { |name, value| [name, value.capitalize] },
+              {
+                autofocus_first_item: true,
+                input: { 'data-previewed-by' => 'MethodologyPreviews' }
+              },
+              legend: 'How will you be gathering information?'
+            )
+        %>
 
-      <div class="js-ConditionalSubfield"
-           data-controlled-by="research_session[methodologies][]"
-           data-control-value="other">
-        <%= form.labelled_text_field :other_methodology %>
+        <div class="js-ConditionalSubfield"
+             data-controlled-by="research_session[methodologies][]"
+             data-control-value="other">
+          <%= form.labelled_text_field(
+            :other_methodology,
+            text_options: { 'data-previewed-by' => 'MethodologyPreviews' })
+          %>
+        </div>
+      </div>
+      <div class="reactive-container__preview">
+        <%=
+          react_component(
+            'MethodologyPreviews',
+            current_step_params.merge(
+              researcher_name: @research_session.researcher_name,
+              you_or_your_child: "your child/the child in your care"
+            )
+          )
+        %>
       </div>
 
-      <%= render 'button_bar' %>
+    </div>
+    <%= render 'button_bar' %>
   <% end %>
 </div>
