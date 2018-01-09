@@ -11,24 +11,34 @@
     %>
 
     <div class="js-ConditionalSubfield" data-controlled-by="research_session[expenses_enabled]" data-control-value="true">
-      <%= form.labelled_text_field :travel_expenses_limit,
-            text_options: { placeholder: '0.00', autofocus: true }
-      %>
+      <div class="reactive-container">
+        <div class="reactive-container__form">
 
-      <%= form.labelled_text_field :food_expenses_limit,
-            text_options: { placeholder: '0.00' }
-      %>
+          <%= form.labelled_text_field :travel_expenses_limit,
+                text_options: { placeholder: '0.00', autofocus: true, 'data-previewed-by' => 'ExpensesPreviews' }
+          %>
 
-      <%= form.labelled_text_field :other_expenses_limit,
-        text_options: { placeholder: '0.00' }
-      %>
+          <%= form.labelled_text_field :food_expenses_limit,
+                text_options: { placeholder: '0.00', 'data-previewed-by' => 'ExpensesPreviews' }
+          %>
 
-      <%= form.radio_group_vertical :receipts_required,
-            { true => 'Yes', false => 'No' },
-            legend: 'Must the participant provide a receipt for any expenses claimed?'
-      %>
+          <%= form.labelled_text_field :other_expenses_limit,
+            text_options: { placeholder: '0.00', 'data-previewed-by' => 'ExpensesPreviews' }
+          %>
+
+          <%= form.radio_group_vertical :receipts_required,
+                { true => 'Yes', false => 'No' },
+                {input: {'data-previewed-by' => 'ExpensesPreviews'}},
+                legend: 'Must the participant provide a receipt for any expenses claimed?'
+          %>
+        </div>
+        <div class="reactive-container__preview">
+          <%=
+            react_component('ExpensesPreviews', current_step_params)
+          %>
+        </div>
+      </div>
     </div>
-
     <%= render 'button_bar' %>
   <% end %>
 </div>

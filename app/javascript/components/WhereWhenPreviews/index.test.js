@@ -13,7 +13,6 @@ describe("WhereWhenPreviews", () => {
 
   beforeEach(() => {
     props = {
-      where_when_enabled: true,
       when_text: undefined,
       duration: undefined,
       location: undefined,
@@ -22,31 +21,6 @@ describe("WhereWhenPreviews", () => {
       edit_links: {}
     };
     mountedWhereWhenPreviews = undefined;
-  });
-
-  describe("'yes' has been selected", () => {
-    it("renders as many sections as areas on the preview that could change", () => {
-      const sections = whereWhenPreviews().find("section");
-      expect(sections.length).to.eql(1);
-    });
-
-    it("has blank outputs", () => {
-      whereWhenPreviews()
-        .find("output")
-        .forEach(output => expect(output.text()).to.be.empty);
-    });
-  });
-
-  describe("'no' has been selected", () => {
-    beforeEach(() => {
-      props = {
-        where_when_enabled: false
-      };
-    });
-    it("doesn't render any sections", () => {
-      const sections = whereWhenPreviews().find("section");
-      expect(sections.length).to.eql(0);
-    });
   });
 
   describe("the initial render state", () => {

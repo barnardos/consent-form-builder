@@ -4,19 +4,16 @@
   <h1 class="page-heading">Where &amp; when</h1>
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
 
-    <div class="reactive-container">
-      <div class="reactive-container__form">
-        <%= form.radio_group_vertical :where_when_enabled,
-          { true => 'Yes', false => 'No' },
-          { autofocus_first_item: true,
-            input: {
-              'data-previewed-by' => 'WhereWhenPreviews'
-            }
-          },
-          legend: t('helpers.legend.research_session.where_when_enabled')
-        %>
+    <%= form.radio_group_vertical :where_when_enabled,
+      { true => 'Yes', false => 'No' },
+      { autofocus_first_item: true },
+      legend: t('helpers.legend.research_session.where_when_enabled')
+    %>
 
-        <div class="js-ConditionalSubfield" data-controlled-by="research_session[where_when_enabled]" data-control-value="true">
+    <div class="js-ConditionalSubfield" data-controlled-by="research_session[where_when_enabled]" data-control-value="true">
+
+      <div class="reactive-container">
+        <div class="reactive-container__form">
           <fieldset class="datefield">
             <legend class="datefield__label">Please enter the time and date of the session (optional)</legend>
             <%= form.labelled_text_field \
@@ -54,15 +51,15 @@
             )
           %>
         </div>
+        <div class="reactive-container__preview">
+          <%=
+            react_component(
+              'WhereWhenPreviews', current_step_params.merge(you_or_your_child: 'You')
+            )
+          %>
+        </div>
       </div>
 
-      <div class="reactive-container__preview">
-        <%=
-          react_component(
-            'WhereWhenPreviews', current_step_params.merge(you_or_your_child: 'You')
-          )
-        %>
-      </div>
     </div>
 
     <%= render 'button_bar' %>
