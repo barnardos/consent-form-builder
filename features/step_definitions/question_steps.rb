@@ -9,8 +9,6 @@ When(/^I provide full session details for every step$/) do
   complete_where_when_step
   complete_expenses_step
   complete_incentives_step
-
-  click_link "Respondents who can't give consent"
 end
 
 Then(/^I should see the session review page$/) do
