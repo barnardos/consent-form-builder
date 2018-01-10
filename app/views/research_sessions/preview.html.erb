@@ -1,26 +1,29 @@
 <%= render "research_sessions/progress", preview: true %>
 
-<form class="print-section screen-only js-print-section" action="#">
-  <label for="area-to-print" class="selectfield">
-      <select name="area-to-print" id="area-to-print" class="print-section__select js-area-to-print">
-        <option value="#consent-form,#info-sheets">Consent Form and Info Sheet</option>
-        <option value="#consent-form">Consent Form</option>
-        <option value="#info-sheets">Info Sheet</option>
-      </select>
-  </label>
-  <button type="submit" class="print-section__submit button">Print</button>
-</form>
+<div class="preview-header screen-only">
+  <form class="print-section js-print-section" action="#">
+    <label for="area-to-print" class="selectfield">
+        <select name="area-to-print" id="area-to-print" class="print-section__select js-area-to-print">
+          <option value="#consent-form,#info-sheets">Consent Form and Info Sheet</option>
+          <option value="#consent-form">Consent Form</option>
+          <option value="#info-sheets">Info Sheet</option>
+        </select>
+    </label>
+    <button type="submit" class="print-section__submit button">Print</button>
+  </form>
 
-<h1 class="page-heading screen-only">Research session preview</h1>
+  <h1 class="page-heading">Research session preview</h1>
 
-<section class="split-link screen-only">
-  <div class="<%='active' if @research_session.able_to_consent? %>">
-    <a href="?able-to-consent=yes">Respondents who can give consent themselves</a>
-  </div>
-  <div class="<%='active' if @research_session.unable_to_consent? %>">
-    <a href="?able-to-consent=no">Respondents who can't give consent</a>
-  </div>
-</section>
+  <% if @research_session.able_to_consent? %>
+    <p>Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</p>
+    <p><a href="?able-to-consent=no">Show info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</a></p>
+  <% end %>
+
+  <% if @research_session.unable_to_consent? %>
+    <p>Showing info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</p>
+    <p><a href="?able-to-consent=yes">Show info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</a></p>
+  <% end %>
+</div>
 
 <div class="print-area js-print-area" id="info-sheets">
   <section>

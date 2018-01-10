@@ -9,6 +9,7 @@
 * [FEATURE] - [Live preview: Expenses](https://trello.com/c/8w2kqaa6/261-3-live-preview-expenses)
 * [BUG] - [Enforce HTTPS](https://trello.com/c/81qbObMx)
 * [BUG] - [Preview highlighting not visible on some monitors](https://trello.com/c/Vu2Hi3mg)
+* [FEATURE] - [Only have 1 button to 'toggle' if respondent's ability to consent](https://trello.com/c/Rk2I2yIg/266-2-only-have-1-button-to-toggle-if-respondents-ability-to-consent)
 
 # 0.6.0 / 2017-12-14
 
