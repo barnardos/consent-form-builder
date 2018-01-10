@@ -10,14 +10,31 @@
       %>
 
       <div class="js-ConditionalSubfield" data-controlled-by="research_session[incentives_enabled]" data-control-value="true">
-        <%= form.radio_group_vertical :payment_type,
-            PaymentType::NAME_VALUES,
-            legend: 'What form will the incentive take?'
-        %>
+        <div class="reactive-container">
+          <div class="reactive-container__form">
 
-        <%= form.labelled_text_field :incentive_value %>
+            <%= form.radio_group_vertical :payment_type,
+                  PaymentType::NAME_VALUES,
+                  {input: {'data-previewed-by' => 'IncentivesPreviews'}},
+                  legend: 'What form will the incentive take?'
+            %>
+
+            <%= form.labelled_text_field :incentive_value,
+                  text_options: { placeholder: '0.00', 'data-previewed-by' => 'IncentivesPreviews' } %>
+          </div>
+          <div class="reactive-container__preview">
+            <%=
+              react_component('IncentivesPreviews',
+                current_step_params.merge(
+                  you_or_your_child: "you",
+                  your_or_your_childs: "Your",
+                  you_or_they: "you"
+                )
+              )
+            %>
+          </div>
+        </div>
       </div>
-
       <%= render 'button_bar' %>
   <% end %>
 </div>
