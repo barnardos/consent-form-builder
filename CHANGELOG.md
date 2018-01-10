@@ -8,6 +8,7 @@
 * [FEATURE] - [Live preview: Where and When](https://trello.com/c/ZJDBrILw)
 * [FEATURE] - [Live preview: Expenses](https://trello.com/c/8w2kqaa6/261-3-live-preview-expenses)
 * [BUG] - [Enforce HTTPS](https://trello.com/c/81qbObMx)
+* [BUG] - [Preview highlighting not visible on some monitors](https://trello.com/c/Vu2Hi3mg)
 
 # 0.6.0 / 2017-12-14
 
