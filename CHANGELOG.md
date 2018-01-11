@@ -11,6 +11,7 @@
 * [BUG] - [Preview highlighting not visible on some monitors](https://trello.com/c/Vu2Hi3mg)
 * [FEATURE] - [Only have 1 button to 'toggle' if respondent's ability to consent](https://trello.com/c/Rk2I2yIg/266-2-only-have-1-button-to-toggle-if-respondents-ability-to-consent)
 * [FEATURE] - [Add guidance paragraph to each section of consent form builder](https://trello.com/c/Mrkkr3ij/306-2-add-guidance-paragraph-to-each-section-of-consent-form-builder)
+* [BUG] - [Word "child" on a form version for self-consent](https://trello.com/c/monsCFE9/309-1-bug-word-child-on-a-form-version-for-self-consent)
 
 # 0.6.0 / 2017-12-14
 
