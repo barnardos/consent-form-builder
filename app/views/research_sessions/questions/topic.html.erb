@@ -2,6 +2,11 @@
 <div class="main-content">
   <%= render 'shared/error_summary' %>
   <h1 class="page-heading">Topic</h1>
+
+  <div class="research-guidance">
+    <p>If your project will involve asking service users questions about their personal lives or about sensitive topics which could upset them or invade their privacy you should contact <a href="mailto:BREC@barnardos.org.uk">BREC</a> for a consultation.</p>
+  </div>
+
   <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
     <div class="reactive-container">
       <div class="reactive-container__form">
