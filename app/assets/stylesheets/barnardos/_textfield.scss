@@ -60,6 +60,10 @@
   outline: none;
 }
 
+.textfield__input:-ms-input-placeholder {
+  color: #ddd;
+}
+
 .textfield__hint {
   color: $secondary-text;
   display: block;
