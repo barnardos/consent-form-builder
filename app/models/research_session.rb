@@ -42,11 +42,11 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.reached_step?(:storing) }
 
   validates :travel_expenses_limit, numericality: true,
-            if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
+            if: -> (session) { session.expenses_validation(:travel_expenses_limit) }
   validates :food_expenses_limit, numericality: true,
-            if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
+            if: -> (session) { session.expenses_validation(:food_expenses_limit) }
   validates :other_expenses_limit, numericality: true,
-            if: -> (session) { session.expenses_enabled && session.reached_step?(:expenses) }
+            if: -> (session) { session.expenses_validation(:other_expenses_limit) }
 
   validates :payment_type, inclusion: { in: PaymentType.allowed_values },
             if: -> (session) { session.incentives_enabled && session.reached_step?(:incentives) }
@@ -71,5 +71,12 @@ class ResearchSession < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def expenses_validation(category)
+    other_expenses_used = Expenses::CATEGORIES
+                          .reject { |expense| expense == category }
+                          .all? { |expense| send(expense).nil? || send(expense) }
+    send(category).present? || (expenses_enabled && reached_step?(:expenses) && other_expenses_used)
   end
 end

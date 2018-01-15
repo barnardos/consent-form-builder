@@ -14,6 +14,7 @@
 * [BUG] - [Word "child" on a form version for self-consent](https://trello.com/c/monsCFE9/309-1-bug-word-child-on-a-form-version-for-self-consent)
 * [FEATURE] - [Live preview: Incentives](https://trello.com/c/4sfX3wZj/263-3-live-preview-incentives)
 * [CHORE] - [Update browser support in Babel](https://trello.com/c/RGm3Ssw0/282-2-update-browser-support-in-babel)
+* [BUG] - [Expenses values are not optional](https://trello.com/c/coasUFw2/299-3-bug-expenses-values-are-not-optional)
 
 # 0.6.0 / 2017-12-14
 
