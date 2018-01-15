@@ -257,9 +257,9 @@
   </ul>
 
   <p>
-    I agree to my <%= 'childʼs' if @research_session.unable_to_consent? %>
+    I agree to my<%= ' childʼs' if @research_session.unable_to_consent? %>
     participation in this research and understand that
-    my childʼs data will be used as explained above.
+    my<%= ' childʼs' if @research_session.unable_to_consent? %> data will be used as explained above.
   </p>
 
   <%# Note: no whitespace between divs important here %>
