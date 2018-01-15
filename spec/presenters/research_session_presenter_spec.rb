@@ -101,40 +101,4 @@ RSpec.describe ResearchSessionPresenter do
       it { is_expected.to be true }
     end
   end
-
-  describe '#incentive_text' do
-    subject(:text) { presenter.incentive_text }
-
-    context 'no incentive is given' do
-      let(:research_session) do
-        build_stubbed :research_session, :step_incentives, incentives_enabled: false
-      end
-      it { is_expected.to be_empty }
-    end
-
-    let(:formatted_value) do
-      format('%.02f', research_session.incentive_value)
-    end
-
-    context 'a cash incentive is provided' do
-      let(:research_session) { build_stubbed :research_session, :step_incentives }
-      it 'has a message about the cash value' do
-        expect(text).to eql(
-          "a cash incentive of £#{formatted_value}"
-        )
-      end
-    end
-
-    context 'a high street voucher incentive is provided' do
-      let(:research_session) do
-        build_stubbed :research_session, :step_incentives, payment_type: 'voucher'
-      end
-      it 'has a message about the high street voucher value' do
-        expect(text).to eql(
-          "vouchers to the value of £#{formatted_value}. "\
-          'They can be used in many high street shops'
-        )
-      end
-    end
-  end
 end

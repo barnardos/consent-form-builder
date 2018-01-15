@@ -97,14 +97,17 @@
       %>
 
       <% if @research_session.incentives_enabled %>
-        <p>
-          <%= your_or_your_childs.capitalize %> time and what <%= you_or_they %>
-          say is really important to us.
-        </p>
-        <p>
-          As a thank you, we will give <%= you_or_your_child %>
-          <%= edit_link_for(:incentive_value) do %><%= @research_session.incentive_text %><% end %>.
-        </p>
+        <%=
+          react_component(
+            'Shared/Incentives',
+            final_preview_params(:incentives).merge({
+              you_or_your_child: you_or_your_child,
+              your_or_your_childs: your_or_your_childs.capitalize,
+              you_or_they: you_or_they
+              }),
+            { prerender: true }
+          )
+        %>
       <% end %>
 
       <%=

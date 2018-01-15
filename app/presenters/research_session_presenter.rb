@@ -45,17 +45,4 @@ class ResearchSessionPresenter
         other_expenses_limit&.nonzero?
     )
   end
-
-  def incentive_text
-    return '' unless research_session.incentives_enabled
-
-    formatted_value = number_to_currency(research_session.incentive_value, locale: 'en')
-
-    if research_session.payment_type == 'cash'
-      "a cash incentive of #{formatted_value}"
-    elsif research_session.payment_type == 'voucher'
-      "vouchers to the value of #{formatted_value}. "\
-      'They can be used in many high street shops'
-    end
-  end
 end
