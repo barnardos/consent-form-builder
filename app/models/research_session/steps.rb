@@ -47,7 +47,7 @@ class ResearchSession
             when Symbol
               params_to_steps[param] = step
             when Hash
-              param.keys.each do |array_param|
+              param.each_key do |array_param|
                 params_to_steps[array_param] = step
               end
             end

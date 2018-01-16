@@ -6,7 +6,7 @@ require 'English'
 namespace :npm do
   package_json = JSON.parse(File.read('package.json'))
 
-  package_json['scripts'].each do |name, _command|
+  package_json['scripts'].each_key do |name|
     desc "#{name} from package.json/scripts"
     task(name) do
       unless system("npm run #{name}")

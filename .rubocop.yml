@@ -11,6 +11,8 @@ AllCops:
     - db/schema.rb
     - node_modules/**/*
     - bin/**/*
+    - db/migrate/*
+    - features/support/action_view.rb
 
 Metrics/LineLength:
   Max: 100
