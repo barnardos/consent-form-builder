@@ -94,6 +94,8 @@ en:
 
   errors:
     format: '"%{attribute}" %{message}'
+    not_found: Sorry, the page you're looking for does not exist.
+    internal_server_error: Something has gone wrong.
 
   number:
     currency:
