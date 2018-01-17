@@ -1,4 +1,4 @@
-# 0.7.0 / Unreleased
+# 0.7.0 / 2018-01-17
 
 * [FEATURE] - [Live preview: Storing](https://trello.com/c/2RNcewZH)
 * [CHORE] - [Unvarying parameters](https://github.com/barnardos/consent-form-builder-rails/pull/194)
