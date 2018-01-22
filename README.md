@@ -93,6 +93,7 @@ This guide is assuming you are using bash and installing on MacOS or Ubuntu.
 * Add a database named 'consent' to your postgres instance, and make 'consent' the owner
 * Add a database named 'consent_test' to your postgres instance, and make 'consent' the owner
 * Update the database schema using `bundle exec rails db:migrate`
+* If you have issues building your test database (`consent_test`), upgrade user to a SUPERUSER, access PostgreSQL in your terminal (`psql postgres`), then `ALTER USER consent WITH SUPERUSER;`. To check user attributes `\du`. Quit `\q`
 
 You can now start the rails server.
 
