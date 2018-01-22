@@ -2,6 +2,7 @@
 
 * [CHORE] - Add additional PostgreSQL details to README
 * [CHORE] - Improve README wording, simplifying the language
+* [CHORE] - [Update gems](https://trello.com/c/eI7UjgVW)
 
 # 0.7.0 / 2018-01-17
 

@@ -38,7 +38,7 @@ class ResearchSessionsController < ApplicationController
     @research_session = current_research_session
 
     # Allow the user to pass a parameter to switch between over 18 and under 18 mode
-    able_to_consent = params['able-to-consent'] == 'yes' ? true : false
+    able_to_consent = params['able-to-consent'] == 'yes'
 
     @research_session = ResearchSessionPresenter.new(
       @research_session,
@@ -73,4 +73,3 @@ private
            plain: %(Research Session "#{research_session_slug}" not found)
   end
 end
-
