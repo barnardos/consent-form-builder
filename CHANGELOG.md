@@ -1,6 +1,7 @@
 # 0.8.0 / Unreleased
 
 * [CHORE] - Add additional PostgreSQL details to README
+* [CHORE] - Improve README wording, simplifying the language
 
 # 0.7.0 / 2018-01-17
 
@@ -20,7 +21,6 @@
 * [CHORE] - [Update browser support in Babel](https://trello.com/c/RGm3Ssw0/282-2-update-browser-support-in-babel)
 * [BUG] - [Expenses values are not optional](https://trello.com/c/coasUFw2/299-3-bug-expenses-values-are-not-optional)
 * [BUG] - [(IE11) placeholders look like filled in values](https://trello.com/c/dBIiI9aF/311-bug-ie11-placeholders-look-like-filled-in-values)
-* [BUG] – [(IE11) text overlap on 'Where & when' step](https://trello.com/c/s8d4BT5q/310-bug-ie11-text-overlap-on-where-when-step)
 
 # 0.6.0 / 2017-12-14
 
