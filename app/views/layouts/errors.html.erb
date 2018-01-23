@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title><%= title(@research_session) %></title>
+
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'print', media: 'print' %>
+</head>
+
+<body>
+
+<div class="visually-hidden">
+  <a href="#content">Skip to main content</a>
+</div>
+
+<header role="banner" id="global-header">
+  <div id="global-header__logo">
+    <%= image_tag 'barnardos-logo.svg', alt: 'Barnardos logo' %>
+  </div>
+  <div id="global-header__menu"></div>
+</header>
+
+<div class="global-header-bar"></div>
+
+<main id="main" role="main">
+  <div id="content">
+    <%= yield %>
+  </div>
+</main>
+
+<%= javascript_pack_tag 'application' %>
+
+<footer id="global-footer__release">
+  <label>Release <%= link_to_current_sha %></label>
+</footer>
+
+</body>
+</html>

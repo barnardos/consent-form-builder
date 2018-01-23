@@ -94,6 +94,11 @@ en:
 
   errors:
     format: '"%{attribute}" %{message}'
+    not_found: Sorry, the page you're looking for does not exist.
+    internal_server_error: Something has gone wrong.
+    contact_html: "If you'd like to let us know there's been a problem, please %{email_the_team}."
+    email: email the team
+    return: Return to homepage
 
   number:
     currency:

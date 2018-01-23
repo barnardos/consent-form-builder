@@ -1,0 +1,7 @@
+<h1><%= t 'errors.not_found' %></h1>
+<p>
+  <%= t("errors.contact_html", :email_the_team => mail_to("digital@barnardos.org.uk", t("errors.email"))) %>
+</p>
+<p>
+  <%= link_to(t("errors.return"), root_path) %>.
+</p>
