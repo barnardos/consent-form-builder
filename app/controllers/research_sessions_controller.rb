@@ -1,6 +1,4 @@
 class ResearchSessionsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :plain_404
-
   def new
     @research_session = ResearchSession.new
     return unless params[:from_existing].present?
@@ -56,7 +54,7 @@ private
   end
 
   def current_research_session
-    ResearchSession.find_by(slug: research_session_slug)
+    ResearchSession.find_by!(slug: research_session_slug)
   end
 
   def first_question_path
@@ -66,10 +64,5 @@ private
   def plain_400
     render status: 400,
            plain: %(Research Session "#{research_session_slug}" can't have a copy yet)
-  end
-
-  def plain_404
-    render status: 404,
-           plain: %(Research Session "#{research_session_slug}" not found)
   end
 end
