@@ -76,7 +76,7 @@ class ResearchSession < ApplicationRecord
   def expenses_validation(category)
     other_expenses_used = Expenses::CATEGORIES
                           .reject { |expense| expense == category }
-                          .all? { |expense| send(expense).nil? || send(expense) }
+                          .all? { |expense| send(expense).blank? }
     send(category).present? || (expenses_enabled && reached_step?(:expenses) && other_expenses_used)
   end
 end

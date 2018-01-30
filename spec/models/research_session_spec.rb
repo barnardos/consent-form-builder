@@ -222,6 +222,19 @@ RSpec.describe ResearchSession, type: :model do
             expect(session.errors[:other_expenses_limit].first).to eql('is not a number')
           end
         end
+
+        context 'one valid expense is provided' do
+          let(:set_attrs) do
+            {
+              expenses_enabled: true,
+              travel_expenses_limit: '10.00',
+              food_expenses_limit: nil,
+              other_expenses_limit: nil
+            }
+          end
+
+          it { is_expected.to be_valid }
+        end
       end
 
       describe 'validating the incentives step' do
