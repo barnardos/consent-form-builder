@@ -4,6 +4,7 @@
 * [CHORE] - Improve README wording, simplifying the language
 * [CHORE] - [Update gems](https://trello.com/c/eI7UjgVW)
 * [BUG] - [404s for research sessions actually 500](https://trello.com/c/S08RNn5r)
+* [CHORE] - Require https in Gemfile
 
 # 0.7.0 / 2018-01-17
 

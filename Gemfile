@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 ruby_version = File.read('.ruby-version').chomp
 ruby ruby_version
