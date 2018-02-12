@@ -13,7 +13,7 @@ describe("TopicPurposePreviews", () => {
 
   /* I18n labels */
   const labels = {
-    topic: "Barnardo's is doing research to learn about",
+    topic: "Barnardoʼs is doing research to learn about",
     purpose: "so that we can"
   };
 
@@ -64,7 +64,7 @@ describe("TopicPurposePreviews", () => {
 
       it("renders the topic and purpose in a readable sentence", () => {
         expect(topicPurposePreviews().text()).to.contain(
-          `Barnardo's is doing research to learn about ` +
+          `Barnardoʼs is doing research to learn about ` +
             `${props.topic} so that we can ${props.purpose}`
         );
       });

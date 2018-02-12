@@ -1,8 +1,8 @@
 class SharedWith
   NAME_VALUES = HashWithIndifferentAccess.new(
     anonymised: 'anonymised as we process it',
-    team:       'shared with the research team at Barnardo\'s',
-    internal:   'shared with other teams in Barnardo\'s',
+    team:       'shared with the research team at Barnardoʼs',
+    internal:   'shared with other teams in Barnardoʼs',
     external:   'used in external publications'
   )
 
