@@ -54,8 +54,8 @@ describe ResearchSessionsController, type: :controller do
         { research_session_id: 'i-dont-exist', research_session: { name: 'I do not exist' } }
       end
 
-      it '404s' do
-        expect(response.status).to eql(404)
+      it 'redirects to 404 page' do
+        expect(response.status).to eql(302)
       end
     end
 
