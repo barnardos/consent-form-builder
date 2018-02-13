@@ -154,7 +154,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
 
       it 'labels according to en.yml' do
         expect(rendered).to have_tag(
-          'label', text: "Barnardo's is doing research to learn about"
+          'label', text: 'Barnardoʼs is doing research to learn about'
         )
       end
 

@@ -1,3 +1,7 @@
+# 0.8.1 / Unreleased
+
+* [BUG] - [Printing occasionally confused letters](https://trello.com/c/tF5zdsHM)
+
 # 0.8.0 / 2018-02-12
 
 * [CHORE] - Add additional PostgreSQL details to README
