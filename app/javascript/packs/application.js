@@ -8,6 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 require("../vendor/hotjar");
+require("../vendor/google_analytics");
 require("../lib/exit_warn");
 
 const HighlightControl = require("../components/highlightcontrol");
