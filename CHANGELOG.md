@@ -1,4 +1,4 @@
-# 0.8.1 / Unreleased
+# 0.8.1 / 2018-02-19
 
 * [BUG] - [Printing occasionally confused letters](https://trello.com/c/tF5zdsHM)
 * [CHORE] - [Add Google Analytics](https://trello.com/c/1cgqN4DP)
