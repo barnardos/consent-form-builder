@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171204115351) do
     t.text "purpose"
     t.string "shared_with"
     t.string "shared_duration"
+    t.datetime "start_datetime"
     t.string "duration"
     t.text "participant_equipment"
     t.decimal "travel_expenses_limit"
