@@ -2,7 +2,7 @@ class RecordingMethods
   NAME_VALUES = {
     voice:    'voice recording',
     video:    'video recording',
-    written:  'written notes',
+    written:  'researcher’s written notes',
     workshop: 'the work created by participants during the session',
     photo:    'photos',
     screen:   'screen recording',

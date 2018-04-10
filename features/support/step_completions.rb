@@ -58,7 +58,7 @@ module StepCompletions
   end
 
   def complete_recording_methods_step
-    @recording_methods = ['Voice recording', 'Video recording', 'Written notes']
+    @recording_methods = ['Voice recording', 'Video recording', 'Researcher’s written notes']
     @recording_methods.each do |method|
       check method
     end
