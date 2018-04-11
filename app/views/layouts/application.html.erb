@@ -13,6 +13,7 @@
   <% end %>
   </title>
   <%= csrf_meta_tags %>
+  <%= stylesheet_pack_tag 'application' %>
 </head>
 
 <body>
@@ -58,15 +59,15 @@
   </div>
 </main>
 
+<footer id="global-footer__release">
+  <label>Release <%= link_to_current_sha %></label>
+</footer>
+
 <script>
   window.googleAnalyticsCode = '<%= ENV['GOOGLE_ANALYTICS_CODE'] %>';
 </script>
 
 <%= javascript_pack_tag 'application' %>
-
-<footer id="global-footer__release">
-  <label>Release <%= link_to_current_sha %></label>
-</footer>
 
 </body>
 </html>
