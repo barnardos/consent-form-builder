@@ -1,7 +1,11 @@
 {
   "name": "myapp",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "@rails/webpacker": "3.4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  },
   "scripts": {}
 }
