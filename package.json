@@ -5,7 +5,26 @@
     "@rails/webpacker": "3.4"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-import-resolver-webpack": "^0.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.12.0",
+    "stylelint": "^9.2.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-order": "^0.8.1",
+    "stylelint-selector-bem-pattern": "^2.0.0",
     "webpack-dev-server": "2.11.2"
   },
-  "scripts": {}
+  "scripts": {
+    "check-format":
+      "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --list-different --ignore-path .gitignore",
+    "format":
+      "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --write --ignore-path .gitignore",
+    "lint:css": "stylelint 'frontend/**/*.css' --ignore-path .gitignore",
+    "lint:js":
+      "eslint 'frontend/**/*.js' 'config/webpack/*.js' --ignore-path .gitignore",
+    "lint": "npm-run-all --parallel lint:*"
+  }
 }
