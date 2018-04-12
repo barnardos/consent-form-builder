@@ -31,9 +31,8 @@ const WillAnyoneKnowWhatISayInTheDiscussion = props => {
       <p>{Output(props, "shared_with", sharedWithSentence)}</p>
       <p>
         Barnardo’s will hold research data for{" "}
-        {Output(props, "shared_duration")} after the closure of this project,
-        after which it will be deleted. Personal data is stored in a safe and
-        secure way.
+        {Output(props, "shared_duration")} after we finish the project and we
+        will then delete it. Personal data is stored in a safe and secure way.
       </p>
       <p>
         <DisplayAdditionalCopy

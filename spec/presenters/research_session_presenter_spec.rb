@@ -73,7 +73,7 @@ RSpec.describe ResearchSessionPresenter do
 
     context 'there are three recording methods' do
       let(:recording_methods) { [:voice, :video, :written] }
-      it { is_expected.to eql('voice recording, video recording, and written notes') }
+      it { is_expected.to eql('voice recording, video recording, and researcher’s written notes') }
     end
 
     context 'there are three recording methods and one is "other"' do

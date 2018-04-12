@@ -42,7 +42,7 @@ describe("RecordingMethodsPreviews", () => {
           all_recording_methods: {
             voice: "voice recording",
             video: "video recording",
-            written: "written notes",
+            written: "researcher’s written notes",
             other: "some other recording method"
           },
           recording_methods: ["voice", "video", "other"],
