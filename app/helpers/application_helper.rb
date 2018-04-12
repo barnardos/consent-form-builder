@@ -31,4 +31,11 @@ module ApplicationHelper
       "#{step.to_s.humanize} – #{research_session.name.strip}"
     end
   end
+
+  def component(component_name, locals = {}, &block)
+    name = component_name.split('_').first
+    render("components/#{name}/index", locals, &block)
+  end
+
+  alias c component
 end

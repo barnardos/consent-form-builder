@@ -52,12 +52,10 @@
   </ul>
 </nav>
 
-<main id="main" role="main">
+<%= c("Layout") do %>
   <%= yield :progress %>
-  <div id="content">
-    <%= yield %>
-  </div>
-</main>
+  <%= yield %>
+<% end %>
 
 <footer id="global-footer__release">
   <label>Release <%= link_to_current_sha %></label>
