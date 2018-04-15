@@ -53,7 +53,7 @@
   </section>
   
   <section>
-    <%= react_component(
+    <%# react_component(
         'TopicPurposePreviews',
         final_preview_params(:topic),
         {
@@ -71,7 +71,7 @@
 
   <section>
     <h3 id="what">What happens in this research session?</h3>
-    <%=
+    <%#
       react_component(
         'Shared/TakePartIn',
         final_preview_params(:researcher).merge({
@@ -80,20 +80,20 @@
         { prerender: true }
       )
     %>
-    <%=
+    <%#
       react_component(
         'Shared/WeWillRecordBy',
         final_preview_params(:methodologies),
         { prerender: true }
       )
     %>
-    <%=
+    <%#
       react_component(
         'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
         { prerender: true }
       )
     %>
-    <%=
+    <%#
       react_component(
         'Shared/AnotherResearcherSentence',
         final_preview_params(:researcher),
@@ -108,7 +108,7 @@
     <section>
       <h3 id="session">Session details</h3>
 
-      <%=
+      <%#
         react_component(
           'Shared/SessionInformation',
           final_preview_params(:where_when),
@@ -117,7 +117,7 @@
       %>
 
       <% if @research_session.incentives_enabled %>
-        <%=
+        <%#
           react_component(
             'Shared/Incentives',
             final_preview_params(:incentives).merge({
@@ -130,7 +130,7 @@
         %>
       <% end %>
 
-      <%=
+      <%#
         react_component(
           'Shared/ParticipantEquipment',
           final_preview_params(:where_when).merge({
@@ -141,7 +141,7 @@
       %>
 
       <% if @research_session.expenses_enabled %>
-        <%=
+        <%#
           react_component(
             'Shared/Expenses',
             final_preview_params(:expenses),
@@ -150,7 +150,7 @@
         %>
       <% end %>
 
-      <%=
+      <%#
         react_component(
           'Shared/Refreshments',
           final_preview_params(:where_when),
@@ -161,7 +161,7 @@
     </section>
   <% end %>
 
-  <%=
+  <%#
     react_component(
       'Shared/WillAnyoneKnowWhatISayInTheDiscussion',
       final_preview_params(:storing).merge(
@@ -182,7 +182,7 @@
     </p>
   </section>
 
-  <%=
+  <%#
     react_component(
       'Shared/FindOutMore',
       final_preview_params(:researcher), { prerender: true }
@@ -245,7 +245,7 @@
       participation is voluntary and that I am free to withdraw them at any time
       without giving any reason.
     </li>
-    <%=
+    <%#
       react_component(
         'Shared/WhichWeWillRecordUsingSentence',
         final_preview_params(:recording),
