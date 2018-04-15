@@ -28,7 +28,7 @@
             <%= form.labelled_text_field :researcher_email, text_options: previewed_on_page %>
           </div>
           <div class="reactive-container__preview">
-            <%=
+            <%#
               react_component(
                 'ResearcherPreviews/index',
                 current_step_params.merge(you_or_your_child: 'you')
