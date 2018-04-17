@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     post :create_a_copy
   end
 
-  get '/gallery/', to: 'gallery#index'
-
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
 
