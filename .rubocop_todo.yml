@@ -59,14 +59,6 @@ Layout/EmptyLinesAroundBlockBody:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
-Layout/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'app/controllers/gallery_controller.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Exclude:
     - 'bin/webpack-dev-server'
@@ -188,15 +180,6 @@ Style/Documentation:
 Style/EachWithObject:
   Exclude:
     - 'app/validators/has_at_least_one_validator.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/gallery_controller.rb'
-    - 'app/controllers/research_sessions_controller.rb'
 
 # Offense count: 71
 # Cop supports --auto-correct.
