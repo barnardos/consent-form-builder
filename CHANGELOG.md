@@ -1,4 +1,4 @@
-# 0.8.2 / Unreleased
+# 0.8.2 / 2018-04-18
 
 * [CHORE] - [Update Content](https://github.com/barnardos/consent-form-builder/issues/237)
 * [CHORE] - [Update Rails gems](https://github.com/barnardos/consent-form-builder/issues/240)
