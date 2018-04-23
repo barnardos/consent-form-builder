@@ -1,22 +1,23 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["import", "react"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:import/recommended"
-  ],
+  "plugins": ["import"],
+  "extends": ["eslint:recommended", "plugin:import/recommended"],
   "env": {
-    "browser": true,
-    "es6": true,
-    "jest": true,
-    "mocha": true,
-    "node": true
+    "browser": true
   },
   "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": 6,
+    "sourceType": "module"
   },
-  "globals": {
-    "mount": false
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": {
+          "resolve": {
+            "modules": ["frontend", "node_modules"]
+          }
+        }
+      }
+    }
   }
 }

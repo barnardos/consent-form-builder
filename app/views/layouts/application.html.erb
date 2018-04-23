@@ -13,11 +13,10 @@
   <% end %>
   </title>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= stylesheet_link_tag 'print', media: 'print' %>
+  <%= stylesheet_pack_tag 'application' %>
 </head>
 
-<body>
+<body class="body">
 <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
 <div class="visually-hidden">
@@ -26,7 +25,6 @@
 
 <header role="banner" id="global-header">
   <div id="global-header__logo">
-    <%= image_tag 'barnardos-logo.svg', alt: 'Barnardoʼs logo' %>
   </div>
   <div id="global-header__menu"></div>
 </header>
@@ -54,22 +52,20 @@
   </ul>
 </nav>
 
-<main id="main" role="main">
+<%= c("Layout") do %>
   <%= yield :progress %>
-  <div id="content">
-    <%= yield %>
-  </div>
-</main>
+  <%= yield %>
+<% end %>
+
+<footer id="global-footer__release">
+  <label>Release <%= link_to_current_sha %></label>
+</footer>
 
 <script>
   window.googleAnalyticsCode = '<%= ENV['GOOGLE_ANALYTICS_CODE'] %>';
 </script>
 
 <%= javascript_pack_tag 'application' %>
-
-<footer id="global-footer__release">
-  <label>Release <%= link_to_current_sha %></label>
-</footer>
 
 </body>
 </html>

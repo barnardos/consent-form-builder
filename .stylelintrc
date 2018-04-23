@@ -1,0 +1,55 @@
+{
+  "extends": "stylelint-config-recommended",
+  "plugins": ["stylelint-order", "stylelint-selector-bem-pattern"],
+  "rules": {
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-alphabetical-order": [true, { "severity": "warning" }],
+    "plugin/selector-bem-pattern": [
+      {
+        "preset": "suit"
+      },
+      { "severity": "warning" }
+    ],
+    "at-rule-no-unknown": null,
+    "at-rule-no-vendor-prefix": true,
+    "at-rule-whitelist": ["font-face", "media"],
+    "declaration-no-important": true,
+    "font-family-no-missing-generic-family-keyword": null,
+    "function-url-no-scheme-relative": true,
+    "function-url-scheme-whitelist": [],
+    "function-whitelist": ["url"],
+    "media-feature-name-no-vendor-prefix": true,
+    "media-feature-name-whitelist": ["min-width"],
+    "number-max-precision": 3,
+    "property-no-unknown": null,
+    "property-no-vendor-prefix": true,
+    "property-whitelist": [
+      "box-sizing",
+      "font-family",
+      "font-size",
+      "font-style",
+      "font-weight",
+      "font",
+      "line-height",
+      "margin-left",
+      "margin-top",
+      "margin",
+      "max-width",
+      "padding-left",
+      "padding",
+      "src"
+    ],
+    "selector-attribute-operator-whitelist": [],
+    "selector-max-attribute": 0,
+    "selector-max-class": 1,
+    "selector-max-id": 0,
+    "selector-max-type": 0,
+    "selector-max-universal": 0,
+    "selector-no-vendor-prefix": true,
+    "selector-pseudo-class-no-unknown": null,
+    "selector-pseudo-class-whitelist": ["first-child", "not"],
+    "unit-no-unknown": null,
+    "unit-whitelist": ["%", "rem"],
+    "value-no-vendor-prefix": true
+  }
+}
