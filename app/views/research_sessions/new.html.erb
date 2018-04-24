@@ -1,17 +1,19 @@
-<%= c("Title", title: "Create tailored consent and information forms") %>
-<p class="super-text">
-  This tool will guide you through a series of questions. Your answers
-  will help generate tailored information sheets and consent forms
-  for your project(s).
-</p>
+<%= c("Step") do %>
+  <%= c("Title", title: "Create tailored consent and information forms") %>
+  <p class="super-text">
+    This tool will guide you through a series of questions. Your answers
+    will help generate tailored information sheets and consent forms
+    for your project(s).
+  </p>
 
-<%= render 'shared/error_summary' %>
+  <%= render 'shared/error_summary' %>
 
-<%= c("Form") do %>
-  <%= c("SinglelineTextControl",
-    id: "research_session[name]",
-    label: t('research_session_attr_labels.name'),
-    size: 48
-  ) %>
-  <%= c("Submit", text: "Create new form") %>
+  <%= c("Form") do %>
+    <%= c("SinglelineTextControl",
+      id: "research_session[name]",
+      label: t('research_session_attr_labels.name'),
+      size: 48
+    ) %>
+    <%= c("Submit", text: "Create new form") %>
+  <% end %>
 <% end %>
