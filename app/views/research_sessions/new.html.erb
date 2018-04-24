@@ -11,8 +11,11 @@
   <%= c("Form") do %>
     <%= c("SinglelineTextControl",
       id: "research_session[name]",
+      name: "name",
       label: t('research_session_attr_labels.name'),
-      size: 48
+      size: 48,
+      errored: @research_session.errors['name'].present?,
+      validation: @research_session.errors['name'][0]
     ) %>
     <%= c("Submit", text: "Create new form") %>
   <% end %>
