@@ -7,9 +7,11 @@
 
 <%= render 'shared/error_summary' %>
 
-<%= barnardos_form_with model: @research_session do |form| %>
-  <%= form.labelled_text_field :name, text_options: { autofocus: true } %>
-  <p class="button-bar">
-    <%= form.submit 'Create new form', class: 'button' %>
-  </p>
+<%= c("Form") do %>
+  <%= c("SinglelineTextControl",
+    id: "research_session[name]",
+    label: t('research_session_attr_labels.name'),
+    size: 48
+  ) %>
+  <%= c("Submit", text: "Create new form") %>
 <% end %>

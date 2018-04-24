@@ -1,0 +1,4 @@
+<form class="Form" action="<%= research_sessions_path %>" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <%= yield %>
+</form>

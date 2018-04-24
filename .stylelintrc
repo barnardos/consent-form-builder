@@ -17,14 +17,21 @@
     "font-family-no-missing-generic-family-keyword": null,
     "function-url-no-scheme-relative": true,
     "function-url-scheme-whitelist": [],
-    "function-whitelist": ["url"],
+    "function-whitelist": ["color", "shade", "url"],
     "media-feature-name-no-vendor-prefix": true,
     "media-feature-name-whitelist": ["min-width"],
     "number-max-precision": 3,
     "property-no-unknown": null,
     "property-no-vendor-prefix": true,
     "property-whitelist": [
+      "appearance",
+      "background-color",
+      "border",
+      "border-radius",
+      "box-shadow",
       "box-sizing",
+      "color",
+      "display",
       "font-family",
       "font-size",
       "font-style",
@@ -37,7 +44,12 @@
       "max-width",
       "padding-left",
       "padding",
-      "src"
+      "position",
+      "src",
+      "text-align",
+      "top",
+      "white-space",
+      "width"
     ],
     "selector-attribute-operator-whitelist": [],
     "selector-max-attribute": 0,
@@ -47,9 +59,9 @@
     "selector-max-universal": 0,
     "selector-no-vendor-prefix": true,
     "selector-pseudo-class-no-unknown": null,
-    "selector-pseudo-class-whitelist": ["first-child", "not"],
+    "selector-pseudo-class-whitelist": ["active", "first-child", "hover", "not"],
     "unit-no-unknown": null,
-    "unit-whitelist": ["%", "rem"],
+    "unit-whitelist": ["%", "px", "rem"],
     "value-no-vendor-prefix": true
   }
 }
