@@ -6,7 +6,7 @@
     for your project(s).
   </p>
 
-  <%= render 'shared/error_summary' %>
+  <%= c("ErrorSummary", errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
   <%= c("Form") do %>
     <%= c("SinglelineTextControl",

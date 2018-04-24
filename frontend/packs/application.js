@@ -1,5 +1,6 @@
 import "init";
 
+import "components/ErrorSummary";
 import "components/Form";
 import "components/Layout";
 import "components/Step";
