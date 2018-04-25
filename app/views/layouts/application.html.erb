@@ -16,20 +16,19 @@
   <%= stylesheet_pack_tag 'application' %>
 </head>
 
-<body class="body">
-<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+<body>
 
-<div class="visually-hidden">
+<!-- <div class="visually-hidden">
   <a href="#content">Skip to main content</a>
-</div>
+</div> -->
 
-<header role="banner" id="global-header">
+<!-- <header role="banner" id="global-header">
   <div id="global-header__logo">
   </div>
   <div id="global-header__menu"></div>
-</header>
+</header> -->
 
-<nav class="global-header-bar">
+<!-- <nav class="global-header-bar">
   <ul class="research-session-commands screen-only">
     <% unless already_creating_session? %>
       <li class="research-session-commands__item">
@@ -50,16 +49,15 @@
       </li>
     <% end %>
   </ul>
-</nav>
+</nav> -->
 
 <%= c("Layout") do %>
-  <%= yield :progress %>
   <%= yield %>
 <% end %>
 
-<footer id="global-footer__release">
+<!--<footer id="global-footer__release">
   <label>Release <%= link_to_current_sha %></label>
-</footer>
+</footer>-->
 
 <script>
   window.googleAnalyticsCode = '<%= ENV['GOOGLE_ANALYTICS_CODE'] %>';
