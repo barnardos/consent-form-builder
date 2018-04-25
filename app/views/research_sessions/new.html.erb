@@ -1,10 +1,10 @@
 <%= c("Step") do %>
   <%= c("Title", title: "Create tailored consent and information forms") %>
-  <p class="super-text">
+  <%= c("Lede", text: "
     This tool will guide you through a series of questions. Your answers
     will help generate tailored information sheets and consent forms
     for your project(s).
-  </p>
+  ")%>
 
   <%= c("ErrorSummary", errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
