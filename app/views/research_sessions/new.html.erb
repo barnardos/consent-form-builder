@@ -8,7 +8,7 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form') do %>
+  <%= c('Form', action: research_sessions_path) do %>
     <%= c('SinglelineTextControl',
       id: 'research_session[name]',
       name: 'name',
