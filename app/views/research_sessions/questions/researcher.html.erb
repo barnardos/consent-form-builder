@@ -6,7 +6,7 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form') do %>
+  <%= c('Form', action: wizard_path) do %>
     <fieldset class="fieldset">
       <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
       <p>
