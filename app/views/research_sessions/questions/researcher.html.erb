@@ -1,21 +1,20 @@
 <%= c('Step') do %>
-  <%= c('Title', title: 'Researcher') %>
-  <div class="research-guidance">
-    <p>The researcher’s details will go directly on the sheet sent to participants of this session so they can contact you with any queries. The researcher should refer to the safeguarding code of conduct in <a href="http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=">BREC Guidance</a> so they are confident they know what to do if a safeguarding concern arises during the session.</p>
-  </div>
+  <%= c('Title', text: 'Researcher') %>
+  <%= c('Paragraph') do %>
+    The researcher’s details will go directly on the sheet sent to participants of this session so they can contact you with any queries. The researcher should refer to the safeguarding code of conduct in <%= c('Link', src: 'http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=', text:'BREC Guidance') %> so they are confident they know what to do if a safeguarding concern arises during the session.
+  <% end %>
+
+  <%= c('HeadingOne', text: 'Who will the participants meet as part of the session?') %>
+  <%= c('Paragraph') do %>
+    Who is the person who is leading the research or participation session?
+    Please note: participants will be informed that they can get further
+    information from this person, and their contact details will be included
+    on the information sheet.
+  <% end %>
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
   <%= c('Form', action: wizard_path) do %>
-    <fieldset class="fieldset">
-      <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
-      <p>
-        Who is the person who is leading the research or participation session? Please note: participants will be
-        informed that they
-        can get further information from this person, and their contact details will be included on the information
-        sheet.
-      </p>
-    </fieldset>
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_job_title]',
       name: 'researcher_job_title',
