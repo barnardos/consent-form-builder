@@ -1,15 +1,22 @@
-<%= c("Title", title: "Create tailored consent and information forms") %>
-<p class="super-text">
-  This tool will guide you through a series of questions. Your answers
-  will help generate tailored information sheets and consent forms
-  for your project(s).
-</p>
+<%= c('Step') do %>
+  <%= c('Title', title: 'Create tailored consent and information forms') %>
+  <%= c('Lede', text: '
+    This tool will guide you through a series of questions. Your answers
+    will help generate tailored information sheets and consent forms
+    for your project(s).
+  ')%>
 
-<%= render 'shared/error_summary' %>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-<%= barnardos_form_with model: @research_session do |form| %>
-  <%= form.labelled_text_field :name, text_options: { autofocus: true } %>
-  <p class="button-bar">
-    <%= form.submit 'Create new form', class: 'button' %>
-  </p>
+  <%= c('Form') do %>
+    <%= c('SinglelineTextControl',
+      id: 'research_session[name]',
+      name: 'name',
+      label: t('research_session_attr_labels.name'),
+      size: 48,
+      errored: @research_session.errors['name'].present?,
+      validation: @research_session.errors['name'][0]
+    ) %>
+    <%= c('Submit', text: 'Create new form') %>
+  <% end %>
 <% end %>

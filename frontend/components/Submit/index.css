@@ -1,0 +1,31 @@
+/** @define Submit; */
+
+.Submit-element {
+  appearance: none;
+  background-color: #6aa300;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0.25rem 0.25rem color(#6aa300 shade(30%));
+  color: #fff;
+  font: 600 1.25rem/1.5rem Nova, sans-serif;
+  padding: 0.75rem 3rem;
+  text-align: center;
+  white-space: normal;
+  width: 100%;
+}
+
+.Submit-element:hover {
+  background-color: color(#6aa300 shade(10%));
+}
+
+.Submit-element:active {
+  box-shadow: none;
+  position: relative;
+  top: 0.25rem;
+}
+
+@media (min-width: 32rem) {
+  .Submit-element {
+    width: auto;
+  }
+}

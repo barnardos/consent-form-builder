@@ -1,0 +1,19 @@
+<div class="SinglelineTextControl <%= 'SinglelineTextControl--errored' if errored %>">
+  <label class="SinglelineTextControl-label" for="<%= id %>">
+    <%= label %>
+  </label>
+  <% if validation.present? %>
+    <p class="SinglelineTextControl-validation">
+      <strong class="SinglelineTextControl-validationInner">
+        <%= @research_session.errors.full_message(name, validation) %>
+      </strong>
+    </p>
+  <% end %>
+  <input
+    class="SinglelineTextControl-element"
+    name="<%= id %>"
+    id="<%= id %>"
+    type="text"
+    size="<%= size if defined?(size) %>"
+  />
+</div>

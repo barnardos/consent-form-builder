@@ -1,0 +1,10 @@
+<div class="ErrorSummary">
+  <p class="ErrorSummary-title">You need to fix the following errors to continue:</p>
+  <ul class="ErrorSummary-list">
+    <% errors.each do |key, value| %>
+      <li class="ErrorSummary-item">
+        <a class="ErrorSummary-link" href="#research_session[<%= key %>]"><%= @research_session.errors.full_message(key, value[0]) %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>
