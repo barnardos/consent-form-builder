@@ -1,43 +1,53 @@
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Researcher</h1>
-
+<%= c('Step') do %>
+  <%= c('Title', title: 'Researcher') %>
   <div class="research-guidance">
     <p>The researcher’s details will go directly on the sheet sent to participants of this session so they can contact you with any queries. The researcher should refer to the safeguarding code of conduct in <a href="http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=">BREC Guidance</a> so they are confident they know what to do if a safeguarding concern arises during the session.</p>
   </div>
 
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-      <fieldset class="fieldset">
-        <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
-        <p>
-          Who is the person who is leading the research or participation session? Please note: participants will be
-          informed that they
-          can get further information from this person, and their contact details will be included on the information
-          sheet.
-        </p>
-
-        <div class="reactive-container">
-          <div class="reactive-container__form">
-            <% previewed_on_page = { 'data-previewed-by' => 'ResearcherPreviews' } %>
-            <%= form.labelled_text_field :researcher_job_title,
-                text_options: { autofocus: true }.merge(previewed_on_page) %>
-            <%= form.labelled_text_field :researcher_name, text_options: previewed_on_page %>
-            <%= form.labelled_text_field :researcher_phone, text_options: previewed_on_page %>
-            <%= form.labelled_text_field :researcher_email, text_options: previewed_on_page %>
-          </div>
-          <div class="reactive-container__preview">
-            <%#
-              react_component(
-                'ResearcherPreviews/index',
-                current_step_params.merge(you_or_your_child: 'you')
-              )
-            %>
-          </div>
-        </div>
-
-      </fieldset>
-
-      <%= render 'button_bar' %>
+  <%= c('Form') do %>
+    <fieldset class="fieldset">
+      <legend class="fieldset__legend">Who will the participants meet as part of the session?</legend>
+      <p>
+        Who is the person who is leading the research or participation session? Please note: participants will be
+        informed that they
+        can get further information from this person, and their contact details will be included on the information
+        sheet.
+      </p>
+    </fieldset>
+    <%= c('SinglelineTextControl',
+      id: 'research_session[researcher_job_title]',
+      name: 'researcher_job_title',
+      label: t('research_session_attr_labels.researcher_job_title'),
+      size: 24,
+      errored: @research_session.errors['researcher_job_title'].present?,
+      validation: @research_session.errors['researcher_job_title'][0]
+    ) %>
+    <%= c('SinglelineTextControl',
+      id: 'research_session[researcher_name]',
+      name: 'researcher_name',
+      label: t('research_session_attr_labels.researcher_name'),
+      size: 24,
+      errored: @research_session.errors['researcher_name'].present?,
+      validation: @research_session.errors['researcher_name'][0]
+    ) %>
+    <%= c('SinglelineTextControl',
+      id: 'research_session[researcher_phone]',
+      name: 'researcher_phone',
+      label: t('research_session_attr_labels.researcher_phone'),
+      size: 16,
+      errored: @research_session.errors['researcher_phone'].present?,
+      validation: @research_session.errors['researcher_phone'][0]
+    ) %>
+    <%= c('SinglelineTextControl',
+      id: 'research_session[researcher_email]',
+      name: 'researcher_email',
+      label: t('research_session_attr_labels.researcher_email'),
+      size: 36,
+      errored: @research_session.errors['researcher_email'].present?,
+      validation: @research_session.errors['researcher_email'][0]
+    ) %>
+    <%= c('Submit', text: 'Continue') %>
   <% end %>
-</div>
+<% end %>
