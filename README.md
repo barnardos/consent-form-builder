@@ -88,9 +88,10 @@ This guide is assuming you are using bash and installing on MacOS or Ubuntu.
 * Open a bash prompt in the project folder
 * Use `bundle install` to install all the Ruby dependecies
 * Use `yarn install` to install all the Node dependecies
-* Add a user named 'consent' to your postgres instance
-* Add a database named 'consent' to your postgres instance, and make 'consent' the owner
-* Add a database named 'consent_test' to your postgres instance, and make 'consent' the owner
+* To access postgres from terminal, type the command `psql postgres`
+* Add a user named 'consent' to your postgres instance, (command for this is `CREATE USER consent;`)
+* Add a database named 'consent' to your postgres instance, and make 'consent' the owner, (command for this is `CREATE DATABASE consent OWNER consent;`)
+* Add a database named 'consent_test' to your postgres instance, and make 'consent' the owner (command for this is `CREATE DATABASE consent_test OWNER consent_test;`)
 * Update the database schema using `bundle exec rails db:migrate`
 * If you have issues building your test database (`consent_test`), upgrade user to a SUPERUSER, access PostgreSQL in your terminal (`psql postgres`), then `ALTER USER consent WITH SUPERUSER;`. To check user attributes `\du`. Quit `\q`
 
@@ -98,14 +99,18 @@ You can now start the rails server.
 
 #### Starting/Stopping Native
 
-To start the server use `bundle exec rails server`. This will start rails but doesn't handle compiling
-javascript.
-
-To start a webpack server, open a second bash prompt and from the project folder enter
+!NOTE (Start the webpack server first before starting the rails server). To start a webpack server, open a bash prompt and from the project folder enter
 `./bin/webpack --watch --progress --colors`. This will start Webpack, compile client side Javascript
 and then continue to watch the source files for changes to autocompile.
 
-### Release Guide
+To start the server, open a second bash prompt and use `bundle exec rails server`. This will start rails but doesn't handle compiling
+javascript.
+
+### Testing code locally before pushing to GitHub
+
+To run test on code before pushing up to GitHub, on your terminal run the command `rake`.
+
+### Release Guide - How to deploy changes to Live
 
 #### We maintain a CHANGELOG.md for this project
 
@@ -152,12 +157,10 @@ replaced with the ISO8601 (YYYY-MM-DD) date of release.
 git checkout -b release-0.2.0 master
 ```
 
-##### 2. Replace latest 'Unreleased' entry to be date of release
+##### 2. In the CHANGELOG.md file, replace latest 'Unreleased' entry to be date of release
 
 ```
 # 0.2.0 / 2017-10-04
-
-* [FIX] bug #2
 ```
 
 ##### 3. Commit this change and push to release branch
@@ -180,6 +183,7 @@ Go back to the `master` branch:
 
 ```
 git checkout master
+git pull
 git tag v0.2.0
 git push --tags
 ```
@@ -203,9 +207,3 @@ heroku pipelines:promote -r consent-form-builder-stage
 Promoting consent-form-builder-stage to example (production)... done, v23
 Promoting consent-form-builder-stage to example-admin (production)... done, v54
 ```
-
-_Todo_
-
-* Add details of Rake tasks for running tests
-* Add link to guidelines for making changes and submitting PR's
-* How to ask for help or suggest changes via Github issues
