@@ -5,19 +5,17 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe '#link_to_current_sha' do
     let(:sha_getter) { -> { `git rev-parse HEAD` } }
-    subject(:link) { helper.link_to_current_sha(sha_getter) }
+    subject(:release_sha) { helper.release_sha(sha_getter) }
+    subject(:release_url) { helper.release_url }
 
     context 'in development' do
-      let(:current_head_sha) { `git rev-parse HEAD` }
+      let(:current_sha) { `git rev-parse HEAD` }
 
       before { ENV['HEROKU_SLUG_COMMIT'] = nil }
 
       it 'is the current HEAD SHA' do
-        expect(link).to have_tag(
-          'a',
-          text: current_head_sha[0..7],
-          href: "#{ApplicationHelper::COMMIT_STEM}#{current_head_sha}"
-        )
+        expect(release_sha).to eq(current_sha)
+        expect(release_url).to eq(ApplicationHelper::COMMIT_STEM + release_sha)
       end
     end
 
@@ -28,19 +26,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       after  { ENV['HEROKU_SLUG_COMMIT'] = nil }
 
       it 'is from the HEROKU_SLUG_COMMIT var' do
-        expect(link).to have_tag(
-          'a',
-          text: heroku_slug_commit[0..7],
-          href: "#{ApplicationHelper::COMMIT_STEM}#{heroku_slug_commit}"
-        )
+        expect(release_sha).to eq(heroku_slug_commit)
+        expect(release_url).to eq(ApplicationHelper::COMMIT_STEM + heroku_slug_commit)
       end
-    end
-
-    context 'in some other env that does not have a repo or an env var' do
-      let(:sha_getter) { -> { nil } }
-      before { ENV['HEROKU_SLUG_COMMIT'] = nil }
-
-      it { is_expected.to eql('unavailable') }
     end
   end
 

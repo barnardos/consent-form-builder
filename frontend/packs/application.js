@@ -1,6 +1,7 @@
 import "init";
 
 import "components/ErrorSummary";
+import "components/Footer";
 import "components/Form";
 import "components/HeadingOne";
 import "components/Layout";
