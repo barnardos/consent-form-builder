@@ -1,44 +1,31 @@
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Topic</h1>
+<%= c('Step') do %>
+  <%= c('Title', title: 'Topic') %>
+  <%= c('Paragraph') do %> 
+    If your project will involve asking service users questions about their personal lives or about sensitive topics which could upset them or invade their privacy you should contact 
+    <%= c('Link', src: 'mailto:BREC@barnardos.org.uk', text:'BREC') %> for a consultation.
+   <% end %>
 
-  <div class="research-guidance">
-    <p>If your project will involve asking service users questions about their personal lives or about sensitive topics which could upset them or invade their privacy you should contact <a href="mailto:BREC@barnardos.org.uk">BREC</a> for a consultation.</p>
-  </div>
-
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <div class="reactive-container">
-      <div class="reactive-container__form">
-        <%= form.labelled_text_field(
-              :topic,
-              text_options: {
-                placeholder: t('helpers.placeholder.research_session.topic'),
-                autofocus: true,
-                'data-previewed-by' => 'TopicPurposePreviews'
-              }
-            )
-        %>
-
-        <%= form.labelled_text_field(
-              :purpose,
-              text_options: {
-                placeholder: t('helpers.placeholder.research_session.purpose'),
-                autofocus: true,
-                'data-previewed-by' => 'TopicPurposePreviews'
-              }
-            )
-        %>
-      </div>
-
-      <div class="reactive-container__preview">
-        <section class="reactive-preview__section">
-          <%#
-            react_component('TopicPurposePreviews', current_step_params)
-          %>
-        </section>
-      </div>
-    </div>
-
-    <%= render 'button_bar' %>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
+   
+  <%= c('Form', action: wizard_path) do %>
+    <%= c('SinglelineTextControl',
+          id: 'research_session[topic]',
+          name: 'topic',
+          label: t('research_session_attr_labels.topic'),
+          size: 24,
+          errored: @research_session.errors['topic'].present?,
+          validation: @research_session.errors['topic'][0]
+        ) %>
+    
+        <%= c('SinglelineTextControl',
+          id: 'research_session[purpose]',
+          name: 'purpose',
+          label: t('research_session_attr_labels.purpose'),
+          size: 24,
+          errored: @research_session.errors['purpose'].present?,
+          validation: @research_session.errors['purpose'][0]
+        ) %>
+    
+        <%= c('Submit', text: 'Continue') %>
+      <% end %>
   <% end %>
-</div>
