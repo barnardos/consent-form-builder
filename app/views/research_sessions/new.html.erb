@@ -1,5 +1,5 @@
 <%= c('Step') do %>
-  <%= c('Title', title: 'Create tailored consent and information forms') %>
+  <%= c('Title', text: 'Create tailored consent and information forms') %>
   <%= c('Lede', text: '
     This tool will guide you through a series of questions. Your answers
     will help generate tailored information sheets and consent forms
@@ -8,7 +8,7 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form') do %>
+  <%= c('Form', action: research_sessions_path) do %>
     <%= c('SinglelineTextControl',
       id: 'research_session[name]',
       name: 'name',
