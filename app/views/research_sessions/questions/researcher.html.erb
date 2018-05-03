@@ -14,7 +14,7 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path) do %>
+  <%= c('Form', action: wizard_path, patch: true) do %>
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_job_title]',
       name: 'researcher_job_title',
