@@ -51,13 +51,17 @@
   </ul>
 </nav> -->
 
-<%= c("Layout") do %>
+<%= c('Layout') do %>
   <%= yield %>
+
+  <%= c('Footer') do %>
+    <%= c('Paragraph') do %>
+      Release <%= c('Link', src: release_url, text: release_sha[0..7]) %>
+    <% end %>
+  <% end %>
 <% end %>
 
-<!--<footer id="global-footer__release">
-  <label>Release <%= link_to_current_sha %></label>
-</footer>-->
+
 
 <script>
   window.googleAnalyticsCode = '<%= ENV['GOOGLE_ANALYTICS_CODE'] %>';

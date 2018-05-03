@@ -13,11 +13,12 @@ module ApplicationHelper
     )
   end
 
-  def link_to_current_sha(sha_getter = -> { `git rev-parse HEAD` })
-    sha = ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call
-    return 'unavailable' if sha.nil?
+  def release_sha(sha_getter = -> { `git rev-parse HEAD` })
+    ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call || 'unavailable'
+  end
 
-    link_to sha[0..7], COMMIT_STEM + sha
+  def release_url
+    COMMIT_STEM + release_sha
   end
 
   def title(research_session, step = nil)
