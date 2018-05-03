@@ -1,0 +1,9 @@
+/** @define OptionalField; */
+
+.OptionalField {
+  display: none;
+}
+
+.OptionalField--active {
+  display: block;
+}

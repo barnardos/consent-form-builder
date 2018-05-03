@@ -15,15 +15,19 @@
       validation: @research_session.errors['methodologies'][0]
     ) %>
 
-    <%= c('SinglelineTextControl',
-      id: 'research_session[other_methodology]',
-      name: 'other_methodology',
-      value: @research_session.other_methodology,
-      label: t('research_session_attr_labels.other_methodology'),
-      size: 24,
-      errored: @research_session.errors['other_methodology'].present?,
-      validation: @research_session.errors['other_methodology'][0]
-    ) %>
+    <%= c('OptionalField',
+      isActive: (@research_session.methodologies.include?("other") if @research_session.methodologies.present?),
+      controlled_by: '[id="research_session[other]"]') do %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[other_methodology]',
+        name: 'other_methodology',
+        value: @research_session.other_methodology,
+        label: t('research_session_attr_labels.other_methodology'),
+        size: 24,
+        errored: @research_session.errors['other_methodology'].present?,
+        validation: @research_session.errors['other_methodology'][0]
+      ) %>
+    <% end %>
 
     <%= c('Submit', text: 'Continue') %>
   <% end %>
