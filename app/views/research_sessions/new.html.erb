@@ -12,6 +12,7 @@
     <%= c('SinglelineTextControl',
       id: 'research_session[name]',
       name: 'name',
+      value: '',
       label: t('research_session_attr_labels.name'),
       size: 48,
       errored: @research_session.errors['name'].present?,
