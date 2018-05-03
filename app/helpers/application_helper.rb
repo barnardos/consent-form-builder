@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def release_sha(sha_getter = -> { `git rev-parse HEAD` })
-    ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call
+    ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call || 'unavailable'
   end
 
   def release_url
