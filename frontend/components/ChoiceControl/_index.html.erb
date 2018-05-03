@@ -1,0 +1,13 @@
+<div class="ChoiceControl">
+  <input
+    <% if checked %>checked<% end %>
+    class="ChoiceControl-element"
+    id="<%= id %>"
+    name="<%= name %>"
+    value="<%= value %>"
+    type="<%= type === 'multi' ? 'checkbox' : 'radio' %>"
+  />
+  <label for="<%= id %>" class="ChoiceControl-label">
+    <%= label %>
+  </label>
+</div>
