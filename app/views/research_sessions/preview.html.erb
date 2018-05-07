@@ -1,3 +1,9 @@
+<%= c('Step') do %>
+  <%= c('Title', text: t('preview.title')) %>
+  <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.about_this_research_project.heading")) %>
+  <%= c('Lede', text: t("preview.#{@research_session.able_to_consent_key}.about_this_research_project.lede")) %>
+<% end %>
+
 <div class="preview-header screen-only">
   <form class="print-section js-print-section" action="#">
     <label for="area-to-print" class="selectfield">
@@ -9,8 +15,6 @@
     </label>
     <button type="submit" class="print-section__submit button">Print</button>
   </form>
-
-  <h1 class="page-heading">Research session preview</h1>
 
   <% if @research_session.able_to_consent? %>
     <p>Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</p>
@@ -24,11 +28,6 @@
 </div>
 
 <div class="print-area js-print-area" id="info-sheets">
-  <section>
-    <h2>About this research project</h2>
-    <p class="super-text">This information sheet will tell you more about the
-      research so that you can decide whether or not <%= you_or_your_child %> would like to take part.</p>
-  </section>
 
   <section>
     <h3 id="about-taking-part">About taking part</h3>
@@ -49,7 +48,7 @@
       reason by letting the researcher know <%= you_or_they %> want to stop.
     </p>
   </section>
-  
+
   <section>
     <%# react_component(
         'TopicPurposePreviews',

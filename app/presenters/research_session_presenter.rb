@@ -19,6 +19,10 @@ class ResearchSessionPresenter
     super
   end
 
+  def able_to_consent_key
+    able_to_consent? ? 'able_to_consent' : 'unable_to_consent'
+  end
+
   def able_to_consent?
     @able_to_consent
   end
