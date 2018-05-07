@@ -14,10 +14,11 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path) do %>
+  <%= c('Form', action: wizard_path, patch: true) do %>
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_job_title]',
       name: 'researcher_job_title',
+      value: @research_session.researcher_job_title,
       label: t('research_session_attr_labels.researcher_job_title'),
       size: 24,
       errored: @research_session.errors['researcher_job_title'].present?,
@@ -26,6 +27,7 @@
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_name]',
       name: 'researcher_name',
+      value: @research_session.researcher_name,
       label: t('research_session_attr_labels.researcher_name'),
       size: 24,
       errored: @research_session.errors['researcher_name'].present?,
@@ -34,6 +36,7 @@
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_phone]',
       name: 'researcher_phone',
+      value: @research_session.researcher_phone,
       label: t('research_session_attr_labels.researcher_phone'),
       size: 16,
       errored: @research_session.errors['researcher_phone'].present?,
@@ -42,6 +45,7 @@
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_email]',
       name: 'researcher_email',
+      value: @research_session.researcher_email,
       label: t('research_session_attr_labels.researcher_email'),
       size: 36,
       errored: @research_session.errors['researcher_email'].present?,

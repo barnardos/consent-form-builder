@@ -1,42 +1,34 @@
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Methodologies</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <div class="reactive-container">
-      <div class="reactive-container__form">
-        <%= form.checkbox_group_vertical(
-              :methodologies,
-              Methodologies::NAME_VALUES.map { |name, value| [name, value.capitalize] },
-              {
-                autofocus_first_item: true,
-                input: { 'data-previewed-by' => 'MethodologyPreviews' }
-              },
-              legend: 'How will you be gathering information?'
-            )
-        %>
+<%= c('Step') do %>
+  <%= c('Title', text: 'Methodologies') %>
 
-        <div class="js-ConditionalSubfield"
-             data-controlled-by="research_session[methodologies][]"
-             data-control-value="other">
-          <%= form.labelled_text_field(
-            :other_methodology,
-            text_options: { 'data-previewed-by' => 'MethodologyPreviews' })
-          %>
-        </div>
-      </div>
-      <div class="reactive-container__preview">
-        <%#
-          react_component(
-            'MethodologyPreviews',
-            current_step_params.merge(
-              researcher_name: @research_session.researcher_name,
-              you_or_your_child: "your child/the child in your care"
-            )
-          )
-        %>
-      </div>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-    </div>
-    <%= render 'button_bar' %>
+  <%= c('Form', action: wizard_path, patch: true) do %>
+    <%= c('OfManyChoiceControl',
+      id: 'research_session[methodologies][]',
+      collection: "research_session[#{:methodologies}][]",
+      choices: Methodologies::NAME_VALUES,
+      choices_selected: @research_session.methodologies,
+      legend: 'How will you be gathering information?',
+      type: 'multi',
+      errored: @research_session.errors['methodologies'].present?,
+      validation: @research_session.errors['methodologies'][0]
+    ) %>
+
+    <%= c('OptionalField',
+      isActive: (@research_session.methodologies.include?("other") if @research_session.methodologies.present?),
+      controlled_by: '[id="research_session[other]"]') do %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[other_methodology]',
+        name: 'other_methodology',
+        value: @research_session.other_methodology,
+        label: t('research_session_attr_labels.other_methodology'),
+        size: 24,
+        errored: @research_session.errors['other_methodology'].present?,
+        validation: @research_session.errors['other_methodology'][0]
+      ) %>
+    <% end %>
+
+    <%= c('Submit', text: 'Continue') %>
   <% end %>
-</div>
+<% end %>
