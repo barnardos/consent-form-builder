@@ -11,16 +11,12 @@ module ResearchSessionsHelper
       .merge(able_to_consent: @research_session.able_to_consent?)
   end
 
-  def edit_link_for(attr, &block)
-    value = block_given? ? capture(&block) : @research_session.send(attr)
-
+  def edit_link_for(attr)
     step_for_attr = ResearchSession::Steps.instance.attr_to_step(attr)
 
-    link_to value,
-            research_session_question_path(
-              @research_session.slug, step_for_attr, 'edit-preview' => '1'
-            ),
-            class: 'editable'
+    research_session_question_path(
+      @research_session.slug, step_for_attr, 'edit-preview' => '1'
+    )
   end
 
   def methodology_lookup(methodology)

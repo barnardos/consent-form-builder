@@ -9,6 +9,7 @@ import "components/Layout";
 import "components/Lede";
 import "components/OfManyChoiceControl";
 import "components/OptionalField";
+import "components/Output";
 import "components/Paragraph";
 import "components/SinglelineTextControl";
 import "components/Step";
