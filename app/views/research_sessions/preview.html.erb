@@ -1,7 +1,15 @@
 <%= c('Step') do %>
   <%= c('Title', text: t('preview.title')) %>
+
   <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.about_this_research_project.heading")) %>
   <%= c('Lede', text: t("preview.#{@research_session.able_to_consent_key}.about_this_research_project.lede")) %>
+
+  <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.about_taking_part.heading")) %>
+  <% for i in 1..4 do %>
+    <%= c('Paragraph') do
+      t("preview.#{@research_session.able_to_consent_key}.about_taking_part.paragraphs.#{i}")
+    end %>
+  <% end %>
 <% end %>
 
 <div class="preview-header screen-only">
@@ -28,26 +36,6 @@
 </div>
 
 <div class="print-area js-print-area" id="info-sheets">
-
-  <section>
-    <h3 id="about-taking-part">About taking part</h3>
-    <p>
-      <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
-      not have to take part in this session. It is your decision<%= ' as the parent/carer' if @research_session.unable_to_consent? %>.
-    </p>
-    <p>
-      We will also ask <%= you_or_your_child %> if <%= you_or_they %> want to take
-      part before the session.
-    </p>
-    <p>
-      Don’t worry! If you do not want <%= 'the child in your care' if @research_session.unable_to_consent? %>
-      to take part it will not affect the service <%= you_or_they %> receive.
-    </p>
-    <p>
-      <%= you_or_your_child.capitalize %> can change <%= your_or_their %> mind at any point for any
-      reason by letting the researcher know <%= you_or_they %> want to stop.
-    </p>
-  </section>
 
   <section>
     <%# react_component(
