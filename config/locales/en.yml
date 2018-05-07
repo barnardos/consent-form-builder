@@ -115,3 +115,14 @@ en:
       team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
       internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
       external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
+
+    title: Research session preview
+    able_to_consent:
+      about_this_research_project:
+        heading: About this research project
+        lede: This information sheet will tell you more about the research so that you can decide whether or not you would like to take part.
+
+    unable_to_consent:
+      about_this_research_project:
+        heading: About this research project
+        lede: This information sheet will tell you more about the research so that you can decide whether or not your child/the child in your care would like to take part.
