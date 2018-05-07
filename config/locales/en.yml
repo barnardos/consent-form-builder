@@ -122,7 +122,23 @@ en:
         heading: About this research project
         lede: This information sheet will tell you more about the research so that you can decide whether or not you would like to take part.
 
+      about_taking_part:
+        heading: About taking part
+        paragraphs:
+          "1": You do not have to take part in this session. It is your decision.
+          "2": We will also ask you if you want to take part before the session.
+          "3": Don’t worry! If you do not want to take part it will not affect the service you receive.
+          "4": You can change your mind at any point for any reason by letting the researcher know you want to stop.
+
     unable_to_consent:
       about_this_research_project:
         heading: About this research project
         lede: This information sheet will tell you more about the research so that you can decide whether or not your child/the child in your care would like to take part.
+
+      about_taking_part:
+        heading: About taking part
+        paragraphs:
+          "1": Your child/the child in your care does not have to take part in this session. It is your decision as the parent/carer.
+          "2": We will also ask your child/the child in your care if they want to take part before the session.
+          "3": Don’t worry! If you do not want the child in your care to take part it will not affect the service they receive.
+          "4": Your child/the child in your care can change their mind at any point for any reason by letting the researcher know they want to stop.
