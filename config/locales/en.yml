@@ -130,6 +130,12 @@ en:
           "3": Don’t worry! If you do not want to take part it will not affect the service you receive.
           "4": You can change your mind at any point for any reason by letting the researcher know you want to stop.
 
+      why_we_are_doing_research:
+        heading: Why we are doing research
+        paragraphs:
+          "1": Barnardoʼs is doing research to learn about %{topic} so that we can %{purpose}.
+          "2": It is important that we test the current and future tools and services that we are developing with people like you so that we can make them as good as possible.
+
     unable_to_consent:
       about_this_research_project:
         heading: About this research project
@@ -142,3 +148,9 @@ en:
           "2": We will also ask your child/the child in your care if they want to take part before the session.
           "3": Don’t worry! If you do not want the child in your care to take part it will not affect the service they receive.
           "4": Your child/the child in your care can change their mind at any point for any reason by letting the researcher know they want to stop.
+
+      why_we_are_doing_research:
+        heading: Why we are doing research
+        paragraphs:
+          "1": Barnardoʼs is doing research to learn about %{topic} so that we can %{purpose}.
+          "2": It is important that we test the current and future tools and services that we are developing with people like your child/the child in your care so that we can make them as good as possible.

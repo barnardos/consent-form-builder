@@ -10,6 +10,28 @@
       t("preview.#{@research_session.able_to_consent_key}.about_taking_part.paragraphs.#{i}")
     end %>
   <% end %>
+
+  <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.why_we_are_doing_research.heading")) %>
+  <%= c('Paragraph') do
+    raw t(
+      "preview.#{@research_session.able_to_consent_key}.why_we_are_doing_research.paragraphs.1",
+      topic: c(
+        'Output',
+        text: @research_session.topic,
+        field: 'topic',
+        url: edit_link_for(:topic)
+      ),
+      purpose: c(
+        'Output',
+        text: @research_session.purpose,
+        field: 'purpose',
+        url: edit_link_for(:purpose)
+      )
+    )
+  end %>
+  <%= c('Paragraph') do
+    t("preview.#{@research_session.able_to_consent_key}.why_we_are_doing_research.paragraphs.2")
+  end %>
 <% end %>
 
 <div class="preview-header screen-only">
@@ -36,23 +58,6 @@
 </div>
 
 <div class="print-area js-print-area" id="info-sheets">
-
-  <section>
-    <%# react_component(
-        'TopicPurposePreviews',
-        final_preview_params(:topic),
-        {
-          prerender: true
-        }
-      )
-    %>
-
-    <p>
-      It is important that we test the current and future tools and services that
-      we are developing with people like <%= you_or_your_child %> so that we can make them as good as
-      possible.
-    </p>
-  </section>
 
   <section>
     <h3 id="what">What happens in this research session?</h3>
