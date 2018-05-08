@@ -13,6 +13,7 @@ AllCops:
     - bin/**/*
     - db/migrate/*
     - features/support/action_view.rb
+    - vendor/**/*
 
 Metrics/LineLength:
   Max: 100
