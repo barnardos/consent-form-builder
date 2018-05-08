@@ -44,6 +44,82 @@
       %>
     <% end %>
   <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.what_happens_in_this_research_session.heading")) %>
+
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[0] % [
+        c(
+          'Output',
+          text: @research_session.researcher_name,
+          field: 'researcher_name',
+          url: edit_link_for(:researcher_name)
+        ),
+        c(
+          'Output',
+          text: @research_session.researcher_job_title,
+          field: 'researcher_job_title',
+          url: edit_link_for(:researcher_job_title)
+        )
+      ] %>
+    <% end %>
+
+    <%= c('UnorderedList') do %>
+      <% @research_session.methodologies.each do |methodology| %>
+        <%
+          methodology_text =
+            methodology === 'other' ?
+              @research_session.other_recording_method
+              :
+              t("#{ct}.what_happens_in_this_research_session.methodologies.#{methodology}")
+        %>
+        <%= c('ListItem') do %>
+          <%= c(
+            'Output',
+            text: methodology_text,
+            field: 'methodologies',
+            url: edit_link_for(:methodologies)
+          ) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.what_happens_in_this_research_session.paragraphs")[1] %>
+    <% end %>
+
+    <%= c('UnorderedList') do %>
+      <% @research_session.recording_methods.each do |recording_method| %>
+        <%
+          recording_text =
+            recording_method === 'other' ?
+              @research_session.other_recording_method
+              :
+              t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}")
+        %>
+        <%= c('ListItem') do %>
+          <%= c(
+            'Output',
+            text: recording_text,
+            field: 'recording_methods',
+            url: edit_link_for(:recording_methods)
+          ) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[2] % [
+        c(
+          'Output',
+          text: @research_session.researcher_name,
+          field: 'researcher_name',
+          url: edit_link_for(:researcher_name)
+        )
+      ] %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div class="preview-header screen-only">
@@ -70,39 +146,6 @@
 </div>
 
 <div class="print-area js-print-area" id="info-sheets">
-
-  <section>
-    <h3 id="what">What happens in this research session?</h3>
-    <%#
-      react_component(
-        'Shared/TakePartIn',
-        final_preview_params(:researcher).merge({
-          you_or_your_child: you_or_your_child
-        }),
-        { prerender: true }
-      )
-    %>
-    <%#
-      react_component(
-        'Shared/WeWillRecordBy',
-        final_preview_params(:methodologies),
-        { prerender: true }
-      )
-    %>
-    <%#
-      react_component(
-        'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
-        { prerender: true }
-      )
-    %>
-    <%#
-      react_component(
-        'Shared/AnotherResearcherSentence',
-        final_preview_params(:researcher),
-        { prerender: true }
-      )
-    %>
-  </section>
 
   <% if @research_session.incentives_enabled ||
         @research_session.where_when_enabled ||

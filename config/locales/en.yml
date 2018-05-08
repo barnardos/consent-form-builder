@@ -136,6 +136,28 @@ en:
           - Barnardoʼs is doing research to learn about %s so that we can %s.
           - It is important that we test the current and future tools and services that we are developing with people like you so that we can make them as good as possible.
 
+      what_happens_in_this_research_session:
+        heading: What happens in this research session?
+        paragraphs:
+          - "%s, %s, would like you to take part in…"
+          - "Which we will record using:"
+          - There may be another researcher or observer supporting %s at this session.
+        methodologies:
+          interview: a one-on-one interview
+          usability: looking at how you use a new tool we’re designing
+          survey: a survey or paper questionnaire
+          focusgroup: a group discussion
+          codesign: a group activity
+          other: other
+        recording_methods:
+          voice: voice recording
+          video: video recording
+          written: researcher’s written notes
+          workshop: the work created by participants during the session
+          photo: photos
+          screen: screen recording
+          other: other
+
     unable_to_consent:
       about_this_research_project:
         heading: About this research project
@@ -154,3 +176,25 @@ en:
         paragraphs:
           - Barnardoʼs is doing research to learn about %s so that we can %s.
           - It is important that we test the current and future tools and services that we are developing with people like your child/the child in your care so that we can make them as good as possible.
+
+      what_happens_in_this_research_session:
+        heading: What happens in this research session?
+        paragraphs:
+          - "%s, %s, would like your child/the child in your care to take part in…"
+          - "Which we will record using:"
+          - There may be another researcher or observer supporting %s at this session.
+        methodologies:
+          interview: a one-on-one interview,
+          usability: looking at how your child/the child in your care use a new tool we’re designing,
+          survey: a survey or paper questionnaire,
+          focusgroup: a group discussion,
+          codesign: a group activity,
+          other: other
+        recording_methods:
+          voice: voice recording
+          video: video recording
+          written: researcher’s written notes
+          workshop: the work created by participants during the session
+          photo: photos
+          screen: screen recording
+          other: other
