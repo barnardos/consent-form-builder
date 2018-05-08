@@ -1,0 +1,6 @@
+/** @define PreviewSection; */
+
+.PreviewSection {
+  display: grid;
+  grid-gap: 1rem;
+}
