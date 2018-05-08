@@ -1,37 +1,45 @@
+<% ct = "preview.#{@research_session.able_to_consent_key}" %>
+
 <%= c('Step') do %>
   <%= c('Title', text: t('preview.title')) %>
 
-  <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.about_this_research_project.heading")) %>
-  <%= c('Lede', text: t("preview.#{@research_session.able_to_consent_key}.about_this_research_project.lede")) %>
+  <%= c('HeadingOne', text: t("#{ct}.about_this_research_project.heading")) %>
+  <%= c('Lede', text: t("#{ct}.about_this_research_project.lede")) %>
 
-  <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.about_taking_part.heading")) %>
-  <% for i in 1..4 do %>
-    <%= c('Paragraph') do
-      t("preview.#{@research_session.able_to_consent_key}.about_taking_part.paragraphs.#{i}")
-    end %>
+  <%= c('HeadingOne', text: t("#{ct}.about_taking_part.heading")) %>
+  <% t("#{ct}.about_taking_part.paragraphs").each do |text| %>
+    <%=
+      c('Paragraph') do
+        text
+      end
+    %>
   <% end %>
 
-  <%= c('HeadingOne', text: t("preview.#{@research_session.able_to_consent_key}.why_we_are_doing_research.heading")) %>
-  <%= c('Paragraph') do
-    raw t(
-      "preview.#{@research_session.able_to_consent_key}.why_we_are_doing_research.paragraphs.1",
-      topic: c(
-        'Output',
-        text: @research_session.topic,
-        field: 'topic',
-        url: edit_link_for(:topic)
-      ),
-      purpose: c(
-        'Output',
-        text: @research_session.purpose,
-        field: 'purpose',
-        url: edit_link_for(:purpose)
-      )
-    )
-  end %>
-  <%= c('Paragraph') do
-    t("preview.#{@research_session.able_to_consent_key}.why_we_are_doing_research.paragraphs.2")
-  end %>
+  <%= c('HeadingOne', text: t("#{ct}.why_we_are_doing_research.heading")) %>
+  <% t("#{ct}.why_we_are_doing_research.paragraphs").each_with_index do |text, index| %>
+    <%=
+      c('Paragraph') do
+        if index === 0
+          raw text % [
+            c(
+              'Output',
+              text: @research_session.topic,
+              field: 'topic',
+              url: edit_link_for(:topic)
+            ),
+            c(
+              'Output',
+              text: @research_session.purpose,
+              field: 'purpose',
+              url: edit_link_for(:purpose)
+            )
+          ]
+        else
+          text
+        end
+      end
+    %>
+  <% end %>
 <% end %>
 
 <div class="preview-header screen-only">
