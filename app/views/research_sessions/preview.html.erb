@@ -120,6 +120,109 @@
       ] %>
     <% end %>
   <% end %>
+
+  <% if @research_session.incentives_enabled ||
+        @research_session.where_when_enabled ||
+        @research_session.expenses_enabled %>
+    <%= c('PreviewSection') do %>
+      <%= c('HeadingOne', text: t("#{ct}.session_details.heading")) %>
+
+      <% if @research_session.where_when_enabled %>
+        <% [:when_text, :location, :duration].each do |field| %>
+          <% if @research_session["#{field}"] %>
+            <%= c('Paragraph') do %>
+              <%= raw t("#{ct}.session_details.#{field}") % [
+                c(
+                  'Output',
+                  text: @research_session["#{field}"],
+                  field: field,
+                  url: edit_link_for(field)
+                )
+              ] %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.incentives_enabled %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.session_details.incentives_intro") %>
+        <% end %>
+
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.payment_type.#{@research_session.payment_type}") % [
+            c(
+              'Output',
+              text: number_to_currency(@research_session.incentive_value),
+              field: 'incentive_value',
+              url: edit_link_for(:incentive_value)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.where_when_enabled && @research_session.participant_equipment.present? %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.participant_equipment") % [
+            c(
+              'Output',
+              text: @research_session.participant_equipment,
+              field: 'participant_equipment',
+              url: edit_link_for(:participant_equipment)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.expenses_enabled %>
+        <%
+          expenses = [
+            :travel_expenses_limit,
+            :food_expenses_limit,
+            :other_expenses_limit
+          ]
+          .select { |expense_type| @research_session[expense_type].present? }
+          .map { |expense_type|
+            c(
+              'Output',
+              text: t("#{ct}.session_details.#{expense_type}") % number_to_currency(@research_session[expense_type]),
+              field: expense_type,
+              url: edit_link_for(expense_type)
+            )
+          }
+          .to_sentence
+        %>
+
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.expenses") % [expenses] %>
+        <% end %>
+
+        <% if @research_session.receipts_required %>
+          <%= c('Paragraph') do %>
+            <%= c(
+              'Output',
+              text: t("#{ct}.session_details.receipts_required"),
+              field: 'receipts_required',
+              url: edit_link_for(:receipts_required)
+            ) %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.where_when_enabled && @research_session.food_provided.present? %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.food_provided") % [
+              c(
+              'Output',
+              text: @research_session.food_provided,
+              field: 'food_provided',
+              url: edit_link_for(:food_provided)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div class="preview-header screen-only">
@@ -146,65 +249,6 @@
 </div>
 
 <div class="print-area js-print-area" id="info-sheets">
-
-  <% if @research_session.incentives_enabled ||
-        @research_session.where_when_enabled ||
-        @research_session.expenses_enabled %>
-    <section>
-      <h3 id="session">Session details</h3>
-
-      <%#
-        react_component(
-          'Shared/SessionInformation',
-          final_preview_params(:where_when),
-          { prerender: true }
-        )
-      %>
-
-      <% if @research_session.incentives_enabled %>
-        <%#
-          react_component(
-            'Shared/Incentives',
-            final_preview_params(:incentives).merge({
-              you_or_your_child: you_or_your_child,
-              your_or_your_childs: your_or_your_childs.capitalize,
-              you_or_they: you_or_they
-              }),
-            { prerender: true }
-          )
-        %>
-      <% end %>
-
-      <%#
-        react_component(
-          'Shared/ParticipantEquipment',
-          final_preview_params(:where_when).merge({
-            you_or_your_child: you_or_your_child.capitalize
-            }),
-          { prerender: true }
-        )
-      %>
-
-      <% if @research_session.expenses_enabled %>
-        <%#
-          react_component(
-            'Shared/Expenses',
-            final_preview_params(:expenses),
-            { prerender: true }
-          )
-        %>
-      <% end %>
-
-      <%#
-        react_component(
-          'Shared/Refreshments',
-          final_preview_params(:where_when),
-          { prerender: true }
-        )
-      %>
-
-    </section>
-  <% end %>
 
   <%#
     react_component(
