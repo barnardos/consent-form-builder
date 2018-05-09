@@ -158,6 +158,23 @@ en:
           screen: screen recording
           other: other
 
+      session_details:
+        heading: Session details
+        when_text: "When: %s"
+        location: "Where: %s"
+        duration: "Duration: %s"
+        incentives_intro: Your time and what you say is really important to us.
+        payment_type:
+          cash: As a thank you, we will give you a cash incentive of %s
+          voucher: As a thank you, we will give you vouchers to the value of %s. They can be used in many high street shops.
+        participant_equipment: You will need to bring %s.
+        expenses: We allow %s.
+        travel_expenses_limit: travel expenses of up to %s
+        food_expenses_limit: food expenses of up to %s
+        other_expenses_limit: other expenses of up to %s
+        receipts_required: Receipts must be provided.
+        food_provided: "%s will be provided."
+
     unable_to_consent:
       about_this_research_project:
         heading: About this research project
@@ -198,3 +215,20 @@ en:
           photo: photos
           screen: screen recording
           other: other
+
+      session_details:
+        heading: Session details
+        when_text: "When: %s"
+        location: "Where: %s"
+        duration: "Duration: %s"
+        incentives_intro: Your child's/the child in your care's time and what they say is really important to us.
+        payment_type:
+          cash: As a thank you, we will give your child/the child in your care a cash incentive of %s
+          voucher: As a thank you, we will give your child/the child in your care vouchers to the value of %s. They can be used in many high street shops.
+        participant_equipment: Your child/the child in your care will need to bring %s.
+        expenses: We allow %s.
+        travel_expenses_limit: travel expenses of up to %s
+        food_expenses_limit: food expenses of up to %s
+        other_expenses_limit: other expenses of up to %s
+        receipts_required: Receipts must be provided.
+        food_provided: "%s will be provided."
