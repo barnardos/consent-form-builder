@@ -110,12 +110,6 @@ en:
         format: '%u%n'
 
   preview:
-    shared_with:
-      anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, %{person} will not be identifiable by the research recordings."
-      team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
-      internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
-      external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
-
     title: Research session preview
     able_to_consent:
       about_this_research_project:
@@ -175,6 +169,19 @@ en:
         receipts_required: Receipts must be provided.
         food_provided: "%s will be provided."
 
+      will_anyone_know_what_they_say_in_the_discussion:
+        heading: Will anyone know what they say in the discussion?
+        paragraphs:
+          - The only people who will hear what you say in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session.
+          - "%s"
+          - Barnardo’s will hold research data for %s after we finish the project and we will then delete it. Personal data is stored in a safe and secure way.
+          - You can contact Jason Caplin to ask us to delete your personal data at any time.
+        shared_with:
+          anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, you will not be identifiable by the research recordings."
+          team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
+          internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
+          external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
+
     unable_to_consent:
       about_this_research_project:
         heading: About this research project
@@ -232,3 +239,16 @@ en:
         other_expenses_limit: other expenses of up to %s
         receipts_required: Receipts must be provided.
         food_provided: "%s will be provided."
+
+      will_anyone_know_what_they_say_in_the_discussion:
+        heading: Will anyone know what they say in the discussion?
+        paragraphs:
+          - The only people who will hear what your child/the child in your care says in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session.
+          - "%s"
+          - Barnardo’s will hold research data for %s after we finish the project and we will then delete it. Personal data is stored in a safe and secure way.
+          - You can contact Jason Caplin to ask us to delete your personal data at any time.
+        shared_with:
+          anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, your child/the child in your care will not be identifiable by the research recordings."
+          team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
+          internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
+          external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"

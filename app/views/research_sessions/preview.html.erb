@@ -223,6 +223,36 @@
       <% end %>
     <% end %>
   <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.heading")) %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[0] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[1] % [
+        c(
+          'Output',
+          text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.shared_with.#{@research_session.shared_with}"),
+          field: 'shared_with',
+          url: edit_link_for(:shared_with)
+        )
+      ] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
+        c(
+          'Output',
+          text: @research_session.shared_duration,
+          field: 'shared_duration',
+          url: edit_link_for(:shared_duration)
+        )
+      ] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[3] %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div class="preview-header screen-only">
@@ -249,18 +279,6 @@
 </div>
 
 <div class="print-area js-print-area" id="info-sheets">
-
-  <%#
-    react_component(
-      'Shared/WillAnyoneKnowWhatISayInTheDiscussion',
-      final_preview_params(:storing).merge(
-        shared_title: "Will anyone know what #{i_or_they} say in the discussion?",
-        you_or_your_child: you_or_your_child,
-        say_or_says: say_or_says
-      ),
-      { prerender: true }
-    )
-  %>
 
   <section>
     <h3 id="sharing-information">Sharing information</h3>
