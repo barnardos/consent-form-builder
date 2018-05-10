@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xdescribe 'research_sessions/preview' do
+describe 'research_sessions/preview' do
   let(:extra_attrs)     { {} }
   let(:able_to_consent) { false }
 
