@@ -182,6 +182,55 @@ en:
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
 
+      sharing_information:
+        heading: Sharing information
+        paragraphs:
+          - We may have to share information about you without your consent if we think you or someone else is at risk of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
+
+      find_out_more:
+        heading: Find out more
+        paragraphs:
+          - "If you have any questions about the research please contact %s"
+          - "Email: %s"
+          - "Telephone: %s"
+      
+      concerns_and_complaints:
+        heading: Concerns and complaints
+        paragraphs:
+          - "If you have any concerns or a complaint, or would like to have your data deleted please contact:"
+          - "Telephone: +442084987869"
+          - "Email: jason.caplin@barnardos.org.uk"
+
+      decide_to_take_part:
+        heading: Decide if you to take part
+        paragraphs:
+          - "If you are happy to take part, we will ask you to sign a consent form. This will ask you to confirm:"
+          - "%s"
+          - "Thank you!"
+        items:
+          - that you are happy with the information you have received, and;
+          - that you understand what we are going to do with the research recordings collected, and;
+          - that you know who to ask for more information, and;
+          - that your decision is voluntary
+        
+      consent_form:
+        heading: Consent form
+        paragraphs:
+          - It is important to us that your consent to take part in this research is freely given and fully informed.
+          - Please review the following points and indicate your agreement to the statements underneath.
+          - "%s"
+          - I agree to my participation in this research and understand that my data will be used as explained above.
+        items:
+          - I have read and understood the Information Sheet for this research project and have had an opportunity to ask questions.
+          - I understand that my participation is voluntary and that I am free to withdraw them at any time without giving any reason.
+          - I understand that my activities during the research session may be observed and will be recorded. The data captured, in the form of %s will be used for current and future service development.
+          - I understand that this data will be stored securely and covered by the Data Protection Act.
+        fields:
+          - Name
+          - Signature
+          - Date
+
+
     unable_to_consent:
       about_this_research_project:
         heading: About this research project
@@ -252,3 +301,51 @@ en:
           team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
+
+      sharing_information:
+        heading: Sharing information
+        paragraphs:
+          - We may have to share information about your child/the child in your care without your consent if we think they or someone else is at risk of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
+
+      find_out_more:
+        heading: Find out more
+        paragraphs:
+          - "If you have any questions about the research please contact %s"
+          - "Email: %s"
+          - "Telephone: %s"
+      
+      concerns_and_complaints:
+        heading: Concerns and complaints
+        paragraphs:
+          - "If you have any concerns or a complaint, or would like to have your data deleted please contact:"
+          - "Telephone: +442084987869"
+          - "Email: jason.caplin@barnardos.org.uk"
+
+      decide_to_take_part:
+        heading: Decide if you want the child in your care to take part
+        paragraphs:
+          - "If you are happy for the child in your care to take part, we will ask you to sign a consent form. This will ask you to confirm:"
+          - "%s"
+          - "Thank you!"
+        items:
+          - that you are happy with the information you have received, and;
+          - that you understand what we are going to do with the research recordings collected, and;
+          - that you know who to ask for more information, and;
+          - that your decision is voluntary
+        
+      consent_form:
+        heading: Consent form
+        paragraphs:
+          - It is important to us that your consent for your child to take part in this research is freely given and fully informed.
+          - Please review the following points and indicate your agreement to the statements underneath.
+          - "%s"
+          - I agree to my childʼs participation in this research and understand that my childʼs data will be used as explained above.
+        items:
+          - I have read and understood the Information Sheet for this research project and have had an opportunity to ask questions.
+          - I understand that my childʼs participation is voluntary and that I am free to withdraw them at any time without giving any reason.
+          - I understand that my childʼs activities during the research session may be observed and will be recorded. The data captured, in the form of %s will be used for current and future service development.
+          - I understand that this data will be stored securely and covered by the Data Protection Act.
+        fields:
+          - Name
+          - Signature
+          - Date
