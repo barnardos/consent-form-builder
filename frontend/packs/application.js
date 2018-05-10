@@ -10,6 +10,7 @@ import "components/Lede";
 import "components/ListItem";
 import "components/OfManyChoiceControl";
 import "components/OptionalField";
+import "components/OrderedList";
 import "components/Output";
 import "components/Paragraph";
 import "components/Preview";

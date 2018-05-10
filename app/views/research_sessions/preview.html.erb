@@ -253,6 +253,122 @@
       <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[3] %>
     <% end %>
   <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.sharing_information.heading")) %>
+    <% t("#{ct}.sharing_information.paragraphs").each do |text| %>
+      <%=
+        c('Paragraph') do
+          text
+        end
+      %>
+    <% end %>
+  <% end %>
+  
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.find_out_more.heading")) %>
+    <% 
+      [
+        :researcher_name, 
+        :researcher_email, 
+        :researcher_phone
+      ].each_with_index do |find_out_more_text, i| 
+    %>
+      <%= c('Paragraph') do %>
+        <%= raw t("#{ct}.find_out_more.paragraphs")[i] % [
+          c(
+            'Output',
+            text: @research_session["#{find_out_more_text}"],
+            field: find_out_more_text,
+            url: edit_link_for(find_out_more_text)
+          )
+        ] %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.concerns_and_complaints.heading")) %>
+    <% t("#{ct}.concerns_and_complaints.paragraphs").each do |text| %>
+      <%=
+        c('Paragraph') do
+          text
+        end
+      %>
+    <% end %>
+  <% end %>
+  
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.decide_to_take_part.heading")) %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.decide_to_take_part.paragraphs")[0] %>
+    <% end %>
+    <%= c('OrderedList') do %>
+      <% t("#{ct}.decide_to_take_part.items").each do |item| %>
+        <%=
+          c('ListItem') do
+            item
+          end
+        %>
+      <% end %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.decide_to_take_part.paragraphs")[2] %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.consent_form.heading")) %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.consent_form.paragraphs")[0] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.consent_form.paragraphs")[1] %>
+    <% end %>
+    <%= c('OrderedList') do %>
+      <% 
+        recording_methods = 
+          @research_session.recording_methods
+            .map { |recording_method| 
+              if recording_method === 'other'
+                c(
+                  'Output',
+                  text: @research_session.other_recording_method,
+                  field: 'other_recording_method',
+                  url: edit_link_for(:other_recording_method)
+                )
+              else
+                c(
+                  'Output',
+                  text:  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}"),
+                  field: 'recording_methods',
+                  url: edit_link_for(:recording_methods)
+                )
+              end
+            }
+      %>
+      <% t("#{ct}.consent_form.items").each_with_index do |item, i| %>
+        <% if i === 2 %>
+          <%=
+            c('ListItem') do
+              raw t("#{ct}.consent_form.items")[i] % [
+                recording_methods.to_sentence
+              ]
+            end
+          %>
+        <% else %>
+          <%=
+            c('ListItem') do
+              item
+            end
+          %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.consent_form.paragraphs")[3] %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div class="preview-header screen-only">
@@ -280,58 +396,6 @@
 
 <div class="print-area js-print-area" id="info-sheets">
 
-  <section>
-    <h3 id="sharing-information">Sharing information</h3>
-    <p>
-      We may have to share information about <%= you_or_your_child %> without
-      your consent if we think <%= you_or_they %> or someone else is at risk
-      of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
-    </p>
-  </section>
-
-  <%#
-    react_component(
-      'Shared/FindOutMore',
-      final_preview_params(:researcher), { prerender: true }
-    )
-  %>
-
-  <section>
-    <h3 id="concerns">Concerns and complaints</h3>
-
-    <p>If you have any concerns or a complaint, or would like to have your data deleted please contact:
-
-    <dl class="definition-list">
-      <div>
-        <dt class="definition-list__term">Telephone:</dt>
-        <dd>+442084987869</dd>
-      </div>
-      <div>
-        <dt class="definition-list__term">Email:</dt>
-        <dd><%= mail_to 'jason.caplin@barnardos.org.uk' %></dd>
-      </div>
-    </dl>
-  </section>
-
-  <section>
-    <h3 id="decide">
-      Decide if you want<%=
-        ' the child in your care' if @research_session.unable_to_consent?
-      %> to take part</h3>
-
-    <p>If you are happy<%=
-      ' for the child in your care' if @research_session.unable_to_consent?
-      %> to take part, we will ask you to sign a consent form. This will ask you to confirm:</p>
-
-    <ol class="numbered-list">
-      <li>that you are happy with the information you have received, and;</li>
-      <li>that you understand what we are going to do with the research recordings collected, and;</li>
-      <li>that you know who to ask for more information, and;</li>
-      <li>that your decision is voluntary</li>
-    </ol>
-
-    <p>Thank you!</p>
-  </section>
 </div>
 
 <div class="print-area js-print-area" id="consent-form">
