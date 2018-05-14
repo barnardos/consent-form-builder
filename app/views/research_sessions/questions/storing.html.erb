@@ -1,43 +1,28 @@
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Storing</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <div class="reactive-container">
-      <div class="reactive-container__form">
-        <%= form.radio_group_vertical \
-            :shared_with,
-            SharedWith::NAME_VALUES,
-            {
-              autofocus_first_item: true,
-              input: {
-                'data-previewed-by' => 'StoringPreviews'
-              }
-            },
-            legend: t('helpers.legend.research_session.shared_with')
-        %>
+<%= c('Step') do %>
+  <%= c('Title', text: 'Storing') %>
 
-        <%= form.labelled_text_field \
-            :shared_duration,
-            label_options: {
-              hint: t('helpers.hint.research_session.shared_duration')
-            },
-            text_options: {
-              placeholder: t('helpers.placeholder.research_session.shared_duration'),
-              'data-previewed-by' => 'StoringPreviews'
-            }
-        %>
-      </div>
-      <div class="reactive-container__preview">
-        <%#
-          react_component(
-            'StoringPreviews',
-            current_step_params.merge(
-              shared_title: 'Will anyone know what I say in the discussion?'
-            )
-          )
-        %>
-      </div>
-    </div>
-    <%= render 'button_bar' %>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
+
+  <%= c('Form', action: wizard_path, patch: true) do %>
+    <%= c('OneOfManyChoiceControl',
+      id: 'research_session[shared_with][]',
+      collection: "research_session[#{:shared_with}][]",
+      choices: SharedWith::NAME_VALUES,
+      choices_selected: @research_session.shared_with,
+      legend: 'How will the information recorded in this session be stored and processed? Identifiable information will be:',
+      type: ' ',
+      errored: @research_session.errors['shared_with'].present?,
+      validation: @research_session.errors['shared_with'][0]
+    ) %>
+    <%= c('SinglelineTextControl',
+      id: 'research_session[shared_duration]',
+      name: 'shared_duration',
+      value: @research_session.shared_duration,
+      label: t('research_session_attr_labels.shared_duration'),
+      size: 36,
+      errored: @research_session.errors['shared_duration'].present?,
+      validation: @research_session.errors['shared_duration'][0]
+    ) %>
+    <%= c('Submit', text: 'Continue') %>
   <% end %>
-</div>
+<% end %>
