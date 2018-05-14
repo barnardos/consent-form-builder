@@ -8,6 +8,7 @@ import "components/HeadingOne";
 import "components/Layout";
 import "components/Lede";
 import "components/OfManyChoiceControl";
+import "components/OneOfManyChoiceControl";
 import "components/OptionalField";
 import "components/Paragraph";
 import "components/SinglelineTextControl";
