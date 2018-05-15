@@ -5,7 +5,7 @@
     <% if validation.present? %>
       <p class="OfManyChoiceControl-validation">
         <strong class="OfManyChoiceControl-validationInner">
-          <%= @research_session.errors.full_message('methodologies', validation) %>
+          <%= @research_session.errors.full_message(name, validation) %>
         </strong>
       </p>
     <% end %>
@@ -17,7 +17,7 @@
             id: "research_session[#{key}]",
             value: key,
             label: value.capitalize,
-            type: 'multi',
+            type: choiceType,
             checked: (choices_selected.include?("#{key}") if choices_selected.present?)
           ) %>
         </div>
