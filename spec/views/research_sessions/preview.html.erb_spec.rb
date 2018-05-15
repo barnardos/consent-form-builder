@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xdescribe 'research_sessions/preview' do
+describe 'research_sessions/preview' do
   let(:extra_attrs)     { {} }
   let(:able_to_consent) { false }
 
@@ -17,7 +17,7 @@ xdescribe 'research_sessions/preview' do
 
   before do
     assign(:research_session, presenter)
-    stub_template 'research_sessions/_progress' => '<%= NOT RENDERED %>'
+    view.lookup_context.view_paths.unshift 'frontend/'
     render
   end
   context 'no date or duration is given' do

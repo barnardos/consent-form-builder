@@ -1,3 +1,377 @@
+<% ct = "preview.#{@research_session.able_to_consent_key}" %>
+
+<%= c('Preview') do %>
+  <%= c('Title', text: t('preview.title')) %>
+
+  <%= c('HeadingOne', text: t("#{ct}.about_this_research_project.heading")) %>
+  <%= c('Lede', text: t("#{ct}.about_this_research_project.lede")) %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.about_taking_part.heading")) %>
+    <% t("#{ct}.about_taking_part.paragraphs").each do |text| %>
+      <%=
+        c('Paragraph') do
+          text
+        end
+      %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.why_we_are_doing_research.heading")) %>
+    <% t("#{ct}.why_we_are_doing_research.paragraphs").each_with_index do |text, index| %>
+      <%=
+        c('Paragraph') do
+          if index === 0
+            raw text % [
+              c(
+                'Output',
+                text: @research_session.topic,
+                field: 'topic',
+                url: edit_link_for(:topic)
+              ),
+              c(
+                'Output',
+                text: @research_session.purpose,
+                field: 'purpose',
+                url: edit_link_for(:purpose)
+              )
+            ]
+          else
+            text
+          end
+        end
+      %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.what_happens_in_this_research_session.heading")) %>
+
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[0] % [
+        c(
+          'Output',
+          text: @research_session.researcher_name,
+          field: 'researcher_name',
+          url: edit_link_for(:researcher_name)
+        ),
+        c(
+          'Output',
+          text: @research_session.researcher_job_title,
+          field: 'researcher_job_title',
+          url: edit_link_for(:researcher_job_title)
+        )
+      ] %>
+    <% end %>
+
+    <%= c('UnorderedList') do %>
+      <% @research_session.methodologies.each do |methodology| %>
+        <%
+          methodology_text =
+            methodology === 'other' ?
+              @research_session.other_recording_method
+              :
+              t("#{ct}.what_happens_in_this_research_session.methodologies.#{methodology}")
+        %>
+        <%= c('ListItem') do %>
+          <%= c(
+            'Output',
+            text: methodology_text,
+            field: 'methodologies',
+            url: edit_link_for(:methodologies)
+          ) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.what_happens_in_this_research_session.paragraphs")[1] %>
+    <% end %>
+
+    <%= c('UnorderedList') do %>
+      <% @research_session.recording_methods.each do |recording_method| %>
+        <%
+          recording_text =
+            recording_method === 'other' ?
+              @research_session.other_recording_method
+              :
+              t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}")
+        %>
+        <%= c('ListItem') do %>
+          <%= c(
+            'Output',
+            text: recording_text,
+            field: 'recording_methods',
+            url: edit_link_for(:recording_methods)
+          ) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[2] % [
+        c(
+          'Output',
+          text: @research_session.researcher_name,
+          field: 'researcher_name',
+          url: edit_link_for(:researcher_name)
+        )
+      ] %>
+    <% end %>
+  <% end %>
+
+  <% if @research_session.incentives_enabled ||
+        @research_session.where_when_enabled ||
+        @research_session.expenses_enabled %>
+    <%= c('PreviewSection') do %>
+      <%= c('HeadingOne', text: t("#{ct}.session_details.heading")) %>
+
+      <% if @research_session.where_when_enabled %>
+        <% [:when_text, :location, :duration].each do |field| %>
+          <% if @research_session["#{field}"] %>
+            <%= c('Paragraph') do %>
+              <%= raw t("#{ct}.session_details.#{field}") % [
+                c(
+                  'Output',
+                  text: @research_session["#{field}"],
+                  field: field,
+                  url: edit_link_for(field)
+                )
+              ] %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.incentives_enabled %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.session_details.incentives_intro") %>
+        <% end %>
+
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.payment_type.#{@research_session.payment_type}") % [
+            c(
+              'Output',
+              text: number_to_currency(@research_session.incentive_value),
+              field: 'incentive_value',
+              url: edit_link_for(:incentive_value)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.where_when_enabled && @research_session.participant_equipment.present? %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.participant_equipment") % [
+            c(
+              'Output',
+              text: @research_session.participant_equipment,
+              field: 'participant_equipment',
+              url: edit_link_for(:participant_equipment)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.expenses_enabled %>
+        <%
+          expenses = [
+            :travel_expenses_limit,
+            :food_expenses_limit,
+            :other_expenses_limit
+          ]
+          .select { |expense_type| @research_session[expense_type].present? }
+          .map { |expense_type|
+            c(
+              'Output',
+              text: t("#{ct}.session_details.#{expense_type}") % number_to_currency(@research_session[expense_type]),
+              field: expense_type,
+              url: edit_link_for(expense_type)
+            )
+          }
+          .to_sentence
+        %>
+
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.expenses") % [expenses] %>
+        <% end %>
+
+        <% if @research_session.receipts_required %>
+          <%= c('Paragraph') do %>
+            <%= c(
+              'Output',
+              text: t("#{ct}.session_details.receipts_required"),
+              field: 'receipts_required',
+              url: edit_link_for(:receipts_required)
+            ) %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.where_when_enabled && @research_session.food_provided.present? %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.session_details.food_provided") % [
+              c(
+              'Output',
+              text: @research_session.food_provided,
+              field: 'food_provided',
+              url: edit_link_for(:food_provided)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.heading")) %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[0] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[1] % [
+        c(
+          'Output',
+          text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.shared_with.#{@research_session.shared_with}"),
+          field: 'shared_with',
+          url: edit_link_for(:shared_with)
+        )
+      ] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
+        c(
+          'Output',
+          text: @research_session.shared_duration,
+          field: 'shared_duration',
+          url: edit_link_for(:shared_duration)
+        )
+      ] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[3] %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.sharing_information.heading")) %>
+    <% t("#{ct}.sharing_information.paragraphs").each do |text| %>
+      <%=
+        c('Paragraph') do
+          text
+        end
+      %>
+    <% end %>
+  <% end %>
+  
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.find_out_more.heading")) %>
+    <% 
+      [
+        :researcher_name, 
+        :researcher_email, 
+        :researcher_phone
+      ].each_with_index do |find_out_more_text, index| 
+    %>
+      <%= c('Paragraph') do %>
+        <%= raw t("#{ct}.find_out_more.paragraphs")[index] % [
+          c(
+            'Output',
+            text: @research_session[find_out_more_text],
+            field: find_out_more_text,
+            url: edit_link_for(find_out_more_text)
+          )
+        ] %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.concerns_and_complaints.heading")) %>
+    <% t("#{ct}.concerns_and_complaints.paragraphs").each do |text| %>
+      <%=
+        c('Paragraph') do
+          text
+        end
+      %>
+    <% end %>
+  <% end %>
+  
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.decide_to_take_part.heading")) %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.decide_to_take_part.paragraphs")[0] %>
+    <% end %>
+    <%= c('OrderedList') do %>
+      <% t("#{ct}.decide_to_take_part.items").each do |item| %>
+        <%=
+          c('ListItem') do
+            item
+          end
+        %>
+      <% end %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.decide_to_take_part.paragraphs")[2] %>
+    <% end %>
+  <% end %>
+
+  <%= c('PreviewSection') do %>
+    <%= c('HeadingOne', text: t("#{ct}.consent_form.heading")) %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.consent_form.paragraphs")[0] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.consent_form.paragraphs")[1] %>
+    <% end %>
+    <%= c('OrderedList') do %>
+      <% 
+        recording_methods = 
+          @research_session.recording_methods
+            .map { |recording_method| 
+              if recording_method === 'other'
+                c(
+                  'Output',
+                  text: @research_session.other_recording_method,
+                  field: 'other_recording_method',
+                  url: edit_link_for(:other_recording_method)
+                )
+              else
+                c(
+                  'Output',
+                  text:  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}"),
+                  field: 'recording_methods',
+                  url: edit_link_for(:recording_methods)
+                )
+              end
+            }
+      %>
+      <% t("#{ct}.consent_form.items").each_with_index do |item, index| %>
+        <% if index === 2 %>
+          <%=
+            c('ListItem') do
+              raw t("#{ct}.consent_form.items")[index] % [
+                recording_methods.to_sentence
+              ]
+            end
+          %>
+        <% else %>
+          <%=
+            c('ListItem') do
+              item
+            end
+          %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= t("#{ct}.consent_form.paragraphs")[3] %>
+    <% end %>
+  <% end %>
+  <%= c('WritingFields', fields: t("#{ct}.consent_form.fields")) %>
+<% end %>
+
 <div class="preview-header screen-only">
   <form class="print-section js-print-section" action="#">
     <label for="area-to-print" class="selectfield">
@@ -10,8 +384,6 @@
     <button type="submit" class="print-section__submit button">Print</button>
   </form>
 
-  <h1 class="page-heading">Research session preview</h1>
-
   <% if @research_session.able_to_consent? %>
     <p>Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</p>
     <p><a href="?able-to-consent=no">Show info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</a></p>
@@ -21,256 +393,4 @@
     <p>Showing info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</p>
     <p><a href="?able-to-consent=yes">Show info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</a></p>
   <% end %>
-</div>
-
-<div class="print-area js-print-area" id="info-sheets">
-  <section>
-    <h2>About this research project</h2>
-    <p class="super-text">This information sheet will tell you more about the
-      research so that you can decide whether or not <%= you_or_your_child %> would like to take part.</p>
-  </section>
-
-  <section>
-    <h3 id="about-taking-part">About taking part</h3>
-    <p>
-      <%= you_or_your_child.capitalize %> <%= @research_session.unable_to_consent? ? 'does' : 'do' %>
-      not have to take part in this session. It is your decision<%= ' as the parent/carer' if @research_session.unable_to_consent? %>.
-    </p>
-    <p>
-      We will also ask <%= you_or_your_child %> if <%= you_or_they %> want to take
-      part before the session.
-    </p>
-    <p>
-      Don’t worry! If you do not want <%= 'the child in your care' if @research_session.unable_to_consent? %>
-      to take part it will not affect the service <%= you_or_they %> receive.
-    </p>
-    <p>
-      <%= you_or_your_child.capitalize %> can change <%= your_or_their %> mind at any point for any
-      reason by letting the researcher know <%= you_or_they %> want to stop.
-    </p>
-  </section>
-  
-  <section>
-    <%# react_component(
-        'TopicPurposePreviews',
-        final_preview_params(:topic),
-        {
-          prerender: true
-        }
-      )
-    %>
-
-    <p>
-      It is important that we test the current and future tools and services that
-      we are developing with people like <%= you_or_your_child %> so that we can make them as good as
-      possible.
-    </p>
-  </section>
-
-  <section>
-    <h3 id="what">What happens in this research session?</h3>
-    <%#
-      react_component(
-        'Shared/TakePartIn',
-        final_preview_params(:researcher).merge({
-          you_or_your_child: you_or_your_child
-        }),
-        { prerender: true }
-      )
-    %>
-    <%#
-      react_component(
-        'Shared/WeWillRecordBy',
-        final_preview_params(:methodologies),
-        { prerender: true }
-      )
-    %>
-    <%#
-      react_component(
-        'Shared/WhichWeWillRecordUsingList', final_preview_params(:recording),
-        { prerender: true }
-      )
-    %>
-    <%#
-      react_component(
-        'Shared/AnotherResearcherSentence',
-        final_preview_params(:researcher),
-        { prerender: true }
-      )
-    %>
-  </section>
-
-  <% if @research_session.incentives_enabled ||
-        @research_session.where_when_enabled ||
-        @research_session.expenses_enabled %>
-    <section>
-      <h3 id="session">Session details</h3>
-
-      <%#
-        react_component(
-          'Shared/SessionInformation',
-          final_preview_params(:where_when),
-          { prerender: true }
-        )
-      %>
-
-      <% if @research_session.incentives_enabled %>
-        <%#
-          react_component(
-            'Shared/Incentives',
-            final_preview_params(:incentives).merge({
-              you_or_your_child: you_or_your_child,
-              your_or_your_childs: your_or_your_childs.capitalize,
-              you_or_they: you_or_they
-              }),
-            { prerender: true }
-          )
-        %>
-      <% end %>
-
-      <%#
-        react_component(
-          'Shared/ParticipantEquipment',
-          final_preview_params(:where_when).merge({
-            you_or_your_child: you_or_your_child.capitalize
-            }),
-          { prerender: true }
-        )
-      %>
-
-      <% if @research_session.expenses_enabled %>
-        <%#
-          react_component(
-            'Shared/Expenses',
-            final_preview_params(:expenses),
-            { prerender: true }
-          )
-        %>
-      <% end %>
-
-      <%#
-        react_component(
-          'Shared/Refreshments',
-          final_preview_params(:where_when),
-          { prerender: true }
-        )
-      %>
-
-    </section>
-  <% end %>
-
-  <%#
-    react_component(
-      'Shared/WillAnyoneKnowWhatISayInTheDiscussion',
-      final_preview_params(:storing).merge(
-        shared_title: "Will anyone know what #{i_or_they} say in the discussion?",
-        you_or_your_child: you_or_your_child,
-        say_or_says: say_or_says
-      ),
-      { prerender: true }
-    )
-  %>
-
-  <section>
-    <h3 id="sharing-information">Sharing information</h3>
-    <p>
-      We may have to share information about <%= you_or_your_child %> without
-      your consent if we think <%= you_or_they %> or someone else is at risk
-      of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
-    </p>
-  </section>
-
-  <%#
-    react_component(
-      'Shared/FindOutMore',
-      final_preview_params(:researcher), { prerender: true }
-    )
-  %>
-
-  <section>
-    <h3 id="concerns">Concerns and complaints</h3>
-
-    <p>If you have any concerns or a complaint, or would like to have your data deleted please contact:
-
-    <dl class="definition-list">
-      <div>
-        <dt class="definition-list__term">Telephone:</dt>
-        <dd>+442084987869</dd>
-      </div>
-      <div>
-        <dt class="definition-list__term">Email:</dt>
-        <dd><%= mail_to 'jason.caplin@barnardos.org.uk' %></dd>
-      </div>
-    </dl>
-  </section>
-
-  <section>
-    <h3 id="decide">
-      Decide if you want<%=
-        ' the child in your care' if @research_session.unable_to_consent?
-      %> to take part</h3>
-
-    <p>If you are happy<%=
-      ' for the child in your care' if @research_session.unable_to_consent?
-      %> to take part, we will ask you to sign a consent form. This will ask you to confirm:</p>
-
-    <ol class="numbered-list">
-      <li>that you are happy with the information you have received, and;</li>
-      <li>that you understand what we are going to do with the research recordings collected, and;</li>
-      <li>that you know who to ask for more information, and;</li>
-      <li>that your decision is voluntary</li>
-    </ol>
-
-    <p>Thank you!</p>
-  </section>
-</div>
-
-<div class="print-area js-print-area" id="consent-form">
-  <h2 class="page-heading">Consent form</h2>
-
-  <p>It is important to us that your consent
-    <%= 'for your child' if @research_session.unable_to_consent? %> to
-    take part in this research is freely given and fully informed.</p>
-  <p>Please review the following points and indicate your agreement to the
-    statements underneath.</p>
-
-  <ul class="bullet-point-list">
-    <li>I have read and understood the Information
-      Sheet for this research project and have had an opportunity to ask
-      questions.
-    </li>
-    <li>I understand that my <%='childʼs' if @research_session.unable_to_consent? %>
-      participation is voluntary and that I am free to withdraw them at any time
-      without giving any reason.
-    </li>
-    <%#
-      react_component(
-        'Shared/WhichWeWillRecordUsingSentence',
-        final_preview_params(:recording),
-        { prerender: true }
-      )
-    %>
-
-    <li>I understand that this data will be stored securely and
-      covered by the Data Protection Act.
-    </li>
-  </ul>
-
-  <p>
-    I agree to my<%= ' childʼs' if @research_session.unable_to_consent? %>
-    participation in this research and understand that
-    my<%= ' childʼs' if @research_session.unable_to_consent? %> data will be used as explained above.
-  </p>
-
-  <%# Note: no whitespace between divs important here %>
-  <div class="writing-field name">
-    <label for="name">Name</label>
-    <input disabled name="name" class="space-for-writing">
-  </div><div class="writing-field signature">
-    <label for="signature">Signature</label>
-    <input disabled name="signature" class="space-for-writing">
-  </div><div class="writing-field date">
-    <label for="date">Date</label>
-    <input disabled name="date" class="space-for-writing">
-  </div>
 </div>
