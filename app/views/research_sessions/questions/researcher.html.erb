@@ -24,6 +24,7 @@
       errored: @research_session.errors['researcher_job_title'].present?,
       validation: @research_session.errors['researcher_job_title'][0]
     ) %>
+
     <%= c('SinglelineTextControl',
       id: 'research_session[researcher_name]',
       name: 'researcher_name',
@@ -53,5 +54,54 @@
     ) %>
     
     <%= render partial: 'submit_step' %>
+  <% end %>
+
+  <%= c('LivePreview') do %>
+    <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
+    <%= c('Paragraph') do %>
+      <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
+        c(
+          'FieldPreview',
+          text: @research_session.researcher_name,
+          listens_to: '[name="research_session[researcher_name]"]'
+        ),
+        c(
+          'FieldPreview',
+          text: @research_session.researcher_job_title,
+          listens_to: '[name="research_session[researcher_job_title]"]'
+        )
+      ] %>
+    <% end %>
+  <% end %>
+
+  <%= c('LivePreview') do %>
+    <%= c('HeadingOne', text: t('preview.able_to_consent.find_out_more.heading')) %>
+      <%= c('Paragraph') do %>
+        <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[0] % [
+          c(
+            'FieldPreview',
+            text: @research_session.researcher_name,
+            listens_to: '[name="research_session[researcher_name]"]'
+          )
+        ] %>
+      <% end %>
+      <%= c('Paragraph') do %>
+        <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[1] % [
+          c(
+            'FieldPreview',
+            text: @research_session.researcher_email,
+            listens_to: '[name="research_session[researcher_email]"]'
+          )
+        ] %>
+      <% end %>
+      <%= c('Paragraph') do %>
+        <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[2] % [
+          c(
+            'FieldPreview',
+            text: @research_session.researcher_phone,
+            listens_to: '[name="research_session[researcher_phone]"]'
+          )
+        ] %>
+      <% end %>
   <% end %>
 <% end %>

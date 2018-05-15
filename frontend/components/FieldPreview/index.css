@@ -1,0 +1,10 @@
+/** @define FieldPreview; */
+
+.FieldPreview {
+  box-shadow: 0 0.25rem #4db8c3;
+  display: inline-block;
+}
+
+.FieldPreview:empty::before {
+  content: "\2026";
+}
