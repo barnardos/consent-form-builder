@@ -32,6 +32,7 @@
       "border-radius",
       "box-shadow",
       "box-sizing",
+      "content",
       "color",
       "display",
       "font-family",
@@ -66,7 +67,14 @@
     "selector-max-universal": 0,
     "selector-no-vendor-prefix": true,
     "selector-pseudo-class-no-unknown": null,
-    "selector-pseudo-class-whitelist": ["active", "first-child", "hover", "not"],
+    "selector-pseudo-class-whitelist": [
+      "active",
+      "before",
+      "empty",
+      "first-child",
+      "hover",
+      "not"
+    ],
     "unit-no-unknown": null,
     "unit-whitelist": ["%", "px", "rem"],
     "value-no-vendor-prefix": true

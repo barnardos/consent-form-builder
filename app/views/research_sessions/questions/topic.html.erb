@@ -30,4 +30,24 @@
 
     <%= render partial: 'submit_step' %>
   <% end %>
+
+  <%= c('LivePreview') do %>
+    <%= c('HeadingOne', text: t('preview.able_to_consent.why_we_are_doing_research.heading')) %>
+    <%= c('Paragraph') do %>
+      <%=
+        raw t('preview.able_to_consent.why_we_are_doing_research.paragraphs')[0] % [
+          c(
+            'FieldPreview',
+            text: @research_session.topic,
+            listens_to: '[name="research_session[topic]"]'
+          ),
+          c(
+            'FieldPreview',
+            text: @research_session.purpose,
+            listens_to: '[name="research_session[purpose]"]'
+          )
+        ]
+      %>
+    <% end %>
+  <% end %>
 <% end %>
