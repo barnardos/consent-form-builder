@@ -1,0 +1,11 @@
+/** @define ChoicePreview; */
+
+.ChoicePreview {
+  display: none;
+  font: 300 1rem/1.5rem system-ui;
+  margin-left: 0.25rem;
+}
+
+.ChoicePreview--isActive {
+  display: list-item;
+}

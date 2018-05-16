@@ -1,6 +1,7 @@
 import "init";
 
 import "components/ChoiceControl";
+import "components/ChoicePreview";
 import "components/ErrorSummary";
 import "components/FieldPreview";
 import "components/Footer";
