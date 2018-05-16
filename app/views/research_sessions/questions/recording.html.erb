@@ -32,4 +32,32 @@
 
     <%= render partial: 'submit_step' %>
   <% end %>
+
+  <%= c('LivePreview') do %>
+    <%= c('HeadingOne', text: t("preview.able_to_consent.what_happens_in_this_research_session.heading")) %>
+
+    <%= c('Paragraph') do %>
+      &hellip;
+    <% end %>
+
+    <%= c('Paragraph') do %>
+      <%= t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[1] %>
+    <% end %>
+
+    <%= c('UnorderedList') do %>
+      <% t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods').each do |key, value| %>
+        <%= c('ChoicePreview', controlled_by: "[id=\"research_session[#{key}]\"]", isActive: (@research_session.recording_methods.include?("#{key}") if @research_session.recording_methods.present?)) do %>
+          <% if key != :other %>
+            <%= value %>
+          <% else %>
+            <%= c(
+              'FieldPreview',
+              text: @research_session.other_recording_method,
+              listens_to: '[name="research_session[other_recording_method]"]'
+            ) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
