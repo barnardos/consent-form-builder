@@ -1,6 +1,7 @@
 import "init";
 
 import "components/ChoiceControl";
+import "components/ChoiceControlledContent";
 import "components/ChoicePreview";
 import "components/ErrorSummary";
 import "components/FieldPreview";
@@ -13,7 +14,6 @@ import "components/Lede";
 import "components/ListItem";
 import "components/LivePreview";
 import "components/OfManyChoiceControl";
-import "components/OptionalField";
 import "components/OrderedList";
 import "components/Output";
 import "components/Paragraph";

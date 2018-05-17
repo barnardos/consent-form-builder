@@ -16,7 +16,7 @@
       validation: @research_session.errors['recording_methods'][0]
     ) %>
 
-    <%= c('OptionalField',
+    <%= c('ChoiceControlledContent',
       isActive: (@research_session.recording_methods.include?("other") if @research_session.recording_methods.present?),
       controlled_by: '[id="research_session[other]"]') do %>
       <%= c('SinglelineTextControl',

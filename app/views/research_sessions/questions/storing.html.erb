@@ -28,6 +28,32 @@
 
     <%= render partial: 'submit_step' %>
   <% end %>
+
+  <%= c('LivePreview') do %>
+    <%= c('HeadingOne', text: t("preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.heading")) %>
+    <%= c('Paragraph') do %>
+      &hellip;
+    <% end %>
+    <% t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.shared_with').each do |key, value| %>
+      <%= c('ChoiceControlledContent', controlled_by: "[id=\"research_session[#{key}]\"]", isActive: @research_session.shared_with == "#{key}") do %>
+        <%= c('Paragraph') do %>
+          <%= value %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      <%= raw t("preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
+        c(
+          'FieldPreview',
+          text: @research_session.shared_duration,
+          listens_to: '[name="research_session[shared_duration]"]'
+        )
+      ] %>
+    <% end %>
+    <%= c('Paragraph') do %>
+      &hellip;
+    <% end %>
+  <% end %>
 <% end %>
 
 
