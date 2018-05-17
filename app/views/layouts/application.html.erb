@@ -18,40 +18,9 @@
 
 <body>
 
-<!-- <div class="visually-hidden">
-  <a href="#content">Skip to main content</a>
-</div> -->
-
-<!-- <header role="banner" id="global-header">
-  <div id="global-header__logo">
-  </div>
-  <div id="global-header__menu"></div>
-</header> -->
-
-<!-- <nav class="global-header-bar">
-  <ul class="research-session-commands screen-only">
-    <% unless already_creating_session? %>
-      <li class="research-session-commands__item">
-        <%=
-          link_to 'New', new_research_session_path,
-                  class: 'button button--add button--small button--green button--no-margin'
-        %>
-      </li>
-    <% end %>
-    <% if @research_session&.previewable?  %>
-      <li class="research-session-commands__item">
-        <%= create_a_copy_link(@research_session) %>
-      </li>
-    <% end %>
-    <% if @research_session&.name  %>
-      <li class="research-session-commands__item">
-        <%= render 'shared/share' %>
-      </li>
-    <% end %>
-  </ul>
-</nav> -->
-
 <%= c('Layout') do %>
+  <%= c('Header') %>
+
   <%= yield %>
 
   <%= c('Footer') do %>
@@ -60,8 +29,6 @@
     <% end %>
   <% end %>
 <% end %>
-
-
 
 <script>
   window.googleAnalyticsCode = '<%= ENV['GOOGLE_ANALYTICS_CODE'] %>';
