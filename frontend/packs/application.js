@@ -4,6 +4,7 @@ import "components/ChoiceControl";
 import "components/ErrorSummary";
 import "components/Footer";
 import "components/Form";
+import "components/Header";
 import "components/HeadingOne";
 import "components/Layout";
 import "components/Lede";
