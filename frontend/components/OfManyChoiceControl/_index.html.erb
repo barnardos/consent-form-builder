@@ -1,5 +1,5 @@
 <div class="OfManyChoiceControl <%= 'OfManyChoiceControl--errored' if errored %>">
-  <fieldset class="OfManyChoiceControl-fieldset" id="<%= id %>">
+  <fieldset class="OfManyChoiceControl-fieldset" id="<%= id %>" data-of-many-choice-control>
     <legend class="OfManyChoiceControl-legend"><%= legend %></legend>
     <input type="hidden" name="<%= collection %>" value="">
     <% if validation.present? %>

@@ -1,0 +1,9 @@
+/** @define ChoiceControlledContent; */
+
+.ChoiceControlledContent {
+  display: none;
+}
+
+.ChoiceControlledContent--active {
+  display: block;
+}
