@@ -1,0 +1,6 @@
+<% if params['edit-preview'] == '1' %>
+  <%= hidden_field_tag 'edit-preview', '1' %>
+  <%= c('Submit', text: t('.save_and_return')) %>
+<% else %>
+  <%= c('Submit', text: t('.continue')) %>
+<% end %>

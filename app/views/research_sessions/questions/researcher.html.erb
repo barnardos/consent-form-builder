@@ -51,6 +51,7 @@
       errored: @research_session.errors['researcher_email'].present?,
       validation: @research_session.errors['researcher_email'][0]
     ) %>
-    <%= c('Submit', text: 'Continue') %>
+    
+    <%= render partial: 'submit_step' %>
   <% end %>
 <% end %>

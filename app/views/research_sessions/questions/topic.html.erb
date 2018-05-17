@@ -28,6 +28,6 @@
       validation: @research_session.errors['purpose'][0]
     ) %>
 
-    <%= c('Submit', text: 'Continue') %>
+    <%= render partial: 'submit_step' %>
   <% end %>
 <% end %>

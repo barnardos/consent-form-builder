@@ -109,6 +109,12 @@ en:
         precision: 2
         format: '%u%n'
 
+  research_sessions:
+    questions:
+      submit_step:
+        continue: 'Continue'
+        save_and_return: 'Save and return'
+
   preview:
     title: Research session preview
     able_to_consent:
