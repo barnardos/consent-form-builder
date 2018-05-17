@@ -6,11 +6,12 @@
   <%= c('Form', action: wizard_path, patch: true) do %>
     <%= c('OfManyChoiceControl',
       id: 'research_session[recording_methods][]',
+      name:'recording_methods',
       collection: "research_session[#{:recording_methods}][]",
       choices: RecordingMethods::NAME_VALUES,
       choices_selected: @research_session.recording_methods,
       legend: 'How will you be recording information?',
-      type: 'multi',
+      choiceType: 'multi',
       errored: @research_session.errors['recording_methods'].present?,
       validation: @research_session.errors['recording_methods'][0]
     ) %>
