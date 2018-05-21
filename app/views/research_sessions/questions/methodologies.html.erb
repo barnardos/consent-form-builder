@@ -11,13 +11,13 @@
       choices: Methodologies::NAME_VALUES,
       choices_selected: @research_session.methodologies,
       legend: 'How will you be gathering information?',
-      choiceType: 'multi',
+      choice_type: 'multi',
       errored: @research_session.errors['methodologies'].present?,
       validation: @research_session.errors['methodologies'][0]
     ) %>
 
     <%= c('ChoiceControlledContent',
-      isActive: (@research_session.methodologies.include?("other") if @research_session.methodologies.present?),
+      is_active: (@research_session.methodologies.present? && @research_session.methodologies.include?("other")),
       controlled_by: '[id="research_session[other]"]') do %>
       <%= c('SinglelineTextControl',
         id: 'research_session[other_methodology]',
@@ -55,7 +55,13 @@
 
     <%= c('UnorderedList') do %>
       <% t('preview.able_to_consent.what_happens_in_this_research_session.methodologies').each do |key, value| %>
-        <%= c('ChoicePreview', controlled_by: "[id=\"research_session[#{key}]\"]", isActive: (@research_session.methodologies.include?("#{key}") if @research_session.methodologies.present?)) do %>
+        <%= c(
+          'ChoicePreview',
+          controlled_by: "[id='research_session[#{key.to_s}]']",
+          is_active: (
+            @research_session.methodologies.present? && @research_session.methodologies.include?(key.to_s)
+          )
+        ) do %>
           <% if key != :other %>
             <%= value %>
           <% else %>
