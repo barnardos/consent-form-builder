@@ -26,7 +26,7 @@
         validation: @research_session.errors['shared_duration'][0]
       ) %>
 
-    <%= c('Submit', text: 'Continue') %>
+    <%= render partial: 'submit_step' %>
   <% end %>
 <% end %>
 
