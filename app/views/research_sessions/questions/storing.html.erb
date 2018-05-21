@@ -11,7 +11,7 @@
       choices: SharedWith::NAME_VALUES,
       choices_selected: @research_session.shared_with,
       legend: 'How will the information recorded in this session be stored and processed? Identifiable information will be:',
-      choiceType: 'single',
+      choice_type: 'single',
       errored: @research_session.errors['shared_with'].present?,
       validation: @research_session.errors['shared_with'][0]
     ) %>
@@ -35,7 +35,7 @@
       &hellip;
     <% end %>
     <% t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.shared_with').each do |key, value| %>
-      <%= c('ChoiceControlledContent', controlled_by: "[id=\"research_session[#{key}]\"]", isActive: @research_session.shared_with == "#{key}") do %>
+      <%= c('ChoiceControlledContent', controlled_by: "[id=\"research_session[#{key.to_s}]\"]", is_active: @research_session.shared_with == key.to_s) do %>
         <%= c('Paragraph') do %>
           <%= value %>
         <% end %>

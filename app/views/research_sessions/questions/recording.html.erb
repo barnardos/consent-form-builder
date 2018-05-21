@@ -11,13 +11,13 @@
       choices: RecordingMethods::NAME_VALUES,
       choices_selected: @research_session.recording_methods,
       legend: 'How will you be recording information?',
-      choiceType: 'multi',
+      choice_type: 'multi',
       errored: @research_session.errors['recording_methods'].present?,
       validation: @research_session.errors['recording_methods'][0]
     ) %>
 
     <%= c('ChoiceControlledContent',
-      isActive: (@research_session.recording_methods.include?("other") if @research_session.recording_methods.present?),
+      is_active: (@research_session.recording_methods.present? && @research_session.recording_methods.include?("other")),
       controlled_by: '[id="research_session[other]"]') do %>
       <%= c('SinglelineTextControl',
         id: 'research_session[other_recording_method]',
@@ -46,7 +46,13 @@
 
     <%= c('UnorderedList') do %>
       <% t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods').each do |key, value| %>
-        <%= c('ChoicePreview', controlled_by: "[id=\"research_session[#{key}]\"]", isActive: (@research_session.recording_methods.include?("#{key}") if @research_session.recording_methods.present?)) do %>
+        <%= c(
+          'ChoicePreview',
+          controlled_by: "[id='research_session[#{key.to_s}]']",
+          is_active: (
+            @research_session.recording_methods.present? && @research_session.recording_methods.include?(key.to_s)
+          )
+        ) do %>
           <% if key != :other %>
             <%= value %>
           <% else %>
