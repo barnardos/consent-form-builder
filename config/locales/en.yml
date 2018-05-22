@@ -117,7 +117,14 @@ en:
 
   preview:
     title: Research session preview
+    print:
+      all: Print information sheet and consent form
+      information_sheet: Print information sheet
+      consent_form: Print consent form
     able_to_consent:
+      consent_control: 
+        - Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves. 
+        - <a href="?able-to-consent=no">Show info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</a>
       about_this_research_project:
         heading: About this research project
         lede: This information sheet will tell you more about the research so that you can decide whether or not you would like to take part.
@@ -238,6 +245,9 @@ en:
 
 
     unable_to_consent:
+      consent_control: 
+        - Showing info sheet and consent form for respondents who <strong>can't</strong> give consent themselves. 
+        - <a href="?able-to-consent=yes">Show info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</a>
       about_this_research_project:
         heading: About this research project
         lede: This information sheet will tell you more about the research so that you can decide whether or not your child/the child in your care would like to take part.
