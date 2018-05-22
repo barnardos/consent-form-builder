@@ -1,3 +1,27 @@
+<%= c('Step') do %>
+  <%= c('Title', text: 'When & when') %>
+
+  <%= c('Form', action: wizard_path, patch: true) do %>
+    <%= c('OfManyChoiceControl',
+      id: 'research_session[where_when_enabled]',
+      name:'where_when_enabled',
+      collection: "research_session[#{:where_when_enabled}]",
+      choices: { true: 'Yes', false: 'No' },
+      choices_selected: [@research_session.where_when_enabled.to_s],
+      legend: t('helpers.legend.research_session.where_when_enabled'),
+      choice_type: 'single',
+      errored: @research_session.errors['where_when_enabled'].present?,
+      validation: @research_session.errors['where_when_enabled'][0]
+    ) %>
+  <% end %>
+
+  <%= c('ChoiceControlledContent',
+      is_active: (@research_session.where_when_enabled.present? && [@research_session.where_when_enabled.to_s].include?('true')),
+      controlled_by: '[id="research_session[true]"]') do %>
+
+  <% end %>
+<% end %>
+
 <div class="main-content">
   <%= render 'shared/error_summary' %>
   <h1 class="page-heading">Where &amp; when</h1>
