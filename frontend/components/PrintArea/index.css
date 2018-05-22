@@ -1,0 +1,16 @@
+/** @define PrintArea; */
+
+.PrintArea {
+  display: grid;
+  grid-gap: 2rem;
+}
+
+@media print {
+  .PrintArea {
+    page-break-after: always;
+  }
+
+  .PrintArea--screenOnly {
+    display: none;
+  }
+}
