@@ -1,4 +1,5 @@
-inherit_from: .rubocop_todo.yml
+Rails:
+  Enabled: true
 
 AllCops:
   TargetRubyVersion: 2.4.1
@@ -13,6 +14,7 @@ AllCops:
     - bin/**/*
     - db/migrate/*
     - features/support/action_view.rb
+    - app/helpers/barnardos/action_view/form_helper.rb
 
 Metrics/LineLength:
   Max: 100
@@ -31,11 +33,17 @@ Metrics/BlockLength:
     - features/step_definitions/**/*
     - lib/tasks/**/*
 
+Metrics/LineLength:
+  Enabled: false
+
 Metrics/MethodLength:
   Max: 40
 
 Metrics/ModuleLength:
   Max: 200
+
+Metrics/ParameterLists:
+  Enabled: false
 
 Layout/EndOfLine:
   EnforcedStyle: lf
