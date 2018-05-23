@@ -64,4 +64,13 @@ html {
   }
 }
 
+@media print {
+  html {
+    filter: opacity(1);
+    /* stylelint-disable property-whitelist, property-no-vendor-prefix */
+    -webkit-print-color-adjust: exact;
+    /* stylelint-enable */
+  }
+}
+
 /* stylelint-enable */
