@@ -16,6 +16,10 @@ AllCops:
     - features/support/action_view.rb
     - app/helpers/barnardos/action_view/form_helper.rb
 
+Metrics/AbcSize:
+  Exclude:
+    - app/helpers/application_helper.rb
+
 Metrics/LineLength:
   Max: 100
   Exclude:
