@@ -9,10 +9,10 @@ module PreviewChecker
     researcher_path = research_session_question_path(
       StepCompletions::BULLYING_SLUG, 'researcher', 'edit-preview' => 1
     )
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @job_title)
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_name)
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_phone)
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_email)
+
+    [@job_title, @researcher_name, @researcher_phone, @researcher_email].each do |text|
+      expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: text)
+    end
   end
 
   def check_topic
@@ -44,10 +44,9 @@ module PreviewChecker
   end
 
   def check_where_when
-    expect(page).to have_tag('a.editable', text: @session_duration)
-    expect(page).to have_tag('a.editable', text: @session_location)
-    expect(page).to have_tag('a.editable', text: @held_on)
-    expect(page).to have_tag('a.editable', text: @what_to_bring)
+    [@session_duration, @session_location, @held_on, @what_to_bring].each do |text|
+      expect(page).to have_tag('a.editable', text: text)
+    end
   end
 
   def check_expenses

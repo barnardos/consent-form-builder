@@ -15,6 +15,7 @@ AllCops:
     - db/migrate/*
     - features/support/action_view.rb
     - app/helpers/barnardos/action_view/form_helper.rb
+    - lib/tasks/cucumber.rake
 
 Metrics/AbcSize:
   Exclude:
@@ -55,7 +56,7 @@ Layout/EndOfLine:
 Style/Documentation:
   Enabled: false
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     - 'Dangerfile'
 
@@ -67,9 +68,13 @@ Lint/UnreachableCode:
   Exclude:
     - 'Dangerfile'
 
-Style/PredicateName:
+Naming/PredicateName:
   Exclude:
     - 'spec/**/*'
 
 Style/DoubleNegation:
   Enabled: false
+
+Style/StructInheritance:
+  Exclude:
+    - 'spec/validators/has_at_least_one_validator_spec.rb'
