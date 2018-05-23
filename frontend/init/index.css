@@ -66,8 +66,10 @@ html {
 
 @media print {
   html {
-    -webkit-print-color-adjust: exact;
     filter: opacity(1);
+    /* stylelint-disable property-whitelist, property-no-vendor-prefix */
+    -webkit-print-color-adjust: exact;
+    /* stylelint-enable */
   }
 }
 
