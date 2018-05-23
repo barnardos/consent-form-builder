@@ -3,7 +3,7 @@
 class ResearchSessionsController < ApplicationController
   def new
     @research_session = ResearchSession.new
-    return unless params[:from_existing].present?
+    return if params[:from_existing].blank?
 
     existing_session = ResearchSession.find_by!(slug: params[:from_existing])
     @existing_session_id = existing_session.slug

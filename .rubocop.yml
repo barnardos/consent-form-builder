@@ -40,6 +40,9 @@ Metrics/ModuleLength:
 Layout/EndOfLine:
   EnforcedStyle: lf
 
+Style/Documentation:
+  Enabled: false
+
 Style/FileName:
   Exclude:
     - 'Dangerfile'
