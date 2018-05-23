@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ResearchSessions
   class QuestionsController < ApplicationController
     helper ResearchSessionsHelper
@@ -30,7 +32,7 @@ module ResearchSessions
       research_session_preview_path
     end
 
-  private
+    private
 
     def current_research_session
       ResearchSession.find_by(slug: params[:research_session_id])

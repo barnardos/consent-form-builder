@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 #
 # Usage:
@@ -18,13 +20,14 @@ class HasAtLeastOneValidator < ActiveModel::EachValidator
       return
     end
 
-    invalid_values_found = values.inject([]) do |found, value|
+    invalid_values_found = values.each_with_object([]) do |value, found|
       found << value.to_s.humanize(capitalize: false) unless valid_values.include?(value.to_sym)
-      found
     end
 
-    record.errors[attribute] << \
-      'has these invalid values: '\
-      "#{invalid_values_found.to_sentence}" if invalid_values_found.any?
+    if invalid_values_found.any?
+      record.errors[attribute] << \
+        'has these invalid values: '\
+        "#{invalid_values_found.to_sentence}"
+    end
   end
 end

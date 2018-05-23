@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentType
   NAME_VALUES = HashWithIndifferentAccess[{
     cash:    'Cash',

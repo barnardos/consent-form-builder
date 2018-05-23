@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 has_app_changes = git.modified_files.grep(%r{app/}).any? ||
                   git.modified_files.grep(%r{lib/}).any?
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecordingMethods
   NAME_VALUES = {
     voice:    'voice recording',
@@ -7,7 +9,7 @@ class RecordingMethods
     photo:    'photos',
     screen:   'screen recording',
     other:    'other'
-  }
+  }.freeze
 
   def self.allowed_values
     NAME_VALUES.keys

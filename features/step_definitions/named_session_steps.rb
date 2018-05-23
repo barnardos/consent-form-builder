@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 When(/^I create a session with (?:a|the same) name$/) do
   create_new_form
 end

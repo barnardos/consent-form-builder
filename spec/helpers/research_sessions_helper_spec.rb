@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe ResearchSessionsHelper, :type => :helper do
+RSpec.describe ResearchSessionsHelper, type: :helper do
   include RSpecHtmlMatchers
 
   describe '#edit_link_for' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResearchSessionsController < ApplicationController
   def new
     @research_session = ResearchSession.new
@@ -44,7 +46,8 @@ class ResearchSessionsController < ApplicationController
     )
   end
 
-private
+  private
+
   def research_session_slug
     params[:research_session_id] || params[:id]
   end

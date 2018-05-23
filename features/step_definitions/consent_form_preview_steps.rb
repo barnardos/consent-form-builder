@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Then(/^I should see the age-appropriate consent form preview$/) do
   expect(page).to have_content('my child')
   expect(page).to have_content('your child')

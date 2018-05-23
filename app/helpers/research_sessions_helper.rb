@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ResearchSessionsHelper
   def edit_link_for(attr)
     step_for_attr = ResearchSession::Steps.instance.attr_to_step(attr)

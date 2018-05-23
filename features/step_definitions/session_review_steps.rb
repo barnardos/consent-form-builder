@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 And(/^I should see confirmation that this is a preview$/) do
   expect(page).to have_content('Research session preview')
 end

@@ -1,4 +1,6 @@
-PRODUCTION_COMMIT_SHA = '267e26642e1f6abab769f01d8295643cb789f852'.freeze
+# frozen_string_literal: true
+
+PRODUCTION_COMMIT_SHA = '267e26642e1f6abab769f01d8295643cb789f852'
 DEVELOPMENT_COMMIT_SHA = `git rev-parse HEAD`.freeze
 
 Given(/^we are in production$/) do

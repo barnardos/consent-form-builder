@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe HasAtLeastOneValidator, type: :validator do
-  ALLOWABLE_INGREDIENTS = [:bacon, :eggs, :beans]
+  ALLOWABLE_INGREDIENTS = %i[bacon eggs beans].freeze
 
   class Breakfast < Struct.new(:ingredients)
     include ActiveModel::Validations
@@ -51,7 +53,7 @@ RSpec.describe HasAtLeastOneValidator, type: :validator do
   end
 
   context 'Our breakfast has valid ingredients' do
-    let(:ingredients) { [:bacon, :eggs] }
+    let(:ingredients) { %i[bacon eggs] }
 
     it { is_expected.to be_valid }
   end

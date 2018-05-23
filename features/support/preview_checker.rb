@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Check the content for the happy path where everything is
 # filled in

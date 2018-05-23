@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ResearchSessionPresenter do
@@ -67,17 +69,17 @@ RSpec.describe ResearchSessionPresenter do
     end
 
     context 'there are two recording methods' do
-      let(:recording_methods) { [:voice, :video] }
+      let(:recording_methods) { %i[voice video] }
       it { is_expected.to eql('voice recording and video recording') }
     end
 
     context 'there are three recording methods' do
-      let(:recording_methods) { [:voice, :video, :written] }
+      let(:recording_methods) { %i[voice video written] }
       it { is_expected.to eql('voice recording, video recording, and researcher’s written notes') }
     end
 
     context 'there are three recording methods and one is "other"' do
-      let(:recording_methods) { [:voice, :video, :other] }
+      let(:recording_methods) { %i[voice video other] }
       let(:other_recording_method) { 'comic books' }
       it { is_expected.to eql('voice recording, video recording, and comic books') }
     end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-  COMMIT_STEM = 'https://github.com/barnardos/consent-form-builder-rails/commit/'.freeze
+  COMMIT_STEM = 'https://github.com/barnardos/consent-form-builder-rails/commit/'
 
   def already_creating_session?
     current_page?(new_research_session_path) || current_page?(root_path)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 When(/^I provide full session details for every step$/) do
   create_new_form
 

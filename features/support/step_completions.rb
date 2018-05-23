@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module StepCompletions
-  BULLYING_NAME = ' Bullying in schools '.freeze
+  BULLYING_NAME = ' Bullying in schools '
   BULLYING_SLUG = BULLYING_NAME.strip.downcase.tr(' ', '-').freeze
 
   def create_new_form

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SharedWith
   NAME_VALUES = HashWithIndifferentAccess.new(
     anonymised: 'anonymised as we process it',

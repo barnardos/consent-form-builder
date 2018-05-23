@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ComponentGenerator < Rails::Generators::Base
   argument :component_name, required: true, desc: 'Component name, e.g: Breadcrumbs'
 
@@ -18,7 +20,7 @@ class ComponentGenerator < Rails::Generators::Base
     end
   end
 
-protected
+  protected
 
   def component_path
     "frontend/components/#{component_name}"

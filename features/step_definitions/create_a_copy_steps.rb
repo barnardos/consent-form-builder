@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^a session exists in a previewable state$/) do
   @existing_session = FactoryBot.create :research_session, :previewable
 end

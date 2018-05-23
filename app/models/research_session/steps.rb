@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'singleton'
 
 class ResearchSession
@@ -5,17 +7,17 @@ class ResearchSession
     include Singleton
 
     PARAMS = ActiveSupport::OrderedHash[{
-      researcher:    [:researcher_job_title, :researcher_name, :researcher_phone,
-                      :researcher_email],
-      topic:         [:topic, :purpose],
+      researcher:    %i[researcher_job_title researcher_name researcher_phone
+                        researcher_email],
+      topic:         %i[topic purpose],
       methodologies: [:other_methodology, methodologies: []],
       recording:     [:other_recording_method, recording_methods: []],
-      storing:       [:shared_with, :shared_duration],
-      where_when:    [:where_when_enabled, :when_text, :duration, :location, :participant_equipment,
-                      :food_provided],
-      expenses:      [:expenses_enabled, :travel_expenses_limit, :food_expenses_limit,
-                      :other_expenses_limit, :receipts_required],
-      incentives:    [:incentives_enabled, :payment_type, :incentive_value]
+      storing:       %i[shared_with shared_duration],
+      where_when:    %i[where_when_enabled when_text duration location participant_equipment
+                        food_provided],
+      expenses:      %i[expenses_enabled travel_expenses_limit food_expenses_limit
+                        other_expenses_limit receipts_required],
+      incentives:    %i[incentives_enabled payment_type incentive_value]
     }]
 
     def reached_step?(session, step)
@@ -56,7 +58,7 @@ class ResearchSession
       @attrs_to_steps.fetch(attr)
     end
 
-  private
+    private
 
     ##
     # A hash of step names as symbols to numeric indices, with age: 0, name: 1 etc

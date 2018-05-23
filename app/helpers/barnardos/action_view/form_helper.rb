@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Barnardos
   module ActionView
     module FormHelper
@@ -162,7 +164,7 @@ module Barnardos
         end
       end
 
-    private
+      private
 
       def wrapper_tag(object_name, method, options = {})
         options.reverse_merge!(tag: :div)

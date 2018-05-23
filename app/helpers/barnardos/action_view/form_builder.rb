@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Barnardos
   module ActionView
     class FormBuilder < ::ActionView::Helpers::FormBuilder
