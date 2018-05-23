@@ -17,7 +17,7 @@
     ) %>
 
     <%= c('ChoiceControlledContent',
-      is_active: (@research_session.methodologies.present? && @research_session.methodologies.include?("other")),
+      is_active: (@research_session.methodologies.present? && @research_session.methodologies.include?('other')),
       controlled_by: '[id="research_session[other]"]') do %>
       <%= c('SinglelineTextControl',
         id: 'research_session[other_methodology]',
@@ -34,10 +34,10 @@
   <% end %>
 
   <%= c('PreviewInformation') do %>
-    <%= c('HeadingOne', text: t("preview.able_to_consent.what_happens_in_this_research_session.heading")) %>
+    <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
 
     <%= c('Paragraph') do %>
-      <%= raw t("preview.able_to_consent.what_happens_in_this_research_session.paragraphs")[0] % [
+      <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
         c(
           'Output',
           text: @research_session.researcher_name,
