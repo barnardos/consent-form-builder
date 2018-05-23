@@ -64,4 +64,11 @@ html {
   }
 }
 
+@media print {
+  html {
+    -webkit-print-color-adjust: exact;
+    filter: opacity(1);
+  }
+}
+
 /* stylelint-enable */

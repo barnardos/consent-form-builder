@@ -4,3 +4,15 @@
   background-color: #4db8c3;
   padding: 0.25rem;
 }
+
+@media print {
+  .Output {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .Output-link {
+    color: initial;
+    text-decoration: none;
+  }
+}
