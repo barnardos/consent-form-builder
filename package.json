@@ -23,8 +23,7 @@
     "format":
       "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --write --ignore-path .gitignore",
     "lint:css": "stylelint 'frontend/**/*.css' --ignore-path .gitignore",
-    "lint:js":
-      "eslint 'frontend/**/*.js' 'config/webpack/*.js' --ignore-path .gitignore",
+    "lint:js": "eslint 'frontend/**/*.js' 'config/webpack/*.js'",
     "lint": "npm-run-all --parallel lint:*",
     "test": "npm run lint"
   }
