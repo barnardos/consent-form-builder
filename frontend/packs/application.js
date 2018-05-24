@@ -27,3 +27,6 @@ import "components/Submit";
 import "components/Title";
 import "components/UnorderedList";
 import "components/WritingFields";
+
+import "vendor/GoogleAnalytics.js";
+import "vendor/Hotjar.js";
