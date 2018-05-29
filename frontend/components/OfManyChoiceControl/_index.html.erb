@@ -10,15 +10,15 @@
       </p>
     <% end %>
     <div class="OfManyChoiceControl-choiceControls">
-      <% choices.each do |key, value| %>
+      <% choices.each do |choice| %>
         <div class="OfManyChoiceControl-choiceControl">
           <%= c('ChoiceControl',
             name: collection,
-            id: "research_session[#{key.to_s}]",
-            value: key,
-            label: value.capitalize,
+            id: "research_session[#{choice[:id]}]",
+            value: choice[:value],
+            label: choice[:label].capitalize,
             type: choice_type,
-            checked: (choices_selected.present? && choices_selected.include?(key.to_s))
+            checked: (choices_selected.present? && choices_selected.include?(choice[:value]))
           ) %>
         </div>
       <% end %>

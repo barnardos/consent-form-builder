@@ -48,8 +48,8 @@ module StepCompletions
 
   def complete_methodologies_step
     @methodologies = [
-      Methodologies::NAME_VALUES[:interview],
-      Methodologies::NAME_VALUES[:usability]
+      Methodologies::CHOICES.select { |choice| choice.id == 'interview' }[:label],
+      Methodologies::CHOICES.select { |choice| choice.id == 'usability' }[:label]
     ]
     @methodologies.each do |methodology|
       check methodology.capitalize
