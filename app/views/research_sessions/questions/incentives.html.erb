@@ -1,39 +1,35 @@
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Incentives</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-      <%= form.radio_group_vertical :incentives_enabled,
-          { true => 'Yes', false => 'No' },
-          { autofocus_first_item: true },
-          legend: t('helpers.legend.research_session.incentives_enabled')
-      %>
+<%= c('Step') do %>
+  <%= c('Title', text: 'Incentives') %>
 
-      <div class="js-ConditionalSubfield" data-controlled-by="research_session[incentives_enabled]" data-control-value="true">
-        <div class="reactive-container">
-          <div class="reactive-container__form">
+  <%= c('Form', action: wizard_path, patch: true) do %>
+    <%= c('OfManyChoiceControl',
+      id: 'research_session[incentives_enabled]',
+      name:'incentives_enabled',
+      collection: "research_session[#{:incentives_enabled}]",
+      choices: { true: 'Yes', false: 'No' },
+      choices_selected: [@research_session.incentives_enabled.to_s],
+      legend: t('helpers.legend.research_session.incentives_enabled'),
+      choice_type: 'single',
+      errored: @research_session.errors['incentives_enabled'].present?,
+      validation: @research_session.errors['incentives_enabled'][0]
+    ) %>
 
-            <%= form.radio_group_vertical :payment_type,
-                  PaymentType::NAME_VALUES,
-                  {input: {'data-previewed-by' => 'IncentivesPreviews'}},
-                  legend: 'What form will the incentive take?'
-            %>
+  <%= c('ChoiceControlledContent',
+      is_active: (@research_session.incentives_enabled.present? && [@research_session.incentives_enabled.to_s].include?('true')),
+      controlled_by: '[id="research_session[true]"]') do %>
 
-            <%= form.labelled_text_field :incentive_value,
-                  text_options: { placeholder: '0.00', 'data-previewed-by' => 'IncentivesPreviews' } %>
-          </div>
-          <div class="reactive-container__preview">
-            <%#
-              react_component('IncentivesPreviews',
-                current_step_params.merge(
-                  you_or_your_child: "you",
-                  your_or_your_childs: "Your",
-                  you_or_they: "you"
-                )
-              )
-            %>
-          </div>
-        </div>
-      </div>
-      <%= render 'button_bar' %>
+          <%= c('OfManyChoiceControl',
+            id: 'research_session[payment_type]',
+            name:'payment_type',
+            collection: "research_session[#{:payment_type}]",
+            choices: PaymentType::NAME_VALUES,
+            choices_selected: [@research_session.payment_type],
+            legend: 'What form will the incentive take?',
+            choice_type: 'single',
+            errored: @research_session.errors['payment_type'].present?,
+            validation: @research_session.errors['payment_type'][0]
+          ) %>   
+      <% end %>
+     <%= render partial: 'submit_step' %>
   <% end %>
-</div>
+<% end %>
