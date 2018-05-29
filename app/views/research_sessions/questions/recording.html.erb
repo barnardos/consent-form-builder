@@ -8,7 +8,7 @@
       id: 'research_session[recording_methods][]',
       name:'recording_methods',
       collection: "research_session[#{:recording_methods}][]",
-      choices: RecordingMethods::NAME_VALUES,
+      choices: RecordingMethods::CHOICES,
       choices_selected: @research_session.recording_methods,
       legend: 'How will you be recording information?',
       choice_type: 'multi',

@@ -24,6 +24,9 @@ Metrics/LineLength:
     - lib/tasks/cucumber.rake
     - features/support/env.rb
     - script/cucumber
+    - 'app/models/methodologies.rb'
+    - 'app/models/recording_methods.rb'
+    - 'app/models/shared_with.rb'
 
 Metrics/BlockLength:
   Max: 35
