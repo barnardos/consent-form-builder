@@ -21,6 +21,8 @@
         name: 'shared_duration',
         value: @research_session.shared_duration,
         label: t('research_session_attr_labels.shared_duration'),
+        spanText: 'We recommend two years after the closure of the project',
+        hint: "e.g. 2 years",
         size: 24,
         errored: @research_session.errors['shared_duration'].present?,
         validation: @research_session.errors['shared_duration'][0]
