@@ -9,6 +9,12 @@
       </strong>
     </p>
   <% end %>
+  <% if defined?(spanText) %>
+    <p class="SinglelineTextControl-hint"><%= spanText %></p>
+  <% end %>
+  <% if defined?(hint) %>
+    <p class="SinglelineTextControl-hint"><%= hint %></p>
+  <% end %>
   <input
     class="SinglelineTextControl-element"
     name="<%= id %>"

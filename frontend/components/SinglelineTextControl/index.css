@@ -25,6 +25,11 @@
   font: 600 1rem/1.5rem system-ui;
 }
 
+.SinglelineTextControl-hint {
+  color: #616161;
+  font: 300 1rem/1.5rem system-ui;
+}
+
 /**
  * errored
  */
