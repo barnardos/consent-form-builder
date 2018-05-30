@@ -1,12 +1,28 @@
 class SharedWith
-  NAME_VALUES = HashWithIndifferentAccess.new(
-    anonymised: 'anonymised as we process it',
-    team:       'shared with the research team at Barnardoʼs',
-    internal:   'shared with other teams in Barnardoʼs',
-    external:   'used in external publications'
-  )
+  CHOICES = [
+    {
+      id: 'anonymised',
+      value: 'anonymised',
+      label: 'Anonymised as we process it'
+    },
+    {
+      id: 'team',
+      value: 'team',
+      label: 'Shared with the research team at Barnardoʼs'
+    },
+    {
+      id: 'internal',
+      value: 'internal',
+      label: 'Shared with other teams in Barnardoʼs'
+    },
+    {
+      id: 'external',
+      value: 'external',
+      label: 'Used in external publications'
+    }
+  ].freeze
 
   def self.allowed_values
-    NAME_VALUES.keys
+    CHOICES.map { |choice| choice[:value] }
   end
 end
