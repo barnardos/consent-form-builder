@@ -6,7 +6,18 @@
       id: 'research_session[incentives_enabled]',
       name:'incentives_enabled',
       collection: "research_session[#{:incentives_enabled}]",
-      choices: { true: 'Yes', false: 'No' },
+      choices: [
+        {
+          id: 'incentives_enabled_true',
+          value: true,
+          label: 'Yes'
+        },
+        {
+          id: 'incentives_enabled_false',
+          value: false,
+          label: 'No' 
+        }
+      ],
       choices_selected: [@research_session.incentives_enabled.to_s],
       legend: t('helpers.legend.research_session.incentives_enabled'),
       choice_type: 'single',
@@ -16,13 +27,13 @@
 
   <%= c('ChoiceControlledContent',
       is_active: (@research_session.incentives_enabled.present? && [@research_session.incentives_enabled.to_s].include?('true')),
-      controlled_by: '[id="research_session[true]"]') do %>
+      controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
 
           <%= c('OfManyChoiceControl',
             id: 'research_session[payment_type]',
             name:'payment_type',
             collection: "research_session[#{:payment_type}]",
-            choices: PaymentType::NAME_VALUES,
+            choices: PaymentType::CHOICES,
             choices_selected: [@research_session.payment_type],
             legend: 'What form will the incentive take?',
             choice_type: 'single',
