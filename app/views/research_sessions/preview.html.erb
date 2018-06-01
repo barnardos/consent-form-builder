@@ -3,376 +3,358 @@
 <%= c('Preview') do %>
 
   <%= c('PreviewInformation') do %>
-    <%= c('Title', text: t('preview.title')) %>
+    <div class="PreviewInformation-section">
+      <%= c('Title', text: t('preview.title')) %>
 
-    <% t("#{ct}.consent_control").each do |text| %>
-      <%= c('Paragraph') do %>
-        <%= raw text %>  
+      <% t("#{ct}.consent_control").each do |text| %>
+        <%= c('Paragraph') do %>
+          <%= raw text %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
-    <%= c('PrintAreaButton', area_to_print: '', text: t('preview.print.all')) %>
-    <%= c('PrintAreaButton', area_to_print: 'InformationSheet', text: t('preview.print.information_sheet')) %>
-    <%= c('PrintAreaButton', area_to_print: 'ConsentForm', text: t('preview.print.consent_form')) %>
+    <div class="PreviewInformation-section">
+      <%= c('HeadingOne', text: t('preview.export.title')) %>
+      <%= c('PrintAreaCommand', type: 'button', area_to_print: '', text: t('preview.export.all')) %>
+      <%= c('PrintAreaCommand', type: 'link', area_to_print: 'InformationSheet', text: t('preview.export.information_sheet')) %>
+      <%= c('PrintAreaCommand', type: 'link', area_to_print: 'ConsentForm', text: t('preview.export.consent_form')) %>
+    </div>
+
+    <div class="PreviewInformation-section">
+      <%= c('HeadingOne', text: t('preview.create_new.title')) %>
+      <%= c('Paragraph') do %>
+        <%= c('Link', src: new_research_session_path, text: t('preview.create_new.link_create_new')) %>
+      <% end %>
+      <%= c('Paragraph') do %>
+        <%= c('Link', src: new_research_session_path(from_existing: @research_session.slug), text: t('preview.create_new.link_create_copy')) %>
+      <% end %>
+    </div>
+
+    <div class="PreviewInformation-section">
+      <%= c('HeadingOne', text: t('preview.share.title')) %>
+      <%= c('Paragraph') do %>
+        <%= t('preview.share.link_label') %> <%= c('Link', src: request.original_url, text: request.original_url) %>
+      <% end %>
+      <%= c('Paragraph') do %>
+        <%= c('Link', src: "mailto:?subject=#{URI.escape(@research_session.name)}&body=#{URI.escape(request.original_url)}", text: t('preview.share.email')) %>
+      <% end %>
+      <%= c('Paragraph') do %>
+        <%= t('preview.share.bookmark') %>
+      <% end %>
+      <%= c('UnorderedList') do %>
+        <% t('preview.share.bookmark_instructions').each do |text| %>
+          <%= c('ListItem') do %>
+            <%= raw text %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 
-  <%= c('PrintArea', id: 'InformationSheet') do %>
-    <%= c('HeadingOne', text: t("#{ct}.about_this_research_project.heading")) %>
-    <%= c('Lede', text: t("#{ct}.about_this_research_project.lede")) %>
+  <%= c('PreviewConsentForm') do %>
+    <%= c('PrintArea', id: 'InformationSheet') do %>
+      <%= c('HeadingOne', text: t("#{ct}.about_this_research_project.heading")) %>
+      <%= c('Lede', text: t("#{ct}.about_this_research_project.lede")) %>
 
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.about_taking_part.heading")) %>
-      <% t("#{ct}.about_taking_part.paragraphs").each do |text| %>
-        <%=
-          c('Paragraph') do
-            text
-          end
-        %>
-      <% end %>
-    <% end %>
-
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.why_we_are_doing_research.heading")) %>
-      <% t("#{ct}.why_we_are_doing_research.paragraphs").each_with_index do |text, index| %>
-        <%=
-          c('Paragraph') do
-            if index === 0
-              raw text % [
-                c(
-                  'Output',
-                  text: @research_session.topic,
-                  field: 'topic',
-                  url: edit_link_for(:topic)
-                ),
-                c(
-                  'Output',
-                  text: @research_session.purpose,
-                  field: 'purpose',
-                  url: edit_link_for(:purpose)
-                )
-              ]
-            else
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.about_taking_part.heading")) %>
+        <% t("#{ct}.about_taking_part.paragraphs").each do |text| %>
+          <%=
+            c('Paragraph') do
               text
             end
-          end
-        %>
-      <% end %>
-    <% end %>
-
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.what_happens_in_this_research_session.heading")) %>
-
-      <%= c('Paragraph') do %>
-        <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[0] % [
-          c(
-            'Output',
-            text: @research_session.researcher_name,
-            field: 'researcher_name',
-            url: edit_link_for(:researcher_name)
-          ),
-          c(
-            'Output',
-            text: @research_session.researcher_job_title,
-            field: 'researcher_job_title',
-            url: edit_link_for(:researcher_job_title)
-          )
-        ] %>
-      <% end %>
-
-      <%= c('UnorderedList') do %>
-        <% @research_session.methodologies.each do |methodology| %>
-          <%
-            methodology_text =
-              methodology === 'other' ?
-                @research_session.other_recording_method
-                :
-                t("#{ct}.what_happens_in_this_research_session.methodologies.#{methodology}")
           %>
-          <%= c('ListItem') do %>
-            <%= c(
-              'Output',
-              text: methodology_text,
-              field: 'methodologies',
-              url: edit_link_for(:methodologies)
-            ) %>
-          <% end %>
         <% end %>
       <% end %>
 
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.what_happens_in_this_research_session.paragraphs")[1] %>
-      <% end %>
-
-      <%= c('UnorderedList') do %>
-        <% @research_session.recording_methods.each do |recording_method| %>
-          <%
-            recording_text =
-              recording_method === 'other' ?
-                @research_session.other_recording_method
-                :
-                t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}")
-          %>
-          <%= c('ListItem') do %>
-            <%= c(
-              'Output',
-              text: recording_text,
-              field: 'recording_methods',
-              url: edit_link_for(:recording_methods)
-            ) %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-      <%= c('Paragraph') do %>
-        <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[2] % [
-          c(
-            'Output',
-            text: @research_session.researcher_name,
-            field: 'researcher_name',
-            url: edit_link_for(:researcher_name)
-          )
-        ] %>
-      <% end %>
-    <% end %>
-
-    <% if @research_session.incentives_enabled ||
-          @research_session.where_when_enabled ||
-          @research_session.expenses_enabled %>
       <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.session_details.heading")) %>
-
-        <% if @research_session.where_when_enabled %>
-          <% [:when_text, :location, :duration].each do |field| %>
-            <% if @research_session["#{field}"] %>
-              <%= c('Paragraph') do %>
-                <%= raw t("#{ct}.session_details.#{field}") % [
+        <%= c('HeadingOne', text: t("#{ct}.why_we_are_doing_research.heading")) %>
+        <% t("#{ct}.why_we_are_doing_research.paragraphs").each_with_index do |text, index| %>
+          <%=
+            c('Paragraph') do
+              if index === 0
+                raw text % [
                   c(
                     'Output',
-                    text: @research_session["#{field}"],
-                    field: field,
-                    url: edit_link_for(field)
+                    text: @research_session.topic,
+                    field: 'topic',
+                    url: edit_link_for(:topic)
+                  ),
+                  c(
+                    'Output',
+                    text: @research_session.purpose,
+                    field: 'purpose',
+                    url: edit_link_for(:purpose)
                   )
-                ] %>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-
-        <% if @research_session.incentives_enabled %>
-          <%= c('Paragraph') do %>
-            <%= t("#{ct}.session_details.incentives_intro") %>
-          <% end %>
-
-          <%= c('Paragraph') do %>
-            <%= raw t("#{ct}.session_details.payment_type.#{@research_session.payment_type}") % [
-              c(
-                'Output',
-                text: number_to_currency(@research_session.incentive_value),
-                field: 'incentive_value',
-                url: edit_link_for(:incentive_value)
-              )
-            ] %>
-          <% end %>
-        <% end %>
-
-        <% if @research_session.where_when_enabled && @research_session.participant_equipment.present? %>
-          <%= c('Paragraph') do %>
-            <%= raw t("#{ct}.session_details.participant_equipment") % [
-              c(
-                'Output',
-                text: @research_session.participant_equipment,
-                field: 'participant_equipment',
-                url: edit_link_for(:participant_equipment)
-              )
-            ] %>
-          <% end %>
-        <% end %>
-
-        <% if @research_session.expenses_enabled %>
-          <%
-            expenses = [
-              :travel_expenses_limit,
-              :food_expenses_limit,
-              :other_expenses_limit
-            ]
-            .select { |expense_type| @research_session[expense_type].present? }
-            .map { |expense_type|
-              c(
-                'Output',
-                text: t("#{ct}.session_details.#{expense_type}") % number_to_currency(@research_session[expense_type]),
-                field: expense_type,
-                url: edit_link_for(expense_type)
-              )
-            }
-            .to_sentence
+                ]
+              else
+                text
+              end
+            end
           %>
+        <% end %>
+      <% end %>
 
-          <%= c('Paragraph') do %>
-            <%= raw t("#{ct}.session_details.expenses") % [expenses] %>
-          <% end %>
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.what_happens_in_this_research_session.heading")) %>
 
-          <% if @research_session.receipts_required %>
-            <%= c('Paragraph') do %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[0] % [
+            c(
+              'Output',
+              text: @research_session.researcher_name,
+              field: 'researcher_name',
+              url: edit_link_for(:researcher_name)
+            ),
+            c(
+              'Output',
+              text: @research_session.researcher_job_title,
+              field: 'researcher_job_title',
+              url: edit_link_for(:researcher_job_title)
+            )
+          ] %>
+        <% end %>
+
+        <%= c('UnorderedList') do %>
+          <% @research_session.methodologies.each do |methodology| %>
+            <%
+              methodology_text =
+                methodology === 'other' ?
+                  @research_session.other_recording_method
+                  :
+                  t("#{ct}.what_happens_in_this_research_session.methodologies.#{methodology}")
+            %>
+            <%= c('ListItem') do %>
               <%= c(
                 'Output',
-                text: t("#{ct}.session_details.receipts_required"),
-                field: 'receipts_required',
-                url: edit_link_for(:receipts_required)
+                text: methodology_text,
+                field: 'methodologies',
+                url: edit_link_for(:methodologies)
               ) %>
             <% end %>
           <% end %>
         <% end %>
 
-        <% if @research_session.where_when_enabled && @research_session.food_provided.present? %>
-          <%= c('Paragraph') do %>
-            <%= raw t("#{ct}.session_details.food_provided") % [
-                c(
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.what_happens_in_this_research_session.paragraphs")[1] %>
+        <% end %>
+
+        <%= c('UnorderedList') do %>
+          <% @research_session.recording_methods.each do |recording_method| %>
+            <%
+              recording_text =
+                recording_method === 'other' ?
+                  @research_session.other_recording_method
+                  :
+                  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}")
+            %>
+            <%= c('ListItem') do %>
+              <%= c(
                 'Output',
-                text: @research_session.food_provided,
-                field: 'food_provided',
-                url: edit_link_for(:food_provided)
+                text: recording_text,
+                field: 'recording_methods',
+                url: edit_link_for(:recording_methods)
+              ) %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[2] % [
+            c(
+              'Output',
+              text: @research_session.researcher_name,
+              field: 'researcher_name',
+              url: edit_link_for(:researcher_name)
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <% if @research_session.incentives_enabled ||
+            @research_session.where_when_enabled ||
+            @research_session.expenses_enabled %>
+        <%= c('PreviewSection') do %>
+          <%= c('HeadingOne', text: t("#{ct}.session_details.heading")) %>
+
+          <% if @research_session.where_when_enabled %>
+            <% [:when_text, :location, :duration].each do |field| %>
+              <% if @research_session["#{field}"] %>
+                <%= c('Paragraph') do %>
+                  <%= raw t("#{ct}.session_details.#{field}") % [
+                    c(
+                      'Output',
+                      text: @research_session["#{field}"],
+                      field: field,
+                      url: edit_link_for(field)
+                    )
+                  ] %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <% if @research_session.incentives_enabled %>
+            <%= c('Paragraph') do %>
+              <%= t("#{ct}.session_details.incentives_intro") %>
+            <% end %>
+
+            <%= c('Paragraph') do %>
+              <%= raw t("#{ct}.session_details.payment_type.#{@research_session.payment_type}") % [
+                c(
+                  'Output',
+                  text: number_to_currency(@research_session.incentive_value),
+                  field: 'incentive_value',
+                  url: edit_link_for(:incentive_value)
+                )
+              ] %>
+            <% end %>
+          <% end %>
+
+          <% if @research_session.where_when_enabled && @research_session.participant_equipment.present? %>
+            <%= c('Paragraph') do %>
+              <%= raw t("#{ct}.session_details.participant_equipment") % [
+                c(
+                  'Output',
+                  text: @research_session.participant_equipment,
+                  field: 'participant_equipment',
+                  url: edit_link_for(:participant_equipment)
+                )
+              ] %>
+            <% end %>
+          <% end %>
+
+          <% if @research_session.expenses_enabled %>
+            <%
+              expenses = [
+                :travel_expenses_limit,
+                :food_expenses_limit,
+                :other_expenses_limit
+              ]
+              .select { |expense_type| @research_session[expense_type].present? }
+              .map { |expense_type|
+                c(
+                  'Output',
+                  text: t("#{ct}.session_details.#{expense_type}") % number_to_currency(@research_session[expense_type]),
+                  field: expense_type,
+                  url: edit_link_for(expense_type)
+                )
+              }
+              .to_sentence
+            %>
+
+            <%= c('Paragraph') do %>
+              <%= raw t("#{ct}.session_details.expenses") % [expenses] %>
+            <% end %>
+
+            <% if @research_session.receipts_required %>
+              <%= c('Paragraph') do %>
+                <%= c(
+                  'Output',
+                  text: t("#{ct}.session_details.receipts_required"),
+                  field: 'receipts_required',
+                  url: edit_link_for(:receipts_required)
+                ) %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <% if @research_session.where_when_enabled && @research_session.food_provided.present? %>
+            <%= c('Paragraph') do %>
+              <%= raw t("#{ct}.session_details.food_provided") % [
+                  c(
+                  'Output',
+                  text: @research_session.food_provided,
+                  field: 'food_provided',
+                  url: edit_link_for(:food_provided)
+                )
+              ] %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.heading")) %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[0] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[1] % [
+            c(
+              'Output',
+              text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.shared_with.#{@research_session.shared_with}"),
+              field: 'shared_with',
+              url: edit_link_for(:shared_with)
+            )
+          ] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
+            c(
+              'Output',
+              text: @research_session.shared_duration,
+              field: 'shared_duration',
+              url: edit_link_for(:shared_duration)
+            )
+          ] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[3] %>
+        <% end %>
+      <% end %>
+
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.sharing_information.heading")) %>
+        <% t("#{ct}.sharing_information.paragraphs").each do |text| %>
+          <%=
+            c('Paragraph') do
+              text
+            end
+          %>
+        <% end %>
+      <% end %>
+
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.find_out_more.heading")) %>
+        <%
+          [
+            :researcher_name,
+            :researcher_email,
+            :researcher_phone
+          ].each_with_index do |find_out_more_text, index|
+        %>
+          <%= c('Paragraph') do %>
+            <%= raw t("#{ct}.find_out_more.paragraphs")[index] % [
+              c(
+                'Output',
+                text: @research_session[find_out_more_text],
+                field: find_out_more_text,
+                url: edit_link_for(find_out_more_text)
               )
             ] %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.heading")) %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[0] %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[1] % [
-          c(
-            'Output',
-            text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.shared_with.#{@research_session.shared_with}"),
-            field: 'shared_with',
-            url: edit_link_for(:shared_with)
-          )
-        ] %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
-          c(
-            'Output',
-            text: @research_session.shared_duration,
-            field: 'shared_duration',
-            url: edit_link_for(:shared_duration)
-          )
-        ] %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[3] %>
-      <% end %>
-    <% end %>
-
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.sharing_information.heading")) %>
-      <% t("#{ct}.sharing_information.paragraphs").each do |text| %>
-        <%=
-          c('Paragraph') do
-            text
-          end
-        %>
-      <% end %>
-    <% end %>
-    
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.find_out_more.heading")) %>
-      <% 
-        [
-          :researcher_name, 
-          :researcher_email, 
-          :researcher_phone
-        ].each_with_index do |find_out_more_text, index| 
-      %>
-        <%= c('Paragraph') do %>
-          <%= raw t("#{ct}.find_out_more.paragraphs")[index] % [
-            c(
-              'Output',
-              text: @research_session[find_out_more_text],
-              field: find_out_more_text,
-              url: edit_link_for(find_out_more_text)
-            )
-          ] %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.concerns_and_complaints.heading")) %>
-      <% t("#{ct}.concerns_and_complaints.paragraphs").each do |text| %>
-        <%=
-          c('Paragraph') do
-            text
-          end
-        %>
-      <% end %>
-    <% end %>
-    
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.decide_to_take_part.heading")) %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.decide_to_take_part.paragraphs")[0] %>
-      <% end %>
-      <%= c('OrderedList') do %>
-        <% t("#{ct}.decide_to_take_part.items").each do |item| %>
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.concerns_and_complaints.heading")) %>
+        <% t("#{ct}.concerns_and_complaints.paragraphs").each do |text| %>
           <%=
-            c('ListItem') do
-              item
+            c('Paragraph') do
+              text
             end
           %>
         <% end %>
       <% end %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.decide_to_take_part.paragraphs")[2] %>
-      <% end %>
-    <% end %>
-  <% end %>
 
-  <%= c('PrintArea', id: 'ConsentForm') do %>
-    <%= c('PreviewSection') do %>
-      <%= c('HeadingOne', text: t("#{ct}.consent_form.heading")) %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.consent_form.paragraphs")[0] %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.consent_form.paragraphs")[1] %>
-      <% end %>
-      <%= c('OrderedList') do %>
-        <% 
-          recording_methods = 
-            @research_session.recording_methods
-              .map { |recording_method| 
-                if recording_method === 'other'
-                  c(
-                    'Output',
-                    text: @research_session.other_recording_method,
-                    field: 'other_recording_method',
-                    url: edit_link_for(:other_recording_method)
-                  )
-                else
-                  c(
-                    'Output',
-                    text:  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}"),
-                    field: 'recording_methods',
-                    url: edit_link_for(:recording_methods)
-                  )
-                end
-              }
-        %>
-        <% t("#{ct}.consent_form.items").each_with_index do |item, index| %>
-          <% if index === 2 %>
-            <%=
-              c('ListItem') do
-                raw t("#{ct}.consent_form.items")[index] % [
-                  recording_methods.to_sentence
-                ]
-              end
-            %>
-          <% else %>
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.decide_to_take_part.heading")) %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.decide_to_take_part.paragraphs")[0] %>
+        <% end %>
+        <%= c('OrderedList') do %>
+          <% t("#{ct}.decide_to_take_part.items").each do |item| %>
             <%=
               c('ListItem') do
                 item
@@ -380,11 +362,66 @@
             %>
           <% end %>
         <% end %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= t("#{ct}.consent_form.paragraphs")[3] %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.decide_to_take_part.paragraphs")[2] %>
+        <% end %>
       <% end %>
     <% end %>
-    <%= c('WritingFields', fields: t("#{ct}.consent_form.fields")) %>
+
+    <%= c('PrintArea', id: 'ConsentForm') do %>
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.consent_form.heading")) %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.paragraphs")[0] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.paragraphs")[1] %>
+        <% end %>
+        <%= c('OrderedList') do %>
+          <%
+            recording_methods =
+              @research_session.recording_methods
+                .map { |recording_method|
+                  if recording_method === 'other'
+                    c(
+                      'Output',
+                      text: @research_session.other_recording_method,
+                      field: 'other_recording_method',
+                      url: edit_link_for(:other_recording_method)
+                    )
+                  else
+                    c(
+                      'Output',
+                      text:  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}"),
+                      field: 'recording_methods',
+                      url: edit_link_for(:recording_methods)
+                    )
+                  end
+                }
+          %>
+          <% t("#{ct}.consent_form.items").each_with_index do |item, index| %>
+            <% if index === 2 %>
+              <%=
+                c('ListItem') do
+                  raw t("#{ct}.consent_form.items")[index] % [
+                    recording_methods.to_sentence
+                  ]
+                end
+              %>
+            <% else %>
+              <%=
+                c('ListItem') do
+                  item
+                end
+              %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.paragraphs")[3] %>
+        <% end %>
+      <% end %>
+      <%= c('WritingFields', fields: t("#{ct}.consent_form.fields")) %>
+    <% end %>
   <% end %>
 <% end %>
