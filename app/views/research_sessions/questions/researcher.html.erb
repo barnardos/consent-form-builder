@@ -56,7 +56,7 @@
     <%= render partial: 'submit_step' %>
   <% end %>
 
-  <%= c('PreviewInformation') do %>
+  <%= c('PreviewConsentForm') do %>
     <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
     <%= c('Paragraph') do %>
       <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
@@ -74,7 +74,7 @@
     <% end %>
   <% end %>
 
-  <%= c('PreviewInformation') do %>
+  <%= c('PreviewConsentForm') do %>
     <%= c('HeadingOne', text: t('preview.able_to_consent.find_out_more.heading')) %>
       <%= c('Paragraph') do %>
         <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[0] % [

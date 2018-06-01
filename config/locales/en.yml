@@ -117,13 +117,27 @@ en:
 
   preview:
     title: Research session preview
-    print:
+    export:
+      title: Export
       all: Print information sheet and consent form
       information_sheet: Print information sheet
       consent_form: Print consent form
+    create_new:
+      title: Create a new consent form
+      link_create_new: Create new
+      link_create_copy: Create a copy
+    share:
+      title: Share this consent form
+      link_label: 'Here is the link you can share and use at any time:'
+      email: Email this link
+      bookmark: 'Bookmark this link by pressing:'
+      bookmark_instructions:
+        - <kbd>Command/Cmd + D</kbd> on Mac
+        - <kbd>CTRL + D</kbd> on Windows
+
     able_to_consent:
-      consent_control: 
-        - Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves. 
+      consent_control:
+        - Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves.
         - <a href="?able-to-consent=no">Show info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</a>
       about_this_research_project:
         heading: About this research project
@@ -206,7 +220,7 @@ en:
           - "If you have any questions about the research please contact %s"
           - "Email: %s"
           - "Telephone: %s"
-      
+
       concerns_and_complaints:
         heading: Concerns and complaints
         paragraphs:
@@ -225,7 +239,7 @@ en:
           - that you understand what we are going to do with the research recordings collected, and;
           - that you know who to ask for more information, and;
           - that your decision is voluntary
-        
+
       consent_form:
         heading: Consent form
         paragraphs:
@@ -245,8 +259,8 @@ en:
 
 
     unable_to_consent:
-      consent_control: 
-        - Showing info sheet and consent form for respondents who <strong>can't</strong> give consent themselves. 
+      consent_control:
+        - Showing info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.
         - <a href="?able-to-consent=yes">Show info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</a>
       about_this_research_project:
         heading: About this research project
@@ -329,7 +343,7 @@ en:
           - "If you have any questions about the research please contact %s"
           - "Email: %s"
           - "Telephone: %s"
-      
+
       concerns_and_complaints:
         heading: Concerns and complaints
         paragraphs:
@@ -348,7 +362,7 @@ en:
           - that you understand what we are going to do with the research recordings collected, and;
           - that you know who to ask for more information, and;
           - that your decision is voluntary
-        
+
       consent_form:
         heading: Consent form
         paragraphs:
