@@ -1,6 +1,6 @@
 import "./index.css";
 
-class PrintAreaButton {
+class PrintAreaCommand {
   constructor(node) {
     this.node = node;
     this.areaToPrint = node.getAttribute("data-area-to-print");
@@ -15,8 +15,10 @@ class PrintAreaButton {
     this.node.addEventListener("click", this.printArea);
   }
 
-  printArea() {
+  printArea(event) {
     const { areaToPrint, printableAreas } = this;
+
+    event.preventDefault();
 
     if (areaToPrint) {
       printableAreas.forEach(node =>
@@ -36,6 +38,6 @@ class PrintAreaButton {
   }
 }
 
-document.querySelectorAll("[data-print-area-button]").forEach(node => {
-  new PrintAreaButton(node);
+document.querySelectorAll("[data-print-area-command]").forEach(node => {
+  new PrintAreaCommand(node);
 });
