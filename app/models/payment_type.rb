@@ -3,7 +3,7 @@ class PaymentType
     {
       id: 'cash',
       value: 'cash',
-      label: 'Cash' 
+      label: 'Cash'
     },
     {
       id: 'voucher',
