@@ -18,7 +18,7 @@
           label: 'No' 
         }
       ],
-      choices_selected: [@research_session.expenses_enabled.to_s],
+      choices_selected: @research_session.expenses_enabled.nil? ? [false] : [@research_session.expenses_enabled],
       legend: t('helpers.legend.research_session.expenses_enabled'),
       choice_type: 'single',
       errored: @research_session.errors['expenses_enabled'].present?,
