@@ -18,7 +18,7 @@
           label: 'No' 
         }
       ],
-      choices_selected: [@research_session.where_when_enabled.to_s],
+      choices_selected: @research_session.where_when_enabled.nil? ? [false] : [@research_session.where_when_enabled],
       legend: t('helpers.legend.research_session.where_when_enabled'),
       choice_type: 'single',
       errored: @research_session.errors['where_when_enabled'].present?,
