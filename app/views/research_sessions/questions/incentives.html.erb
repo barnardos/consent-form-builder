@@ -15,7 +15,7 @@
         {
           id: 'incentives_enabled_false',
           value: false,
-          label: 'No' 
+          label: 'No'
         }
       ],
       choices_selected: @research_session.incentives_enabled.nil? ? [false] : [@research_session.incentives_enabled],
@@ -39,7 +39,7 @@
             choice_type: 'single',
             errored: @research_session.errors['payment_type'].present?,
             validation: @research_session.errors['payment_type'][0]
-          ) %> 
+          ) %>
 
           <%= c('SinglelineTextControl',
             id: 'research_session[incentive_value]',
@@ -51,8 +51,56 @@
             errored: @research_session.errors['incentive_value'].present?,
             validation: @research_session.errors['incentive_value'][0]
           ) %>
-  
+
       <% end %>
      <%= render partial: 'submit_step' %>
+  <% end %>
+
+  <%= c('ChoiceControlledContent',
+    is_active: @research_session.incentives_enabled,
+    controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
+    <%= c('PreviewConsentForm') do %>
+      <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
+
+      <%= c('Paragraph') do %>
+        …
+      <% end %>
+
+      <%= c('Paragraph') do %>
+        <%= t('preview.able_to_consent.session_details.incentives_intro') %>
+      <% end %>
+
+      <%= c('ChoiceControlledContent',
+        is_active: (@research_session.payment_type == 'cash'),
+        controlled_by: '[id="research_session[cash]"]') do %>
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.session_details.payment_type.cash') % [
+            c(
+              'FieldPreview',
+              text: number_to_currency(@research_session.incentive_value),
+              listens_to: '[name="research_session[incentive_value]"]'
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <%= c('ChoiceControlledContent',
+        is_active: (@research_session.payment_type == 'voucher'),
+        controlled_by: '[id="research_session[voucher]"]') do %>
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.session_details.payment_type.voucher') % [
+            c(
+              'FieldPreview',
+              text: number_to_currency(@research_session.incentive_value),
+              listens_to: '[name="research_session[incentive_value]"]'
+            )
+          ] %>
+        <% end %>
+      <% end %>
+
+      <%= c('Paragraph') do %>
+        …
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
