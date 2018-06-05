@@ -1,43 +1,89 @@
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Expenses</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+<%= c('Step') do %>
+  <%= c('Title', text: 'Expenses') %>
 
-    <%= form.radio_group_vertical :expenses_enabled,
-      { true => 'Yes', false => 'No' },
-      { autofocus_first_item: true },
-      legend: t('helpers.legend.research_session.expenses_enabled')
-    %>
+  <%= c('Form', action: wizard_path, patch: true) do %>
+    <%= c('OfManyChoiceControl',
+      id: 'research_session[expenses_enabled]',
+      name:'expenses_enabled',
+      collection: "research_session[#{:expenses_enabled}]",
+      choices: [
+        {
+          id: 'expenses_enabled_true',
+          value: true,
+          label: 'Yes'
+        },
+        {
+          id: 'expenses_enabled_false',
+          value: false,
+          label: 'No' 
+        }
+      ],
+      choices_selected: @research_session.expenses_enabled.nil? ? [false] : [@research_session.expenses_enabled],
+      legend: t('helpers.legend.research_session.expenses_enabled'),
+      choice_type: 'single',
+      errored: @research_session.errors['expenses_enabled'].present?,
+      validation: @research_session.errors['expenses_enabled'][0]
+    ) %>
 
-    <div class="js-ConditionalSubfield" data-controlled-by="research_session[expenses_enabled]" data-control-value="true">
-      <div class="reactive-container">
-        <div class="reactive-container__form">
+  <%= c('ChoiceControlledContent',
+      is_active: (@research_session.expenses_enabled.present? && [@research_session.expenses_enabled.to_s].include?('true')),
+      controlled_by: '[id="research_session[expenses_enabled_true]"]') do %>
+        <%= c('SinglelineTextControl',
+          id: 'research_session[travel_expenses_limit]',
+          name: 'travel_expenses_limit',
+          value: @research_session.travel_expenses_limit,
+          label: t('research_session_attr_labels.travel_expenses_limit'),
+          hint: 'e.g. 5.00',
+          size: 24,
+          errored: @research_session.errors['travel_expenses_limit'].present?,
+          validation: @research_session.errors['travel_expenses_limit'][0]
+        ) %>
 
-          <%= form.labelled_text_field :travel_expenses_limit,
-                text_options: { placeholder: '0.00', autofocus: true, 'data-previewed-by' => 'ExpensesPreviews' }
-          %>
+        <%= c('SinglelineTextControl',
+            id: 'research_session[food_expenses_limit]',
+            name: 'food_expenses_limit',
+            value: @research_session.food_expenses_limit,
+            label: t('research_session_attr_labels.food_expenses_limit'),
+            hint: 'e.g. 5.00',
+            size: 24,
+            errored: @research_session.errors['food_expenses_limit'].present?,
+            validation: @research_session.errors['food_expenses_limit'][0]
+          ) %>
 
-          <%= form.labelled_text_field :food_expenses_limit,
-                text_options: { placeholder: '0.00', 'data-previewed-by' => 'ExpensesPreviews' }
-          %>
+          <%= c('SinglelineTextControl',
+            id: 'research_session[other_expenses_limit]',
+            name: 'other_expenses_limit',
+            value: @research_session.other_expenses_limit,
+            label: t('research_session_attr_labels.other_expenses_limit'),
+            hint: 'e.g. 5.00',
+            size: 24,
+            errored: @research_session.errors['other_expenses_limit'].present?,
+            validation: @research_session.errors['other_expenses_limit'][0]
+          ) %>
 
-          <%= form.labelled_text_field :other_expenses_limit,
-            text_options: { placeholder: '0.00', 'data-previewed-by' => 'ExpensesPreviews' }
-          %>
-
-          <%= form.radio_group_vertical :receipts_required,
-                { true => 'Yes', false => 'No' },
-                {input: {'data-previewed-by' => 'ExpensesPreviews'}},
-                legend: 'Must the participant provide a receipt for any expenses claimed?'
-          %>
-        </div>
-        <div class="reactive-container__preview">
-          <%#
-            react_component('ExpensesPreviews', current_step_params)
-          %>
-        </div>
-      </div>
-    </div>
-    <%= render 'button_bar' %>
+          <%= c('OfManyChoiceControl',
+            id: 'research_session[receipts_required]',
+            name:'receipts_required',
+            collection: "research_session[#{:receipts_required}]",
+            choices: [
+              {
+                id: 'receipts_required_true',
+                value: true,
+                label: 'Yes'
+              },
+              {
+                id: 'receipts_required_false',
+                value: false,
+                label: 'No' 
+              }
+            ],
+            choices_selected: [@research_session.receipts_required],
+            legend: 'Must the participant provide a receipt for any expenses claimed?',
+            choice_type: 'single',
+            errored: @research_session.errors['receipts_required'].present?,
+            validation: @research_session.errors['receipts_required'][0]
+          ) %>   
+      <% end %>
+     <%= render partial: 'submit_step' %>
   <% end %>
-</div>
+<% end %>
