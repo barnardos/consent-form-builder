@@ -39,7 +39,19 @@
             choice_type: 'single',
             errored: @research_session.errors['payment_type'].present?,
             validation: @research_session.errors['payment_type'][0]
-          ) %>   
+          ) %> 
+
+          <%= c('SinglelineTextControl',
+            id: 'research_session[incentive_value]',
+            name: 'incentive_value',
+            value: @research_session.incentive_value,
+            label: t('research_session_attr_labels.incentive_value'),
+            hint: 'e.g. 5.00',
+            size: 24,
+            errored: @research_session.errors['incentive_value'].present?,
+            validation: @research_session.errors['incentive_value'][0]
+          ) %>
+  
       <% end %>
      <%= render partial: 'submit_step' %>
   <% end %>
