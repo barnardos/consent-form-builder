@@ -33,7 +33,7 @@
           name: 'travel_expenses_limit',
           value: @research_session.travel_expenses_limit,
           label: t('research_session_attr_labels.travel_expenses_limit'),
-          hint: 'e.g. 0.00',
+          hint: 'e.g. 5.00',
           size: 24,
           errored: @research_session.errors['travel_expenses_limit'].present?,
           validation: @research_session.errors['travel_expenses_limit'][0]
@@ -44,7 +44,7 @@
             name: 'food_expenses_limit',
             value: @research_session.food_expenses_limit,
             label: t('research_session_attr_labels.food_expenses_limit'),
-            hint: 'e.g. 0.00',
+            hint: 'e.g. 5.00',
             size: 24,
             errored: @research_session.errors['food_expenses_limit'].present?,
             validation: @research_session.errors['food_expenses_limit'][0]
@@ -55,7 +55,7 @@
             name: 'other_expenses_limit',
             value: @research_session.other_expenses_limit,
             label: t('research_session_attr_labels.other_expenses_limit'),
-            hint: 'e.g. 0.00',
+            hint: 'e.g. 5.00',
             size: 24,
             errored: @research_session.errors['other_expenses_limit'].present?,
             validation: @research_session.errors['other_expenses_limit'][0]
