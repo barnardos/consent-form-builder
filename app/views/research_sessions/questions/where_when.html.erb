@@ -94,16 +94,14 @@
       <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
 
       <% [:when_text, :location, :duration].each do |field| %>
-        <% if @research_session["#{field}"] %>
-          <%= c('Paragraph') do %>
-            <%= raw t("preview.able_to_consent.session_details.#{field}") % [
-              c(
-                'FieldPreview',
-                text: @research_session["#{field}"],
-                listens_to: "[name=\"research_session[#{field}]\"]"
-              )
-            ] %>
-          <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t("preview.able_to_consent.session_details.#{field}") % [
+            c(
+              'FieldPreview',
+              text: @research_session["#{field}"],
+              listens_to: "[name=\"research_session[#{field}]\"]"
+            )
+          ] %>
         <% end %>
       <% end %>
 
