@@ -16,7 +16,7 @@
             name: collection,
             id: "research_session[#{choice[:id]}]",
             value: choice[:value],
-            label: choice[:label].capitalize,
+            label: choice[:label],
             type: choice_type,
             checked: (choices_selected.present? && choices_selected.include?(choice[:value]))
           ) %>

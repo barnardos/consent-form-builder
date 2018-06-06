@@ -1,6 +1,8 @@
 <%= c('Step') do %>
   <%= c('Title', text: 'Where & when') %>
 
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
+
   <%= c('Form', action: wizard_path, patch: true) do %>
     <%= c('OfManyChoiceControl',
       id: 'research_session[where_when_enabled]',
@@ -28,6 +30,9 @@
   <%= c('ChoiceControlledContent',
       is_active: (@research_session.where_when_enabled.present? && [@research_session.where_when_enabled.to_s].include?('true')),
       controlled_by: '[id="research_session[where_when_enabled_true]"]') do %>
+      <%= c('Paragraph') do %>
+        Please enter the time and date of the session
+      <% end %>
       <%= c('SinglelineTextControl',
         id: 'research_session[when_text]',
         name: 'when_text',
