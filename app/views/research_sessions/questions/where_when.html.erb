@@ -1,5 +1,5 @@
 <%= c('Step') do %>
-  <%= c('Title', text: 'When & when') %>
+  <%= c('Title', text: 'Where & when') %>
 
   <%= c('Form', action: wizard_path, patch: true) do %>
     <%= c('OfManyChoiceControl',
@@ -15,7 +15,7 @@
         {
           id: 'where_when_enabled_false',
           value: false,
-          label: 'No' 
+          label: 'No'
         }
       ],
       choices_selected: @research_session.where_when_enabled.nil? ? [false] : [@research_session.where_when_enabled],
@@ -68,7 +68,7 @@
         errored: @research_session.errors['participant_equipment'].present?,
         validation: @research_session.errors['participant_equipment'][0]
       ) %>
-        
+
       <%= c('SinglelineTextControl',
         id: 'research_session[food_provided]',
         name: 'food_provided',
@@ -105,7 +105,7 @@
       <%= c('Paragraph') do %>
         …
       <% end %>
-      
+
       <%= c('Paragraph') do %>
         <%= raw t('preview.able_to_consent.session_details.participant_equipment') % [
           c(
@@ -115,11 +115,11 @@
           )
         ] %>
       <% end %>
-      
+
       <%= c('Paragraph') do %>
         …
       <% end %>
-      
+
       <%= c('Paragraph') do %>
         <%= raw t('preview.able_to_consent.session_details.food_provided') % [
           c(
