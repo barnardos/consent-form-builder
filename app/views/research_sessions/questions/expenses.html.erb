@@ -1,6 +1,8 @@
 <%= c('Step') do %>
   <%= c('Title', text: 'Expenses') %>
 
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
+
   <%= c('Form', action: wizard_path, patch: true) do %>
     <%= c('OfManyChoiceControl',
       id: 'research_session[expenses_enabled]',
