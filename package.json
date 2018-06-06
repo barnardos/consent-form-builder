@@ -2,7 +2,7 @@
   "name": "myapp",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.4"
+    "@rails/webpacker": "3.5.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
@@ -15,13 +15,11 @@
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-order": "^0.8.1",
     "stylelint-selector-bem-pattern": "^2.0.0",
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "^2.11.1"
   },
   "scripts": {
-    "check-format":
-      "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --list-different --ignore-path .gitignore",
-    "format":
-      "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --write --ignore-path .gitignore",
+    "check-format": "prettier '**/*.{css,json,js}' '!package.json' --list-different --ignore-path .gitignore",
+    "format": "prettier '**/*.{css,json,js}' '!package.json' --write --ignore-path .gitignore",
     "lint:css": "stylelint 'frontend/**/*.css' --ignore-path .gitignore",
     "lint:js": "eslint 'frontend/**/*.js' 'config/webpack/*.js'",
     "lint": "npm-run-all --parallel lint:*",
