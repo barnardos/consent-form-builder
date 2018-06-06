@@ -17,18 +17,18 @@ Install:
 
 Run these commands:
 
-* `bundle install` - install all Ruby dependencies
-* `yarn` - install all Javascript dependencies
-* Set up the Postgres database
-  * To access postgres from terminal, type the command `psql postgres`
-  * Add a user named 'consent' to your postgres instance
+* `bundle install` - install all Ruby dependencies.
+* `yarn` - install all Javascript dependencies.
+* Set up the Postgres database.
+  * To access postgres from terminal, type the command `psql postgres`.
+  * Add a user named 'consent' to your postgres instance.
     * `CREATE USER consent;`
-  * Add a database named 'consent' to your postgres instance, and make 'consent' the owner
+  * Add a database named 'consent' to your postgres instance, and make 'consent' the owner.
     * `CREATE DATABASE consent OWNER consent;`
-  * Add a database named 'consent_test' to your postgres instance, and make 'consent' the owner
+  * Add a database named 'consent_test' to your postgres instance, and make 'consent' the owner.
     * `CREATE DATABASE consent_test OWNER consent_test;`
-* Update the database schema using `bundle exec rails db:migrate`
-* `hivemind Procfile.dev` - start a rails server with
+* `bundle exec rails db:migrate` - update the database schema.
+* `hivemind Procfile.dev` - start a development server.
 
 * If you have issues building your test database (`consent_test`), upgrade user to a SUPERUSER, access PostgreSQL in your terminal (`psql postgres`), then `ALTER USER consent WITH SUPERUSER;`. To check user attributes `\du`. Quit `\q`
 
