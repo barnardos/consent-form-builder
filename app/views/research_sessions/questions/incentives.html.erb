@@ -80,7 +80,8 @@
             c(
               'FieldPreview',
               text: number_to_currency(@research_session.incentive_value),
-              listens_to: '[name="research_session[incentive_value]"]'
+              listens_to: '[name="research_session[incentive_value]"]',
+              format_value: 'currency'
             )
           ] %>
         <% end %>
@@ -94,7 +95,8 @@
             c(
               'FieldPreview',
               text: number_to_currency(@research_session.incentive_value),
-              listens_to: '[name="research_session[incentive_value]"]'
+              listens_to: '[name="research_session[incentive_value]"]',
+              format_value: 'currency'
             )
           ] %>
         <% end %>

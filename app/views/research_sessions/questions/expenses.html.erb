@@ -111,7 +111,8 @@
             c(
               'FieldPreview',
               text: number_to_currency(@research_session[expense_type]),
-              listens_to: "[name=\"research_session[#{expense_type}]\"]"
+              listens_to: "[name=\"research_session[#{expense_type}]\"]",
+              format_value: 'currency'
             )
           ]
         }

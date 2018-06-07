@@ -1,4 +1,5 @@
 import "./index.css";
+import FormatCurrency from "../../utils/FormatCurrency";
 
 class FieldPreview {
   constructor(node) {
@@ -16,7 +17,14 @@ class FieldPreview {
   }
 
   handleChangeEvent({ target }) {
-    this.node.innerText = target.value;
+    const { node } = this;
+    let value = target.value;
+
+    if (node.getAttribute("data-format-value") === "currency" && value) {
+      value = FormatCurrency(value);
+    }
+
+    node.innerText = value;
   }
 }
 
