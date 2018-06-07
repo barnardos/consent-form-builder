@@ -14,7 +14,7 @@
       value: @research_session.topic,
       label: t('research_session_attr_labels.topic'),
       hint: 'e.g. how young people think of consent and research',
-      size: 24,
+      size: 72,
       errored: @research_session.errors['topic'].present?,
       validation: @research_session.errors['topic'][0]
     ) %>
@@ -25,7 +25,7 @@
       value: @research_session.purpose,
       label: t('research_session_attr_labels.purpose'),
       hint: 'e.g. talk to them in a way that they understand.',
-      size: 24,
+      size: 72,
       errored: @research_session.errors['purpose'].present?,
       validation: @research_session.errors['purpose'][0]
     ) %>
