@@ -1,1 +1,6 @@
-<output class="FieldPreview" data-listens-to="<%= listens_to %>"><%= text %></output>
+<output
+  class="FieldPreview"
+  data-listens-to="<%= listens_to %>"
+  data-format-value="<%= format_value if defined?(format_value) %>"><!--
+  --><%= text %><!--
+--></output>
