@@ -1,4 +1,3 @@
-@wip
 Feature:
   As a person managing an issue with the app
   I want to see a link to our current release
