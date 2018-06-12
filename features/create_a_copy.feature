@@ -3,7 +3,6 @@ Feature: Create a copy
   I want to create a new session from an existing session
   So that I can avoid typing everything from scratch again
 
-@wip
 Scenario: A suitable session exists
   Given a session exists in a previewable state
   When I visit its preview page
