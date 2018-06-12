@@ -62,6 +62,7 @@ en:
     food_provided: "Will you provide food or refreshments at the session? (optional)"
     incentives_enabled: "Will an incentive be provided?"
     payment_type: "What form will the incentive take?"
+    incentive_value: "Incentive value"
 
   pages:
     research_session:
