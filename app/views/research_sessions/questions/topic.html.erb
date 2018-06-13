@@ -7,49 +7,53 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path, patch: true) do %>
-    <%= c('SinglelineTextControl',
-      id: 'research_session[topic]',
-      name: 'topic',
-      value: @research_session.topic,
-      label: t('research_session_attr_labels.topic'),
-      hint: 'e.g. how young people think of consent and research',
-      size: 72,
-      errored: @research_session.errors['topic'].present?,
-      validation: @research_session.errors['topic'][0]
-    ) %>
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[topic]',
+        name: 'topic',
+        value: @research_session.topic,
+        label: t('research_session_attr_labels.topic'),
+        hint: 'e.g. how young people think of consent and research',
+        size: 72,
+        errored: @research_session.errors['topic'].present?,
+        validation: @research_session.errors['topic'][0]
+      ) %>
 
-    <%= c('SinglelineTextControl',
-      id: 'research_session[purpose]',
-      name: 'purpose',
-      value: @research_session.purpose,
-      label: t('research_session_attr_labels.purpose'),
-      hint: 'e.g. talk to them in a way that they understand.',
-      size: 72,
-      errored: @research_session.errors['purpose'].present?,
-      validation: @research_session.errors['purpose'][0]
-    ) %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[purpose]',
+        name: 'purpose',
+        value: @research_session.purpose,
+        label: t('research_session_attr_labels.purpose'),
+        hint: 'e.g. talk to them in a way that they understand.',
+        size: 72,
+        errored: @research_session.errors['purpose'].present?,
+        validation: @research_session.errors['purpose'][0]
+      ) %>
 
-    <%= render partial: 'submit_step' %>
-  <% end %>
-
-  <%= c('PreviewConsentForm') do %>
-    <%= c('HeadingOne', text: t('preview.able_to_consent.why_we_are_doing_research.heading')) %>
-    <%= c('Paragraph') do %>
-      <%=
-        raw t('preview.able_to_consent.why_we_are_doing_research.paragraphs')[0] % [
-          c(
-            'FieldPreview',
-            text: @research_session.topic,
-            listens_to: '[name="research_session[topic]"]'
-          ),
-          c(
-            'FieldPreview',
-            text: @research_session.purpose,
-            listens_to: '[name="research_session[purpose]"]'
-          )
-        ]
-      %>
+      <%= render partial: 'submit_step' %>
     <% end %>
-  <% end %>
+
+    <div class="Step-formPreview">
+      <%= c('PreviewConsentForm') do %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.why_we_are_doing_research.heading')) %>
+        <%= c('Paragraph') do %>
+          <%=
+            raw t('preview.able_to_consent.why_we_are_doing_research.paragraphs')[0] % [
+              c(
+                'FieldPreview',
+                text: @research_session.topic,
+                listens_to: '[name="research_session[topic]"]'
+              ),
+              c(
+                'FieldPreview',
+                text: @research_session.purpose,
+                listens_to: '[name="research_session[purpose]"]'
+              )
+            ]
+          %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

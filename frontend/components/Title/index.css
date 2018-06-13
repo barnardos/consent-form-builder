@@ -2,6 +2,7 @@
 
 .Title {
   font: 600 2.25rem/2.5rem Nova, sans-serif;
+  max-width: 46rem;
 }
 
 .Title:not(:first-child) {

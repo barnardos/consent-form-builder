@@ -14,95 +14,100 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path, patch: true) do %>
-    <%= c('SinglelineTextControl',
-      id: 'research_session[researcher_name]',
-      name: 'researcher_name',
-      value: @research_session.researcher_name,
-      label: t('research_session_attr_labels.researcher_name'),
-      size: 40,
-      errored: @research_session.errors['researcher_name'].present?,
-      validation: @research_session.errors['researcher_name'][0]
-    ) %>
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[researcher_name]',
+        name: 'researcher_name',
+        value: @research_session.researcher_name,
+        label: t('research_session_attr_labels.researcher_name'),
+        size: 40,
+        errored: @research_session.errors['researcher_name'].present?,
+        validation: @research_session.errors['researcher_name'][0]
+      ) %>
 
-    <%= c('SinglelineTextControl',
-      id: 'research_session[researcher_job_title]',
-      name: 'researcher_job_title',
-      value: @research_session.researcher_job_title,
-      label: t('research_session_attr_labels.researcher_job_title'),
-      size: 40,
-      errored: @research_session.errors['researcher_job_title'].present?,
-      validation: @research_session.errors['researcher_job_title'][0]
-    ) %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[researcher_job_title]',
+        name: 'researcher_job_title',
+        value: @research_session.researcher_job_title,
+        label: t('research_session_attr_labels.researcher_job_title'),
+        size: 40,
+        errored: @research_session.errors['researcher_job_title'].present?,
+        validation: @research_session.errors['researcher_job_title'][0]
+      ) %>
 
-    <%= c('SinglelineTextControl',
-      id: 'research_session[researcher_phone]',
-      name: 'researcher_phone',
-      value: @research_session.researcher_phone,
-      label: t('research_session_attr_labels.researcher_phone'),
-      size: 40,
-      errored: @research_session.errors['researcher_phone'].present?,
-      validation: @research_session.errors['researcher_phone'][0]
-    ) %>
-    <%= c('SinglelineTextControl',
-      id: 'research_session[researcher_email]',
-      name: 'researcher_email',
-      value: @research_session.researcher_email,
-      label: t('research_session_attr_labels.researcher_email'),
-      size: 40,
-      errored: @research_session.errors['researcher_email'].present?,
-      validation: @research_session.errors['researcher_email'][0]
-    ) %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[researcher_phone]',
+        name: 'researcher_phone',
+        value: @research_session.researcher_phone,
+        label: t('research_session_attr_labels.researcher_phone'),
+        size: 40,
+        errored: @research_session.errors['researcher_phone'].present?,
+        validation: @research_session.errors['researcher_phone'][0]
+      ) %>
+      <%= c('SinglelineTextControl',
+        id: 'research_session[researcher_email]',
+        name: 'researcher_email',
+        value: @research_session.researcher_email,
+        label: t('research_session_attr_labels.researcher_email'),
+        size: 40,
+        errored: @research_session.errors['researcher_email'].present?,
+        validation: @research_session.errors['researcher_email'][0]
+      ) %>
 
-    <%= render partial: 'submit_step' %>
-  <% end %>
-
-  <%= c('PreviewConsentForm') do %>
-    <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
-    <%= c('Paragraph') do %>
-      <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
-        c(
-          'FieldPreview',
-          text: @research_session.researcher_name,
-          listens_to: '[name="research_session[researcher_name]"]'
-        ),
-        c(
-          'FieldPreview',
-          text: @research_session.researcher_job_title,
-          listens_to: '[name="research_session[researcher_job_title]"]'
-        )
-      ] %>
+      <%= render partial: 'submit_step' %>
     <% end %>
-  <% end %>
 
-  <%= c('PreviewConsentForm') do %>
-    <%= c('HeadingOne', text: t('preview.able_to_consent.find_out_more.heading')) %>
-      <%= c('Paragraph') do %>
-        <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[0] % [
-          c(
-            'FieldPreview',
-            text: @research_session.researcher_name,
-            listens_to: '[name="research_session[researcher_name]"]'
-          )
-        ] %>
+    <div class="Step-formPreview">
+      <%= c('PreviewConsentForm') do %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
+            c(
+              'FieldPreview',
+              text: @research_session.researcher_name,
+              listens_to: '[name="research_session[researcher_name]"]'
+            ),
+            c(
+              'FieldPreview',
+              text: @research_session.researcher_job_title,
+              listens_to: '[name="research_session[researcher_job_title]"]'
+            )
+          ] %>
+        <% end %>
       <% end %>
-      <%= c('Paragraph') do %>
-        <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[1] % [
-          c(
-            'FieldPreview',
-            text: @research_session.researcher_email,
-            listens_to: '[name="research_session[researcher_email]"]'
-          )
-        ] %>
+
+      <%= c('PreviewConsentForm') do %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.find_out_more.heading')) %>
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[0] % [
+            c(
+              'FieldPreview',
+              text: @research_session.researcher_name,
+              listens_to: '[name="research_session[researcher_name]"]'
+            )
+          ] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[1] % [
+            c(
+              'FieldPreview',
+              text: @research_session.researcher_email,
+              listens_to: '[name="research_session[researcher_email]"]'
+            )
+          ] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[2] % [
+            c(
+              'FieldPreview',
+              text: @research_session.researcher_phone,
+              listens_to: '[name="research_session[researcher_phone]"]'
+            )
+          ] %>
+        <% end %>
       <% end %>
-      <%= c('Paragraph') do %>
-        <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[2] % [
-          c(
-            'FieldPreview',
-            text: @research_session.researcher_phone,
-            listens_to: '[name="research_session[researcher_phone]"]'
-          )
-        ] %>
-      <% end %>
-  <% end %>
+    </div>
+
+  </div>
 <% end %>

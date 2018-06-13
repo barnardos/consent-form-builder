@@ -51,6 +51,7 @@
       "font-style",
       "font-weight",
       "font",
+      "grid-auto-rows",
       "grid-gap",
       "grid-template-columns",
       "height",
@@ -91,7 +92,7 @@
       "not"
     ],
     "unit-no-unknown": null,
-    "unit-whitelist": ["%", "px", "rem"],
+    "unit-whitelist": ["%", "fr", "px", "rem"],
     "value-no-vendor-prefix": true
   }
 }

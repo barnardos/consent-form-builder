@@ -2,6 +2,7 @@
 
 .ErrorSummary {
   box-shadow: inset 0 0 0 0.25rem #c30000;
+  max-width: 46rem;
   padding: 1rem;
 }
 

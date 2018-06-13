@@ -3,59 +3,63 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path, patch: true) do %>
-    <%= c('OfManyChoiceControl',
-      id: 'research_session[shared_with]',
-      name: 'shared_with',
-      collection: "research_session[#{:shared_with}]",
-      choices: SharedWith::CHOICES,
-      choices_selected: [@research_session.shared_with],
-      legend: 'How will the information recorded in this session be stored and processed? Identifiable information will be:',
-      choice_type: 'single',
-      errored: @research_session.errors['shared_with'].present?,
-      validation: @research_session.errors['shared_with'][0]
-    ) %>
-
-    <%= c('SinglelineTextControl',
-        id: 'research_session[shared_duration]',
-        name: 'shared_duration',
-        value: @research_session.shared_duration,
-        label: t('research_session_attr_labels.shared_duration'),
-        spanText: 'We recommend two years after the closure of the project',
-        hint: "e.g. 2 years",
-        size: 24,
-        errored: @research_session.errors['shared_duration'].present?,
-        validation: @research_session.errors['shared_duration'][0]
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('OfManyChoiceControl',
+        id: 'research_session[shared_with]',
+        name: 'shared_with',
+        collection: "research_session[#{:shared_with}]",
+        choices: SharedWith::CHOICES,
+        choices_selected: [@research_session.shared_with],
+        legend: 'How will the information recorded in this session be stored and processed? Identifiable information will be:',
+        choice_type: 'single',
+        errored: @research_session.errors['shared_with'].present?,
+        validation: @research_session.errors['shared_with'][0]
       ) %>
 
-    <%= render partial: 'submit_step' %>
-  <% end %>
+      <%= c('SinglelineTextControl',
+          id: 'research_session[shared_duration]',
+          name: 'shared_duration',
+          value: @research_session.shared_duration,
+          label: t('research_session_attr_labels.shared_duration'),
+          spanText: 'We recommend two years after the closure of the project',
+          hint: "e.g. 2 years",
+          size: 24,
+          errored: @research_session.errors['shared_duration'].present?,
+          validation: @research_session.errors['shared_duration'][0]
+        ) %>
 
-  <%= c('PreviewConsentForm') do %>
-    <%= c('HeadingOne', text: t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.heading')) %>
-    <%= c('Paragraph') do %>
-      &hellip;
+      <%= render partial: 'submit_step' %>
     <% end %>
-    <% t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.shared_with').each do |key, value| %>
-      <%= c('ChoiceControlledContent', controlled_by: "[id=\"research_session[#{key.to_s}]\"]", is_active: @research_session.shared_with == key.to_s) do %>
+
+    <div class="Step-formPreview">
+      <%= c('PreviewConsentForm') do %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.heading')) %>
         <%= c('Paragraph') do %>
-          <%= value %>
+          &hellip;
+        <% end %>
+        <% t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.shared_with').each do |key, value| %>
+          <%= c('ChoiceControlledContent', controlled_by: "[id=\"research_session[#{key.to_s}]\"]", is_active: @research_session.shared_with == key.to_s) do %>
+            <%= c('Paragraph') do %>
+              <%= value %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t("preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
+            c(
+              'FieldPreview',
+              text: @research_session.shared_duration,
+              listens_to: '[name="research_session[shared_duration]"]'
+            )
+          ] %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          &hellip;
         <% end %>
       <% end %>
-    <% end %>
-    <%= c('Paragraph') do %>
-      <%= raw t("preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
-        c(
-          'FieldPreview',
-          text: @research_session.shared_duration,
-          listens_to: '[name="research_session[shared_duration]"]'
-        )
-      ] %>
-    <% end %>
-    <%= c('Paragraph') do %>
-      &hellip;
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 <% end %>
 
 

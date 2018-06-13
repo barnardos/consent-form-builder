@@ -3,108 +3,112 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path, patch: true) do %>
-    <%= c('OfManyChoiceControl',
-      id: 'research_session[incentives_enabled]',
-      name:'incentives_enabled',
-      collection: "research_session[#{:incentives_enabled}]",
-      choices: [
-        {
-          id: 'incentives_enabled_true',
-          value: true,
-          label: 'Yes'
-        },
-        {
-          id: 'incentives_enabled_false',
-          value: false,
-          label: 'No'
-        }
-      ],
-      choices_selected: @research_session.incentives_enabled.nil? ? [false] : [@research_session.incentives_enabled],
-      legend: t('helpers.legend.research_session.incentives_enabled'),
-      choice_type: 'single',
-      errored: @research_session.errors['incentives_enabled'].present?,
-      validation: @research_session.errors['incentives_enabled'][0]
-    ) %>
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('OfManyChoiceControl',
+        id: 'research_session[incentives_enabled]',
+        name:'incentives_enabled',
+        collection: "research_session[#{:incentives_enabled}]",
+        choices: [
+          {
+            id: 'incentives_enabled_true',
+            value: true,
+            label: 'Yes'
+          },
+          {
+            id: 'incentives_enabled_false',
+            value: false,
+            label: 'No'
+          }
+        ],
+        choices_selected: @research_session.incentives_enabled.nil? ? [false] : [@research_session.incentives_enabled],
+        legend: t('helpers.legend.research_session.incentives_enabled'),
+        choice_type: 'single',
+        errored: @research_session.errors['incentives_enabled'].present?,
+        validation: @research_session.errors['incentives_enabled'][0]
+      ) %>
 
-  <%= c('ChoiceControlledContent',
-      is_active: (@research_session.incentives_enabled.present? && [@research_session.incentives_enabled.to_s].include?('true')),
-      controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
+    <%= c('ChoiceControlledContent',
+        is_active: (@research_session.incentives_enabled.present? && [@research_session.incentives_enabled.to_s].include?('true')),
+        controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
 
-          <%= c('OfManyChoiceControl',
-            id: 'research_session[payment_type]',
-            name:'payment_type',
-            collection: "research_session[#{:payment_type}]",
-            choices: PaymentType::CHOICES,
-            choices_selected: [@research_session.payment_type],
-            legend: 'What form will the incentive take?',
-            choice_type: 'single',
-            errored: @research_session.errors['payment_type'].present?,
-            validation: @research_session.errors['payment_type'][0]
-          ) %>
+            <%= c('OfManyChoiceControl',
+              id: 'research_session[payment_type]',
+              name:'payment_type',
+              collection: "research_session[#{:payment_type}]",
+              choices: PaymentType::CHOICES,
+              choices_selected: [@research_session.payment_type],
+              legend: 'What form will the incentive take?',
+              choice_type: 'single',
+              errored: @research_session.errors['payment_type'].present?,
+              validation: @research_session.errors['payment_type'][0]
+            ) %>
 
-          <%= c('SinglelineTextControl',
-            id: 'research_session[incentive_value]',
-            name: 'incentive_value',
-            value: @research_session.incentive_value,
-            label: t('research_session_attr_labels.incentive_value'),
-            hint: 'e.g. 5.00',
-            size: 24,
-            errored: @research_session.errors['incentive_value'].present?,
-            validation: @research_session.errors['incentive_value'][0]
-          ) %>
+            <%= c('SinglelineTextControl',
+              id: 'research_session[incentive_value]',
+              name: 'incentive_value',
+              value: @research_session.incentive_value,
+              label: t('research_session_attr_labels.incentive_value'),
+              hint: 'e.g. 5.00',
+              size: 24,
+              errored: @research_session.errors['incentive_value'].present?,
+              validation: @research_session.errors['incentive_value'][0]
+            ) %>
 
-      <% end %>
-     <%= render partial: 'submit_step' %>
-  <% end %>
-
-  <%= c('ChoiceControlledContent',
-    is_active: @research_session.incentives_enabled,
-    controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
-    <%= c('PreviewConsentForm') do %>
-      <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
-
-      <%= c('Paragraph') do %>
-        …
-      <% end %>
-
-      <%= c('Paragraph') do %>
-        <%= t('preview.able_to_consent.session_details.incentives_intro') %>
-      <% end %>
-
-      <%= c('ChoiceControlledContent',
-        is_active: (@research_session.payment_type == 'cash'),
-        controlled_by: '[id="research_session[cash]"]') do %>
-        <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.session_details.payment_type.cash') % [
-            c(
-              'FieldPreview',
-              text: number_to_currency(@research_session.incentive_value),
-              listens_to: '[name="research_session[incentive_value]"]',
-              format_value: 'currency'
-            )
-          ] %>
         <% end %>
-      <% end %>
-
-      <%= c('ChoiceControlledContent',
-        is_active: (@research_session.payment_type == 'voucher'),
-        controlled_by: '[id="research_session[voucher]"]') do %>
-        <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.session_details.payment_type.voucher') % [
-            c(
-              'FieldPreview',
-              text: number_to_currency(@research_session.incentive_value),
-              listens_to: '[name="research_session[incentive_value]"]',
-              format_value: 'currency'
-            )
-          ] %>
-        <% end %>
-      <% end %>
-
-      <%= c('Paragraph') do %>
-        …
-      <% end %>
+      <%= render partial: 'submit_step' %>
     <% end %>
-  <% end %>
+
+    <div class="Step-formPreview">
+      <%= c('ChoiceControlledContent',
+        is_active: @research_session.incentives_enabled,
+        controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
+        <%= c('PreviewConsentForm') do %>
+          <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
+
+          <%= c('Paragraph') do %>
+            …
+          <% end %>
+
+          <%= c('Paragraph') do %>
+            <%= t('preview.able_to_consent.session_details.incentives_intro') %>
+          <% end %>
+
+          <%= c('ChoiceControlledContent',
+            is_active: (@research_session.payment_type == 'cash'),
+            controlled_by: '[id="research_session[cash]"]') do %>
+            <%= c('Paragraph') do %>
+              <%= raw t('preview.able_to_consent.session_details.payment_type.cash') % [
+                c(
+                  'FieldPreview',
+                  text: number_to_currency(@research_session.incentive_value),
+                  listens_to: '[name="research_session[incentive_value]"]',
+                  format_value: 'currency'
+                )
+              ] %>
+            <% end %>
+          <% end %>
+
+          <%= c('ChoiceControlledContent',
+            is_active: (@research_session.payment_type == 'voucher'),
+            controlled_by: '[id="research_session[voucher]"]') do %>
+            <%= c('Paragraph') do %>
+              <%= raw t('preview.able_to_consent.session_details.payment_type.voucher') % [
+                c(
+                  'FieldPreview',
+                  text: number_to_currency(@research_session.incentive_value),
+                  listens_to: '[name="research_session[incentive_value]"]',
+                  format_value: 'currency'
+                )
+              ] %>
+            <% end %>
+          <% end %>
+
+          <%= c('Paragraph') do %>
+            …
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

@@ -3,67 +3,71 @@
 
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-  <%= c('Form', action: wizard_path, patch: true) do %>
-    <%= c('OfManyChoiceControl',
-      id: 'research_session[recording_methods][]',
-      name:'recording_methods',
-      collection: "research_session[#{:recording_methods}][]",
-      choices: RecordingMethods::CHOICES,
-      choices_selected: @research_session.recording_methods,
-      legend: 'How will you be recording information?',
-      choice_type: 'multi',
-      errored: @research_session.errors['recording_methods'].present?,
-      validation: @research_session.errors['recording_methods'][0]
-    ) %>
-
-    <%= c('ChoiceControlledContent',
-      is_active: (@research_session.recording_methods.present? && @research_session.recording_methods.include?("other")),
-      controlled_by: '[id="research_session[other]"]') do %>
-      <%= c('SinglelineTextControl',
-        id: 'research_session[other_recording_method]',
-        name: 'other_recording_method',
-        value: @research_session.other_recording_method,
-        label: t('research_session_attr_labels.other_recording_method'),
-        size: 48,
-        errored: @research_session.errors['other_recording_method'].present?,
-        validation: @research_session.errors['other_recording_method'][0]
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('OfManyChoiceControl',
+        id: 'research_session[recording_methods][]',
+        name:'recording_methods',
+        collection: "research_session[#{:recording_methods}][]",
+        choices: RecordingMethods::CHOICES,
+        choices_selected: @research_session.recording_methods,
+        legend: 'How will you be recording information?',
+        choice_type: 'multi',
+        errored: @research_session.errors['recording_methods'].present?,
+        validation: @research_session.errors['recording_methods'][0]
       ) %>
+
+      <%= c('ChoiceControlledContent',
+        is_active: (@research_session.recording_methods.present? && @research_session.recording_methods.include?("other")),
+        controlled_by: '[id="research_session[other]"]') do %>
+        <%= c('SinglelineTextControl',
+          id: 'research_session[other_recording_method]',
+          name: 'other_recording_method',
+          value: @research_session.other_recording_method,
+          label: t('research_session_attr_labels.other_recording_method'),
+          size: 48,
+          errored: @research_session.errors['other_recording_method'].present?,
+          validation: @research_session.errors['other_recording_method'][0]
+        ) %>
+      <% end %>
+
+      <%= render partial: 'submit_step' %>
     <% end %>
 
-    <%= render partial: 'submit_step' %>
-  <% end %>
+    <div class="Step-formPreview">
+      <%= c('PreviewConsentForm') do %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
 
-  <%= c('PreviewConsentForm') do %>
-    <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
+        <%= c('Paragraph') do %>
+          &hellip;
+        <% end %>
 
-    <%= c('Paragraph') do %>
-      &hellip;
-    <% end %>
+        <%= c('Paragraph') do %>
+          <%= t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[1] %>
+        <% end %>
 
-    <%= c('Paragraph') do %>
-      <%= t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[1] %>
-    <% end %>
-
-    <%= c('UnorderedList') do %>
-      <% t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods').each do |key, value| %>
-        <%= c(
-          'ChoicePreview',
-          controlled_by: "[id='research_session[#{key.to_s}]']",
-          is_active: (
-            @research_session.recording_methods.present? && @research_session.recording_methods.include?(key.to_s)
-          )
-        ) do %>
-          <% if key != :other %>
-            <%= value %>
-          <% else %>
+        <%= c('UnorderedList') do %>
+          <% t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods').each do |key, value| %>
             <%= c(
-              'FieldPreview',
-              text: @research_session.other_recording_method,
-              listens_to: '[name="research_session[other_recording_method]"]'
-            ) %>
+              'ChoicePreview',
+              controlled_by: "[id='research_session[#{key.to_s}]']",
+              is_active: (
+                @research_session.recording_methods.present? && @research_session.recording_methods.include?(key.to_s)
+              )
+            ) do %>
+              <% if key != :other %>
+                <%= value %>
+              <% else %>
+                <%= c(
+                  'FieldPreview',
+                  text: @research_session.other_recording_method,
+                  listens_to: '[name="research_session[other_recording_method]"]'
+                ) %>
+              <% end %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 <% end %>
