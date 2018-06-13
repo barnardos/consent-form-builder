@@ -7,10 +7,22 @@ module PreviewChecker
     researcher_path = research_session_question_path(
       StepCompletions::BULLYING_SLUG, 'researcher', 'edit-preview' => 1
     )
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @job_title)
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_name)
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_phone)
-    expect(page).to have_selector("a.editable[href='#{researcher_path}']", text: @researcher_email)
+    expect(page).to have_selector(
+      "a.Output-link[href='#{researcher_path}']",
+      text: @job_title
+    )
+    expect(page).to have_selector(
+      "a.Output-link[href='#{researcher_path}']",
+      text: @researcher_name
+    )
+    expect(page).to have_selector(
+      "a.Output-link[href='#{researcher_path}']",
+      text: @researcher_phone
+    )
+    expect(page).to have_selector(
+      "a.Output-link[href='#{researcher_path}']",
+      text: @researcher_email
+    )
   end
 
   def check_topic
@@ -24,7 +36,7 @@ module PreviewChecker
 
   def check_methodologies
     @methodologies.each do |methodology_display_name|
-      expect(page.body).to have_link(methodology_display_name, class: 'editable')
+      expect(page.body).to have_link(methodology_display_name, class: 'Output-link')
     end
   end
 
@@ -42,14 +54,14 @@ module PreviewChecker
   end
 
   def check_where_when
-    expect(page).to have_tag('a.editable', text: @session_duration)
-    expect(page).to have_tag('a.editable', text: @session_location)
-    expect(page).to have_tag('a.editable', text: @held_on)
-    expect(page).to have_tag('a.editable', text: @what_to_bring)
+    expect(page).to have_tag('a.Output-link', text: @session_duration)
+    expect(page).to have_tag('a.Output-link', text: @session_location)
+    expect(page).to have_tag('a.Output-link', text: @held_on)
+    expect(page).to have_tag('a.Output-link', text: @what_to_bring)
   end
 
   def check_expenses
-    expect(page.body).to include(
+    expect(page.body).to have_content(
       'We allow travel expenses of up to £50.00, food expenses of up to £20.00, '\
       'and other expenses of up to £10.00.'
     )
@@ -59,8 +71,10 @@ module PreviewChecker
   end
 
   def check_incentives
-    expect(page.body).to have_content('As a thank you, we will give your child')
-    expect(page).to have_tag('a.editable', text: 'a cash incentive of')
+    expect(page.body).to have_content(
+      'As a thank you, we will give your child/the child in your care a cash incentive of'
+    )
+    expect(page).to have_tag('[data-field="incentive_value"] > a.Output-link', text: '£10.50')
   end
 end
 

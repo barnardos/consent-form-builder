@@ -5,7 +5,7 @@ end
 And(/^I should see each methodology selected$/) do
   # Interview, Usability as set in question_steps.rb
   expect(page).to have_content('a one-on-one interview')
-  expect(page).to have_content('looking at how you use a new tool we’re designing')
+  expect(page).to have_content('a group discussion')
 end
 
 And(/^I should see the focus of the research along with why$/) do
@@ -35,11 +35,11 @@ When(/^I click the continue button$/) do
   click_button 'Continue'
 end
 
-Then(/^I should see my 'Other' methodology$/) do
+Then(/^I should see my 'other' methodology$/) do
   expect(page).to have_content(@other_methodology)
 end
 
-And(/^I should see my 'Other' recording method$/) do
+And(/^I should see my 'other' recording method$/) do
   expect(page).to have_content(@other_recording_method)
 end
 

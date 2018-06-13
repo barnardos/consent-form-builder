@@ -1,15 +1,43 @@
 class RecordingMethods
-  NAME_VALUES = {
-    voice:    'voice recording',
-    video:    'video recording',
-    written:  'researcher’s written notes',
-    workshop: 'the work created by participants during the session',
-    photo:    'photos',
-    screen:   'screen recording',
-    other:    'other'
-  }
+  CHOICES = [
+    {
+      id: 'voice',
+      value: 'voice',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.voice')
+    },
+    {
+      id: 'video',
+      value: 'video',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.video')
+    },
+    {
+      id: 'written',
+      value: 'written',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.written')
+    },
+    {
+      id: 'workshop',
+      value: 'workshop',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.workshop')
+    },
+    {
+      id: 'photo',
+      value: 'photo',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.photo')
+    },
+    {
+      id: 'screen',
+      value: 'screen',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.screen')
+    },
+    {
+      id: 'other',
+      value: 'other',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods.other')
+    }
+  ].freeze
 
   def self.allowed_values
-    NAME_VALUES.keys
+    CHOICES.map { |choice| choice[:value].to_sym }
   end
 end

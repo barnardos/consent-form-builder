@@ -1,67 +1,142 @@
-<%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Where &amp; when</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
+<%= c('Step') do %>
+  <%= c('Title', text: 'Where & when') %>
 
-    <%= form.radio_group_vertical :where_when_enabled,
-      { true => 'Yes', false => 'No' },
-      { autofocus_first_item: true },
-      legend: t('helpers.legend.research_session.where_when_enabled')
-    %>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
-    <div class="js-ConditionalSubfield" data-controlled-by="research_session[where_when_enabled]" data-control-value="true">
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('OfManyChoiceControl',
+        id: 'research_session[where_when_enabled]',
+        name:'where_when_enabled',
+        collection: "research_session[#{:where_when_enabled}]",
+        choices: [
+          {
+            id: 'where_when_enabled_true',
+            value: true,
+            label: 'Yes'
+          },
+          {
+            id: 'where_when_enabled_false',
+            value: false,
+            label: 'No'
+          }
+        ],
+        choices_selected: @research_session.where_when_enabled.nil? ? [false] : [@research_session.where_when_enabled],
+        legend: t('helpers.legend.research_session.where_when_enabled'),
+        choice_type: 'single',
+        errored: @research_session.errors['where_when_enabled'].present?,
+        validation: @research_session.errors['where_when_enabled'][0]
+    ) %>
 
-      <div class="reactive-container">
-        <div class="reactive-container__form">
-          <fieldset class="datefield">
-            <legend class="datefield__label">Please enter the time and date of the session</legend>
-            <%= form.labelled_text_field \
-                    :when_text,
-                    text_options: {
-                      'data-previewed-by' => 'WhereWhenPreviews',
-                      placeholder: 'Monday 27th September 2018 at 3:00pm',
-                      autofocus: true
-                    }
-            %>
-          </fieldset>
+    <%= c('ChoiceControlledContent',
+        is_active: (@research_session.where_when_enabled.present? && [@research_session.where_when_enabled.to_s].include?('true')),
+        controlled_by: '[id="research_session[where_when_enabled_true]"]') do %>
+        <%= c('Paragraph') do %>
+          Please enter the time and date of the session
+        <% end %>
+        <%= c('SinglelineTextControl',
+          id: 'research_session[when_text]',
+          name: 'when_text',
+          value: @research_session.when_text,
+          label: t('research_session_attr_labels.when_text'),
+          hint: 'e.g. Monday 27th September 2018 at 3:00pm',
+          size: 40,
+          errored: @research_session.errors['when_text'].present?,
+          validation: @research_session.errors['when_text'][0]
+        ) %>
 
-          <%=
-            form.labelled_text_field(
-              :duration,
-              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
-            )
-          %>
-          <%=
-            form.labelled_text_field(
-              :location,
-              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
-            )
-          %>
-          <%=
-            form.labelled_text_field(
-              :participant_equipment,
-              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
-            )
-          %>
-          <%=
-            form.labelled_text_field(
-              :food_provided,
-              text_options: { 'data-previewed-by' => 'WhereWhenPreviews' }
-            )
-          %>
-        </div>
-        <div class="reactive-container__preview">
-          <%=
-            react_component(
-              'WhereWhenPreviews', current_step_params.merge(you_or_your_child: 'You')
-            )
-          %>
-        </div>
-      </div>
+        <%= c('SinglelineTextControl',
+          id: 'research_session[duration]',
+          name: 'duration',
+          value: @research_session.duration,
+          label: t('research_session_attr_labels.duration'),
+          size: 40,
+          errored: @research_session.errors['duration'].present?,
+          validation: @research_session.errors['duration'][0]
+        ) %>
 
+        <%= c('SinglelineTextControl',
+          id: 'research_session[location]',
+          name: 'location',
+          value: @research_session.location,
+          label: t('research_session_attr_labels.location'),
+          size: 40,
+          errored: @research_session.errors['location'].present?,
+          validation: @research_session.errors['location'][0]
+        ) %>
+
+        <%= c('SinglelineTextControl',
+          id: 'research_session[participant_equipment]',
+          name: 'participant_equipment',
+          value: @research_session.participant_equipment,
+          label: t('research_session_attr_labels.participant_equipment'),
+          size: 40,
+          errored: @research_session.errors['participant_equipment'].present?,
+          validation: @research_session.errors['participant_equipment'][0]
+        ) %>
+
+        <%= c('SinglelineTextControl',
+          id: 'research_session[food_provided]',
+          name: 'food_provided',
+          value: @research_session.food_provided,
+          label: t('research_session_attr_labels.food_provided'),
+          size: 40,
+          errored: @research_session.errors['food_provided'].present?,
+          validation: @research_session.errors['food_provided'][0]
+        ) %>
+      <% end %>
+      <%= render partial: 'submit_step' %>
+    <% end %>
+
+    <div class="Step-formPreview">
+      <%= c('ChoiceControlledContent',
+          is_active: @research_session.where_when_enabled,
+          controlled_by: '[id="research_session[where_when_enabled_true]"]') do %>
+        <%= c('PreviewConsentForm') do %>
+          <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
+
+          <% [:when_text, :location, :duration].each do |field| %>
+            <%= c('Paragraph') do %>
+              <%= raw t("preview.able_to_consent.session_details.#{field}") % [
+                c(
+                  'FieldPreview',
+                  text: @research_session["#{field}"],
+                  listens_to: "[name=\"research_session[#{field}]\"]"
+                )
+              ] %>
+            <% end %>
+          <% end %>
+
+          <%= c('Paragraph') do %>
+            …
+          <% end %>
+
+          <%= c('Paragraph') do %>
+            <%= raw t('preview.able_to_consent.session_details.participant_equipment') % [
+              c(
+                'FieldPreview',
+                text: @research_session.participant_equipment,
+                listens_to: '[name="research_session[participant_equipment]"]'
+              )
+            ] %>
+          <% end %>
+
+          <%= c('Paragraph') do %>
+            …
+          <% end %>
+
+          <%= c('Paragraph') do %>
+            <%= raw t('preview.able_to_consent.session_details.food_provided') % [
+              c(
+                'FieldPreview',
+                text: @research_session.food_provided,
+                listens_to: '[name="research_session[food_provided]"]'
+              )
+            ] %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
+  </div>
+<% end %>
 
-    <%= render 'button_bar' %>
-  <% end %>
-</div>

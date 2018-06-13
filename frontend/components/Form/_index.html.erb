@@ -1,0 +1,7 @@
+<form class="Form" action="<%= action %>" accept-charset="UTF-8" method="post">
+  <% if defined?(patch) && patch %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <%= yield %>
+</form>

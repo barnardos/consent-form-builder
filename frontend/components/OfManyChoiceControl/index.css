@@ -1,0 +1,45 @@
+/** @define OfManyChoiceControl; */
+
+.OfManyChoiceControl {
+  max-width: 46rem;
+}
+
+.OfManyChoiceControl-fieldset {
+  border: none;
+}
+
+.OfManyChoiceControl-legend {
+  display: block;
+  font: 600 1.375rem/1.75rem system-ui;
+}
+
+.OfManyChoiceControl-validation {
+  margin-top: 0.5rem;
+}
+
+.OfManyChoiceControl-validationInner {
+  color: #c30000;
+  font: 600 1rem/1.5rem system-ui;
+}
+
+.OfManyChoiceControl-choiceControls {
+  margin-top: 1rem;
+}
+
+.OfManyChoiceControl-choiceControl {
+  margin-top: 1rem;
+}
+
+/**
+ * errored
+ */
+
+.OfManyChoiceControl--errored {
+  box-shadow: inset 0.25rem 0 0 #c30000;
+  padding-left: 1rem;
+}
+
+.OfManyChoiceControl--errored .OfManyChoiceControl-element {
+  border-color: #c30000;
+  box-shadow: inset 0.25rem 0.25rem color(#c30000, tint(80%));
+}

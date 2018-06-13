@@ -1,0 +1,27 @@
+<div class="OfManyChoiceControl <%= 'OfManyChoiceControl--errored' if errored %>">
+  <fieldset class="OfManyChoiceControl-fieldset" id="<%= id %>" data-of-many-choice-control>
+    <legend class="OfManyChoiceControl-legend"><%= legend %></legend>
+    <input type="hidden" name="<%= collection %>" value="">
+    <% if validation.present? %>
+      <p class="OfManyChoiceControl-validation">
+        <strong class="OfManyChoiceControl-validationInner">
+          <%= @research_session.errors.full_message(name, validation) %>
+        </strong>
+      </p>
+    <% end %>
+    <div class="OfManyChoiceControl-choiceControls">
+      <% choices.each do |choice| %>
+        <div class="OfManyChoiceControl-choiceControl">
+          <%= c('ChoiceControl',
+            name: collection,
+            id: "research_session[#{choice[:id]}]",
+            value: choice[:value],
+            label: choice[:label],
+            type: choice_type,
+            checked: (choices_selected.present? && choices_selected.include?(choice[:value]))
+          ) %>
+        </div>
+      <% end %>
+    </div>
+  </fieldset>
+</div>

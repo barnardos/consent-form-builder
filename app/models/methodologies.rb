@@ -1,14 +1,38 @@
 class Methodologies
-  NAME_VALUES = {
-    interview:   'a one-on-one interview',
-    usability:   'looking at how you use a new tool we’re designing',
-    survey:      'a survey or paper questionnaire',
-    focusgroup:  'a group discussion',
-    codesign:    'a group activity',
-    other:       'Other'
-  }
+  CHOICES = [
+    {
+      id: 'interview',
+      value: 'interview',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.methodologies.interview')
+    },
+    {
+      id: 'usability',
+      value: 'usability',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.methodologies.usability')
+    },
+    {
+      id: 'survey',
+      value: 'survey',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.methodologies.survey')
+    },
+    {
+      id: 'focusgroup',
+      value: 'focusgroup',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.methodologies.focusgroup')
+    },
+    {
+      id: 'codesign',
+      value: 'codesign',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.methodologies.codesign')
+    },
+    {
+      id: 'other',
+      value: 'other',
+      label: I18n.t('preview.able_to_consent.what_happens_in_this_research_session.methodologies.other')
+    }
+  ].freeze
 
   def self.allowed_values
-    NAME_VALUES.keys
+    CHOICES.map { |choice| choice[:value].to_sym }
   end
 end

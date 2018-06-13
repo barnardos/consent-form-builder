@@ -22,21 +22,21 @@ Given(/^I have arrived at the methodologies step$/) do
   complete_topic_step
 end
 
-And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
+And(/^I should see an 'other' checkbox for (.*) with a space to fill this in$/) do |attr|
   attr = attr.downcase.tr(' ', '_')
-  expect(page).to have_tag('label', with: { for: "research_session_#{attr}_other" })
-  expect(page).to have_tag('input', with: { id: "research_session_#{attr}_other" })
+  expect(page).to have_tag('label', with: { for: "research_session[other_#{attr}]" })
+  expect(page).to have_tag('input', with: { id: "research_session[other_#{attr}]" })
 end
 
-When(/^I fill in the 'Other' methodology$/) do
-  check 'Other'
+When(/^I fill in the 'other' methodology$/) do
+  check 'other'
 
   @other_methodology = 'A.N. Other Methodology'
   fill_in 'What is the other methodology?', with: @other_methodology
 end
 
-When(/^I fill in the 'Other' recording method$/) do
-  check 'Other'
+When(/^I fill in the 'other' recording method$/) do
+  check 'other'
 
   @other_recording_method = 'A.N. Other Recording Method'
   fill_in 'What is the other recording method?', with: @other_recording_method
@@ -50,15 +50,15 @@ And(/^I fill in the remaining steps$/) do
   complete_incentives_step
 end
 
-When(/^I provide an 'Other' methodology$/) do
-  step "I should see an 'Other' checkbox for methodologies with a space to fill this in"
-  step "I fill in the 'Other' methodology"
+When(/^I provide an 'other' methodology$/) do
+  step "I should see an 'other' checkbox for methodology with a space to fill this in"
+  step "I fill in the 'other' methodology"
   step 'I click the continue button'
 end
 
-And(/^I provide an 'Other' recording method$/) do
-  step "I should see an 'Other' checkbox for recording methods with a space to fill this in"
-  step "I fill in the 'Other' recording method"
+And(/^I provide an 'other' recording method$/) do
+  step "I should see an 'other' checkbox for recording method with a space to fill this in"
+  step "I fill in the 'other' recording method"
   step 'I click the continue button'
 end
 
@@ -67,7 +67,12 @@ When(/^I go back to a previous step$/) do
 end
 
 Then(/^I should see a way of getting straight back to the preview$/) do
-  expect(page).to have_tag('button', text: 'Save and return')
+  expect(page).to have_tag(
+    'input',
+    class: 'Submit-element',
+    type: 'submit',
+    value: 'Save and return'
+  )
 end
 
 When(/^I edit that step and continue$/) do

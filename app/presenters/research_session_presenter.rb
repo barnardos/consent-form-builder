@@ -19,23 +19,16 @@ class ResearchSessionPresenter
     super
   end
 
+  def able_to_consent_key
+    able_to_consent? ? 'able_to_consent' : 'unable_to_consent'
+  end
+
   def able_to_consent?
     @able_to_consent
   end
 
   def unable_to_consent?
     !@able_to_consent
-  end
-
-  def recording_methods_sentence
-    lowercase_words = research_session.recording_methods.map do |method|
-      if method.to_s == 'other'
-        other_recording_method
-      else
-        RecordingMethods::NAME_VALUES.fetch(method.to_sym).downcase
-      end
-    end
-    lowercase_words.to_sentence
   end
 
   def any_expenses?

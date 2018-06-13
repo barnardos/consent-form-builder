@@ -1,4 +1,0 @@
---require spec/javascript/common.js
---ui bdd
---recursive
---reporter dot

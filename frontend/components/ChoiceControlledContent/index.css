@@ -1,0 +1,10 @@
+/** @define ChoiceControlledContent; */
+
+.ChoiceControlledContent {
+  display: none;
+}
+
+.ChoiceControlledContent--active {
+  display: grid;
+  grid-gap: 2rem;
+}

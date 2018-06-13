@@ -1,0 +1,18 @@
+<div class="PrintAreaCommand">
+  <% if type == 'button' %>
+    <button
+      class="PrintAreaCommand-button"
+      data-print-area-command
+      data-area-to-print="<%= area_to_print %>">
+      <%= text %>
+    </button>
+  <% else %>
+    <a
+      href="#"
+      class="PrintAreaCommand-link"
+      data-print-area-command
+      data-area-to-print="<%= area_to_print %>">
+      <%= text %>
+    </a>
+  <% end %>
+</div>

@@ -1,10 +1,18 @@
 class PaymentType
-  NAME_VALUES = HashWithIndifferentAccess[{
-    cash:    'Cash',
-    voucher: 'High street shopping voucher'
-  }]
+  CHOICES = [
+    {
+      id: 'cash',
+      value: 'cash',
+      label: 'Cash'
+    },
+    {
+      id: 'voucher',
+      value: 'voucher',
+      label: 'High street shopping voucher'
+    }
+  ].freeze
 
   def self.allowed_values
-    NAME_VALUES.keys.map(&:to_s)
+    CHOICES.map { |choice| choice[:value] }
   end
 end

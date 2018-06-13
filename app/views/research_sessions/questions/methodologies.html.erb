@@ -1,43 +1,82 @@
-<%= render "research_sessions/progress" %>
-<div class="main-content">
-  <%= render 'shared/error_summary' %>
-  <h1 class="page-heading">Methodologies</h1>
-  <%= barnardos_form_with model: @research_session, url: wizard_path do |form| %>
-    <div class="reactive-container">
-      <div class="reactive-container__form">
-        <%= form.checkbox_group_vertical(
-              :methodologies,
-              Methodologies::NAME_VALUES.map { |name, value| [name, value.capitalize] },
-              {
-                autofocus_first_item: true,
-                input: { 'data-previewed-by' => 'MethodologyPreviews' }
-              },
-              legend: 'How will you be gathering information?'
-            )
-        %>
+<%= c('Step') do %>
+  <%= c('Title', text: 'Methodologies') %>
 
-        <div class="js-ConditionalSubfield"
-             data-controlled-by="research_session[methodologies][]"
-             data-control-value="other">
-          <%= form.labelled_text_field(
-            :other_methodology,
-            text_options: { 'data-previewed-by' => 'MethodologyPreviews' })
-          %>
-        </div>
-      </div>
-      <div class="reactive-container__preview">
-        <%=
-          react_component(
-            'MethodologyPreviews',
-            current_step_params.merge(
-              researcher_name: @research_session.researcher_name,
-              you_or_your_child: "your child/the child in your care"
-            )
-          )
-        %>
-      </div>
+  <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
 
+  <div class="Step-form">
+    <%= c('Form', action: wizard_path, patch: true) do %>
+      <%= c('OfManyChoiceControl',
+        id: 'research_session[methodologies][]',
+        name:'methodologies',
+        collection: "research_session[#{:methodologies}][]",
+        choices: Methodologies::CHOICES,
+        choices_selected: @research_session.methodologies,
+        legend: 'How will you be gathering information?',
+        choice_type: 'multi',
+        errored: @research_session.errors['methodologies'].present?,
+        validation: @research_session.errors['methodologies'][0]
+      ) %>
+
+      <%= c('ChoiceControlledContent',
+        is_active: (@research_session.methodologies.present? && @research_session.methodologies.include?('other')),
+        controlled_by: '[id="research_session[other]"]') do %>
+        <%= c('SinglelineTextControl',
+          id: 'research_session[other_methodology]',
+          name: 'other_methodology',
+          value: @research_session.other_methodology,
+          label: t('research_session_attr_labels.other_methodology'),
+          size: 48,
+          errored: @research_session.errors['other_methodology'].present?,
+          validation: @research_session.errors['other_methodology'][0]
+        ) %>
+      <% end %>
+
+      <%= render partial: 'submit_step' %>
+    <% end %>
+
+    <div class="Step-formPreview">
+      <%= c('PreviewConsentForm') do %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
+
+        <%= c('Paragraph') do %>
+          <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
+            c(
+              'Output',
+              text: @research_session.researcher_name,
+              field: 'researcher_name',
+              url: edit_link_for(:researcher_name)
+            ),
+            c(
+              'Output',
+              text: @research_session.researcher_job_title,
+              field: 'researcher_job_title',
+              url: edit_link_for(:researcher_job_title)
+            )
+          ] %>
+        <% end %>
+
+        <%= c('UnorderedList') do %>
+          <% t('preview.able_to_consent.what_happens_in_this_research_session.methodologies').each do |key, value| %>
+            <%= c(
+              'ChoicePreview',
+              controlled_by: "[id='research_session[#{key.to_s}]']",
+              is_active: (
+                @research_session.methodologies.present? && @research_session.methodologies.include?(key.to_s)
+              )
+            ) do %>
+              <% if key != :other %>
+                <%= value %>
+              <% else %>
+                <%= c(
+                  'FieldPreview',
+                  text: @research_session.other_methodology,
+                  listens_to: '[name="research_session[other_methodology]"]'
+                ) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
-    <%= render 'button_bar' %>
-  <% end %>
-</div>
+  </div>
+<% end %>

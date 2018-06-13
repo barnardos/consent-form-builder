@@ -1,0 +1,17 @@
+/** @define PreviewInformation; */
+
+.PreviewInformation {
+  display: grid;
+  grid-gap: 2rem;
+}
+
+.PreviewInformation-section {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+@media print {
+  .PreviewInformation {
+    display: none;
+  }
+}

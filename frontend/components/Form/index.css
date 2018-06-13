@@ -1,0 +1,8 @@
+/** @define Form; */
+
+.Form {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: minmax(0, auto);
+  max-width: 46rem;
+}

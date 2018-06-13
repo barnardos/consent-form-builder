@@ -1,0 +1,18 @@
+/** @define Output; */
+
+.Output {
+  background-color: #b3e0e5;
+  padding: 0.25rem;
+}
+
+@media print {
+  .Output {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .Output-link {
+    color: initial;
+    text-decoration: none;
+  }
+}

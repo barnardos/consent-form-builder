@@ -48,17 +48,17 @@ module StepCompletions
 
   def complete_methodologies_step
     @methodologies = [
-      Methodologies::NAME_VALUES[:interview],
-      Methodologies::NAME_VALUES[:usability]
+      Methodologies::CHOICES.select { |choice| choice[:id] == 'interview' }.first[:label],
+      Methodologies::CHOICES.select { |choice| choice[:id] == 'focusgroup' }.first[:label]
     ]
     @methodologies.each do |methodology|
-      check methodology.capitalize
+      check methodology
     end
     click_button 'Continue'
   end
 
   def complete_recording_methods_step
-    @recording_methods = ['Voice recording', 'Video recording', 'Researcher’s written notes']
+    @recording_methods = ['voice recording', 'video recording', 'researcher’s written notes']
     @recording_methods.each do |method|
       check method
     end
@@ -66,7 +66,7 @@ module StepCompletions
   end
 
   def complete_storing_step
-    choose 'anonymised as we process it'
+    choose 'Anonymised as we process it'
     @shared_duration = '1 year'
 
     fill_in 'How long will this information be held for?', with: @shared_duration

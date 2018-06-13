@@ -1,0 +1,9 @@
+<div class="Step">
+  <% if defined?(step) && step != :researcher %>
+    <div class="Step-navigation">
+      <a href="<%= previous_wizard_path %>" class="Step-backButton">Back</a>
+    </div>
+  <% end %>
+
+  <%= yield %>
+</div>

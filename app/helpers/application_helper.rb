@@ -13,11 +13,12 @@ module ApplicationHelper
     )
   end
 
-  def link_to_current_sha(sha_getter = -> { `git rev-parse HEAD` })
-    sha = ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call
-    return 'unavailable' if sha.nil?
+  def release_sha(sha_getter = -> { `git rev-parse HEAD` })
+    ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call || 'unavailable'
+  end
 
-    link_to sha[0..7], COMMIT_STEM + sha
+  def release_url
+    COMMIT_STEM + release_sha
   end
 
   def title(research_session, step = nil)
@@ -31,4 +32,11 @@ module ApplicationHelper
       "#{step.to_s.humanize} – #{research_session.name.strip}"
     end
   end
+
+  def component(component_name, locals = {}, &block)
+    name = component_name.split('_').first
+    render("components/#{name}/index", locals, &block)
+  end
+
+  alias c component
 end
