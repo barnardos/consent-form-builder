@@ -3,6 +3,7 @@
 .WritingFields {
   display: grid;
   grid-gap: 2rem;
+  max-width: 46rem;
 }
 
 .WritingFields-field {

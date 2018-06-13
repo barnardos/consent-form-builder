@@ -2,4 +2,5 @@
 
 .HeadingOne {
   font: 600 1.75rem/2rem Nova, sans-serif;
+  max-width: 46rem;
 }

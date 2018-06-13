@@ -1,5 +1,9 @@
 /** @define OfManyChoiceControl; */
 
+.OfManyChoiceControl {
+  max-width: 46rem;
+}
+
 .OfManyChoiceControl-fieldset {
   border: none;
 }
