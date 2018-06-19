@@ -1,0 +1,2 @@
+class StartPagesController < ApplicationController
+end

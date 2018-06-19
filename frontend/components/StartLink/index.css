@@ -1,0 +1,16 @@
+/** @define StartLink; */
+
+.StartLink {
+  background-color: #6aa300;
+  color: #fff;
+  display: inline-block;
+  font: 600 1.25rem/1.5rem Nova, sans-serif;
+  padding: 0.75rem;
+  position: relative;
+  text-align: center;
+}
+
+.StartLink:hover:active,
+.StartLink:hover:hover {
+  background-color: color(#6aa300 shade(10%));
+}

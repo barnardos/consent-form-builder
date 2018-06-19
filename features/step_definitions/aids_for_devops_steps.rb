@@ -22,8 +22,8 @@ Then(/^I should (?:still )?see a short-SHA link to the current version$/) do
   end
 end
 
-When(/^I visit the home page$/) do
-  visit '/'
+When(/^I visit the start page$/) do
+  visit new_research_session_path
 end
 
 When(/^I start to create a form$/) do

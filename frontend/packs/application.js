@@ -23,6 +23,7 @@ import "components/PreviewSection";
 import "components/PrintArea";
 import "components/PrintAreaCommand";
 import "components/SinglelineTextControl";
+import "components/StartLink";
 import "components/Step";
 import "components/Submit";
 import "components/Title";

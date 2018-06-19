@@ -3,7 +3,7 @@ module StepCompletions
   BULLYING_SLUG = BULLYING_NAME.strip.downcase.tr(' ', '-').freeze
 
   def create_new_form
-    visit '/'
+    visit new_research_session_path
 
     @session_name = BULLYING_NAME
     fill_in I18n.t('helpers.label.research_session.name'), with: @session_name
