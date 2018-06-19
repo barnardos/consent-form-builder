@@ -21,7 +21,7 @@ import "components/PreviewConsentForm";
 import "components/PreviewInformation";
 import "components/PreviewSection";
 import "components/PrintArea";
-import "components/PrintAreaCommand";
+import "components/PrintCommand";
 import "components/SinglelineTextControl";
 import "components/StartLink";
 import "components/Step";

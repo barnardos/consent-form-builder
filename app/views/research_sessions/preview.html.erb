@@ -12,43 +12,6 @@
         <% end %>
       <% end %>
     </div>
-
-    <div class="PreviewInformation-section">
-      <%= c('HeadingOne', text: t('preview.export.title')) %>
-      <%= c('PrintAreaCommand', type: 'button', area_to_print: '', text: t('preview.export.all')) %>
-      <%= c('PrintAreaCommand', type: 'link', area_to_print: 'InformationSheet', text: t('preview.export.information_sheet')) %>
-      <%= c('PrintAreaCommand', type: 'link', area_to_print: 'ConsentForm', text: t('preview.export.consent_form')) %>
-    </div>
-
-    <div class="PreviewInformation-section">
-      <%= c('HeadingOne', text: t('preview.create_new.title')) %>
-      <%= c('Paragraph') do %>
-        <%= c('Link', src: new_research_session_path, text: t('preview.create_new.link_create_new')) %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= c('Link', src: new_research_session_path(from_existing: @research_session.slug), text: t('preview.create_new.link_create_copy')) %>
-      <% end %>
-    </div>
-
-    <div class="PreviewInformation-section">
-      <%= c('HeadingOne', text: t('preview.share.title')) %>
-      <%= c('Paragraph') do %>
-        <%= t('preview.share.link_label') %> <%= c('Link', src: request.original_url, text: request.original_url) %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= c('Link', src: "mailto:?subject=#{URI.escape(@research_session.name)}&body=#{URI.escape(request.original_url)}", text: t('preview.share.email')) %>
-      <% end %>
-      <%= c('Paragraph') do %>
-        <%= t('preview.share.bookmark') %>
-      <% end %>
-      <%= c('UnorderedList') do %>
-        <% t('preview.share.bookmark_instructions').each do |text| %>
-          <%= c('ListItem') do %>
-            <%= raw text %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
   <% end %>
 
   <%= c('PreviewConsentForm') do %>
@@ -368,7 +331,7 @@
       <% end %>
     <% end %>
 
-    <%= c('PrintArea', id: 'ConsentForm') do %>
+    <%= c('PrintArea') do %>
       <%= c('PreviewSection') do %>
         <%= c('HeadingOne', text: t("#{ct}.consent_form.heading")) %>
         <%= c('Paragraph') do %>
@@ -423,5 +386,24 @@
       <% end %>
       <%= c('WritingFields', fields: t("#{ct}.consent_form.fields")) %>
     <% end %>
+  <% end %>
+
+  <%= c('PreviewInformation') do %>
+    <div class="PreviewInformation-section">
+      <%= c('Paragraph') do %>
+        <%= c('PrintCommand', text: t('preview.print')) %>
+      <% end %>
+      <% t('preview.stuff').each_with_index do |text, index| %>
+        <%= c('Paragraph') do %>
+          <% if index == 0 %>
+            <%= raw text % new_research_session_path(from_existing: @research_session.slug) %>
+          <% elsif index == 3 %>
+            <%= raw text % new_research_session_path %>
+          <% else %>
+            <%= raw text %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>

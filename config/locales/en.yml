@@ -86,29 +86,18 @@ en:
         save_and_return: 'Save and return'
 
   preview:
-    title: Research session preview
-    export:
-      title: Export
-      all: Print information sheet and consent form
-      information_sheet: Print information sheet
-      consent_form: Print consent form
-    create_new:
-      title: Create a new consent form
-      link_create_new: Create new
-      link_create_copy: Create a copy
-    share:
-      title: Share this consent form
-      link_label: 'Here is the link you can share and use at any time:'
-      email: Email this link
-      bookmark: 'Bookmark this link by pressing:'
-      bookmark_instructions:
-        - <kbd>Command/Cmd + D</kbd> on Mac
-        - <kbd>CTRL + D</kbd> on Windows
+    title: Your consent forms
+    print: Print
+    stuff:
+      - <a href="%s">Create a copy of this consent form</a>
+      - You can also share or bookmark the URL of this page.
+      - The researcher should be familiar with the <a href="http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=">BREC guidance</a> on what to do if a safeguarding concern arises during the session.
+      - <a href="%s">Create a new consent form</a>
 
     able_to_consent:
       consent_control:
-        - Showing info sheet and consent form for respondents who <strong>can</strong> give consent themselves.
-        - <a href="?able-to-consent=no">Show info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.</a>
+        - Consent form for participants who can give consent
+        - <a href="?able-to-consent=no">View consent form for participants who can’t give consent themselves</a>
       about_this_research_project:
         heading: About this research project
         lede: This information sheet will tell you more about the research so that you can decide whether or not you would like to take part.
@@ -230,8 +219,8 @@ en:
 
     unable_to_consent:
       consent_control:
-        - Showing info sheet and consent form for respondents who <strong>can't</strong> give consent themselves.
-        - <a href="?able-to-consent=yes">Show info sheet and consent form for respondents who <strong>can</strong> give consent themselves.</a>
+        - Consent form for participants who can't give consent
+        - <a href="?able-to-consent=no">View consent form for participants who can give consent themselves</a>
       about_this_research_project:
         heading: About this research project
         lede: This information sheet will tell you more about the research so that you can decide whether or not your child/the child in your care would like to take part.
