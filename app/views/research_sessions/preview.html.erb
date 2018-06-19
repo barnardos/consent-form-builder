@@ -175,20 +175,25 @@
             @research_session.where_when_enabled ||
             @research_session.expenses_enabled %>
         <%= c('PreviewSection') do %>
-          <%= c('HeadingOne', text: t("#{ct}.session_details.heading")) %>
 
-          <% if @research_session.where_when_enabled %>
-            <% [:when_text, :location, :duration].each do |field| %>
-              <% if @research_session["#{field}"] %>
-                <%= c('Paragraph') do %>
-                  <%= raw t("#{ct}.session_details.#{field}") % [
-                    c(
-                      'Output',
-                      text: @research_session["#{field}"],
-                      field: field,
-                      url: edit_link_for(field)
-                    )
-                  ] %>
+        <% if @research_session.when_text.present? ||
+              @research_session.location.present? ||
+              @research_session.duration.present? %>
+            <%= c('HeadingOne', text: t("#{ct}.session_details.heading")) %>
+
+            <% if @research_session.where_when_enabled %>
+              <% [:when_text, :location, :duration].each do |field| %>
+                <% if @research_session["#{field}"].present? %>
+                  <%= c('Paragraph') do %>
+                    <%= raw t("#{ct}.session_details.#{field}") % [
+                      c(
+                        'Output',
+                        text: @research_session["#{field}"],
+                        field: field,
+                        url: edit_link_for(field)
+                      )
+                    ] %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
