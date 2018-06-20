@@ -5,14 +5,14 @@ Feature:
 
   Scenario: We are in production
     Given we are in production
-    When I visit the home page
+    When I visit the start page
     Then I should see a short-SHA link to the current version
     When I start to create a form
     Then I should still see a short-SHA link to the current version
 
   Scenario: We are in development
     Given we are in development
-    When I visit the home page
+    When I visit the start page
     Then I should see a short-SHA link to the current version
     When I start to create a form
     Then I should still see a short-SHA link to the current version

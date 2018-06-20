@@ -2,7 +2,7 @@ module ApplicationHelper
   COMMIT_STEM = 'https://github.com/barnardos/consent-form-builder-rails/commit/'.freeze
 
   def already_creating_session?
-    current_page?(new_research_session_path) || current_page?(root_path)
+    current_page?(new_research_session_path)
   end
 
   def create_a_copy_link(research_session)

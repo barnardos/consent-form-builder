@@ -1,0 +1,18 @@
+<%= c('Step') do %>
+  <%= c('Title', text: t('start_pages.show.title')) %>
+  <%= c('Paragraph') do %>
+    <%= t('start_pages.show.intro') %>
+  <% end %>
+
+  <%= c('Paragraph') do %>
+    <%= t('start_pages.show.time_taken') %>
+  <% end %>
+
+  <%= c('Paragraph') do %>
+    <% t 'start_pages.show.contact_brec_html', link: c('Link', src: 'http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=', text: t('start_pages.show.brec')) %>
+  <% end %>
+
+  <div>
+    <%= c('StartLink', src: new_research_session_path, text: t('start_pages.show.start')) %>
+  </div>
+<% end %>
