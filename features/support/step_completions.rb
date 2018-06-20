@@ -33,7 +33,7 @@ module StepCompletions
       Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'Barnardoʼs is doing research to learn about', with: @topic
+    fill_in 'Barnardoʼs is doing research to learn about', with: @topic.squish
 
     @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
       PURPOSE: Fresnel lenses and the under-5s
@@ -42,7 +42,7 @@ module StepCompletions
       PURPOSE: Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'so that we can', with: @purpose
+    fill_in 'so that we can', with: @purpose.squish
     click_button 'Continue'
   end
 

@@ -52,13 +52,12 @@ describe 'research_sessions/preview' do
     let(:able_to_consent) { true }
 
     it 'phrases blocks using "you"' do
-      expect(rendered).to have_content(
-        <<~TEXT
-          It is important that we test the current and future tools and services
-          that we are developing with people like you so that we can make them as
-          good as possible.
-        TEXT
-      )
+      content = <<~TEXT
+        It is important that we test the current and future tools and services
+        that we are developing with people like you so that we can make them as
+        good as possible.
+      TEXT
+      expect(rendered).to have_content(content.squish)
     end
 
     it 'phrases React component blocks as "you"' do
@@ -70,13 +69,12 @@ describe 'research_sessions/preview' do
     let(:able_to_consent) { false }
 
     it 'phrases blocks using "your child"' do
-      expect(rendered).to have_content(
-        <<~TEXT
-          It is important that we test the current and future tools and services
-          that we are developing with people like your child/the child in your
-          care so that we can make them as good as possible.
-        TEXT
-      )
+      content = <<~TEXT
+        It is important that we test the current and future tools and services
+        that we are developing with people like your child/the child in your
+        care so that we can make them as good as possible.
+      TEXT
+      expect(rendered).to have_content(content.squish)
     end
 
     it 'phrases React component blocks as "your child"' do

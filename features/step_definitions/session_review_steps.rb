@@ -9,8 +9,8 @@ And(/^I should see each methodology selected$/) do
 end
 
 And(/^I should see the focus of the research along with why$/) do
-  expect(page).to have_content(@topic)
-  expect(page).to have_content(@purpose)
+  expect(page).to have_content(@topic.squish)
+  expect(page).to have_content(@purpose.squish)
 
   expect(page).to have_content(
     'It is important that we test the current and future tools and services'
