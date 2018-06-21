@@ -108,12 +108,6 @@ en:
         - Consent form for participants who can give consent
         - <a href="?able-to-consent=no">View consent form for participants who can’t give consent themselves</a>
 
-      what_happens_in_this_research_session:
-        heading: What happens in this research session?
-        paragraphs:
-          - "%s, %s, would like you to take part in…"
-          - "Which we will record using:"
-          - There may be another researcher or observer supporting %s at this session.
       consent_form:
         title: Consent form
         the_research: Barnardo’s is doing research to learn about %{topic} so that we can %{purpose}.
@@ -122,6 +116,9 @@ en:
         voluntary: You don't have to take part in this session. It’s your decision. Your decision won’t affect the services you receive.
         change_mind: You can change your mind at anytime for any reason.
 
+      the_research:
+        heading: The research
+        take_part_in: "%{researcher_name}, %{researcher_job_title}, would like you to take part in:"
         methodologies:
           interview: a one-on-one interview
           usability: looking at how you use a new tool we’re designing
@@ -129,6 +126,7 @@ en:
           focusgroup: a group discussion
           codesign: a group activity
           other: other
+        record_using: "Which we will record using:"
         recording_methods:
           voice: voice recording
           video: video recording
@@ -137,6 +135,11 @@ en:
           photo: photos
           screen: screen recording
           other: other
+        may_be_contacted: "%{researcher_name} may be contacted by:"
+        contacted_by:
+          email: "Email: %s"
+          phone: "Phone: %s"
+        other_researchers: There may be another researcher or observer present.
 
       session_details:
         heading: Session details
@@ -172,13 +175,6 @@ en:
         heading: Sharing information
         paragraphs:
           - We may have to share information about you without your consent if we think you or someone else is at risk of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
-
-      find_out_more:
-        heading: Find out more
-        paragraphs:
-          - "If you have any questions about the research please contact %s"
-          - "Email: %s"
-          - "Telephone: %s"
 
       concerns_and_complaints:
         heading: Concerns and complaints
@@ -229,19 +225,17 @@ en:
         voluntary: The child doesn’t have to take part in this session. It’s your decision as the parent/carer. Your decision won’t affect the service the child receives.
         change_mind: We’ll also ask the child if they want to take part, they can change their mind at anytime for any reason.
 
-      what_happens_in_this_research_session:
-        heading: What happens in this research session?
-        paragraphs:
-          - "%s, %s, would like your child/the child in your care to take part in…"
-          - "Which we will record using:"
-          - There may be another researcher or observer supporting %s at this session.
+      the_research:
+        heading: The research
+        take_part_in: "%{researcher_name}, %{researcher_job_title}, would like the child to take part in:"
         methodologies:
-          interview: a one-on-one interview,
-          usability: looking at how your child/the child in your care use a new tool we’re designing,
-          survey: a survey or paper questionnaire,
-          focusgroup: a group discussion,
-          codesign: a group activity,
+          interview: a one-on-one interview
+          usability: looking at how the child uses a new tool we’re designing
+          survey: a survey or paper questionnaire
+          focusgroup: a group discussion
+          codesign: a group activity
           other: other
+        record_using: "Which we will record using:"
         recording_methods:
           voice: voice recording
           video: video recording
@@ -250,6 +244,11 @@ en:
           photo: photos
           screen: screen recording
           other: other
+        may_be_contacted: "%{researcher_name} may be contacted by:"
+        contacted_by:
+          email: "Email: %{email}"
+          phone: "Phone: %{phone}"
+        other_researchers: There may be another researcher or observer present.
 
       session_details:
         heading: Session details
@@ -285,13 +284,6 @@ en:
         heading: Sharing information
         paragraphs:
           - We may have to share information about your child/the child in your care without your consent if we think they or someone else is at risk of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
-
-      find_out_more:
-        heading: Find out more
-        paragraphs:
-          - "If you have any questions about the research please contact %s"
-          - "Email: %s"
-          - "Telephone: %s"
 
       concerns_and_complaints:
         heading: Concerns and complaints

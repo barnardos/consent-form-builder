@@ -59,52 +59,56 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('PreviewConsentForm') do %>
-        <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
+        <%= c('HeadingOne', text: t('preview.able_to_consent.the_research.heading')) %>
         <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
-            c(
+          <%= raw t(
+            "#{ct}.the_research.take_part_in",
+            researcher_name: c(
               'FieldPreview',
               text: @research_session.researcher_name,
               listens_to: '[name="research_session[researcher_name]"]'
             ),
-            c(
+            researcher_job_title:c(
               'FieldPreview',
               text: @research_session.researcher_job_title,
               listens_to: '[name="research_session[researcher_job_title]"]'
             )
-          ] %>
+          ) %>
         <% end %>
-      <% end %>
-
-      <%= c('PreviewConsentForm') do %>
-        <%= c('HeadingOne', text: t('preview.able_to_consent.find_out_more.heading')) %>
         <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[0] % [
-            c(
+         &hellip;
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= raw t(
+            "#{ct}.the_research.may_be_contacted",
+            researcher_name: c(
               'FieldPreview',
               text: @research_session.researcher_name,
               listens_to: '[name="research_session[researcher_name]"]'
             )
-          ] %>
+          ) %>
         <% end %>
-        <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[1] % [
-            c(
-              'FieldPreview',
-              text: @research_session.researcher_email,
-              listens_to: '[name="research_session[researcher_email]"]'
-            )
-          ] %>
-        <% end %>
-        <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.find_out_more.paragraphs')[2] % [
-            c(
-              'FieldPreview',
-              text: @research_session.researcher_phone,
-              listens_to: '[name="research_session[researcher_phone]"]'
-            )
-          ] %>
+        <%= c('UnorderedList') do %>
+          <%= c('ListItem') do %>
+            <%= raw t("#{ct}.the_research.contacted_by.email") % [
+              c(
+                'FieldPreview',
+                text: @research_session.researcher_email,
+                listens_to: '[name="research_session[researcher_email]"]'
+              )
+            ] %>
+          <% end %>
+          <%= c('ListItem') do %>
+            <%= raw t("#{ct}.the_research.contacted_by.phone") % [
+              c(
+                'FieldPreview',
+                text: @research_session.researcher_phone,
+                listens_to: '[name="research_session[researcher_phone]"]'
+              )
+            ] %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

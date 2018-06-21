@@ -49,26 +49,26 @@
         <% end %>
       <% end %>
 
-      <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.what_happens_in_this_research_session.heading")) %>
 
+      <%= c('PreviewSection') do %>
+        <%= c('HeadingOne', text: t("#{ct}.the_research.heading")) %>
         <%= c('Paragraph') do %>
-          <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[0] % [
-            c(
+          <%= raw t(
+            "#{ct}.the_research.take_part_in",
+            researcher_name: c(
               'Output',
               text: @research_session.researcher_name,
               field: 'researcher_name',
               url: edit_link_for(:researcher_name)
             ),
-            c(
+            researcher_job_title: c(
               'Output',
               text: @research_session.researcher_job_title,
               field: 'researcher_job_title',
               url: edit_link_for(:researcher_job_title)
             )
-          ] %>
+          ) %>
         <% end %>
-
         <%= c('UnorderedList') do %>
           <% @research_session.methodologies.each do |methodology| %>
             <%
@@ -76,7 +76,7 @@
                 methodology === 'other' ?
                   @research_session.other_methodology
                   :
-                  t("#{ct}.what_happens_in_this_research_session.methodologies.#{methodology}")
+                  t("#{ct}.the_research.methodologies.#{methodology}")
             %>
             <%= c('ListItem') do %>
               <%= c(
@@ -88,11 +88,9 @@
             <% end %>
           <% end %>
         <% end %>
-
         <%= c('Paragraph') do %>
-          <%= t("#{ct}.what_happens_in_this_research_session.paragraphs")[1] %>
+          <%= t("#{ct}.the_research.record_using") %>
         <% end %>
-
         <%= c('UnorderedList') do %>
           <% @research_session.recording_methods.each do |recording_method| %>
             <%
@@ -100,7 +98,7 @@
                 recording_method === 'other' ?
                   @research_session.other_recording_method
                   :
-                  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}")
+                  t("#{ct}.the_research.recording_methods.#{recording_method}")
             %>
             <%= c('ListItem') do %>
               <%= c(
@@ -112,16 +110,43 @@
             <% end %>
           <% end %>
         <% end %>
-
         <%= c('Paragraph') do %>
-          <%= raw t("#{ct}.what_happens_in_this_research_session.paragraphs")[2] % [
-            c(
+          <%= raw t(
+            "#{ct}.the_research.may_be_contacted",
+            researcher_name: c(
               'Output',
               text: @research_session.researcher_name,
               field: 'researcher_name',
               url: edit_link_for(:researcher_name)
             )
-          ] %>
+          ) %>
+        <% end %>
+        <%= c('UnorderedList') do %>
+          <%= c('ListItem') do %>
+            <%= raw t(
+              "#{ct}.the_research.contacted_by.email",
+              email: c(
+                'Output',
+                text: @research_session['researcher_email'],
+                field: 'researcher_email',
+                url: edit_link_for(:researcher_email)
+              )
+            ) %>
+          <% end %>
+          <%= c('ListItem') do %>
+            <%= raw t(
+              "#{ct}.the_research.contacted_by.phone",
+              phone: c(
+                'Output',
+                text: @research_session['researcher_phone'],
+                field: 'researcher_phone',
+                url: edit_link_for(:researcher_phone)
+              )
+            ) %>
+          <% end %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.the_research.other_researchers") %>
         <% end %>
       <% end %>
 
