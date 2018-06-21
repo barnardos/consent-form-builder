@@ -1,5 +1,5 @@
 And(/^I should see confirmation that this is a preview$/) do
-  expect(page).to have_content('Research session preview')
+  expect(page).to have_content('Consent form')
 end
 
 And(/^I should see each methodology selected$/) do
@@ -13,7 +13,7 @@ And(/^I should see the focus of the research along with why$/) do
   expect(page).to have_content(@purpose)
 
   expect(page).to have_content(
-    'It is important that we test the current and future tools and services'
+    'We do research with young people because we know it improves our services.'
   )
 end
 
