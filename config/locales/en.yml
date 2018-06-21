@@ -141,22 +141,22 @@ en:
           phone: "Phone: %s"
         other_researchers: There may be another researcher or observer present.
 
-      session_details:
-        heading: Session details
+      the_session:
+        heading: The session
         when_text: "When: %s"
         location: "Where: %s"
         duration: "Duration: %s"
-        incentives_intro: Your time and what you say is really important to us.
-        payment_type:
-          cash: As a thank you, we will give you a cash incentive of %s
-          voucher: As a thank you, we will give you vouchers to the value of %s. They can be used in many high street shops.
-        participant_equipment: You will need to bring %s.
-        expenses: We allow %s.
-        travel_expenses_limit: travel expenses of up to %s
-        food_expenses_limit: food expenses of up to %s
-        other_expenses_limit: other expenses of up to %s
+        participant_equipment: You will need to bring %{equipment}.
+        expenses: Expenses are allow of up to %{expenses}.
+        travel_expenses_limit: "%{value} for travel"
+        food_expenses_limit: "%{value} for food"
+        other_expenses_limit: "%{value} for other expenses"
         receipts_required: Receipts must be provided.
-        food_provided: "%s will be provided."
+        food_provided: "%{food} will be available."
+        incentive: As a thank you, we'll give you %{value}, in %{payment_type}.
+        payment_type:
+          cash: cash
+          voucher: vouchers. They can be used in many high street shops.
 
       will_anyone_know_what_they_say_in_the_discussion:
         heading: Will anyone know what they say in the discussion?
@@ -250,22 +250,23 @@ en:
           phone: "Phone: %{phone}"
         other_researchers: There may be another researcher or observer present.
 
-      session_details:
-        heading: Session details
+
+      the_session:
+        heading: The session
         when_text: "When: %s"
         location: "Where: %s"
         duration: "Duration: %s"
-        incentives_intro: Your child's/the child in your care's time and what they say is really important to us.
-        payment_type:
-          cash: As a thank you, we will give your child/the child in your care a cash incentive of %s
-          voucher: As a thank you, we will give your child/the child in your care vouchers to the value of %s. They can be used in many high street shops.
-        participant_equipment: Your child/the child in your care will need to bring %s.
-        expenses: We allow %s.
-        travel_expenses_limit: travel expenses of up to %s
-        food_expenses_limit: food expenses of up to %s
-        other_expenses_limit: other expenses of up to %s
+        participant_equipment: The child will need to bring %{equipment}.
+        expenses: Expenses are allow of up to %{expenses}.
+        travel_expenses_limit: "%{value} for travel"
+        food_expenses_limit: "%{value} for food"
+        other_expenses_limit: "%{value} for other expenses"
         receipts_required: Receipts must be provided.
-        food_provided: "%s will be provided."
+        food_provided: "%{food} will be available."
+        incentive: As a thank you, we'll give the child %{value}, in %{payment_type}.
+        payment_type:
+          cash: cash
+          voucher: vouchers. They can be used in many high street shops.
 
       will_anyone_know_what_they_say_in_the_discussion:
         heading: Will anyone know what they say in the discussion?
