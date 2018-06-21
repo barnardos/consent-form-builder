@@ -253,153 +253,105 @@
       <% end %>
 
       <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.heading")) %>
+        <%= c('HeadingOne', text: t("#{ct}.personal_data.heading")) %>
         <%= c('Paragraph') do %>
-          <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[0] %>
+          <%= t("#{ct}.personal_data.intro") %>
+        <% end %>
+        <%= c('UnorderedList') do %>
+          <% t("#{ct}.personal_data.people_present").each do |text| %>
+            <%= c('ListItem') do %>
+              <%= text %>
+            <% end %>
+          <% end %>
         <% end %>
         <%= c('Paragraph') do %>
-          <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[1] % [
+          <%=
             c(
               'Output',
-              text: t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.shared_with.#{@research_session.shared_with}"),
+              text: t("#{ct}.personal_data.shared_with.#{@research_session.shared_with}"),
               field: 'shared_with',
               url: edit_link_for(:shared_with)
             )
-          ] %>
-        <% end %>
-        <%= c('Paragraph') do %>
-          <%= raw t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
-            c(
-              'Output',
-              text: @research_session.shared_duration,
-              field: 'shared_duration',
-              url: edit_link_for(:shared_duration)
-            )
-          ] %>
-        <% end %>
-        <%= c('Paragraph') do %>
-          <%= t("#{ct}.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[3] %>
-        <% end %>
-      <% end %>
-
-      <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.sharing_information.heading")) %>
-        <% t("#{ct}.sharing_information.paragraphs").each do |text| %>
-          <%=
-            c('Paragraph') do
-              text
-            end
           %>
         <% end %>
-      <% end %>
-
-      <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.find_out_more.heading")) %>
-        <%
-          [
-            :researcher_name,
-            :researcher_email,
-            :researcher_phone
-          ].each_with_index do |find_out_more_text, index|
-        %>
-          <%= c('Paragraph') do %>
-            <%= raw t("#{ct}.find_out_more.paragraphs")[index] % [
-              c(
-                'Output',
-                text: @research_session[find_out_more_text],
-                field: find_out_more_text,
-                url: edit_link_for(find_out_more_text)
-              )
-            ] %>
+        <%= c('Paragraph') do %>
+          <%= raw t("#{ct}.personal_data.shared_duration", duration: c(
+            'Output',
+            text: @research_session.shared_duration,
+            field: 'shared_duration',
+            url: edit_link_for(:shared_duration)
+          )) %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.personal_data.contact") %>
+        <% end %>
+        <%= c('UnorderedList') do %>
+          <% t("#{ct}.personal_data.contact_details").each do |text| %>
+            <%= c('ListItem') do %>
+              <%= text %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
 
       <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.concerns_and_complaints.heading")) %>
-        <% t("#{ct}.concerns_and_complaints.paragraphs").each do |text| %>
+        <%= c('HeadingOne', text: t("#{ct}.safeguarding.heading")) %>
+        <% t("#{ct}.safeguarding.paragraphs").each do |text| %>
           <%=
             c('Paragraph') do
               text
             end
           %>
-        <% end %>
-      <% end %>
-
-      <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.decide_to_take_part.heading")) %>
-        <%= c('Paragraph') do %>
-          <%= t("#{ct}.decide_to_take_part.paragraphs")[0] %>
-        <% end %>
-        <%= c('OrderedList') do %>
-          <% t("#{ct}.decide_to_take_part.items").each do |item| %>
-            <%=
-              c('ListItem') do
-                item
-              end
-            %>
-          <% end %>
-        <% end %>
-        <%= c('Paragraph') do %>
-          <%= t("#{ct}.decide_to_take_part.paragraphs")[2] %>
         <% end %>
       <% end %>
     <% end %>
 
     <%= c('PrintArea') do %>
       <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.consent_form.heading")) %>
+        <%= c('HeadingOne', text: t("#{ct}.giving_your_consent.heading")) %>
         <%= c('Paragraph') do %>
-          <%= t("#{ct}.consent_form.paragraphs")[0] %>
+          <%= t("#{ct}.giving_your_consent.intro") %>
         <% end %>
         <%= c('Paragraph') do %>
-          <%= t("#{ct}.consent_form.paragraphs")[1] %>
+          <%= t("#{ct}.giving_your_consent.i_understand") %>
         <% end %>
-        <%= c('OrderedList') do %>
-          <%
-            recording_methods =
-              @research_session.recording_methods
-                .map { |recording_method|
-                  if recording_method === 'other'
-                    c(
-                      'Output',
-                      text: @research_session.other_recording_method,
-                      field: 'other_recording_method',
-                      url: edit_link_for(:other_recording_method)
-                    )
-                  else
-                    c(
-                      'Output',
-                      text:  t("#{ct}.what_happens_in_this_research_session.recording_methods.#{recording_method}"),
-                      field: 'recording_methods',
-                      url: edit_link_for(:recording_methods)
-                    )
-                  end
-                }
-          %>
-          <% t("#{ct}.consent_form.items").each_with_index do |item, index| %>
-            <% if index === 2 %>
-              <%=
-                c('ListItem') do
-                  raw t("#{ct}.consent_form.items")[index] % [
-                    recording_methods.to_sentence
-                  ]
-                end
-              %>
-            <% else %>
-              <%=
-                c('ListItem') do
-                  item
-                end
-              %>
-            <% end %>
+        <%= c('UnorderedList') do %>
+          <%= c('ListItem') do %>
+            <%= t("#{ct}.giving_your_consent.participation") %>
+          <% end %>
+          <%= c('ListItem') do %>
+            <%
+              recording_methods =
+                @research_session.recording_methods
+                  .map { |recording_method|
+                    if recording_method === 'other'
+                      c(
+                        'Output',
+                        text: @research_session.other_recording_method,
+                        field: 'other_recording_method',
+                        url: edit_link_for(:other_recording_method)
+                      )
+                    else
+                      c(
+                        'Output',
+                        text:  t("#{ct}.the_research.recording_methods.#{recording_method}"),
+                        field: 'recording_methods',
+                        url: edit_link_for(:recording_methods)
+                      )
+                    end
+                  }
+            %>
+            <%= raw t("#{ct}.giving_your_consent.activities", recording_methods: recording_methods.to_sentence) %>
+          <% end %>
+          <%= c('ListItem') do %>
+            <%= t("#{ct}.giving_your_consent.data") %>
           <% end %>
         <% end %>
         <%= c('Paragraph') do %>
-          <%= t("#{ct}.consent_form.paragraphs")[3] %>
+          <%= t("#{ct}.giving_your_consent.i_agree") %>
         <% end %>
       <% end %>
-      <%= c('WritingFields', fields: t("#{ct}.consent_form.fields")) %>
+      <%= c('WritingFields', fields: t("#{ct}.giving_your_consent.fields")) %>
     <% end %>
   <% end %>
 

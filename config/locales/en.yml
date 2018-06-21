@@ -158,55 +158,39 @@ en:
           cash: cash
           voucher: vouchers. They can be used in many high street shops.
 
-      will_anyone_know_what_they_say_in_the_discussion:
-        heading: Will anyone know what they say in the discussion?
-        paragraphs:
-          - The only people who will hear what you say in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session.
-          - "%s"
-          - Barnardo’s will hold research data for %s after we finish the project and we will then delete it. Personal data is stored in a safe and secure way.
-          - You can contact Jason Caplin to ask us to delete your personal data at any time.
+      personal_data:
+        heading: Personal data
+        intro: "Only the people present in the research session will hear what you say. These will be:"
+        people_present:
+          - the researchers
+          - service workers
+          - other participants
         shared_with:
           anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, you will not be identifiable by the research recordings."
           team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
-
-      sharing_information:
-        heading: Sharing information
-        paragraphs:
-          - We may have to share information about you without your consent if we think you or someone else is at risk of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
-
-      concerns_and_complaints:
-        heading: Concerns and complaints
-        paragraphs:
-          - "If you have any concerns or a complaint, or would like to have your data deleted please contact:"
-          - "Telephone: +442084987869"
+        shared_duration:
+          Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
+        contact: "If you would like to delete your personal data or have a complaint, you can contact Jason Caplin by:"
+        contact_details:
           - "Email: jason.caplin@barnardos.org.uk"
+          - "Phone: +442084987869"
 
-      decide_to_take_part:
-        heading: Decide if you to take part
+      safeguarding:
+        heading: Safeguarding
         paragraphs:
-          - "If you are happy to take part, we will ask you to sign a consent form. This will ask you to confirm:"
-          - "%s"
-          - "Thank you!"
-        items:
-          - that you are happy with the information you have received, and;
-          - that you understand what we are going to do with the research recordings collected, and;
-          - that you know who to ask for more information, and;
-          - that your decision is voluntary
+          - We may have to share information about you without your consent if we think there is a risk of serious harm.
+          - The researchers are trained to follow Barnardo’s guidance to manage these situations appropriately.
 
-      consent_form:
-        heading: Consent form
-        paragraphs:
-          - It is important to us that your consent to take part in this research is freely given and fully informed.
-          - Please review the following points and indicate your agreement to the statements underneath.
-          - "%s"
-          - I agree to my participation in this research and understand that my data will be used as explained above.
-        items:
-          - I have read and understood the Information Sheet for this research project and have had an opportunity to ask questions.
-          - I understand that my participation is voluntary and that I am free to withdraw them at any time without giving any reason.
-          - I understand that my activities during the research session may be observed and will be recorded. The data captured, in the form of %s will be used for current and future service development.
-          - I understand that this data will be stored securely and covered by the Data Protection Act.
+      giving_your_consent:
+        heading: Giving your consent
+        intro: I have read and understood the above and I’ve had the opportunity to ask questions.
+        i_understand: "I understand that:"
+        participation: my participation is voluntary and I can withdraw at any time for any reason
+        activities: my activities during the research session will be observed and recorded using %{recording_methods}
+        data: the data is stored securely and adheres to General Data Protection Regulation (GDPR)
+        i_agree: I agree to my participation in this research.
         fields:
           - Name
           - Signature
@@ -268,55 +252,39 @@ en:
           cash: cash
           voucher: vouchers. They can be used in many high street shops.
 
-      will_anyone_know_what_they_say_in_the_discussion:
-        heading: Will anyone know what they say in the discussion?
-        paragraphs:
-          - The only people who will hear what your child/the child in your care says in the session will be the researchers running the session, other young people taking part, and service workers facilitating the session.
-          - "%s"
-          - Barnardo’s will hold research data for %s after we finish the project and we will then delete it. Personal data is stored in a safe and secure way.
-          - You can contact Jason Caplin to ask us to delete your personal data at any time.
+      personal_data:
+        heading: Personal data
+        intro: "Only the people present in the research session will hear what the child says. These will be:"
+        people_present:
+          - the researchers
+          - service workers
+          - other participants
         shared_with:
-          anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, your child/the child in your care will not be identifiable by the research recordings."
+          anonymised: "Any research recordings will have names and personal details removed and replaced with fictitious names and stock photos before we share the findings from the research. Therefore, the child will not be identifiable by the research recordings."
           team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
-
-      sharing_information:
-        heading: Sharing information
-        paragraphs:
-          - We may have to share information about your child/the child in your care without your consent if we think they or someone else is at risk of serious harm. All our researchers have received safeguarding training and will follow Barnardo's guidance to manage these situations appropriately.
-
-      concerns_and_complaints:
-        heading: Concerns and complaints
-        paragraphs:
-          - "If you have any concerns or a complaint, or would like to have your data deleted please contact:"
-          - "Telephone: +442084987869"
+        shared_duration:
+          Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
+        contact: "If you would like to delete any personal data or have a complaint, you can contact Jason Caplin by:"
+        contact_details:
           - "Email: jason.caplin@barnardos.org.uk"
+          - "Phone: +442084987869"
 
-      decide_to_take_part:
-        heading: Decide if you want the child in your care to take part
+      safeguarding:
+        heading: Safeguarding
         paragraphs:
-          - "If you are happy for the child in your care to take part, we will ask you to sign a consent form. This will ask you to confirm:"
-          - "%s"
-          - "Thank you!"
-        items:
-          - that you are happy with the information you have received, and;
-          - that you understand what we are going to do with the research recordings collected, and;
-          - that you know who to ask for more information, and;
-          - that your decision is voluntary
+          - We may have to share information about the child without your consent if we think there is a risk of serious harm.
+          - The researchers are trained to follow Barnardo’s guidance to manage these situations appropriately.
 
-      consent_form:
-        heading: Consent form
-        paragraphs:
-          - It is important to us that your consent for your child to take part in this research is freely given and fully informed.
-          - Please review the following points and indicate your agreement to the statements underneath.
-          - "%s"
-          - I agree to my childʼs participation in this research and understand that my childʼs data will be used as explained above.
-        items:
-          - I have read and understood the Information Sheet for this research project and have had an opportunity to ask questions.
-          - I understand that my childʼs participation is voluntary and that I am free to withdraw them at any time without giving any reason.
-          - I understand that my childʼs activities during the research session may be observed and will be recorded. The data captured, in the form of %s will be used for current and future service development.
-          - I understand that this data will be stored securely and covered by the Data Protection Act.
+      giving_your_consent:
+        heading: Giving your consent
+        intro: I have read and understood the above and I’ve had the opportunity to ask questions.
+        i_understand: "I understand that the:"
+        participation: child’s participation is voluntary and I can withdraw them at any time for any reason
+        activities: child’s activities during the research session will be observed and recorded using %{recording_methods}
+        data: data is stored securely and adheres to General Data Protection Regulation (GDPR)
+        i_agree: I agree to the child’s participation in this research.
         fields:
           - Name
           - Signature
