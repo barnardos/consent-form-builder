@@ -15,46 +15,37 @@
   <% end %>
 
   <%= c('PreviewConsentForm') do %>
-    <%= c('PrintArea', id: 'InformationSheet') do %>
-      <%= c('HeadingOne', text: t("#{ct}.about_this_research_project.heading")) %>
-      <%= c('Lede', text: t("#{ct}.about_this_research_project.lede")) %>
-
+    <%= c('PrintArea') do %>
       <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.about_taking_part.heading")) %>
-        <% t("#{ct}.about_taking_part.paragraphs").each do |text| %>
-          <%=
-            c('Paragraph') do
-              text
-            end
-          %>
+        <%= c('Title', text: t("#{ct}.consent_form.title")) %>
+        <%= c('Paragraph') do %>
+          <%= raw t(
+            "#{ct}.consent_form.the_research",
+            topic: c(
+              'Output',
+              text: @research_session.topic,
+              field: 'topic',
+              url: edit_link_for(:topic)
+            ),
+            purpose: c(
+              'Output',
+              text: @research_session.purpose,
+              field: 'purpose',
+              url: edit_link_for(:purpose)
+            )
+          ) %>
         <% end %>
-      <% end %>
-
-      <%= c('PreviewSection') do %>
-        <%= c('HeadingOne', text: t("#{ct}.why_we_are_doing_research.heading")) %>
-        <% t("#{ct}.why_we_are_doing_research.paragraphs").each_with_index do |text, index| %>
-          <%=
-            c('Paragraph') do
-              if index === 0
-                raw text % [
-                  c(
-                    'Output',
-                    text: @research_session.topic,
-                    field: 'topic',
-                    url: edit_link_for(:topic)
-                  ),
-                  c(
-                    'Output',
-                    text: @research_session.purpose,
-                    field: 'purpose',
-                    url: edit_link_for(:purpose)
-                  )
-                ]
-              else
-                text
-              end
-            end
-          %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.would_like_participant") %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.young_people") %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.voluntary") %>
+        <% end %>
+        <%= c('Paragraph') do %>
+          <%= t("#{ct}.consent_form.change_mind") %>
         <% end %>
       <% end %>
 

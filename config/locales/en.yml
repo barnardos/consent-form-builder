@@ -79,6 +79,15 @@ en:
         precision: 2
         format: '%u%n'
 
+  start_pages:
+    show:
+      title: Create tailored consent and information forms
+      intro: Use this service to generate custom consent forms for your research session.
+      time_taken: It usually takes about 10 minutes.
+      contact_brec_html: Contact %{link} if the session includes asking questions about sensitive topics.
+      brec: BREC
+      start: Start
+
   research_sessions:
     questions:
       submit_step:
@@ -98,23 +107,6 @@ en:
       consent_control:
         - Consent form for participants who can give consent
         - <a href="?able-to-consent=no">View consent form for participants who can’t give consent themselves</a>
-      about_this_research_project:
-        heading: About this research project
-        lede: This information sheet will tell you more about the research so that you can decide whether or not you would like to take part.
-
-      about_taking_part:
-        heading: About taking part
-        paragraphs:
-          - You do not have to take part in this session. It is your decision.
-          - We will also ask you if you want to take part before the session.
-          - Don’t worry! If you do not want to take part it will not affect the service you receive.
-          - You can change your mind at any point for any reason by letting the researcher know you want to stop.
-
-      why_we_are_doing_research:
-        heading: Why we are doing research
-        paragraphs:
-          - Barnardoʼs is doing research to learn about %s so that we can %s.
-          - It is important that we test the current and future tools and services that we are developing with people like you so that we can make them as good as possible.
 
       what_happens_in_this_research_session:
         heading: What happens in this research session?
@@ -122,6 +114,14 @@ en:
           - "%s, %s, would like you to take part in…"
           - "Which we will record using:"
           - There may be another researcher or observer supporting %s at this session.
+      consent_form:
+        title: Consent form
+        the_research: Barnardo’s is doing research to learn about %{topic} so that we can %{purpose}.
+        would_like_participant: Barnardo’s would like you to be part of this research.
+        young_people: We do research with young people because we know it improves our services.
+        voluntary: You don't have to take part in this session. It’s your decision. Your decision won’t affect the services you receive.
+        change_mind: You can change your mind at anytime for any reason.
+
         methodologies:
           interview: a one-on-one interview
           usability: looking at how you use a new tool we’re designing
@@ -216,28 +216,18 @@ en:
           - Signature
           - Date
 
-
     unable_to_consent:
       consent_control:
         - Consent form for participants who can't give consent
-        - <a href="?able-to-consent=no">View consent form for participants who can give consent themselves</a>
-      about_this_research_project:
-        heading: About this research project
-        lede: This information sheet will tell you more about the research so that you can decide whether or not your child/the child in your care would like to take part.
+        - <a href="?able-to-consent=yes">View consent form for participants who can give consent themselves</a>
 
-      about_taking_part:
-        heading: About taking part
-        paragraphs:
-          - Your child/the child in your care does not have to take part in this session. It is your decision as the parent/carer.
-          - We will also ask your child/the child in your care if they want to take part before the session.
-          - Don’t worry! If you do not want the child in your care to take part it will not affect the service they receive.
-          - Your child/the child in your care can change their mind at any point for any reason by letting the researcher know they want to stop.
-
-      why_we_are_doing_research:
-        heading: Why we are doing research
-        paragraphs:
-          - Barnardoʼs is doing research to learn about %s so that we can %s.
-          - It is important that we test the current and future tools and services that we are developing with people like your child/the child in your care so that we can make them as good as possible.
+      consent_form:
+        title: Consent form
+        the_research: Barnardo’s is doing research to learn about %{topic} so that we can %{purpose}.
+        would_like_participant: Barnardo’s would like your child/the child in your care to be part of this research.
+        young_people: We do research with young people because we know it improves our services.
+        voluntary: The child doesn’t have to take part in this session. It’s your decision as the parent/carer. Your decision won’t affect the service the child receives.
+        change_mind: We’ll also ask the child if they want to take part, they can change their mind at anytime for any reason.
 
       what_happens_in_this_research_session:
         heading: What happens in this research session?
@@ -338,11 +328,3 @@ en:
           - Name
           - Signature
           - Date
-  start_pages:
-    show:
-      title: Create tailored consent and information forms
-      intro: Use this service to generate custom consent forms for your research session.
-      time_taken: It usually takes about 10 minutes.
-      contact_brec_html: Contact %{link} if the session includes asking questions about sensitive topics.
-      brec: BREC
-      start: Start
