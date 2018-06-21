@@ -1,0 +1,12 @@
+/** @define Fieldset; */
+.Fieldset {
+  border: none;
+  display: grid;
+  grid-gap: 2rem;
+}
+
+.Fieldset-legend {
+  display: block;
+  font: 600 1.375rem/1.75rem system-ui;
+  margin-bottom: 1rem;
+}

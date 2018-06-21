@@ -11,11 +11,6 @@ class Methodologies
       label: I18n.t('preview.able_to_consent.the_research.methodologies.usability')
     },
     {
-      id: 'survey',
-      value: 'survey',
-      label: I18n.t('preview.able_to_consent.the_research.methodologies.survey')
-    },
-    {
       id: 'focusgroup',
       value: 'focusgroup',
       label: I18n.t('preview.able_to_consent.the_research.methodologies.focusgroup')
@@ -24,6 +19,11 @@ class Methodologies
       id: 'codesign',
       value: 'codesign',
       label: I18n.t('preview.able_to_consent.the_research.methodologies.codesign')
+    },
+    {
+      id: 'survey',
+      value: 'survey',
+      label: I18n.t('preview.able_to_consent.the_research.methodologies.survey')
     },
     {
       id: 'other',

@@ -5,6 +5,7 @@ import "components/ChoiceControlledContent";
 import "components/ChoicePreview";
 import "components/ErrorSummary";
 import "components/FieldPreview";
+import "components/Fieldset";
 import "components/Footer";
 import "components/Form";
 import "components/Header";

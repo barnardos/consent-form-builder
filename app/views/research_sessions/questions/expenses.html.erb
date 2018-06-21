@@ -31,38 +31,39 @@
       <%= c('ChoiceControlledContent',
           is_active: (@research_session.expenses_enabled.present? && [@research_session.expenses_enabled.to_s].include?('true')),
           controlled_by: '[id="research_session[expenses_enabled_true]"]') do %>
-        <%= c('SinglelineTextControl',
-          id: 'research_session[travel_expenses_limit]',
-          name: 'travel_expenses_limit',
-          value: @research_session.travel_expenses_limit,
-          label: t('research_session_attr_labels.travel_expenses_limit'),
-          hint: 'e.g. 5.00',
-          size: 24,
-          errored: @research_session.errors['travel_expenses_limit'].present?,
-          validation: @research_session.errors['travel_expenses_limit'][0]
-        ) %>
+        <%= c('Fieldset', legend: t('helpers.fieldset.research_session.expenses_enabled')) do %>
+          <%= c('SinglelineTextControl',
+            id: 'research_session[travel_expenses_limit]',
+            name: 'travel_expenses_limit',
+            value: @research_session.travel_expenses_limit,
+            label: t('research_session_attr_labels.travel_expenses_limit'),
+            hint: 'e.g. 5.00',
+            size: 24,
+            errored: @research_session.errors['travel_expenses_limit'].present?,
+            validation: @research_session.errors['travel_expenses_limit'][0]
+          ) %>
+          <%= c('SinglelineTextControl',
+            id: 'research_session[food_expenses_limit]',
+            name: 'food_expenses_limit',
+            value: @research_session.food_expenses_limit,
+            label: t('research_session_attr_labels.food_expenses_limit'),
+            hint: 'e.g. 5.00',
+            size: 24,
+            errored: @research_session.errors['food_expenses_limit'].present?,
+            validation: @research_session.errors['food_expenses_limit'][0]
+          ) %>
 
-        <%= c('SinglelineTextControl',
-          id: 'research_session[food_expenses_limit]',
-          name: 'food_expenses_limit',
-          value: @research_session.food_expenses_limit,
-          label: t('research_session_attr_labels.food_expenses_limit'),
-          hint: 'e.g. 5.00',
-          size: 24,
-          errored: @research_session.errors['food_expenses_limit'].present?,
-          validation: @research_session.errors['food_expenses_limit'][0]
-        ) %>
-
-        <%= c('SinglelineTextControl',
-          id: 'research_session[other_expenses_limit]',
-          name: 'other_expenses_limit',
-          value: @research_session.other_expenses_limit,
-          label: t('research_session_attr_labels.other_expenses_limit'),
-          hint: 'e.g. 5.00',
-          size: 24,
-          errored: @research_session.errors['other_expenses_limit'].present?,
-          validation: @research_session.errors['other_expenses_limit'][0]
-        ) %>
+          <%= c('SinglelineTextControl',
+            id: 'research_session[other_expenses_limit]',
+            name: 'other_expenses_limit',
+            value: @research_session.other_expenses_limit,
+            label: t('research_session_attr_labels.other_expenses_limit'),
+            hint: 'e.g. 5.00',
+            size: 24,
+            errored: @research_session.errors['other_expenses_limit'].present?,
+            validation: @research_session.errors['other_expenses_limit'][0]
+          ) %>
+        <% end %>
 
         <%= c('OfManyChoiceControl',
           id: 'research_session[receipts_required]',
@@ -81,7 +82,7 @@
             }
           ],
           choices_selected: [@research_session.receipts_required],
-          legend: 'Must the participant provide a receipt for any expenses claimed?',
+          legend: 'Are receipts required?',
           choice_type: 'single',
           errored: @research_session.errors['receipts_required'].present?,
           validation: @research_session.errors['receipts_required'][0]

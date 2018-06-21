@@ -27,6 +27,6 @@ When(/^I visit the start page$/) do
 end
 
 When(/^I start to create a form$/) do
-  fill_in 'Please name your research session', with: 'Anything'
+  fill_in 'What would you like to name this session?', with: 'Anything'
   click_button 'Create new form'
 end

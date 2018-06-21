@@ -11,7 +11,7 @@
         collection: "research_session[#{:methodologies}][]",
         choices: Methodologies::CHOICES,
         choices_selected: @research_session.methodologies,
-        legend: 'How will you be gathering information?',
+        legend: t('research_session_attr_labels.methodologies'),
         choice_type: 'multi',
         errored: @research_session.errors['methodologies'].present?,
         validation: @research_session.errors['methodologies'][0]

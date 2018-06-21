@@ -19,7 +19,7 @@ module StepCompletions
 
     fill_in 'Job title', with: @job_title
     fill_in 'Full name', with: @researcher_name
-    fill_in 'Telephone number', with: @researcher_phone
+    fill_in 'Phone', with: @researcher_phone
     fill_in 'Email', with: @researcher_email
 
     click_button 'Continue'
@@ -42,7 +42,7 @@ module StepCompletions
       PURPOSE: Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'so that we can', with: @purpose
+    fill_in 'What outcomes does Barnardo’s want to have?', with: @purpose
     click_button 'Continue'
   end
 
@@ -66,10 +66,10 @@ module StepCompletions
   end
 
   def complete_storing_step
-    choose 'Anonymised as we process it'
+    choose 'It won’t be'
     @shared_duration = '1 year'
 
-    fill_in 'How long will this information be held for?', with: @shared_duration
+    fill_in 'How long will research data be held after the project ends?', with: @shared_duration
     click_button 'Continue'
   end
 
@@ -90,10 +90,9 @@ module StepCompletions
   def complete_expenses_step
     choose 'Yes', name: 'research_session[expenses_enabled]'
 
-    fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
-    fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
-    fill_in 'If you allow the participant to expense other items, '\
-            'what is the maximum allowed?', with: '10.00'
+    fill_in 'Travel', with: '50.00'
+    fill_in 'Food', with: '20.00'
+    fill_in 'Other', with: '10.00'
     click_button 'Continue'
   end
 

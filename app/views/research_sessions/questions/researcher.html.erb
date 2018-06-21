@@ -4,7 +4,7 @@
     The researcher’s details will go directly on the sheet sent to participants of this session so they can contact you with any queries. The researcher should refer to the safeguarding code of conduct in <%= c('Link', src: 'http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=', text:'BREC Guidance') %> so they are confident they know what to do if a safeguarding concern arises during the session.
   <% end %>
 
-  <%= c('HeadingOne', text: 'Who will the participants meet as part of the session?') %>
+  <%= c('HeadingOne', text: 'Who is the researcher for this session?') %>
   <%= c('Paragraph') do %>
     Who is the person who is leading the research or participation session?
     Please note: participants will be informed that they can get further
@@ -37,15 +37,6 @@
       ) %>
 
       <%= c('SinglelineTextControl',
-        id: 'research_session[researcher_phone]',
-        name: 'researcher_phone',
-        value: @research_session.researcher_phone,
-        label: t('research_session_attr_labels.researcher_phone'),
-        size: 24,
-        errored: @research_session.errors['researcher_phone'].present?,
-        validation: @research_session.errors['researcher_phone'][0]
-      ) %>
-      <%= c('SinglelineTextControl',
         id: 'research_session[researcher_email]',
         name: 'researcher_email',
         value: @research_session.researcher_email,
@@ -53,6 +44,16 @@
         size: 40,
         errored: @research_session.errors['researcher_email'].present?,
         validation: @research_session.errors['researcher_email'][0]
+      ) %>
+
+      <%= c('SinglelineTextControl',
+        id: 'research_session[researcher_phone]',
+        name: 'researcher_phone',
+        value: @research_session.researcher_phone,
+        label: t('research_session_attr_labels.researcher_phone'),
+        size: 24,
+        errored: @research_session.errors['researcher_phone'].present?,
+        validation: @research_session.errors['researcher_phone'][0]
       ) %>
 
       <%= render partial: 'submit_step' %>

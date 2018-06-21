@@ -32,14 +32,14 @@ When(/^I fill in the 'other' methodology$/) do
   check 'other'
 
   @other_methodology = 'A.N. Other Methodology'
-  fill_in 'What is the other methodology?', with: @other_methodology
+  fill_in 'How will it be gathered?', with: @other_methodology
 end
 
 When(/^I fill in the 'other' recording method$/) do
   check 'other'
 
   @other_recording_method = 'A.N. Other Recording Method'
-  fill_in 'What is the other recording method?', with: @other_recording_method
+  fill_in 'How will it be recorded?', with: @other_recording_method
 end
 
 And(/^I fill in the remaining steps$/) do
@@ -77,6 +77,6 @@ end
 
 When(/^I edit that step and continue$/) do
   @new_phone_number = '0772233445566'
-  fill_in 'Telephone number', with: @new_phone_number
+  fill_in 'Phone', with: @new_phone_number
   click_button 'Save and return'
 end

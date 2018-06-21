@@ -6,32 +6,33 @@ en:
     create_a_copy: "Create a copy"
 
   research_session_attr_labels: &attr_labels
-    name: 'Please name your research session'
-    shared_duration: "How long will this information be held for?"
+    name: 'What would you like to name this session?'
+    shared_duration: "How long will research data be held after the project ends?"
     shared_with: "Who will the data be shared with?"
     researcher_job_title: 'Job title (optional)'
     researcher_name: 'Full name'
     researcher_other_name: 'Full name'
-    researcher_phone: 'Telephone number (optional)'
+    researcher_phone: 'Phone (optional)'
     researcher_email: 'Email'
-    topic: "Barnardoʼs is doing research to learn about"
-    purpose: 'so that we can'
-    methodologies: 'How will you be gathering information?'
-    other_methodology: "What is the other methodology?"
-    recording_methods: "How will you be recording information?"
-    other_recording_method: "What is the other recording method?"
-    when_text: "The session is held on (optional)"
-    duration: "How long will the session be? (optional)"
-    location: "The session will be held at (optional)"
-    participant_equipment: "What do participants need to bring? (optional)"
-    travel_expenses_limit: "If you allow travel expenses, what is the maximum allowed?"
-    food_expenses_limit: "If you allow food expenses, what is the maximum allowed?"
-    other_expenses_limit: "If you allow the participant to expense other items, what is the maximum allowed?"
-    receipts_required: "Must the participant provide a receipt for any expenses claimed?"
-    food_provided: "Will you provide food or refreshments at the session? (optional)"
-    incentives_enabled: "Will an incentive be provided?"
-    payment_type: "What form will the incentive take?"
-    incentive_value: "Incentive value"
+    topic: "What does Barnardo’s hope to learn about?"
+    purpose: 'What outcomes does Barnardo’s want to have?'
+    methodologies: 'How will information be gathered?'
+    other_methodology: "How will it be gathered?"
+    recording_methods: "How will information be recorded?"
+    other_recording_method: "How will it be recorded?"
+    when_text: "When (optional)"
+    duration: "Duration (optional)"
+    location: "Where"
+    hint: "For example, 12 May 2018 at 3pm"
+    participant_equipment: "Participants need to bring (optional)"
+    travel_expenses_limit: "Travel"
+    food_expenses_limit: "Food?"
+    other_expenses_limit: "Other"
+    receipts_required: "Are receipts required?"
+    food_provided: "Food and drink provided (optional)"
+    incentives_enabled: "Will you provide an incentive?"
+    payment_type: "Incentive"
+    incentive_value: "Amount"
 
   pages:
     research_session:
@@ -54,12 +55,18 @@ en:
     legend:
       research_session:
         expenses_enabled: "Will expenses be allowed?"
-        incentives_enabled: "Will an incentive be provided?"
-        where_when_enabled: "Is time and location specified?"
-        shared_with: "How will the information recorded in this session be stored and processed? Identifiable information will be:"
+        incentives_enabled: "Will you provide an incentive?"
+        where_when_enabled: "Is there a set time and location for the session?"
+        shared_with: "How will identifiable information be shared?"
+    spanText: 
+      research_session:
+        shared_duration: "Two years is recommended."
     hint:
       research_session:
-        shared_duration: "We recommend two years after the closure of the project"
+        shared_duration: "For example 2 years"
+    fieldset:
+      research_session:
+        expenses_enabled: "What are the maximum allowed expenses?"
 
 
   errors:
@@ -120,21 +127,21 @@ en:
         heading: The research
         take_part_in: "%{researcher_name}, %{researcher_job_title}, would like you to take part in:"
         methodologies:
-          interview: a one-on-one interview
-          usability: looking at how you use a new tool we’re designing
-          survey: a survey or paper questionnaire
-          focusgroup: a group discussion
-          codesign: a group activity
-          other: other
+          interview: One-on-one interview
+          usability: Observational session
+          focusgroup: Group discussion
+          codesign: Group activity
+          survey: Survey or paper questionnaire
+          other: Other
         record_using: "Which we will record using:"
         recording_methods:
-          voice: voice recording
-          video: video recording
-          written: researcher’s written notes
-          workshop: the work created by participants during the session
-          photo: photos
-          screen: screen recording
-          other: other
+          video: Video recording
+          screen: Screen recording
+          voice: Voice recording
+          photo: Photos
+          workshop: Work created by participants
+          written: Researcher’s notes
+          other: Other
         may_be_contacted: "%{researcher_name} may be contacted by:"
         contacted_by:
           email: "Email: %s"
@@ -213,21 +220,21 @@ en:
         heading: The research
         take_part_in: "%{researcher_name}, %{researcher_job_title}, would like the child to take part in:"
         methodologies:
-          interview: a one-on-one interview
-          usability: looking at how the child uses a new tool we’re designing
-          survey: a survey or paper questionnaire
-          focusgroup: a group discussion
-          codesign: a group activity
-          other: other
+          interview: One-on-one interview
+          usability: Observational session
+          focusgroup: Group discussion
+          codesign: Group activity
+          survey: Survey or paper questionnaire
+          other: Other
         record_using: "Which we will record using:"
         recording_methods:
-          voice: voice recording
-          video: video recording
-          written: researcher’s written notes
-          workshop: the work created by participants during the session
-          photo: photos
-          screen: screen recording
-          other: other
+          video: Video recording
+          screen: Screen recording
+          voice: Voice recording
+          photo: Photos
+          workshop: Work created by participants
+          written: Researcher’s notes
+          other: Other
         may_be_contacted: "%{researcher_name} may be contacted by:"
         contacted_by:
           email: "Email: %{email}"

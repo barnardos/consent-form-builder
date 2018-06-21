@@ -3,22 +3,22 @@ class SharedWith
     {
       id: 'anonymised',
       value: 'anonymised',
-      label: 'Anonymised as we process it'
+      label: 'It won’t be'
     },
     {
       id: 'team',
       value: 'team',
-      label: 'Shared with the research team at Barnardoʼs'
+      label: 'within the research team'
     },
     {
       id: 'internal',
       value: 'internal',
-      label: 'Shared with other teams in Barnardoʼs'
+      label: 'within Barnardo’s'
     },
     {
       id: 'external',
       value: 'external',
-      label: 'Used in external publications'
+      label: 'publicly'
     }
   ].freeze
 

@@ -11,7 +11,7 @@
         collection: "research_session[#{:shared_with}]",
         choices: SharedWith::CHOICES,
         choices_selected: [@research_session.shared_with],
-        legend: 'How will the information recorded in this session be stored and processed? Identifiable information will be:',
+        legend: t('helpers.legend.research_session.shared_with'),
         choice_type: 'single',
         errored: @research_session.errors['shared_with'].present?,
         validation: @research_session.errors['shared_with'][0]
@@ -22,8 +22,8 @@
           name: 'shared_duration',
           value: @research_session.shared_duration,
           label: t('research_session_attr_labels.shared_duration'),
-          spanText: 'We recommend two years after the closure of the project',
-          hint: "e.g. 2 years",
+          spanText: t('helpers.spanText.research_session.shared_duration'),
+          hint: t('helpers.hint.research_session.shared_duration'),
           size: 24,
           errored: @research_session.errors['shared_duration'].present?,
           validation: @research_session.errors['shared_duration'][0]
