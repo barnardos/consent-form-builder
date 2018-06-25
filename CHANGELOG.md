@@ -1,7 +1,8 @@
 # [Unreleased]
 
 * [FEATURE] - [Apply Barnardo's design system](https://github.com/barnardos/consent-form-builder/milestone/1)
-* [FEATURE] - [Add start page](https://github.com/barnardos/consent-form-builder/issues/322)	
+* [FEATURE] - [Add start page](https://github.com/barnardos/consent-form-builder/issues/322)
+* [BUG] - [Fix the scaling of the logo](https://github.com/barnardos/consent-form-builder/issues/312)
 
 # 0.8.2 / 2018-04-18
 
