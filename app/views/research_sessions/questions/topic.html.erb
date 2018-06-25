@@ -35,23 +35,23 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('PreviewConsentForm') do %>
-        <%= c('HeadingOne', text: t('preview.able_to_consent.why_we_are_doing_research.heading')) %>
+        <%= c('Title', text: t("#{ct}.consent_form.title")) %>
         <%= c('Paragraph') do %>
-          <%=
-            raw t('preview.able_to_consent.why_we_are_doing_research.paragraphs')[0] % [
-              c(
-                'FieldPreview',
-                text: @research_session.topic,
-                listens_to: '[name="research_session[topic]"]'
-              ),
-              c(
-                'FieldPreview',
-                text: @research_session.purpose,
-                listens_to: '[name="research_session[purpose]"]'
-              )
-            ]
-          %>
+          <%= raw t(
+            "#{ct}.consent_form.the_research",
+            topic: c(
+              'FieldPreview',
+              text: @research_session.topic,
+              listens_to: '[name="research_session[topic]"]'
+            ),
+            purpose: c(
+              'FieldPreview',
+              text: @research_session.purpose,
+              listens_to: '[name="research_session[purpose]"]'
+            )
+          ) %>
         <% end %>
       <% end %>
     </div>

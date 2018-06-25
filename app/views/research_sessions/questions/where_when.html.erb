@@ -89,15 +89,16 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('ChoiceControlledContent',
           is_active: @research_session.where_when_enabled,
           controlled_by: '[id="research_session[where_when_enabled_true]"]') do %>
         <%= c('PreviewConsentForm') do %>
-          <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
+          <%= c('HeadingOne', text: t("#{ct}.the_session.heading")) %>
 
           <% [:when_text, :location, :duration].each do |field| %>
             <%= c('Paragraph') do %>
-              <%= raw t("preview.able_to_consent.session_details.#{field}") % [
+              <%= raw t("#{ct}.the_session.#{field}") % [
                 c(
                   'FieldPreview',
                   text: @research_session["#{field}"],
@@ -108,17 +109,14 @@
           <% end %>
 
           <%= c('Paragraph') do %>
-            …
-          <% end %>
-
-          <%= c('Paragraph') do %>
-            <%= raw t('preview.able_to_consent.session_details.participant_equipment') % [
-              c(
+            <%= raw t(
+              "#{ct}.the_session.participant_equipment",
+              equipment: c(
                 'FieldPreview',
                 text: @research_session.participant_equipment,
                 listens_to: '[name="research_session[participant_equipment]"]'
               )
-            ] %>
+            ) %>
           <% end %>
 
           <%= c('Paragraph') do %>
@@ -126,13 +124,14 @@
           <% end %>
 
           <%= c('Paragraph') do %>
-            <%= raw t('preview.able_to_consent.session_details.food_provided') % [
-              c(
+            <%= raw t(
+              "#{ct}.the_session.food_provided",
+              food: c(
                 'FieldPreview',
                 text: @research_session.food_provided,
                 listens_to: '[name="research_session[food_provided]"]'
               )
-            ] %>
+            ) %>
           <% end %>
         <% end %>
       <% end %>

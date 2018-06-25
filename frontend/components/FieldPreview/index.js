@@ -6,8 +6,11 @@ class FieldPreview {
     this.node = node;
     this.handleChangeEvent = this.handleChangeEvent.bind(this);
     this.addListener = this.addListener.bind(this);
+    this.listensTo = node.getAttribute("data-listens-to");
 
-    this.addListener();
+    if (this.listensTo) {
+      this.addListener();
+    }
   }
 
   addListener() {

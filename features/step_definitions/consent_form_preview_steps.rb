@@ -1,5 +1,5 @@
 Then(/^I should see the age-appropriate consent form preview$/) do
-  expect(page).to have_content('my child')
+  expect(page).to have_content('the child')
   expect(page).to have_content('your child')
 
   ResearchSession::Steps.instance.step_keys.each do |step|
@@ -8,7 +8,7 @@ Then(/^I should see the age-appropriate consent form preview$/) do
 end
 
 And(/^I should see a way to print it$/) do
-  expect(page).to have_tag('button', with: { class: 'PrintAreaCommand-button' })
+  expect(page).to have_tag('button', with: { class: 'PrintCommand-button' })
 end
 
 And(/^it should have a place for name, signature and date$/) do

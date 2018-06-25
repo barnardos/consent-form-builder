@@ -47,7 +47,10 @@ module PreviewChecker
   end
 
   def check_storing
-    expect(page).to have_content("Barnardo’s will hold research data for #{@shared_duration}")
+    expect(page).to have_content(
+      "Barnardo’s will delete the research data #{@shared_duration} "\
+      'after the project ends. Personal data is stored securely.'
+    )
     expect(page).to have_content(
       'Any research recordings will have names and personal details removed and replaced'
     )
@@ -62,8 +65,8 @@ module PreviewChecker
 
   def check_expenses
     expect(page.body).to have_content(
-      'We allow travel expenses of up to £50.00, food expenses of up to £20.00, '\
-      'and other expenses of up to £10.00.'
+      'Expenses are allow of up to £50.00 for travel, £20.00 for food, '\
+      'and £10.00 for other expenses.'
     )
     expect(page.body).to include(
       'Receipts must be provided.'
@@ -72,7 +75,7 @@ module PreviewChecker
 
   def check_incentives
     expect(page.body).to have_content(
-      'As a thank you, we will give your child/the child in your care a cash incentive of'
+      'As a thank you, we\'ll give the child £10.50, in cash'
     )
     expect(page).to have_tag('[data-field="incentive_value"] > a.Output-link', text: '£10.50')
   end

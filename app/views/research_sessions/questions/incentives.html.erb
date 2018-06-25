@@ -60,32 +60,34 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('ChoiceControlledContent',
         is_active: @research_session.incentives_enabled,
         controlled_by: '[id="research_session[incentives_enabled_true]"]') do %>
         <%= c('PreviewConsentForm') do %>
-          <%= c('HeadingOne', text: t('preview.able_to_consent.session_details.heading')) %>
+          <%= c('HeadingOne', text: t("#{ct}.the_session.heading")) %>
 
           <%= c('Paragraph') do %>
             …
-          <% end %>
-
-          <%= c('Paragraph') do %>
-            <%= t('preview.able_to_consent.session_details.incentives_intro') %>
           <% end %>
 
           <%= c('ChoiceControlledContent',
             is_active: (@research_session.payment_type == 'cash'),
             controlled_by: '[id="research_session[cash]"]') do %>
             <%= c('Paragraph') do %>
-              <%= raw t('preview.able_to_consent.session_details.payment_type.cash') % [
-                c(
+              <%= raw t(
+                "#{ct}.the_session.incentive",
+                value: c(
                   'FieldPreview',
                   text: number_to_currency(@research_session.incentive_value),
                   listens_to: '[name="research_session[incentive_value]"]',
                   format_value: 'currency'
+                ),
+                payment_type: c(
+                  'FieldPreview',
+                  text: t("#{ct}.the_session.payment_type.cash")
                 )
-              ] %>
+              ) %>
             <% end %>
           <% end %>
 
@@ -93,14 +95,19 @@
             is_active: (@research_session.payment_type == 'voucher'),
             controlled_by: '[id="research_session[voucher]"]') do %>
             <%= c('Paragraph') do %>
-              <%= raw t('preview.able_to_consent.session_details.payment_type.voucher') % [
-                c(
+              <%= raw t(
+                "#{ct}.the_session.incentive",
+                value: c(
                   'FieldPreview',
                   text: number_to_currency(@research_session.incentive_value),
                   listens_to: '[name="research_session[incentive_value]"]',
                   format_value: 'currency'
+                ),
+                payment_type: c(
+                  'FieldPreview',
+                  text: t("#{ct}.the_session.payment_type.voucher")
                 )
-              ] %>
+              ) %>
             <% end %>
           <% end %>
 

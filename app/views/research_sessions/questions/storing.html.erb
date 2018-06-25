@@ -33,12 +33,13 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('PreviewConsentForm') do %>
-        <%= c('HeadingOne', text: t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.heading')) %>
+        <%= c('HeadingOne', text: t("#{ct}.personal_data.heading")) %>
         <%= c('Paragraph') do %>
           &hellip;
         <% end %>
-        <% t('preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.shared_with').each do |key, value| %>
+        <% t("#{ct}.personal_data.shared_with").each do |key, value| %>
           <%= c('ChoiceControlledContent', controlled_by: "[id=\"research_session[#{key.to_s}]\"]", is_active: @research_session.shared_with == key.to_s) do %>
             <%= c('Paragraph') do %>
               <%= value %>
@@ -46,13 +47,11 @@
           <% end %>
         <% end %>
         <%= c('Paragraph') do %>
-          <%= raw t("preview.able_to_consent.will_anyone_know_what_they_say_in_the_discussion.paragraphs")[2] % [
-            c(
-              'FieldPreview',
-              text: @research_session.shared_duration,
-              listens_to: '[name="research_session[shared_duration]"]'
-            )
-          ] %>
+          <%= raw t("#{ct}.personal_data.shared_duration", duration: c(
+            'FieldPreview',
+            text: @research_session.shared_duration,
+            listens_to: '[name="research_session[shared_duration]"]'
+          )) %>
         <% end %>
         <%= c('Paragraph') do %>
           &hellip;

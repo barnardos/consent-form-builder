@@ -35,28 +35,28 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('PreviewConsentForm') do %>
-        <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
-
+        <%= c('HeadingOne', text: t('preview.able_to_consent.the_research.heading')) %>
         <%= c('Paragraph') do %>
-          <%= raw t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[0] % [
-            c(
+          <%= raw t(
+            "#{ct}.the_research.take_part_in",
+            researcher_name: c(
               'Output',
               text: @research_session.researcher_name,
               field: 'researcher_name',
               url: edit_link_for(:researcher_name)
             ),
-            c(
+            researcher_job_title:c(
               'Output',
               text: @research_session.researcher_job_title,
               field: 'researcher_job_title',
               url: edit_link_for(:researcher_job_title)
             )
-          ] %>
+          ) %>
         <% end %>
-
         <%= c('UnorderedList') do %>
-          <% t('preview.able_to_consent.what_happens_in_this_research_session.methodologies').each do |key, value| %>
+          <% t("#{ct}.the_research.methodologies").each do |key, value| %>
             <%= c(
               'ChoicePreview',
               controlled_by: "[id='research_session[#{key.to_s}]']",

@@ -35,19 +35,17 @@
     <% end %>
 
     <div class="Step-formPreview">
+      <% ct = "preview.able_to_consent" %>
       <%= c('PreviewConsentForm') do %>
-        <%= c('HeadingOne', text: t('preview.able_to_consent.what_happens_in_this_research_session.heading')) %>
-
+        <%= c('HeadingOne', text: t("#{ct}.the_research.heading")) %>
         <%= c('Paragraph') do %>
           &hellip;
         <% end %>
-
         <%= c('Paragraph') do %>
-          <%= t('preview.able_to_consent.what_happens_in_this_research_session.paragraphs')[1] %>
+          <%= t("#{ct}.the_research.record_using") %>
         <% end %>
-
         <%= c('UnorderedList') do %>
-          <% t('preview.able_to_consent.what_happens_in_this_research_session.recording_methods').each do |key, value| %>
+          <% t('preview.able_to_consent.the_research.recording_methods').each do |key, value| %>
             <%= c(
               'ChoicePreview',
               controlled_by: "[id='research_session[#{key.to_s}]']",
