@@ -4,8 +4,8 @@ end
 
 And(/^I should see each methodology selected$/) do
   # Interview, Usability as set in question_steps.rb
-  expect(page).to have_content('one-on-one interview')
-  expect(page).to have_content('group discussion')
+  expect(page).to have_content('One-on-one interview')
+  expect(page).to have_content('Group discussion')
 end
 
 And(/^I should see the focus of the research along with why$/) do
@@ -18,7 +18,7 @@ And(/^I should see the focus of the research along with why$/) do
 end
 
 And(/^I should see a humanised indication of recording methods used$/) do
-  expect(page).to have_content('voice recording, video recording, and researcher’s written notes')
+  expect(page).to have_content('Video recording, Voice recording, and Researcher’s notes')
 end
 
 And(/^I should see links back to edit things that I provided$/) do

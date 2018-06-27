@@ -50,15 +50,15 @@ And(/^I fill in the remaining steps$/) do
   complete_incentives_step
 end
 
-When(/^I provide an 'other' methodology$/) do
-  step "I should see an 'other' checkbox for methodology with a space to fill this in"
-  step "I fill in the 'other' methodology"
+When(/^I provide an 'Other' methodology$/) do
+  step "I should see an 'Other' checkbox for methodology with a space to fill this in"
+  step "I fill in the 'Other' methodology"
   step 'I click the continue button'
 end
 
-And(/^I provide an 'other' recording method$/) do
-  step "I should see an 'other' checkbox for recording method with a space to fill this in"
-  step "I fill in the 'other' recording method"
+And(/^I provide an 'Other' recording method$/) do
+  step "I should see an 'Other' checkbox for recording method with a space to fill this in"
+  step "I fill in the 'Other' recording method"
   step 'I click the continue button'
 end
 

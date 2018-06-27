@@ -58,7 +58,7 @@ module StepCompletions
   end
 
   def complete_recording_methods_step
-    @recording_methods = ['voice recording', 'video recording', 'researcher’s written notes']
+    @recording_methods = ['Video recording', 'Voice recording', 'Researcher’s notes']
     @recording_methods.each do |method|
       check method
     end
@@ -77,13 +77,13 @@ module StepCompletions
     choose 'Yes'
 
     @held_on = '27th September at 2pm'
-    fill_in 'The session is held on (optional)', with: @held_on
+    fill_in 'When (optional)', with: @held_on
     @session_duration = '5 minutes'
-    fill_in 'How long will the session be? (optional)', with: @session_duration
+    fill_in 'Duration (optional)', with: @session_duration
     @session_location = 'Rockford House, Leeds'
-    fill_in 'The session will be held at (optional)', with: @session_location
+    fill_in 'Where (optional)', with: @session_location
     @what_to_bring = 'Nothing'
-    fill_in 'What do participants need to bring? (optional)', with: @what_to_bring
+    fill_in 'Participants need to bring (optional)', with: @what_to_bring
     click_button 'Continue'
   end
 
@@ -100,7 +100,7 @@ module StepCompletions
     choose 'Yes'
 
     choose 'Cash'
-    fill_in 'Incentive value', with: '10.50'
+    fill_in 'Amount', with: '10.50'
     click_button 'Continue'
   end
 end

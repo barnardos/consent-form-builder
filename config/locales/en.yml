@@ -22,7 +22,7 @@ en:
     other_recording_method: "How will it be recorded?"
     when_text: "When (optional)"
     duration: "Duration (optional)"
-    location: "Where"
+    location: "Where (optional)"
     hint: "For example, 12 May 2018 at 3pm"
     participant_equipment: "Participants need to bring (optional)"
     travel_expenses_limit: "Travel"
