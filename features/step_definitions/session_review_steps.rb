@@ -35,11 +35,11 @@ When(/^I click the continue button$/) do
   click_button 'Continue'
 end
 
-Then(/^I should see my 'other' methodology$/) do
+Then(/^I should see my 'Other' methodology$/) do
   expect(page).to have_content(@other_methodology)
 end
 
-And(/^I should see my 'other' recording method$/) do
+And(/^I should see my 'Other' recording method$/) do
   expect(page).to have_content(@other_recording_method)
 end
 

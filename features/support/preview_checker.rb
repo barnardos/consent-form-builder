@@ -42,7 +42,7 @@ module PreviewChecker
 
   def check_recording
     @recording_methods.each do |recording_method|
-      expect(page.body).to include(recording_method.downcase)
+      expect(page.body).to include(recording_method)
     end
   end
 

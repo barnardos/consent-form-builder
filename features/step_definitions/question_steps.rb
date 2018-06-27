@@ -22,21 +22,21 @@ Given(/^I have arrived at the methodologies step$/) do
   complete_topic_step
 end
 
-And(/^I should see an 'other' checkbox for (.*) with a space to fill this in$/) do |attr|
+And(/^I should see an 'Other' checkbox for (.*) with a space to fill this in$/) do |attr|
   attr = attr.downcase.tr(' ', '_')
   expect(page).to have_tag('label', with: { for: "research_session[other_#{attr}]" })
   expect(page).to have_tag('input', with: { id: "research_session[other_#{attr}]" })
 end
 
-When(/^I fill in the 'other' methodology$/) do
-  check 'other'
+When(/^I fill in the 'Other' methodology$/) do
+  check 'Other'
 
   @other_methodology = 'A.N. Other Methodology'
   fill_in 'How will it be gathered?', with: @other_methodology
 end
 
-When(/^I fill in the 'other' recording method$/) do
-  check 'other'
+When(/^I fill in the 'Other' recording method$/) do
+  check 'Other'
 
   @other_recording_method = 'A.N. Other Recording Method'
   fill_in 'How will it be recorded?', with: @other_recording_method

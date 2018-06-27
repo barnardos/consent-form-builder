@@ -21,9 +21,9 @@ Feature:
 
   Scenario: I am using a research methodology or recording method that is not in the list
     Given I have arrived at the methodologies step
-    When I provide an 'other' methodology
-    And I provide an 'other' recording method
+    When I provide an 'Other' methodology
+    And I provide an 'Other' recording method
     And I fill in the remaining steps
     Then I should see the session review page
-    And I should see my 'other' methodology
-    And I should see my 'other' recording method
+    And I should see my 'Other' methodology
+    And I should see my 'Other' recording method
