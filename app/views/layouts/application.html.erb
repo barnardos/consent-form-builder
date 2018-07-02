@@ -22,12 +22,6 @@
   <%= c('Header') %>
 
   <%= yield %>
-
-  <%= c('Footer') do %>
-    <%= c('Paragraph') do %>
-      Release <%= c('Link', src: release_url, text: release_sha[0..7]) %>
-    <% end %>
-  <% end %>
 <% end %>
 
 <script>

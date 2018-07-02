@@ -13,14 +13,6 @@ module ApplicationHelper
     )
   end
 
-  def release_sha(sha_getter = -> { `git rev-parse HEAD` })
-    ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call || 'unavailable'
-  end
-
-  def release_url
-    COMMIT_STEM + release_sha
-  end
-
   def title(research_session, step = nil)
     if research_session.nil?
       I18n.t('application.title')
