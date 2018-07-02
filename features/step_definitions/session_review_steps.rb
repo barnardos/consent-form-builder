@@ -18,7 +18,7 @@ And(/^I should see the focus of the research along with why$/) do
 end
 
 And(/^I should see a humanised indication of recording methods used$/) do
-  expect(page).to have_content('Video recording, Voice recording, and Researcher’s notes')
+  expect(page).to have_content('video recording, voice recording, and researcher’s notes')
 end
 
 And(/^I should see links back to edit things that I provided$/) do
