@@ -41,7 +41,7 @@
         name: 'researcher_phone',
         value: @research_session.researcher_phone,
         label: t('research_session_attr_labels.researcher_phone'),
-        size: 40,
+        size: 24,
         errored: @research_session.errors['researcher_phone'].present?,
         validation: @research_session.errors['researcher_phone'][0]
       ) %>

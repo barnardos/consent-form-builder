@@ -50,7 +50,7 @@
           name: 'duration',
           value: @research_session.duration,
           label: t('research_session_attr_labels.duration'),
-          size: 40,
+          size: 16,
           errored: @research_session.errors['duration'].present?,
           validation: @research_session.errors['duration'][0]
         ) %>
@@ -60,7 +60,7 @@
           name: 'location',
           value: @research_session.location,
           label: t('research_session_attr_labels.location'),
-          size: 40,
+          size: 48,
           errored: @research_session.errors['location'].present?,
           validation: @research_session.errors['location'][0]
         ) %>
@@ -70,7 +70,7 @@
           name: 'participant_equipment',
           value: @research_session.participant_equipment,
           label: t('research_session_attr_labels.participant_equipment'),
-          size: 40,
+          size: 48,
           errored: @research_session.errors['participant_equipment'].present?,
           validation: @research_session.errors['participant_equipment'][0]
         ) %>
@@ -80,7 +80,7 @@
           name: 'food_provided',
           value: @research_session.food_provided,
           label: t('research_session_attr_labels.food_provided'),
-          size: 40,
+          size: 48,
           errored: @research_session.errors['food_provided'].present?,
           validation: @research_session.errors['food_provided'][0]
         ) %>

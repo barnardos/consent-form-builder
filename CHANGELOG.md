@@ -1,5 +1,6 @@
 # [Unreleased]
 
+* [BUG] - [Size controls consistently](https://github.com/barnardos/consent-form-builder/issues/320)
 * [FEATURE] - [Apply Barnardo's design system](https://github.com/barnardos/consent-form-builder/milestone/1)
 * [FEATURE] - [Add start page](https://github.com/barnardos/consent-form-builder/issues/322)
 * [BUG] - [Fix the scaling of the logo](https://github.com/barnardos/consent-form-builder/issues/312)
