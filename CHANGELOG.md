@@ -1,5 +1,7 @@
 # [Unreleased]
 
+* [BUG] - [The final preview page when you can give consent doesn't put some information in](https://github.com/barnardos/consent-form-builder/issues/333)
+* [BUG] - [Typo in final preview](https://github.com/barnardos/consent-form-builder/issues/334)
 * [BUG] - [Size controls consistently](https://github.com/barnardos/consent-form-builder/issues/320)
 * [FEATURE] - [Apply Barnardo's design system](https://github.com/barnardos/consent-form-builder/milestone/1)
 * [FEATURE] - [Add start page](https://github.com/barnardos/consent-form-builder/issues/322)
