@@ -93,22 +93,20 @@
         <% end %>
         <%= c('UnorderedList') do %>
           <%= c('ListItem') do %>
-            <%= raw t("#{ct}.the_research.contacted_by.email") % [
-              c(
+            <%= raw t("#{ct}.the_research.contacted_by.email", email: c(
                 'FieldPreview',
                 text: @research_session.researcher_email,
                 listens_to: '[name="research_session[researcher_email]"]'
-              )
-            ] %>
+              )) 
+            %>
           <% end %>
           <%= c('ListItem') do %>
-            <%= raw t("#{ct}.the_research.contacted_by.phone") % [
-              c(
+            <%= raw t("#{ct}.the_research.contacted_by.phone", phone:  c(
                 'FieldPreview',
                 text: @research_session.researcher_phone,
                 listens_to: '[name="research_session[researcher_phone]"]'
-              )
-            ] %>
+              ))
+            %>
           <% end %>
         <% end %>
       <% end %>

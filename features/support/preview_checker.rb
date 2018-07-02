@@ -65,7 +65,7 @@ module PreviewChecker
 
   def check_expenses
     expect(page.body).to have_content(
-      'Expenses are allow of up to £50.00 for travel, £20.00 for food, '\
+      'Expenses are allowed of up to £50.00 for travel, £20.00 for food, '\
       'and £10.00 for other expenses.'
     )
     expect(page.body).to include(

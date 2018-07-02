@@ -144,8 +144,8 @@ en:
           other: Other
         may_be_contacted: "%{researcher_name} may be contacted by:"
         contacted_by:
-          email: "Email: %s"
-          phone: "Phone: %s"
+          email: "Email: %{email}"
+          phone: "Phone: %{phone}"
         other_researchers: There may be another researcher or observer present.
 
       the_session:
@@ -154,7 +154,7 @@ en:
         location: "Where: %s"
         duration: "Duration: %s"
         participant_equipment: You will need to bring %{equipment}.
-        expenses: Expenses are allow of up to %{expenses}.
+        expenses: Expenses are allowed of up to %{expenses}.
         travel_expenses_limit: "%{value} for travel"
         food_expenses_limit: "%{value} for food"
         other_expenses_limit: "%{value} for other expenses"
@@ -248,7 +248,7 @@ en:
         location: "Where: %s"
         duration: "Duration: %s"
         participant_equipment: The child will need to bring %{equipment}.
-        expenses: Expenses are allow of up to %{expenses}.
+        expenses: Expenses are allowed of up to %{expenses}.
         travel_expenses_limit: "%{value} for travel"
         food_expenses_limit: "%{value} for food"
         other_expenses_limit: "%{value} for other expenses"
