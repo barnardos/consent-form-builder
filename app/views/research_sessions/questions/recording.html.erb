@@ -11,7 +11,7 @@
         collection: "research_session[#{:recording_methods}][]",
         choices: RecordingMethods::CHOICES,
         choices_selected: @research_session.recording_methods,
-        legend: 'How will you be recording information?',
+        legend: t('research_session_attr_labels.recording_methods'),
         choice_type: 'multi',
         errored: @research_session.errors['recording_methods'].present?,
         validation: @research_session.errors['recording_methods'][0]

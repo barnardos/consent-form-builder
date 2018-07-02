@@ -341,7 +341,7 @@
                     end
                   }
             %>
-            <%= raw t("#{ct}.giving_your_consent.activities", recording_methods: recording_methods.to_sentence) %>
+            <%= raw t("#{ct}.giving_your_consent.activities", recording_methods: recording_methods.to_sentence.downcase) %>
           <% end %>
           <%= c('ListItem') do %>
             <%= t("#{ct}.giving_your_consent.data") %>

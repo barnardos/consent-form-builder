@@ -19,7 +19,7 @@ module StepCompletions
 
     fill_in 'Job title', with: @job_title
     fill_in 'Full name', with: @researcher_name
-    fill_in 'Telephone number', with: @researcher_phone
+    fill_in 'Phone', with: @researcher_phone
     fill_in 'Email', with: @researcher_email
 
     click_button 'Continue'
@@ -33,7 +33,7 @@ module StepCompletions
       Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'Barnardoʼs is doing research to learn about', with: @topic
+    fill_in 'What does Barnardo’s hope to learn about?', with: @topic
 
     @purpose = <<~TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
       PURPOSE: Fresnel lenses and the under-5s
@@ -42,7 +42,7 @@ module StepCompletions
       PURPOSE: Whereas this becomes its own p
     TEXT_WITH_DOUBLE_AND_SINGLE_LINEBREAK
 
-    fill_in 'so that we can', with: @purpose
+    fill_in 'What outcomes does Barnardo’s want to have?', with: @purpose
     click_button 'Continue'
   end
 
@@ -58,7 +58,7 @@ module StepCompletions
   end
 
   def complete_recording_methods_step
-    @recording_methods = ['voice recording', 'video recording', 'researcher’s written notes']
+    @recording_methods = ['Video recording', 'Voice recording', 'Researcher’s notes']
     @recording_methods.each do |method|
       check method
     end
@@ -66,10 +66,10 @@ module StepCompletions
   end
 
   def complete_storing_step
-    choose 'Anonymised as we process it'
+    choose 'It won’t be'
     @shared_duration = '1 year'
 
-    fill_in 'How long will this information be held for?', with: @shared_duration
+    fill_in 'How long will research data be held after the project ends?', with: @shared_duration
     click_button 'Continue'
   end
 
@@ -77,23 +77,22 @@ module StepCompletions
     choose 'Yes'
 
     @held_on = '27th September at 2pm'
-    fill_in 'The session is held on (optional)', with: @held_on
+    fill_in 'When (optional)', with: @held_on
     @session_duration = '5 minutes'
-    fill_in 'How long will the session be? (optional)', with: @session_duration
+    fill_in 'Duration (optional)', with: @session_duration
     @session_location = 'Rockford House, Leeds'
-    fill_in 'The session will be held at (optional)', with: @session_location
+    fill_in 'Where (optional)', with: @session_location
     @what_to_bring = 'Nothing'
-    fill_in 'What do participants need to bring? (optional)', with: @what_to_bring
+    fill_in 'Participants need to bring (optional)', with: @what_to_bring
     click_button 'Continue'
   end
 
   def complete_expenses_step
     choose 'Yes', name: 'research_session[expenses_enabled]'
 
-    fill_in 'If you allow travel expenses, what is the maximum allowed?', with: '50.00'
-    fill_in 'If you allow food expenses, what is the maximum allowed?', with: '20.00'
-    fill_in 'If you allow the participant to expense other items, '\
-            'what is the maximum allowed?', with: '10.00'
+    fill_in 'Travel', with: '50.00'
+    fill_in 'Food', with: '20.00'
+    fill_in 'Other', with: '10.00'
     click_button 'Continue'
   end
 
@@ -101,7 +100,7 @@ module StepCompletions
     choose 'Yes'
 
     choose 'Cash'
-    fill_in 'Incentive value', with: '10.50'
+    fill_in 'Amount', with: '10.50'
     click_button 'Continue'
   end
 end

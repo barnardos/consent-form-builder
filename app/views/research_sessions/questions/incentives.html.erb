@@ -38,7 +38,7 @@
               collection: "research_session[#{:payment_type}]",
               choices: PaymentType::CHOICES,
               choices_selected: [@research_session.payment_type],
-              legend: 'What form will the incentive take?',
+              legend: t('research_session_attr_labels.payment_type'),
               choice_type: 'single',
               errored: @research_session.errors['payment_type'].present?,
               validation: @research_session.errors['payment_type'][0]

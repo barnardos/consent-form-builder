@@ -5,6 +5,7 @@
 * [FEATURE] - [Add start page](https://github.com/barnardos/consent-form-builder/issues/322)
 * [BUG] - [Fix the scaling of the logo](https://github.com/barnardos/consent-form-builder/issues/312)
 * [FEATURE] - [Improve confirmation page](https://github.com/barnardos/consent-form-builder/issues/314)
+* [FEATURE] - [Improve labels and content](https://github.com/barnardos/consent-form-builder/issues/313)
 
 # 0.8.2 / 2018-04-18
 

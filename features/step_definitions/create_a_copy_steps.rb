@@ -7,14 +7,14 @@ When(/^I visit its preview page$/) do
 end
 
 Then(/^I should see a way of naming the new session based on the existing name$/) do
-  expect(page).to have_content('Please name your research session')
+  expect(page).to have_content('What would you like to name this session?')
   expect(page).to have_selector("input[value='#{@existing_session.name} (copy)']")
 end
 
 When(/^I name it and continue$/) do
   @new_session_name = 'This is a copied session'
   @new_session_slug = @new_session_name.downcase.tr(' ', '-')
-  fill_in 'Please name your research session', with: @new_session_name
+  fill_in 'What would you like to name this session?', with: @new_session_name
 
   click_button 'Continue'
 end

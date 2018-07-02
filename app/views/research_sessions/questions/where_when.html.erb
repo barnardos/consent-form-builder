@@ -31,18 +31,25 @@
     <%= c('ChoiceControlledContent',
         is_active: (@research_session.where_when_enabled.present? && [@research_session.where_when_enabled.to_s].include?('true')),
         controlled_by: '[id="research_session[where_when_enabled_true]"]') do %>
-        <%= c('Paragraph') do %>
-          Please enter the time and date of the session
-        <% end %>
+          <%= c('SinglelineTextControl',
+            id: 'research_session[when_text]',
+            name: 'when_text',
+            value: @research_session.when_text,
+            label: t('research_session_attr_labels.when_text'),
+            hint: t('research_session_attr_labels.hint'),
+            size: 40,
+            errored: @research_session.errors['when_text'].present?,
+            validation: @research_session.errors['when_text'][0]
+          ) %>
+
         <%= c('SinglelineTextControl',
-          id: 'research_session[when_text]',
-          name: 'when_text',
-          value: @research_session.when_text,
-          label: t('research_session_attr_labels.when_text'),
-          hint: 'e.g. Monday 27th September 2018 at 3:00pm',
-          size: 40,
-          errored: @research_session.errors['when_text'].present?,
-          validation: @research_session.errors['when_text'][0]
+          id: 'research_session[location]',
+          name: 'location',
+          value: @research_session.location,
+          label: t('research_session_attr_labels.location'),
+          size: 48,
+          errored: @research_session.errors['location'].present?,
+          validation: @research_session.errors['location'][0]
         ) %>
 
         <%= c('SinglelineTextControl',
@@ -56,13 +63,13 @@
         ) %>
 
         <%= c('SinglelineTextControl',
-          id: 'research_session[location]',
-          name: 'location',
-          value: @research_session.location,
-          label: t('research_session_attr_labels.location'),
+          id: 'research_session[food_provided]',
+          name: 'food_provided',
+          value: @research_session.food_provided,
+          label: t('research_session_attr_labels.food_provided'),
           size: 48,
-          errored: @research_session.errors['location'].present?,
-          validation: @research_session.errors['location'][0]
+          errored: @research_session.errors['food_provided'].present?,
+          validation: @research_session.errors['food_provided'][0]
         ) %>
 
         <%= c('SinglelineTextControl',
@@ -74,16 +81,7 @@
           errored: @research_session.errors['participant_equipment'].present?,
           validation: @research_session.errors['participant_equipment'][0]
         ) %>
-
-        <%= c('SinglelineTextControl',
-          id: 'research_session[food_provided]',
-          name: 'food_provided',
-          value: @research_session.food_provided,
-          label: t('research_session_attr_labels.food_provided'),
-          size: 48,
-          errored: @research_session.errors['food_provided'].present?,
-          validation: @research_session.errors['food_provided'][0]
-        ) %>
+         
       <% end %>
       <%= render partial: 'submit_step' %>
     <% end %>
