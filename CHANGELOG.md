@@ -1,5 +1,6 @@
 # [Unreleased]
 
+* [BUG] - [Remove the version number](https://github.com/barnardos/consent-form-builder/issues/311)
 * [BUG] - [The final preview page when you can give consent doesn't put some information in](https://github.com/barnardos/consent-form-builder/issues/333)
 * [BUG] - [Typo in final preview](https://github.com/barnardos/consent-form-builder/issues/334)
 * [BUG] - [Size controls consistently](https://github.com/barnardos/consent-form-builder/issues/320)
