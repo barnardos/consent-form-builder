@@ -1,5 +1,4 @@
 module ApplicationHelper
- 
   def already_creating_session?
     current_page?(new_research_session_path)
   end
