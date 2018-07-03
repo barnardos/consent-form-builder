@@ -1,6 +1,4 @@
 module ApplicationHelper
-  COMMIT_STEM = 'https://github.com/barnardos/consent-form-builder-rails/commit/'.freeze
-
   def already_creating_session?
     current_page?(new_research_session_path)
   end
@@ -11,14 +9,6 @@ module ApplicationHelper
       new_research_session_path(from_existing: research_session.slug),
       class: 'button button--copy button--small button--green button--no-margin'
     )
-  end
-
-  def release_sha(sha_getter = -> { `git rev-parse HEAD` })
-    ENV['HEROKU_SLUG_COMMIT'] || sha_getter.call || 'unavailable'
-  end
-
-  def release_url
-    COMMIT_STEM + release_sha
   end
 
   def title(research_session, step = nil)
