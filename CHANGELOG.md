@@ -1,4 +1,4 @@
-# [Unreleased]
+# 2.0.0 / 2018-07-10
 
 * [BUG] - [Remove the version number](https://github.com/barnardos/consent-form-builder/issues/311)
 * [BUG] - [The final preview page when you can give consent doesn't put some information in](https://github.com/barnardos/consent-form-builder/issues/333)
