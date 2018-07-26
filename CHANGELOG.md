@@ -1,3 +1,7 @@
+# 2.0.1 / 2018-07-26
+
+* [BUG] - [Print stylesheet styles links as clickable](https://github.com/barnardos/consent-form-builder/issues/338)
+
 # 2.0.0 / 2018-07-10
 
 * [BUG] - [Remove the version number](https://github.com/barnardos/consent-form-builder/issues/311)
