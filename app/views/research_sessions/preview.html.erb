@@ -334,14 +334,14 @@
                     else
                       c(
                         'Output',
-                        text:  t("#{ct}.the_research.recording_methods.#{recording_method}"),
+                        text:  t("#{ct}.the_research.recording_methods.#{recording_method}").downcase,
                         field: 'recording_methods',
                         url: edit_link_for(:recording_methods)
                       )
                     end
                   }
             %>
-            <%= raw t("#{ct}.giving_your_consent.activities", recording_methods: recording_methods.to_sentence.downcase) %>
+            <%= raw t("#{ct}.giving_your_consent.activities", recording_methods: recording_methods.to_sentence) %>
           <% end %>
           <%= c('ListItem') do %>
             <%= t("#{ct}.giving_your_consent.data") %>
