@@ -2,11 +2,6 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   TargetRubyVersion: 2.4.1
-  Include:
-    - Gemfile
-    - Rakefile
-    - config.ru
-    - lib/**/*.rake
   Exclude:
     - db/schema.rb
     - node_modules/**/*
@@ -55,10 +50,6 @@ Style/SignalException:
 Lint/UnreachableCode:
   Exclude:
     - 'Dangerfile'
-
-Style/PredicateName:
-  Exclude:
-    - 'spec/**/*'
 
 Style/DoubleNegation:
   Enabled: false

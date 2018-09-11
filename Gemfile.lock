@@ -115,6 +115,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.1)
     kramdown (1.17.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -213,9 +214,10 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    rubocop (0.52.1)
+    rubocop (0.59.0)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
+      parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
@@ -277,7 +279,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-html-matchers
   rspec-rails (~> 3.5.0)
-  rubocop (~> 0.52.1)
+  rubocop (~> 0.59.0)
   spring
   spring-watcher-listen (~> 2.0.1)
   tzinfo-data
