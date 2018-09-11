@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.2.1'
-gem 'pg', '~> 0.2'
+gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.12.0'
 gem 'wicked', '~> 1.3.2'
 gem 'webpacker', '~> 3.4'
