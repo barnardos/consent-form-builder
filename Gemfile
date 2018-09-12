@@ -15,6 +15,7 @@ gem 'wicked', '~> 1.3.2'
 gem 'webpacker', '~> 3.4'
 
 group :development, :test do
+  gem 'brakeman'
   gem 'rspec-rails', '~> 3.8.0'
   gem 'rubocop', '~> 0.59.0'
 end
