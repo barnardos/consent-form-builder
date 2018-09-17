@@ -21,6 +21,7 @@ class ResearchSession
     def reached_step?(session, step)
       step = step.to_sym
       return false if session.status == 'new'
+
       step_indices.fetch(session.status.to_sym) >= step_indices.fetch(step)
     end
 

@@ -9,8 +9,12 @@ And(/^I should see each methodology selected$/) do
 end
 
 And(/^I should see the focus of the research along with why$/) do
-  expect(page).to have_content(@topic)
-  expect(page).to have_content(@purpose)
+  # Issue with updating Cucumber from version 2 to 3 with relation to testing
+  # multiline text, which is why the gsubs are used, see links:
+  # https://github.com/teamcapybara/capybara/blob/master/UPGRADING.md
+  # https://gist.github.com/awesome/7584024
+  expect(page).to have_content(@topic.gsub(/^[\s\t]*/, '').gsub(/[\s\t]*\n/, ' ').strip)
+  expect(page).to have_content(@purpose.gsub(/^[\s\t]*/, '').gsub(/[\s\t]*\n/, ' ').strip)
 
   expect(page).to have_content(
     'We do research with young people because we know it improves our services.'

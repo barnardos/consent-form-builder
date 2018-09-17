@@ -9,7 +9,7 @@ class ResearchSession < ApplicationRecord
             if: -> (session) { session.reached_step?(:researcher) }
   validates :researcher_email, presence: true,
             if: -> (session) { session.reached_step?(:researcher) }
-  validates :researcher_email, format: /@/,
+  validates :researcher_email, format: /\A\S+@\S+\Z/,
     if: -> (session) { session.researcher_email.present? && session.reached_step?(:researcher) }
 
   validates :topic, presence: true,

@@ -32,9 +32,9 @@ Run these commands:
 
 * If you have issues building your test database (`consent_test`), upgrade user to a SUPERUSER, access PostgreSQL in your terminal (`psql postgres`), then `ALTER USER consent WITH SUPERUSER;`. To check user attributes `\du`. Quit `\q`
 
-### Testing code locally before pushing to GitHub
+### Testing
 
-To run test on code before pushing up to GitHub, on your terminal run the command `bundle exec rake`.
+Run test suite: `bundle exec rake`
 
 ## Release Guide - How to deploy changes to Live
 

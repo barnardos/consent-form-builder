@@ -42,3 +42,4 @@ jobs:
             - node_modules/
       - run: bundle exec rake
       - run: bundle exec danger
+      - run: bundle exec brakeman --exit-on-warn

@@ -7,7 +7,7 @@ module Barnardos
         @template.labelled_text_field(
           @object_name, method, text, text_options: text_options,
                                       label_options: label_options, &block
-        )
+                                    )
       end
 
       def labelled_text_area(method, label: nil, label_options: {}, text_options: {})
