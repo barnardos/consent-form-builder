@@ -1,4 +1,4 @@
-# 2.0.2 / Unreleased
+# 2.0.2 / 2018-09-17
 
 * [CHORE] - [Update dependencies](https://github.com/barnardos/consent-form-builder/issues/344)
 
