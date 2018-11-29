@@ -67,7 +67,7 @@ RSpec.describe Barnardos::ActionView::FormBuilder do
 
     let(:collection) do
       {
-        team:     'Just the team',
+        team: 'Just the team',
         internal: 'Other teams internally',
         external: 'Other teams externally'
       }

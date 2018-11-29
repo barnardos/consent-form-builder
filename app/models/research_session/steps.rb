@@ -5,17 +5,17 @@ class ResearchSession
     include Singleton
 
     PARAMS = ActiveSupport::OrderedHash[{
-      researcher:    [:researcher_job_title, :researcher_name, :researcher_phone,
-                      :researcher_email],
-      topic:         [:topic, :purpose],
+      researcher: [:researcher_job_title, :researcher_name, :researcher_phone,
+                   :researcher_email],
+      topic: [:topic, :purpose],
       methodologies: [:other_methodology, methodologies: []],
-      recording:     [:other_recording_method, recording_methods: []],
-      storing:       [:shared_with, :shared_duration],
-      where_when:    [:where_when_enabled, :when_text, :duration, :location, :participant_equipment,
-                      :food_provided],
-      expenses:      [:expenses_enabled, :travel_expenses_limit, :food_expenses_limit,
-                      :other_expenses_limit, :receipts_required],
-      incentives:    [:incentives_enabled, :payment_type, :incentive_value]
+      recording: [:other_recording_method, recording_methods: []],
+      storing: [:shared_with, :shared_duration],
+      where_when: [:where_when_enabled, :when_text, :duration, :location, :participant_equipment,
+                   :food_provided],
+      expenses: [:expenses_enabled, :travel_expenses_limit, :food_expenses_limit,
+                 :other_expenses_limit, :receipts_required],
+      incentives: [:incentives_enabled, :payment_type, :incentive_value]
     }]
 
     def reached_step?(session, step)
