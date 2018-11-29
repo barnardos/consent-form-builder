@@ -1,6 +1,7 @@
 # 2.0.4 / 2018-10-29
 
-* [CHORE] - Runs Rubocop due to Dependabot dependency update
+* [CHORE] - Runs Rubocop due to Dependabot dependency update and updates
+  dependencies including Rails
 
 # 2.0.3 / 2018-10-02
 
