@@ -1,3 +1,7 @@
+# 2.0.4 / 2018-10-29
+
+* [CHORE] - Runs Rubocop due to Dependabot dependency update
+
 # 2.0.3 / 2018-10-02
 
 * [CHORE] - Update dependencies

@@ -359,7 +359,7 @@ RSpec.describe Barnardos::ActionView::FormHelper, type: :helper do
       {
         interview: 'Interview',
         usability: 'Usability testing',
-        survey:    'Survey'
+        survey: 'Survey'
       }
     end
 
