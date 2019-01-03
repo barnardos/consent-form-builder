@@ -1,3 +1,7 @@
+# 2.0.5 / Unreleased
+
+* [CHORE] - Dependency updates and updating Ruby version to 2.6.0
+
 # 2.0.4 / 2018-10-29
 
 * [CHORE] - Runs Rubocop due to Dependabot dependency update and updates
