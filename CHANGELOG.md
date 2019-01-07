@@ -1,4 +1,4 @@
-# 2.0.5 / Unreleased
+# 2.0.5 / 2019-01-07
 
 * [CHORE] - Dependency updates and updating Ruby version to 2.6.0
 
