@@ -19,10 +19,8 @@
     "webpack-dev-server": "3.0.0"
   },
   "scripts": {
-    "check-format":
-      "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --list-different --ignore-path .gitignore",
-    "format":
-      "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --write --ignore-path .gitignore",
+    "check-format": "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --list-different --ignore-path .gitignore",
+    "format": "prettier '**/*.{css,json,js}' '!package.json' '!historic_assets/**/*.{css,scss,json,js}' --write --ignore-path .gitignore",
     "lint:css": "stylelint 'frontend/**/*.css' --ignore-path .gitignore",
     "lint:js": "eslint 'frontend/**/*.js' 'config/webpack/*.js'",
     "lint": "npm-run-all --parallel lint:*",
