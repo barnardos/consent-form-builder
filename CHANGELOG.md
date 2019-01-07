@@ -1,4 +1,4 @@
-# 2.0.6 / Unreleased
+# 2.0.6 / 2019-01-07
 
 * [CHORE] - Updates webpack-dev-server
 
