@@ -1,3 +1,7 @@
+# 2.0.6 / Unreleased
+
+* [CHORE] - Updates webpack-dev-server
+
 # 2.0.5 / 2019-01-07
 
 * [CHORE] - Dependency updates and updating Ruby version to 2.6.0
