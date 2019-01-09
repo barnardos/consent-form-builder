@@ -41,5 +41,5 @@
 
 .OfManyChoiceControl--errored .OfManyChoiceControl-element {
   border-color: #c30000;
-  box-shadow: inset 0.25rem 0.25rem color(#c30000, tint(80%));
+  box-shadow: inset 0.25rem 0.25rem color(#c30000 tint(80%));
 }
