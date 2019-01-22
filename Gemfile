@@ -17,7 +17,7 @@ gem 'webpacker', '~> 3.4'
 group :development, :test do
   gem 'brakeman'
   gem 'rspec-rails', '~> 3.8.1'
-  gem 'rubocop', '~> 0.62.0'
+  gem 'rubocop', '~> 0.63.1'
 end
 
 group :test do
