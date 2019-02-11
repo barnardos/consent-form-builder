@@ -1,3 +1,7 @@
+# 2.0.7 / Unreleased
+
+* [CHORE] - Rectifies Rubocop violation
+
 # 2.0.6 / 2019-01-07
 
 * [CHORE] - Updates webpack-dev-server
