@@ -1,4 +1,4 @@
-# 2.0.7 / Unreleased
+# 2.0.7 / 2019-02-13
 
 * [CHORE] - Adhers to new factory bot syntax
 * [CHORE] - Rectifies Rubocop violation
