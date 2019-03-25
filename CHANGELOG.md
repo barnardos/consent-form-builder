@@ -1,3 +1,7 @@
+# 2.0.8 / 2019-03-25
+
+* [CHORE] - Updates Rails due to security issue
+
 # 2.0.7 / 2019-02-13
 
 * [CHORE] - Adhers to new factory bot syntax
