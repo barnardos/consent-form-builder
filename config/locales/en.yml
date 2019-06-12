@@ -1,22 +1,22 @@
 en:
   application:
-    title: 'Consent Form Builder'
-    create_new_form: 'Create a new form'
-    preview_step_name: 'Preview & print'
+    title: "Consent Form Builder"
+    create_new_form: "Create a new form"
+    preview_step_name: "Preview & print"
     create_a_copy: "Create a copy"
 
   research_session_attr_labels: &attr_labels
-    name: 'What would you like to name this session?'
+    name: "What would you like to name this session?"
     shared_duration: "How long will research data be held after the project ends?"
     shared_with: "Who will the data be shared with?"
-    researcher_job_title: 'Job title (optional)'
-    researcher_name: 'Full name'
-    researcher_other_name: 'Full name'
-    researcher_phone: 'Phone (optional)'
-    researcher_email: 'Email'
+    researcher_job_title: "Job title (optional)"
+    researcher_name: "Full name"
+    researcher_other_name: "Full name"
+    researcher_phone: "Phone (optional)"
+    researcher_email: "Email"
     topic: "What does Barnardo’s hope to learn about?"
-    purpose: 'What outcomes does Barnardo’s want to have?'
-    methodologies: 'How will information be gathered?'
+    purpose: "What outcomes does Barnardo’s want to have?"
+    methodologies: "How will information be gathered?"
     other_methodology: "How will it be gathered?"
     recording_methods: "How will information be recorded?"
     other_recording_method: "How will it be recorded?"
@@ -40,13 +40,11 @@ en:
 
   activerecord:
     attributes:
-      research_session:
-        *attr_labels
+      research_session: *attr_labels
 
   helpers:
     label:
-      research_session:
-        *attr_labels
+      research_session: *attr_labels
     placeholder:
       research_session:
         topic: "e.g. how young people think of consent and research"
@@ -58,7 +56,7 @@ en:
         incentives_enabled: "Will you provide an incentive?"
         where_when_enabled: "Is there a set time and location for the session?"
         shared_with: "How will identifiable information be shared?"
-    spanText: 
+    spanText:
       research_session:
         shared_duration: "Two years is recommended."
     hint:
@@ -67,7 +65,6 @@ en:
     fieldset:
       research_session:
         expenses_enabled: "What are the maximum allowed expenses?"
-
 
   errors:
     format: '"%{attribute}" %{message}'
@@ -80,11 +77,11 @@ en:
   number:
     currency:
       format:
-        unit: '£'
-        delimiter: ','
-        separator: '.'
+        unit: "£"
+        delimiter: ","
+        separator: "."
         precision: 2
-        format: '%u%n'
+        format: "%u%n"
 
   start_pages:
     show:
@@ -98,8 +95,8 @@ en:
   research_sessions:
     questions:
       submit_step:
-        continue: 'Continue'
-        save_and_return: 'Save and return'
+        continue: "Continue"
+        save_and_return: "Save and return"
 
   preview:
     title: Your consent forms
@@ -107,7 +104,7 @@ en:
     stuff:
       - <a href="%s">Create a copy of this consent form</a>
       - You can also share or bookmark the URL of this page.
-      - The researcher should be familiar with the <a href="http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=">BREC guidance</a> on what to do if a safeguarding concern arises during the session.
+      - The researcher should be familiar with the <a href="https://inside.barnardos.org.uk/resources-and-guidance/research-and-information/barnardos-research-ethics-committee-brec">BREC guidance</a> on what to do if a safeguarding concern arises during the session.
       - <a href="%s">Create a new consent form</a>
 
     able_to_consent:
@@ -177,8 +174,7 @@ en:
           team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
-        shared_duration:
-          Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
+        shared_duration: Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
         contact: "If you would like to delete your personal data or have a complaint, you can contact Jason Caplin by:"
         contact_details:
           - "Email: jason.caplin@barnardos.org.uk"
@@ -241,7 +237,6 @@ en:
           phone: "Phone: %{phone}"
         other_researchers: There may be another researcher or observer present.
 
-
       the_session:
         heading: The session
         when_text: "When: %s"
@@ -271,8 +266,7 @@ en:
           team: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than the team undertaking the research."
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
-        shared_duration:
-          Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
+        shared_duration: Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
         contact: "If you would like to delete any personal data or have a complaint, you can contact Jason Caplin by:"
         contact_details:
           - "Email: jason.caplin@barnardos.org.uk"
