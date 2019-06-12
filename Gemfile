@@ -12,7 +12,7 @@ gem 'rails', '~> 5.2.3'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.12.1'
 gem 'wicked', '~> 1.3.2'
-gem 'webpacker', '~> 3.4'
+gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   gem 'brakeman'
