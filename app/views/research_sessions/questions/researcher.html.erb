@@ -1,9 +1,8 @@
 <%= c('Step') do %>
   <%= c('Title', text: 'Researcher') %>
   <%= c('Paragraph') do %>
-    The researcher’s details will go directly on the sheet sent to participants of this session so they can contact you with any queries. The researcher should refer to the safeguarding code of conduct in <%= c('Link', src: 'http://b-hive.barnardos.org.uk/Interact/Pages/Content/Document.aspx?id=5100&SearchId=', text:'BREC Guidance') %> so they are confident they know what to do if a safeguarding concern arises during the session.
+    The researcher’s details will go directly on the sheet sent to participants of this session so they can contact you with any queries. The researcher should refer to the safeguarding code of conduct in <%= c('Link', src: 'https://inside.barnardos.org.uk/resources-and-guidance/research-and-information/barnardos-research-ethics-committee-brec', text:'BREC Guidance') %> so they are confident they know what to do if a safeguarding concern arises during the session.
   <% end %>
-
   <%= c('HeadingOne', text: 'Who is the researcher for this session?') %>
   <%= c('Paragraph') do %>
     Who is the person who is leading the research or participation session?
@@ -11,9 +10,7 @@
     information from this person, and their contact details will be included
     on the information sheet.
   <% end %>
-
   <%= c('ErrorSummary', errors: @research_session.errors.to_hash) if @research_session.errors.any? %>
-
   <div class="Step-form">
     <%= c('Form', action: wizard_path, patch: true) do %>
       <%= c('SinglelineTextControl',
@@ -25,7 +22,6 @@
         errored: @research_session.errors['researcher_name'].present?,
         validation: @research_session.errors['researcher_name'][0]
       ) %>
-
       <%= c('SinglelineTextControl',
         id: 'research_session[researcher_job_title]',
         name: 'researcher_job_title',
@@ -35,7 +31,6 @@
         errored: @research_session.errors['researcher_job_title'].present?,
         validation: @research_session.errors['researcher_job_title'][0]
       ) %>
-
       <%= c('SinglelineTextControl',
         id: 'research_session[researcher_email]',
         name: 'researcher_email',
@@ -45,7 +40,6 @@
         errored: @research_session.errors['researcher_email'].present?,
         validation: @research_session.errors['researcher_email'][0]
       ) %>
-
       <%= c('SinglelineTextControl',
         id: 'research_session[researcher_phone]',
         name: 'researcher_phone',
@@ -55,10 +49,8 @@
         errored: @research_session.errors['researcher_phone'].present?,
         validation: @research_session.errors['researcher_phone'][0]
       ) %>
-
       <%= render partial: 'submit_step' %>
     <% end %>
-
     <div class="Step-formPreview">
       <% ct = "preview.able_to_consent" %>
       <%= c('PreviewConsentForm') do %>
@@ -79,7 +71,7 @@
           ) %>
         <% end %>
         <%= c('Paragraph') do %>
-         &hellip;
+          &hellip;
         <% end %>
         <%= c('Paragraph') do %>
           <%= raw t(
@@ -111,6 +103,5 @@
         <% end %>
       <% end %>
     </div>
-
   </div>
 <% end %>
