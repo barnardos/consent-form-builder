@@ -1,5 +1,10 @@
 # 2.0.9 / 2019-06-12
 
+- [BUG] - fix rubocop issue
+- [CHORE] - Bump rubocop from 0.66.0 to 0.71.0
+
+# 2.0.9 / 2019-06-12
+
 - [CHORE] - Update BREC links
 - [CHORE] - Bump rails from 5.2.2.1 to 5.2.3
 - [CHORE] - Bump puma from 3.12.0 to 3.12.1
