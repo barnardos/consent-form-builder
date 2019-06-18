@@ -10,7 +10,7 @@ namespace :npm do
     desc "#{name} from package.json/scripts"
     task(name) do
       unless system("npm run #{name}")
-        STDERR.puts "npm run #{name} failed with exit code #{$CHILD_STATUS.exitstatus}"
+        warn "npm run #{name} failed with exit code #{$CHILD_STATUS.exitstatus}"
         exit($CHILD_STATUS.exitstatus)
       end
     end
