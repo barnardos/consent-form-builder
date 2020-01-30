@@ -26,7 +26,7 @@ Run these commands:
   * Add a database named 'consent' to your postgres instance, and make 'consent' the owner.
     * `CREATE DATABASE consent OWNER consent;`
   * Add a database named 'consent_test' to your postgres instance, and make 'consent' the owner.
-    * `CREATE DATABASE consent_test OWNER consent_test;`
+    * `CREATE DATABASE consent_test OWNER consent;`
 * `bundle exec rails db:migrate` - update the database schema.
 * `hivemind Procfile.dev` - start a development server.
 
