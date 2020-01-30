@@ -1,19 +1,10 @@
-default: &default
+defaults: &defaults
   adapter: postgresql
-  encoding: unicode
-  host: localhost
-  username: consent
-  password: password
-  pool: 5
 
 development:
-  <<: *default
-  database: consent
+  <<: *defaults
+  database: consent_development
 
-
-test: &test
-  <<: *default
+test: &TEST
+  <<: *defaults
   database: consent_test
-
-cucumber:
-  <<: *test
