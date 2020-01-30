@@ -175,10 +175,10 @@ en:
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
         shared_duration: Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
-        contact: "If you would like to delete your personal data or have a complaint, you can contact Jason Caplin by:"
+        contact: "If you would like to delete your personal data or have a complaint, you can contact Nicklas Persson by:"
         contact_details:
-          - "Email: jason.caplin@barnardos.org.uk"
-          - "Phone: +442084987869"
+          - "Email: nicklas.persson@barnardos.org.uk"
+          - "Phone: +447718130510"
 
       safeguarding:
         heading: Safeguarding
@@ -267,10 +267,10 @@ en:
           internal: "Identifiable recordings, such as photos, videos or voice recordings will be shared no more widely than Barnardo’s internal staff"
           external: "Identifiable recordings, such as photos, videos or voice recordings will be used for external publications, such as reports, press articles or on the website"
         shared_duration: Barnardo’s will delete the research data %{duration} after the project ends. Personal data is stored securely.
-        contact: "If you would like to delete any personal data or have a complaint, you can contact Jason Caplin by:"
+        contact: "If you would like to delete any personal data or have a complaint, you can contact Nicklas Persson by:"
         contact_details:
-          - "Email: jason.caplin@barnardos.org.uk"
-          - "Phone: +442084987869"
+          - "Email: nicklas.persson@barnardos.org.uk"
+          - "Phone: +447718130510"
 
       safeguarding:
         heading: Safeguarding
